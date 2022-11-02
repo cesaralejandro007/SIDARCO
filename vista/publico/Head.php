@@ -38,7 +38,7 @@
     </style>
     <?php include (call."Style-tabs.php"); ?>
     <script>
-        const BASE_URL = 'http://localhost/dashboard/www/CONCO%20V3/';
+        const BASE_URL = 'http://localhost/dashboard/www/SIDARCO/';
         typeof BASE_URL;
 
     </script>
