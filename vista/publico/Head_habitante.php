@@ -37,7 +37,7 @@
     </style>
     <script src="<?php echo constant('URL')?>config/js/news/validacion-generica.js"></script>
 <script type="text/javascript">
-    const BASE_URL = 'http://localhost/dashboard/www/CONCO%20V3/';
+    const BASE_URL = 'http://localhost/dashboard/www/SIDARCO/';
         typeof BASE_URL;
 </script>
 
