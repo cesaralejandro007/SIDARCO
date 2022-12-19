@@ -1,0 +1,2288 @@
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:09:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:11:44 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:11:46 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:11:50 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:11:52 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:11:56 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:12:46 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:12:50 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:12:52 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:12:56 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:12:58 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:02 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:04 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:08 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:10 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:14 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:16 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:20 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:22 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:26 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:28 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:34 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:38 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:40 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:44 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:46 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:50 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:52 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:56 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:13:58 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:14:02 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:14:04 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:25 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:25 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:31 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:31 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:43 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:43 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:49 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:49 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:55 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:15:55 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:16:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:16:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:17:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:17:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:18:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:18:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:19:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:19:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:20:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:20:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:21:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:21:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:22:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:22:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:23:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:23:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:24:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:24:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:25:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:25:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:26:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:26:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:27:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:27:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:28:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:28:32 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:29:33 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:29:33 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:30:33 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:30:33 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:31:34 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:31:34 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:32:34 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:32:34 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:33:34 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:33:34 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:34:34 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:34:34 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:35:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:35:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:36:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:36:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:37:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:37:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:38:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:38:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:39:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:39:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:40:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:40:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:41:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:41:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:42:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:42:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:43:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:43:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:44:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:44:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:45:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:45:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:46:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:46:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:47:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:47:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:49:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:49:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:50:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:50:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:51:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:51:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:52:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:52:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:53:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:53:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:54:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:54:36 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:55:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:55:36 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:56:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:56:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:57:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:57:36 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:58:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:58:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:59:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:59:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:00:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:00:36 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:01:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:01:35 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:02:36 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:02:36 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:03:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:03:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:04:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:04:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:05:38 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:05:38 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:06:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:06:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:07:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:07:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:08:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:08:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:09:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:09:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:10:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:10:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:11:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:11:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:12:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:12:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:13:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:13:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:14:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:14:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:15:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:15:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:16:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:16:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:17:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:17:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:18:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:18:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:19:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:19:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:20:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:20:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:21:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:21:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:22:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:22:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:23:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:23:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:24:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:24:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:25:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:25:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:26:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:26:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:27:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:27:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:28:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:28:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:29:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:29:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:30:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:30:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:31:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:31:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:32:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:32:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:33:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:33:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:34:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:34:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:35:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:35:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:36:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:36:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:37:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:37:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:38:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:38:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:39:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:39:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:40:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:40:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:41:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:41:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:42:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:42:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:43:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:43:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:44:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:44:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:45:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:45:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:46:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:46:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:47:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:47:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:48:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:48:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:49:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:49:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:50:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:50:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:51:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:51:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:52:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:52:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:53:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:53:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:54:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:54:39 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\notificaciones_class.php
+    [Linea] => 50
+    [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:48:37 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sidarco.permisos_usuario_modulo' doesn't exist
+)

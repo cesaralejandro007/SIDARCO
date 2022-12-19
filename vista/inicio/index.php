@@ -8,10 +8,11 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Consejo Comunal Prados de Occidente</h1>
+               
+                    <h1 class="m-0"></h1>
+                    <h3>Sistema de Información para la Gestión de la División de Administración de la GRTI-RCO del SENIAT</h3>
                     
-                </div><!-- /.col -->
+                
                 <!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->

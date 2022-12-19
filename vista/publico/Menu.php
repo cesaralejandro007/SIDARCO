@@ -4,7 +4,7 @@
     <a href="javascript:void(0)" class="brand-link">
         <img src="<?php echo constant('URL')?>config/img/web/navigation.png" alt="AdminLTE Logo"
         class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Prados de Occidente</span>
+        <span class="brand-text font-weight-light">Div. de Administración</span>
     </a> 
 
     <!-- Sidebar -->
@@ -96,7 +96,7 @@
         <a href="javascript:void(0)" class="nav-link">
             <i class="nav-icon mdi mdi-account-multiple-plus"></i>
             <p>
-                Gestionar Nucleo Familiar
+                Gestionar Familias
             </p>
         </a>
         <ul class="nav nav-treeview" >
@@ -119,7 +119,7 @@
         </ul>
     </li>
 <?php } ?>
-<!-- ===============================================================================================  -->
+<!-- ===============================================================================================  
 <?php if($_SESSION['Viviendas']['consultar']!='0' || $_SESSION['Viviendas']['registrar']!='0'){ ?>
     <li class="nav-item">
         <a href="javascript:void(0)" class="nav-link">
@@ -149,6 +149,7 @@
     </li>
 
 <?php } ?>
+            -->
 
 <!-- ===============================================================================================  -->
 <?php if($_SESSION['Vacunados COVID']['consultar']!='0' || $_SESSION['Vacunados COVID']['registrar']!='0' || $_SESSION['Enfermos']['consultar']!='0' || $_SESSION['Enfermos']['registrar']!='0' || $_SESSION['Discapacitados']['consultar']!='0' || $_SESSION['Discapacitados']['registrar']!='0'){ ?>
@@ -187,7 +188,7 @@
             <a href="javascript:void(0)" class="nav-link">
                 <i class="nav-icon fa fa-ambulance"></i>
                 <p>
-                    Gestionar Enfermos
+                    Gestionar Enfermedades
                 </p>
             </a>
             <ul class="nav nav-treeview">
@@ -216,7 +217,7 @@
             <a href="javascript:void(0)" class="nav-link">
                 <i class="nav-icon fa fa-wheelchair"></i>
                 <p>
-                    Gestionar Discapacitados
+                    Gestionar Discapacidades
                 </p>
             </a>
             <ul class="nav nav-treeview">
@@ -224,7 +225,7 @@
                     <li class="nav-item" onclick="cambio_modulo('Registrar discapacitados')">
                         <a href="<?php echo constant('URL');?>Discapacitados/Administrar/Registros/" class="nav-link">
                             <i class="fa fa-plus-circle nav-icon text-success"></i>
-                            <p>Registrar Discapacitados</p>
+                            <p>Registrar Discapcitado</p>
                         </a>
                     </li>
                 <?php } ?>
@@ -243,13 +244,13 @@
 
 <!-- ===============================================================================================  -->
 <?php if($_SESSION['Parto humanizado']['consultar']!='0' || $_SESSION['Parto humanizado']['registrar']!='0'){ ?>
-    <li class="nav-header">Parto Humanizado</li>
+    <li class="nav-header"> Embarazadas</li>
 
     <li class="nav-item">
         <a href="javascript:void(0)" class="nav-link">
             <i class="nav-icon fa fa-female"></i>
             <p>
-                Gestionar Parto Humanizado
+                Gestionar Embarazadas
             </p>
         </a>
         <ul class="nav nav-treeview">
@@ -276,7 +277,7 @@
     </li>
 <?php } ?>
 
-<!-- ===============================================================================================  -->
+<!-- ===========================================================================================
 
 <?php if($_SESSION['Sector agricola']['consultar']!='0' || $_SESSION['Sector agricola']['registrar']!='0'){ ?>
     <li class="nav-header">Sector Agrícola</li>
@@ -306,7 +307,7 @@
             <?php } ?>
         </ul>
     </li>
-<?php }?>
+<?php }?> -->
 <!-- ===============================================================================================  -->
 <?php if($_SESSION['Grupos deportivos']['consultar']!='0' || $_SESSION['Grupos deportivos']['registrar']!='0'){ ?>
     <li class="nav-header">Grupos deportivos</li>
@@ -376,7 +377,7 @@
 
 
 
-    <!-- ===============================================================================================  -->
+    <!-- ===============================================================================================  
     <?php if($_SESSION['Inmuebles']['consultar']!='0' || $_SESSION['Inmuebles']['registrar']!='0'){ ?>
         <li class="nav-item">
             <a href="javascript:void(0)" class="nav-link">
@@ -406,9 +407,9 @@
         </li>
     <?php } ?>
 <?php } ?>
+                -->
 
-
-<!-- ===============================================================================================  -->
+<!-- ===============================================================================================  
 <?php if($_SESSION['Comite']['consultar']!='0' || $_SESSION['Comite']['registrar']!='0' || $_SESSION['Centros votacion']['consultar']!='0' || $_SESSION['Centros votacion']['registrar']!='0'){ ?>
 <li class="nav-header">Administrativo</li>
  <?php if($_SESSION['Comite']['consultar']!='0' || $_SESSION['Comite']['registrar']!='0'){ ?>
@@ -416,7 +417,7 @@
     <a href="javascript:void(0)" class="nav-link">
         <i class="nav-icon fa fa-user"></i>
         <p>
-            Gestionar Comite
+            Gestionar Grupos Fiscalización
         </p>
     </a>
     <ul class="nav nav-treeview">
@@ -424,7 +425,7 @@
         <li class="nav-item" onclick="cambio_modulo('Consejo Comunal Asignar Comite')">
             <a href="<?php echo constant('URL');?>Consejo_Comunal/Administrar/Registros/" class="nav-link">
                 <i class="fa fa-plus-circle nav-icon text-success"></i>
-                <p>Asignar Comite</p>
+                <p>Asignar Grupo</p>
             </a>
         </li>
     <?php } ?>
@@ -432,7 +433,7 @@
         <li class="nav-item" onclick="cambio_modulo('Consejo Comunal Consultas')">
             <a href="<?php echo constant('URL');?>Consejo_Comunal/Administrar/Consultas/" class="nav-link">
                 <i class="fa fa-list nav-icon text-info"></i>
-                <p>Consultar Comite</p>
+                <p>Consultar Grupo</p>
             </a>
         </li>
 <?php } ?>
@@ -443,7 +444,7 @@
 
 <?php }?>
 
-
+     -->
 
 <!-- ===============================================================================================  -->
  <?php if($_SESSION['Centros votacion']['consultar']!='0' || $_SESSION['Centros votacion']['registrar']!='0'){ ?>
@@ -523,7 +524,75 @@
     <a href="javascript:void(0)" class="nav-link">
         <i class="nav-icon fa fa-file-pdf-o"></i>
         <p>
-            Generar Reportes
+            Recursos Humanos
+        </p>
+        <i class="right fas fa-angle-left"></i>
+        <span class="badge badge-info right">5</span>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item" onclick="cambio_modulo('Generar Censos')">
+
+            <a href="<?php echo constant('URL');?>Reportes/Censos/" class="nav-link">
+                <i class="fa fa-edit nav-icon"></i>
+                <p>
+                    Generar Censos
+                </p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="<?php echo constant('URL');?>Reportes/Listados/" class="nav-link">
+                <i class="fa fa-list-alt nav-icon"></i>
+                <p>
+                    Generar Listados
+                </p>
+            </a>
+        </li>
+<!--
+        <li class="nav-item">
+            <a href="<?php echo constant('URL');?>Reportes/Historial_Familiar/" class="nav-link">
+                <i class="mdi mdi-account-multiple nav-icon"></i>
+                <p>
+                    Generar Historial Familiar
+                </p>
+            </a>
+        </li>
+ -->
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link" onclick="$('#solicitar_constancia').modal('show');" data-toggle="dropdown">
+                <i class="fa fa-file-text nav-icon"></i>
+                <p>
+                    Generar Constancias
+                </p>
+            </a>
+        </li>
+
+<!--         <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+                <i class="fa fa-calendar nav-icon"></i>
+                <p>
+                    Generar Horario de Evento
+                </p>
+            </a>
+        </li>
+ -->
+        <li class="nav-item">
+            <a href="<?php echo constant('URL');?>Reportes/Estadisticas" class="nav-link">
+                <i class="fa fa-signal nav-icon"></i>
+                <p>
+                    Generar Estadísticas
+                </p>
+            </a>
+        </li>
+
+    </ul>
+</li>
+
+<li class="nav-item" >
+    <a href="javascript:void(0)" class="nav-link">
+        <i class="nav-icon fa fa-file-pdf-o"></i>
+        <p>
+            Servicio Médico
         </p>
         <i class="right fas fa-angle-left"></i>
         <span class="badge badge-info right">5</span>
@@ -579,7 +648,7 @@
             <a href="<?php echo constant('URL');?>Reportes/Estadisticas" class="nav-link">
                 <i class="fa fa-signal nav-icon"></i>
                 <p>
-                    Generar Estadisticas
+                    Generar Estadísticas
                 </p>
             </a>
         </li>

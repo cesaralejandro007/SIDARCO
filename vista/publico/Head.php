@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Language" content="es" />
     <!--=======================Titolu del Sistema============================ -->
     <title id="page-title">
-        C.C Prados de Occidente
+        SIDARCO
     </title>
     <!-- ============================Estilos============================ -->
     <!-- icon CSS -->
