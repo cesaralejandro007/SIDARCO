@@ -98,7 +98,7 @@
                                         <div class="row">
                                             <div class="col-md-12 text-center">
                                                 <h2>
-                                                    Información de Personal
+                                                    Información  Personal
                                                 </h2>
                                             </div>
                                             
@@ -202,7 +202,7 @@
                                         </div>
                                         <div class="col-md-6 mt-2">
                                             <label for="genero">
-                                                Genero
+                                                Sexo
                                             </label>
                                             <span style='display:none;color:red' id='valid_8'>Ingrese el género</span>
                                             <div class="input-group">
@@ -211,14 +211,15 @@
                                                         -Seleccione-
                                                     </option>
                                                     <option value="M">
-                                                        Masculino
+                                                        Mujer
                                                     </option>
                                                     <option value="F">
-                                                        Femenino
+                                                        Hombre
                                                     </option>
                                                 </select>
                                             </div>
                                         </div>
+
                                         <div class="col-md-6 mt-2">
                                             <label for="sexualidad">
                                                 Orientación sexual
@@ -460,7 +461,7 @@
 </td></tr>
 </table>
 </div>
-
+           
 <div class="col-md-6 mt-2">
     <label for="privado_libertad">
         Privado de libertad

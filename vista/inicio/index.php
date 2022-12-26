@@ -57,7 +57,8 @@
                     <div class="info-box-content">
                         <a href="javascript:void(0)">
                             <span class="info-box-text">
-                                <h3>Viviendas</h3>
+                              <!--
+                                    <h3>Viviendas</h3> -->
                             </span>
                         </a>
                         <h4>
@@ -87,7 +88,7 @@
                     <div class="info-box-content">
                         <a href="javascript:void(0)">
                             <span class="" >
-                                <h3>Calles</h3>
+                             <!--   <h3>Calles</h3>-->
                             </span>
                         </a>
                         <h4>
@@ -166,7 +167,7 @@
                     <span class="info-box-icon"><i class="fa fa-users"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Miembros del Consejo Comunal</span>
+                        <span class="info-box-text">Miembros de grupo</span>
                         <span class="info-box-number"><?php echo $this->datos["cantidad_miembros"]; ?></span>
                     </div>
                     <!-- /.info-box-content -->
@@ -176,7 +177,7 @@
                     <span class="info-box-icon"><i class="fa fa-user-o"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Adulto Mayor</span>
+                        <span class="info-box-text">------</span>
                         <span class="info-box-number"><?php echo $this->datos["adulto_mayor"]; ?></span>
                     </div>
                     <!-- /.info-box-content -->
@@ -196,7 +197,7 @@
                     <span class="info-box-icon"><i class="fa fa-address-card-o"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Votantes</span>
+                        <span class="info-box-text">-------</span>
                         <span class="info-box-number"><?php echo $this->datos["votantes"]; ?></span>
                     </div>
                     <!-- /.info-box-content -->

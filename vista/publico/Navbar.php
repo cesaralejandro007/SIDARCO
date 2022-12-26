@@ -1,5 +1,6 @@
  <!-- Preloader -->
  <div class="preloader flex-column justify-content-center align-items-center">
+     <!-- Logo visible al recargar-->
      <img class="animation__wobble" src="<?php echo constant('URL');?>config/img/web/x3.png" alt="AdminLTELogo"
          height="60" width="60">
  </div>

@@ -59,7 +59,7 @@
 
         <!-- ===============================================================================================  -->
         <?php if($_SESSION['Personas']['consultar']!='0' || $_SESSION['Personas']['registrar']!='0'){ ?>
-         <li class="nav-header">Habitantes</li>
+         <li class="nav-header">Funcionarios</li>
          <li class="nav-item">
             <a href="javascript:void(0)" class="nav-link">
                 <i class="nav-icon fa fa-users"></i>
@@ -96,7 +96,7 @@
         <a href="javascript:void(0)" class="nav-link">
             <i class="nav-icon mdi mdi-account-multiple-plus"></i>
             <p>
-                Gestionar Familias
+            Gestionar Familias
             </p>
         </a>
         <ul class="nav nav-treeview" >
@@ -119,6 +119,71 @@
         </ul>
     </li>
 <?php } ?>
+
+<!-- ===============================================================================================  -->
+<?php if($_SESSION['Comite']['consultar']!='0' || $_SESSION['Comite']['registrar']!='0' || $_SESSION['Centros votacion']['consultar']!='0' || $_SESSION['Centros votacion']['registrar']!='0'){ ?>
+<li class="nav-header">Administrativo</li>
+ <?php if($_SESSION['Comite']['consultar']!='0' || $_SESSION['Comite']['registrar']!='0'){ ?>
+<li class="nav-item">
+    <a href="javascript:void(0)" class="nav-link">
+        <i class="nav-icon fa fa-user"></i>
+        <p>
+            Gestionar Grupos Fiscalización
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+         <?php if($_SESSION['Comite']['registrar']!='0'){ ?>
+        <li class="nav-item" onclick="cambio_modulo('Consejo Comunal Asignar Comite')">
+            <a href="<?php echo constant('URL');?>Consejo_Comunal/Administrar/Registros/" class="nav-link">
+                <i class="fa fa-plus-circle nav-icon text-success"></i>
+                <p>Asignar Grupo</p>
+            </a>
+        </li>
+    <?php } ?>
+     <?php if($_SESSION['Comite']['consultar']!='0'){ ?>
+        <li class="nav-item" onclick="cambio_modulo('Consejo Comunal Consultas')">
+            <a href="<?php echo constant('URL');?>Consejo_Comunal/Administrar/Consultas/" class="nav-link">
+                <i class="fa fa-list nav-icon text-info"></i>
+                <p>Consultar Grupo</p>
+            </a>
+        </li>
+<?php } ?>
+    </ul>
+</li>
+<li class="nav-item">
+    <a href="javascript:void(0)" class="nav-link">
+        <i class="nav-icon fa fa-user"></i>
+        <p>
+            Gestionar Permisos y Reposos
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+         <?php if($_SESSION['Comite']['registrar']!='0'){ ?>
+        <li class="nav-item" onclick="cambio_modulo('Consejo Comunal Asignar Comite')">
+            <a href="<?php echo constant('URL');?>" class="nav-link">
+                <i class="fa fa-plus-circle nav-icon text-success"></i>
+                <p>Solicitar </p>
+            </a>
+        </li>
+    <?php } ?>
+     <?php if($_SESSION['Comite']['consultar']!='0'){ ?>
+        <li class="nav-item" onclick="cambio_modulo('Consejo Comunal Consultas')">
+            <a href="<?php echo constant('URL');?>" class="nav-link">
+                <i class="fa fa-list nav-icon text-info"></i>
+                <p>Consultar permisos y reposos</p>
+            </a>
+        </li>
+<?php } ?>
+    </ul>
+</li>
+
+
+
+<?php }?>
+
+     
+
+
 <!-- ===============================================================================================  
 <?php if($_SESSION['Viviendas']['consultar']!='0' || $_SESSION['Viviendas']['registrar']!='0'){ ?>
     <li class="nav-item">
@@ -151,7 +216,7 @@
 <?php } ?>
             -->
 
-<!-- ===============================================================================================  -->
+<!-- ===============================================================================================  
 <?php if($_SESSION['Vacunados COVID']['consultar']!='0' || $_SESSION['Vacunados COVID']['registrar']!='0' || $_SESSION['Enfermos']['consultar']!='0' || $_SESSION['Enfermos']['registrar']!='0' || $_SESSION['Discapacitados']['consultar']!='0' || $_SESSION['Discapacitados']['registrar']!='0'){ ?>
     <li class="nav-header">Salud</li>
     <?php if($_SESSION['Vacunados COVID']['consultar']!='0' || $_SESSION['Vacunados COVID']['registrar']!='0'){ ?>
@@ -182,8 +247,16 @@
             </ul>
         </li>
     <?php } ?>
+                -->
+             
 
-    <?php if($_SESSION['Enfermos']['consultar']!='0' || $_SESSION['Enfermos']['registrar']!='0'){ ?>
+
+
+
+
+
+                <?php if($_SESSION['Enfermos']['consultar']!='0' || $_SESSION['Enfermos']['registrar']!='0'){ ?>
+                    <li class="nav-header">Salud</li>
         <li class="nav-item">
             <a href="javascript:void(0)" class="nav-link">
                 <i class="nav-icon fa fa-ambulance"></i>
@@ -242,6 +315,66 @@
     <?php } ?>
 <?php } ?>
 
+
+    <?php if($_SESSION['Enfermos']['consultar']!='0' || $_SESSION['Enfermos']['registrar']!='0'){ ?>
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+                <i class="nav-icon fa fa-ambulance"></i>
+                <p>
+                    Gestionar Presión Arterial
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <?php if($_SESSION['Enfermos']['registrar'] =='1') { ?>
+                    <li class="nav-item" onclick="cambio_modulo('Registrar enfermos')">
+                        <a href="<?php echo constant('URL');?>Enfermos/Administrar/Registros/" class="nav-link">
+                            <i class="fa fa-plus-circle nav-icon text-success"></i>
+                            <p>Registrar Presión Arterial</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['Enfermos']['consultar'] =='1') { ?>
+                    <li class="nav-item" onclick="cambio_modulo('Consultar enfermos')">
+                        <a href="<?php echo constant('URL');?>Enfermos/Administrar/Consultas/" class="nav-link">
+                            <i class="fa fa-list nav-icon text-info"></i>
+                            <p>Consultar Presión Arterial</p>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </li>
+    <?php } ?>
+
+    <?php if($_SESSION['Enfermos']['consultar']!='0' || $_SESSION['Enfermos']['registrar']!='0'){ ?>
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+                <i class="nav-icon fa fa-ambulance"></i>
+                <p>
+                    Gestionar Consultas
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <?php if($_SESSION['Enfermos']['registrar'] =='1') { ?>
+                    <li class="nav-item" onclick="cambio_modulo('Registrar enfermos')">
+                        <a href="<?php echo constant('URL');?>Enfermos/Administrar/Registros/" class="nav-link">
+                            <i class="fa fa-plus-circle nav-icon text-success"></i>
+                            <p>Realizar Consulta</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['Enfermos']['consultar'] =='1') { ?>
+                    <li class="nav-item" onclick="cambio_modulo('Consultar enfermos')">
+                        <a href="<?php echo constant('URL');?>Enfermos/Administrar/Consultas/" class="nav-link">
+                            <i class="fa fa-list nav-icon text-info"></i>
+                            <p>Consultar </p>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </li>
+    <?php } ?>
+
+
 <!-- ===============================================================================================  -->
 <?php if($_SESSION['Parto humanizado']['consultar']!='0' || $_SESSION['Parto humanizado']['registrar']!='0'){ ?>
     <li class="nav-header"> Embarazadas</li>
@@ -276,7 +409,38 @@
         </ul>
     </li>
 <?php } ?>
-
+ <!-- ===============================================================================================  -->
+ <?php if($_SESSION['Inmuebles']['consultar']!='0' || $_SESSION['Inmuebles']['registrar']!='0'){ ?>
+    <li class="nav-header"> Insumos Médicos</li>
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+                <i class="nav-icon fa fa-building"></i>
+                <p>
+                    Gestionar Inventario
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <?php if($_SESSION['Inmuebles']['registrar']!='0'){ ?>
+                    <li class="nav-item" onclick="cambio_modulo('Registrar inmuebles')">
+                        <a href="<?php echo constant('URL');?>Inmuebles/Administrar/Registros/" class="nav-link">
+                            <i class="fa fa-plus-circle nav-icon text-success"></i>
+                            <p>Registrar  Inmuebles</p>
+                        </a>
+                    </li>
+                <?php }?>
+                <?php if($_SESSION['Inmuebles']['consultar']!='0'){ ?>
+                    <li class="nav-item" onclick="cambio_modulo('Consultar inmuebles')">
+                        <a href="<?php echo constant('URL');?>Inmuebles/Administrar/Consultas/" class="nav-link">
+                            <i class="fa fa-list nav-icon text-info"></i>
+                            <p>Consultar Inmuebles</p>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </li>
+    <?php } ?>
+<?php } ?>
+                
 <!-- ===========================================================================================
 
 <?php if($_SESSION['Sector agricola']['consultar']!='0' || $_SESSION['Sector agricola']['registrar']!='0'){ ?>
@@ -308,38 +472,7 @@
         </ul>
     </li>
 <?php }?> -->
-<!-- ===============================================================================================  -->
-<?php if($_SESSION['Grupos deportivos']['consultar']!='0' || $_SESSION['Grupos deportivos']['registrar']!='0'){ ?>
-    <li class="nav-header">Grupos deportivos</li>
-    <li class="nav-item">
-        <a href="javascript:void(0)" class="nav-link">
-            <i class="nav-icon fa fa-soccer-ball-o"></i>
-            <p>
-                Gestionar Grupos Deportivos
-            </p>
-        </a>
-        <ul class="nav nav-treeview">
-            <?php if( $_SESSION['Grupos deportivos']['registrar']!='0'){ ?>
-                <li class="nav-item" onclick="cambio_modulo('Registrar grupo deportivo')">
-                    <a href="<?php echo constant('URL');?>Grupos_Deportivos/Administrar/Registros/"
-                        class="nav-link">
-                        <i class="fa fa-plus-circle nav-icon text-success"></i>
-                        <p>Registrar Grupos Deportivos</p>
-                    </a>
-                </li>
-            <?php }?>
-            <?php if($_SESSION['Grupos deportivos']['consultar']!='0' ){ ?>
-                <li class="nav-item" onclick="cambio_modulo('Consultar grupos deportivos')">
-                    <a href="<?php echo constant('URL');?>Grupos_Deportivos/Administrar/Consultas/"
-                        class="nav-link">
-                        <i class="fa fa-list nav-icon text-info"></i>
-                        <p>Consultar Grupos Deportivos</p>
-                    </a>
-                </li>
-            <?php }?>
-        </ul>
-    </li>
-<?php } ?>
+
 
 
 <!-- ===============================================================================================  -->
@@ -377,76 +510,11 @@
 
 
 
-    <!-- ===============================================================================================  
-    <?php if($_SESSION['Inmuebles']['consultar']!='0' || $_SESSION['Inmuebles']['registrar']!='0'){ ?>
-        <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
-                <i class="nav-icon fa fa-building"></i>
-                <p>
-                    Gestionar Inmuebles
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <?php if($_SESSION['Inmuebles']['registrar']!='0'){ ?>
-                    <li class="nav-item" onclick="cambio_modulo('Registrar inmuebles')">
-                        <a href="<?php echo constant('URL');?>Inmuebles/Administrar/Registros/" class="nav-link">
-                            <i class="fa fa-plus-circle nav-icon text-success"></i>
-                            <p>Registrar  Inmuebles</p>
-                        </a>
-                    </li>
-                <?php }?>
-                <?php if($_SESSION['Inmuebles']['consultar']!='0'){ ?>
-                    <li class="nav-item" onclick="cambio_modulo('Consultar inmuebles')">
-                        <a href="<?php echo constant('URL');?>Inmuebles/Administrar/Consultas/" class="nav-link">
-                            <i class="fa fa-list nav-icon text-info"></i>
-                            <p>Consultar Inmuebles</p>
-                        </a>
-                    </li>
-                <?php } ?>
-            </ul>
-        </li>
-    <?php } ?>
-<?php } ?>
-                -->
+   
+
+
 
 <!-- ===============================================================================================  
-<?php if($_SESSION['Comite']['consultar']!='0' || $_SESSION['Comite']['registrar']!='0' || $_SESSION['Centros votacion']['consultar']!='0' || $_SESSION['Centros votacion']['registrar']!='0'){ ?>
-<li class="nav-header">Administrativo</li>
- <?php if($_SESSION['Comite']['consultar']!='0' || $_SESSION['Comite']['registrar']!='0'){ ?>
-<li class="nav-item">
-    <a href="javascript:void(0)" class="nav-link">
-        <i class="nav-icon fa fa-user"></i>
-        <p>
-            Gestionar Grupos Fiscalización
-        </p>
-    </a>
-    <ul class="nav nav-treeview">
-         <?php if($_SESSION['Comite']['registrar']!='0'){ ?>
-        <li class="nav-item" onclick="cambio_modulo('Consejo Comunal Asignar Comite')">
-            <a href="<?php echo constant('URL');?>Consejo_Comunal/Administrar/Registros/" class="nav-link">
-                <i class="fa fa-plus-circle nav-icon text-success"></i>
-                <p>Asignar Grupo</p>
-            </a>
-        </li>
-    <?php } ?>
-     <?php if($_SESSION['Comite']['consultar']!='0'){ ?>
-        <li class="nav-item" onclick="cambio_modulo('Consejo Comunal Consultas')">
-            <a href="<?php echo constant('URL');?>Consejo_Comunal/Administrar/Consultas/" class="nav-link">
-                <i class="fa fa-list nav-icon text-info"></i>
-                <p>Consultar Grupo</p>
-            </a>
-        </li>
-<?php } ?>
-    </ul>
-</li>
-
-
-
-<?php }?>
-
-     -->
-
-<!-- ===============================================================================================  -->
  <?php if($_SESSION['Centros votacion']['consultar']!='0' || $_SESSION['Centros votacion']['registrar']!='0'){ ?>
 <li class="nav-item">
     <a href="javascript:void(0)" class="nav-link">
@@ -477,7 +545,38 @@
 <?php } ?>
 <?php } ?>
 
+     -->
 
+       <!-- ===============================================================================================  -->
+       <?php if ($_SESSION['Grupos deportivos']['consultar'] != '0' || $_SESSION['Grupos deportivos']['registrar'] != '0') {?>
+                <li class="nav-header">Grupos deportivos</li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="nav-link">
+                        <i class="nav-icon fa fa-soccer-ball-o"></i>
+                        <p>
+                            Gestionar Grupos Deportivos
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <?php if ($_SESSION['Grupos deportivos']['registrar'] != '0') {?>
+                        <li class="nav-item" onclick="cambio_modulo('Registrar grupo deportivo')">
+                            <a href="<?php echo constant('URL');?>grupos_Deportivos/Administrar/Registros/" class="nav-link">
+                                <i class="fa fa-plus-circle nav-icon text-success"></i>
+                                <p>Registrar Grupos Deportivos</p>
+                            </a>
+                        </li>
+                        <?php }?>
+                        <?php if ($_SESSION['Grupos deportivos']['consultar'] != '0') {?>
+                        <li class="nav-item" onclick="cambio_modulo('Consultar grupos deportivos')">
+                            <a href="<?php echo constant('URL');?>grupos_deportivos/Administrar/Consultas/" class="nav-link">
+                                <i class="fa fa-list nav-icon text-info"></i>
+                                <p>Consultar Grupos Deportivos</p>
+                            </a>
+                        </li>
+                        <?php }?>
+                    </ul>
+                </li>
+                <?php }?>
 
 <!-- ===============================================================================================  -->
  <?php if($_SESSION['Seguridad']['consultar']!='0' || $_SESSION['Seguridad']['registrar']!='0'){ ?>
@@ -491,8 +590,6 @@
         </p>
     </a>
     <ul class="nav nav-treeview">
-
-
 
         <li class="nav-item">
             <a href="<?php echo constant('URL');?>Seguridad/Roles/" class="nav-link" onclick="cambio_modulo('Seguridad (Gestionar roles y permisos)')">
@@ -535,7 +632,7 @@
             <a href="<?php echo constant('URL');?>Reportes/Censos/" class="nav-link">
                 <i class="fa fa-edit nav-icon"></i>
                 <p>
-                    Generar Censos
+                    Generar Reportes
                 </p>
             </a>
         </li>
@@ -600,11 +697,7 @@
     <ul class="nav nav-treeview">
         <li class="nav-item" onclick="cambio_modulo('Generar Censos')">
 
-            <a href="<?php echo constant('URL');?>Reportes/Censos/" class="nav-link">
-                <i class="fa fa-edit nav-icon"></i>
-                <p>
-                    Generar Censos
-                </p>
+            
             </a>
         </li>
 
@@ -621,7 +714,7 @@
             <a href="<?php echo constant('URL');?>Reportes/Historial_Familiar/" class="nav-link">
                 <i class="mdi mdi-account-multiple nav-icon"></i>
                 <p>
-                    Generar Historial Familiar
+                    Generar Historial Médico
                 </p>
             </a>
         </li>
@@ -630,7 +723,7 @@
             <a href="javascript:void(0)" class="nav-link" onclick="$('#solicitar_constancia').modal('show');" data-toggle="dropdown">
                 <i class="fa fa-file-text nav-icon"></i>
                 <p>
-                    Generar Constancias
+                    Generar Recipe
                 </p>
             </a>
         </li>
