@@ -1,0 +1,10 @@
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:42 AM
+    [Archivo] => C:\xampp\htdocs\sistema\SIDARCO\app\Base_Datos.php
+    [Linea] => 35
+    [Codigo] => 1049
+    [Mensaje] => SQLSTATE[HY000] [1049] Unknown database 'sidarco'
+    [Tipo] => Acceso denegado,  Nombre de la Base de Datos Incorrecto.
+)
