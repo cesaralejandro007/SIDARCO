@@ -132,7 +132,7 @@ public function Registros()
 {
   $this->Seguridad_de_Session();
   $this->vista->transportes=$this->modelo->get_transportes();
-  $this->vista->comunidades=$this->modelo->get_comunidades();
+  //$this->vista->comunidades=$this->modelo->get_comunidades();
   $this->vista->organizaciones=$this->modelo->get_organizaciones();
   //      $this->vista->centros_votacion=$this->modelo->get_centros();
   //      $this->vista->parroquias=$this->modelo->get_parroquias();
@@ -150,7 +150,7 @@ public function Registros_habitante()
 {
   $this->Seguridad_de_Session();
   $this->vista->transportes=$this->modelo->get_transportes();
-  $this->vista->comunidades=$this->modelo->get_comunidades();
+ // $this->vista->comunidades=$this->modelo->get_comunidades();
   $this->vista->organizaciones=$this->modelo->get_organizaciones();
   //      $this->vista->centros_votacion=$this->modelo->get_centros();
   //      $this->vista->parroquias=$this->modelo->get_parroquias();
@@ -168,7 +168,7 @@ public function Consultas()
 {
   /* $this->Establecer_Consultas(); */
   $this->vista->transportes=$this->modelo->get_transportes();
-  $this->vista->comunidades=$this->modelo->get_comunidades();
+  //$this->vista->comunidades=$this->modelo->get_comunidades();
   $this->vista->ocupaciones=$this->modelo->get_ocupaciones();
   $this->vista->condiciones=$this->modelo->get_condiciones();
   $this->vista->organizaciones=$this->modelo->get_organizaciones();
@@ -190,7 +190,7 @@ public function consultar_informacion_persona(){
    $bonos=json_encode($this->modelo->get_bonos_persona($p['cedula_persona']));
    $misiones=json_encode($this->modelo->get_misiones_persona($p['cedula_persona']));
    $proyectos=json_encode($this->modelo->get_proyectos_persona($p['cedula_persona']));
-   $comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
+   //$comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
    $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona']));
    $persona=json_encode($p);
    $p['genero']=='M'?$genero="Masculino":$genero='Femenino';
@@ -201,9 +201,9 @@ public function consultar_informacion_persona(){
     "primer_apellido" =>$p['primer_apellido'],
     "telefono"        =>$p['telefono'],
     "genero"          =>$genero,
-    "ver"             =>"<button class='btn btn-primary' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$proyectos."`,`".$comunidad_i."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
+    "ver"             =>"<button class='btn btn-primary' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$proyectos."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
 
-    "editar"             =>"<button class='btn btn-success' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$proyectos."`,`".$comunidad_i."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
+    "editar"             =>"<button class='btn btn-success' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$proyectos."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
 
     "eliminar"             => "<button class='btn btn-danger' type='button' title='Eliminar persona' onclick='eliminar_datos(`".$p['cedula_persona']."`)'><span class='fa fa-trash'></span></button>",
   ];
@@ -350,7 +350,7 @@ public function registrar_condicion_laboral(){
     echo 1;
   }
 }
-
+/*
 public function registrar_comunidad_indigena(){
  $comunidades=$this->modelo->get_comunidades();
  $datos=$_POST['datos'];
@@ -387,7 +387,7 @@ public function registrar_comunidad_indigena(){
 }
 
 }
-
+*/
 
 public function registrar_org_politica(){
  $organizaciones=$this->modelo->get_organizaciones();
@@ -601,7 +601,7 @@ public function get_info_habitante(){
    $bonos=json_encode($this->modelo->get_bonos_persona($cedula));
    $misiones=json_encode($this->modelo->get_misiones_persona($cedula));
    $proyectos=json_encode($this->modelo->get_proyectos_persona($cedula));
-   $comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($cedula));
+  // $comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($cedula));
    $org_politica=json_encode($this->modelo->get_org_politica_persona($cedula));
    
   echo  json_encode([
@@ -610,8 +610,7 @@ public function get_info_habitante(){
                    "transporte"=>$transporte,    
                    "bonos"=>$bonos,    
                    "misiones"=>$misiones,    
-                   "proyectos"=>$proyectos,    
-                   "comunidad_i"=>$comunidad_i,      
+                   "proyectos"=>$proyectos,         
                    "org_politica"=>$org_politica         
   ]);
 
@@ -626,7 +625,7 @@ public function modificar_persona(){
 
 
   if($editado){
-  $this->editar_comunidad_indigena($datos_persona);
+  //$this->editar_comunidad_indigena($datos_persona);
   $this->editar_ocupacion($datos_persona);
   $this->editar_cond_laboral($datos_persona);
   $this->editar_org_politica($datos_persona);
@@ -685,6 +684,7 @@ public function borrar_dosis(){
   echo $this->Eliminar_Tablas("vacuna_covid","id_vacuna_covid",$_POST['id']);
 }
 
+/*
 
 public function editar_comunidad_indigena($datos_persona){
   $comunidades_persona=$this->Consultar_Columna("comunidad_indigena_personas","cedula_persona",$datos_persona['cedula_persona']);
@@ -726,7 +726,7 @@ public function editar_comunidad_indigena($datos_persona){
   }
 }
 
-
+*/
 public function editar_ocupacion($datos_persona){
   $ocupacion_persona=$this->Consultar_Columna("ocupacion_persona","cedula_persona",$datos_persona['cedula_persona']);
   if($datos_persona['ocupacion']=='No posee'){

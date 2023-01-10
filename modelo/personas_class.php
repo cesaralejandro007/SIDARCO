@@ -67,18 +67,13 @@ class Personas_Class extends Modelo
                 nacionalidad,
                 jefe_familia,
                 propietario_vivienda,
-                afrodescendencia,
-                sexualidad,
                 fecha_nacimiento,
                 telefono,
                 correo,
                 estado_civil,
-                privado_libertad,
                 genero,
                 whatsapp,
-                miliciano,
                 antiguedad_comunidad,
-                jefe_calle,
                 nivel_educativo,
                 contrasenia,
                 rol_inicio,
@@ -93,18 +88,13 @@ class Personas_Class extends Modelo
                 :nacionalidad,
                 :jefe_familia,
                 :propietario_vivienda,
-                :afrodescendencia,
-                :sexualidad,
                 :fecha_nacimiento,
                 :telefono,
                 :correo,
                 :estado_civil,
-                :privado_libertad,
                 :genero,
                 :whatsapp,
-                :miliciano,
                 :antiguedad_comunidad,
-                :jefe_calle,
                 :nivel_educativo,
                 :contrasenia,
                 :rol_inicio,
@@ -121,18 +111,13 @@ class Personas_Class extends Modelo
                 'nacionalidad'          =>       $data['nacionalidad'],
                 'jefe_familia'          =>       $data['jefe_familia'],
                 'propietario_vivienda'  =>       $data['propietario_vivienda'],
-                'afrodescendencia'      =>       $data['afrodescendencia'],
-                'sexualidad'            =>       $data['sexualidad'],
                 'fecha_nacimiento'      =>       $data['fecha_nacimiento'],
                 'telefono'              =>       $data['telefono'],
                 'correo'                =>       $data['correo'],
                 'estado_civil'          =>       $data['estado_civil'],
-                'privado_libertad'      =>       $data['privado_libertad'],
                 'genero'                =>       $data['genero'],
                 'whatsapp'              =>       $data['whatsapp'],
-                'miliciano'             =>       $data['miliciano'],
                 'antiguedad_comunidad'  =>       $data['antiguedad_comunidad'],
-                'jefe_calle'            =>       $data['jefe_calle'],
                 'nivel_educativo'       =>       $data['nivel_educativo'],
                 'contrasenia'           =>       $data['contrasenia'],
                 'rol_inicio'            =>       $data['rol_inicio'],
@@ -397,7 +382,7 @@ class Personas_Class extends Modelo
         }
     }
 
-
+/*
         public function Registrar_persona_comunidad($data)
     {
 
@@ -424,7 +409,7 @@ class Personas_Class extends Modelo
             return $this->Capturar_Error($e);
         }
     }
-
+*/
        public function Registrar_persona_organizacion($data)
     {
 
@@ -602,18 +587,13 @@ class Personas_Class extends Modelo
                 nacionalidad            =:nacionalidad,
                 jefe_familia            =:jefe_familia,
                 propietario_vivienda    =:propietario_vivienda,
-                afrodescendencia        =:afrodescendencia,
-                sexualidad              =:sexualidad,
                 fecha_nacimiento        =:fecha_nacimiento,
                 telefono                =:telefono,
                 correo                  =:correo,
                 estado_civil            =:estado_civil,
-                privado_libertad        =:privado_libertad,
                 genero                  =:genero,
                 whatsapp                =:whatsapp,
-                miliciano               =:miliciano,
                 antiguedad_comunidad    =:antiguedad_comunidad,
-                jefe_calle              =:jefe_calle,
                 nivel_educativo         =:nivel_educativo
 
                 WHERE cedula_persona =:cedula_persona"
@@ -628,18 +608,13 @@ class Personas_Class extends Modelo
                 'nacionalidad'              =>$data['nacionalidad'],
                 'jefe_familia'              =>$data['jefe_familia'],
                 'propietario_vivienda'      =>$data['propietario_vivienda'],
-                'afrodescendencia'          =>$data['afrodescendencia'],
-                'sexualidad'                =>$data['sexualidad'],
                 'fecha_nacimiento'          =>$data['fecha_nacimiento'],
                 'telefono'                  =>$data['telefono'],
                 'correo'                    =>$data['correo'],
                 'estado_civil'              =>$data['estado_civil'],
-                'privado_libertad'          =>$data['privado_libertad'],
                 'genero'                    =>$data['genero'],
                 'whatsapp'                  =>$data['whatsapp'],
-                'miliciano'                 =>$data['miliciano'],
                 'antiguedad_comunidad'      =>$data['antiguedad_comunidad'],
-                'jefe_calle'                =>$data['jefe_calle'],
                 'nivel_educativo'           =>$data['nivel_educativo']
 
             ]);
@@ -766,7 +741,7 @@ class Personas_Class extends Modelo
             return $this->Capturar_Error($e);
          }
      }
-
+/*
      public function get_comunidades()
      {
 
@@ -783,7 +758,7 @@ class Personas_Class extends Modelo
             return $this->Capturar_Error($e);
          }
      }
-
+*/
 public function get_organizaciones()
      {
 
@@ -1068,7 +1043,7 @@ public function get_organizaciones()
             return $this->Capturar_Error($e);
          }
      }
-
+/*
       public function get_comunidad_indigena_persona($cedula)
      {
 
@@ -1086,7 +1061,7 @@ public function get_organizaciones()
          }
      }
 
-
+*/
       public function get_org_politica_persona($cedula)
      {
 

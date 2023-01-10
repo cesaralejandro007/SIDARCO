@@ -24,23 +24,23 @@ var segundo_apellido=document.getElementById("segundo_apellido");
 var fecha_nacimiento=document.getElementById("fecha_nacimiento");
 var estado_civil=document.getElementById("estado_civil");
 var genero=document.getElementById("genero");
-var sexualidad=document.getElementById("sexualidad");
+//var sexualidad=document.getElementById("sexualidad");
 var nacionalidad=document.getElementById("nacionalidad");
 var nivel_educativo=document.getElementById("nivel_educativo");
-var afrodescendencia=document.getElementById("afrodescendencia");
-var tiempo_comunidad=document.getElementById("tiempo_comunidad");
-var privado_libertad=document.getElementById("privado_libertad");
-var jefe_familia=document.getElementById("jefe_familia");
-var miliciano=document.getElementById("miliciano");
+//var afrodescendencia=document.getElementById("afrodescendencia");
+//var tiempo_comunidad=document.getElementById("tiempo_comunidad");
+//var privado_libertad=document.getElementById("privado_libertad");
+//var jefe_familia=document.getElementById("jefe_familia");
+//var miliciano=document.getElementById("miliciano");
 var cedula=document.getElementById("cedula");
 var transporte=document.getElementById("transporte");
 var tipo_transporte_ver=document.getElementById("tipo_transporte_view");
 var tipo_transporte=document.getElementById("tipo_transporte");
-var comunidad_indigena=document.getElementById("comunidad_indigena");
-var comunidad_indigena_ver=document.getElementById("comunidad_indigena_view");
-var nombre_comunidad=document.getElementById("nombre_comunidad");
-var jefe_calle=document.getElementById("jefe_calle");
-var propietario_vivienda=document.getElementById("propietario_vivienda");
+//var comunidad_indigena=document.getElementById("comunidad_indigena");
+//var comunidad_indigena_ver=document.getElementById("comunidad_indigena_view");
+//var nombre_comunidad=document.getElementById("nombre_comunidad");
+//var jefe_calle=document.getElementById("jefe_calle");
+//var propietario_vivienda=document.getElementById("propietario_vivienda");
 var persona_existente=false;
 cedula.focus();
 
@@ -174,16 +174,16 @@ segundo_apellido.onkeyup=function(){valid_element("Debe ingresar el segundo apel
 fecha_nacimiento.onchange=function(){valid_element("Debe indicar la fecha de nacimiento de la persona",fecha_nacimiento,document.getElementById("valid_6"));}
 estado_civil.onchange=function(){valid_element("Debe indicar el estado civil de la persona",estado_civil,document.getElementById("valid_7"));}
 genero.onchange=function(){valid_element("Debe indicar el género de la persona",genero,document.getElementById("valid_8"));}
-sexualidad.onchange=function(){valid_element("Debe indicar la orientación sexual de la persona",sexualidad,document.getElementById("valid_9"));}
+//sexualidad.onchange=function(){valid_element("Debe indicar la orientación sexual de la persona",sexualidad,document.getElementById("valid_9"));}
 nacionalidad.onkeyup=function(){valid_element("Debe ingresar la nacionalidad de la persona",nacionalidad,document.getElementById("valid_10"));}
 nivel_educativo.onkeyup=function(){valid_element("Debe ingresar el nivel educativo de la persona",nivel_educativo,document.getElementById("valid_11"));}
-afrodescendencia.onchange=function(){valid_element("Debe indicar si la persona es afrodescendente",afrodescendencia,document.getElementById("valid_12"));}
-tiempo_comunidad.onchange=function(){valid_element("Debe ingresar la fecha en que la persona llegó a la comunidad",tiempo_comunidad,document.getElementById("valid_13"));}
-jefe_familia.onchange=function(){valid_element("Debe indicar si la persona es jefe de familia",jefe_familia,document.getElementById("valid_14"));}
-propietario_vivienda.onchange=function(){valid_element("Debe indicar si la persona es propietario dela vivienda",propietario_vivienda,document.getElementById("valid_15"));}
-jefe_calle.onchenge=function(){valid_element("Debe indicar si la persona es jefe de calle",jefe_calle,document.getElementById("valid_16"));}
-miliciano.onchange=function(){valid_element("Debe indicar si la persona pertenece o perteneció a la milicia",miliciano,document.getElementById("valid_17"));}
-privado_libertad.onchange=function(){valid_element("Debe indicar si la persona es privada de libertad",privado_libertad,document.getElementById("valid_20"));}
+//afrodescendencia.onchange=function(){valid_element("Debe indicar si la persona es afrodescendente",afrodescendencia,document.getElementById("valid_12"));}
+//tiempo_comunidad.onchange=function(){valid_element("Debe ingresar la fecha en que la persona llegó a la comunidad",tiempo_comunidad,document.getElementById("valid_13"));}
+//jefe_familia.onchange=function(){valid_element("Debe indicar si la persona es jefe de familia",jefe_familia,document.getElementById("valid_14"));}
+//propietario_vivienda.onchange=function(){valid_element("Debe indicar si la persona es propietario dela vivienda",propietario_vivienda,document.getElementById("valid_15"));}
+//jefe_calle.onchenge=function(){valid_element("Debe indicar si la persona es jefe de calle",jefe_calle,document.getElementById("valid_16"));}
+//miliciano.onchange=function(){valid_element("Debe indicar si la persona pertenece o perteneció a la milicia",miliciano,document.getElementById("valid_17"));}
+//privado_libertad.onchange=function(){valid_element("Debe indicar si la persona es privada de libertad",privado_libertad,document.getElementById("valid_20"));}
 
 function valid_info_personal(){
 
@@ -209,24 +209,24 @@ function valid_info_personal(){
                 fecha_nacimiento.style.borderColor="";
                 if(valid_element("Debe indicar el estado civil de la persona",estado_civil,document.getElementById("valid_7"))){
                  if(valid_element("Debe indicar el género de la persona",genero,document.getElementById("valid_8"))){
-                   if(valid_element("Debe indicar la orientación sexual de la persona",sexualidad,document.getElementById("valid_9"))){
+                 //if(valid_element("Debe indicar la orientación sexual de la persona",sexualidad,document.getElementById("valid_9"))){
                      if(valid_element("Debe ingresar la nacionalidad de la persona",nacionalidad,document.getElementById("valid_10"))){
                        if(valid_element("Debe ingresar el nivel educativo de la persona",nivel_educativo,document.getElementById("valid_11"))){
-                         if(valid_element("Debe indicar si la persona es afrodescendente",afrodescendencia,document.getElementById("valid_12"))){
-                           if(valid_element("Debe ingresar la fecha en que la persona llegó a la comunidad",tiempo_comunidad,document.getElementById("valid_13"))){
-                             if(valid_element("Debe indicar si la persona es jefe de familia",jefe_familia,document.getElementById("valid_14"))){
-                               if(valid_element("Debe indicar si la persona es propietario dela vivienda",propietario_vivienda,document.getElementById("valid_15"))){
-                                 if(valid_element("Debe indicar si la persona es jefe de calle",jefe_calle,document.getElementById("valid_16"))){
-                                   if(valid_element("Debe indicar si la persona pertenece o perteneció a la milicia",miliciano,document.getElementById("valid_17"))){
+                        //if(valid_element("Debe indicar si la persona es afrodescendente",afrodescendencia,document.getElementById("valid_12"))){
+                           //if(valid_element("Debe ingresar la fecha en que la persona llegó a la comunidad",tiempo_comunidad,document.getElementById("valid_13"))){
+                           //  if(valid_element("Debe indicar si la persona es jefe de familia",jefe_familia,document.getElementById("valid_14"))){
+                            //   if(valid_element("Debe indicar si la persona es propietario dela vivienda",propietario_vivienda,document.getElementById("valid_15"))){
+                                 //if(valid_element("Debe indicar si la persona es jefe de calle",jefe_calle,document.getElementById("valid_16"))){
+                                   //if(valid_element("Debe indicar si la persona pertenece o perteneció a la milicia",miliciano,document.getElementById("valid_17"))){
                                      if(valid_element("Debe indicar si la persona se desplaza en transporte público o privado",transporte,document.getElementById("valid_18"))){
                                        if(valid_tipo_transporte()){
-                                         if(valid_element("Debe indicar si la persona pertenece a alguna comunidad indigena",comunidad_indigena,document.getElementById("valid_19"))){
-                                           if(valid_comunidad_indigena()){  
-                                            if(valid_element("Debe indicar si la persona es privada de libertad",privado_libertad,document.getElementById("valid_20"))){
+                                        // if(valid_element("Debe indicar si la persona pertenece a alguna comunidad indigena",comunidad_indigena,document.getElementById("valid_19"))){
+                                          // if(valid_comunidad_indigena()){  
+                                            //if(valid_element("Debe indicar si la persona es privada de libertad",privado_libertad,document.getElementById("valid_20"))){
 
                                               validacion=true;
 
-                                            }  } } } } } } }  }   }  } } } } }  } } } } } } } } }
+                                            }  } } } } } } }  }   }  } } } }
 
 
                                             return validacion;
@@ -253,13 +253,14 @@ btn_anterior.onclick=function(){
 
 //-------------------------------Funcion de boton desde siempre-------------------------------------//
 
+/*
 btn_desde_siempre.onclick=function(){
 
   tiempo_comunidad.value=fecha_nacimiento.value;
   valid_element("Debe ingresar la fecha en que la persona llegó a la comunidad",tiempo_comunidad,document.getElementById("valid_13"));
 
 }
-
+*/
 //---------------------------------funcion para visualizar campo de tipo de transporte---------------//
 
 transporte.onchange=function(){
@@ -285,13 +286,13 @@ recibe_actualmente.onchange=function(){
 }
 
 //---------------------------------funcion para visualizar campo de tipo de transporte---------------//
-
+/*
 comunidad_indigena.onchange=function(){
  valid_element("Debe indicar si la persona pertenece a alguna comunidad indigena",comunidad_indigena,document.getElementById("valid_19"));
  change_to_dynamic_record("si",comunidad_indigena_ver,comunidad_indigena,nombre_comunidad);
 
 }
-
+*/
 
 //---------------------------------funcion para visualizar campo de organizacion politica---------------//
 
@@ -1129,7 +1130,7 @@ return validar;
 }
 
 //--------------------------------validar comunidad indigena--------------------------------------//
-
+/*
 function valid_comunidad_indigena(){
  var validar=false;
 
@@ -1155,7 +1156,7 @@ else{
 return validar;
 
 }
-
+*/
 //------------------------------------------------------------------------------------------------//
 
 confirmar.onkeyup=function(){
@@ -1250,7 +1251,7 @@ function control_indice(){
 
    tab_doc_personales.className='nav-link active';
    div_doc_personales.style.display="block";
-  //  serial_patria.focus();
+  //serial_patria.focus();
 
   tab_info_personal.className='';
   div_info_personal.style.display="none";
@@ -1697,17 +1698,17 @@ function enviar_informacion(){
   datos_persona['fecha_nacimiento']=fecha_nacimiento.value;
   datos_persona['estado_civil']=estado_civil.value;
   datos_persona['genero']=genero.value;
-  datos_persona['sexualidad']=sexualidad.value;
+  //datos_persona['sexualidad']=sexualidad.value;
   datos_persona['nacionalidad']=nacionalidad.value;
   datos_persona['nivel_educativo']=nivel_educativo.value;
-  datos_persona['afrodescendencia']=afrodescendencia.value;
-  datos_persona['antiguedad_comunidad']=tiempo_comunidad.value;
-  datos_persona['jefe_familia']=jefe_familia.value;
-  datos_persona['propietario_vivienda']=propietario_vivienda.value;
-  datos_persona['jefe_calle']=jefe_calle.value;
-  datos_persona['miliciano']=miliciano.value;
-  datos_persona['comunidad_indigena']=comunidad_indigena.value;
-  datos_persona['privado_libertad']=privado_libertad.value; 
+  //datos_persona['afrodescendencia']=afrodescendencia.value;
+  //datos_persona['antiguedad_comunidad']=tiempo_comunidad.value;
+  //datos_persona['jefe_familia']=jefe_familia.value;
+  //datos_persona['propietario_vivienda']=propietario_vivienda.value;
+  //datos_persona['jefe_calle']=jefe_calle.value;
+  //datos_persona['miliciano']=miliciano.value;
+  //datos_persona['comunidad_indigena']=comunidad_indigena.value;
+  //datos_persona['privado_libertad']=privado_libertad.value; 
   datos_persona['telefono']=telefono.value;
   datos_persona['whatsapp']=whatsapp.value;
   correo.value==""?datos_persona['correo']="No posee" : datos_persona['correo']=correo.value+tipo_correo.value;
@@ -1745,6 +1746,7 @@ function enviar_informacion(){
   else{
     datos_persona['carnet_discapacidad']='';
   }
+  
 
   $.ajax({
     type:"POST",
@@ -1767,9 +1769,9 @@ function enviar_informacion(){
 
 
 
-     if(comunidad_indigena.value!="0"){
-      registrar_comunidad_indigena();
-    }
+     //if(comunidad_indigena.value!="0"){
+     // registrar_comunidad_indigena();
+   // }
 
 
     registrar_org_politica();
@@ -1821,7 +1823,6 @@ function registrar_carnets(carnet,tipo){
   }
 
 }
-
 
 function registrar_bonos_persona(){
 
@@ -1885,6 +1886,7 @@ function registrar_misiones_persona(){
 
 
 }
+
 
 
 function registrar_transporte(){
@@ -1989,6 +1991,7 @@ if(lleno){
 }
 
 
+/*
 function registrar_comunidad_indigena(){
 
   var datos_indigenas=new Object();
@@ -2003,6 +2006,7 @@ function registrar_comunidad_indigena(){
  });
 
 }
+*/
 
 function registrar_org_politica(){
   var datos_org=new Object();
@@ -2034,3 +2038,4 @@ function registrar_org_politica(){
    });
  }
 }
+
