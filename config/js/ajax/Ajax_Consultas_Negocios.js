@@ -21,7 +21,7 @@ $(function() {
                 data: "rif_negocio", 
             }, {
                 data: function(data) {
-                    return ('<td class="text-center">' + '<a href="javascript:void(0)" style="margin-right: 5px;" class="btn bg-info ver-popup" title="Ver" type="button" data-toggle="modal" data-target="#ver">' + '<i class="fa fa-eye"></i>' + "</a>" + '<a href="javascript:void(0)" style="margin-right: 5px;" class="btn bg-success btnEditar"  title="Actualizar" type="button" data-toggle="modal" data-target="#actualizar">' + '<i class="fa fa-edit" style="color: white;"></i>' + "</a>" + '<a href="javascript:void(0)" style="margin-right: 5px;" class="btn bg-danger mensaje-eliminar" title="Eliminar">' + '<i class="fa fa-trash"></i>' + "</a>" + '<p style="display: none;">' + data.id_negocio + "</p>" + "</td>");
+                    return ('<td class="text-center">' + '<a href="javascript:void(0)" style="margin-right: 5px; background:#15406D; color:white" class="btn ver-popup" title="Ver" type="button" data-toggle="modal" data-target="#ver">' + '<i class="fa fa-eye"></i>' + "</a>" + '<a href="javascript:void(0)" style="margin-right: 5px; 5px;background:#EEA000" class="btn btnEditar"  title="Actualizar" type="button" data-toggle="modal" data-target="#actualizar">' + '<i class="fa fa-edit" style="color: white;"></i>' + "</a>" + '<a href="javascript:void(0)" style="margin-right: 5px; background:#9D2323;color:white" class="btn mensaje-eliminar" title="Eliminar">' + '<i class="fa fa-trash"></i>' + "</a>" + '<p style="display: none;">' + data.id_negocio + "</p>" + "</td>");
                 },
             }, ],
             responsive: true,
@@ -46,7 +46,7 @@ $(function() {
                 text: "El elemento seleccionado sera eliminado de manera permanente!",
                 type: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
+                confirmButtonColor: "#9D2323",
                 confirmButtonText: "Si, Eliminar!",
                 cancelButtonText: "No, Cancelar!",
                 closeOnConfirm: false,
@@ -85,7 +85,14 @@ $(function() {
                         }
                     });
                 } else {
-                    swal("Cancelado", "La accion fue cancelada, la informacion esta segura.", "error");
+                    swal({                             
+                        title: "Cancelado",
+                        text: "La accion fue cancelada, la informacion esta segura.",
+                        confirmButtonColor: "#15406D",
+                        type: "error",
+                        html: true,
+                        showConfirmButton: true,
+                        customClass: "bigSwalV2"});
                 }
             });
         });

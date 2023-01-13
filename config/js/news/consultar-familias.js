@@ -10,16 +10,17 @@ var texto_integrantes="";
  }
 
  var texto_swal="<center><em class='fa fa-users' style='font-size:60px'></em></center><br>";
- texto_swal+="<table border='1' style='width:100%'><tr style='color:white;background:#7BACAA;font-weight:bold'><td>Teléfono</td><td>Dirección</td><td>Nro de Casa</td>";
+ texto_swal+="<table border='1' style='width:100%'><tr style='color:white;background:#15406D;font-weight:bold'><td>Teléfono</td><td>Dirección</td><td>Nro de Casa</td>";
  texto_swal+="<td>Ingreso mensual</td><td>Integrantes ("+integrants.length+")</td></tr>";
 
  texto_swal+="<tr><td>"+tlf+"</td><td>"+direccion+"</td><td>"+numero_casa+"</td><td>"+ingreso+"</td>";
- texto_swal+="<td><div style='overflow-y:scroll; width:100%;height:120px;background:#D0E8E7'>";
+ texto_swal+="<td><div style='overflow-y:scroll; width:100%;height:120px;background:#D4E6F4'>";
  texto_swal+="<center><div style='width:90%'>"+texto_integrantes+"</div></center></div></td></tr></table>";
 
 swal({
 	title:"Familia "+nombre,
 	text:texto_swal,
+	confirmButtonColor: '#15406D',
 	html:true,
 	customClass:"bigSwalV2"
 });
@@ -36,6 +37,7 @@ function eliminar(id){
 		text:"Estás por eliminar esta familia, ¿deseas continuar?",
 		showCancelButton:true,
 		cancelButtonText:"No",
+		confirmButtonColor: '#9D2323',
 		confirmButtonText:"Si"
 	},function(isConfirm){
 		if(isConfirm){

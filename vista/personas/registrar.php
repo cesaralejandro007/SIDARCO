@@ -30,8 +30,8 @@
                         <div class="col-md-12">
                             <div class="vtabs">
                                 <ul class="nav nav-tabs tabs-vertical" role="tablist">
-                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a class="nav-link active" id='tab_1'>
+                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;" >
+                                        <a class="nav-link active" id='tab_1' style="font-weight:bold">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-home"></i>
                                             </span>
@@ -41,7 +41,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_2' >
+                                        <a id='tab_2' style="font-weight:bold">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-user"></i>
                                             </span>
@@ -50,8 +50,9 @@
                                             </span>
                                         </a>
                                     </li>
+
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_3' >
+                                        <a id='tab_3' style="font-weight:bold">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-email"></i>
                                             </span>
@@ -60,8 +61,9 @@
                                             </span>
                                         </a>
                                     </li>
+                                    
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_4' >
+                                        <a id='tab_4' style="font-weight:bold">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-email"></i>
                                             </span>
@@ -72,7 +74,7 @@
                                     </li>
 
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_5'>
+                                        <a id='tab_5' style="font-weight:bold">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-email"></i>
                                             </span>
@@ -82,7 +84,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_6'>
+                                        <a id='tab_6' style="font-weight:bold">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-email"></i>
                                             </span>
@@ -115,7 +117,7 @@
 
                                             <div class="col-md-6 mt-4">
                                                 <label for="primer_nombre">
-                                                    Primer Nombre
+                                                    Primer nombre
                                                 </label>
                                                 <span style='display:none;color:red' id='valid_2'>Ingrese el primer nombre</span>
                                                 <div class="input-group">
@@ -128,7 +130,7 @@
 
                                             <div class="col-md-6 mt-4">
                                                 <label for="segundo_nombre">
-                                                    Segundo Nombre
+                                                    Segundo nombre
                                                 </label>
                                                 <span style='display:none;color:red' id='valid_3'>Ingrese el segundo nombre</span>
                                                 <div class="input-group">
@@ -221,6 +223,25 @@
                                         </div>
 
                                         <div class="col-md-6 mt-2">
+                                <label for="tiempo_comunidad">
+                                    Tiempo en la comunidad    
+                                </label>
+                                <span style='display:none;color:red' id='valid_13'>Campo vacío</span>
+                                <div class="input-group">
+                                    <input  class="form-control mb-10" id="tiempo_comunidad"
+                                    name="datos[tiempo_comunidad]"
+                                    type="date" />
+                                    <button type="button" class="btn btn-default" id='desde_siempre'>Desde siempre</button>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                                        <div class="col-md-6 mt-2">
                                             <label for="sexualidad">
                                                 Orientación sexual
                                             </label>
@@ -246,6 +267,8 @@
                                             </select>
                                         </div>
                                     </div>
+
+
 
 
                                     <div class="col-md-6 mt-2">
@@ -282,7 +305,7 @@
                                             Afrodescendencia
                                         </label>
                                         <span style='display:none;color:red' id='valid_12'>Indique si es afrodescendente</span>
-                                        <select class="custom-select" id="afrodescendencia"
+                                       <select class="custom-select" id="afrodescendencia"
                                         name="afrodescendencia">
                                         <option selected="" value="vacio">
                                             -Seleccione-
@@ -297,19 +320,6 @@
                                  </select>
                              </div>
 
-                             <div class="col-md-6 mt-2">
-                                <label for="tiempo_comunidad">
-                                    Tiempo en la comunidad    
-                                </label>
-                                <span style='display:none;color:red' id='valid_13'>Campo vacío</span>
-                                <div class="input-group">
-                                    <input  class="form-control mb-10" id="tiempo_comunidad"
-                                    name="datos[tiempo_comunidad]"
-                                    type="date" />
-                                    <button type="button" class="btn btn-default" id='desde_siempre'>Desde siempre</button>
-                                </div>
-
-                            </div>
 
 
 
@@ -333,6 +343,7 @@
                          </select>
                      </div>
 
+
                      <div class="col-md-4 mt-2">
                         <label for="propietario_vivienda">
                             Propietario de vivienda
@@ -352,6 +363,8 @@
 
                  </select>
              </div>
+
+
 
              <div class="col-md-4 mt-2">
                 <label for="jefe_calle">
@@ -461,7 +474,8 @@
 </td></tr>
 </table>
 </div>
-           
+          
+
 <div class="col-md-6 mt-2">
     <label for="privado_libertad">
         Privado de libertad
@@ -481,6 +495,7 @@
 
 </select>
 </div>
+           
 <!-- 
                                             <div class="col-md-6 mt-2">
                                                 <label for="institucion">
@@ -499,6 +514,7 @@
                                         </div>
 
                                     </div>
+                          
                                     <div class="tab-pane" id="panel2" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
@@ -506,8 +522,6 @@
                                                     Documentos
                                                 </h2>
                                             </div>
-
-
 
                                             <div class="col-md-6 mt-4">
                                                 <label for=""> Carnet de la Patria</label>
@@ -586,6 +600,7 @@
                                         </div>
 
                                     </div>
+
                                     <div class="tab-pane" id="panel3" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
@@ -815,10 +830,12 @@
                                 Información laboral
                             </h4>
                         </div>
+                       
+
 
                         <div class="col-md-12 mt-2">
                             <label for="ocupacion">
-                             Ocupacion
+                             Ocupación
                          </label>
                          <span style='display:none;color:red' id='valid_26'>Ingrese la ocupación</span>
                          <table style='width:100%'>
@@ -1007,6 +1024,8 @@
                                       <option value='Administrador'>Administrador</option>
                                 </select>
                             </div>
+
+                            
                         </div>
 </div>
 
@@ -1028,14 +1047,14 @@
 
     <div class="col-md-12 mt-4">
         <div style="float: left;">
-            <a id="anterior" style='display:none' type="button" class="btn  btn-info">
+            <a id="anterior" style='display:none' type="button" class="btn"style="background:#15406D; color:white">
                 Anterior
             </a>
         </div>
     </div>
     <div class="col-md-12 mt-4">
         <div style="float: right;">
-            <a id="siguiente" type="button" class="btn  btn-info">
+            <a id="siguiente" type="button" class="btn"style="background:#15406D; color:white">
                 Siguiente
             </a>
         </div>

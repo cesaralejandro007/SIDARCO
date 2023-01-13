@@ -26,13 +26,13 @@
           <center>
               <table style="width:100%">
                   <tr>
-                    <td style="text-align:right;font-size:32px;cursor:pointer;color:#299287;" onmouseover="this.style.color='#49C5B8'" onmouseout="this.style.color='#299287'">
+                    <td style="text-align:right;font-size:32px;cursor:pointer;color:#15406D;" onmouseover="this.style.color='#15406D'" onmouseout="this.style.color='#15406D'">
                         <em class="fas fa-arrow-circle-left" id="back-mes"></em>
                     </td>
                       <td style="text-align:center;font-size:30px;font-weight: bold">
                            <span id="mes-name">Mes</span> <span id="anio-name">Año</span>
                       </td>
-                      <td style="text-align:left;font-size:32px;cursor:pointer;color:#299287;" onmouseover="this.style.color='#49C5B8'" onmouseout="this.style.color='#299287'">
+                      <td style="text-align:left;font-size:32px;cursor:pointer;color:#15406D;" onmouseover="this.style.color='#15406D'" onmouseout="this.style.color='#15406D'">
                         <em class="fas fa-arrow-circle-right" id="next-mes" ></em>
                     </td>
                   </tr>
@@ -41,7 +41,7 @@
               <br>
               <div id="calendario-view"style='width:90%'></div>
               <br>
-              <button class='btn btn-info' id='crear-evento-boton' >Crear evento</button>
+              <button class='btn' style="background:#15406D;color:white" id='crear-evento-boton' >Crear evento</button>
               <br><br>
           </center>
         </div>

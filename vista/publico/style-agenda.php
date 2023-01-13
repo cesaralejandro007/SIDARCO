@@ -2,11 +2,8 @@
 
 .calendar_td{
 	cursor:pointer;
-	background: #C7F2EE;
+	background: #D4E6F4;
 }	
-
-
-
 
 .calendar_td_selected{
 	cursor:pointer;
@@ -33,7 +30,7 @@
 
 .calendar_td:hover{
 	
-	background: #00C428;
+	background: #44ABFA;
 }	
 
 
@@ -41,7 +38,7 @@
 
 .calendar_td_selected:hover{
 	
-	background:  #00C428;
+	background:  #44ABFA;
 }	
 
 

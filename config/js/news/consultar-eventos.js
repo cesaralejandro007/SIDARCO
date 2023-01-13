@@ -77,6 +77,7 @@ function eliminar_evento(id) {
         showCancelButton: true,
         cancelButtonText: "No, cancelar",
         confirmButtonText: "Si, continuar",
+        confirmButtonColor: '#9D2323',
         closeOnConfirm: true
     }, function(isConfirm) {
         if (isConfirm) {
@@ -127,12 +128,13 @@ function ver_evento(evento, usuario) {
         consulta['detalle'] = "Sin detalles";
     }
     var text = "<center><em class='fa fa-calendar' style='font-size:50px'>";
-    text += "</em><br><br><table style='width:100%' border='1'><tr style='font-weight:bold'><td>Creador</td><td>Fecha</td><td>Ubicación</td>";
+    text += "</em><br><br><table style='width:100%' border='1'><tr style='font-weight:bold;background:#15406D;color:white'><td>Creador</td><td>Fecha</td><td>Ubicación</td>";
     text += "<td>Horas</td><td>Detalle</td></tr>";
     text += "<tr><td>" + usuario + "</td><td>" + consulta['fecha'] + "</td><td>" + consulta['ubicacion'] + "</td><td>" + consulta['horas'];
     text += "</td><td>" + consulta['detalle'] + "</td></tr></table></center>";
     swal({
         customClass: "bigSwalV2",
+        confirmButtonColor: '#15406D',
         title: consulta['tipo_evento'],
         html: true,
         text: text
