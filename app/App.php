@@ -27,7 +27,7 @@ final class Iniciar_Sistema
                         require_once 'controlador/inicio_controlador.php';
                         $this->controlador = new Inicio();
                         $this->controlador->Cargar_Modelo('inicio');
-                        $this->controlador->Inicio();
+                        $this->controlador->Cargar_Vistas();
                     } else {
                         if ($this->Validar_URL()) {
                             if ($this->Validar_Archivos() || $this->Validar_Controlador() || $this->Validar_Modelo()) {

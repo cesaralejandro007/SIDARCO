@@ -1,6 +1,7 @@
 stdClass Object
 (
     [Fecha] => 
+<<<<<<< HEAD
     [Hora] => 01:20:06 PM
     [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\personas_class.php
     [Linea] => 776
@@ -360,4 +361,466 @@ stdClass Object
     [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\personas_class.php
     [Linea] => 751
     [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.comunidad_indigena' doesn't exist
+=======
+    [Hora] => 11:42 AM
+    [Archivo] => C:\xampp\htdocs\sistema\SIDARCO\app\Base_Datos.php
+    [Linea] => 35
+    [Codigo] => 1049
+    [Mensaje] => SQLSTATE[HY000] [1049] Unknown database 'sidarco'
+    [Tipo] => Acceso denegado,  Nombre de la Base de Datos Incorrecto.
+>>>>>>> ea73f9b31d49f3dbcb48da1f6bc0b356ae9c6dd3
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 08:55 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Base_Datos.php
+    [Linea] => 35
+    [Codigo] => 2002
+    [Mensaje] => SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+
+    [Tipo] => Acceso denegado,  Host desconocido o MSQL esta Apagado.
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:16:45 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 35
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:16:45 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 171
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:16:45 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 205
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:16:45 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 188
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:22 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Base_Datos.php
+    [Linea] => 35
+    [Codigo] => 2002
+    [Mensaje] => SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+
+    [Tipo] => Acceso denegado,  Host desconocido o MSQL esta Apagado.
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 01:43:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\seguridad_class.php
+    [Linea] => 57
+    [Mensaje] => SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conco.permisos_usuario_modulo' doesn't exist
 )

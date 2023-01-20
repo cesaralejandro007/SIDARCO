@@ -5,13 +5,13 @@ var index=0;
 var datos_persona=new Object();
 var seguridad=JSON.parse(document.getElementById("seguridad_usuario").value);
 
-
 //_------------------------botones------------------------------------------------//
 var btn_siguiente=document.getElementById("siguiente");
 var btn_anterior=document.getElementById("anterior");
 var btn_guardar=document.getElementById("guardar");
 var btn_desde_siempre=document.getElementById("desde_siempre");
 var botones_finales=document.getElementById("botones-finales");
+
 
 //------------------ Información personal-----------------------------------------//
 
@@ -52,13 +52,14 @@ cedula.focus();
 
 var tab_doc_personales=document.getElementById("tab_2");
 var div_doc_personales=document.getElementById("panel2");
+/*
 var serial_patria=document.getElementById("serial_patria");
 var codigo_patria=document.getElementById("codigo_patria");
 var serial_psuv=document.getElementById("serial_psuv");
 var codigo_psuv=document.getElementById("codigo_psuv");
 var serial_discapacidad=document.getElementById("serial_discapacidad");
 var codigo_discapacidad=document.getElementById("codigo_discapacidad");
-
+*/
 
 //------------------ Información de contacto-----------------------------------------//
 
@@ -97,8 +98,8 @@ var nombre_mision=document.getElementById("nombre_mision");
 
 //-----------------------------Informacion laboral--------------------------------------------//
 
-var tab_info_laboral=document.getElementById("tab_5");
-var div_info_laboral=document.getElementById("panel5");
+//var //tab_info_laboral=document.getElementById("tab_5");
+//var //div_info_laboral=document.getElementById("panel5");
 var ocupacion=document.getElementById("ocupacion");
 var btn_nueva_ocupacion=document.getElementById("btn_nueva_ocupacion");
 var nombre_ocupacion=document.getElementById("ocupacion_nueva");
@@ -121,8 +122,8 @@ var proyectos_persona=[];
 
 //--------------------------------------------------------------------------------------------//
 
-var tab_info_usuario=document.getElementById("tab_6");
-var div_info_usuario=document.getElementById("panel6");
+//var //tab_info_usuario=document.getElementById("tab_4");
+//var //div_info_usuario=document.getElementById("panel4");
 var contrasenia=document.getElementById("contrasenia");
 var valid_contrasenia=document.getElementById("valid_contrasenia");
 var confirmar=document.getElementById("confirmar");
@@ -223,8 +224,11 @@ function valid_info_personal(){
                                         // if(valid_element("Debe indicar si la persona pertenece a alguna comunidad indigena",comunidad_indigena,document.getElementById("valid_19"))){
                                           // if(valid_comunidad_indigena()){  
                                             //if(valid_element("Debe indicar si la persona es privada de libertad",privado_libertad,document.getElementById("valid_20"))){
-
+                                              
+                                               
                                               validacion=true;
+                                               
+                                               
 
                                             }  } } } } } } }  }   }  } } } }
 
@@ -272,7 +276,7 @@ transporte.onchange=function(){
 
 
 //----------------------------------------------------------------------------------------------------//
-
+/*
 recibe_actualmente.onchange=function(){
   if(recibe_actualmente.value=='0'){
     ver_fecha_recepcion.style.display='';
@@ -284,6 +288,7 @@ recibe_actualmente.onchange=function(){
   }
 
 }
+*/
 
 //---------------------------------funcion para visualizar campo de tipo de transporte---------------//
 /*
@@ -295,14 +300,14 @@ comunidad_indigena.onchange=function(){
 */
 
 //---------------------------------funcion para visualizar campo de organizacion politica---------------//
-
+/*
 org_politica.onchange=function(){
 
   change_to_dynamic_record("si",org_politica_ver,org_politica,nombre_organizacion);
 
 
 }
-
+*/
 //---------------------------------------------------------------------------------//
 
 sector_laboral.onchange=function(){
@@ -324,7 +329,7 @@ btn_guardar.onclick=function(){
 
 
 //-------------------------------------------------------------------------------------------//
-
+/*
 btn_nuevo_bono.onclick=function(){
   if(nombre_bono.style.display=='none'){
     btn_nuevo_bono.innerHTML='Atrás';
@@ -340,11 +345,11 @@ btn_nuevo_bono.onclick=function(){
     nombre_bono.style.display='none';
   }
 }
-
+*/
 
 //------------------------------------funcion agregar bonos-----------------------------//
 
-
+/*
 
 nombre_bono.maxLength=30;
 bonos_input.onchange=function(){
@@ -412,7 +417,7 @@ btn_agregar_bono.onclick=function(){
 
 }
 }
-
+*/
 //------------------------------------------------------------------------------------//
 
 function valid_bono(){
@@ -551,6 +556,7 @@ return validar;
 
 
 //------------------------------------funcion agregar misiones-----------------------------//
+/*
 btn_nueva_mision.onclick=function(){
   if(nombre_mision.style.display=='none'){
     btn_nueva_mision.innerHTML='Atrás';
@@ -644,7 +650,7 @@ btn_agregar_mision.onclick=function(){
     }
   }
 }
-
+*/
 //-----------------------------------------------------------------------------------------------------//
 
 function valid_mision(){
@@ -867,11 +873,6 @@ cedula.onkeyup=function(){
 
 }
 
-
-
-
-
-
 //----------------------------------Validar información de contacto-----------------------------//
 
 telefono.oninput=function(){
@@ -880,6 +881,7 @@ telefono.oninput=function(){
 
 telefono.onkeyup=function(){valid_element("Debe ingresar el número de teléfono de la persona",telefono,document.getElementById("valid_21"));}
 whatsapp.onchange=function(){valid_element("Inique si el número de teléfono posee WhatsApp",whatsapp,document.getElementById("valid_22"));}
+
 
 function valid_info_contacto(){
 
@@ -899,7 +901,7 @@ function valid_info_contacto(){
 
 
 //----------------------------------Validar información politica-----------------------------//
-
+/*
 org_politica.onchange=function(){
   document.getElementById('valid_23').style.display='none';
 }
@@ -928,8 +930,9 @@ function valid_info_politica(){
   return validar;
 
 }
-
+*/
 //----------------------------------Validar org politica-----------------------------//
+/*
 nombre_organizacion.maxLength=15;
 
 nombre_organizacion.onkeyup=function(){
@@ -984,7 +987,7 @@ else{
   organizacion_politica.style.display="";
 }
 }
-
+*/
 
 //----------------------------persona_existe--------------------------------------------------//
 
@@ -1238,11 +1241,11 @@ function control_indice(){
 
 
 
-   tab_info_laboral.className="";
-   div_info_laboral.style.display="none";
+   //tab_info_laboral.className="";
+   //div_info_laboral.style.display="none";
 
-   tab_info_usuario.className="";
-   div_info_usuario.style.display="none";
+   //tab_info_usuario.className="";
+   //div_info_usuario.style.display="none";
    break;
 
    case 1:
@@ -1259,15 +1262,15 @@ function control_indice(){
   tab_info_contacto.className="";
   div_info_contacto.style.display="none";
 
-  tab_info_politica.className="";
-  div_info_politica.style.display="none";
+tab_info_politica.className="";
+div_info_politica.style.display="none";
 
 
-  tab_info_laboral.className="";
-  div_info_laboral.style.display="none";
+  //tab_info_laboral.className="";
+  //div_info_laboral.style.display="none";
 
-  tab_info_usuario.className="";
-  div_info_usuario.style.display="none";
+  //tab_info_usuario.className="";
+  //div_info_usuario.style.display="none";
 
   break;
 
@@ -1286,49 +1289,57 @@ function control_indice(){
   tab_info_politica.className="";
   div_info_politica.style.display="none";
 
-  tab_info_laboral.className="";
-  div_info_laboral.style.display="none";
+  //tab_info_laboral.className="";
+  //div_info_laboral.style.display="none";
 
-  tab_info_usuario.className="";
-  div_info_usuario.style.display="none";
+  //tab_info_usuario.className="";
+  //div_info_usuario.style.display="none";
 
 
   break;
 
 
   case 3:
+  btn_siguiente.style.display='none';
+  botones_finales.style.display="block";
+
   tab_info_politica.className="nav-link active";
   div_info_politica.style.display="block";
 
+  tab_info_personal.className='';
+  div_info_personal.style.display="none";  
 
   tab_doc_personales.className='';
   div_doc_personales.style.display="none";
 
-  tab_info_personal.className='';
-  div_info_personal.style.display="none";
+  
+
+ //tab_info_laboral.className="";
+  //div_info_laboral.style.display="none";
+
+  //tab_info_usuario.className="";
+  //div_info_usuario.style.display="none";
+
+
 
   tab_info_contacto.className="";
   div_info_contacto.style.display="none";
 
 
-  tab_info_laboral.className="";
-  div_info_laboral.style.display="none";
-
-  tab_info_usuario.className="";
-  div_info_usuario.style.display="none";
-
+ 
 
 
   break;
 
-
+/*
   case 4:
-  tab_info_laboral.className="nav-link active";
-  div_info_laboral.style.display="block";
+
+  //tab_info_laboral.className="nav-link active";
+  //div_info_laboral.style.display="block";
 
 
-  tab_doc_personales.className='';
-  div_doc_personales.style.display="none";
+ tab_doc_personales.className='';
+div_doc_personales.style.display="none";
 
   tab_info_personal.className='';
   div_info_personal.style.display="none";
@@ -1336,26 +1347,27 @@ function control_indice(){
   tab_info_contacto.className="";
   div_info_contacto.style.display="none";
 
-  tab_info_politica.className="";
+ tab_info_politica.className="";
   div_info_politica.style.display="none";
 
   botones_finales.style.display="none";
   btn_siguiente.style.display='block';
 
-  tab_info_usuario.className="";
-  div_info_usuario.style.display="none";
+  //tab_info_usuario.className="";
+  //div_info_usuario.style.display="none";
 
   break;
-
+  */
+/*
   case 5:
   btn_siguiente.style.display='none';
   botones_finales.style.display="block";
 
-  tab_info_usuario.className="nav-link active";
-  div_info_usuario.style.display="block";
+  //tab_info_usuario.className="nav-link active";
+  //div_info_usuario.style.display="block";
 
-  tab_info_laboral.className="";
-  div_info_laboral.style.display="none";
+  //tab_info_laboral.className="";
+  ////div_info_laboral.style.display="none";
 
 
   tab_doc_personales.className='';
@@ -1367,12 +1379,12 @@ function control_indice(){
   tab_info_contacto.className="";
   div_info_contacto.style.display="none";
 
-  tab_info_politica.className="";
+ tab_info_politica.className="";
   div_info_politica.style.display="none";
 
   break;
 
-
+*/
 
 }
 }
@@ -1380,7 +1392,7 @@ function control_indice(){
 
 
 //-----------------------------------------------------------------------------------------//
-
+/*
 serial_patria.maxLength=10;
 codigo_patria.maxLength=10;
 serial_psuv.maxLength=10;
@@ -1635,7 +1647,7 @@ return validar;
 
 
 }
-
+*/
 
 //---------------------- funcion siguiente -----------------------------------------------------//
 
@@ -1649,26 +1661,29 @@ function funcion_siguiente(){
    }
    break;
 
+/*
    case 1:
    if(valid_info_carnets()){
      index++;
    }
 
    break;
+*/
 
-   case 2:
+   case 1:
    if(valid_info_contacto()){
     index++;
   }
   break;
 
+/*
   case 3:
   if(valid_info_politica()){
     index++;
   }
   break;
-
-  case 4:
+*/
+  case 2:
   if(valid_info_laboral()){
     index++;
 
@@ -1676,7 +1691,7 @@ function funcion_siguiente(){
   break;
 
 
-  case 5:
+  case 3:
   if(valid_info_usuario()){
     enviar_informacion();
   }
@@ -1715,7 +1730,7 @@ function enviar_informacion(){
   datos_persona['contrasenia']=contrasenia.value;
   datos_persona['preguntas_seguridad']=color.value.toLowerCase()+animal.value.toLowerCase()+mascota.value.toLowerCase();
   seguridad['registrar']=='1'?datos_persona['rol_inicio']=rol.value:datos_persona['rol_inicio']='Habitante';
-
+/*
   if(codigo_patria.value!='' && serial_patria.value!=''){
     var carnet_de_patria=new Object();
     carnet_de_patria['serial']=serial_patria.value;
@@ -1725,7 +1740,8 @@ function enviar_informacion(){
   else{
     datos_persona['carnet_patria']='';
   }
-
+*/
+/*
   if(codigo_psuv.value!='' && serial_psuv.value!=''){
     var carnet_de_psuv=new Object();
     carnet_de_psuv['serial']=serial_psuv.value;
@@ -1747,7 +1763,7 @@ function enviar_informacion(){
     datos_persona['carnet_discapacidad']='';
   }
   
-
+*/
   $.ajax({
     type:"POST",
     url:BASE_URL+"Personas/registrar_persona",
@@ -1774,8 +1790,8 @@ function enviar_informacion(){
    // }
 
 
-    registrar_org_politica();
-
+    //registrar_org_politica();
+/*
 
     if(bonos_persona.length!=0){
       registrar_bonos_persona();
@@ -1794,7 +1810,7 @@ function enviar_informacion(){
     registrar_carnets(datos_persona['carnet_psuv'],2);
     registrar_carnets(datos_persona['carnet_discapacidad'],3);
 
-
+*/
     swal({
      title:"Éxito",
      text:"La persona ha sido registrada exitosamente",
@@ -2006,7 +2022,7 @@ function registrar_comunidad_indigena(){
  });
 
 }
-*/
+
 
 function registrar_org_politica(){
   var datos_org=new Object();
@@ -2037,5 +2053,5 @@ function registrar_org_politica(){
    }).done(function(result){
    });
  }
-}
+*/
 

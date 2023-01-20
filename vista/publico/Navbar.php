@@ -6,7 +6,7 @@
  </div>
 <input type="hidden" id="last_accion" value="<?php echo $_SESSION['modulo_actual']; ?>">
  <!-- Barra superior -->
- <nav class="main-header navbar navbar-expand navbar-dark">
+ <nav class="main-header navbar navbar-expand navbar-dark" style="background:#15406D">
      <!-- Left navbar links -->
      <ul class="navbar-nav">
          <li class="nav-item">
@@ -107,10 +107,10 @@
              </a>
              <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                  <!-- User image -->
-                 <li class="user-header bg-primary">
+                 <li class="user-header" style="background:#1961AA">
                      <img src="<?php echo constant('URL')?>config/img/users/user-3.png" class="img-circle elevation-2"
                          alt="User Image">
-                     <p>
+                     <p class="text-white">
                      <?php echo $_SESSION['nombre']." ".$_SESSION['apellido'] ; ?>
                          <small>
                              <?php echo $_SESSION['cedula_usuario']; ?>

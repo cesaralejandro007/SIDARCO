@@ -40,16 +40,19 @@
                                             </span>
                                         </a>
                                     </li>
+                                    
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
                                         <a id='tab_2' >
                                             <span class="hidden-sm-up">
                                                 <i class="ti-user"></i>
                                             </span>
                                             <span class="hidden-xs-down">
-                                                Carnets
+                                                Información de Contacto
+                                                <!--carnets-->
                                             </span>
                                         </a>
                                     </li>
+                                         
 
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
                                         <a id='tab_3' >
@@ -57,13 +60,15 @@
                                                 <i class="ti-email"></i>
                                             </span>
                                             <span class="hidden-xs-down">
-                                                Información de Contacto
+                                                Información Laboral
+                                                <!--DATOS DE CONTACTO-->
                                             </span>
                                         </a>
                                     </li>
-                                    
+
+                                    <!--
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_4' >
+                                        <a id='tab_3' >
                                             <span class="hidden-sm-up">
                                                 <i class="ti-email"></i>
                                             </span>
@@ -72,7 +77,7 @@
                                             </span>
                                         </a>
                                     </li>
-
+--><!--
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
                                         <a id='tab_5'>
                                             <span class="hidden-sm-up">
@@ -83,8 +88,9 @@
                                             </span>
                                         </a>
                                     </li>
+-->
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_6'>
+                                        <a id='tab_4'>
                                             <span class="hidden-sm-up">
                                                 <i class="ti-email"></i>
                                             </span>
@@ -224,19 +230,19 @@
 <!--
                                         
                                         <div class="col-md-6 mt-2">
-                                <label for="tiempo_comunidad">
+                                      <label for="tiempo_comunidad">
                                     Tiempo en la comunidad    
-                                </label>
-                                <span style='display:none;color:red' id='valid_13'>Campo vacío</span>
-                                <div class="input-group">
+                                  </label>
+                                  <span style='display:none;color:red' id='valid_13'>Campo vacío</span>
+                                  <div class="input-group">
                                     <input  class="form-control mb-10" id="tiempo_comunidad"
                                     name="datos[tiempo_comunidad]"
                                     type="date" />
                                     <button type="button" class="btn btn-default" id='desde_siempre'>Desde siempre</button>
-                                </div>
+                                    </div>
 
 
-                            </div>
+                                    </div>
 
 -->
 <!--
@@ -410,6 +416,7 @@
  </select>
 </div>
 -->
+
 <div class="col-md-6 mt-2">
     <label for="transporte">
         Transporte
@@ -439,10 +446,11 @@
         <?php } ?>
     </datalist>
 
+    
 </td></tr>
 </table>
 </div>
-
+           
 <!--
 <div class="col-md-6 mt-2">
     <label for="comunidad_indigena">
@@ -516,8 +524,8 @@
                                         </div>
 
                                     </div>
-                          
-                                    <div class="tab-pane" id="panel2" role="tabpanel">
+                                     <!--
+                                    <div class="tab-pane" id="panel3" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
                                                 <h2>
@@ -537,11 +545,13 @@
                                                 </label>
                                                 <span style='color:red' id='valid_serial_patria'></span>
                                                 <div class="input-group">
+
                                                     <input class="form-control mb-10 no-espacios no-acentos" id="serial_patria"
                                                     name="datos[serial_patria]" placeholder="Serial" type="text" oninput="Limitar(this,10)"/>
+           
                                                 </div>
                                             </div>
-
+          
                                             <div class="col-md-6 mt-2">
                                                 <label for="serial_psuv">
                                                     Serial PSUV
@@ -575,8 +585,7 @@
                                                     name="datos[codigo_psuv]" placeholder="Codigo" type="text" oninput="Limitar(this,12)"/>
                                                 </div>
                                             </div>
-
-
+ 
                                             <div class="col-md-6 mt-2">
                                                 <label for="certificado">
                                                     Certificado de discapacidad
@@ -599,11 +608,12 @@
                                                     name="datos[codigo_discapacidad]" placeholder="Codigo" type="text" oninput="Limitar(this,12)"/>
                                                 </div>
                                             </div>
+           
                                         </div>
 
                                     </div>
-
-                                    <div class="tab-pane" id="panel3" role="tabpanel">
+           -->
+                                    <div class="tab-pane" id="panel2" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
                                                 <h2>
@@ -643,9 +653,9 @@
                                             </div>
 
                                         </div>
-                                    </div>
+                                       </div>
 
-                                    <div class="col-md-9 mt-2">
+                                     <div class="col-md-9 mt-2">
                                         <label for="telefono_personal">
                                             Telefono Personal
                                         </label>
@@ -656,8 +666,8 @@
                                             type="number" oninput="Limitar(this,12)"/>
                                         </div>
 
-                                    </div>
-                                    <div class="col-md-3 mt-2">
+                                      </div>
+                                      <div class="col-md-3 mt-2">
                                         <label for="whatsapp">
                                             <i class="fa fa-whatsapp" style="font-size: 15px;"></i> WhatsApp
                                         </label>
@@ -689,7 +699,9 @@
                                             </div> -->
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="panel4" role="tabpanel">
+
+                                    <!--
+                                    <div class="tab-pane" id="panel3" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
                                                 <h2>
@@ -822,8 +834,8 @@
 
 
                 </div>
-
-                <div class="tab-pane" id="panel5" role="tabpanel">
+                                                    -->
+                <div class="tab-pane" id="panel3" role="tabpanel">
 
 
                     <div class="row  mt-2">
@@ -946,7 +958,7 @@
 
 </div>
 </div></div></div>
-<div class="tab-pane" id="panel6" role="tabpanel">
+<div class="tab-pane" id="panel4" role="tabpanel">
     <div class="row">
         <div class="col-md-12 text-center">
             <h2>
