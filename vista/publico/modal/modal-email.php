@@ -31,7 +31,7 @@
                             <textarea id="mensaje" class="form-control" rows="4"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="button" class="btn btn-primary" value="Enviar Mensaje">
+                            <input type="button" class="btn" style="background:#15406D; color:white" value="Enviar Mensaje">
                         </div>
                     </div>
                 </div>

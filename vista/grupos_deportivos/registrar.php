@@ -92,7 +92,7 @@
                                     <span id='nombre_persona'></span>
                                     </label>
 
-                                <div class="text-center" style='width:95%;height:200px;overflow-y: scroll;background: #C5F3F2'>
+                                <div class="text-center" style='width:95%;height:200px;overflow-y: scroll;background: #D4E6F4'>
                                     <div id='integrantes_agregados' style='width:95%;margin-top:10px;'>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                 <div class="card-footer">
                     <div class="text-center m-t-20">
                         <div class="col-xs-12">
-                            <input type="button" class="btn  btn-success m-r-10" name="" id="guardar" value="Guardar">
+                            <input type="button" class="btn" style="background:#15406D; color:white" name="" id="guardar" value="Guardar">
 
                         </div>
                     </div>

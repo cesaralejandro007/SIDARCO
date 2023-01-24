@@ -143,7 +143,7 @@
                                                         </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
                                                       </tr>
                                                       <tr><td colspan='2'><br>
-                                                           <div style='background:#D0E8E7;overflow-y: scroll;width: 95%;height:200px;'><center>
+                                                           <div style='background:#D4E6F4;overflow-y: scroll;width: 95%;height:200px;'><center>
                                                             <div style='width:95%' id='integrantes_agregados'></div>
                                                         </center>
                                                            </div>
@@ -162,7 +162,7 @@
                 <div class="card-footer">
                     <div class="text-center m-t-20">
                         <div class="col-xs-12">
-                            <input type="button" class="btn  btn-success m-r-10" name="" id="guardar" value="Guardar">
+                            <input type="button" class="btn" style="background:#15406D; color:white" name="" id="guardar" value="Guardar">
                             
                         </div>
                     </div>

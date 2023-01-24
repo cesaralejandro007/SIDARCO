@@ -41,7 +41,7 @@ class Bitacora extends Controlador
 
                     $usuario = $this->datos["bitacoras"][$i]['primer_nombre'] . " " . $this->datos["bitacoras"][$i]['primer_apellido'];
 
-                    $acciones = "<button class='btn btn-info' onclick='mostrar_acciones(`$acciones_Ver`,`$usuario`)'><em class='fas fa-eye'></em></button>";
+                    $acciones = "<button class='btn' style='background:#15406D; color:white' onclick='mostrar_acciones(`$acciones_Ver`,`$usuario`)'><em class='fas fa-eye'></em></button>";
 
                     $this->datos["bitacoras"][$i]['acciones'] = $acciones;
                     $this->datos["bitacoras"][$i]['usuario']  = $usuario;

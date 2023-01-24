@@ -138,7 +138,7 @@ public function Registros()
   //      $this->vista->parroquias=$this->modelo->get_parroquias();
   $this->vista->bonos=$this->modelo->get_bonos();
   //      $this->vista->enfermedades=$this->modelo->get_enfermedades();
-  //      $this->vista->discapacidades=$this->modelo->get_discapacidad();
+  $this->vista->discapacidades=$this->modelo->get_discapacidad();
   $this->vista->misiones=$this->modelo->get_misiones();
   $this->vista->ocupaciones=$this->modelo->get_ocupaciones();
   $this->vista->condiciones=$this->modelo->get_condiciones();
@@ -156,7 +156,7 @@ public function Registros_habitante()
   //      $this->vista->parroquias=$this->modelo->get_parroquias();
   $this->vista->bonos=$this->modelo->get_bonos();
   //      $this->vista->enfermedades=$this->modelo->get_enfermedades();
-  //      $this->vista->discapacidades=$this->modelo->get_discapacidad();
+  $this->vista->discapacidades=$this->modelo->get_discapacidad();
   $this->vista->misiones=$this->modelo->get_misiones();
   $this->vista->ocupaciones=$this->modelo->get_ocupaciones();
   $this->vista->condiciones=$this->modelo->get_condiciones();

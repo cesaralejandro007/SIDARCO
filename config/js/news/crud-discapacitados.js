@@ -5,6 +5,7 @@ function eliminar(id) {
         text: "Estás por eliminar esta información, ¿deseas continuar?",
         showCancelButton: true,
         cancelButtonText: "No",
+        confirmButtonColor: '#9D2323',
         confirmButtonText: "Si"
     }, function(isConfirm) {
         if (isConfirm) {

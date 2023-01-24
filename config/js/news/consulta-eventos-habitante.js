@@ -8,7 +8,7 @@ var div_calendario = document.getElementById("calendario-view");
 var lista_fechas = [];
 var eventos_registrados = [];
 get_eventos();
-setTimeout(function() {
+setTimeout(function () {
     obtener_calendario("vacio", "vacio");
 }, 500);
 //===========================================================================//
@@ -19,7 +19,7 @@ function get_eventos() {
         data: {
             peticion: "Consulta_Ajax",
         },
-    }).done(function(result) {
+    }).done(function (result) {
         var resultado = JSON.parse(result);
         for (var i = 0; i < resultado.length; i++) {
             var fecha_event = new Date(resultado[i]['fecha']);
@@ -126,7 +126,7 @@ function get_time(hora) {
     return numero;
 }
 //===========================================================================//
-back_mes.onclick = function() {
+back_mes.onclick = function () {
     var mes_back = 0;
     switch (mes_view.innerHTML) {
         case "Enero":
@@ -175,7 +175,7 @@ back_mes.onclick = function() {
     obtener_calendario(mes_back, retornar_anio);
 }
 //===========================================================================//
-next_mes.onclick = function() {
+next_mes.onclick = function () {
     var mes_next = 0;
     switch (mes_view.innerHTML) {
         case "Enero":
@@ -225,7 +225,7 @@ next_mes.onclick = function() {
 }
 //===========================================================================//
 function llenar_calendario(ultimo, mes, anio) {
-    var table = "<table class='table_calendar' border='1'><tr style='background:#11A394;color:white'>";
+    var table = "<table class='table_calendar' border='1'><tr style='background:#15406D;color:white'>";
     table += "<td style='text-align:center'>Lunes</td>";
     table += "<td style='text-align:center'>Martes</td>";
     table += "<td style='text-align:center'>Miércoles</td>";

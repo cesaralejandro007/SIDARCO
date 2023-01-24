@@ -28,7 +28,7 @@
             <br><br>
         </center>
             <div class="modal-footer ">
-            <input type="button" class="btn  btn-success m-r-10" name="" id="enviarEditar" value="Guardar">
+            <input type="button" class="btn" style="background:#15406D; color:white" name="" id="enviarEditar" value="Guardar">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
         </div>

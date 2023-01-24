@@ -93,14 +93,14 @@ class Discapacitados extends Controlador
                             $id_discapacidad_p[] = $dis['id_discapacidad_persona'] . "/";
                         }
                     }
-                    $discapacidades_p = "<div style='overflow-y:scroll;width:100%;height:100px;background:#B4DFDE;'>" . $discapacidades_p . "</div></table>";
+                    $discapacidades_p = "<div style='overflow-y:scroll;width:100%;height:100px;background:#D4E6F4;'>" . $discapacidades_p . "</div></table>";
 
                     $retornar[] = [
                         "cedula"         => $d['cedula_persona'],
                         "nombre"         => $d['primer_nombre'] . " " . $d['primer_apellido'],
                         "discapacidades" => $discapacidades_p,
-                        "editar"         => "<button type='button' class='btn btn-success editar' onclick='editar(`" . $d['cedula_persona'] . "`)' data-toggle='modal' data-target='#actualizar'><em class='fa fa-edit'></em></button>",
-                        "eliminar"       => "<button class='btn btn-danger' onclick='eliminar(`" . json_encode($id_discapacidad_p) . "`)' type='button'><em class='fa fa-trash'></em></button>",
+                        "editar"         => "<button type='button' class='btn' style='background:#EEA000; color:white;' onclick='editar(`" . $d['cedula_persona'] . "`)' data-toggle='modal' data-target='#actualizar'><em class='fa fa-edit'></em></button>",
+                        "eliminar"       => "<button class='btn' style='background:#9D2323; color:white;' onclick='eliminar(`" . json_encode($id_discapacidad_p) . "`)' type='button'><em class='fa fa-trash'></em></button>",
                     ];
                 }
                 $this->Escribir_JSON($retornar);

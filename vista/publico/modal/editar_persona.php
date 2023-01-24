@@ -13,7 +13,7 @@
           <div style='width:98%;overflow-y: scroll;height:400px'>
             <table style='width:98%;' border='1'>
 
-              <tr style='background:#057E9F;color:white;'>
+              <tr style='background:#15406D;color:white; font-weight:bold;'>
                 <td style='width:25%'>Primer Nombre</td>
                 <td style='width:25%'>Segundo Nombre</td>
                 <td style='width:25%'>Primer Apellido</td>
@@ -31,7 +31,7 @@
 
             <table style='width:98%;' border='1'>
 
-              <tr style='background:#057E9F;color:white;'>
+              <tr style='background:#15406D;color:white; font-weight:bold;'>
                 <td style='width:25%'>Nacionalidad</td>
                 <td style='width:25%'>Teléfono</td>
                 <td style='width:25%'>WhatsApp</td>
@@ -55,7 +55,7 @@
 
             <table style='width:98%;' border='1'>
 
-              <tr style='background:#057E9F;color:white;'>
+              <tr style='background:#15406D;color:white; font-weight:bold;'>
                 <td style='width:25%'>Fecha de nacimiento</td>
                 <td style='width:25%'>Género</td>
                 <td style='width:25%'>Orientación Sexual</td>
@@ -91,7 +91,7 @@
 
             <table style='width:98%;' border='1'>
 
-              <tr style='background:#057E9F;color:white;'>
+              <tr style='background:#15406D;color:white; font-weight:bold;background:#15406D;color:white; font-weight:bold;'>
                 <td style='width:25%'>Nivel educativo</td>
                 <td style='width:25%'>Antigüedad comunidad</td>
                 <td style='width:25%'>Miliciano</td>
@@ -121,7 +121,7 @@
 
             <table style='width:98%;' border='1'>
 
-              <tr style='background:#057E9F;color:white;'>
+              <tr style='background:#15406D;color:white; font-weight:bold;'>
                 <td style='width:25%'>Propietario vivienda</td>
                 <td style='width:25%'>Jefe de calle</td>
                 <td style='width:25%'>Privado de libertad</td>
@@ -159,7 +159,7 @@
 
             <table style='width:98%;' border='1'>
 
-              <tr style='background:#057E9F;color:white;'>
+              <tr style='background:#15406D;color:white; font-weight:bold;'>
                 <td style='width:25%'>Comunidad indígena</td>
                 <td style='width:25%'>Ocupación</td>
               </tr>
@@ -212,7 +212,7 @@
 
             <table style='width:98%' border='1'>
 
-              <tr style='background:#057E9F;color:white;'>
+              <tr style='background:#15406D;color:white; font-weight:bold;'>
 
                 <td style='width:25%'>Condición laboral</td>
                 <td style='width:25%'>Organización política</td>
@@ -317,7 +317,7 @@
 
             <table style='width:98%' border='1'>
 
-              <tr style='background:#057E9F;color:white;'>
+              <tr style='background:#15406D;color:white; font-weight:bold;'>
 
                 <td style='width:50%'>
                   <table style='width:100%'>
@@ -379,7 +379,7 @@
 
             <table style='width:98%' border='1'>
 
-              <tr style='background:#057E9F;color:white;'>
+              <tr style='background:#15406D;color:white; font-weight:bold;'>
 
                 <td style='width:50%' class='text-center'>
                   <table style='width:100%'>
@@ -412,16 +412,16 @@
                               </select>
                             </td>
                             <td style='width:30%'>
-                            <input type="text" id='estado_proyecto' style='width:100%' placeholder="Estado del proyecto">
+                              <input type="text" id='estado_proyecto' style='width:100%' placeholder="Estado del proyecto">
                             </td>
                           </tr>
                         </table>
                       </td>
                       <td style='text-align:center;width:10%'>
-                      <span class='fa fa-plus-square' id='spannewproyect' title="Crear nuevo proyecto" style='font-size:25px;cursor:pointer'></span>
+                        <span class='fa fa-plus-square' id='spannewproyect' title="Crear nuevo proyecto" style='font-size:25px;cursor:pointer'></span>
                       </td>
                       <td style='text-align:center;width:10%'>
-                      <span class='fa fa-plus-circle' id='spanaddproyect' title="Agregar proyecto" style='font-size:25px;cursor:pointer'></span>
+                        <span class='fa fa-plus-circle' id='spanaddproyect' title="Agregar proyecto" style='font-size:25px;cursor:pointer'></span>
                       </td>
                     </tr>
                   </table>
@@ -444,7 +444,7 @@
       </div>
       <div class="modal-footer ">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id='guardar_cambios'>Guardar cambios</button>
+        <button type="button" class="btn" style="background:#15406D; color:white" id='guardar_cambios'>Guardar cambios</button>
       </div>
     </div>
     <!-- /.modal-content -->

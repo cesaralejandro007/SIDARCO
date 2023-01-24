@@ -400,7 +400,7 @@ next_mes.onclick = function() {
 }
 //===========================================================================//
 function llenar_calendario(ultimo, mes, anio) {
-    var table = "<table class='table_calendar' border='1'><tr style='background:#11A394;color:white'>";
+    var table = "<table class='table_calendar' border='1'><tr style='background:#15406D;color:white'>";
     table += "<td style='text-align:center'>Lunes</td>";
     table += "<td style='text-align:center'>Martes</td>";
     table += "<td style='text-align:center'>Miércoles</td>";

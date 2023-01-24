@@ -69,7 +69,7 @@
 
     <div class="col-md-12 mt-2">
        <label>Discapacidades agregadas a <span id='nombre_persona'></span></label>
-       <center><div style='width:95%;height:200px;overflow-y: scroll;background: #C5F3F2'>
+       <center><div style='width:95%;height:200px;overflow-y: scroll;background: #D4E6F4'>
            <center><div id='discapacidades_agregadas' style='width:95%'></div></div>
            </center>
        </div>
@@ -78,7 +78,7 @@
 </form>
 </div>
 <div class="modal-footer ">
-    <input type="submit" class="btn  btn-success m-r-10" name="" id="enviar" value="Guardar">
+    <input type="submit" class="btn" style="background:#15406D; color:white" name="" id="enviar" value="Guardar">
     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 </div>
 </div>

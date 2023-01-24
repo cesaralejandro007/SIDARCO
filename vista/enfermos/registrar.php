@@ -79,12 +79,12 @@
                      <br>
 
                      <label>Enfermedades agregadas a <span id='nombre_persona'></span></label>
-                     <center><div style='width:95%;height:200px;overflow-y: scroll;background: #C5F3F2'>
+                     <center><div style='width:95%;height:200px;overflow-y: scroll;background: #D4E6F4'>
                          <center><div id='enfermedades_agregadas' style='width:95%'></div></div>
                          </center>
                          <br>
 
-                         <center><input type="button" class="btn  btn-success m-r-10" name="" id="guardar" value="Guardar"></center>
+                         <center><input type="button" class="btn" style="background:#15406D; color:white" name="" id="guardar" value="Guardar"></center>
                      </div></center>
                  </div>
              </div>

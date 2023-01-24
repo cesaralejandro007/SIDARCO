@@ -34,7 +34,7 @@
                 </form>
             </div>
             <div class="modal-footer ">
-                <input type="submit" class="btn  btn-success m-r-10" name="" id="enviar" value="Guardar">
+                <input type="submit" class="btn" style="background:#15406D; color:white" name="" id="enviar" value="Guardar">
                 <button type="button" class="btn btn-danger">Limpiar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
