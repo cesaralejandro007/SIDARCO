@@ -18,7 +18,7 @@
     <section class="content">
         <!-- Default box -->
         <div class="card">
-            <div class="card-header">
+             <div class="card-header">
                 <h3 class="card-title">Formulario de Registro</h3>
                 
             </div>
@@ -297,10 +297,10 @@
                                         <div class="input-group">
                                             <select class='form-control' name="datos[nivel_educativo]" id='nivel_educativo'>
                                                 <option value='vacio'>-Seleccione-</option>
-                                                <option value='Preescolar'>Preescolar</option>
-                                                <option value='Básico'>Básico</option>
-                                                <option value='Medio diversificado'>Medio diversificado</option>
-                                                <option value='Superior'>Superior</option>
+                                                <option value='Preescolar'>Bachiller</option>
+                                                <option value='Básico'>TSU</option>
+                                                <option value='Medio diversificado'>Profesional</option>
+                                
                                             </select>
                                            
                                         </div>
@@ -611,9 +611,9 @@
 
                                     </div>
            -->
-                                    <div class="tab-pane" id="panel2" role="tabpanel">
+                                   <!-- <div class="tab-pane" id="panel2" role="tabpanel">-->
 
-                                    <div class="tab-pane" id="panel3" role="tabpanel">
+                                    <div class="tab-pane" id="panel2" role="tabpanel">
 
                                         <div class="row">
                                             <div class="col-md-12 text-center">
@@ -684,10 +684,26 @@
                                          <option value="0">
                                             No
                                         </option>
-                                    </select>
+                                       </select>
+                                        </div>
+                                          </div>
+
+                                          <br>
+                                    
+                                       </div class="col-md-3 mt-2"> 
+                                       <label for="direccion">Dirección</label>
+                                       <span style='display:none; color:red' id='valid_23'>Campo vacío</span>
+
+                                       <div class="input-group">
+                                            <textarea name="datos[direccion]" id="direccion" cols="50" rows="10" style="resize: both" placeholder="Escribir direccion de habitacion d ela persona"> </textarea>
+                                           
+                    
+                                       </div>
+                                                
                                 </div>
-                            </div>
-                                          <!--   <div class="col-md-12 mt-2">
+                                     
+                                     
+                                     <!--   <div class="col-md-12 mt-2">
                                                 <label for="telefono_casa">
                                                     Telefono de Casa
                                                 </label>
@@ -695,14 +711,12 @@
                                                     <input class="form-control mb-10" id="telefono_casa"
                                                         name="datos[telefono_casa]" placeholder="0000-000-0000"
                                                         type="text" />
-                                                </div>
+                                                        -->
+                                        <!-- </div>
+                                       </div> -->
 
-                                            </div> -->
-                                        </div>
-                                    </div>
-
-                                    <!--
-                                    <div class="tab-pane" id="panel3" role="tabpanel">
+                                       <!--
+                                        <div class="tab-pane" id="panel3" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
                                                 <h2>
@@ -845,10 +859,47 @@
                                 Información laboral
                             </h4>
                         </div>
-                       
+                        <div class="col-md-6 mt-2">
+                                                <div class="form-group">
+                                                    <label for="ing_seniat">
+                                                        Fecha de ingreso al SENIAT
+                                                    </label> <span style='display:none;color:red' id='valid_28'>Fecha de ingreso al SENIAT</span>
+                                                    <input class="form-control" id="ing_seniat"
+                                                    name="ing_seniat" type="date">
+                                                </input>
+                                            </div>
+                                                    </div>
+
+                        <div class="col-md-6 mt-2">
+                            <div class="form-group">
+                                <label for="ing_publica">Fecha de ingreso a la administrtación pública </label> 
+                                <span style='display:none; color:red' id='valid_29'>Fecha de ingreso a la administración pública</span>
+                            <input class="form-control" name="datos[ing_publica]"  id="ing_publica" type="date"></input>
+                                                    </div>
+                                                    </div>
+                        
+                                                    <div class="col-md-12 mt-2">
+                <label >
+                <!-- Proyectos ubicaciones -->
+              Ubicación del funcionario o la funcionaria
+             </label>
+              <table style='width:100%'>
+                 <!--<tr><td style='width:120%'> -->
+
+                <div  id='proyect_agregados'>
+                    <select class="form-control" id="ubicaciones"
+                    name="datos[ubicaciones]">
+                    <option value='vacio'>-Seleccione-</option>
+                    <?php foreach ($this->proyectos as $pr) { ?>
+                      <option value="<?php echo $pr['id_ubicacion']; ?>"><?php echo $pr['nombre_ubicacion']; ?></option>
+                  <?php   } ?>
+              </select>
+          </div>
+          
+                        
+                            <div class="col-md-12 mt-2">
 
 
-                        <div class="col-md-12 mt-2">
                             <label for="ocupacion">
                              Ocupación
                          </label>
@@ -916,7 +967,9 @@
 
             <div class="col-md-12 mt-2">
                 <label >
-                 Proyectos en los que labora
+
+                <!-- Proyectos ubicaciones -->
+              División y área del funcionario o la funcionaria
              </label>
              <table style='width:100%'><tr><td style='width:120%'>
 
@@ -929,36 +982,42 @@
                   <?php   } ?>
               </select>
           </div>
-          <div  style='display:none' id='nuevo_proyecto'>
-            <table style='width:100%'><tr><td>
-                <input type="text" id='nombre_proyecto' name="nombre_proyecto" placeholder="Nombre del proyecto" class='form-control'>
-            </td>
-            <td>
+          <div>
+          <td>
                 <select id='area_proyecto' class='form-control'>
                  <option value='vacio'>-Seleccione-</option>
-                 <option value='Construcción y mantenimiento'>Construcción y mantenimiento</option>
-                 <option value='Transporte'>Transporte</option>
-                 <option value='Alimentación'>Alimentación</option>
-                 <option value='Comunicación'>Comunicación</option>
-                 <option value='Textil o Artesanal'>Textil o Artesanal</option>
-                 <option value='Agricola'>Agricola</option>
-                 <option value='Cultural'>Cultural</option>
-                 <option value='Educativo'>Educativo</option>
+                 <option value='Administracion'>Administración</option>
+                 <option value="Asistencia">Asistencia al contribuyente</option>
+                 <option value="Recaudación">Recaudación</option>
+                 <option value='Ficalización'>Fiscalización</option>
+                 <option value='Transporte'>Sumario Administrativo</option>
+                 <option value='Comunicación'>Juridico Tributario</option>
+                 <option value='Textil o Artesanal'>Tramitaciones</option>
+                 <option value='Agricola'>Contribuyentes Especiales</option>
+                 <option value='Cultural'></option>
+                 <option value='Educativo'></option>
              </select>
          </td>
+<div>
+         <div  style='display:none' id='nuevo_proyecto'>
+            <!-- <table style='width:100%'><tr><td>
+                <input type="text" id='nombre_proyecto' name="nombre_proyecto" placeholder="Nombre del proyecto" class='form-control'>
+            </td> -->
+           
          <td>
-             <input type="text" id='estado_proyecto' name="estado_proyecto" placeholder="Estado del proyecto" class='form-control'> 
+             <input type="text" id='estado_proyecto' name="estado_proyecto" placeholder="Descripcion" class='form-control'> 
          </td></tr></table>
      </div>
  </td><td  ><input type="button" id="otro_proyecto" value="Otro" class='btn btn-info'></td>
  <td ><input type="button" id="agregar_proyecto" value="Agregar" class='btn btn-primary'></td></tr></table>
-</div>
+<!-- </div> -->
 
 <div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE;width: 100%;height: 200px !important' id='proyectos_persona'>
 
 
 </div>
-</div></div></div>
+</div></div> </div> 
+
 <div class="tab-pane" id="panel4" role="tabpanel">
     <div class="row">
         <div class="col-md-12 text-center">

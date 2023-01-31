@@ -69,13 +69,13 @@ var correo=document.getElementById("correo");
 var tipo_correo=document.getElementById("tipo_correo");
 var telefono=document.getElementById("telefono");
 var whatsapp=document.getElementById("whatsapp");
+var direccion=document.getElementById("direccion");
 
 
 //------------------ Información política-----------------------------------------//
 
-var tab_info_politica=document.getElementById("tab_4");
-var div_info_politica=document.getElementById("panel4");
-var org_politica=document.getElementById("organizacion_politica");
+
+/* var org_politica=document.getElementById("organizacion_politica");
 var nombre_organizacion=document.getElementById("nombre_organizacion");
 var btn_nueva_org=document.getElementById("btn_nueva_org");
 var bonos_persona=[];
@@ -93,7 +93,7 @@ var btn_nuevo_bono=document.getElementById("btn_nuevo_bono");
 var nombre_bono=document.getElementById("bono_nuevo");
 var btn_nueva_mision=document.getElementById("btn_nueva_mision");
 var nombre_mision=document.getElementById("nombre_mision");
-
+ */
 
 
 //-----------------------------Informacion laboral--------------------------------------------//
@@ -102,6 +102,8 @@ var nombre_mision=document.getElementById("nombre_mision");
 //var //div_info_laboral=document.getElementById("panel5");
 var ocupacion=document.getElementById("ocupacion");
 var btn_nueva_ocupacion=document.getElementById("btn_nueva_ocupacion");
+var fecha_seniat=document.getElementById("ing_seniat");
+var fecha_publica=document.getElementById("ing_publica");
 var nombre_ocupacion=document.getElementById("ocupacion_nueva");
 var nombre_condicion=document.getElementById("nombre_condicion_laboral");
 var nueva_cond=document.getElementById("nombre_cond_nueva");
@@ -124,6 +126,10 @@ var proyectos_persona=[];
 
 //var //tab_info_usuario=document.getElementById("tab_4");
 //var //div_info_usuario=document.getElementById("panel4");
+
+var tab_info_politica=document.getElementById("tab_4");
+var div_info_politica=document.getElementById("panel4");
+
 var contrasenia=document.getElementById("contrasenia");
 var valid_contrasenia=document.getElementById("valid_contrasenia");
 var confirmar=document.getElementById("confirmar");
@@ -731,9 +737,29 @@ function valid_element(mensaje_error,element,span_element){
 //_----------------------------validar info laboral--------------------------------------------//
 
 
+fecha_seniat.onchange=function(){valid_element("Debe ingresar la fecha de ingreso al seniat",fecha_seniat,document.getElementById("valid_28"));}
+
+if(valid_element("Debe indicar la fecha de ingreso al SENIAT",fecha_seniat,document.getElementById("valid_28"))){
+  if(new Date(fecha_seniat.value)>new Date()){
+    document.getElementById("valid_28").innerHTML="Fecha de ingreso al SENIAT errónea"
+    document.getElementById("valid_28").style.display='';
+    fecha_seniat.style.borderColor="red";
+  
+    
+  }
+  
+  }else{
+    document.getElementById("valid_28").style.display='none';
+    document.getElementById("valid_28")
+  
+  
+  }
+
 function valid_info_laboral(){
 
  var validar=false;
+
+
 
  if(ocupacion_nueva.style.display=='none'){
   if(valid_element("Debe indicar la ocupación de la persona",ocupacion,document.getElementById("valid_26"))){
@@ -880,7 +906,10 @@ telefono.oninput=function(){
 }
 
 telefono.onkeyup=function(){valid_element("Debe ingresar el número de teléfono de la persona",telefono,document.getElementById("valid_21"));}
-whatsapp.onchange=function(){valid_element("Inique si el número de teléfono posee WhatsApp",whatsapp,document.getElementById("valid_22"));}
+whatsapp.onchange=function(){valid_element("Indique si el número de teléfono posee WhatsApp",whatsapp,document.getElementById("valid_22"));}
+direccion.onchange=function(){valid_element("Debe ingresar la dirección de habitacion de la persona", direccion,document.getElementById("valid_23"));}
+fecha_seniat.onchange=function(){valid_element("Debe ingresarla fecha ",fecha_seniat,document.getElementById("valid_28"));}
+
 
 
 function valid_info_contacto(){
@@ -889,10 +918,14 @@ function valid_info_contacto(){
 
  if(valid_element("Debe ingresar el número de teléfono de la persona",telefono,document.getElementById("valid_21"))){
    if(valid_element("Inique si el número de teléfono posee WhatsApp",whatsapp,document.getElementById("valid_22"))){
+   if(valid_element("Debe ingresar la dirección de habitacion de la persona",direccion,document.getElementById("valid_23"))){
+    /*  if(valid_element("Debe ecribir la fecha de ingreso al SENIAT",fecha_seniat,document.getElementById("valid_28"))){ */
 
-    validar=true;
+     
+   
+      validar=true;
 
-  }	}
+  }	} } 
 
 
   return validar;
@@ -1262,8 +1295,8 @@ function control_indice(){
   tab_info_contacto.className="";
   div_info_contacto.style.display="none";
 
-tab_info_politica.className="";
-div_info_politica.style.display="none";
+  tab_info_politica.className="";
+  div_info_politica.style.display="none";
 
 
   //tab_info_laboral.className="";
@@ -1286,6 +1319,7 @@ div_info_politica.style.display="none";
   tab_info_personal.className='';
   div_info_personal.style.display="none";
 
+  
   tab_info_politica.className="";
   div_info_politica.style.display="none";
 
@@ -1306,12 +1340,17 @@ div_info_politica.style.display="none";
   tab_info_politica.className="nav-link active";
   div_info_politica.style.display="block";
 
-  tab_info_personal.className='';
-  div_info_personal.style.display="none";  
+  tab_info_contacto.className="";
+  div_info_contacto.style.display="none";
 
   tab_doc_personales.className='';
   div_doc_personales.style.display="none";
 
+
+  tab_info_personal.className='';
+  div_info_personal.style.display="none";  
+
+ 
   
 
  //tab_info_laboral.className="";
@@ -1322,8 +1361,7 @@ div_info_politica.style.display="none";
 
 
 
-  tab_info_contacto.className="";
-  div_info_contacto.style.display="none";
+ 
 
 
  
@@ -1723,9 +1761,10 @@ function enviar_informacion(){
   //datos_persona['jefe_calle']=jefe_calle.value;
   //datos_persona['miliciano']=miliciano.value;
   //datos_persona['comunidad_indigena']=comunidad_indigena.value;
-  //datos_persona['privado_libertad']=privado_libertad.value; 
+  datos_persona['direccion']=direccion.value; 
   datos_persona['telefono']=telefono.value;
   datos_persona['whatsapp']=whatsapp.value;
+  datos_persona['ing_seniat']=fecha_seniat.value;
   correo.value==""?datos_persona['correo']="No posee" : datos_persona['correo']=correo.value+tipo_correo.value;
   datos_persona['contrasenia']=contrasenia.value;
   datos_persona['preguntas_seguridad']=color.value.toLowerCase()+animal.value.toLowerCase()+mascota.value.toLowerCase();
@@ -1811,6 +1850,10 @@ function enviar_informacion(){
     registrar_carnets(datos_persona['carnet_discapacidad'],3);
 
 */
+
+if(proyectos_persona.length!=0){
+  registrar_proyectos_persona();
+}
     swal({
      title:"Éxito",
      text:"La persona ha sido registrada exitosamente",
@@ -1828,7 +1871,7 @@ function enviar_informacion(){
 
 function registrar_carnets(carnet,tipo){
 
-  if(carnet!=''){
+  if(carnet!=' '){
     $.ajax({
       type:"POST",
       url:BASE_URL+"Personas/registrar_carnet",

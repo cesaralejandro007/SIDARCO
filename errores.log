@@ -1868,3 +1868,195 @@ stdClass Object
     [Linea] => 50
     [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
 )
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:42:41 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 35
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:42:41 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 171
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:42:41 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 205
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:42:41 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 188
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:42:54 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 35
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:42:54 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 171
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:42:54 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 205
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:42:54 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 188
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:43:02 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 35
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:43:02 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 171
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:43:02 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 205
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 11:43:02 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 188
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:02:31 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 35
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:02:31 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 171
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:02:31 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 205
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:02:31 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 188
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:03:01 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 35
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:03:01 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 171
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:03:01 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 205
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:03:01 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 188
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:03:14 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 35
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:03:15 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 171
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:03:15 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 205
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 12:03:15 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\modelo\reportes_class.php
+    [Linea] => 188
+    [Mensaje] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.miliciano' in 'where clause'
+)
