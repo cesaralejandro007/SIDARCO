@@ -78,7 +78,8 @@ class Personas_Class extends Modelo
                 contrasenia,
                 rol_inicio,
                 preguntas_seguridad,
-                estado
+                estado,
+                direccion
                 ) VALUES (
                 :cedula_persona,
                 :primer_nombre,
@@ -99,7 +100,8 @@ class Personas_Class extends Modelo
                 :contrasenia,
                 :rol_inicio,
                 :preguntas_seguridad,
-                :estado
+                :estado,
+                :direccion
                 )');
 
             $datos->execute([
@@ -122,7 +124,8 @@ class Personas_Class extends Modelo
                 'contrasenia'           =>       $data['contrasenia'],
                 'rol_inicio'            =>       $data['rol_inicio'],
                 'preguntas_seguridad'   =>       $data['preguntas_seguridad'],
-                'estado'                =>       $data['estado']
+                'estado'                =>       $data['estado'],
+                'direccion'             =>       $data['direccion']
             ]);
 
             return true;
