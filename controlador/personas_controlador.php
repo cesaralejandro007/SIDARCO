@@ -200,12 +200,16 @@ public function consultar_informacion_persona(){
     "primer_nombre"  =>$p['primer_nombre'],
     "primer_apellido" =>$p['primer_apellido'],
     "telefono"        =>$p['telefono'],
+    "correo"          =>$p['correo'],
+    "fecha_nacimiento"          =>$p['fecha_nacimiento'],
     "genero"          =>$genero,
-    "ver"             =>"<button class='btn btn-primary' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$proyectos."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
+    "estado_civil"          =>$p['estado_civil'],
+    "nivel_educativo"          =>$p['nivel_educativo'],
+    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$proyectos."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
 
-    "editar"             =>"<button class='btn btn-success' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$proyectos."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
+    "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$proyectos."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
 
-    "eliminar"             => "<button class='btn btn-danger' type='button' title='Eliminar persona' onclick='eliminar_datos(`".$p['cedula_persona']."`)'><span class='fa fa-trash'></span></button>",
+    "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Eliminar persona' onclick='eliminar_datos(`".$p['cedula_persona']."`)'><span class='fa fa-trash'></span></button>",
   ];
 
 

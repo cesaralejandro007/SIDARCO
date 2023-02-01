@@ -21,6 +21,12 @@
     <link rel="stylesheet"
         href="<?php echo constant('URL')?>config/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
+    
+    <link rel="stylesheet" href="<?php echo constant('URL')?>config/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="<?php echo constant('URL')?>config/css/datatables.min.css">
+
+
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/css/adminlte.min.css">
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/font-awesome/css/all.min.css">
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/font-awesome/css/font-awesome.min.css">
@@ -28,8 +34,8 @@
     <link href="<?php echo constant('URL')?>config/plugins/sweetalert/sweetalert.css" rel="stylesheet">
 
     <!-- jquery -->
-    <script src="<?php echo constant('URL')?>config/plugins/jquery/jquery.min.js"></script>
-
+    <script src="<?php echo constant('URL')?>config/plugins/jquery/jquery-3.6.3.min.js"></script>
+    <script src="<?php echo constant('URL')?>config/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
     <style>
     @import url(<?php echo constant('URL')?>config/scss/icons/font-awesome/css/font-awesome.min.css);
     @import url(<?php echo constant('URL')?>config/scss/icons/simple-line-icons/css/simple-line-icons.css);

@@ -82,7 +82,8 @@ $(function() {
             "info": true,
             "processing": true,
             "pageLength": 10,
-            "lengthMenu": [5, 10, 20, 30, 40, 50, 100]
+            "lengthMenu": [5, 10, 20, 30, 40, 50, 100],
+            "buttons": ["excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $(document).on('click', '.editar', function() {
             fila = $(this).closest("tr");

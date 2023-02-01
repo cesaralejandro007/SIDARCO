@@ -1,5 +1,6 @@
 <?php include (call."Inicio.php"); ?>
 <?php include (call."data-table.php"); ?>
+<?php include (call."main.php"); ?>
 
 <!-- Contenido de la pagina -->
 <div class="content-wrapper">
@@ -33,7 +34,11 @@
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Teléfono</th>
+                            <th>correo</th>
                             <th>Género</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Estado Civil</th>
+                            <th>Nivel Educativo</th>
                             <th style="width: 20px;">Ver</th> 
                             <?php if($_SESSION['Personas']['modificar']){ ?>  
                             <th style="width: 20px;">Editar</th>
@@ -58,46 +63,112 @@
 }).done(function(datos) {
     var data = JSON.parse(datos);
     console.log(data);
-    $("#example1").DataTable({
+    var table = $("#example1").DataTable({
+        dom: "B<'row'<'col-sm-6'><'col-sm-6'f>>" +
+      "<'row'<'col-sm-12'tr>>" +
+      "<'row'<'col-sm-5'li><'col-sm-7'p>>",
         "data": data,
         "columns": [{
             "data": "cedula"
         },
         {
-            "data": "primer_nombre"
+            data: "primer_nombre"
         },
         {
-            "data": "primer_apellido"
+            data: "primer_apellido"
         },
         {
-            "data":"telefono"
+            data:"telefono"
         },
         {
-            "data":"genero"
+            data:"correo"
         },
         {
-            "data": "ver"
+            data:"genero"
+        },
+        {
+            data:"fecha_nacimiento"
+        },
+        {
+            data:"estado_civil"
+        },
+        {
+            data:"nivel_educativo"
+        },
+        {
+            data: "ver"
         },
          <?php if($_SESSION['Personas']['modificar']){ ?> 
         {
-            "data": "editar"
+            data: "editar"
         },
     <?php } ?>
      <?php if($_SESSION['Personas']['eliminar']){ ?> 
         {
-            "data": "eliminar"
+            data: "eliminar"
         }
     <?php } ?>
         ],
-        "responsive": true,
-        "autoWidth": false,
-        "ordering": true,
-        "info": true,
-        "processing": true,
-        "pageLength": 10,
-        "lengthMenu": [5, 10, 20, 30, 40, 50, 100]
-    }).buttons().container().appendTo(
-    '#example1_wrapper .col-md-6:eq(0)');
+        responsive: true,
+        autoWidth: false,
+        ordering: true,
+        info: true,
+        processing: true,
+        pageLength: 10,
+        lengthMenu: [5, 10, 20, 30, 40, 50, 100],
+        buttons:[ 
+    {
+      extend:    'excelHtml5',
+      filename: function() {
+        return "EXCEL-Personas"      
+      },          
+      title: function() {
+        var searchString = table.search();        
+        return searchString.length? "Search: " + searchString : "Reporte de Personas"
+      },
+      text:      '<i class="fas fa-file-excel"></i> ',
+      titleAttr: 'Exportar a Excel',
+      className: 'btn btn-success',
+      exportOptions: {
+        columns: [0,1,2,3,4,5,6,7,8]
+    }
+    },
+    {
+      extend:    'pdfHtml5',
+      filename: function() {
+        return "PDF-Personas"      
+      },          
+      title: function() {
+        var searchString = table.search();        
+        return searchString.length? "Search: " + searchString : "Reporte de Personas"
+      },
+      text:      '<i class="fas fa-file-pdf"></i> ',
+      titleAttr: 'Exportar a PDF',
+      className: 'btn btn-danger',
+      exportOptions: {
+        columns: [0,1,2,3,4,5,7]
+    }
+  },
+    {
+      extend:    'print',
+      filename: function() {
+        return "Print-Personas"      
+      },          
+      title: function() {
+        var searchString = table.search();        
+        return searchString.length? "Search: " + searchString : "Reporte de Personas"
+      },
+      text:      '<i class="fa fa-print"></i> ',
+      titleAttr: 'Imprimir',
+      className: 'btn btn-info',
+      exportOptions: {
+        columns: [0,1,2,3,4,5,6,7,8]
+    }
+    },    
+  ]  
+} );
+ table.buttons().container()
+     .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
 
 
 }).fail(function() {
@@ -106,7 +177,6 @@
 
 });
 }
-
                         </script>
                     </tbody>
                     <tfoot>
@@ -115,7 +185,11 @@
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Teléfono</th>
+                            <th>correo</th>
                             <th>Género</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Estado Civil</th>
+                            <th>Nivel Educativo</th>
                             <th>Ver</th> 
                              <?php if($_SESSION['Personas']['modificar']){ ?> 
                             <th>Editar</th>

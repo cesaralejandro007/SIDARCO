@@ -17,7 +17,7 @@ function ver_datos(
   var misiones_info = JSON.parse(misiones);
   var proyectos_info = JSON.parse(proyectos);
   var comunidad_i_info = JSON.parse(comunidad_i);
-  var org_politica_info = JSON.parse(org_politica);
+  //var org_politica_info = JSON.parse(org_politica);
 
   var tabla =
     "<div style='height:380px;overflow-y:scroll;'><em class='fa fa-user' style='font-size:60px'></em>";
@@ -110,22 +110,22 @@ function ver_datos(
 
   var tabla6 =
     "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Organización política</td><td style='width:25%'>Transporte</td><td style='width:25%'>Bonos</td><td style='width:25%'>Misiones</td></tr>";
-  var org;
+/*   var org;
   org_politica_info.length == 0
     ? (org = "No")
     : (org = org_politica_info[0]["nombre_org"]);
-
-  var transp;
+ */  
+var transp;
 
   transporte_info.length == 0
     ? (transp = "Público")
     : (transp = transporte_info[0]["descripcion_transporte"]);
 
-  tabla6 +=
+/*   tabla6 +=
     "<tr><td style='width:25%'><em class='fa fa-puzzle-piece'></em> " +
     org +
     "</td>";
-
+ */
   tabla6 +=
     "<td style='width:25%'><em class='fa fa-car'></em> " + transp + "</td>";
 
