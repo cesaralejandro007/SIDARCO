@@ -27,6 +27,44 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body" >
+            <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header" style="background:#15406D; color:white;">
+                            <h3 class="card-title font-weight-bold">CRITERIOS DE BUSQUEDA</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" style="color:white"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 d-flex flex-wrap justify-content-center">
+                                    <div style="" class="m-1">
+                                        <input type="text" id="Cedulaf" class="form-control" placeholder="Cedula" data-index="0">
+                                    </div>
+                                    <div style="" class="m-1">
+                                        <input type="text" id="Nombref" class="form-control" placeholder="Nombre" data-index="1">
+                                    </div>
+                                    <div style="" class="m-1">
+                                        <input type="text" id="Apellidof" class="form-control" placeholder="Apellido" data-index="2">
+                                    </div>
+                                    <div style="" class="m-1">
+                                        <input type="text" id="Correof" class="form-control" placeholder="Correo" data-index="4">
+                                    </div>
+                                    <div style="" class="m-1">
+                                        <input type="text" id="Generof" class="form-control" placeholder="Genero" data-index="5">
+                                    </div>
+                                    <div style="" class="m-1">
+                                        <input type="text" id="Fechanf" class="form-control" placeholder="Fecha de Nacimiento" data-index="6">
+                                    </div>
+                                    <div style="" class="m-1">
+                                        <input type="text" id="Nivelef" class="form-control" placeholder="Nivel Educativo" data-index="8">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
                 <table id="example1" class="table table-bordered  table-hover">
                     <thead>
                         <tr>
@@ -67,6 +105,8 @@
         dom: "B<'row'<'col-sm-6'><'col-sm-6'f>>" +
       "<'row'<'col-sm-12'tr>>" +
       "<'row'<'col-sm-5'li><'col-sm-7'p>>",
+      orderCellsTop: true,
+      fixedHeader: true, 
         "data": data,
         "columns": [{
             "data": "cedula"
@@ -170,6 +210,30 @@
  table.buttons().container()
      .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
 
+     table.buttons().container()
+     .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
+
+     $("#Cedulaf").keyup(function() {
+    table.column($(this).data('index')).search(this.value).draw();
+    });
+    $("#Nombref").keyup(function() {
+    table.column($(this).data('index')).search(this.value).draw();
+    });
+    $("#Apellidof").keyup(function() {
+    table.column($(this).data('index')).search(this.value).draw();
+    });
+    $("#Correof").keyup(function() {
+        table.column($(this).data('index')).search(this.value).draw();
+    });
+    $("#Generof").keyup(function() {
+    table.column($(this).data('index')).search(this.value).draw();
+    });
+    $("#Fechanf").keyup(function() {
+    table.column($(this).data('index')).search(this.value).draw();
+    });
+    $("#Nivelef").keyup(function() {
+    table.column($(this).data('index')).search(this.value).draw();
+    });
 
 }).fail(function() {
     alert("error")

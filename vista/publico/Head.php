@@ -25,7 +25,8 @@
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/css/datatables.min.css">
-
+    <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/datatables/media/css/select.dataTables.min.css">
+    <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/datatables/media/css/fixedHeader.dataTables.min.css">
 
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/css/adminlte.min.css">
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/font-awesome/css/all.min.css">

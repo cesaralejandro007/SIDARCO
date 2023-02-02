@@ -8,6 +8,10 @@
 
 <script src="<?php echo constant('URL')?>config/plugins/datatables/media/js/datatables.min.js"></script>
 
+<script src="<?php echo constant('URL')?>config/plugins/datatables/media/js/fixedHeader.dataTables.min.js"></script>
+
+<script src="<?php echo constant('URL')?>config/plugins/datatables/media/js/dataTables.select.min.js"></script>
+
 <script src="<?php echo constant('URL')?>config/plugins/datatables/media/js/dataTables.buttons.min.js"></script>
 
 <script src="<?php echo constant('URL')?>config/plugins/datatables/media/js/buttons.flash.min.js"></script>
