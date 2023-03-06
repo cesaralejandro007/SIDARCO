@@ -100,16 +100,14 @@ DataTable.ext.renderer.header.jqueryui = function ( settings, cell, column, clas
 		noSortAppliedClass = sort_prefix+'caret-1-s';
 	}
 
-	if(!cell.contents().hasClass('DataTables_sort_wrapper')){
-		// Setup the DOM structure
-		$('<div/>')
-			.addClass( 'DataTables_sort_wrapper' )
-			.append( cell.contents() )
-			.append( $('<span/>')
-				.addClass( classes.sSortIcon+' '+noSortAppliedClass )
-			)
-			.appendTo( cell );
-	}
+	// Setup the DOM structure
+	$('<div/>')
+		.addClass( 'DataTables_sort_wrapper' )
+		.append( cell.contents() )
+		.append( $('<span/>')
+			.addClass( classes.sSortIcon+' '+noSortAppliedClass )
+		)
+		.appendTo( cell );
 
 	// Attach a sort listener to update on sort
 	$(settings.nTable).on( 'order.dt', function ( e, ctx, sorting, columns ) {
