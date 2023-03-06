@@ -29,10 +29,10 @@
             <div class="card-body" >
             <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header" style="background:#15406D; color:white;">
+                        <div class="card-header" style="background:#C29C9C;">
                             <h3 class="card-title font-weight-bold">CRITERIOS DE BUSQUEDA</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" style="color:white"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" style="color:black"></i></button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -65,10 +65,10 @@
                     </div>
 
             </div>
-                <table id="example1" class="table table-bordered  table-hover">
+                <table id="example1" class="table table-bordered table-responsive table-hover">
                     <thead>
                         <tr>
-                            <th>Cedula</th>
+                            <th>Cedula</th> 
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Teléfono</th>
@@ -88,6 +88,7 @@
                     </thead>
                     <tbody>
                         <script type="text/javascript">
+                            
 
                   cargar_tabla_personas();
 
@@ -168,7 +169,7 @@
       },
       text:      '<i class="fas fa-file-excel"></i> ',
       titleAttr: 'Exportar a Excel',
-      className: 'btn btn-success',
+      className: 'btn text-success border border-success',
       exportOptions: {
         columns: [0,1,2,3,4,5,6,7,8]
     }
@@ -184,7 +185,7 @@
       },
       text:      '<i class="fas fa-file-pdf"></i> ',
       titleAttr: 'Exportar a PDF',
-      className: 'btn btn-danger',
+      className: 'btn text-danger border border-danger',
       exportOptions: {
         columns: [0,1,2,3,4,5,7]
     }
@@ -200,7 +201,7 @@
       },
       text:      '<i class="fa fa-print"></i> ',
       titleAttr: 'Imprimir',
-      className: 'btn btn-info',
+      className: 'btn text-info border border-info',
       exportOptions: {
         columns: [0,1,2,3,4,5,6,7,8]
     }

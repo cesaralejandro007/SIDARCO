@@ -27,4 +27,3 @@
 <script src="<?php echo constant('URL')?>config/plugins/datatables/media/js/buttons.print.min.js"></script>
 
 <script src="<?php echo constant('URL')?>config/js/news/Data_Tables_Español.js"></script>
-   
