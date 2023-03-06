@@ -182,8 +182,7 @@
 
                                         </div>
 
-
-
+                                   
                                         <div class="col-md-6 mt-2">
                                             <label for="estado_civil">
                                                 Estado Civil
@@ -620,7 +619,7 @@
                                                 <h2>
                                                     Información de Contacto
                                                 </h2>
-                                            </div>
+                                            </div> 
                                             <div class="col-md-12 mt-2">
                                                 <div class="form-group">
                                                     <label for="correo">
@@ -653,27 +652,28 @@
                                                 </input>
                                             </div>
 
-                                        </div>
-                                       </div>
+                                           </div>
 
-                                     <div class="col-md-9 mt-2">
-                                        <label for="telefono_personal">
-                                            Telefono Personal
-                                        </label>
-                                        <span style='display:none;color:red' id='valid_21'>Ingrese el número de teléfono</span>
-                                        <div class="input-group">
+                                            </div>
+                                            <!--  -->
+                                            <div class="col-md-9 mt-2">
+                                    
+                                          <label for="telefono_personal">
+                                            Teléfono Personal
+                                          </label>
+                                           <span style='display:none;color:red' id='valid_21'>Ingrese el número de teléfono</span>
+                                           <div class="input-group">
                                             <input class="form-control mb-10 solo-numeros no-espacios" id="telefono"
                                             name="datos[telefono]" placeholder="0000-000-0000"
                                             type="number" oninput="Limitar(this,12)"/>
-                                        </div>
+                                          </div> 
 
-                                      </div>
-                                      <div class="col-md-3 mt-2">
-                                        <label for="whatsapp">
+                                          <div class="col-md-3 mt-2">
+                                           <label for="whatsapp">
                                             <i class="fa fa-whatsapp" style="font-size: 15px;"></i> WhatsApp
-                                        </label>
-                                        <span style='display:none;color:red' id='valid_22'>Campo vacío</span>
-                                        <div class="input-group">
+                                          </label>
+                                           <span style='display:none;color:red' id='valid_22'>Campo vacío</span>
+                                           <div class="input-group">
                                            <select class="custom-select" id="whatsapp" name="datos[whatsapp]">
                                             <option selected="" value="vacio">
                                                 -Seleccione-
@@ -683,25 +683,43 @@
                                          </option>
                                          <option value="0">
                                             No
-                                        </option>
-                                       </select>
-                                        </div>
-                                          </div>
+                                          </option>
+                                           </select>
+                                           </div>
+                                           </div>
+                                                
+                                        
+                                       </div> 
+                                       
+                                       <!-- </div class="col-md-3 mt-2">  -->
+                                         <!-- 
 
-                                          <br>
-                                    
-                                       </div class="col-md-3 mt-2"> 
+                                                <label for="telefono_de casa">
+                                                    Telefono de casa
+                                                </label>
+                                                <span style='display:none;color:red' id='valid_40'>Ingrese el número de casa</span>
+                                                <div class="input-group">
+                                                    <input class="form-control mb-10 solo-numeros no-espacios" id="telf_casa"
+                                                    name="datos[telf_casa]" placeholder="0000-000-0000"
+                                                    type="number" oninput="Limitar(this,12)"/>
+                                                </div>
+
+                                                </div> -->
+
+                                                <div class="col-md-9 mt-2">
                                        <label for="direccion">Dirección</label>
                                        <span style='display:none; color:red' id='valid_23'>Campo vacío</span>
 
                                        <div class="input-group">
-                                            <textarea name="datos[direccion]" id="direccion" cols="50" rows="10" style="resize: both" placeholder="Escribir direccion de habitacion d ela persona"> </textarea>
+                                            <textarea name="datos[direccion]" id="direccion" cols="80" rows="10" style="resize: both" placeholder="Escribir direccion de habitacion d ela persona"> </textarea>
                                            
                     
                                        </div>
-                                                
+           
                                 </div>
-                                     
+                                </div>
+           
+           </div>
                                      
                                      <!--   <div class="col-md-12 mt-2">
                                                 <label for="telefono_casa">
@@ -847,9 +865,9 @@
 
                     </div>
 
-
+                      
                 </div>
-                                                    -->
+                       -->                             
                 <div class="tab-pane" id="panel3" role="tabpanel">
 
 
@@ -860,15 +878,14 @@
                             </h4>
                         </div>
                         <div class="col-md-6 mt-2">
-                                                <div class="form-group">
-                                                    <label for="ing_seniat">
-                                                        Fecha de ingreso al SENIAT
-                                                    </label> <span style='display:none;color:red' id='valid_28'>Fecha de ingreso al SENIAT</span>
-                                                    <input class="form-control" id="ing_seniat"
-                                                    name="ing_seniat" type="date">
-                                                </input>
-                                            </div>
-                                                    </div>
+                              <div class="form-group">
+                                   <label for="ing_seniat">
+                                     Fecha de ingreso al SENIAT
+                                      </label>
+                                          <span style='display:none;color:red' id='valid_28'>Fecha de ingreso al SENIAT</span>
+                                              <input class="form-control" id="ing_seniat"   name="ing_seniat" type="date"> </input>
+                                                   </div>
+                                                       </div>
 
                         <div class="col-md-6 mt-2">
                             <div class="form-group">
@@ -878,12 +895,116 @@
                                                     </div>
                                                     </div>
                         
-                                                    <div class="col-md-12 mt-2">
+                                                   
+
+
+                             <div class="col-md-6 mt-2">
+                            <div class="form-group">
+                                <label for="fecha_notificacion">Fecha de la noticación</label> 
+                                <span style='display:none; color:red' id='valid_30'>Ingrese fecha de notificación</span>
+                            <input class="form-control" name="datos[fecha_notificacion]"  id="fecha_notificacion" type="date"></input>
+                                         </div>
+                                         </div>
+
+                                         <div class="col-md-6 mt-2">
+                            <div class="form-group">
+                                <label for="ult_designacion">Última designación</label> 
+                                <span style='display:none; color:red' id='valid_31'>Ingrese fecha de designación</span>
+                            <input class="form-control" name="datos[ult_designacion]"  id="ult_designacion" type="date"></input>
+                                                    </div>
+                        
+                        </div>
+                                         
+
+                                         <div class="col-md-6 mt-2">
+                                            <label for="prima">
+                                                Cobra Prima
+                                            </label>
+                                            <span style='display:none;color:red' id='valid_32'>Debe seleccionar si recibe prima</span>
+                                            <div class="input-group">
+                                                <select class="custom-select" id="prima" name="datos[prima]">
+                                                    <option selected="" value="vacio">
+                                                        -Seleccione-
+                                                    </option>
+                                                    <option value="S">
+                                                            Sí
+                                                    </option>
+                                                    <option value="N">
+                                                        No
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Si cesar realiza los filtro en consultar no modifico el value de los select -->
+                                        <div class="col-md-6 mt-2">
+                                            <label for="declaracion_j">
+                                                Declaración Jurada
+                                            </label>
+                                            <span style='display:none;color:red' id='valid_33'>Debe seleccionar alguna opción</span>
+                                            <div class="input-group">
+                                                <select class="custom-select" id="declaracion_j" name="datos[declaracion_j]">
+                                                    <option selected="" value="vacio">
+                                                        -Seleccione-
+                                                    </option>
+                                                    <option value="S">
+                                                            Sí
+                                                    </option>
+                                                    <option value="N">
+                                                        No
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mt-2">
+                                            <label for="incripcion_ivss">
+                                                Inscripción en el IVSS
+                                            </label>
+                                            <span style='display:none;color:red' id='valid_34'>Debe seleccionar alguna opción</span>
+                                            <div class="input-group">
+                                                <select class="custom-select" id="inscripcion_ivss" name="datos[inscripcion_ivss]">
+                                                    <option selected="" value="vacio">
+                                                        -Seleccione-
+                                                    </option>
+                                                    <option value="S">
+                                                            Sí
+                                                    </option>
+                                                    <option value="N">
+                                                        No
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mt-2">
+                                            <label for="fideicomiso">
+                                                Posee cuenta de fideicomiso
+                                            </label>
+                                            <span style='display:none;color:red' id='valid_35'>Debe seleccionar alguna opción</span>
+                                            <div class="input-group">
+                                                <select class="custom-select" id="fideicomiso" name="datos[fideicomiso]">
+                                                    <option selected="" value="vacio">
+                                                        -Seleccione-
+                                                    </option>
+                                                    <option value="S">
+                                                            Sí
+                                                    </option>
+                                                    <option value="N">
+                                                        No
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                        
+                <div class="col-md-12 mt-2">
+                                        
                 <label >
                 <!-- Proyectos ubicaciones -->
               Ubicación del funcionario o la funcionaria
              </label>
               <table style='width:100%'>
+              
                  <!--<tr><td style='width:120%'> -->
 
                 <div  id='proyect_agregados'>
@@ -891,13 +1012,13 @@
                     name="datos[ubicaciones]">
                     <option value='vacio'>-Seleccione-</option>
                     <?php foreach ($this->proyectos as $pr) { ?>
-                      <option value="<?php echo $pr['id_ubicacion']; ?>"><?php echo $pr['nombre_ubicacion']; ?></option>
+                      <option value="<?php echo $pr['id_ubicacion']; ?>"><?php echo $pr['nombre_ubi']; ?></option>
                   <?php   } ?>
               </select>
-          </div>
+          </div> 
           
                         
-                            <div class="col-md-12 mt-2">
+                             <div class="col-md-12 mt-2">
 
 
                             <label for="ocupacion">
@@ -915,7 +1036,7 @@
 
                                            <input style='display:none' type="text" class='form-control' id='ocupacion_nueva' name="ocupacion" placeholder="Ocupación de la persona">
                                        </div>
-                                   </td><td><input type="button" id='btn_nueva_ocupacion' class='btn btn-info' value='Nueva' name=""></td></tr></table>
+                                   </td><td><input type="button" id='btn_nueva_ocupacion' class='btn btn-info' value='Nueva' name=""></td></tr></table> 
 
 
                                    <div class="col-md-12 mt-2">
@@ -927,13 +1048,18 @@
                                         <div class="input-group">
 
                                          <select class='form-control' id="nombre_condicion_laboral">
-                                            <option value='0'>Desempleado</option>
+                                            <option value='0'>Jubilado</option>
+                                            <!-- <option value='1'>Reposo</option>
+                                            <option value='2'>Vacaciones</option>
+                                            <option value='3'>Renuncia</option>
+                                            <option value='4'>Despido</option> -->
                                             <?php foreach ($this->condiciones as $cond) { ?>
                                                 <option value='<?php echo $cond["nombre_cond_laboral"]; ?>'><?php echo $cond['nombre_cond_laboral'];?></option>
                                                 <?php      } ?></select>
                                                 <input style='display:none' class='form-control' type="text" id='nombre_cond_nueva'  placeholder="Nombre de la condición laboral" >
                                             </div>
-                                        </td><td>
+                                        </td>
+                                        <td>
                                            <select class="form-control" id="sector_laboral"
                                            name="datos[sector_laboral]">
                                            <option value='vacio'>-Sector Laboral-</option>
@@ -1016,7 +1142,9 @@
 
 
 </div>
-</div></div> </div> 
+</div>
+</div> 
+</div> 
 
 <div class="tab-pane" id="panel4" role="tabpanel">
     <div class="row">
