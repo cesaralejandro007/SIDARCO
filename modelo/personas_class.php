@@ -79,7 +79,16 @@ class Personas_Class extends Modelo
                 rol_inicio,
                 preguntas_seguridad,
                 estado,
-                direccion
+                direccion,
+                ing_seniat,
+                ing_publica,
+                fecha_notificacion,
+                ult_designacion,
+                prima,
+                declaracion_j,
+                inscripcion_ivss,
+                fideicomiso,
+                telf_casa
                 ) VALUES (
                 :cedula_persona,
                 :primer_nombre,
@@ -101,7 +110,16 @@ class Personas_Class extends Modelo
                 :rol_inicio,
                 :preguntas_seguridad,
                 :estado,
-                :direccion
+                :direccion,
+                :ing_seniat,
+                :ing_publica,
+                :fecha_notificacion,
+                :ult_designacion,
+                :prima,
+                :declaracion_j,
+                :inscripcion_ivss,
+                :fideicomiso,
+                :telf_casa
                 )');
 
             $datos->execute([
@@ -125,7 +143,16 @@ class Personas_Class extends Modelo
                 'rol_inicio'            =>       $data['rol_inicio'],
                 'preguntas_seguridad'   =>       $data['preguntas_seguridad'],
                 'estado'                =>       $data['estado'],
-                'direccion'             =>       $data['direccion']
+                'direccion'             =>       $data['direccion'],
+                'ing_seniat'            =>       $data['fecha_seniat'],
+                'ing_publica'           =>       $data['fecha_publica'],
+                'fecha_notificacion'    =>       $dats['fecha_notificacion'],
+                'ult_designacion'       =>       $data['ult_designacion'],
+                'prima'                 =>       $data['prima'],
+                'declaracion_j'         =>       $data['declaracion_j'],
+                'inscripcion_ivss'      =>       $data['inscripcion_ivss'],
+                'fideicomiso'           =>       $data['fideicomiso'],
+                'telf_casa'             =>       $data['telf_casa']
             ]);
 
             return true;
@@ -597,7 +624,11 @@ class Personas_Class extends Modelo
                 genero                  =:genero,
                 whatsapp                =:whatsapp,
                 antiguedad_comunidad    =:antiguedad_comunidad,
-                nivel_educativo         =:nivel_educativo
+                nivel_educativo         =:nivel_educativo,
+                direccion               =:direccion,
+                ing_seniat              =:ing_seniat,
+                ing_publica             =:ing_publica
+
 
                 WHERE cedula_persona =:cedula_persona"
             );
@@ -618,7 +649,10 @@ class Personas_Class extends Modelo
                 'genero'                    =>$data['genero'],
                 'whatsapp'                  =>$data['whatsapp'],
                 'antiguedad_comunidad'      =>$data['antiguedad_comunidad'],
-                'nivel_educativo'           =>$data['nivel_educativo']
+                'nivel_educativo'           =>$data['nivel_educativo'],
+                'direccion'                 =>$data['direccion'],
+                'ing_seniat'                =>$data['ing_seniat'],
+                'ing_publica'               =>$data['ing_publica']
 
             ]);
 
