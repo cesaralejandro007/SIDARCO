@@ -207,7 +207,7 @@
                                         </div>
                                         <div class="col-md-6 mt-2">
                                             <label for="genero">
-                                                Sexo
+                                                Género
                                             </label>
                                             <span style='display:none;color:red' id='valid_8'>Ingrese el género</span>
                                             <div class="input-group">
@@ -216,10 +216,10 @@
                                                         -Seleccione-
                                                     </option>
                                                     <option value="M">
-                                                        Mujer
+                                                        Femenino
                                                     </option>
                                                     <option value="F">
-                                                        Hombre
+                                                        Masculino
                                                     </option>
                                                 </select>
                                             </div>
@@ -880,7 +880,7 @@
                         <div class="col-md-6 mt-2">
                               <div class="form-group">
                                    <label for="ing_seniat">
-                                     Fecha de ingreso al SENIAT
+                                     Ingreso al SENIAT
                                       </label>
                                           <span style='display:none;color:red' id='valid_28'>Fecha de ingreso al SENIAT</span>
                                               <input class="form-control" id="ing_seniat"   name="ing_seniat" type="date"> </input>
@@ -889,7 +889,7 @@
 
                         <div class="col-md-6 mt-2">
                             <div class="form-group">
-                                <label for="ing_publica">Fecha de ingreso a la administrtación pública </label> 
+                                <label for="ing_publica">Ingreso a la administrtación pública </label> 
                                 <span style='display:none; color:red' id='valid_29'>Fecha de ingreso a la administración pública</span>
                             <input class="form-control" name="datos[ing_publica]"  id="ing_publica" type="date"></input>
                                                     </div>

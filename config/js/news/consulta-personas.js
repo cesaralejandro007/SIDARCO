@@ -6,8 +6,8 @@ function ver_datos(
   bonos,
   misiones,
   proyectos,
-  comunidad_i,
-  org_politica
+   comunidad_i, 
+   org_politica 
 ) {
   var persona_info = JSON.parse(persona);
   var ocupacion_info = JSON.parse(ocupacion);
@@ -16,8 +16,8 @@ function ver_datos(
   var bonos_info = JSON.parse(bonos);
   var misiones_info = JSON.parse(misiones);
   var proyectos_info = JSON.parse(proyectos);
-  var comunidad_i_info = JSON.parse(comunidad_i);
-  //var org_politica_info = JSON.parse(org_politica);
+ var comunidad_i_info = JSON.parse(comunidad_i); 
+ var org_politica_info = JSON.parse(org_politica); 
 
   var tabla =
     "<div style='height:380px;overflow-y:scroll;'><em class='fa fa-user' style='font-size:60px'></em>";
@@ -36,7 +36,7 @@ function ver_datos(
     "</td></tr></table>";
 
   var tabla2 =
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Correo</td><td style='width:25%'>Fecha de nacimiento</td><td style='width:25%'>Género</td><td style='width:25%'>Orientación sexual</td></tr>";
+     "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Correo</td><td style='width:25%'>Fecha de nacimiento</td><td style='width:25%'>Género</td><td style='width:25%'>Orientación Sexual</td></tr>"; 
   tabla2 +=
     "<tr><td style='width:25%'><em class='fa fa-envelope'></em> " +
     persona_info["correo"];
@@ -50,8 +50,10 @@ function ver_datos(
     "'></em> " +
     persona_info["genero"] +
     "</td><td style='width:25%'><em class='fa fa-intersex'></em> " +
-    persona_info["sexualidad"] +
+   persona_info["sexualidad"] +
     "</td></tr></table>";
+
+    
 
   var tabla3 =
     "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Estado civil</td><td style='width:25%'>Nivel educativo</td><td style='width:25%'>Antigüedad comunidad</td><td style='width:25%'>Miliciano</td></tr>";
@@ -81,12 +83,12 @@ function ver_datos(
     get_letras(persona_info["privado_libertad"]) +
     "</td></tr></table>";
 
-  var tabla5 =
+   var tabla5 =
     "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Afrodescendencia</td><td style='width:25%'>Comunidad indígena</td><td style='width:25%'>Ocupación</td><td style='width:25%'>Condición laboral</td></tr>";
   tabla5 +=
     "<tr><td style='width:25%'><em class='fa fa-universal-access'></em> " +
     get_letras(persona_info["afrodescendencia"]);
-  var comunidad_i;
+  var comunidad_i; 
   var ocup;
   var cond;
   ocupacion_info.length == 0
@@ -95,9 +97,9 @@ function ver_datos(
   condicion_lab_info.length == 0
     ? (cond = "No posee")
     : (cond = condicion_lab_info[0]["nombre_cond_laboral"]);
-  comunidad_i_info.length == 0
+   comunidad_i_info.length == 0
     ? (comunidad_i = "No")
-    : (comunidad_i = comunidad_i_info[0]["nombre_comunidad"]);
+    : (comunidad_i = comunidad_i_info[0]["nombre_comunidad"]); 
 
   tabla5 +=
     "</td><td style='width:25%'><em class='fa fa-street-view'></em> " +
@@ -110,22 +112,22 @@ function ver_datos(
 
   var tabla6 =
     "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Organización política</td><td style='width:25%'>Transporte</td><td style='width:25%'>Bonos</td><td style='width:25%'>Misiones</td></tr>";
-/*   var org;
+  var org;
   org_politica_info.length == 0
     ? (org = "No")
     : (org = org_politica_info[0]["nombre_org"]);
- */  
-var transp;
+ 
+  var transp; 
 
   transporte_info.length == 0
     ? (transp = "Público")
     : (transp = transporte_info[0]["descripcion_transporte"]);
 
-/*   tabla6 +=
+   tabla6 +=
     "<tr><td style='width:25%'><em class='fa fa-puzzle-piece'></em> " +
     org +
     "</td>";
- */
+ 
   tabla6 +=
     "<td style='width:25%'><em class='fa fa-car'></em> " + transp + "</td>";
 
@@ -166,8 +168,6 @@ var transp;
     tabla3 +
     "<br>" +
     tabla4 +
-    "<br>" +
-    tabla5 +
     "<br>" +
     tabla6;
 
@@ -322,8 +322,8 @@ function editar_datos(
   bonos,
   misiones,
   proyectos,
-  comunidad_i,
-  org_politica
+ comunidad_i,
+  org_politica 
 ) {
   var persona_info = JSON.parse(persona);
   var ocupacion_info = JSON.parse(ocupacion);
@@ -332,8 +332,8 @@ function editar_datos(
   var bonos_info = JSON.parse(bonos);
   var misiones_info = JSON.parse(misiones);
   var proyectos_info = JSON.parse(proyectos);
-  var comunidad_i_info = JSON.parse(comunidad_i);
-  var org_politica_info = JSON.parse(org_politica);
+  var comunidad_i_info = JSON.parse(comunidad_i); 
+var org_politica_info = JSON.parse(org_politica); 
 
   inf_persona["cedula_persona"] = persona_info["cedula_persona"];
   modal_title.innerHTML = "Editar persona: " + persona_info["cedula_persona"];
@@ -350,7 +350,7 @@ function editar_datos(
   vorsex.value = persona_info["sexualidad"];
   vedoc.value = persona_info["estado_civil"];
   vnedu.value = persona_info["nivel_educativo"];
-  vantcom.value = persona_info["antiguedad_comunidad"];
+ vantcom.value = persona_info["antiguedad_comunidad"]; 
   vmili.value = persona_info["miliciano"];
   vjeffam.value = persona_info["jefe_familia"];
   vpropv.value = persona_info["propietario_vivienda"];
@@ -366,7 +366,7 @@ function editar_datos(
     vvervalcomindi.style.display = "";
     vcomindi.value = 1;
     vvalcomindi.value = comunidad_i_info[0]["nombre_comunidad"];
-  }
+  } 
 
   if (ocupacion_info.length == 0) {
     vocup.value = 0;
@@ -380,11 +380,11 @@ function editar_datos(
     vcondlab.value = condicion_lab_info[0]["id_cond_laboral"];
   }
 
-  if (org_politica_info.length == 0) {
+   if (org_politica_info.length == 0) {
     vorgpol.value = 0;
   } else {
     vorgpol.value = org_politica_info[0]["id_org_politica"];
-  }
+  } 
 
   if (transporte_info.length == 0) {
     vtransp.value = 0;
@@ -587,7 +587,7 @@ btn_guardar.onclick = function () {
                     inf_persona["sexualidad"] = vorsex.value;
                     inf_persona["estado_civil"] = vedoc.value;
                     inf_persona["nivel_educativo"] = vnedu.value;
-                    inf_persona["antiguedad_comunidad"] = vantcom.value;
+                    inf_persona["antiguedad_comunidad"] = vantcom.value; 
                     inf_persona["miliciano"] = vmili.value;
                     inf_persona["jefe_familia"] = vjeffam.value;
                     inf_persona["propietario_vivienda"] = vpropv.value;
@@ -598,7 +598,7 @@ btn_guardar.onclick = function () {
                       inf_persona["comunidad_indigena"] = "No posee";
                     } else {
                       inf_persona["comunidad_indigena"] = vvalcomindi.value;
-                    }
+                    } 
 
                     if (
                       (vocup.value == 0 && vocup.style.display != "none") ||
