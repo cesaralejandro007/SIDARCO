@@ -322,11 +322,11 @@ function editar_datos(
   var ocupacion_info = JSON.parse(ocupacion);
   var condicion_lab_info = JSON.parse(condicion_lab);
   var transporte_info = JSON.parse(transporte);
-  //var bonos_info = JSON.parse(bonos);
-  //var misiones_info = JSON.parse(misiones);
+  var bonos_info = JSON.parse(bonos);
+  var misiones_info = JSON.parse(misiones);
   var proyectos_info = JSON.parse(proyectos);
   var comunidad_i_info = JSON.parse(comunidad_i);
-  //var org_politica_info = JSON.parse(org_politica);
+  var org_politica_info = JSON.parse(org_politica);
 
   inf_persona["cedula_persona"] = persona_info["cedula_persona"];
   modal_title.innerHTML = "Editar persona: " + persona_info["cedula_persona"];
@@ -373,11 +373,11 @@ function editar_datos(
     vcondlab.value = condicion_lab_info[0]["id_cond_laboral"];
   }
 
-  /* if (org_politica_info.length == 0) {
+  if (org_politica_info.length == 0) {
     vorgpol.value = 0;
   } else {
     vorgpol.value = org_politica_info[0]["id_org_politica"];
-  } */
+  }
 
   if (transporte_info.length == 0) {
     vtransp.value = 0;
@@ -389,7 +389,7 @@ function editar_datos(
     vtranspinput.value = transporte_info[0]["descripcion_transporte"];
   }
 
- /*  if (bonos_info.length == 0) {
+  if (bonos_info.length == 0) {
     vbonos.innerHTML = "No aplica";
   } else {
     vbonos.innerHTML = "";
@@ -397,9 +397,9 @@ function editar_datos(
       var tabl =
         vbonos.innerHTML += " <table style='width:95%'><tr><td>- " + bonos_info[i]["nombre_bono"] + "</td><td style='text-align:right'><span onclick='borrar_bono(" + bonos_info[i]['id_persona_bono'] + ",`" + persona_info['cedula_persona'] + "`)' class='iconDelete fa fa-times-circle' title='Eliminar bono' style='font-size:22px'></span></td></tr></table><br><hr>";
     }
-  } */
+  }
 
-/*   if (misiones_info.length == 0) {
+  if (misiones_info.length == 0) {
     vmisiones.innerHTML = "No aplica";
   } else {
     vmisiones.innerHTML = "";
@@ -409,7 +409,7 @@ function editar_datos(
       vmisiones.innerHTML += " <table style='width:95%'><tr><td>- " + misiones_info[i]["nombre_mision"] + "  (" + recibe + ")</td><td style='text-align:right'><span onclick='borrar_mision(" + misiones_info[i]['id_persona_mision'] + ",`" + persona_info['cedula_persona'] + "`)' class='iconDelete fa fa-times-circle' title='Eliminar misión' style='font-size:22px'></span></td></tr></table><br><hr>";
     }
   }
- */
+
   if (proyectos_info.length == 0) {
     vproyectos.innerHTML = "No aplica";
   } else {

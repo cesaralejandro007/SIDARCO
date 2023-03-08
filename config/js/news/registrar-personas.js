@@ -68,6 +68,7 @@ var div_info_contacto=document.getElementById("panel3");
 var correo=document.getElementById("correo");
 var tipo_correo=document.getElementById("tipo_correo");
 var telefono=document.getElementById("telefono");
+//var telf_casa=document.getElementById("telf_casa");
 var whatsapp=document.getElementById("whatsapp");
 var direccion=document.getElementById("direccion");
 
@@ -104,6 +105,12 @@ var ocupacion=document.getElementById("ocupacion");
 var btn_nueva_ocupacion=document.getElementById("btn_nueva_ocupacion");
 var fecha_seniat=document.getElementById("ing_seniat");
 var fecha_publica=document.getElementById("ing_publica");
+var fecha_notificacion=document.getElementById("fecha_notificacion");
+var ult_designacion=document.getElementById("ult_designacion");
+var prima=document.getElementById("prima");
+var declaracion_j=document.getElementById("declaracion_j");
+var inscripcion_ivss=document.getElementById("inscripcion_ivss");
+var fideicomiso=document.getElementById("fideicomiso");
 var nombre_ocupacion=document.getElementById("ocupacion_nueva");
 var nombre_condicion=document.getElementById("nombre_condicion_laboral");
 var nueva_cond=document.getElementById("nombre_cond_nueva");
@@ -316,13 +323,13 @@ org_politica.onchange=function(){
 */
 //---------------------------------------------------------------------------------//
 
-sector_laboral.onchange=function(){
+ sector_laboral.onchange=function(){
 
   change_to_dynamic_record("1",ver_sector_formal,sector_laboral,sector_formal);
   sector_formal.value='vacio';
 
 
-}
+} 
 
 
 
@@ -908,7 +915,8 @@ telefono.oninput=function(){
 telefono.onkeyup=function(){valid_element("Debe ingresar el número de teléfono de la persona",telefono,document.getElementById("valid_21"));}
 whatsapp.onchange=function(){valid_element("Indique si el número de teléfono posee WhatsApp",whatsapp,document.getElementById("valid_22"));}
 direccion.onchange=function(){valid_element("Debe ingresar la dirección de habitacion de la persona", direccion,document.getElementById("valid_23"));}
-fecha_seniat.onchange=function(){valid_element("Debe ingresarla fecha ",fecha_seniat,document.getElementById("valid_28"));}
+
+/* fecha_seniat.onchange=function(){valid_element("Debe ingresarla fecha ",fecha_seniat,document.getElementById("valid_28"));} */
 
 
 
@@ -1763,8 +1771,16 @@ function enviar_informacion(){
   //datos_persona['comunidad_indigena']=comunidad_indigena.value;
   datos_persona['direccion']=direccion.value; 
   datos_persona['telefono']=telefono.value;
+  //datos_persona['telf_casa']=telf_casa.value;
   datos_persona['whatsapp']=whatsapp.value;
-  datos_persona['ing_seniat']=fecha_seniat.value;
+  datos_persona['fecha_seniat']=fecha_seniat.value;
+  datos_persona['fecha_publica']=fecha_publica.value;
+  datos_persona['fecha_notificacion']=fecha_notificacion.value;
+  datos_persona['ult_designacion']=ult_designacion.value;
+  datos_persona['prima']=prima.value;
+  datos_persona['declaracion_j']=declaracion_j.value;
+  datos_persona['inscripcion_ivss']=inscripcion_ivss.value;
+  datos_persona['fideicomiso']=fideicomiso.value;
   correo.value==""?datos_persona['correo']="No posee" : datos_persona['correo']=correo.value+tipo_correo.value;
   datos_persona['contrasenia']=contrasenia.value;
   datos_persona['preguntas_seguridad']=color.value.toLowerCase()+animal.value.toLowerCase()+mascota.value.toLowerCase();
