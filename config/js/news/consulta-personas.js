@@ -21,95 +21,65 @@ function ver_datos(
 
   var tabla =
     "<div style='height:380px;overflow-y:scroll;'><em class='fa fa-user' style='font-size:60px'></em>";
+    var gen;
+    persona_info["genero"] == "M" ? (gen = "mars") : (gen = "venus");
   tabla +=
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%;'>Cédula</td><td style='width:25%'>Nacionalidad</td><td style='width:25%'>Teléfono</td><td style='width:25%'>WhatsApp</td></tr>";
+    "<br><table style='width:100%' border='1'><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Datos Personales</div><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:20%;'>Cédula</td><td style='width:20%'>Género</td><td style='width:20%'>Fecha de nacimiento</td><td style='width:20%'>Nacionalidad</td><td style='width:20%'>Estado civil</td></tr>";
   tabla +=
-    "<tr><td style='width:25%'><em class='fa fa-drivers-license-o'></em> " +
+    "<tr><td style='width:20%'><em class='fa fa-drivers-license-o'></em> " +
     persona_info["cedula_persona"];
   tabla +=
-    "</td><td style='width:25%'><em class='fa fa-globe'></em> " +
-    persona_info["nacionalidad"] +
+  "</td><td style='width:20%'><em class='fa fa-" +
+  gen +
+  "'></em> " +
+  persona_info["genero"] +
+  "</td><td style='width:20%'><em class='fa fa-birthday-cake'></em> " +
+  persona_info["fecha_nacimiento"] +
+  "</td><td style='width:20%'><em class='fa fa-globe'></em> " +
+  persona_info["nacionalidad"] +
+    "</td><td style='width:20%'><em class='fa fa-address-card'></em> " +
+    persona_info["estado_civil"] +
+    "</td></tr></table>";
+
+  var tabla2 =
+    "<br><table style='width:100%' border='1'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:25%'>Correo</td><td style='width:25%'>Teléfono</td><td style='width:25%'>Teléfono de Casa</td><td style='width:25%'>WhatsApp</td></tr>";    
+  tabla2 +=
+    "<tr><td style='width:25%'><em class='fa fa-envelope'></em> " +
+    persona_info["correo"];
+
+  tabla2 +=
     "</td><td style='width:25%'><em class='fa fa-phone'></em> " +
     persona_info["telefono"] +
+    "</td><td style='width:25%'>" +
+    persona_info["telf_casa"] +
     "</td><td style='width:25%'><em class='fa fa-whatsapp'></em> " +
     get_letras(persona_info["whatsapp"]) +
     "</td></tr></table>";
 
-  var tabla2 =
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Correo</td><td style='width:25%'>Fecha de nacimiento</td><td style='width:25%'>Género</td><td style='width:25%'>Orientación sexual</td></tr>";
-  tabla2 +=
-    "<tr><td style='width:25%'><em class='fa fa-envelope'></em> " +
-    persona_info["correo"];
-  var gen;
-  persona_info["genero"] == "M" ? (gen = "mars") : (gen = "venus");
-  tabla2 +=
-    "</td><td style='width:25%'><em class='fa fa-birthday-cake'></em> " +
-    persona_info["fecha_nacimiento"] +
-    "</td><td style='width:25%'><em class='fa fa-" +
-    gen +
-    "'></em> " +
-    persona_info["genero"] +
-    "</td><td style='width:25%'><em class='fa fa-intersex'></em> " +
-    persona_info["sexualidad"] +
-    "</td></tr></table>";
-
   var tabla3 =
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Estado civil</td><td style='width:25%'>Nivel educativo</td><td style='width:25%'>Antigüedad comunidad</td><td style='width:25%'>Miliciano</td></tr>";
-  tabla3 +=
-    "<tr><td style='width:25%'><em class='fa fa-address-card'></em> " +
-    persona_info["estado_civil"];
+    "<br><table style='width:100%' border='1'><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Datos Laborales</div><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:25%'>Nivel educativo</td><td style='width:25%'>Condición laboral</td><td style='width:25%'>Ubicación</td><td style='width:25%'>Ocupación</td></tr>";
+    var ocup;
+    var cond;
+    ocupacion_info.length == 0
+        ? (ocup = "No posee")
+        : (ocup = ocupacion_info[0]["nombre_ocupacion"]);
+      condicion_lab_info.length == 0
+        ? (cond = "No posee")
+        : (cond = condicion_lab_info[0]["nombre_cond_laboral"]);
   tabla3 +=
     "</td><td style='width:25%'><em class='fa fa-mortar-board'></em> " +
     persona_info["nivel_educativo"] +
-    "</td><td style='width:25%'><em class='fa fa-calendar'></em> " +
-    persona_info["antiguedad_comunidad"] +
-    "</td><td style='width:25%'><em class='fa fa-vcard'></em> " +
-    get_letras(persona_info["miliciano"]) +
-    "</td></tr></table>";
-
-  var tabla4 =
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Jefe de familia</td><td style='width:25%'>Propietario de vivienda</td><td style='width:25%'>Jefe de calle</td><td style='width:25%'>Privado de libertad</td></tr>";
-  tabla4 +=
-    "<tr><td style='width:25%'><em class='fa fa-users'></em> " +
-    get_letras(persona_info["jefe_familia"]);
-  tabla4 +=
-    "</td><td style='width:25%'><em class='fa fa-home'></em> " +
-    get_letras(persona_info["propietario_vivienda"]) +
-    "</td><td style='width:25%'><em class='fa fa-road'></em> " +
-    get_letras(persona_info["jefe_calle"]) +
-    "</td><td style='width:25%'><em class='fa fa-balance-scale'></em> " +
-    get_letras(persona_info["privado_libertad"]) +
-    "</td></tr></table>";
-
-  var tabla5 =
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Afrodescendencia</td><td style='width:25%'>Comunidad indígena</td><td style='width:25%'>Ocupación</td><td style='width:25%'>Condición laboral</td></tr>";
-  tabla5 +=
-    "<tr><td style='width:25%'><em class='fa fa-universal-access'></em> " +
-    get_letras(persona_info["afrodescendencia"]);
-  var comunidad_i;
-  var ocup;
-  var cond;
-  ocupacion_info.length == 0
-    ? (ocup = "No posee")
-    : (ocup = ocupacion_info[0]["nombre_ocupacion"]);
-  condicion_lab_info.length == 0
-    ? (cond = "No posee")
-    : (cond = condicion_lab_info[0]["nombre_cond_laboral"]);
-  comunidad_i_info.length == 0
-    ? (comunidad_i = "No")
-    : (comunidad_i = comunidad_i_info[0]["nombre_comunidad"]);
-
-  tabla5 +=
-    "</td><td style='width:25%'><em class='fa fa-street-view'></em> " +
-    comunidad_i +
     "</td><td style='width:25%'><em class='fa fa-briefcase'></em> " +
     ocup +
-    "</td><td style='width:25%'><em class='fa fa-industry'></em> " +
-    cond +
+    "</td><td style='width:25%'><em class='fa fa-briefcase'></em> " +
+    persona_info["nombre_ubi"] +
+    "</td><td style='width:25%'><em class='fa fa-briefcase'></em> " +
+    ocup +
     "</td></tr></table>";
 
+
   var tabla6 =
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Organización política</td><td style='width:25%'>Transporte</td><td style='width:25%'>Bonos</td><td style='width:25%'>Misiones</td></tr>";
+    "<br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:25%'>Organización política</td><td style='width:25%'>Transporte</td><td style='width:25%'>Bonos</td><td style='width:25%'>Misiones</td></tr>";
 /*   var org;
   org_politica_info.length == 0
     ? (org = "No")
@@ -159,20 +129,43 @@ var transp;
     tabla6 += "</center></div></td></tr><table>";
   }
 
+  var tabla7 =
+  "<br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:25%'>Ingreso al Seniat</td><td style='width:25%'>Ingreso a la Administración Pública</td><td style='width:25%'>Fecha de Notificación</td></tr>";
+  tabla7 +=
+  "<tr><td style='width:25%'> " + 
+  persona_info["ing_seniat"]+
+  "</td><td style='width:25%'> "+ 
+  persona_info["ing_publica"]+ 
+  "</td><td style='width:25%'> " +
+  persona_info["fecha_notificacion"] +
+  "</td>" +
+  "</center></div></td></tr><table>";
+
+  var tabla8 =
+  "<br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:20%'>Prima</td><td style='width:20%'>Fideicomiso</td><td style='width:20%'>Declaración Jurada</td><td style='width:20%'>Inscripción IVSS</td></tr>";
+  tabla8 +=
+  "<tr><td style='width:20%'> " + 
+  persona_info["prima"]+
+  "</td><td style='width:20%'> "+ 
+  persona_info["fideicomiso"]+ 
+  "</td><td style='width:20%'> "+ 
+  persona_info["declaracion_j"] +
+  "</td><td style='width:20%'> " +
+  persona_info["inscripcion_ivss"]+ 
+  "</td>" +
+  "</center></div></td></tr><table>";
+
   tabla +=
     "<br>" +
     tabla2 +
     "<br>" +
     tabla3 +
     "<br>" +
-    tabla4 +
+    tabla7 +
     "<br>" +
-    tabla5 +
-    "<br>" +
-    tabla6;
-
+    tabla8;
   tabla +=
-    "<br><br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td colspan='4'>Proyectos en los que labora</td></tr>";
+    "<br><br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><td colspan='4'>Proyectos en los que labora</td></tr>";
 
   if (proyectos_info.length == 0) {
     tabla += "<tr><td colspan='4'>No aplica</td></tr></table>";
@@ -329,11 +322,11 @@ function editar_datos(
   var ocupacion_info = JSON.parse(ocupacion);
   var condicion_lab_info = JSON.parse(condicion_lab);
   var transporte_info = JSON.parse(transporte);
-  var bonos_info = JSON.parse(bonos);
-  var misiones_info = JSON.parse(misiones);
+  //var bonos_info = JSON.parse(bonos);
+  //var misiones_info = JSON.parse(misiones);
   var proyectos_info = JSON.parse(proyectos);
   var comunidad_i_info = JSON.parse(comunidad_i);
-  var org_politica_info = JSON.parse(org_politica);
+  //var org_politica_info = JSON.parse(org_politica);
 
   inf_persona["cedula_persona"] = persona_info["cedula_persona"];
   modal_title.innerHTML = "Editar persona: " + persona_info["cedula_persona"];
@@ -380,11 +373,11 @@ function editar_datos(
     vcondlab.value = condicion_lab_info[0]["id_cond_laboral"];
   }
 
-  if (org_politica_info.length == 0) {
+  /* if (org_politica_info.length == 0) {
     vorgpol.value = 0;
   } else {
     vorgpol.value = org_politica_info[0]["id_org_politica"];
-  }
+  } */
 
   if (transporte_info.length == 0) {
     vtransp.value = 0;
@@ -396,7 +389,7 @@ function editar_datos(
     vtranspinput.value = transporte_info[0]["descripcion_transporte"];
   }
 
-  if (bonos_info.length == 0) {
+ /*  if (bonos_info.length == 0) {
     vbonos.innerHTML = "No aplica";
   } else {
     vbonos.innerHTML = "";
@@ -404,9 +397,9 @@ function editar_datos(
       var tabl =
         vbonos.innerHTML += " <table style='width:95%'><tr><td>- " + bonos_info[i]["nombre_bono"] + "</td><td style='text-align:right'><span onclick='borrar_bono(" + bonos_info[i]['id_persona_bono'] + ",`" + persona_info['cedula_persona'] + "`)' class='iconDelete fa fa-times-circle' title='Eliminar bono' style='font-size:22px'></span></td></tr></table><br><hr>";
     }
-  }
+  } */
 
-  if (misiones_info.length == 0) {
+/*   if (misiones_info.length == 0) {
     vmisiones.innerHTML = "No aplica";
   } else {
     vmisiones.innerHTML = "";
@@ -416,7 +409,7 @@ function editar_datos(
       vmisiones.innerHTML += " <table style='width:95%'><tr><td>- " + misiones_info[i]["nombre_mision"] + "  (" + recibe + ")</td><td style='text-align:right'><span onclick='borrar_mision(" + misiones_info[i]['id_persona_mision'] + ",`" + persona_info['cedula_persona'] + "`)' class='iconDelete fa fa-times-circle' title='Eliminar misión' style='font-size:22px'></span></td></tr></table><br><hr>";
     }
   }
-
+ */
   if (proyectos_info.length == 0) {
     vproyectos.innerHTML = "No aplica";
   } else {

@@ -564,7 +564,7 @@ class Personas_Class extends Modelo
     public function Consultar()
     {
  
-        $tabla            = "SELECT * FROM personas WHERE estado=1 ORDER BY primer_nombre ASC";
+        $tabla            = "SELECT * FROM personas,ubicaciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and estado=1 ORDER BY primer_nombre ASC";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
