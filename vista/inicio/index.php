@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-12 col-sm-6 col-md-4">
                 <div class="info-box">
-                    <span class="info-box-icon elevation-1" style="background: #c70039;color: white;">
+                    <span class="info-box-icon elevation-1" style="background: #15406D;color: white;">
                         <i class="fa fa-users"></i>
                     </span>
 
@@ -52,11 +52,11 @@
             <!-- /.col -->
             <div class="col-12 col-sm-6 col-md-4">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon elevation-1" style="background: #c70039;color: white;"><i class="mdi mdi-home-outline"></i></span>
+                    <span class="info-box-icon elevation-1" style="background: #15406D;color: white;"><i class="mdi mdi-home-outline"></i></span>
 
                     <div class="info-box-content">
                         <a href="javascript:void(0)">
-                            <span style="background:#c70039">
+                            <span style="background:#15406D">
                                 <!--
                                     <h3>Viviendas</h3> -->
                             </span>
@@ -82,7 +82,7 @@
 
             <div class="col-12 col-sm-6 col-md-4">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon  elevation-1" style="background: #c70039;color: white;"><i class="mdi mdi-view-parallel" style="color: white;"></i></span>
+                    <span class="info-box-icon  elevation-1" style="background: #15406D;color: white;"><i class="mdi mdi-view-parallel" style="color: white;"></i></span>
 
                     <div class="info-box-content">
                         <a href="javascript:void(0)">
@@ -161,7 +161,7 @@
 
             <div class="col-md-4">
                 <!-- Info Boxes Style 2 -->
-                <div class="info-box mb-3 " style="background:#c70039;color: white;">
+                <div class="info-box mb-3 " style="background:#15406D;color: white;">
                     <span class="info-box-icon"><i class="fa fa-users"></i></span>
 
                     <div class="info-box-content">
@@ -171,7 +171,7 @@
                     <!-- /.info-box-content -->
                 </div>
                 <!-- /.info-box -->
-                <div class="info-box mb-3 " style="background: #c70039;color: white;">
+                <div class="info-box mb-3 " style="background: #15406D;color: white;">
                     <span class="info-box-icon"><i class="fa fa-user-o"></i></span>
 
                     <div class="info-box-content">
@@ -181,7 +181,7 @@
                     <!-- /.info-box-content -->
                 </div>
                 <!-- /.info-box -->
-                <div class="info-box mb-3 " style="background: #c70039;color: white;">
+                <div class="info-box mb-3 " style="background: #15406D;color: white;">
                     <span class="info-box-icon"><i class="fa fa-child"></i></span>
 
                     <div class="info-box-content">
@@ -191,7 +191,7 @@
                     <!-- /.info-box-content -->
                 </div>
                 <!-- /.info-box -->
-                <div class="info-box mb-3 " style="background: #c70039;color: white;">
+                <div class="info-box mb-3 " style="background: #15406D;color: white;">
                     <span class="info-box-icon"><i class="fa fa-address-card-o"></i></span>
 
                     <div class="info-box-content">

@@ -7,8 +7,7 @@ header{
 
 /*estilos para la tabla*/
 table th {
-    background-color: #337ab7 !important;
-    color: white;
+    background-color: #C29C9C !important; 
 }
 table>tbody>tr>td {
     vertical-align: middle !important;

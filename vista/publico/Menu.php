@@ -1,7 +1,7 @@
 <!-- Menu Lateral -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: #15406D">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: #790707">
     <!-- Brand Logo -->
-    <a href="javascript:void(0)" class="brand-link" style="background: #15406D">
+    <a href="javascript:void(0)" class="brand-link" style="background: #790707">
         <img src="<?php echo constant('URL') ?>config/img/web/logo.jpeg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Div. de Administración</span>
     </a>
