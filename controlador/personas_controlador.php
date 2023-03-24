@@ -142,7 +142,7 @@ public function Registros()
   $this->vista->misiones=$this->modelo->get_misiones();
   $this->vista->ocupaciones=$this->modelo->get_ocupaciones();
   $this->vista->condiciones=$this->modelo->get_condiciones();
-  $this->vista->proyectos=$this->modelo->get_proyectos();
+  $this->vista->proyectos=$this->modelo->get_divisiones();
   $this->vista->Cargar_Vistas('personas/registrar');
 }
 
@@ -164,6 +164,24 @@ public function Registros_habitante()
   $this->vista->Cargar_Vistas('habitante/registrar_personas');
 }
 
+
+public function Consultas_areas()
+{
+  $divisiones1=$_POST['divisiones'];
+  echo $this->vista->divisiones=$this->Consultar_Tabla_areas("areas",$divisiones1);
+  return;
+  exit;
+}
+
+public function Consultas_secciones()
+{
+  $areas1=$_POST['areas'];
+  echo $this->vista->divisiones=$this->Consultar_Tabla_secciones($areas1);
+  return;
+  exit;
+}
+
+
 public function Consultas()
 {
   /* $this->Establecer_Consultas(); */
@@ -174,7 +192,8 @@ public function Consultas()
   $this->vista->organizaciones=$this->modelo->get_organizaciones();
   $this->vista->bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
   $this->vista->misiones=$this->Consultar_Tabla("misiones",1,"id_mision");
-  $this->vista->proyectos=$this->Consultar_Tabla("proyecto",1,"id_proyecto");
+  $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
+  $this->vista->secciones=$this->Consultar_Tabla_divisiones("secciones"); 
   $this->Seguridad_de_Session();
   $this->vista->Cargar_Vistas('personas/consultar');
 }
@@ -189,7 +208,7 @@ public function consultar_informacion_persona(){
    $transporte=json_encode($this->modelo->get_transporte_persona($p['cedula_persona']));
    $bonos=json_encode($this->modelo->get_bonos_persona($p['cedula_persona']));
    $misiones=json_encode($this->modelo->get_misiones_persona($p['cedula_persona']));
-   $proyectos=json_encode($this->modelo->get_proyectos_persona($p['cedula_persona']));
+   $divisiones=json_encode($this->modelo->get_divisiones($p['cedula_persona']));
    //$comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
    $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona']));
    $persona=json_encode($p);
@@ -219,9 +238,9 @@ public function consultar_informacion_persona(){
     "declaracion_j"          =>$p['declaracion_j'],
     "inscripcion_ivss"          =>$p['inscripcion_ivss'],
     "fideicomiso"          =>$p['fideicomiso'],
-    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$proyectos."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
+    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
 
-    "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$proyectos."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
+    "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
 
     "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Eliminar persona' onclick='eliminar_datos(`".$p['cedula_persona']."`)'><span class='fa fa-trash'></span></button>",
   ];
@@ -478,7 +497,7 @@ public function registrar_bonos(){
 
 
 public function registrar_proyectos(){
- $proyectos=$this->modelo->get_proyectos();
+ $proyectos=$this->modelo->get_divisiones();
  $datos=$_POST['datos'];
  $cont=0;
 
@@ -642,13 +661,13 @@ public function modificar_persona(){
   $editado=$this->modelo->Actualizar($datos_persona);
 
 
-  if($editado){
+ /*if($editado){
   //$this->editar_comunidad_indigena($datos_persona);
   $this->editar_ocupacion($datos_persona);
   $this->editar_cond_laboral($datos_persona);
   $this->editar_org_politica($datos_persona);
   $this->editar_transporte($datos_persona);
-  }
+  }*/
 
   echo $editado;
 }
@@ -770,7 +789,7 @@ else{
     $existe=$id;
   }
 
-   if(count($ocupacion_persona)==0){
+/*    if(count($ocupacion_persona)==0){
      $this->modelo->Registrar_persona_ocupacion([
                 "cedula_persona"         =>$datos_persona['cedula_persona'],
                 "id_ocupacion"  =>$existe
@@ -778,7 +797,7 @@ else{
    }
    else{
      $this->Actualizar_Tablas("ocupacion_persona","id_ocupacion","id_ocupacion_persona",$existe,$ocupacion_persona[0]['id_ocupacion_persona']);
-   }
+   } */
 
 
 }
@@ -801,7 +820,7 @@ public function editar_cond_laboral($datos_persona){
       }
     }
 
-    if($existe==false){
+ /*    if($existe==false){
       if(count($cond_lab_persona)==0){
         $this->modelo->Registrar_cond_laboral([
           "cedula_persona" => $datos_persona["cedula_persona"],
@@ -839,7 +858,7 @@ public function editar_cond_laboral($datos_persona){
         ]);
       }
 
-    }
+    } */
 
   }
 }
@@ -870,7 +889,7 @@ public function editar_org_politica($datos_persona){
       $existe=$id;
     }
 
-     if(count($organizaciones_persona)==0){
+ /*     if(count($organizaciones_persona)==0){
        $this->modelo->Registrar_persona_organizacion([
                   "cedula_persona"         =>$datos_persona['cedula_persona'],
                   "id_org_politica"  =>$existe
@@ -879,12 +898,12 @@ public function editar_org_politica($datos_persona){
      else{
        $this->Actualizar_Tablas("org_politica_persona","id_org_politica","id_org_persona",$existe,$organizaciones_persona[0]['id_org_persona']);
      }
-
+ */
 
   }
 }
 
-public function editar_transporte($datos_persona){
+/* public function editar_transporte($datos_persona){
   $transportes=$this->Consultar_Columna("transporte","cedula_propietario",$datos_persona['cedula_persona']);
    
   if($datos_persona['transporte']=='No posee'){
@@ -912,9 +931,9 @@ public function editar_transporte($datos_persona){
 
 
   }
-}
+} */
 
-public function eliminar_bono(){
+/* public function eliminar_bono(){
   $retornar=0;
   
   if($this->Eliminar_Tablas("persona_bonos","id_persona_bono",$_POST['id_bono'])){
@@ -933,7 +952,7 @@ public function eliminar_bono(){
 
   echo json_encode($retornar);
 
-}
+} */
 
 public function agg_bono(){
   $all_bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
@@ -1003,8 +1022,12 @@ public function eliminar_mision(){
 }
 
 public function eliminar_proyecto(){
-  $id=$_POST['proyecto'];
-  echo $this->Eliminar_Tablas("persona_proyecto","id_persona_proyecto",$id);
+  $registros=$this->modelo->Consultar_Tabla_division($_POST['cedula_persona']);
+  if($registros){
+    echo $this->Eliminar_Tablas_divisiones($_POST['id']);
+  }else{
+    echo 0;
+  }
 }
 
 
@@ -1069,63 +1092,47 @@ public function add_mision(){
 }
 
 
-public function get_proyectos(){
-  $proyectos=$this->Consultar_Columna("persona_proyecto","cedula_persona",$_POST['cedula_persona']);
-  for($i=0;$i<count($proyectos);$i++){
-    $pro=$this->Consultar_Columna("proyecto","id_proyecto",$proyectos[$i]['id_proyecto']);
-    $proyectos[$i]['nombre_proyecto']=$pro[0]['nombre_proyecto'];
-    $proyectos[$i]['area_proyecto']=$pro[0]['area_proyecto'];
-    $proyectos[$i]['estado_proyecto']=$pro[0]['estado_proyecto'];
-  }
-  echo json_encode($proyectos);
+public function get_divisionesyareas(){
+
+
+  $divisiones=$this->Consultar_Columna_division($_POST["cedula_persona"]);
+
+  echo json_encode($divisiones);
 }
 
-public function add_proyecto(){
-  $proyecto=$_POST['proyecto_info'];
-  $proyecto_persona=$this->Consultar_Columna("persona_proyecto","cedula_persona",$_POST['cedula_persona']);
-  $proyectos_all=$this->Consultar_Tabla("proyecto",1,"id_proyecto");
-  $retornar=1;
+public function add_division_areas(){
+  $divisiones=$_POST['divisiones_info'];
+  $divisiones_persona=$this->Consultar_comparacion_division($_POST['cedula_persona']);
+  $areas_all=$this->modelo->Consultar_Tabla_divisiones($divisiones['nueva_areas']);
+  $retornar=$areas_all;
   $existe=false;
-  if($proyecto['proyecto']==0){
-     foreach($proyectos_all as $a){
-       if(strtolower($a['nombre_proyecto'])==strtolower($proyecto['nombre_proyecto']) && strtolower($a['area_proyecto'])==strtolower($proyecto['area_proyecto'])){
-         $existe=$a['id_proyecto'];
-       }
-     }
-
-   if($existe==false){
-     $this->modelo->Registrar_proyecto([
-            "nombre_proyecto"=>$proyecto['nombre_proyecto'],
-            "area_proyecto"=>$proyecto['area_proyecto'],
-            "estado_proyecto"=>$proyecto['estado_proyecto']     
-     ]);
-    
-   $id=$this->Ultimo_Ingresado("proyecto","id_proyecto");
+  if($areas_all){ 
+     $this->modelo->Registrar_proyecto(
+            $divisiones['nueva_areas'],
+            $_POST['cedula_persona']
+     );
+    }else{
+      $retornar=0;
+    } 
+/*    $id=$this->Ultimo_Ingresado("proyecto","id_proyecto");
    $this->modelo->Registrar_persona_proyecto([
      "cedula_persona"=>$_POST['cedula_persona'],
      "id_proyecto"=>$id[0]['MAX(id_proyecto)']
-   ]);
+   ]); */
 
-  }
-  else{
-     foreach($proyecto_persona as $pp){
-       if($pp['id_proyecto']==$existe){
-         $retornar=0;
-       }
-     }
 
-     if($retornar!=0){
+/*      if($retornar!=0){
       $this->modelo->Registrar_persona_proyecto([
         "cedula_persona"=>$_POST['cedula_persona'],
         "id_proyecto"=>$proyecto['proyecto']
       ]);
-     }
+     } */
 
-  }
+  
 
-  }
+ /*  } */
 
-  else{
+ /*  else{
     foreach($proyecto_persona as $pp){
       if($pp['id_proyecto']==$proyecto['proyecto']){
         $retornar=0;
@@ -1140,7 +1147,7 @@ public function add_proyecto(){
     }
 
  
-  }
+  } */
 
   echo $retornar;
 }
