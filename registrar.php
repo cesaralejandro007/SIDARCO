@@ -283,7 +283,7 @@
                                         <span style='display:none;color:red' id='valid_10'>Ingrese la nacionalidad</span>
                                         <div class="input-group">
                                             <input class="form-control mb-10 solo-letras" id="nacionalidad"
-                                            name="datos[nacionalidad]" value=" Venezolana" placeholder="Nacionalidad" type="text" oninput="Limitar(this,15)"  />
+                                            name="datos[nacionalidad]" placeholder="Nacionalidad" type="text" oninput="Limitar(this,15)" />
                                         </div>
 
                                     </div>
@@ -297,6 +297,7 @@
                                             <select class='form-control' name="datos[nivel_educativo]" id='nivel_educativo'>
                                                 <option value='vacio'>-Seleccione-</option>
                                                 <option value='Preescolar'>Bachiller</option>
+                                                <option value='Básico'>TSU</option>
                                                 <option value='Medio diversificado'>Profesional</option>
                                 
                                             </select>
@@ -925,10 +926,10 @@
                                                     <option selected="" value="vacio">
                                                         -Seleccione-
                                                     </option>
-                                                    <option value="S">
+                                                    <option value="Si">
                                                             Sí
                                                     </option>
-                                                    <option value="N">
+                                                    <option value="No">
                                                         No
                                                     </option>
                                                 </select>
@@ -946,10 +947,10 @@
                                                     <option selected="" value="vacio">
                                                         -Seleccione-
                                                     </option>
-                                                    <option value="S">
+                                                    <option value="Si">
                                                             Sí
                                                     </option>
-                                                    <option value="N">
+                                                    <option value="No">
                                                         No
                                                     </option>
                                                 </select>
@@ -966,10 +967,10 @@
                                                     <option selected="" value="vacio">
                                                         -Seleccione-
                                                     </option>
-                                                    <option value="S">
+                                                    <option value="Si">
                                                             Sí
                                                     </option>
-                                                    <option value="N">
+                                                    <option value="No">
                                                         No
                                                     </option>
                                                 </select>
@@ -986,10 +987,10 @@
                                                     <option selected="" value="vacio">
                                                         -Seleccione-
                                                     </option>
-                                                    <option value="S">
+                                                    <option value="Si">
                                                             Sí
                                                     </option>
-                                                    <option value="N">
+                                                    <option value="No">
                                                         No
                                                     </option>
                                                 </select>
@@ -1007,16 +1008,19 @@
                  <!--<tr><td style='width:120%'> -->
 
                 <div  id='proyect_agregados'>
-                    <select class="form-control" id="ubicaciones"
-                    name="datos[ubicaciones]">
-                    <option value='vacio'>-Seleccione-</option>
-                    <option value='1'>Gerencia Regional de Tributos Internos</option>
-                    <option value='2'>Sector San Felipe</option>
-                    <option value='3'>Unidad El tocuyo</option>
-                    <option value='4'>Sector Carora</option>
-                     <!-- <?php foreach ($this->proyectos as $pr) { ?>
-                      <option value="<?php echo $pr['id_ubicacion']; ?>"><?php echo $pr['nombre_ubi']; ?></option>
-                  <?php   } ?> -->
+                    <select class="form-control" id="id_ubicacion"
+                    name="datos[id_ubicacion]">
+                    <option value='vacio'>
+                        Seleccione...
+                    </option>
+                    <option value="1">
+                        Gerencia
+                    </option> -->
+                    <?php echo foreach ($this->ubicacion["ubicaciones"] as $ubicaciones) { ?>
+                      <option value="<?php echo $ubicaciones['id_ubicacion']; ?>">
+                      <?php echo $ubicaciones['nombre_ubi']; ?>
+                    </option>
+                  <?php   } ?>
               </select>
           </div> 
           
@@ -1025,7 +1029,7 @@
 
 
                             <label for="ocupacion">
-                             Cargo Funcional
+                             Ocupación
                          </label>
                          <span style='display:none;color:red' id='valid_26'>Ingrese la ocupación</span>
                          <table style='width:100%'>
@@ -1052,11 +1056,8 @@
 
                                          <select class='form-control' id="nombre_condicion_laboral">
                                             <option value='0'>Jubilado</option>
-                                            <option value='1'>Contratado</option>
-                                            <option value='2'>Fijo</option>
-                                            <option value='3'>Grado 99</option>
-
-                                           <!-- <option value='2'>Vacaciones</option>
+                                            <!-- <option value='1'>Reposo</option>
+                                            <option value='2'>Vacaciones</option>
                                             <option value='3'>Renuncia</option>
                                             <option value='4'>Despido</option> -->
                                             <?php foreach ($this->condiciones as $cond) { ?>
@@ -1068,30 +1069,24 @@
                                         <td>
                                            <select class="form-control" id="sector_laboral"
                                            name="datos[sector_laboral]">
-                                           <option value='vacio'>-Sector Laboral-</option>
+                                           <option value='vacio'>-Estatus Laboral-</option>
                                            <option value="1">
-                                            Inactivo
+                                                
                                         </option>
                                         <option value="2">
-                                         Activo
+                                         Público
                                      </option>
                                  </select>
                              </td>
                              <td style='display:none' id='ver_sector_formal'>
                                <select class="form-control" id="tipo_sector_formal"
                                name="datos[tipo_sector_formal]">
-                               <option value='vacio'>-Estado-</option>
+                               <option value='vacio'>-Tipo de sector formal-</option>
                                <option value="1">
-                                 Vacaciones
+                                 Informal
                              </option>
                              <option value="2">
-                                 Reposo
-                             </option>
-                             <option value="3">
-                                 Permiso
-                             </option>
-                             <option value="4">
-                                 Aceptación de jubilación
+                                 Privado
                              </option>
                          </select>
                      </td>
@@ -1105,27 +1100,24 @@
 
             <div class="col-md-12 mt-2">
                 <label >
-                <!-- Proyectos=Titulos obtenidos -->
-              Títulos obtenidos
+
+                <!-- Proyectos ubicaciones -->
+              División y área del funcionario o la funcionaria
              </label>
              <table style='width:100%'><tr><td style='width:120%'>
 
                 <div  id='proyectos_agregados'>
                     <select class="form-control" id="proyectos"
-                    name="datos[proyctos]">
+                    name="datos[proyectos]">
                     <option value='vacio'>-Seleccione-</option>
                     <?php foreach ($this->proyectos as $pr) { ?>
                       <option value="<?php echo $pr['id_proyecto']; ?>"><?php echo $pr['nombre_proyecto']; ?></option>
                   <?php   } ?>
               </select>
-              
           </div>
           <div>
-          
-           <td>
-              <!--  <textarea id='descripcion' class='form-control no-simbolos' placeholder=" Informatica, Aduanero" rows="1"></textarea> -->
-            </td>
-               <!--  <select id='area_proyecto' class='form-control'>
+          <td>
+                <select id='area_proyecto' class='form-control'>
                  <option value='vacio'>-Seleccione-</option>
                  <option value='Administracion'>Administración</option>
                  <option value="Asistencia">Asistencia al contribuyente</option>
@@ -1137,36 +1129,34 @@
                  <option value='Agricola'>Contribuyentes Especiales</option>
                  <option value='Cultural'></option>
                  <option value='Educativo'></option>
-             </select> -->          
-  <div>
-           <div  style='display:none' id='nuevo_proyecto'>
-
-            <table style='width:100%'>
-            <tr>
-                <td>
+             </select>
+         </td>
+<div>
+         <div  style='display:none' id='nuevo_proyecto'>
+            <!-- <table style='width:100%'><tr><td>
                 <input type="text" id='nombre_proyecto' name="nombre_proyecto" placeholder="Nombre del proyecto" class='form-control'>
-            </td> 
+            </td> -->
            
          <td>
              <input type="text" id='estado_proyecto' name="estado_proyecto" placeholder="Descripcion" class='form-control'> 
          </td></tr></table>
-     </div> 
+     </div>
  </td><td  ><input type="button" id="otro_proyecto" value="Otro" class='btn btn-info'></td>
  <td ><input type="button" id="agregar_proyecto" value="Agregar" class='btn btn-primary'></td></tr></table>
- <!-- </div>  -->
+<!-- </div> -->
 
 <div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE;width: 100%;height: 200px !important' id='proyectos_persona'>
 
 
 </div>
-</div> 
+</div>
 </div> 
 </div> 
 
 <div class="tab-pane" id="panel4" role="tabpanel">
     <div class="row">
-        <div class="col-md-12 text-cter">
-            <h2>en
+        <div class="col-md-12 text-center">
+            <h2>
                 Información de Usuario
             </h2>
         </div>

@@ -130,6 +130,7 @@ public function consulta_vacunado(){
 
 public function Registros()
 {
+  
   $this->Seguridad_de_Session();
   $this->vista->transportes=$this->modelo->get_transportes();
   //$this->vista->comunidades=$this->modelo->get_comunidades();
@@ -142,9 +143,11 @@ public function Registros()
   $this->vista->misiones=$this->modelo->get_misiones();
   $this->vista->ocupaciones=$this->modelo->get_ocupaciones();
   $this->vista->condiciones=$this->modelo->get_condiciones();
-  $this->vista->proyectos=$this->modelo->get_proyectos();
+  $this->vista->proyectos=$this->modelo->get_proyectos(); 
   $this->vista->Cargar_Vistas('personas/registrar');
+  
 }
+
 
 public function Registros_habitante()
 {
@@ -166,11 +169,13 @@ public function Registros_habitante()
 
 public function Consultas()
 {
+  // En revision $id_ubicacion=$POST["id_ubicacion"];
   /* $this->Establecer_Consultas(); */
   $this->vista->transportes=$this->modelo->get_transportes();
   //$this->vista->comunidades=$this->modelo->get_comunidades();
   $this->vista->ocupaciones=$this->modelo->get_ocupaciones();
   $this->vista->condiciones=$this->modelo->get_condiciones();
+  //$ubicacion=$this->vista->ubicacion=$this->modelo->get_ubicacion();
   $this->vista->organizaciones=$this->modelo->get_organizaciones();
   $this->vista->bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
   $this->vista->misiones=$this->Consultar_Tabla("misiones",1,"id_mision");
@@ -179,11 +184,14 @@ public function Consultas()
   $this->vista->Cargar_Vistas('personas/consultar');
 }
 
+
+
 public function consultar_informacion_persona(){
   $info_completa=[];
   $personas=$this->modelo->Consultar();
   
   foreach ($personas as $p) {
+  
    $ocupacion=json_encode($this->modelo->get_ocupacion_persona($p['cedula_persona']));
    $condicion_lab=json_encode($this->modelo->get_cond_laboral_persona($p['cedula_persona']));
    $transporte=json_encode($this->modelo->get_transporte_persona($p['cedula_persona']));
@@ -354,6 +362,7 @@ public function registrar_condicion_laboral(){
     echo 1;
   }
 }
+
 /*
 public function registrar_comunidad_indigena(){
  $comunidades=$this->modelo->get_comunidades();
@@ -421,15 +430,7 @@ public function registrar_org_politica(){
   }
 }
 
-
-
-
-
-
-
-
 }
-
 
 
 public function registrar_bonos(){
@@ -462,7 +463,6 @@ public function registrar_bonos(){
 }
 
 
-
 public function registrar_proyectos(){
  $proyectos=$this->modelo->get_proyectos();
  $datos=$_POST['datos'];
@@ -492,7 +492,6 @@ public function registrar_proyectos(){
         "id_proyecto"     =>     $i['MAX(id_proyecto)']
       ]);
     }
-
 
 
   }

@@ -80,6 +80,7 @@ class Personas_Class extends Modelo
                 preguntas_seguridad,
                 estado,
                 direccion,
+                id_ubicacion,
                 ing_seniat,
                 ing_publica,
                 fecha_notificacion,
@@ -111,6 +112,7 @@ class Personas_Class extends Modelo
                 :preguntas_seguridad,
                 :estado,
                 :direccion,
+                :id_ubicacion,
                 :ing_seniat,
                 :ing_publica,
                 :fecha_notificacion,
@@ -144,6 +146,7 @@ class Personas_Class extends Modelo
                 'preguntas_seguridad'   =>       $data['preguntas_seguridad'],
                 'estado'                =>       $data['estado'],
                 'direccion'             =>       $data['direccion'],
+                'id_ubicacion'          =>       $data['id_ubicacion'],
                 'ing_seniat'            =>       $data['fecha_seniat'],
                 'ing_publica'           =>       $data['fecha_publica'],
                 'fecha_notificacion'    =>       $dats['fecha_notificacion'],
@@ -161,6 +164,12 @@ class Personas_Class extends Modelo
             return $this->Capturar_Error($e);
         }
     }
+
+
+
+
+
+
 
 
      public function Registrar_transporte($data)
@@ -745,6 +754,29 @@ class Personas_Class extends Modelo
          }
      }
 
+
+       /*  public function get_ubicacion(){
+
+        $tabla   ="SELECT * FROM ubicaciones ";
+        $respuestaArreglo='';
+
+        try{
+            
+            $datos= $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuestaArreglo= $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuestaArreglo;
+        } catch (PDOException $e){
+
+            return $this->capturar_Error($e);
+        }
+
+        } */
+
+
+
+
          public function get_codigo_carnet($codigo,$tipo)
      {
 
@@ -969,7 +1001,7 @@ public function get_organizaciones()
 
             return $this->Capturar_Error($e);
          }
-     }
+     } 
 
 
 

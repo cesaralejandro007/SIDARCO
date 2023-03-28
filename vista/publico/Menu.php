@@ -259,7 +259,7 @@
                             <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fa fa-ambulance"></i>
                                 <p>
-                                    Gestionar Enfermedades
+                                    Gestionar Patologías 
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">

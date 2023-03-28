@@ -39,7 +39,7 @@
                                 <div class="input-group">
                                     <input list="tipo_I" id="id_deporte" name="datos[id_deporte]" class="form-control no-simbolos solo-letras "
                                         placeholder="Deporte" oninput="Limitar(this,25)"/>
-                                    <datalist id="tipo_I">
+                                    <datalist id="tipo_I">f
                                         <?php foreach ($this->datos["deportes"] as $deporte) {?>
                                         <option value="<?php echo $deporte["nombre_deporte"]; ?>">
                                         </option>

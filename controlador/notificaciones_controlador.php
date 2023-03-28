@@ -20,6 +20,7 @@ class Notificaciones extends Controlador
     {   
         $this->Establecer_Consultas();
         $this->Seguridad_de_Session();
+        
         $this->vista->Cargar_Vistas('notificaciones/index');
     }
     public function Notificacion()
