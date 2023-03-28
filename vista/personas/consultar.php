@@ -29,7 +29,7 @@
             <div class="card-body" >
             <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header" style="background:#C29C9C;">
+                        <div class="card-header" style="background:#AEB6BF;">
                             <h3 class="card-title font-weight-bold">CRITERIOS DE BUSQUEDA</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" style="color:black"></i></button>
@@ -69,14 +69,27 @@
                     <thead>
                         <tr>
                             <th>Cedula</th> 
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Teléfono</th>
-                            <th>correo</th>
+                            <th>Primer Nombre</th>
+                            <th>Segundo Nombre</th>
+                            <th>Primer Apellido</th>
+                            <th>Segundo Apellido</th>
                             <th>Género</th>
+                            <th>Teléfono</th>
+                            <th>Whatsapp</th>
+                            <th>Telefono de Casa</th>
+                            <th>correo</th>
+                            <th>Nacionalidad</th>
                             <th>Fecha de Nacimiento</th>
                             <th>Estado Civil</th>
                             <th>Nivel Educativo</th>
+                            <th>Ubicación</th>
+                            <th>Ingreso al Seniat</th>
+                            <th>Ingreso a la Administración Pública</th>
+                            <th>Fecha de Notificación</th>
+                            <th>Ultima designación</th>
+                            <th>Declaracion Jurada</th>
+                            <th>Inscripcion IVSS</th>
+                            <th>Fideicomiso</th>
                             <th style="width: 20px;">Ver</th> 
                             <?php if($_SESSION['Personas']['modificar']){ ?>  
                             <th style="width: 20px;">Editar</th>
@@ -107,7 +120,62 @@
       "<'row'<'col-sm-12'tr>>" +
       "<'row'<'col-sm-5'li><'col-sm-7'p>>",
       orderCellsTop: true,
-      fixedHeader: true, 
+      fixedHeader: true,
+ columnDefs: [
+            {
+                target: 2,
+                visible: false,
+                searchable: false,
+            },
+            {
+                target: 4,
+                visible: false,
+            },
+            {
+                target: 7,
+                visible: false,
+            },
+            {
+                target: 8,
+                visible: false,
+            },
+            {
+                target: 9,
+                visible: false,
+            },
+            {
+                target: 10,
+                visible: false,
+            },
+            {
+                target: 11,
+                visible: false,
+            },
+            {
+                target: 16,
+                visible: false,
+            },
+            {
+                target: 17,
+                visible: false,
+            },
+            {
+                target: 18,
+                visible: false,
+            },
+            {
+                target: 19,
+                visible: false,
+            },
+            {
+                target: 20,
+                visible: false,
+            },
+            {
+                target: 21,
+                visible: false,
+            },
+        ], 
         "data": data,
         "columns": [{
             "data": "cedula"
@@ -116,16 +184,31 @@
             data: "primer_nombre"
         },
         {
+            data: "segundo_nombre"
+        },
+        {
             data: "primer_apellido"
+        },
+        {
+            data: "segundo_apellido"
+        },
+        {
+            data:"genero"
         },
         {
             data:"telefono"
         },
         {
+            data:"whatsapp"
+        },
+        {
+            data:"telf_casa"
+        },
+        {
             data:"correo"
         },
         {
-            data:"genero"
+            data:"nacionalidad"
         },
         {
             data:"fecha_nacimiento"
@@ -135,6 +218,30 @@
         },
         {
             data:"nivel_educativo"
+        },
+        {
+            data:"nombre_ubi"
+        },
+        {
+            data:"ing_seniat"
+        },
+        {
+            data:"ing_publica"
+        },
+        {
+            data:"fecha_notificacion"
+        },
+        {
+            data:"ult_designacion"
+        },
+        {
+            data:"declaracion_j"
+        },
+        {
+            data:"inscripcion_ivss"
+        },
+        {
+            data:"fideicomiso"
         },
         {
             data: "ver"
@@ -171,7 +278,7 @@
       titleAttr: 'Exportar a Excel',
       className: 'btn text-success border border-success',
       exportOptions: {
-        columns: [0,1,2,3,4,5,6,7,8]
+        columns: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]
     }
     },
     {
@@ -187,7 +294,7 @@
       titleAttr: 'Exportar a PDF',
       className: 'btn text-danger border border-danger',
       exportOptions: {
-        columns: [0,1,2,3,4,5,7]
+        columns: [0,1,3,5,6,12,13,14,15]
     }
   },
     {
@@ -203,7 +310,7 @@
       titleAttr: 'Imprimir',
       className: 'btn text-info border border-info',
       exportOptions: {
-        columns: [0,1,2,3,4,5,6,7,8]
+        columns: [0,1,3,5,6,12,13,14,15]
     }
     },    
   ]  
@@ -235,7 +342,8 @@
     $("#Nivelef").keyup(function() {
     table.column($(this).data('index')).search(this.value).draw();
     });
-
+    
+    
 }).fail(function() {
     alert("error")
 })
@@ -246,15 +354,28 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Cedula</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Teléfono</th>
-                            <th>correo</th>
+                            <th>Cedula</th> 
+                            <th>Primer Nombre</th>
+                            <th>Segundo Nombre</th>
+                            <th>Primer Apellido</th>
+                            <th>Segundo Apellido</th>
                             <th>Género</th>
+                            <th>Teléfono</th>
+                            <th>Whatsapp</th>
+                            <th>Telefono de Casa</th>
+                            <th>correo</th>
+                            <th>Nacionalidad</th>
                             <th>Fecha de Nacimiento</th>
                             <th>Estado Civil</th>
                             <th>Nivel Educativo</th>
+                            <th>Ubicación</th>
+                            <th>Ingreso al Seniat</th>
+                            <th>Ingreso a la Administración Pública</th>
+                            <th>Fecha de Notificación</th>
+                            <th>Ultima designación</th>
+                            <th>Declaracion Jurada</th>
+                            <th>Inscripcion IVSS</th>
+                            <th>Fideicomiso</th>
                             <th>Ver</th> 
                              <?php if($_SESSION['Personas']['modificar']){ ?> 
                             <th>Editar</th>

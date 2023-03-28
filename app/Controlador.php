@@ -100,6 +100,56 @@ class Controlador
             return $errorReturn;
         }
     }
+    
+
+
+    public function Consultar_Tabla_areas($tabla,$divisiones)
+    {
+        $sql               = "SELECT * FROM  $tabla where id_division = $divisiones";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+
+
+           $resul ="<option value='0'>-Seleccione Área-</option>";
+            foreach ($respuesta_arreglo as $p) {
+                $resul = $resul.  "<option value=". $p['id_area'] .">".$p['nombre_area']."</option>";
+            }
+            return $resul;
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+
+    public function Consultar_Tabla_secciones($areas)
+    {
+        $sql               = "SELECT secciones.id_seccion as id_seccion, secciones.nombre_seccion as nombre_seccion FROM areas,secciones WHERE areas.id_seccion = secciones.id_seccion and areas.id_area = $areas";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+
+
+           $resul ="<option value='0'>-Seleccione Sección-</option>";
+            foreach ($respuesta_arreglo as $p) {
+                $resul = $resul.  "<option value=". $p['id_seccion'] .">".$p['nombre_seccion']."</option>";
+            }
+            return $resul;
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
 
     public function Consultar_Tabla_sin_estado($tabla, $estado, $orden)
     {
@@ -139,6 +189,62 @@ class Controlador
         }
     }
 
+    public function Consultar_Tabla_divisiones($tabla)
+    {
+
+        $sql               = "SELECT * FROM $tabla";
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $respuesta_arreglo1 = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo1;
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+
+    public function Consultar_comparacion_division($param)
+    {
+
+        $tabla = "SELECT divisiones.id_division as id_division, areas.id_area as id_area FROM personas,personas_areas,areas,divisiones WHERE personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_division = divisiones.id_division and personas.cedula_persona = " . $param . "";
+
+        $respuestaArreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuestaArreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuestaArreglo;
+        } catch (PDOException $e) {
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+
+    public function Consultar_Columna_division($cedula)
+    {
+
+        $tabla = "SELECT personas_areas.id_persona_area as id, divisiones.nombre_division as division, areas.nombre_area as area, secciones.nombre_seccion as seccion FROM personas,personas_areas,areas,divisiones,secciones WHERE personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_division = divisiones.id_division and areas.id_seccion = secciones.id_seccion and personas.cedula_persona= " . $cedula . "";
+
+        $respuestaArreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuestaArreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuestaArreglo;
+        } catch (PDOException $e) {
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+
+
     public function Registrar_Tablas($tabla, $columna, $data)
     {
 
@@ -164,6 +270,21 @@ class Controlador
             $query = $this->conexion->prepare('DELETE FROM ' . $tabla . ' WHERE ' . $id_tabla . ' = :' . $id_tabla . '');
             $query->execute([$id_tabla => $param]);
 
+            return true;
+
+        } catch (PDOException $e) {
+
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function Eliminar_Tablas_divisiones($id)
+    {
+        try {
+
+            $query = $this->conexion->prepare("DELETE FROM personas_areas WHERE id_persona_area= " . $id . "");
+            $query->execute();
             return true;
 
         } catch (PDOException $e) {

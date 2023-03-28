@@ -167,12 +167,7 @@ class Personas_Class extends Modelo
 
 
 
-
-
-
-
-
-     public function Registrar_transporte($data)
+/*      public function Registrar_transporte($data)
     {
 
         try {
@@ -197,10 +192,10 @@ class Personas_Class extends Modelo
         } catch (PDOException $e) {
             return $this->Capturar_Error($e);
         }
-    }
+    } */
 
 
-    public function Registrar_persona_ocupacion($data)
+/*     public function Registrar_persona_ocupacion($data)
     {
 
         try {
@@ -225,7 +220,7 @@ class Personas_Class extends Modelo
         } catch (PDOException $e) {
             return $this->Capturar_Error($e);
         }
-    }
+    } */
 
         public function  registrar_permisos($data)
     {    
@@ -449,7 +444,7 @@ class Personas_Class extends Modelo
         }
     }
 */
-       public function Registrar_persona_organizacion($data)
+/*        public function Registrar_persona_organizacion($data)
     {
 
         try {
@@ -474,7 +469,7 @@ class Personas_Class extends Modelo
         } catch (PDOException $e) {
             return $this->Capturar_Error($e);
         }
-    }
+    } */
 
         public function Registrar_persona_bono($data)
     {
@@ -500,28 +495,63 @@ class Personas_Class extends Modelo
         }
     }
 
+    public function Consultar_Tabla_divisiones($areas)
+    {
 
-            public function Registrar_proyecto($data)
+        $sql               = "SELECT areas.id_area as id_area FROM personas,personas_areas,areas,divisiones WHERE personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_division = divisiones.id_division and areas.id_area = $areas";
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $respuesta_arreglo1 = $datos->rowCount();
+            if ($respuesta_arreglo1 > 0){
+                return false;
+            }else{
+                return true;
+            }
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+    public function Consultar_Tabla_division($cedula)
+    {
+
+        $sql               = "SELECT areas.id_area as id_area FROM personas,personas_areas,areas,divisiones WHERE personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_division = divisiones.id_division and personas_areas.cedula_persona = $cedula";
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $respuesta_arreglo1 = $datos->rowCount();
+            if ($respuesta_arreglo1 == 1){
+                return false;
+            }else{
+                return true;
+            }
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+
+
+            public function Registrar_proyecto($area,$cedula)
     {
 
         try {
-            $datos = $this->conexion->prepare('INSERT INTO proyecto (
-                nombre_proyecto,
-                area_proyecto,
-                estado_proyecto, 
-                estado         
+            $datos = $this->conexion->prepare('INSERT INTO personas_areas (
+                cedula_persona,
+                id_area     
                 ) VALUES (
-                :nombre_proyecto,
-                :area_proyecto,
-                :estado_proyecto, 
-                :estado
+                :id_cedula_persona,
+                :id_area_division
                 )');
 
             $datos->execute([
-                'nombre_proyecto'    =>  $data['nombre_proyecto'],
-                'area_proyecto'      =>  $data['area_proyecto'],
-                'estado_proyecto'    =>  $data['estado_proyecto'],
-                'estado'             =>  1
+                'id_cedula_persona'    =>  $cedula,
+                'id_area_division'      =>  $area
             ]);
 
             return true;
@@ -566,7 +596,7 @@ class Personas_Class extends Modelo
     }
    
    
-   public function Registrar_cond_laboral($data){
+ /*   public function Registrar_cond_laboral($data){
     try {
             $datos = $this->conexion->prepare('INSERT INTO condicion_laboral (
                 cedula_persona,
@@ -595,12 +625,11 @@ class Personas_Class extends Modelo
         } catch (PDOException $e) {
             return $this->Capturar_Error($e);
         }
-   }
+   } */
 
     public function Consultar()
     {
- 
-        $tabla            = "SELECT * FROM personas WHERE estado=1 ORDER BY primer_nombre ASC";
+        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -623,21 +652,23 @@ class Personas_Class extends Modelo
                 segundo_nombre          =:segundo_nombre,
                 primer_apellido         =:primer_apellido,
                 segundo_apellido        =:segundo_apellido,
-                nacionalidad            =:nacionalidad,
-                jefe_familia            =:jefe_familia,
-                propietario_vivienda    =:propietario_vivienda,
                 fecha_nacimiento        =:fecha_nacimiento,
+                nacionalidad            =:nacionalidad,
                 telefono                =:telefono,
+                telf_casa               =:telf_casa,
                 correo                  =:correo,
                 estado_civil            =:estado_civil,
                 genero                  =:genero,
                 whatsapp                =:whatsapp,
-                antiguedad_comunidad    =:antiguedad_comunidad,
                 nivel_educativo         =:nivel_educativo,
-                direccion               =:direccion,
                 ing_seniat              =:ing_seniat,
-                ing_publica             =:ing_publica
-
+                ing_publica             =:ing_publica,
+                fecha_notificacion      =:fecha_notificacion,
+                ult_designacion         =:ult_designacion,
+                prima                   =:prima,
+                declaracion_j           =:declaracion_j,
+                inscripcion_ivss        =:inscripcion_ivss,
+                fideicomiso             =:fideicomiso
 
                 WHERE cedula_persona =:cedula_persona"
             );
@@ -648,21 +679,23 @@ class Personas_Class extends Modelo
                 'segundo_nombre'            =>$data['segundo_nombre'],
                 'primer_apellido'           =>$data['primer_apellido'],
                 'segundo_apellido'          =>$data['segundo_apellido'],
-                'nacionalidad'              =>$data['nacionalidad'],
-                'jefe_familia'              =>$data['jefe_familia'],
-                'propietario_vivienda'      =>$data['propietario_vivienda'],
                 'fecha_nacimiento'          =>$data['fecha_nacimiento'],
+                'nacionalidad'              =>$data['nacionalidad'],
                 'telefono'                  =>$data['telefono'],
+                'telf_casa'                 =>$data['telefono_casa'],
                 'correo'                    =>$data['correo'],
                 'estado_civil'              =>$data['estado_civil'],
                 'genero'                    =>$data['genero'],
                 'whatsapp'                  =>$data['whatsapp'],
-                'antiguedad_comunidad'      =>$data['antiguedad_comunidad'],
                 'nivel_educativo'           =>$data['nivel_educativo'],
-                'direccion'                 =>$data['direccion'],
                 'ing_seniat'                =>$data['ing_seniat'],
-                'ing_publica'               =>$data['ing_publica']
-
+                'ing_publica'               =>$data['ing_publica'],
+                'fecha_notificacion'        =>$data['fecha_notificacion'],
+                'ult_designacion'           =>$data['fecha_designacion'],
+                'prima'                     =>$data['prima'],
+                'declaracion_j'             =>$data['declaracionj'],
+                'inscripcion_ivss'          =>$data['inscripcionivss'],
+                'fideicomiso'               =>$data['fideicomiso']
             ]);
 
             return true;
@@ -1096,10 +1129,11 @@ public function get_organizaciones()
      }
 
 
-     public function get_proyectos_persona($cedula)
+     public function get_divisiones($cedula)
      {
 
-         $tabla            = "SELECT P.*, PP.id_persona_proyecto  FROM proyecto P, persona_proyecto PP WHERE PP.cedula_persona = $cedula AND PP.id_proyecto=P.id_proyecto AND P.estado=1";
+         $tabla            = "SELECT personas_areas.id_persona_area as id, divisiones.nombre_division as division, areas.nombre_area as area, secciones.nombre_seccion as seccion FROM personas,personas_areas,areas,divisiones,secciones WHERE personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_division = divisiones.id_division and areas.id_seccion = secciones.id_seccion and personas.cedula_persona= " . $cedula . "";
+       
          $respuestaArreglo = '';
          try {
              $datos = $this->conexion->prepare($tabla);

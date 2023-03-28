@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 stdClass Object
 (
     [Fecha] => 
@@ -3723,3 +3724,5 @@ stdClass Object
     [Linea] => 50
     [Mensaje] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY id_notificacion DESC' at line 1
 )
+=======
+>>>>>>> 5c7c5783b5e6de4ded02d7828b93d9d28ad58b41

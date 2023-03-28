@@ -6,9 +6,7 @@ header{
 }
 
 /*estilos para la tabla*/
-table th {
-    background-color: #C29C9C !important; 
-}
+
 table>tbody>tr>td {
     vertical-align: middle !important;
 }

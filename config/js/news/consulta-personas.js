@@ -1,3 +1,4 @@
+
 function ver_datos(
   persona,
   ocupacion,
@@ -5,9 +6,9 @@ function ver_datos(
   transporte,
   bonos,
   misiones,
-  proyectos,
-   comunidad_i, 
-   org_politica 
+  divisiones,
+  comunidad_i,
+  org_politica
 ) {
   var persona_info = JSON.parse(persona);
   var ocupacion_info = JSON.parse(ocupacion);
@@ -15,119 +16,87 @@ function ver_datos(
   var transporte_info = JSON.parse(transporte);
   var bonos_info = JSON.parse(bonos);
   var misiones_info = JSON.parse(misiones);
-  var proyectos_info = JSON.parse(proyectos);
- var comunidad_i_info = JSON.parse(comunidad_i); 
- var org_politica_info = JSON.parse(org_politica); 
+  var divisiones = JSON.parse(divisiones);
+  var comunidad_i_info = JSON.parse(comunidad_i);
+  //var org_politica_info = JSON.parse(org_politica);
 
   var tabla =
     "<div style='height:380px;overflow-y:scroll;'><em class='fa fa-user' style='font-size:60px'></em>";
+    var gen;
+    persona_info["genero"] == "M" ? (gen = "mars") : (gen = "venus");
   tabla +=
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%;'>Cédula</td><td style='width:25%'>Nacionalidad</td><td style='width:25%'>Teléfono</td><td style='width:25%'>WhatsApp</td></tr>";
+    "<br><table style='width:100%' border='1'><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Datos Personales</div><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:20%;'>Cédula</td><td style='width:20%'>Género</td><td style='width:20%'>Fecha de nacimiento</td><td style='width:20%'>Nacionalidad</td><td style='width:20%'>Estado civil</td></tr>";
   tabla +=
-    "<tr><td style='width:25%'><em class='fa fa-drivers-license-o'></em> " +
+    "<tr><td style='width:20%'><em class='fa fa-drivers-license-o'></em> " +
     persona_info["cedula_persona"];
   tabla +=
-    "</td><td style='width:25%'><em class='fa fa-globe'></em> " +
-    persona_info["nacionalidad"] +
+  "</td><td style='width:20%'><em class='fa fa-" +
+  gen +
+  "'></em> " +
+  persona_info["genero"] +
+  "</td><td style='width:20%'><em class='fa fa-birthday-cake'></em> " +
+  persona_info["fecha_nacimiento"] +
+  "</td><td style='width:20%'><em class='fa fa-globe'></em> " +
+  persona_info["nacionalidad"] +
+    "</td><td style='width:20%'><em class='fa fa-address-card'></em> " +
+    persona_info["estado_civil"] +
+    "</td></tr></table>";
+
+  var tabla2 =
+    "<br><table style='width:100%' border='1'><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Datos de Contacto</div><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:25%'>Correo</td><td style='width:25%'>Teléfono</td><td style='width:25%'>Teléfono de Casa</td><td style='width:25%'>WhatsApp</td></tr>";    
+  tabla2 +=
+    "<tr><td style='width:25%'><em class='fa fa-envelope'></em> " +
+    persona_info["correo"];
+
+  tabla2 +=
     "</td><td style='width:25%'><em class='fa fa-phone'></em> " +
     persona_info["telefono"] +
+    "</td><td style='width:25%'>" +
+    persona_info["telf_casa"] +
     "</td><td style='width:25%'><em class='fa fa-whatsapp'></em> " +
     get_letras(persona_info["whatsapp"]) +
     "</td></tr></table>";
 
-  var tabla2 =
-     "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Correo</td><td style='width:25%'>Fecha de nacimiento</td><td style='width:25%'>Género</td><td style='width:25%'>Orientación Sexual</td></tr>"; 
-  tabla2 +=
-    "<tr><td style='width:25%'><em class='fa fa-envelope'></em> " +
-    persona_info["correo"];
-  var gen;
-  persona_info["genero"] == "M" ? (gen = "mars") : (gen = "venus");
-  tabla2 +=
-    "</td><td style='width:25%'><em class='fa fa-birthday-cake'></em> " +
-    persona_info["fecha_nacimiento"] +
-    "</td><td style='width:25%'><em class='fa fa-" +
-    gen +
-    "'></em> " +
-    persona_info["genero"] +
-    "</td><td style='width:25%'><em class='fa fa-intersex'></em> " +
-   persona_info["sexualidad"] +
-    "</td></tr></table>";
-
-    
-
   var tabla3 =
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Estado civil</td><td style='width:25%'>Nivel educativo</td><td style='width:25%'>Antigüedad comunidad</td><td style='width:25%'>Miliciano</td></tr>";
-  tabla3 +=
-    "<tr><td style='width:25%'><em class='fa fa-address-card'></em> " +
-    persona_info["estado_civil"];
+    "<br><table style='width:100%' border='1'><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Datos Laborales</div><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:25%'>Nivel educativo</td><td style='width:25%'>Condición laboral</td><td style='width:25%'>Ubicación</td><td style='width:25%'>Ocupación</td></tr>";
+    var ocup;
+    var cond;
+    ocupacion_info.length == 0
+        ? (ocup = "No posee")
+        : (ocup = ocupacion_info[0]["nombre_ocupacion"]);
+      condicion_lab_info.length == 0
+        ? (cond = "No posee")
+        : (cond = condicion_lab_info[0]["nombre_cond_laboral"]);
   tabla3 +=
     "</td><td style='width:25%'><em class='fa fa-mortar-board'></em> " +
     persona_info["nivel_educativo"] +
-    "</td><td style='width:25%'><em class='fa fa-calendar'></em> " +
-    persona_info["antiguedad_comunidad"] +
-    "</td><td style='width:25%'><em class='fa fa-vcard'></em> " +
-    get_letras(persona_info["miliciano"]) +
-    "</td></tr></table>";
-
-  var tabla4 =
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Jefe de familia</td><td style='width:25%'>Propietario de vivienda</td><td style='width:25%'>Jefe de calle</td><td style='width:25%'>Privado de libertad</td></tr>";
-  tabla4 +=
-    "<tr><td style='width:25%'><em class='fa fa-users'></em> " +
-    get_letras(persona_info["jefe_familia"]);
-  tabla4 +=
-    "</td><td style='width:25%'><em class='fa fa-home'></em> " +
-    get_letras(persona_info["propietario_vivienda"]) +
-    "</td><td style='width:25%'><em class='fa fa-road'></em> " +
-    get_letras(persona_info["jefe_calle"]) +
-    "</td><td style='width:25%'><em class='fa fa-balance-scale'></em> " +
-    get_letras(persona_info["privado_libertad"]) +
-    "</td></tr></table>";
-
-   var tabla5 =
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Afrodescendencia</td><td style='width:25%'>Comunidad indígena</td><td style='width:25%'>Ocupación</td><td style='width:25%'>Condición laboral</td></tr>";
-  tabla5 +=
-    "<tr><td style='width:25%'><em class='fa fa-universal-access'></em> " +
-    get_letras(persona_info["afrodescendencia"]);
-  var comunidad_i; 
-  var ocup;
-  var cond;
-  ocupacion_info.length == 0
-    ? (ocup = "No posee")
-    : (ocup = ocupacion_info[0]["nombre_ocupacion"]);
-  condicion_lab_info.length == 0
-    ? (cond = "No posee")
-    : (cond = condicion_lab_info[0]["nombre_cond_laboral"]);
-   comunidad_i_info.length == 0
-    ? (comunidad_i = "No")
-    : (comunidad_i = comunidad_i_info[0]["nombre_comunidad"]); 
-
-  tabla5 +=
-    "</td><td style='width:25%'><em class='fa fa-street-view'></em> " +
-    comunidad_i +
     "</td><td style='width:25%'><em class='fa fa-briefcase'></em> " +
     ocup +
-    "</td><td style='width:25%'><em class='fa fa-industry'></em> " +
-    cond +
+    "</td><td style='width:25%'><em class='fa fa-briefcase'></em> " +
+    persona_info["nombre_ubi"] +
+    "</td><td style='width:25%'><em class='fa fa-briefcase'></em> " +
+    ocup +
     "</td></tr></table>";
 
+
   var tabla6 =
-    "<br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td style='width:25%'>Organización política</td><td style='width:25%'>Transporte</td><td style='width:25%'>Bonos</td><td style='width:25%'>Misiones</td></tr>";
-  var org;
+    "<br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:25%'>Organización política</td><td style='width:25%'>Transporte</td><td style='width:25%'>Bonos</td><td style='width:25%'>Misiones</td></tr>";
+/*   var org;
   org_politica_info.length == 0
     ? (org = "No")
     : (org = org_politica_info[0]["nombre_org"]);
- 
-  var transp; 
+ */  
+var transp;
 
   transporte_info.length == 0
     ? (transp = "Público")
     : (transp = transporte_info[0]["descripcion_transporte"]);
 
-   tabla6 +=
+/*   tabla6 +=
     "<tr><td style='width:25%'><em class='fa fa-puzzle-piece'></em> " +
     org +
     "</td>";
- 
+ */
   tabla6 +=
     "<td style='width:25%'><em class='fa fa-car'></em> " + transp + "</td>";
 
@@ -140,7 +109,7 @@ function ver_datos(
     }
 
     tabla6 +=
-      "<td ><div style='width:100%;overflow-y:scroll;background:#C5E6EF;border-radius:6px'><center>" +
+      "<td ><div style='width:100%;overflow-y:scroll;border-radius:6px;height:200px;'><center>" +
       texto;
     tabla6 += "</center></div></td>";
   }
@@ -156,10 +125,36 @@ function ver_datos(
     }
 
     tabla6 +=
-      "<td ><div style='width:100%;overflow-y:scroll;background:#C5E6EF;border-radius:6px'><center>" +
+      "<td ><div style='width:100%;overflow-y:scroll;border-radius:6px'><center>" +
       texto;
     tabla6 += "</center></div></td></tr><table>";
   }
+
+  var tabla7 =
+  "<br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:25%'>Ingreso al Seniat</td><td style='width:25%'>Ingreso a la Administración Pública</td><td style='width:25%'>Fecha de Notificación</td></tr>";
+  tabla7 +=
+  "<tr><td style='width:25%'> " + 
+  persona_info["ing_seniat"]+
+  "</td><td style='width:25%'> "+ 
+  persona_info["ing_publica"]+ 
+  "</td><td style='width:25%'> " +
+  persona_info["fecha_notificacion"] +
+  "</td>" +
+  "</center></div></td></tr><table>";
+
+  var tabla8 =
+  "<br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:20%'>Prima</td><td style='width:20%'>Fideicomiso</td><td style='width:20%'>Declaración Jurada</td><td style='width:20%'>Inscripción IVSS</td></tr>";
+  tabla8 +=
+  "<tr><td style='width:20%'> " + 
+  persona_info["prima"]+
+  "</td><td style='width:20%'> "+ 
+  persona_info["fideicomiso"]+ 
+  "</td><td style='width:20%'> "+ 
+  persona_info["declaracion_j"] +
+  "</td><td style='width:20%'> " +
+  persona_info["inscripcion_ivss"]+ 
+  "</td>" +
+  "</center></div></td></tr><table>";
 
   tabla +=
     "<br>" +
@@ -167,34 +162,33 @@ function ver_datos(
     "<br>" +
     tabla3 +
     "<br>" +
-    tabla4 +
+    tabla7 +
     "<br>" +
-    tabla6;
-
+    tabla8;
   tabla +=
-    "<br><br><table style='width:100%' border='1'><tr  style='background:#15406D;color:white;font-weight:bold'><td colspan='4'>Proyectos en los que labora</td></tr>";
+    "<br><br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Ubicación del funcionario</div></tr>";
 
-  if (proyectos_info.length == 0) {
+  if (divisiones.length == 0) {
     tabla += "<tr><td colspan='4'>No aplica</td></tr></table>";
   } else {
     var texto = "";
-    for (var i = 0; i < proyectos_info.length; i++) {
-      texto +=
-        "<table style='width:100%' border='1'><tr><td style='width:25%'>Nombre</td><td style='width:25%'>Área</td><td style='width:25%'>Estado</td></tr>";
+    texto =
+      "<table style='width:100%' class='table table-hover border-dark'><tr class='text-dark' style='background:#AEB6BF;'><td style='width:25% background:#AEB6BF;font-weight:bold;'>Divisiones</td><td style='width:25% background:#AEB6BF;font-weight:bold'>Áreas</td><td style='width:25% background:#AEB6BF;font-weight:bold'>Secciones</td></tr>";
+    for (var i = 0; i < divisiones.length; i++) {
       texto +=
         "<tr><td style='width:25%'>" +
-        proyectos_info[i]["nombre_proyecto"] +
+        divisiones[i]["division"] +
         "</td><td style='width:25%'>" +
-        proyectos_info[i]["area_proyecto"] +
+        divisiones[i]["area"] +
         "</td>";
       texto +=
         "<td style='width:25%'>" +
-        proyectos_info[i]["estado_proyecto"] +
-        "</td></tr></table> <br>";
+        divisiones[i]["seccion"] +
+        "</td></tr>";
     }
 
     tabla +=
-      "<tr><td colspan='4'><div style='width:100%;overflow-y:scroll;background:#C5E6EF;border-radius:6px'><center>" +
+      "<tr><td colspan='4'><div style='width:100%;overflow-y:scroll;border-radius:6px;height:200px;'><center>" +
       texto;
     tabla += "</center></div></td></tr></table>";
   }
@@ -266,24 +260,33 @@ function eliminar_datos(cedula) {
   );
 }
 
+
 var modal_title = document.getElementById("modal-title");
 var vn1 = document.getElementById("n1");
 var vn2 = document.getElementById("n2");
 var va1 = document.getElementById("a1");
 var va2 = document.getElementById("a2");
-var vnac = document.getElementById("nac");
+var vtlfc = document.getElementById("tlfc");
 var vtlf = document.getElementById("tlf");
 var vws = document.getElementById("ws");
 var vcor = document.getElementById("cor");
 var vfnac = document.getElementById("fnac");
 var vgen = document.getElementById("gen");
-var vorsex = document.getElementById("orsex");
+var vnac = document.getElementById("nac");
 var vedoc = document.getElementById("edoc");
 var vnedu = document.getElementById("nedu");
-var vantcom = document.getElementById("antcom");
+var vubic = document.getElementById("ubic");
 var vmili = document.getElementById("mili");
 var vjeffam = document.getElementById("jeffam");
-var vpropv = document.getElementById("propv");
+var vingresos = document.getElementById("ingresos");
+var vingresoa = document.getElementById("ingresoa");
+var vfechan = document.getElementById("fechan");
+var vdesig = document.getElementById("desig");
+var vprima1 = document.getElementById("prima1");
+var vdclara = document.getElementById("declara");
+var vinscripcion_ivss = document.getElementById("inscripcion_ivss");
+var vfideicomiso = document.getElementById("fideicomiso");
+
 var vjefcas = document.getElementById("jefcas");
 var vprivlib = document.getElementById("privlib");
 var vafro = document.getElementById("afro");
@@ -309,11 +312,11 @@ var vvertiptrans = document.getElementById("tiptransp");
 var vbonos = document.getElementById("bonos");
 var vmisiones = document.getElementById("misiones");
 var vproyectos = document.getElementById("proyectos");
+var vdivisionesareas = document.getElementById("divisionesareas");
 var btn_guardar = document.getElementById("guardar_cambios");
 var inf_persona = new Object();
 var add_bono = document.getElementById("add_bono");
 var add_mision = document.getElementById("add_mision");
-
 function editar_datos(
   persona,
   ocupacion,
@@ -321,19 +324,21 @@ function editar_datos(
   transporte,
   bonos,
   misiones,
-  proyectos,
- comunidad_i,
-  org_politica 
+  divisiones,
+  comunidad_i,
+  org_politica
 ) {
+
+  $("#edit_persona").modal({ backdrop: "static", keyboard: false });
   var persona_info = JSON.parse(persona);
   var ocupacion_info = JSON.parse(ocupacion);
   var condicion_lab_info = JSON.parse(condicion_lab);
   var transporte_info = JSON.parse(transporte);
-  var bonos_info = JSON.parse(bonos);
-  var misiones_info = JSON.parse(misiones);
-  var proyectos_info = JSON.parse(proyectos);
-  var comunidad_i_info = JSON.parse(comunidad_i); 
-var org_politica_info = JSON.parse(org_politica); 
+  var divisiones = JSON.parse(divisiones);
+/*   var bonos_info = JSON.parse(bonos);
+  var misiones_info = JSON.parse(misiones); */
+/*   var comunidad_i_info = JSON.parse(comunidad_i); */
+  /* var org_politica_info = JSON.parse(org_politica); */
 
   inf_persona["cedula_persona"] = persona_info["cedula_persona"];
   modal_title.innerHTML = "Editar persona: " + persona_info["cedula_persona"];
@@ -341,24 +346,29 @@ var org_politica_info = JSON.parse(org_politica);
   vn2.value = persona_info["segundo_nombre"];
   va1.value = persona_info["primer_apellido"];
   va2.value = persona_info["segundo_apellido"];
+  vtlfc.value = persona_info["telf_casa"];
   vnac.value = persona_info["nacionalidad"];
   vtlf.value = persona_info["telefono"];
   vws.value = persona_info["whatsapp"];
   vcor.value = persona_info["correo"];
   vfnac.value = persona_info["fecha_nacimiento"];
   vgen.value = persona_info["genero"];
-  vorsex.value = persona_info["sexualidad"];
   vedoc.value = persona_info["estado_civil"];
   vnedu.value = persona_info["nivel_educativo"];
- vantcom.value = persona_info["antiguedad_comunidad"]; 
-  vmili.value = persona_info["miliciano"];
-  vjeffam.value = persona_info["jefe_familia"];
-  vpropv.value = persona_info["propietario_vivienda"];
-  vjefcas.value = persona_info["jefe_calle"];
-  vprivlib.value = persona_info["privado_libertad"];
-  vafro.value = persona_info["afrodescendencia"];
+  vubic.value = persona_info["nombre_ubi"];
+  vingresos.value = persona_info["ing_seniat"];
+  vingresoa.value = persona_info["ing_publica"]; 
+  vfechan.value = persona_info["fecha_notificacion"];
+  vdesig.value = persona_info["ult_designacion"];
+  vprima1.value = persona_info["prima"];
+  vdclara.value = persona_info["declaracion_j"];
+  vinscripcion_ivss.value = persona_info["inscripcion_ivss"];
+  vfideicomiso.value = persona_info["fideicomiso"];
+/*   vmili.value = persona_info["miliciano"]; */
+/*   vjeffam.value = persona_info["jefe_familia"]; */
+/*   vafro.value = persona_info["afrodescendencia"]; */
 
-  if (comunidad_i_info.length == 0) {
+/*   if (comunidad_i_info.length == 0) {
     vvervalcomindi.style.display = "none";
     vcomindi.value = 0;
     vvalcomindi.value = "";
@@ -366,27 +376,28 @@ var org_politica_info = JSON.parse(org_politica);
     vvervalcomindi.style.display = "";
     vcomindi.value = 1;
     vvalcomindi.value = comunidad_i_info[0]["nombre_comunidad"];
-  } 
+  } */
 
-  if (ocupacion_info.length == 0) {
+
+/*   if (ocupacion_info.length == 0) {
     vocup.value = 0;
   } else {
     vocup.value = ocupacion_info[0]["id_ocupacion"];
-  }
+  } */
 
-  if (condicion_lab_info.length == 0) {
+/*   if (condicion_lab_info.length == 0) {
     vcondlab.value = 0;
   } else {
     vcondlab.value = condicion_lab_info[0]["id_cond_laboral"];
-  }
+  } */
 
-   if (org_politica_info.length == 0) {
+/*   if (org_politica_info.length == 0) {
     vorgpol.value = 0;
   } else {
     vorgpol.value = org_politica_info[0]["id_org_politica"];
-  } 
-
-  if (transporte_info.length == 0) {
+  }
+ */
+/*   if (transporte_info.length == 0) {
     vtransp.value = 0;
     vvertiptrans.style.display = "none";
     vtranspinput.value = "";
@@ -394,9 +405,9 @@ var org_politica_info = JSON.parse(org_politica);
     vtransp.value = "privado";
     vvertiptrans.style.display = "";
     vtranspinput.value = transporte_info[0]["descripcion_transporte"];
-  }
+  } */
 
-  if (bonos_info.length == 0) {
+/*   if (bonos_info.length == 0) {
     vbonos.innerHTML = "No aplica";
   } else {
     vbonos.innerHTML = "";
@@ -404,9 +415,9 @@ var org_politica_info = JSON.parse(org_politica);
       var tabl =
         vbonos.innerHTML += " <table style='width:95%'><tr><td>- " + bonos_info[i]["nombre_bono"] + "</td><td style='text-align:right'><span onclick='borrar_bono(" + bonos_info[i]['id_persona_bono'] + ",`" + persona_info['cedula_persona'] + "`)' class='iconDelete fa fa-times-circle' title='Eliminar bono' style='font-size:22px'></span></td></tr></table><br><hr>";
     }
-  }
+  } */
 
-  if (misiones_info.length == 0) {
+/*   if (misiones_info.length == 0) {
     vmisiones.innerHTML = "No aplica";
   } else {
     vmisiones.innerHTML = "";
@@ -415,34 +426,36 @@ var org_politica_info = JSON.parse(org_politica);
       misiones_info[i]['recibe_actualmente'] == 1 ? recibe = "Recibe actualmente" : recibe = misiones_info[i]['fecha'];
       vmisiones.innerHTML += " <table style='width:95%'><tr><td>- " + misiones_info[i]["nombre_mision"] + "  (" + recibe + ")</td><td style='text-align:right'><span onclick='borrar_mision(" + misiones_info[i]['id_persona_mision'] + ",`" + persona_info['cedula_persona'] + "`)' class='iconDelete fa fa-times-circle' title='Eliminar misión' style='font-size:22px'></span></td></tr></table><br><hr>";
     }
-  }
+  } */
 
-  if (proyectos_info.length == 0) {
-    vproyectos.innerHTML = "No aplica";
+
+
+if (divisiones.length == 0) {
+  vdivisionesareas.innerHTML = "No aplica";
   } else {
     var texto = "";
-    console.log(proyectos_info);
+    vdivisionesareas.innerHTML = "";
+    console.log(divisiones);
     texto +=
-      "<table style='width:100%' border='1'><tr style='background:grey;color:white'><td style='width:25%'>Nombre</td><td style='width:25%'>Área</td><td style='width:25%'>Estado</td><td style='width:25%'>Eliminar</td></tr>";
-    for (var i = 0; i < proyectos_info.length; i++) {
+      "<table class='table table-hover border-dark' style='width:100%' id='tabla'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:30%'>Divisiones</td><td style='width:30%'>Áreas</td><td style='width:30%'>Secciones</td><td style='width:10%'>Eliminar</td></tr>";
+    for (var i = 0; i < divisiones.length; i++) {
       texto +=
         "<tr><td style='width:25%'>" +
-        proyectos_info[i]["nombre_proyecto"] +
+        divisiones[i]["division"] +
         "</td><td style='width:25%'>" +
-        proyectos_info[i]["area_proyecto"] +
+        divisiones[i]["area"] +
         "</td>";
       texto +=
         "<td style='width:25%'>" +
-        proyectos_info[i]["estado_proyecto"] +
-        "</td><td style='width:25%;text-align:center'><span onclick='borrar_proyecto(" + proyectos_info[i]['id_persona_proyecto'] + ",`" + inf_persona['cedula_persona'] + "`)' class='iconDelete fa fa-times-circle' title='Eliminar proyecto' style='font-size:22px'></span></td></tr>";
+        divisiones[i]["seccion"] +
+        "</td><td style='width:25%;'><span onclick='borrar_proyecto(" + divisiones[i]['id'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar proyecto' style='font-size:22px'></span></td></tr>";
     }
-    vproyectos.innerHTML += texto + "</table>";
-  }
-
-  $("#edit_persona").modal().show();
+    vdivisionesareas.innerHTML += texto + "</table>";
+  } 
 }
-
 btn_guardar.onclick = function () {
+
+  vn1.style.borderColor = "";
   if (vn1.value == "") {
     swal({
       type: "error",
@@ -455,8 +468,8 @@ btn_guardar.onclick = function () {
       vn1.style.borderColor = "red";
       vn1.focus();
     }, 2000);
-  } else {
-    vn1.style.borderColor = "";
+  }else {
+    vn2.style.borderColor = "";
     if (vn2.value == "") {
       swal({
         type: "error",
@@ -470,7 +483,7 @@ btn_guardar.onclick = function () {
         vn2.focus();
       }, 2000);
     } else {
-      vn2.style.borderColor = "";
+      va1.style.borderColor = "";
       if (va1.value == "") {
         swal({
           type: "error",
@@ -484,7 +497,7 @@ btn_guardar.onclick = function () {
           va1.focus();
         }, 2000);
       } else {
-        va1.style.borderColor = "";
+        va2.style.borderColor = "";
         if (va2.value == "") {
           swal({
             type: "error",
@@ -498,7 +511,21 @@ btn_guardar.onclick = function () {
             va2.focus();
           }, 2000);
         } else {
-          va2.style.borderColor = "";
+          vfnac.style.borderColor = "";
+          if (vfnac.value == "") {
+            swal({
+              type: "error",
+              title: "Error",
+              text: "Debe indicar la fecha de nacimiento de la persona",
+              timer: 2000,
+              showConfirmButton: false,
+            });
+            setTimeout(function () {
+              vfnac.style.borderColor = "red";
+              vfnac.focus();
+            }, 2000);
+          } else {
+            vnac.style.borderColor = "";
           if (vnac.value == "") {
             swal({
               type: "error",
@@ -512,7 +539,7 @@ btn_guardar.onclick = function () {
               vnac.focus();
             }, 2000);
           } else {
-            vnac.style.borderColor = "";
+            vtlf.style.borderColor = "";
             if (vtlf.value == "") {
               swal({
                 type: "error",
@@ -526,21 +553,7 @@ btn_guardar.onclick = function () {
                 vtlf.focus();
               }, 2000);
             } else {
-              vtlf.style.borderColor = "";
-              if (vfnac.value == "") {
-                swal({
-                  type: "error",
-                  title: "Error",
-                  text: "Debe indicar la fecha de nacimiento de la persona",
-                  timer: 2000,
-                  showConfirmButton: false,
-                });
-                setTimeout(function () {
-                  vfnac.style.borderColor = "red";
-                  vfnac.focus();
-                }, 2000);
-              } else {
-                vfnac.style.borderColor = "";
+                vnedu.style.borderColor = "";
                 if (vnedu.value == "") {
                   swal({
                     type: "error",
@@ -554,21 +567,62 @@ btn_guardar.onclick = function () {
                     vnedu.focus();
                   }, 2000);
                 } else {
-                  vnedu.style.borderColor = "";
-                  if (vantcom.value == "") {
+                  vubic.style.borderColor = "";
+                  if (vubic.value == "") {
                     swal({
                       type: "error",
                       title: "Error",
-                      text: "Debe ingresar la antigüedad en la comunidad",
+                      text: "Debe ingresar la Ubicación",
                       timer: 2000,
                       showConfirmButton: false,
                     });
                     setTimeout(function () {
-                      vantcom.style.borderColor = "red";
-                      vantcom.focus();
+                      vubic.style.borderColor = "red";
+                      vubic.focus();
                     }, 2000);
-                  } else {
-                    vantcom.style.borderColor = "";
+                  }else {
+                    vingresos.style.borderColor = "";
+                    if (vingresos.value == "") {
+                      swal({
+                        type: "error",
+                        title: "Error",
+                        text: "Debe ingresar la fecha de ingreso al Seniat",
+                        timer: 2000,
+                        showConfirmButton: false,
+                      });
+                      setTimeout(function () {
+                        vingresos.style.borderColor = "red";
+                        vingresos.focus();
+                      }, 2000);
+                    }else {
+                      vingresoa.style.borderColor = "";
+                      if (vingresoa.value == "") {
+                        swal({
+                          type: "error",
+                          title: "Error",
+                          text: "Debe ingresar la fecha de ingreso a la Administración Pública",
+                          timer: 2000,
+                          showConfirmButton: false,
+                        });
+                        setTimeout(function () {
+                          vingresoa.style.borderColor = "red";
+                          vingresoa.focus();
+                        }, 2000);
+                      }else {
+                        vfechan.style.borderColor = "";
+                        if (vfechan.value == "") {
+                          swal({
+                            type: "error",
+                            title: "Error",
+                            text: "Debe ingresar la fecha de Notificación",
+                            timer: 2000,
+                            showConfirmButton: false,
+                          });
+                          setTimeout(function () {
+                            vfechan.style.borderColor = "red";
+                            vfechan.focus();
+                          }, 2000);
+                        } else {
 
                     inf_persona["primer_nombre"] = vn1.value;
                     inf_persona["segundo_nombre"] = vn2.value;
@@ -577,30 +631,63 @@ btn_guardar.onclick = function () {
                     inf_persona["nacionalidad"] = vnac.value;
                     inf_persona["telefono"] = vtlf.value;
                     inf_persona["whatsapp"] = vws.value;
+                    inf_persona["estado_civil"] = vedoc.value;
+                    inf_persona["ing_seniat"] = vingresos.value;
+                    inf_persona["ing_publica"] = vingresoa.value;
+                    inf_persona["fecha_notificacion"] = vfechan.value;
+                    inf_persona["fecha_designacion"] = vdesig.value;
+
                     if (vcor.value == "No posee" || vcor.value == "") {
                       inf_persona["correo"] = "No posee";
                     } else {
                       inf_persona["correo"] = vcor.value;
                     }
+                    if (vtlfc.value == "No posee" || vtlfc.value == "") {
+                      inf_persona["telefono_casa"] = "No posee";
+                    } else{
+                      inf_persona["telefono_casa"] = vtlfc.value;
+                    }
+                    if (vprima1.value == "No posee" || vprima1.value == "") {
+                      inf_persona["prima"] = "No posee";
+                    } else{
+                      inf_persona["prima"] = vprima1.value;
+                    }
+                    if (vdclara.value == "No posee" || vdclara.value == "") {
+                      inf_persona["declaracionj"] = "No posee";
+                    } else{
+                      inf_persona["declaracionj"] = vdclara.value;
+                    }
+                    if (vinscripcion_ivss.value == "No posee" || vinscripcion_ivss.value == "") {
+                      inf_persona["inscripcionivss"] = "No posee";
+                    } else{
+                      inf_persona["inscripcionivss"] = vinscripcion_ivss.value;
+                    }
+                    if (vfideicomiso.value == "No posee" || vfideicomiso.value == "") {
+                      inf_persona["fideicomiso"] = "No posee";
+                    } else{
+                      inf_persona["fideicomiso"] = vfideicomiso.value;
+                    }
                     inf_persona["fecha_nacimiento"] = vfnac.value;
                     inf_persona["genero"] = vgen.value;
-                    inf_persona["sexualidad"] = vorsex.value;
-                    inf_persona["estado_civil"] = vedoc.value;
                     inf_persona["nivel_educativo"] = vnedu.value;
-                    inf_persona["antiguedad_comunidad"] = vantcom.value; 
-                    inf_persona["miliciano"] = vmili.value;
-                    inf_persona["jefe_familia"] = vjeffam.value;
+                    /* 
+                    inf_persona["sexualidad"] = vorsex.value;
+                    inf_persona["estado_civil"] = vedoc.value;*/                    
+/*                     inf_persona["antiguedad_comunidad"] = vantcom.value;
+                    inf_persona["miliciano"] = vmili.value; */
+/*                     inf_persona["jefe_familia"] = vjeffam.value;
                     inf_persona["propietario_vivienda"] = vpropv.value;
                     inf_persona["jefe_calle"] = vjefcas.value;
                     inf_persona["privado_libertad"] = vprivlib.value;
-                    inf_persona["afrodescendencia"] = vafro.value;
-                    if (vcomindi.value == 0) {
+                    inf_persona["afrodescendencia"] = vafro.value; */
+/*                     if (vcomindi.value == 0) {
                       inf_persona["comunidad_indigena"] = "No posee";
                     } else {
                       inf_persona["comunidad_indigena"] = vvalcomindi.value;
-                    } 
+                    } */
 
-                    if (
+
+/*                     if (
                       (vocup.value == 0 && vocup.style.display != "none") ||
                       (vocup.style.display == "none" && vocupinput.value == "")
                     ) {
@@ -610,8 +697,11 @@ btn_guardar.onclick = function () {
                         ? (inf_persona["ocupacion"] = vocupinput.value)
                         : (inf_persona["ocupacion"] = vocup.value);
                     }
+ */
 
-                    if (
+
+                    
+                    /* if (
                       (vnomcondlab.style.display == "" &&
                         vnomcondlab.value == "") ||
                       (vnomcondlab.style.display == "" &&
@@ -644,8 +734,8 @@ btn_guardar.onclick = function () {
 
                           inf_persona["condicion_laboral"] = condicion;
                         }
-                      }
-
+                      } */
+/* 
                       if (spanorgpol.className == "fa fa-plus-square") {
                         vorgpol.value == 0 ? inf_persona['org_politica'] = "No posee" : inf_persona['org_politica'] = vorgpol.value;
                       }
@@ -658,7 +748,7 @@ btn_guardar.onclick = function () {
                       }
                       else {
                         vtranspinput.value != "" ? inf_persona['transporte'] = vtranspinput.value : inf_persona['transporte'] = "No posee";
-                      }
+                      } */
                       editar_persona();
                     }
                   }
@@ -669,15 +759,17 @@ btn_guardar.onclick = function () {
         }
       }
     }
-  }
-};
 
+  }
+}}}
 function editar_persona() {
+  //alert(JSON.stringify(inf_persona, null, 4));
   $.ajax({
     type: "POST",
     url: BASE_URL + "Personas/modificar_persona",
     data: { datos_persona: inf_persona },
   }).done(function (result) {
+   // alert(result);
     if (result == 1) {
       swal({
         type: "success",
@@ -694,7 +786,7 @@ function editar_persona() {
   });
 }
 
-vcomindi.onchange = function () {
+/* vcomindi.onchange = function () {
   if (vcomindi.value == 1) {
     vvalcomindi.value = "";
     vvervalcomindi.style.display = "";
@@ -702,9 +794,9 @@ vcomindi.onchange = function () {
   } else {
     vvervalcomindi.style.display = "none";
   }
-};
+}; */
 
-spanocup.onclick = function () {
+/* spanocup.onclick = function () {
   if (spanocup.className == "fa fa-plus-square") {
     spanocup.className = "fa fa-list";
     vocup.style.display = "none";
@@ -717,9 +809,9 @@ spanocup.onclick = function () {
     vocupinput.value = "";
     vocupinput.style.display = "none";
   }
-};
+}; */
 
-spancondlab.onclick = function () {
+/* spancondlab.onclick = function () {
   if (spancondlab.className == "fa fa-plus-square") {
     spancondlab.className = "fa fa-list";
     vcondlab.style.display = "none";
@@ -737,9 +829,9 @@ spancondlab.onclick = function () {
     vtipsectlab.style.display = "none";
     vtipsectlab.value = 0;
   }
-};
+}; */
 
-vsectlab.onchange = function () {
+/* vsectlab.onchange = function () {
   if (vsectlab.value == 1) {
     vtipsectlab.style.display = "";
   } else {
@@ -762,9 +854,9 @@ spanorgpol.onclick = function () {
     vorgpolinput.value = "";
     vorgpol.style.display = "";
   }
-}
+} */
 
-vtransp.onchange = function () {
+/* vtransp.onchange = function () {
   if (vtransp.value == "privado") {
     vvertiptrans.style.display = "";
     vtranspinput.focus();
@@ -773,9 +865,9 @@ vtransp.onchange = function () {
     vvertiptrans.style.display = "none";
     vtranspinput.value = "";
   }
-}
+} */
 
-function borrar_bono(id, cedula_param) {
+/* function borrar_bono(id, cedula_param) {
   swal({
     type: "warning",
     title: "¿Está seguro?",
@@ -797,9 +889,9 @@ function borrar_bono(id, cedula_param) {
       })
     }
   });
-}
+} */
 
-
+/* 
 function actualizar_bonos(result, cedula_param) {
   console.log(result);
   if (result != 0) {
@@ -811,9 +903,9 @@ function actualizar_bonos(result, cedula_param) {
   else {
     vbonos.innerHTML = "No aplica";
   }
-}
+} */
 
-add_bono.onclick = function () {
+/* add_bono.onclick = function () {
   if (document.getElementById("bono_nuevo").value == "") {
     swal({
       type: "error",
@@ -983,48 +1075,52 @@ document.getElementById("recibe").onchange = function () {
     document.getElementById("fecha_recibe").style.display = "none";
   }
 }
+*/
 
 
-function cargar_proyectos(cedula_persona) {
-  $.ajax({
+
+function cargar_proyectos() {
+
+$.ajax({
     type: "POST",
-    url: BASE_URL + "Personas/get_proyectos",
-    data: { "cedula_persona": cedula_persona }
+    url: BASE_URL + "Personas/get_divisionesyareas",
+    data: { "cedula_persona": inf_persona['cedula_persona'] }
   }).done(function (result) {
     console.log(result);
     if (result != 0) {
       result = JSON.parse(result);
-      vproyectos.innerHTML = "";
+      vdivisionesareas.innerHTML = "";
       for (var i = 0; i < result.length; i++) {
         var texto = "";
+       vdivisionesareas.innerHTML = "";
         console.log(result);
         texto +=
-          "<table style='width:100%' border='1'><tr style='background:grey;color:white'><td style='width:25%'>Nombre</td><td style='width:25%'>Área</td><td style='width:25%'>Estado</td><td style='width:25%'>Eliminar</td></tr>";
+          "<table class='table table-hover border-dark' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:30%'>Divisiónes</td><td style='width:30%'>Áreas</td><td style='width:30%'>Secciones</td><td style='width:10%'>Eliminar</td></tr>";
         for (var i = 0; i < result.length; i++) {
           texto +=
             "<tr><td style='width:25%'>" +
-            result[i]["nombre_proyecto"] +
+            result[i]["division"] +
             "</td><td style='width:25%'>" +
-            result[i]["area_proyecto"] +
+            result[i]["area"] +
             "</td>";
           texto +=
             "<td style='width:25%'>" +
-            result[i]["estado_proyecto"] +
-            "</td><td style='width:25%;text-align:center'><span onclick='borrar_proyecto(" + result[i]['id_persona_proyecto'] + ",`" + cedula_persona + "`)' class='iconDelete fa fa-times-circle' title='Eliminar proyecto' style='font-size:22px'></span></td></tr>";
+            result[i]["seccion"] +
+            "</td><td style='width:25%;'><span onclick='borrar_proyecto(" + result[i]['id'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar proyecto' style='font-size:22px'></span></td></tr>";
         }
-        vproyectos.innerHTML += texto + "</table>";
+        vdivisionesareas.innerHTML += texto + "</table>";
       }
     }
     else {
-      vmisiones.innerHTML = "No aplica";
+      vdivisionesareas.innerHTML = "<p> No aplica</p>";
     }
   })
 }
 
-function borrar_proyecto(id, cedula) {
+function borrar_proyecto(id) {
   swal({
     type: "warning",
-    title: "¿Está seguro?",
+    title: "¿Estás seguro?",
     text: "Está por eliminar el proyecto asociado a esta persona, ¿desea continuar?",
     showCancelButton: true,
     confirmButtonText: "Sí",
@@ -1034,73 +1130,117 @@ function borrar_proyecto(id, cedula) {
       $.ajax({
         type: "POST",
         url: BASE_URL + "Personas/eliminar_proyecto",
-        data: { "proyecto": id }
+        data: { "id": id, "cedula_persona": inf_persona['cedula_persona'] }
       }).done(function (result) {
-        if (result) {
+        if (result==1) {
           cargar_proyectos(cedula);
           $('#example1').DataTable().clear().destroy();
           cargar_tabla_personas();
+        }else{
+          cargar_proyectos(cedula);
+          document.getElementById("validarareas").innerHTML = '<div class="alert alert-dismissible fade show" style="background:#9D2323; color:white" role="alert">No puede ser eliminado, Debe contener al menos un registro en División y Área.<i class="far fa-times" id="cerraralert" data-dismiss="alert" aria-label="Close"></i></div>';
+          setTimeout(function () {
+            $("#cerraralert").click();
+          }, 6000);
         }
       });
     }
+
   });
 }
 
-document.getElementById("spannewproyect").onclick = function () {
+
+
+
+/* document.getElementById("spannewproyect").onclick = function () {
   if (document.getElementById("spannewproyect").className == "fa fa-plus-square") {
     document.getElementById("spannewproyect").className = "fa fa-list";
-    document.getElementById("nuevo_proyecto").style.display = "none";
-    document.getElementById("nuevo_proyecto").value = "0";
+    document.getElementById("nueva_division").style.display = "none";
+    document.getElementById("nueva_areas").value = "0";
+    document.getElementById("nuevo_secciones").value = "0";
     document.getElementById("add_proyect").style.display = "";
   }
-  else {
-    document.getElementById("spannewproyect").className = "fa fa-plus-square";
-    document.getElementById("add_proyect").style.display = "none";
-    document.getElementById("nombre_proyecto").value = "";
-    document.getElementById("estado_proyecto").value = "";
-    document.getElementById("area_proyecto").value = "0";
-    document.getElementById("nuevo_proyecto").style.display = "";
+}
+ */
+var nuevad = document.getElementById("nueva_division").value;
+var nuevaa = document.getElementById("nueva_areas").value;
+var nuevas = document.getElementById("nuevo_secciones").value;
 
+
+document.getElementById("nueva_division").onchange = function () {
+  var division = new Object();
+  division = document.getElementById("nueva_division").value;
+  $.ajax({
+    type: "POST",
+    url: BASE_URL + "Personas/Consultas_areas",
+    data: { "divisiones": division}
+  }).done(function(result) {
+    document.getElementById("nueva_areas").innerHTML = result;
+  });
+
+  if(document.getElementById("nueva_division").value == "" || 
+  document.getElementById("nueva_division").value == null || 
+  document.getElementById("nueva_division").value == 0 || 
+  document.getElementById("nueva_division").value != 0){
+      var areas = new Object();
+      areas = 0;
+      $.ajax({
+        type: "POST",
+        url: BASE_URL + "Personas/Consultas_secciones",
+        data: { "areas": areas}
+      }).done(function(result) {
+        document.getElementById("nuevo_secciones").innerHTML = result;
+      });
   }
 }
 
+document.getElementById("nueva_areas").onchange = function () {
+  var areas = new Object();
+  areas = document.getElementById("nueva_areas").value;
+  $.ajax({
+    type: "POST",
+    url: BASE_URL + "Personas/Consultas_secciones",
+    data: { "areas": areas}
+  }).done(function(result) {
+    document.getElementById("nuevo_secciones").innerHTML = result;
+  });
+}
+
+
+
 document.getElementById("spanaddproyect").onclick = function () {
-  if ((document.getElementById("nuevo_proyecto").value == "0" && document.getElementById("nuevo_proyecto").style.display != "none") || (document.getElementById("nuevo_proyecto").style.display == "none" && (document.getElementById("nombre_proyecto").value == "" || document.getElementById("area_proyecto").value == "0" || document.getElementById("estado_proyecto").value == ""))) {
+  if ((document.getElementById("nueva_division").value == 0 || document.getElementById("nueva_areas").value == 0)) {
     swal({
       type: "error",
       title: "Error",
-      text: "Debe ingresar los datos del proyecto",
+      text: "Debe ingresar los datos de de la División y Área",
       timer: 2000,
       showConfirmButton: false
     });
     setTimeout(function () {
-      document.getElementById("nombre_proyecto").style.borderColor = 'red'
-      document.getElementById("estado_proyecto").style.borderColor = "red";
-      document.getElementById("area_proyecto").style.borderColor = "red";
-      document.getElementById("nuevo_proyecto").style.borderColor = "red";
+      document.getElementById("nueva_division").style.borderColor = 'red'
+      document.getElementById("nueva_areas").style.borderColor = "red";
     });
   }
   else {
-    document.getElementById("nombre_proyecto").style.borderColor = ''
-    document.getElementById("estado_proyecto").style.borderColor = "";
-    document.getElementById("area_proyecto").style.borderColor = "";
-    document.getElementById("nuevo_proyecto").style.borderColor = "";
-    var proyecto_persona = new Object();
-    proyecto_persona['proyecto'] = document.getElementById("nuevo_proyecto").value;
-    proyecto_persona['nombre_proyecto'] = document.getElementById("nombre_proyecto").value;
-    proyecto_persona['estado_proyecto'] = document.getElementById("estado_proyecto").value;
-    proyecto_persona['area_proyecto'] = document.getElementById("area_proyecto").value;
+    document.getElementById("nueva_division").style.borderColor = ''
+    document.getElementById("nueva_areas").style.borderColor = "";
+    document.getElementById("nuevo_secciones").style.borderColor = "";
+    var divisiones_areas = new Object();
+    divisiones_areas['nueva_division'] = document.getElementById("nueva_division").value;
+    divisiones_areas['nueva_areas'] = document.getElementById("nueva_areas").value;
+    divisiones_areas['nuevo_secciones'] = document.getElementById("nuevo_secciones").value;
     $.ajax({
       type: "POST",
-      url: BASE_URL + "Personas/add_proyecto",
-      data: { "proyecto_info": proyecto_persona, "cedula_persona": inf_persona['cedula_persona'] }
+      url: BASE_URL + "Personas/add_division_areas",
+      data: { "divisiones_info": divisiones_areas, "cedula_persona": inf_persona['cedula_persona']}
     }).done(function (result) {
       if (result == 0) {
         swal({
           type: "error",
           title: "Error",
-          text: "Esta persona ya se encuentra asociada a este proyecto",
-          timer: 2000,
+          text: "Esta persona ya se encuentra asignada a ésta Área",
+          timer: 2300,
           showConfirmButton: false
         });
       }
@@ -1109,10 +1249,9 @@ document.getElementById("spanaddproyect").onclick = function () {
         $('#example1').DataTable().clear().destroy();
         cargar_tabla_personas();
       }
-      document.getElementById("nombre_proyecto").value = ''
-      document.getElementById("estado_proyecto").value = "";
-      document.getElementById("area_proyecto").value = "0";
-      document.getElementById("nuevo_proyecto").value = "0";
+      document.getElementById("nueva_division").value = '0'
+      document.getElementById("nueva_areas").value = "0";
+      document.getElementById("nuevo_secciones").value = "0";
     });
 
 
