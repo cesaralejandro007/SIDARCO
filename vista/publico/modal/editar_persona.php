@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id='modal-title'>Editar persona</h4>
-        <button type="button" class="close" onclick="cerrarmodal()" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -95,9 +95,14 @@
                 <td style='width:25%'>
                   <input type="text" id='condil' class='form-control'>
                 </td>
-                <td style='width:25%'>
-                  <input type="text" id='ubic' class='form-control'>
-                </td>
+                  <td style='width:25%'>
+                  <select class='form-control' id='ubic'>
+                    <option value='0'>-Seleccione Ubicación-</option>
+                    <?php foreach ($this->ubicacion as $p) { ?>
+                      <option value='<?php echo $p['id_ubicacion'] ?>'><?php echo $p['nombre_ubi']; ?></option>
+                    <?php } ?>
+                  </select>
+                  </td>
                 <td style='width:25%'>
                   <input type="text" id='vocupa' class='form-control'>
                 </td>

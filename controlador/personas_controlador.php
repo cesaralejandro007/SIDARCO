@@ -193,10 +193,111 @@ public function Consultas()
   $this->vista->bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
   $this->vista->misiones=$this->Consultar_Tabla("misiones",1,"id_mision");
   $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
+  $this->vista->ubicacion=$this->Consultar_Tabla_divisiones("ubicaciones");
   $this->vista->secciones=$this->Consultar_Tabla_divisiones("secciones"); 
   $this->Seguridad_de_Session();
   $this->vista->Cargar_Vistas('personas/consultar');
 }
+
+
+public function consultar_informacion_persona_ingreso(){
+  $info_completa=[];
+  $personas=$this->modelo->Consultarfecha_ingreso($_POST['fecha_inicio'],$_POST['fecha_fin']);
+  
+  foreach ($personas as $p) {
+   $ocupacion=json_encode($this->modelo->get_ocupacion_persona($p['cedula_persona']));
+   $condicion_lab=json_encode($this->modelo->get_cond_laboral_persona($p['cedula_persona']));
+   $transporte=json_encode($this->modelo->get_transporte_persona($p['cedula_persona']));
+   $bonos=json_encode($this->modelo->get_bonos_persona($p['cedula_persona']));
+   $misiones=json_encode($this->modelo->get_misiones_persona($p['cedula_persona']));
+   $divisiones=json_encode($this->modelo->get_divisiones($p['cedula_persona']));
+   //$comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
+   $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona']));
+   $persona=json_encode($p);
+   $p['genero']=='M'?$genero="Masculino":$genero='Femenino';
+   $p['whatsapp']==1?$whatsapp="Si posee":$whatsapp='No posee';
+
+   $info_completa[]=[
+    "cedula"    =>    $p['cedula_persona'],
+    "primer_nombre"  =>$p['primer_nombre'],
+    "segundo_nombre"          =>$p['segundo_nombre'],
+    "primer_apellido" =>$p['primer_apellido'],
+    "segundo_apellido"          =>$p['segundo_apellido'],
+    "telefono"        =>$p['telefono'],
+    "whatsapp"          =>$whatsapp,
+    "telf_casa"          =>$p['telf_casa'],
+    "correo"          =>$p['correo'],
+    "fecha_nacimiento"          =>$p['fecha_nacimiento'],
+    "genero"          =>$genero,
+    "nacionalidad"          =>$p['nacionalidad'],
+    "estado_civil"          =>$p['estado_civil'],
+    "nivel_educativo"          =>$p['nivel_educativo'],
+    "nombre_ubi"          =>$p['nombre_ubi'],
+    "ing_seniat"          =>$p['ing_seniat'],
+    "ing_publica"          =>$p['ing_publica'],
+    "fecha_notificacion"          =>$p['fecha_notificacion'],
+    "ult_designacion"          =>$p['ult_designacion'],
+    "prima"          =>$p['prima'],
+    "declaracion_j"          =>$p['declaracion_j'],
+    "inscripcion_ivss"          =>$p['inscripcion_ivss'],
+    "fideicomiso"          =>$p['fideicomiso']
+  ];
+
+
+}
+
+$this->Escribir_JSON($info_completa);
+}
+
+public function consultar_informacion_persona_compleanos(){
+  $info_completa=[];
+  $personas=$this->modelo->Consultarfecha_cumple($_POST['mescumple']);
+  
+  foreach ($personas as $p) {
+   $ocupacion=json_encode($this->modelo->get_ocupacion_persona($p['cedula_persona']));
+   $condicion_lab=json_encode($this->modelo->get_cond_laboral_persona($p['cedula_persona']));
+   $transporte=json_encode($this->modelo->get_transporte_persona($p['cedula_persona']));
+   $bonos=json_encode($this->modelo->get_bonos_persona($p['cedula_persona']));
+   $misiones=json_encode($this->modelo->get_misiones_persona($p['cedula_persona']));
+   $divisiones=json_encode($this->modelo->get_divisiones($p['cedula_persona']));
+   //$comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
+/*    $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona'])); */
+   $persona=json_encode($p);
+   $p['genero']=='M'?$genero="Masculino":$genero='Femenino';
+   $p['whatsapp']==1?$whatsapp="Si posee":$whatsapp='No posee';
+
+   $info_completa[]=[
+    "cedula"    =>    $p['cedula_persona'],
+    "primer_nombre"  =>$p['primer_nombre'],
+    "segundo_nombre"          =>$p['segundo_nombre'],
+    "primer_apellido" =>$p['primer_apellido'],
+    "segundo_apellido"          =>$p['segundo_apellido'],
+    "telefono"        =>$p['telefono'],
+    "whatsapp"          =>$whatsapp,
+    "telf_casa"          =>$p['telf_casa'],
+    "correo"          =>$p['correo'],
+    "fecha_nacimiento"          =>$p['fecha_nacimiento'],
+    "genero"          =>$genero,
+    "nacionalidad"          =>$p['nacionalidad'],
+    "estado_civil"          =>$p['estado_civil'],
+    "nivel_educativo"          =>$p['nivel_educativo'],
+    "nombre_ubi"          =>$p['nombre_ubi'],
+    "ing_seniat"          =>$p['ing_seniat'],
+    "ing_publica"          =>$p['ing_publica'],
+    "fecha_notificacion"          =>$p['fecha_notificacion'],
+    "ult_designacion"          =>$p['ult_designacion'],
+    "prima"          =>$p['prima'],
+    "declaracion_j"          =>$p['declaracion_j'],
+    "inscripcion_ivss"          =>$p['inscripcion_ivss'],
+    "fideicomiso"          =>$p['fideicomiso']
+  ];
+
+
+}
+
+$this->Escribir_JSON($info_completa);
+}
+
 
 public function consultar_informacion_persona(){
   $info_completa=[];
@@ -213,6 +314,7 @@ public function consultar_informacion_persona(){
    $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona']));
    $persona=json_encode($p);
    $p['genero']=='M'?$genero="Masculino":$genero='Femenino';
+   $p['whatsapp']==1?$whatsapp="Si posee":$whatsapp='No posee';
 
    $info_completa[]=[
     "cedula"    =>    $p['cedula_persona'],
@@ -221,8 +323,8 @@ public function consultar_informacion_persona(){
     "primer_apellido" =>$p['primer_apellido'],
     "segundo_apellido"          =>$p['segundo_apellido'],
     "telefono"        =>$p['telefono'],
-    "whatsapp"          =>$p['	whatsapp'],
-    "telf_casa"          =>$p['	telf_casa'],
+    "whatsapp"          =>$whatsapp,
+    "telf_casa"          =>$p['telf_casa'],
     "correo"          =>$p['correo'],
     "fecha_nacimiento"          =>$p['fecha_nacimiento'],
     "genero"          =>$genero,

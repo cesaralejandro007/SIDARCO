@@ -1,4 +1,3 @@
-
 function ver_datos(
   persona,
   ocupacion,
@@ -333,8 +332,8 @@ function editar_datos(
   var persona_info = JSON.parse(persona);
   var ocupacion_info = JSON.parse(ocupacion);
   var condicion_lab_info = JSON.parse(condicion_lab);
-  var transporte_info = JSON.parse(transporte);
   var divisiones = JSON.parse(divisiones);
+  /*   var transporte_info = JSON.parse(transporte); */
 /*   var bonos_info = JSON.parse(bonos);
   var misiones_info = JSON.parse(misiones); */
 /*   var comunidad_i_info = JSON.parse(comunidad_i); */
@@ -355,7 +354,7 @@ function editar_datos(
   vgen.value = persona_info["genero"];
   vedoc.value = persona_info["estado_civil"];
   vnedu.value = persona_info["nivel_educativo"];
-  vubic.value = persona_info["nombre_ubi"];
+  vubic.value = persona_info["id_ubicacion"];
   vingresos.value = persona_info["ing_seniat"];
   vingresoa.value = persona_info["ing_publica"]; 
   vfechan.value = persona_info["fecha_notificacion"];
@@ -568,7 +567,7 @@ btn_guardar.onclick = function () {
                   }, 2000);
                 } else {
                   vubic.style.borderColor = "";
-                  if (vubic.value == "") {
+                  if (vubic.value == "0") {
                     swal({
                       type: "error",
                       title: "Error",
@@ -670,6 +669,7 @@ btn_guardar.onclick = function () {
                     inf_persona["fecha_nacimiento"] = vfnac.value;
                     inf_persona["genero"] = vgen.value;
                     inf_persona["nivel_educativo"] = vnedu.value;
+                    inf_persona["ubicacion"] = vubic.value;
                     /* 
                     inf_persona["sexualidad"] = vorsex.value;
                     inf_persona["estado_civil"] = vedoc.value;*/                    

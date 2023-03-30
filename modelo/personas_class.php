@@ -625,7 +625,39 @@ class Personas_Class extends Modelo
 
     public function Consultar()
     {
-        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Consultarfecha_ingreso($f1,$f2)
+    {
+        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.estado=1 and personas.ing_seniat BETWEEN '$f1' and '$f2' GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Consultarfecha_cumple($mes)
+    {
+        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.estado=1 and date_format(personas.fecha_nacimiento, '%m') = '$mes' GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -657,6 +689,7 @@ class Personas_Class extends Modelo
                 genero                  =:genero,
                 whatsapp                =:whatsapp,
                 nivel_educativo         =:nivel_educativo,
+                id_ubicacion            =:ubicacion,
                 ing_seniat              =:ing_seniat,
                 ing_publica             =:ing_publica,
                 fecha_notificacion      =:fecha_notificacion,
@@ -684,6 +717,7 @@ class Personas_Class extends Modelo
                 'genero'                    =>$data['genero'],
                 'whatsapp'                  =>$data['whatsapp'],
                 'nivel_educativo'           =>$data['nivel_educativo'],
+                'ubicacion'                 =>$data['ubicacion'],
                 'ing_seniat'                =>$data['ing_seniat'],
                 'ing_publica'               =>$data['ing_publica'],
                 'fecha_notificacion'        =>$data['fecha_notificacion'],

@@ -1,4 +1,5 @@
 <!-- DataTables -->
+
 <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/datatables/media/js/jquery.dataTables.min.css">
 <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -25,5 +26,6 @@
 <script src="<?php echo constant('URL')?>config/plugins/datatables/media/js/buttons.html5.min.js"></script>
 
 <script src="<?php echo constant('URL')?>config/plugins/datatables/media/js/buttons.print.min.js"></script>
+
 
 <script src="<?php echo constant('URL')?>config/js/news/Data_Tables_Español.js"></script>

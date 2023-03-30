@@ -27,12 +27,17 @@
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/css/datatables.min.css">
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/datatables/media/css/select.dataTables.min.css">
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/datatables/media/css/fixedHeader.dataTables.min.css">
-
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/css/adminlte.min.css">
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/font-awesome/css/all.min.css">
     <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/font-awesome/css/font-awesome.min.css">
     <!-- SweetAlert2 -->
     <link href="<?php echo constant('URL')?>config/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <script src="<?php echo constant('URL')?>config/plugins/sweetalert2/sweetalert2.js"></script>
+    <style>
+        .swal-width  {
+            width : 100% !important;
+        }
+    </style>
 
     <!-- jquery -->
     <script src="<?php echo constant('URL')?>config/plugins/jquery/jquery-3.6.3.min.js"></script>
