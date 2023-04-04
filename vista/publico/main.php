@@ -15,5 +15,17 @@ table>tbody>tr>td {
 .btn-group, .btn-group-vertical {
     float: left;
 }
+.swal2-html-container {
+    overflow: hidden;
+}
+#example1_previous,#example2_previous,#example3_previous, #example4_previous,#example1_next, #example2_next,#example3_next, #example4_next{
+    font-size:14px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+    padding: .2em 10px;
+}
+.dataTables_wrapper .dataTables_length select {
+    padding: 2px;
+}
 
 </style>

@@ -7,7 +7,7 @@ define('URL', 'http://localhost/dashboard/www/'.SISTEMA."/");
 
 define('SERVIDOR', 	'mysql'); 
 define('HOST', 		'localhost'); 
-define('BD', 		'sidarco');
+define('BD', 		'sidarco1');
 
 // MYSQL contraseña
 //https://foroayuda.es/como-integrar-sublime-text-con-github/

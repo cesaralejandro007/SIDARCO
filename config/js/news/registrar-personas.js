@@ -46,7 +46,6 @@ cedula.focus();
 
 
 
-
 //------------------ Documentos personales----------------------------------  -------//
 
 
@@ -111,6 +110,7 @@ var prima=document.getElementById("prima");
 var declaracion_j=document.getElementById("declaracion_j");
 var inscripcion_ivss=document.getElementById("inscripcion_ivss");
 var fideicomiso=document.getElementById("fideicomiso");
+var id_ubicacion=document.getElementById("ubicaciones");
 var nombre_ocupacion=document.getElementById("ocupacion_nueva");
 var nombre_condicion=document.getElementById("nombre_condicion_laboral");
 var nueva_cond=document.getElementById("nombre_cond_nueva");
@@ -1781,6 +1781,7 @@ function enviar_informacion(){
   datos_persona['declaracion_j']=declaracion_j.value;
   datos_persona['inscripcion_ivss']=inscripcion_ivss.value;
   datos_persona['fideicomiso']=fideicomiso.value;
+  datos_persona['id_ubicacion']=id_ubicacion.value;
   correo.value==""?datos_persona['correo']="No posee" : datos_persona['correo']=correo.value+tipo_correo.value;
   datos_persona['contrasenia']=contrasenia.value;
   datos_persona['preguntas_seguridad']=color.value.toLowerCase()+animal.value.toLowerCase()+mascota.value.toLowerCase();
@@ -1837,7 +1838,10 @@ function enviar_informacion(){
 
 
      registrar_condicion_laboral();
-
+     
+     if(proyectos_persona.length!=0){
+      registrar_proyectos_persona();
+    }
 
 
      //if(comunidad_indigena.value!="0"){
@@ -1898,6 +1902,18 @@ function registrar_carnets(carnet,tipo){
   }
 
 }
+
+/*  function registrar_ubicacion(){
+
+  $.ajax({
+      type:"POST",
+      url:BASE_URL+"Personas/Consultas",
+      data:{"id_ubicacion": id_ubicacion}
+    }).done(function(result)
+{
+console.log(result);
+})
+} */
 
 function registrar_bonos_persona(){
 

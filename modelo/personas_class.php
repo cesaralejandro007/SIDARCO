@@ -80,6 +80,7 @@ class Personas_Class extends Modelo
                 preguntas_seguridad,
                 estado,
                 direccion,
+                id_ubicacion,
                 ing_seniat,
                 ing_publica,
                 fecha_notificacion,
@@ -111,6 +112,7 @@ class Personas_Class extends Modelo
                 :preguntas_seguridad,
                 :estado,
                 :direccion,
+                :id_ubicacion,
                 :ing_seniat,
                 :ing_publica,
                 :fecha_notificacion,
@@ -144,6 +146,7 @@ class Personas_Class extends Modelo
                 'preguntas_seguridad'   =>       $data['preguntas_seguridad'],
                 'estado'                =>       $data['estado'],
                 'direccion'             =>       $data['direccion'],
+                'id_ubicacion'          =>       $data['id_ubicacion'],
                 'ing_seniat'            =>       $data['fecha_seniat'],
                 'ing_publica'           =>       $data['fecha_publica'],
                 'fecha_notificacion'    =>       $dats['fecha_notificacion'],
@@ -161,6 +164,23 @@ class Personas_Class extends Modelo
             return $this->Capturar_Error($e);
         }
     }
+
+    public function registrar_egresos_personas($cedula, $id_egresado, $descripcion, $fecha)
+    {
+        try {
+            $this->conexion->query("INSERT INTO personas_egresados(
+				cedula_persona,id_egresado,descripcion,fecha_engreso
+				)
+			VALUES(
+				'$cedula', '$id_egresado', '$descripcion', '$fecha'
+
+			)");
+        } catch (Exception $e) {
+            return $this->Capturar_Error($e);
+        }  
+    }
+
+
 
 
 /*      public function Registrar_transporte($data)
@@ -625,7 +645,7 @@ class Personas_Class extends Modelo
 
     public function Consultar()
     {
-        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,nomina WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and nomina.id_nomina = personas.id_nomina and personas.estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -636,6 +656,46 @@ class Personas_Class extends Modelo
         } catch (PDOException $e) {
 
             return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Consultaregresos()
+    {
+        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,personas_egresados,egresados WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.cedula_persona = personas_egresados.cedula_persona and egresados.id_egresado = personas_egresados.id_egresado and personas.estado=0 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function consultar_tabla_egresados()
+    {
+        $sql               = "SELECT * FROM egresados";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+
+
+           $resul ="<option class='swal2-input col-8' value='0'>-Seleccione-</option>";
+            foreach ($respuesta_arreglo as $p) {
+                $resul = $resul.  "<option value=". $p['id_egresado'] .">".$p['nombre_egresado']."</option>";
+            }
+            return $resul;
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
         }
     }
 
@@ -671,6 +731,23 @@ class Personas_Class extends Modelo
         }
     }
 
+    public function Consultar_nomina($id_nomina)
+    {
+        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,nomina WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and nomina.id_nomina = personas.id_nomina and nomina.id_nomina = $id_nomina and personas.estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+
     public function Actualizar($data)
     {
 
@@ -690,6 +767,7 @@ class Personas_Class extends Modelo
                 whatsapp                =:whatsapp,
                 nivel_educativo         =:nivel_educativo,
                 id_ubicacion            =:ubicacion,
+                grado_resguardo         =:grado,
                 ing_seniat              =:ing_seniat,
                 ing_publica             =:ing_publica,
                 fecha_notificacion      =:fecha_notificacion,
@@ -697,7 +775,8 @@ class Personas_Class extends Modelo
                 prima                   =:prima,
                 declaracion_j           =:declaracion_j,
                 inscripcion_ivss        =:inscripcion_ivss,
-                fideicomiso             =:fideicomiso
+                fideicomiso             =:fideicomiso,
+                id_nomina               =:nomina
 
                 WHERE cedula_persona =:cedula_persona"
             );
@@ -718,6 +797,7 @@ class Personas_Class extends Modelo
                 'whatsapp'                  =>$data['whatsapp'],
                 'nivel_educativo'           =>$data['nivel_educativo'],
                 'ubicacion'                 =>$data['ubicacion'],
+                'grado'                     =>$data['grado_resguardo'],
                 'ing_seniat'                =>$data['ing_seniat'],
                 'ing_publica'               =>$data['ing_publica'],
                 'fecha_notificacion'        =>$data['fecha_notificacion'],
@@ -725,7 +805,8 @@ class Personas_Class extends Modelo
                 'prima'                     =>$data['prima'],
                 'declaracion_j'             =>$data['declaracionj'],
                 'inscripcion_ivss'          =>$data['inscripcionivss'],
-                'fideicomiso'               =>$data['fideicomiso']
+                'fideicomiso'               =>$data['fideicomiso'],
+                'nomina'                    =>$data['nomina']
             ]);
 
             return true;
@@ -816,6 +897,29 @@ class Personas_Class extends Modelo
             return $this->Capturar_Error($e);
          }
      }
+
+
+       /*  public function get_ubicacion(){
+
+        $tabla   ="SELECT * FROM ubicaciones ";
+        $respuestaArreglo='';
+
+        try{
+            
+            $datos= $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuestaArreglo= $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuestaArreglo;
+        } catch (PDOException $e){
+
+            return $this->capturar_Error($e);
+        }
+
+        } */
+
+
+
 
          public function get_codigo_carnet($codigo,$tipo)
      {
@@ -1041,7 +1145,7 @@ public function get_organizaciones()
 
             return $this->Capturar_Error($e);
          }
-     }
+     } 
 
 
 

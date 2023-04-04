@@ -2,7 +2,6 @@
 <?php include (call."data-table.php"); ?>
 <?php include (call."main.php"); ?>
 
-
 <!-- Contenido de la pagina -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -41,98 +40,46 @@
                                 <div class="col-12">
                                     <div class=" d-flex flex-wrap justify-content-center">
                                         <div style="" class="m-1">
-                                            <input type="text" id="Cedulaf" class="form-control" placeholder="Cedula" data-index="3">
+                                            <input type="text" id="tipoe" class="form-control" placeholder="Tipo de egreso" data-index="3">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Nombref" class="form-control" placeholder="Nombre" data-index="4">
+                                            <input type="text" id="descripcione" class="form-control" placeholder="Descripción de egreso" data-index="4">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Apellidof" class="form-control" placeholder="Apellido" data-index="6">
+                                            <input type="text" id="fechae" class="form-control" placeholder="Fecha de egreso" data-index="5">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Generof" class="form-control" placeholder="Genero" data-index="10">
+                                            <input type="text" id="Cedulaf" class="form-control" placeholder="Cedula" data-index="6">
                                         </div>
                                         <div style="" class="m-1">
-                                        <select class="form-control" id="Nominac" aria-label="Example select with button addon" data-index="8">
-                                            <option value="0">Seleccione nómina</option>
-                                            <?php foreach ($this->nomina as $p) { ?>
-                                                <option value='<?php echo $p['nombre_nomina'] ?>'><?php echo $p['nombre_nomina']; ?></option>
-                                                <?php } ?>
-                                                <option value="">Todos</option>
-                                            </select>
+                                            <input type="text" id="Nombref" class="form-control" placeholder="Nombre" data-index="7">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Nacc" class="form-control" placeholder="Nacionalidad" data-index="14">
+                                            <input type="text" id="Apellidof" class="form-control" placeholder="Apellido" data-index="9">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Fechanf" class="form-control" placeholder="Fecha de Nacimiento" data-index="15">
+                                            <input type="text" id="Generof" class="form-control" placeholder="Genero" data-index="11">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Estadoc" class="form-control" placeholder="Estado Civil" data-index="16">
+                                            <input type="text" id="Nacc" class="form-control" placeholder="Nacionalidad" data-index="16">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Nivelef" class="form-control" placeholder="Nivel Educativo" data-index="17">
+                                            <input type="text" id="Fechanf" class="form-control" placeholder="Fecha de Nacimiento" data-index="17">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Ubicc" class="form-control" placeholder="Ubicación" data-index="18">
+                                            <input type="text" id="Estadoc" class="form-control" placeholder="Estado Civil" data-index="18">
                                         </div>
-                                    </div>
-                                    <div class="d-flex justify-content-center flex-wrap">
-                                        <div class="d-flex flex-column">
-                                            <div class="m-2">
-                                                <span class="font-weight-bold d-flex justify-content-center">Fecha de ingreso</span>
-                                                <div class="input-group d-flex justify-content-center">
-                                                    <span class="input-group-text">Desde / Hasta</span>
-                                                    <input id="fechad" type="date" aria-label="First name" class="form-control">
-                                                    <input id="fechah" type="date" aria-label="Last name" class="form-control">
-                                                    <button class="btn btn-outline-primary" id="button-addon" type="button">Buscar</button>
-                                                </div>
-                                            </div>
-                                            <div class="m-2">
-                                                <span class="font-weight-bold d-flex justify-content-center">Cumpleañeros</span>
-                                                <div class="input-group d-flex justify-content-center">
-                                                    <select class="form-control col-6" id="fechaselect" aria-label="Example select with button addon">
-                                                        <option value="0">Seleccione...</option>
-                                                        <option value="01">Enero</option>
-                                                        <option value="02">febrero</option>
-                                                        <option value="03">Marzo</option>
-                                                        <option value="04">Abril</option>
-                                                        <option value="05">Mayo</option>
-                                                        <option value="06">Junio</option>
-                                                        <option value="07">Julio</option>
-                                                        <option value="08">Agosto</option>
-                                                        <option value="09">Septiembre</option>
-                                                        <option value="10">Octubre</option>
-                                                        <option value="11">Noviembre</option>
-                                                        <option value="12">Diciembre</option>
-                                                    </select>
-                                                    <button class="btn btn-outline-primary" id="button-addon1" type="button">Buscar</button>
-                                                </div>
-                                            </div>
+                                        <div style="" class="m-1">
+                                            <input type="text" id="Nivelef" class="form-control" placeholder="Nivel Educativo" data-index="19">
                                         </div>
-                                        <div class="m-2">
-                                            <div class="d-flex flex-column">
-                                                <span class="font-weight-bold d-flex justify-content-center ">Nomina</span>
-                                                <div class="input-group d-flex justify-content-center">
-                                                    <select class="form-control" id="nominaavanzada" aria-label="Example select with button addon">
-                                                        <option value="0">Seleccione nómina</option>
-                                                        <?php foreach ($this->nomina as $p) { ?>
-                                                            <option value='<?php echo $p['id_nomina'] ?>'><?php echo $p['nombre_nomina']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                    <button class="btn btn-outline-primary" id="busqueda_nomina" type="button">Buscar</button>
-                                                </div>
-                                                <?php foreach ($this->nomina as $p) { ?>
-                                                        <input type="hidden" id="valor<?php echo $p['id_nomina']; ?>" value="<?php echo $p['nombre_nomina']; ?>">
-                                                    <?php } ?>
-                                            </div>
+                                        <div style="" class="m-1">
+                                            <input type="text" id="Ubicc" class="form-control" placeholder="Ubicación" data-index="20">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
             </div>
                 <table id="example1" class="table table-striped table-hover table-responsive border" style="width:100%">
                     <thead>
@@ -142,14 +89,16 @@
                             <th style="width: 20px;">Editar</th>
                         <?php } ?>
                         <?php if($_SESSION['Personas']['eliminar']){ ?>  
-                            <th style="width: 20px;">Egresar</th>
+                            <th style="width: 20px;">Ingresar</th>
                         <?php } ?>
+                            <th>Tipo de egreso</th>
+                            <th>Descripción egreso</th>
+                            <th>Fecha de egreso</th> 
                             <th>Cedula</th> 
                             <th>Primer Nombre</th>
                             <th>Segundo Nombre</th>
                             <th>Primer Apellido</th>
                             <th>Segundo Apellido</th>
-                            <th>Nomina</th>
                             <th>Género</th>
                             <th>Teléfono</th>
                             <th>Whatsapp</th>
@@ -177,11 +126,11 @@
 
  
 
-                            function cargar_tabla_personas(){
+ function cargar_tabla_personas(){
     $(function() {
    $.ajax({
     type: 'POST',
-    url: BASE_URL + 'Personas/consultar_informacion_persona'
+    url: BASE_URL + 'Personas/consultar_informacion_persona_egresos'
 }).done(function(datos) {
     var data = JSON.parse(datos);
     console.log(data);
@@ -209,6 +158,15 @@
         },
     <?php } ?>
         {
+            "data": "nombre_egresado"
+        },
+        {
+            "data": "descripcion_egresado"
+        },
+        {
+            "data": "fecha_egreso"
+        },
+        {
             "data": "cedula"
         },
         {
@@ -222,9 +180,6 @@
         },
         {
             data: "segundo_apellido"
-        },
-        {
-            data:"nombre_nomina"
         },
         {
             data:"genero"
@@ -342,6 +297,15 @@
      table.buttons().container()
      .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
 
+     $("#tipoe").keyup(function() {
+    table.column($(this).data('index')).search(this.value).draw();
+    });
+    $("#descripcione").keyup(function() {
+    table.column($(this).data('index')).search(this.value).draw();
+    });
+    $("#fechae").keyup(function() {
+    table.column($(this).data('index')).search(this.value).draw();
+    });
      $("#Cedulaf").keyup(function() {
     table.column($(this).data('index')).search(this.value).draw();
     });
@@ -352,15 +316,6 @@
     table.column($(this).data('index')).search(this.value).draw();
     });
     $("#Generof").keyup(function() {
-    table.column($(this).data('index')).search(this.value).draw();
-    });
-    $("#Nominac").change(function() {
-        if($("#Nominac").val()=='0'){
-            document.getElementById("Nominac").style.borderColor = "red";
-            document.getElementById("Nominac").focus();
-        }else{
-            document.getElementById("Nominac").style.borderColor = ""; 
-        }
     table.column($(this).data('index')).search(this.value).draw();
     });
     $("#Fechanf").keyup(function() {
@@ -393,14 +348,16 @@
                             <th style="width: 20px;">Editar</th>
                         <?php } ?>
                          <?php if($_SESSION['Personas']['eliminar']){ ?> 
-                            <th style="width: 20px;">Egresar</th>
+                            <th style="width: 20px;">Ingresar</th>
                         <?php } ?>
+                            <th>Tipo de egreso</th>
+                            <th>Descripción egreso</th>
+                            <th>Fecha de egreso</th> 
                             <th>Cedula</th> 
                             <th>Primer Nombre</th>
                             <th>Segundo Nombre</th>
                             <th>Primer Apellido</th>
                             <th>Segundo Apellido</th>
-                            <th>Nomina</th>
                             <th>Género</th>
                             <th>Teléfono</th>
                             <th>Whatsapp</th>
@@ -438,6 +395,4 @@
 
 
 <?php include (call."Style-agenda.php"); ?>
-
 <script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/consulta-personas.js"></script>
-<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/modal-reportes-personas.js"></script>

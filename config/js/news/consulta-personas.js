@@ -8,7 +8,7 @@ function ver_datos(
   divisiones,
   comunidad_i,
   org_politica
-) {
+){
   var persona_info = JSON.parse(persona);
   var ocupacion_info = JSON.parse(ocupacion);
   var condicion_lab_info = JSON.parse(condicion_lab);
@@ -216,14 +216,45 @@ function get_letras(dato) {
   }
 }
 
-function eliminar_datos(cedula) {
+function egresar_datos(cedula) {
+  $.ajax({
+    type: "POST",
+    url: BASE_URL + "Personas/consultar_tabla_egresados",
+  }).done(function(result) {
+    document.getElementById("input1").innerHTML = result;
+  });
+
+Swal.fire({
+  title: 'Motivo de egreso',
+  html:
+    '<select id="input1" class="form-control col-12 mb-2"><option value="0">-Seleccione-</option></select><span id="v1"></span>'+
+    '<textarea id="input2" placeholder="Descripción" class="form-control col-12 mb-2"></textarea><span id="v2"></span>'+
+    '<input type="date" id="input3" class="form-control mb-2"><span id="v3"></span>',
+  confirmButtonColor: '#15406D',
+  focusConfirm: false,
+  preConfirm: () => {
+    if(document.getElementById('input1').value != "0" && document.getElementById('input2').value != "" && document.getElementById('input3').value != ""){
+      egresar( document.getElementById('input1').value,
+      document.getElementById('input2').value,document.getElementById('input3').value);
+    }else {
+      swal({
+        type: "error",
+        title: "Error",
+        text: "Debe completar los campos solicitados",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    }
+  }
+})
+function egresar(v1,v2,v3){
   swal(
     {
       title: "Atención",
       text:
-        "Estás por eliminar la persona con cédula " +
+        "Estás por Egresar la persona con la cédula " +
         cedula +
-        ", si lo haces será sacado del sistema, ¿Desea continuar?",
+        ", si lo haces será transferido al modulo egresos, ¿Desea continuar?",
       type: "warning",
       showCancelButton: true,
       cancelButtonColor: '#d33',
@@ -235,14 +266,59 @@ function eliminar_datos(cedula) {
       if (isConfirm) {
         $.ajax({
           type: "POST",
-          url: BASE_URL + "Personas/eliminacion_logica",
+          url: BASE_URL + "Personas/egresar_persona",
+          data: { cedula_persona: cedula,id_egresado:v1,descripcion:v2,fecha:v3},
+        }).done(function (result) {
+          if (result == 1) {
+            setTimeout(function () {
+              swal({
+                title: "Éxtito",
+                text: "La persona ha sido removid@ satisfactoriamente",
+                type: "success",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+
+              setTimeout(function () {
+                location.reload();
+              }, 1000);
+            }, 500);
+          }
+        });
+      }
+    }
+  );
+}
+}
+
+
+function ingresar_datos(cedula) {
+  swal(
+    {
+      title: "Atención",
+      text:
+        "Estás por Ingresar la persona con cédula " +
+        cedula +
+        ", si lo haces será registrado en ingresos, ¿Desea continuar?",
+      type: "warning",
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      confirmButtonColor: '#9D2323',
+      cancelButtonText: "No",
+      confirmButtonText: "Si",
+    },
+    function (isConfirm) {
+      if (isConfirm) {
+        $.ajax({
+          type: "POST",
+          url: BASE_URL + "Personas/ingresar_persona",
           data: { cedula_persona: cedula },
         }).done(function (result) {
           if (result == 1) {
             setTimeout(function () {
               swal({
                 title: "Éxtito",
-                text: "La persona ha sido removida del sistema satisfactoriamente",
+                text: "La persona ha sido Ingresad@ satisfactoriamente",
                 type: "success",
                 showConfirmButton: false,
                 timer: 2000,
@@ -275,6 +351,7 @@ var vnac = document.getElementById("nac");
 var vedoc = document.getElementById("edoc");
 var vnedu = document.getElementById("nedu");
 var vubic = document.getElementById("ubic");
+var vnomina = document.getElementById("idnomina");
 var vmili = document.getElementById("mili");
 var vjeffam = document.getElementById("jeffam");
 var vingresos = document.getElementById("ingresos");
@@ -285,6 +362,7 @@ var vprima1 = document.getElementById("prima1");
 var vdclara = document.getElementById("declara");
 var vinscripcion_ivss = document.getElementById("inscripcion_ivss");
 var vfideicomiso = document.getElementById("fideicomiso");
+var vgrado = document.getElementById('jqresguardo');
 
 var vjefcas = document.getElementById("jefcas");
 var vprivlib = document.getElementById("privlib");
@@ -355,6 +433,7 @@ function editar_datos(
   vedoc.value = persona_info["estado_civil"];
   vnedu.value = persona_info["nivel_educativo"];
   vubic.value = persona_info["id_ubicacion"];
+  vnomina.value = persona_info["id_nomina"];
   vingresos.value = persona_info["ing_seniat"];
   vingresoa.value = persona_info["ing_publica"]; 
   vfechan.value = persona_info["fecha_notificacion"];
@@ -363,6 +442,22 @@ function editar_datos(
   vdclara.value = persona_info["declaracion_j"];
   vinscripcion_ivss.value = persona_info["inscripcion_ivss"];
   vfideicomiso.value = persona_info["fideicomiso"];
+  vgrado.value = persona_info["grado_resguardo"];
+  if(vnomina.value == 2){
+    $(".jq").removeClass("d-none");
+  }else{
+    $(".jq").addClass("d-none");
+  }
+
+  document.getElementById('idnomina').onchange =function(){
+    if(vnomina.value == 2){
+      $(".jq").removeClass("d-none");
+      vgrado.value="";
+    }else{
+      $(".jq").addClass("d-none");
+      vgrado.value="";
+    }
+  }
 /*   vmili.value = persona_info["miliciano"]; */
 /*   vjeffam.value = persona_info["jefe_familia"]; */
 /*   vafro.value = persona_info["afrodescendencia"]; */
@@ -579,7 +674,21 @@ btn_guardar.onclick = function () {
                       vubic.style.borderColor = "red";
                       vubic.focus();
                     }, 2000);
-                  }else {
+                  } else {
+                    vnomina.style.borderColor = "";
+                    if (vnomina.value == "0") {
+                      swal({
+                        type: "error",
+                        title: "Error",
+                        text: "Debe ingresar el tipo de nómina",
+                        timer: 2000,
+                        showConfirmButton: false,
+                      });
+                      setTimeout(function () {
+                        vnomina.style.borderColor = "red";
+                        vnomina.focus();
+                      }, 2000);
+                    }else {
                     vingresos.style.borderColor = "";
                     if (vingresos.value == "") {
                       swal({
@@ -666,10 +775,16 @@ btn_guardar.onclick = function () {
                     } else{
                       inf_persona["fideicomiso"] = vfideicomiso.value;
                     }
+                    if (vgrado.value == "N/A" || vgrado.value == "") {
+                      inf_persona["grado_resguardo"] = "N/A";
+                    } else{
+                      inf_persona["grado_resguardo"] = vgrado.value;
+                    }
                     inf_persona["fecha_nacimiento"] = vfnac.value;
                     inf_persona["genero"] = vgen.value;
                     inf_persona["nivel_educativo"] = vnedu.value;
                     inf_persona["ubicacion"] = vubic.value;
+                    inf_persona["nomina"] = vnomina.value;
                     /* 
                     inf_persona["sexualidad"] = vorsex.value;
                     inf_persona["estado_civil"] = vedoc.value;*/                    
@@ -759,7 +874,7 @@ btn_guardar.onclick = function () {
         }
       }
     }
-
+  }
   }
 }}}
 function editar_persona() {

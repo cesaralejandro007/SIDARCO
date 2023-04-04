@@ -15,7 +15,6 @@
         </div><!-- /.container-fluid -->
     </div> 
     <!-- /.content-header -->
- 
     <!-- Main content -->
     <section class="content">
 
