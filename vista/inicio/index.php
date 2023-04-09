@@ -1,6 +1,4 @@
-<?php include(call . "Inicio.php");
-
-?>
+<?php include(call . "Inicio.php"); ?>
 
 <!-- Contenido de la pagina -->
 <div class="content-wrapper">

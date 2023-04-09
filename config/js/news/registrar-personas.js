@@ -67,7 +67,7 @@ var div_info_contacto=document.getElementById("panel3");
 var correo=document.getElementById("correo");
 var tipo_correo=document.getElementById("tipo_correo");
 var telefono=document.getElementById("telefono");
-//var telf_casa=document.getElementById("telf_casa");
+var telf_casa=document.getElementById("telf_casa");
 var whatsapp=document.getElementById("whatsapp");
 var direccion=document.getElementById("direccion");
 
@@ -110,7 +110,7 @@ var prima=document.getElementById("prima");
 var declaracion_j=document.getElementById("declaracion_j");
 var inscripcion_ivss=document.getElementById("inscripcion_ivss");
 var fideicomiso=document.getElementById("fideicomiso");
-var id_ubicacion=document.getElementById("ubicaciones");
+var id_ubicacion=document.getElementById("id_ubicacion");
 var nombre_ocupacion=document.getElementById("ocupacion_nueva");
 var nombre_condicion=document.getElementById("nombre_condicion_laboral");
 var nueva_cond=document.getElementById("nombre_cond_nueva");
@@ -128,7 +128,22 @@ var btn_otro_proyecto=document.getElementById("otro_proyecto");
 var btn_agregar_proyecto=document.getElementById("agregar_proyecto");
 var div_proyectos_persona=document.getElementById("proyectos_persona");
 var proyectos_persona=[];
-
+var div_cargos_existentes=document.getElementById("cargos_agregados");
+var cargos=document.getElementById("cargos");
+var nombre_cargo=document.getElementById("nombre_ocupacion");
+var btn_agregar_cargo=document.getElementById("agregar_cargo");
+var div_cargos_persona=document.getElementById("cargos_personas");
+var cargos_persona=[];
+var egresado=document.getElementById("egresado");
+var egresado_nomina=document.getElementById("egresado_nomina");
+var ver_egresado=document.getElementById("ver_egresado");
+var id_estado_fun=document.getElementById("id_estado_fun");
+var cargo_nominal=document.getElementById("cargo_nominal");
+//var ver_fecha_egresado=document.getElementById("ver_fecha_egresado");
+var id_division=document.getElementById("id_division");
+var id_area=document.getElementById("id_area");
+var id_seccion=document.getElementById("id_seccion");
+var agregar=document.getElementById("agregar");
 //--------------------------------------------------------------------------------------------//
 
 //var //tab_info_usuario=document.getElementById("tab_4");
@@ -150,6 +165,9 @@ var valid_mascota=document.getElementById("valid_mascota");
 var btn_ver_clave=document.getElementById("ver_clave");
 var rol=document.getElementById("rol_usuario");
 var ver_rol=document.getElementById("ver_rol");
+
+
+
 
 //--------------------------------Avanzar con enter-------------------------------------------//
 
@@ -331,6 +349,13 @@ org_politica.onchange=function(){
 
 } 
 
+egresado.onchange=function(){
+
+  change_to_dynamic_record("1",ver_egresado,egresado);
+  egresado.value='vacio';
+
+
+} 
 
 
 
@@ -461,22 +486,23 @@ function valid_bono(){
 }
 
 //------------------------------------funcion agregar bonos-----------------------------//
-
-btn_agregar_proyecto.onclick=function(){
+ 
+ btn_agregar_proyecto.onclick=function(){
   if(valid_datos_proyecto()){
     var agregado="";
     var text="";
     if(div_proyectos_existentes.style.display=="" || div_proyectos_existentes.style.display=="block"){
       agregado=parseInt(proyectos.value);
       text=proyectos.options[proyectos.selectedIndex].text;
+      
     }
     else{
-      var proyect=new Object();
+       var proyect=new Object();
       proyect['nombre_proyecto']=nombre_proyecto.value;
       proyect['area_proyecto']=area_proyecto.value;
       proyect['estado_proyecto']=estado_proyecto.value;
       agregado=proyect;
-      text=nombre_proyecto.value;
+      text=nombre_proyecto.value; 
     }
 
     proyectos_persona.push(agregado);
@@ -510,11 +536,11 @@ btn_agregar_proyecto.onclick=function(){
     div_proyectos_persona.appendChild(elemento);
 
   }
-}
+}  
 
 //--------------------------------------------------------------------------------------------//
 
-btn_otro_proyecto.onclick=function(){
+/* btn_otro_proyecto.onclick=function(){
   if(div_proyectos_existentes.style.display=="" || div_proyectos_existentes.style.display=="block"){
     div_proyectos_existentes.style.display='none';
     btn_otro_proyecto.value='Atrás';
@@ -528,9 +554,9 @@ btn_otro_proyecto.onclick=function(){
     btn_otro_proyecto.value='Otro';
     nombre_proyecto.value=estado_proyecto.value=area_proyecto.value="";
   }
-}
+} */
 
-//----------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------//
 
 function valid_datos_proyecto(){
   var validar=false;
@@ -538,7 +564,7 @@ function valid_datos_proyecto(){
     if(proyectos.value=='vacio'){
      swal({
       title:"Error",
-      text:"Debe seleccionar un proyecto",
+      text:"Debe seleccionar el título",
       type:"error",
       showConfirmButton:false,
       timer:2000
@@ -566,6 +592,94 @@ else{
 
 return validar;
 }
+
+
+//----------------------------------Funcion agregar cargos funcionales-----------------------//
+
+btn_agregar_cargo.onclick=function(){
+  if(valid_datos_cargo()){
+    var agregado="";
+    var text="";
+    if(div_cargos_existentes.style.display=="" || div_cargos_existentes.style.display=="block"){
+      agregado=parseInt(cargos.value);
+      text=cargos.options[cargos.selectedIndex].text;
+      
+    }
+    else{
+      
+      
+    }
+
+    cargos_persona.push(agregado);
+
+    console.log(cargos_persona);
+    var elemento=document.createElement("div");
+    var table=document.createElement("table");
+    table.style.width="100%";
+    var tr=document.createElement("tr");
+    var td1=document.createElement("td");
+    var td2=document.createElement("td");
+    td2.style.textAlign="right";
+    td1.innerHTML=text;
+    var btn_element=document.createElement("input");
+    btn_element.type='button';
+    btn_element.value="X";
+    btn_element.className="btn btn-danger";
+    td2.appendChild(btn_element);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    table.appendChild(tr);
+    elemento.appendChild(table);
+    var hr=document.createElement("hr");
+    elemento.appendChild(hr);
+    btn_element.onclick=function(){
+      div_cargos_persona.removeChild(elemento);
+      cargos_persona.splice(cargos_persona.indexOf(agregado),1);
+      console.log(cargos_persona);
+    }
+
+    div_cargos_persona.appendChild(elemento);
+
+  }
+}
+
+//-------------------------------------Validaciones de cargos funcionales---------------------------//
+
+function valid_datos_cargo(){
+  var validar=false;
+  if(div_cargos_existentes.style.display=="" || div_cargos_existentes.style.display=="block"){
+    if(cargos.value=='vacio'){
+     swal({
+      title:"Error",
+      text:"Debe seleccionar un Cargo funcional",
+      type:"error",
+      showConfirmButton:false,
+      timer:2000
+    });
+
+   }
+   else{
+    validar=true;
+  }
+}
+else{
+  if(nombre_cargo.value==""){
+    swal({
+      title:"Error",
+      text:"Debe ingresar el nombre",
+      type:"error",
+      showConfirmButton:false,
+      timer:2000
+    });
+  }
+  else{
+    validar=true;
+  }
+}
+
+return validar;
+}
+
 
 
 //------------------------------------funcion agregar misiones-----------------------------//
@@ -664,8 +778,140 @@ btn_agregar_mision.onclick=function(){
   }
 }
 */
-//-----------------------------------------------------------------------------------------------------//
+//--------------------------Divisiones, areas y seccion-----------------------------------------------------------------------//
 
+
+id_division.onchange = function () {
+    if(id_division.value!='0'){
+    var division = new Object();
+    division = id_division.value;
+    $.ajax({
+      type: "POST",
+      url: BASE_URL + "Personas/Consultas_areas",
+      data: { "divisiones": division}
+    }).done(function(result) {
+      id_area.innerHTML = result;
+    });
+
+  }else{
+    var areas = new Object();
+    division = 0;
+    $.ajax({
+      type: "POST",
+      url: BASE_URL + "Personas/Consultas_areas",
+      data: { "divisiones": division}
+    }).done(function(result) {
+      id_area.innerHTML = result;
+    });
+
+    var areas = new Object();
+    areas = 0;
+    $.ajax({
+      type: "POST",
+      url: BASE_URL + "Personas/Consultas_secciones",
+      data: { "areas": areas}
+    }).done(function(result) {
+      id_seccion.innerHTML = result;
+    });
+  }
+
+}
+
+
+id_area.onchange = function () {
+  var areas = new Object();
+  areas = id_area.value;
+  $.ajax({
+    type: "POST",
+    url: BASE_URL + "Personas/Consultas_secciones",
+    data: { "areas": areas}
+  }).done(function(result) {
+    id_seccion.innerHTML = result;
+  });
+}
+
+
+
+agregar.onclick = function () {
+  if (id_division.value == 0 || id_area.value == 0) {
+    swal({
+      type: "error",
+      title: "Error",
+      text: "Debe ingresar los datos de la división y área",
+      timer: 2000,
+      showConfirmButton: false
+    });
+    setTimeout(function () {
+      id_division.style.borderColor = 'red'
+      id_area.style.borderColor = "red";
+    });
+  }
+  else {
+    id_division.style.borderColor = ''
+    id_area.style.borderColor = "";
+    var divisiones_areas = new Object();
+    divisiones_areas['nueva_division'] = id_division.value;
+    divisiones_areas['nueva_areas'] =id_area.value;
+    divisiones_areas['nuevo_secciones'] = id_seccion.value;
+    $.ajax({
+      type: "POST",
+      url: BASE_URL + "Personas/add_division_areas",
+      data: { "divisiones_info": divisiones_areas, "cedula_persona": inf_persona['cedula_persona']}
+    }).done(function (result) {
+      if (result == 0) {
+        swal({
+          type: "error",
+          title: "Error",
+          text: "Esta persona ya se encuentra asignada a ésta Área",
+          timer: 2300,
+          showConfirmButton: false
+        });
+      }
+      else {
+        cargar_proyectos(inf_persona["cedula_persona"]);
+        $('#example1').DataTable().clear().destroy();
+        cargar_tabla_personas();
+      }
+      document.getElementById("nueva_division").value = '0'
+      document.getElementById("nueva_areas").value = "0";
+      document.getElementById("nuevo_secciones").value = "0";
+    });
+
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------//
 function valid_mision(){
   var validar=true;
 
@@ -768,7 +1014,7 @@ function valid_info_laboral(){
 
 
 
- if(ocupacion_nueva.style.display=='none'){
+/*  if(ocupacion_nueva.style.display=='none'){
   if(valid_element("Debe indicar la ocupación de la persona",ocupacion,document.getElementById("valid_26"))){
     validar=true;
   }
@@ -777,7 +1023,7 @@ else{
   if(valid_element("Debe indicar la ocupación de la persona",ocupacion_nueva,document.getElementById("valid_26"))){
     validar=true;
   }
-}
+} */
 
 
 if(validar){
@@ -801,7 +1047,7 @@ return validar;
 
 //------------------------------------------------------------------------------------------------//
 
-btn_nueva_ocupacion.onclick=function(){
+/* btn_nueva_ocupacion.onclick=function(){
   if(ocupacion_nueva.style.display=='none'){
     ocupacion_nueva.style.display='';
     btn_nueva_ocupacion.value='Atrás';
@@ -815,7 +1061,7 @@ btn_nueva_ocupacion.onclick=function(){
     ocupacion.style.display='';
     ocupacion_nueva.value='';
   }
-}
+} */
 
 
 
@@ -863,7 +1109,7 @@ return validar;
 
 //--------------------------------------------------------------------------------------//
 
-btn_nueva_cond.onclick=function(){
+/* btn_nueva_cond.onclick=function(){
   if(nueva_cond.style.display=='none'){
     nueva_cond.style.display='';
     btn_nueva_cond.value='Atrás';
@@ -878,7 +1124,7 @@ btn_nueva_cond.onclick=function(){
     nueva_cond.value='';
   }
 }
-
+ */
 //------------------------------------------------------------------------------------------//
 
 
@@ -913,7 +1159,7 @@ telefono.oninput=function(){
 }
 
 telefono.onkeyup=function(){valid_element("Debe ingresar el número de teléfono de la persona",telefono,document.getElementById("valid_21"));}
-whatsapp.onchange=function(){valid_element("Indique si el número de teléfono posee WhatsApp",whatsapp,document.getElementById("valid_22"));}
+whatsapp.onchange=function(){valid_element("Seleccione una opción",whatsapp,document.getElementById("valid_22"));}
 direccion.onchange=function(){valid_element("Debe ingresar la dirección de habitacion de la persona", direccion,document.getElementById("valid_23"));}
 
 /* fecha_seniat.onchange=function(){valid_element("Debe ingresarla fecha ",fecha_seniat,document.getElementById("valid_28"));} */
@@ -925,7 +1171,7 @@ function valid_info_contacto(){
 	var validar=false;
 
  if(valid_element("Debe ingresar el número de teléfono de la persona",telefono,document.getElementById("valid_21"))){
-   if(valid_element("Inique si el número de teléfono posee WhatsApp",whatsapp,document.getElementById("valid_22"))){
+   if(valid_element("Seleccione una opción",whatsapp,document.getElementById("valid_22"))){
    if(valid_element("Debe ingresar la dirección de habitacion de la persona",direccion,document.getElementById("valid_23"))){
     /*  if(valid_element("Debe ecribir la fecha de ingreso al SENIAT",fecha_seniat,document.getElementById("valid_28"))){ */
 
@@ -1771,7 +2017,7 @@ function enviar_informacion(){
   //datos_persona['comunidad_indigena']=comunidad_indigena.value;
   datos_persona['direccion']=direccion.value; 
   datos_persona['telefono']=telefono.value;
-  //datos_persona['telf_casa']=telf_casa.value;
+  datos_persona['telf_casa']=telf_casa.value;
   datos_persona['whatsapp']=whatsapp.value;
   datos_persona['fecha_seniat']=fecha_seniat.value;
   datos_persona['fecha_publica']=fecha_publica.value;
@@ -1782,6 +2028,8 @@ function enviar_informacion(){
   datos_persona['inscripcion_ivss']=inscripcion_ivss.value;
   datos_persona['fideicomiso']=fideicomiso.value;
   datos_persona['id_ubicacion']=id_ubicacion.value;
+  datos_pesona['id_estado_fun']=id_estado_fun.value;
+  datos_pesona['cargo_nominal']=cargo_nominal.value;
   correo.value==""?datos_persona['correo']="No posee" : datos_persona['correo']=correo.value+tipo_correo.value;
   datos_persona['contrasenia']=contrasenia.value;
   datos_persona['preguntas_seguridad']=color.value.toLowerCase()+animal.value.toLowerCase()+mascota.value.toLowerCase();
@@ -1834,14 +2082,21 @@ function enviar_informacion(){
        registrar_transporte();
      }
 
-     registrar_ocupacion();
+     /* registrar_ocupacion(); */
+     
 
 
      registrar_condicion_laboral();
+
+     if(cargos_persona.length!=0){
+      registrar_cargos_persona();
+    }
      
      if(proyectos_persona.length!=0){
       registrar_proyectos_persona();
     }
+
+    
 
 
      //if(comunidad_indigena.value!="0"){
@@ -1979,7 +2234,6 @@ function registrar_misiones_persona(){
 }
 
 
-
 function registrar_transporte(){
 
 
@@ -1995,7 +2249,8 @@ function registrar_transporte(){
 
 
 
-if(ocupacion_nueva.style.display=='none'){
+
+/* if(ocupacion_nueva.style.display=='none'){
   if(valid_element("Debe indicar la ocupación de la persona",ocupacion,document.getElementById("valid_26"))){
     validar=true;
   }
@@ -2004,12 +2259,11 @@ else{
   if(valid_element("Debe indicar la ocupación de la persona",ocupacion_nueva,document.getElementById("valid_26"))){
     validar=true;
   }
-}
+} */
 
 
-if(validar){
+/* if(validar){
  if(valid_cond_laboral()){
-
 
    validar=true;
 
@@ -2017,9 +2271,9 @@ if(validar){
  else{
   validar=false;
 }
-}
+} */
 
-function registrar_ocupacion(){
+/* function registrar_ocupacion(){
 
   var ocup=new Object();
   var lleno=false;
@@ -2045,7 +2299,32 @@ function registrar_ocupacion(){
   }
 
 
-}
+} */
+
+/* function registrar_cargos_persona(){
+
+  for(var i=0;i<cargos_persona.length;i++){
+
+    var datos=new Object();
+    datos['ocupacion']=cargos_persona[i];
+    datos['cedula_persona']=cedula.value;
+
+  
+    $.ajax({
+     type:"POST",
+     url:BASE_URL+"Personas/registrar_ocupacion",
+     data:{"datos":datos}
+   }).done(function(result){
+    console.log(result);
+  })
+  }
+
+
+} */
+
+
+
+
 
 
 function registrar_condicion_laboral(){
@@ -2078,6 +2357,21 @@ if(lleno){
  });
 }
 
+
+}
+
+function registrar_egresado(){
+
+  var datos_egresado=new Object();
+  datos_egresado['cedula_persona']=cedula.value;
+  datos_egreado['egresado_nomina']=egresado_nomina.value;
+
+  $.ajax({
+   type:"POST",
+   url:BASE_URL+"Personas/",
+   data:{"datos":datos_egresado}
+ }).done(function(result){
+ });
 
 }
 

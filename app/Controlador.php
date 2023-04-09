@@ -206,6 +206,58 @@ class Controlador
         }
     }
 
+    public function Consultar_Tabla_egresados($tabla)
+    {
+
+        $sql               = "SELECT * FROM $tabla";
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $respuesta_arreglo1 = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo1;
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+
+    
+    public function Consultar_Tabla_ubicaciones($tabla)
+    {
+
+        $sql               = "SELECT * FROM $tabla";
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $respuesta_arreglo1 = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo1;
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+
+    public function Consultar_Tabla_edo_fun($tabla)
+    {
+
+        $sql               = "SELECT * FROM $tabla";
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $respuesta_arreglo1 = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo1;
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+
     public function Consultar_comparacion_division($param)
     {
 
