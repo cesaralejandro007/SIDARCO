@@ -645,7 +645,7 @@ class Personas_Class extends Modelo
 
     public function Consultar()
     {
-        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,nomina WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and nomina.id_nomina = personas.id_nomina and personas.estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $tabla= "SELECT *, date_format(personas.fecha_nacimiento, '%d/%m/%Y') as fecha_nacimientoc, date_format(personas.fecha_notificacion, '%d/%m/%Y') as fecha_notificacionc,date_format(personas.ing_seniat, '%d/%m/%Y') as ing_seniatc,date_format(personas.ing_publica, '%d/%m/%Y') as ing_publicac,date_format(personas.ult_designacion, '%d/%m/%Y') as ult_designacionc  FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,nomina WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and nomina.id_nomina = personas.id_nomina and personas.estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -661,7 +661,7 @@ class Personas_Class extends Modelo
 
     public function Consultaregresos()
     {
-        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,personas_egresados,egresados WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.cedula_persona = personas_egresados.cedula_persona and egresados.id_egresado = personas_egresados.id_egresado and personas.estado=0 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $tabla= "SELECT *, date_format(personas.fecha_nacimiento, '%d/%m/%Y') as fecha_nacimientoc, date_format(personas.fecha_notificacion, '%d/%m/%Y') as fecha_notificacionc,date_format(personas.ing_seniat, '%d/%m/%Y') as ing_seniatc,date_format(personas.ing_publica, '%d/%m/%Y') as ing_publicac,date_format(personas.ult_designacion, '%d/%m/%Y') as ult_designacionc  FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,personas_egresados,egresados WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.cedula_persona = personas_egresados.cedula_persona and egresados.id_egresado = personas_egresados.id_egresado and personas.estado=0 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -701,7 +701,7 @@ class Personas_Class extends Modelo
 
     public function Consultarfecha_ingreso($f1,$f2)
     {
-        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.estado=1 and personas.ing_seniat BETWEEN '$f1' and '$f2' GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $tabla= "SELECT *, date_format(personas.fecha_nacimiento, '%d/%m/%Y') as fecha_nacimientoc, date_format(personas.fecha_notificacion, '%d/%m/%Y') as fecha_notificacionc,date_format(personas.ing_seniat, '%d/%m/%Y') as ing_seniatc,date_format(personas.ing_publica, '%d/%m/%Y') as ing_publicac,date_format(personas.ult_designacion, '%d/%m/%Y') as ult_designacionc  FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.estado=1 and personas.ing_seniat BETWEEN '$f1' and '$f2' GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -717,7 +717,7 @@ class Personas_Class extends Modelo
 
     public function Consultarfecha_cumple($mes)
     {
-        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.estado=1 and date_format(personas.fecha_nacimiento, '%m') = '$mes' GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $tabla= "SELECT *, date_format(personas.fecha_nacimiento, '%d/%m/%Y') as fecha_nacimientoc, date_format(personas.fecha_notificacion, '%d/%m/%Y') as fecha_notificacionc,date_format(personas.ing_seniat, '%d/%m/%Y') as ing_seniatc,date_format(personas.ing_publica, '%d/%m/%Y') as ing_publicac,date_format(personas.ult_designacion, '%d/%m/%Y') as ult_designacionc FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.estado=1 and date_format(personas.fecha_nacimiento, '%m') = '$mes' GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -733,7 +733,7 @@ class Personas_Class extends Modelo
 
     public function Consultar_nomina($id_nomina)
     {
-        $tabla= "SELECT * FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,nomina WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and nomina.id_nomina = personas.id_nomina and nomina.id_nomina = $id_nomina and personas.estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $tabla= "SELECT *, date_format(personas.fecha_nacimiento, '%d/%m/%Y') as fecha_nacimientoc, date_format(personas.fecha_notificacion, '%d/%m/%Y') as fecha_notificacionc,date_format(personas.ing_seniat, '%d/%m/%Y') as ing_seniatc,date_format(personas.ing_publica, '%d/%m/%Y') as ing_publicac,date_format(personas.ult_designacion, '%d/%m/%Y') as ult_designacionc  FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,nomina WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and nomina.id_nomina = personas.id_nomina and nomina.id_nomina = $id_nomina and personas.estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
