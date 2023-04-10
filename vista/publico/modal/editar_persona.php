@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id='modal-title'>Editar persona</h4>
-        <button type="button" class="close" onclick="cerrarmodal()" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -85,21 +85,35 @@
             <table style='width:98%;' border='1'>
             <div class='border border-bottom-0 border-dark rounded-top p-1' style='width:98%;background:#15406D;color:white;font-weight:bold'>Datos Laborales</div>
               <tr class='text-dark' style='background:#AEB6BF;font-weight:bold'>
-                <td style='width:25%'>Nivel educativo</td>
-                <td style='width:25%'>Condición Laboral</td>
-                <td style='width:25%'>Ubicación</td>
-                <td style='width:25%'>Ocupación</td>
+                <td style='width:20%'>Nivel educativo</td>
+                <td style='width:20%'>Condición Laboral</td>
+                <td style='width:20%'>Ubicación</td>
+                <td style='width:20%'>Nomina</td>
+                <td class="d-none jq" style='width:20%'>Grado/JQ</td>
               </tr>
               <tr>
-                <td style='width:25%'><input type="text" id='nedu' class='form-control' placeholder="Nivel educativo"></td>
-                <td style='width:25%'>
+                <td style='width:20%'><input type="text" id='nedu' class='form-control' placeholder="Nivel educativo"></td>
+                <td style='width:20%'>
                   <input type="text" id='condil' class='form-control'>
                 </td>
-                <td style='width:25%'>
-                  <input type="text" id='ubic' class='form-control'>
+                  <td style='width:20%'>
+                  <select class='form-control' id='ubic'>
+                    <option value='0'>-Seleccione Ubicación-</option>
+                    <?php foreach ($this->ubicacion as $p) { ?>
+                      <option value='<?php echo $p['id_ubicacion'] ?>'><?php echo $p['nombre_ubi']; ?></option>
+                    <?php } ?>
+                  </select>
+                  </td>
+                <td style='width:20%'>
+                <select class='form-control' id='idnomina'>
+                    <option value='0'>-Seleccione Nomina-</option>
+                    <?php foreach ($this->nomina as $p) { ?>
+                      <option value='<?php echo $p['id_nomina'] ?>'><?php echo $p['nombre_nomina']; ?></option>
+                    <?php } ?>
+                  </select>
                 </td>
-                <td style='width:25%'>
-                  <input type="text" id='vocupa' class='form-control'>
+                <td style='width:20%' class="d-none jq">
+                <input type="text" id='jqresguardo' class='form-control'>
                 </td>
               </tr>
             </table>

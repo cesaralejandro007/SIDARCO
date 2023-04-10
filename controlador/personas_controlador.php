@@ -130,7 +130,6 @@ public function consulta_vacunado(){
 
 public function Registros()
 {
-  
   $this->Seguridad_de_Session();
   $this->vista->transportes=$this->modelo->get_transportes();
   //$this->vista->comunidades=$this->modelo->get_comunidades();
@@ -149,10 +148,9 @@ public function Registros()
   $this->vista->ubicaciones=$this->Consultar_Tabla_ubicaciones("ubicaciones");
   $this->vista->edo_funcionario=$this->Consultar_Tabla_edo_fun("estados_funcionarios");
   $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
+ /*  $this->vista->proyectos=$this->modelo->get_divisiones(); */
   $this->vista->Cargar_Vistas('personas/registrar');
-  
 }
-
 
 public function Registros_habitante()
 {
@@ -190,33 +188,59 @@ public function Consultas_secciones()
 }
 
 
+public function consultar_tabla_egresados()
+{
+  echo $this->modelo->consultar_tabla_egresados();
+  return;
+  exit;
+}
+
+
 public function Consultas()
 {
-  // En revision $id_ubicacion=$POST["id_ubicacion"];
   /* $this->Establecer_Consultas(); */
   $this->vista->transportes=$this->modelo->get_transportes();
   //$this->vista->comunidades=$this->modelo->get_comunidades();
   $this->vista->ocupaciones=$this->modelo->get_ocupaciones();
   $this->vista->condiciones=$this->modelo->get_condiciones();
-  //$ubicacion=$this->vista->ubicacion=$this->modelo->get_ubicacion();
   $this->vista->organizaciones=$this->modelo->get_organizaciones();
   $this->vista->bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
   $this->vista->misiones=$this->Consultar_Tabla("misiones",1,"id_mision");
   $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
   $this->vista->egresados=$this->Consultar_Tabla_egresados("egresados");
+
+  $this->vista->nomina=$this->Consultar_Tabla_divisiones("nomina");
+  $this->vista->ubicacion=$this->Consultar_Tabla_divisiones("ubicaciones");
+
   $this->vista->secciones=$this->Consultar_Tabla_divisiones("secciones"); 
   $this->Seguridad_de_Session();
   $this->vista->Cargar_Vistas('personas/consultar');
 }
 
 
+public function Consultasegresos()
+{
+  /* $this->Establecer_Consultas(); */
+  $this->vista->transportes=$this->modelo->get_transportes();
+  //$this->vista->comunidades=$this->modelo->get_comunidades();
+  $this->vista->ocupaciones=$this->modelo->get_ocupaciones();
+  $this->vista->condiciones=$this->modelo->get_condiciones();
+  $this->vista->organizaciones=$this->modelo->get_organizaciones();
+  $this->vista->bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
+  $this->vista->misiones=$this->Consultar_Tabla("misiones",1,"id_mision");
+  $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
+  $this->vista->ubicacion=$this->Consultar_Tabla_divisiones("ubicaciones");
+  $this->vista->secciones=$this->Consultar_Tabla_divisiones("secciones"); 
+  $this->Seguridad_de_Session();
+  $this->vista->Cargar_Vistas('personas/consultaregresos');
+}
 
-public function consultar_informacion_persona(){
+
+public function consultar_informacion_persona_ingreso(){
   $info_completa=[];
-  $personas=$this->modelo->Consultar();
+  $personas=$this->modelo->Consultarfecha_ingreso($_POST['fecha_inicio'],$_POST['fecha_fin']);
   
   foreach ($personas as $p) {
-  
    $ocupacion=json_encode($this->modelo->get_ocupacion_persona($p['cedula_persona']));
    $condicion_lab=json_encode($this->modelo->get_cond_laboral_persona($p['cedula_persona']));
    $transporte=json_encode($this->modelo->get_transporte_persona($p['cedula_persona']));
@@ -227,6 +251,7 @@ public function consultar_informacion_persona(){
    $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona']));
    $persona=json_encode($p);
    $p['genero']=='M'?$genero="Masculino":$genero='Femenino';
+   $p['whatsapp']==1?$whatsapp="Si posee":$whatsapp='No posee';
 
    $info_completa[]=[
     "cedula"    =>    $p['cedula_persona'],
@@ -235,8 +260,218 @@ public function consultar_informacion_persona(){
     "primer_apellido" =>$p['primer_apellido'],
     "segundo_apellido"          =>$p['segundo_apellido'],
     "telefono"        =>$p['telefono'],
-    "whatsapp"          =>$p['	whatsapp'],
-    "telf_casa"          =>$p['	telf_casa'],
+    "whatsapp"          =>$whatsapp,
+    "telf_casa"          =>$p['telf_casa'],
+    "correo"          =>$p['correo'],
+    "fecha_nacimiento"          =>$p['fecha_nacimiento'],
+    "genero"          =>$genero,
+    "nacionalidad"          =>$p['nacionalidad'],
+    "estado_civil"          =>$p['estado_civil'],
+    "nivel_educativo"          =>$p['nivel_educativo'],
+    "nombre_ubi"          =>$p['nombre_ubi'],
+    "ing_seniat"          =>$p['ing_seniat'],
+    "ing_publica"          =>$p['ing_publica'],
+    "fecha_notificacion"          =>$p['fecha_notificacion'],
+    "ult_designacion"          =>$p['ult_designacion'],
+    "prima"          =>$p['prima'],
+    "declaracion_j"          =>$p['declaracion_j'],
+    "inscripcion_ivss"          =>$p['inscripcion_ivss'],
+    "fideicomiso"          =>$p['fideicomiso']
+  ];
+
+
+}
+
+$this->Escribir_JSON($info_completa);
+}
+
+public function consultar_informacion_persona_compleanos(){
+  $info_completa=[];
+  $personas=$this->modelo->Consultarfecha_cumple($_POST['mescumple']);
+  
+  foreach ($personas as $p) {
+   $ocupacion=json_encode($this->modelo->get_ocupacion_persona($p['cedula_persona']));
+   $condicion_lab=json_encode($this->modelo->get_cond_laboral_persona($p['cedula_persona']));
+   $transporte=json_encode($this->modelo->get_transporte_persona($p['cedula_persona']));
+   $bonos=json_encode($this->modelo->get_bonos_persona($p['cedula_persona']));
+   $misiones=json_encode($this->modelo->get_misiones_persona($p['cedula_persona']));
+   $divisiones=json_encode($this->modelo->get_divisiones($p['cedula_persona']));
+   //$comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
+/*    $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona'])); */
+   $persona=json_encode($p);
+   $p['genero']=='M'?$genero="Masculino":$genero='Femenino';
+   $p['whatsapp']==1?$whatsapp="Si posee":$whatsapp='No posee';
+
+   $info_completa[]=[
+    "cedula"    =>    $p['cedula_persona'],
+    "primer_nombre"  =>$p['primer_nombre'],
+    "segundo_nombre"          =>$p['segundo_nombre'],
+    "primer_apellido" =>$p['primer_apellido'],
+    "segundo_apellido"          =>$p['segundo_apellido'],
+    "telefono"        =>$p['telefono'],
+    "whatsapp"          =>$whatsapp,
+    "telf_casa"          =>$p['telf_casa'],
+    "correo"          =>$p['correo'],
+    "fecha_nacimiento"          =>$p['fecha_nacimiento'],
+    "genero"          =>$genero,
+    "nacionalidad"          =>$p['nacionalidad'],
+    "estado_civil"          =>$p['estado_civil'],
+    "nivel_educativo"          =>$p['nivel_educativo'],
+    "nombre_ubi"          =>$p['nombre_ubi'],
+    "ing_seniat"          =>$p['ing_seniat'],
+    "ing_publica"          =>$p['ing_publica'],
+    "fecha_notificacion"          =>$p['fecha_notificacion'],
+    "ult_designacion"          =>$p['ult_designacion'],
+    "prima"          =>$p['prima'],
+    "declaracion_j"          =>$p['declaracion_j'],
+    "inscripcion_ivss"          =>$p['inscripcion_ivss'],
+    "fideicomiso"          =>$p['fideicomiso']
+  ];
+
+
+}
+
+$this->Escribir_JSON($info_completa);
+}
+
+
+public function consultar_informacion_persona_nomina(){
+  $info_completa=[];
+  $personas=$this->modelo->Consultar_nomina($_POST['vnomina']);
+  
+  foreach ($personas as $p) {
+   $ocupacion=json_encode($this->modelo->get_ocupacion_persona($p['cedula_persona']));
+   $condicion_lab=json_encode($this->modelo->get_cond_laboral_persona($p['cedula_persona']));
+   $transporte=json_encode($this->modelo->get_transporte_persona($p['cedula_persona']));
+   $bonos=json_encode($this->modelo->get_bonos_persona($p['cedula_persona']));
+   $misiones=json_encode($this->modelo->get_misiones_persona($p['cedula_persona']));
+   $divisiones=json_encode($this->modelo->get_divisiones($p['cedula_persona']));
+   //$comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
+/*    $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona'])); */
+   $persona=json_encode($p);
+   $p['genero']=='M'?$genero="Masculino":$genero='Femenino';
+   $p['whatsapp']==1?$whatsapp="Si posee":$whatsapp='No posee';
+
+   $info_completa[]=[
+    "cedula"    =>    $p['cedula_persona'],
+    "nombre_nomina"          =>$p['nombre_nomina'],
+    "primer_nombre"  =>$p['primer_nombre'],
+    "segundo_nombre"          =>$p['segundo_nombre'],
+    "primer_apellido" =>$p['primer_apellido'],
+    "segundo_apellido"          =>$p['segundo_apellido'],
+    "telefono"        =>$p['telefono'],
+    "whatsapp"          =>$whatsapp,
+    "telf_casa"          =>$p['telf_casa'],
+    "correo"          =>$p['correo'],
+    "fecha_nacimiento"          =>$p['fecha_nacimiento'],
+    "genero"          =>$genero,
+    "nacionalidad"          =>$p['nacionalidad'],
+    "estado_civil"          =>$p['estado_civil'],
+    "nivel_educativo"          =>$p['nivel_educativo'],
+    "nombre_ubi"          =>$p['nombre_ubi'],
+    "grado"          =>$p['grado_resguardo'],
+    "ing_seniat"          =>$p['ing_seniat'],
+    "ing_publica"          =>$p['ing_publica'],
+    "fecha_notificacion"          =>$p['fecha_notificacion'],
+    "ult_designacion"          =>$p['ult_designacion'],
+    "prima"          =>$p['prima'],
+    "declaracion_j"          =>$p['declaracion_j'],
+    "inscripcion_ivss"          =>$p['inscripcion_ivss'],
+    "fideicomiso"          =>$p['fideicomiso']
+  ];
+
+
+}
+
+$this->Escribir_JSON($info_completa);
+}
+
+public function consultar_informacion_persona(){
+  $info_completa=[];
+  $personas=$this->modelo->Consultar();
+  
+  foreach ($personas as $p) {
+   $ocupacion=json_encode($this->modelo->get_ocupacion_persona($p['cedula_persona']));
+   $condicion_lab=json_encode($this->modelo->get_cond_laboral_persona($p['cedula_persona']));
+   $transporte=json_encode($this->modelo->get_transporte_persona($p['cedula_persona']));
+   $bonos=json_encode($this->modelo->get_bonos_persona($p['cedula_persona']));
+   $misiones=json_encode($this->modelo->get_misiones_persona($p['cedula_persona']));
+   $divisiones=json_encode($this->modelo->get_divisiones($p['cedula_persona']));
+   //$comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
+   $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona']));
+   $persona=json_encode($p);
+   $p['genero']=='M'?$genero="Masculino":$genero='Femenino';
+   $p['whatsapp']==1?$whatsapp="Si posee":$whatsapp='No posee';
+
+   $info_completa[]=[
+    "cedula"    =>    $p['cedula_persona'],
+    "nombre_nomina"          =>$p['nombre_nomina'],
+    "primer_nombre"  =>$p['primer_nombre'],
+    "segundo_nombre"          =>$p['segundo_nombre'],
+    "primer_apellido" =>$p['primer_apellido'],
+    "segundo_apellido"          =>$p['segundo_apellido'],
+    "telefono"        =>$p['telefono'],
+    "whatsapp"          =>$whatsapp,
+    "telf_casa"          =>$p['telf_casa'],
+    "correo"          =>$p['correo'],
+    "fecha_nacimiento"          =>$p['fecha_nacimiento'],
+    "genero"          =>$genero,
+    "nacionalidad"          =>$p['nacionalidad'],
+    "estado_civil"          =>$p['estado_civil'],
+    "nivel_educativo"          =>$p['nivel_educativo'],
+    "nombre_ubi"          =>$p['nombre_ubi'],
+    "ing_seniat"          =>$p['ing_seniat'],
+    "ing_publica"          =>$p['ing_publica'],
+    "fecha_notificacion"          =>$p['fecha_notificacion'],
+    "ult_designacion"          =>$p['ult_designacion'],
+    "prima"          =>$p['prima'],
+    "declaracion_j"          =>$p['declaracion_j'],
+    "inscripcion_ivss"          =>$p['inscripcion_ivss'],
+    "fideicomiso"          =>$p['fideicomiso'],
+    "grado_resguardo"          =>$p['grado_resguardo'],
+    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
+
+    "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
+
+
+    "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Egresar persona' onclick='egresar_datos(`".$p['cedula_persona']."`)'><i class='fas fa-user-slash' style='color:white'></i></button>",
+  ];
+
+
+}
+
+$this->Escribir_JSON($info_completa);
+}
+
+public function consultar_informacion_persona_egresos(){
+  $info_completa=[];
+  $personas=$this->modelo->Consultaregresos();
+  
+  foreach ($personas as $p) {
+   $ocupacion=json_encode($this->modelo->get_ocupacion_persona($p['cedula_persona']));
+   $condicion_lab=json_encode($this->modelo->get_cond_laboral_persona($p['cedula_persona']));
+   $transporte=json_encode($this->modelo->get_transporte_persona($p['cedula_persona']));
+   $bonos=json_encode($this->modelo->get_bonos_persona($p['cedula_persona']));
+   $misiones=json_encode($this->modelo->get_misiones_persona($p['cedula_persona']));
+   $divisiones=json_encode($this->modelo->get_divisiones($p['cedula_persona']));
+   //$comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
+   $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona']));
+   $persona=json_encode($p);
+   $p['genero']=='M'?$genero="Masculino":$genero='Femenino';
+   $p['whatsapp']==1?$whatsapp="Si posee":$whatsapp='No posee';
+
+   $info_completa[]=[
+    "nombre_egresado"    =>    $p['nombre_egresado'],
+    "descripcion_egresado"    =>    $p['descripcion'],
+    "fecha_egreso"    =>    $p['fecha_engreso'],
+    "cedula"    =>    $p['cedula_persona'],
+    "primer_nombre"  =>$p['primer_nombre'],
+    "segundo_nombre"          =>$p['segundo_nombre'],
+    "primer_apellido" =>$p['primer_apellido'],
+    "segundo_apellido"          =>$p['segundo_apellido'],
+    "telefono"        =>$p['telefono'],
+    "whatsapp"          =>$whatsapp,
+    "telf_casa"          =>$p['telf_casa'],
     "correo"          =>$p['correo'],
     "fecha_nacimiento"          =>$p['fecha_nacimiento'],
     "genero"          =>$genero,
@@ -256,7 +491,7 @@ public function consultar_informacion_persona(){
 
     "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
 
-    "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Eliminar persona' onclick='eliminar_datos(`".$p['cedula_persona']."`)'><span class='fa fa-trash'></span></button>",
+    "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Ingresar persona' onclick='ingresar_datos(`".$p['cedula_persona']."`)'><span class='fas fa-user-alt'></span></button>",
   ];
 
 
@@ -440,7 +675,6 @@ public function registrar_condicion_laboral(){
     echo 1;
   }
 }
-
 /*
 public function registrar_comunidad_indigena(){
  $comunidades=$this->modelo->get_comunidades();
@@ -508,7 +742,15 @@ public function registrar_org_politica(){
   }
 }
 
+
+
+
+
+
+
+
 }
+
 
 
 public function registrar_bonos(){
@@ -540,8 +782,11 @@ public function registrar_bonos(){
 
 }
 
-
 /* public function registrar_proyectos(){
+
+
+public function registrar_proyectos(){
+
  $proyectos=$this->modelo->get_divisiones();
  $datos=$_POST['datos'];
  $cont=0;
@@ -570,6 +815,7 @@ public function registrar_bonos(){
         "id_proyecto"     =>     $i['MAX(id_proyecto)']
       ]);
     }
+
 
 
   }
@@ -625,20 +871,29 @@ public function registrar_misiones(){
 
 }
 
+}
 
+public function egresar_persona(){
 
+  $cedula=$_POST['cedula_persona'];
+  $id_egresado=$_POST['id_egresado'];
+  $descripcion =$_POST['descripcion'];
+  $fecha =$_POST['fecha'];
 
+  if($this->Desactivar("personas","cedula_persona",$cedula)){
+    $this->modelo->registrar_egresos_personas($cedula,$id_egresado,$descripcion,$fecha);
+    echo 1;
+  }
 
 
 
 }
 
-
-public function eliminacion_logica(){
+public function ingresar_persona(){
 
   $cedula=$_POST['cedula_persona'];
 
-  if($this->Desactivar("personas","cedula_persona",$cedula)){
+  if($this->Activar("personas","cedula_persona",$cedula)){
     echo 1;
   }
 
