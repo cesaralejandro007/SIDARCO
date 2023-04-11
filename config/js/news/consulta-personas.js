@@ -6,6 +6,11 @@ function ver_datos(
   bonos,
   misiones,
   divisiones,
+
+ /*  comunidad_i,
+  org_politica */
+) {
+
   comunidad_i,
   org_politica
 ){
@@ -16,7 +21,7 @@ function ver_datos(
   var bonos_info = JSON.parse(bonos);
   var misiones_info = JSON.parse(misiones);
   var divisiones = JSON.parse(divisiones);
-  var comunidad_i_info = JSON.parse(comunidad_i);
+ /*  var comunidad_i_info = JSON.parse(comunidad_i); */
   //var org_politica_info = JSON.parse(org_politica);
 
   var tabla =

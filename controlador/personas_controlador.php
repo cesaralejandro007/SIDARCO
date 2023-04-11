@@ -142,6 +142,12 @@ public function Registros()
   $this->vista->misiones=$this->modelo->get_misiones();
   $this->vista->ocupaciones=$this->modelo->get_ocupaciones();
   $this->vista->condiciones=$this->modelo->get_condiciones();
+  $this->vista->proyectos=$this->modelo->get_proyectos(); 
+  //$this->vista->proyectos=$this->modelo->get_divisiones();
+  $this->vista->egresados=$this->Consultar_Tabla_egresados("egresados");
+  $this->vista->ubicaciones=$this->Consultar_Tabla_ubicaciones("ubicaciones");
+  $this->vista->edo_funcionario=$this->Consultar_Tabla_edo_fun("estados_funcionarios");
+  $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
  /*  $this->vista->proyectos=$this->modelo->get_divisiones(); */
   $this->vista->Cargar_Vistas('personas/registrar');
 }
@@ -201,8 +207,11 @@ public function Consultas()
   $this->vista->bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
   $this->vista->misiones=$this->Consultar_Tabla("misiones",1,"id_mision");
   $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
+  $this->vista->egresados=$this->Consultar_Tabla_egresados("egresados");
+
   $this->vista->nomina=$this->Consultar_Tabla_divisiones("nomina");
   $this->vista->ubicacion=$this->Consultar_Tabla_divisiones("ubicaciones");
+
   $this->vista->secciones=$this->Consultar_Tabla_divisiones("secciones"); 
   $this->Seguridad_de_Session();
   $this->vista->Cargar_Vistas('personas/consultar');
@@ -590,6 +599,45 @@ public function registrar_transporte(){
 
 }
 
+public function registrar_proyectos(){
+  $proyectos=$this->modelo->get_divisiones();
+  $datos=$_POST['datos'];
+  $cont=0;
+ 
+  foreach ($proyectos as $pro) {
+    if($pro['id_proyecto']==$datos['proyecto']){
+      $this->modelo->Registrar_persona_proyecto([
+       "cedula_persona"   =>   $datos['cedula_persona'],
+       "id_proyecto"     =>     $pro['id_proyecto']
+     ]);
+ 
+      $cont++;
+    }
+  }
+ 
+ 
+  if($cont==0){
+ 
+ 
+   if($this->modelo->Registrar_proyecto($datos['proyecto'])){
+     $id=$this->Ultimo_Ingresado("proyecto","id_proyecto");
+ 
+     foreach ($id as $i) {
+       echo  $this->modelo->Registrar_persona_proyecto([
+         "cedula_persona"   =>     $datos['cedula_persona'],
+         "id_proyecto"     =>     $i['MAX(id_proyecto)']
+       ]);
+     }
+ 
+ 
+   }
+ }
+ 
+ }
+
+
+
+
 public function registrar_ocupacion(){
 
   $ocupaciones=$this->modelo->get_ocupaciones();
@@ -734,9 +782,11 @@ public function registrar_bonos(){
 
 }
 
+/* public function registrar_proyectos(){
 
 
 public function registrar_proyectos(){
+
  $proyectos=$this->modelo->get_divisiones();
  $datos=$_POST['datos'];
  $cont=0;
@@ -771,7 +821,7 @@ public function registrar_proyectos(){
   }
 }
 
-}
+} */
 
 public function registrar_carnet(){
 

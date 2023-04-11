@@ -89,7 +89,9 @@ class Personas_Class extends Modelo
                 declaracion_j,
                 inscripcion_ivss,
                 fideicomiso,
-                telf_casa
+                telf_casa,
+                id_estado_fun,
+                cargos
                 ) VALUES (
                 :cedula_persona,
                 :primer_nombre,
@@ -121,7 +123,9 @@ class Personas_Class extends Modelo
                 :declaracion_j,
                 :inscripcion_ivss,
                 :fideicomiso,
-                :telf_casa
+                :telf_casa,
+                :id_estado_fun,
+                :cargos
                 )');
 
             $datos->execute([
@@ -155,7 +159,9 @@ class Personas_Class extends Modelo
                 'declaracion_j'         =>       $data['declaracion_j'],
                 'inscripcion_ivss'      =>       $data['inscripcion_ivss'],
                 'fideicomiso'           =>       $data['fideicomiso'],
-                'telf_casa'             =>       $data['telf_casa']
+                'telf_casa'             =>       $data['telf_casa'],
+                'id_estado_fun'         =>       $data['id_estado_fun'],
+                'cargos'                =>       $data['cargo_nominal']
             ]);
 
             return true;
@@ -211,7 +217,7 @@ class Personas_Class extends Modelo
     } */
 
 
-/*     public function Registrar_persona_ocupacion($data)
+/*  public function Registrar_persona_ocupacion($data)
     {
 
         try {
@@ -568,6 +574,31 @@ class Personas_Class extends Modelo
             $datos->execute([
                 'id_cedula_persona'    =>  $cedula,
                 'id_area_division'      =>  $area
+            ]);
+
+            return true;
+
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
+
+    public function Registrar_proyectos($proyecto,$cedula)
+    {
+
+        try {
+            $datos = $this->conexion->prepare('INSERT INTO personas_areas (
+                cedula_persona,
+                id_proyecto    
+                ) VALUES (
+                :id_cedula_persona,
+                :id_proyecto
+                )');
+
+            $datos->execute([
+                'id_cedula_persona'    =>  $cedula,
+                'id_proyecto'      =>  $proyecto
             ]);
 
             return true;
