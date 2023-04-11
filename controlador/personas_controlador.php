@@ -207,8 +207,6 @@ public function Consultas()
   $this->vista->bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
   $this->vista->misiones=$this->Consultar_Tabla("misiones",1,"id_mision");
   $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
-  $this->vista->egresados=$this->Consultar_Tabla_egresados("egresados");
-
   $this->vista->nomina=$this->Consultar_Tabla_divisiones("nomina");
   $this->vista->ubicacion=$this->Consultar_Tabla_divisiones("ubicaciones");
 
@@ -229,6 +227,7 @@ public function Consultasegresos()
   $this->vista->bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
   $this->vista->misiones=$this->Consultar_Tabla("misiones",1,"id_mision");
   $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
+  $this->vista->nomina=$this->Consultar_Tabla_divisiones("nomina");
   $this->vista->ubicacion=$this->Consultar_Tabla_divisiones("ubicaciones");
   $this->vista->secciones=$this->Consultar_Tabla_divisiones("secciones"); 
   $this->Seguridad_de_Session();
@@ -429,7 +428,7 @@ public function consultar_informacion_persona(){
     "inscripcion_ivss"          =>$p['inscripcion_ivss'],
     "fideicomiso"          =>$p['fideicomiso'],
     "grado_resguardo"          =>$p['grado_resguardo'],
-    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
+    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`)'><span class='fa fa-eye'></span></button>",
 
     "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
 

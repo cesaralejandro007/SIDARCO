@@ -7,8 +7,7 @@ define('URL', 'http://localhost/dashboard/www/'.SISTEMA."/");
 
 define('SERVIDOR', 	'mysql'); 
 define('HOST', 		'localhost'); 
-define('BD', 		'sidarco3');
-define('BD', 		'sidarco3');
+define('BD', 		'sidarco1');
 
 
 // MYSQL contraseña

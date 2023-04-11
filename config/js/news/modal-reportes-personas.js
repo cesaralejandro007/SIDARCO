@@ -50,7 +50,7 @@ document.getElementById("button-addon").onclick = function(){
 
   var data = JSON.parse(datos);
   var table = $("#example2").DataTable({
-    dom: "B" +
+    dom: "B<'row'<'col-sm-6 d-flex'><'col-6'f>>" +
     "<'row'<'col-sm-12'tr>>" +
     "<'row'<'col-sm-5'li><'col-sm-7'p>>",
   orderCellsTop: true,
@@ -235,22 +235,6 @@ customize: function ( doc ) {
   columns: [0,1,3,5,6,12,13,14,15]
   }
   },
-  {
-  extend:    'print',
-  filename: function() {
-  return "Print-Ingresos-Personas"      
-  },          
-  title: function() {
-  var searchString = table.search();        
-  return searchString.length? "Search: " + searchString : "Reporte de los funcionarios ingresados a nómina, desde: " +fechat2 + " hasta: "+ fechat2
-  },
-  text:      '<i class="fa fa-print"></i> ',
-  titleAttr: 'Imprimir',
-  className: 'btn text-info border border-info',
-  exportOptions: {
-  columns:  [0,1,3,5,6,12,13,14,15]
-  }
-  }, 
   ]  
   } );
   table.buttons().container()
@@ -397,7 +381,7 @@ customize: function ( doc ) {
   }).done(function(datos) {
   var data = JSON.parse(datos);
   var table = $("#example3").DataTable({
-    dom: "B" +
+    dom: "B<'row'<'col-sm-6 d-flex'><'col-6'f>>" +
     "<'row'<'col-sm-12'tr>>" +
     "<'row'<'col-sm-5'li><'col-sm-7'p>>",
   orderCellsTop: true,
@@ -582,22 +566,6 @@ customize: function ( doc ) {
   columns: [0,1,3,5,6,12,13,14,15]
   }
   },
-  {
-  extend:    'print',
-  filename: function() {
-  return "Print-Cumpleañeros"      
-  },          
-  title: function() {
-  var searchString = table.search();        
-  return searchString.length? "Search: " + searchString : "Reporte de los cumpleañeros del mes de " + fechaactual
-  },
-  text:      '<i class="fa fa-print"></i> ',
-  titleAttr: 'Imprimir',
-  className: 'btn text-info border border-info',
-  exportOptions: {
-  columns:  [0,1,3,5,6,12,13,14,15]
-  }
-  }, 
   ]  
   } );
   table.buttons().container()
@@ -702,9 +670,9 @@ customize: function ( doc ) {
   }).done(function(datos) {
   var data = JSON.parse(datos);
   var table = $("#example4").DataTable({
-  dom: "B" +
-  "<'row'<'col-sm-12'tr>>" +
-  "<'row'<'col-sm-5'li><'col-sm-7'p>>",
+    dom: "B<'row'<'col-sm-6 d-flex'><'col-6'f>>" +
+    "<'row'<'col-sm-12'tr>>" +
+    "<'row'<'col-sm-5'li><'col-sm-7'p>>",
   orderCellsTop: true,
   columnDefs: [
     {
@@ -895,22 +863,6 @@ customize: function ( doc ) {
   columns: [0,1,3,5,6,12,13,14,15]
   }
   },
-  {
-  extend:    'print',
-  filename: function() {
-  return "Print-Nómina-"+document.getElementById('valor'+document.getElementById('nominaavanzada').value).value    
-  },          
-  title: function() {
-  var searchString = table.search();        
-  return searchString.length? "Search: " + searchString : "Reporte de la Nómina de " + document.getElementById('valor'+document.getElementById('nominaavanzada').value).value
-  },
-  text:      '<i class="fa fa-print"></i> ',
-  titleAttr: 'Imprimir',
-  className: 'btn text-info border border-info',
-  exportOptions: {
-  columns:  [0,1,3,5,6,12,13,14,15]
-  }
-  }, 
   ]  
   } );
   table.buttons().container()
@@ -998,9 +950,9 @@ data: { vnomina:nomina}
 }).done(function(datos) {
 var data = JSON.parse(datos);
 var table = $("#example4").DataTable({
-dom: "B" +
-"<'row'<'col-sm-12'tr>>" +
-"<'row'<'col-sm-5'li><'col-sm-7'p>>",
+  dom: "B<'row'<'col-sm-6 d-flex'><'col-6'f>>" +
+  "<'row'<'col-sm-12'tr>>" +
+  "<'row'<'col-sm-5'li><'col-sm-7'p>>",
 orderCellsTop: true,
 columnDefs: [
   {
@@ -1193,22 +1145,6 @@ exportOptions: {
 columns: [0,1,3,5,6,12,13,15,16]
 }
 },
-{
-extend:    'print',
-filename: function() {
-return "Print-Nómina-"+document.getElementById('valor'+document.getElementById('nominaavanzada').value).value      
-},          
-title: function() {
-var searchString = table.search();        
-return searchString.length? "Search: " + searchString :  "Reporte de la Nómina de " + document.getElementById('valor'+document.getElementById('nominaavanzada').value).value
-},
-text:      '<i class="fa fa-print"></i> ',
-titleAttr: 'Imprimir',
-className: 'btn text-info border border-info',
-exportOptions: {
-columns:  [0,1,3,5,6,12,13,15,16]
-}
-}, 
 ]  
 } );
 table.buttons().container()

@@ -5,14 +5,9 @@ function ver_datos(
   transporte,
   bonos,
   misiones,
-  divisiones,
-
- /*  comunidad_i,
+  divisiones
+  /* comunidad_i,
   org_politica */
-) {
-
-  comunidad_i,
-  org_politica
 ){
   var persona_info = JSON.parse(persona);
   var ocupacion_info = JSON.parse(ocupacion);
@@ -21,8 +16,8 @@ function ver_datos(
   var bonos_info = JSON.parse(bonos);
   var misiones_info = JSON.parse(misiones);
   var divisiones = JSON.parse(divisiones);
- /*  var comunidad_i_info = JSON.parse(comunidad_i); */
-  //var org_politica_info = JSON.parse(org_politica);
+/*   var comunidad_i_info = JSON.parse(comunidad_i);
+  var org_politica_info = JSON.parse(org_politica); */
 
   var tabla =
     "<div style='height:380px;overflow-y:scroll;'><em class='fa fa-user' style='font-size:60px'></em>";
