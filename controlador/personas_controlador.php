@@ -234,6 +234,25 @@ public function Consultasegresos()
   $this->vista->Cargar_Vistas('personas/consultaregresos');
 }
 
+public function Consultahistorialfuncionario()
+{
+  /* $this->Establecer_Consultas(); */
+  $this->vista->transportes=$this->modelo->get_transportes();
+  //$this->vista->comunidades=$this->modelo->get_comunidades();
+  $this->vista->ocupaciones=$this->modelo->get_ocupaciones();
+  $this->vista->condiciones=$this->modelo->get_condiciones();
+  $this->vista->organizaciones=$this->modelo->get_organizaciones();
+  $this->vista->bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
+  $this->vista->misiones=$this->Consultar_Tabla("misiones",1,"id_mision");
+  $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
+  $this->vista->nomina=$this->Consultar_Tabla_divisiones("nomina");
+  $this->vista->ubicacion=$this->Consultar_Tabla_divisiones("ubicaciones");
+  $this->vista->secciones=$this->Consultar_Tabla_divisiones("secciones"); 
+  $this->Seguridad_de_Session();
+  $this->vista->Cargar_Vistas('personas/historialfuncionario');
+}
+
+
 
 public function consultar_informacion_persona_ingreso(){
   $info_completa=[];
@@ -492,8 +511,56 @@ public function consultar_informacion_persona_egresos(){
 
     "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Ingresar persona' onclick='ingresar_datos(`".$p['cedula_persona']."`)'><span class='fas fa-user-alt'></span></button>",
   ];
+}
 
+$this->Escribir_JSON($info_completa);
+}
 
+public function consultar_informacion_persona_historia(){
+  $info_completa=[];
+  $personas=$this->modelo->Consultarhistorialfuncionario();
+  
+  foreach ($personas as $p) {
+   $ocupacion=json_encode($this->modelo->get_ocupacion_persona($p['cedula_persona']));
+   $condicion_lab=json_encode($this->modelo->get_cond_laboral_persona($p['cedula_persona']));
+   $transporte=json_encode($this->modelo->get_transporte_persona($p['cedula_persona']));
+   $bonos=json_encode($this->modelo->get_bonos_persona($p['cedula_persona']));
+   $misiones=json_encode($this->modelo->get_misiones_persona($p['cedula_persona']));
+   $divisiones=json_encode($this->modelo->get_divisiones($p['cedula_persona']));
+   //$comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
+   $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona']));
+   $persona=json_encode($p);
+   $p['genero']=='M'?$genero="Masculino":$genero='Femenino';
+   $p['whatsapp']==1?$whatsapp="Si posee":$whatsapp='No posee';
+
+   $info_completa[]=[
+    "cedula"    =>    $p['cedula_persona'],
+    "primer_nombre"  =>$p['primer_nombre'],
+    "segundo_nombre"          =>$p['segundo_nombre'],
+    "primer_apellido" =>$p['primer_apellido'],
+    "segundo_apellido"          =>$p['segundo_apellido'],
+    "telefono"        =>$p['telefono'],
+    "whatsapp"          =>$whatsapp,
+    "telf_casa"          =>$p['telf_casa'],
+    "correo"          =>$p['correo'],
+    "fecha_nacimiento"          =>$p['fecha_nacimientoc'],
+    "genero"          =>$genero,
+    "nacionalidad"          =>$p['nacionalidad'],
+    "estado_civil"          =>$p['estado_civil'],
+    "nivel_educativo"          =>$p['nivel_educativo'],
+    "nombre_ubi"          =>$p['nombre_ubi'],
+    "ing_seniat"          =>$p['ing_seniatc'],
+    "ing_publica"          =>$p['ing_publicac'],
+    "fecha_notificacion"          =>$p['fecha_notificacionc'],
+    "ult_designacion"          =>$p['ult_designacionc'],
+    "prima"          =>$p['prima'],
+    "declaracion_j"          =>$p['declaracion_j'],
+    "inscripcion_ivss"          =>$p['inscripcion_ivss'],
+    "fideicomiso"          =>$p['fideicomiso'],
+    "descrip_historial_funcionario"          =>$p['Descripcion'],
+    "fecha_historial_funcionario"          =>$p['fecha_cambio'],
+    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
+  ];
 }
 
 $this->Escribir_JSON($info_completa);
@@ -957,7 +1024,27 @@ public function get_info_habitante(){
 public function modificar_persona(){
   $datos_persona=$_POST["datos_persona"];
   $editado=$this->modelo->Actualizar($datos_persona);
-
+  $ubi_viej=$this->Consultar_ubicacion_act($datos_persona['ubicacion1']);
+  $ubic_act=$this->Consultar_ubicacion_act($datos_persona['ubicacion']);
+  if($ubi_viej != $ubic_act){
+    if($ubi_viej[0]['nombre_ubi'] == 'GRTI-RCO'){
+      $var1 = "al Sector/Unidad de";
+      $var = "de la";
+    }else if($ubic_act[0]['nombre_ubi'] == 'GRTI-RCO'){
+      $var = "al Sector/Unidad de";
+      $var1 = "a la";
+    }else if($ubic_act != 'GRTI-RCO' || $ubi_viej != 'GRTI-RCO'){
+      $var = "del Sector/Unidad de";
+      $var1 = "al Sector/Unidad de";
+    }else{
+      $var = "del Sector/Unidad de";
+      $var1 = "a la";
+    }
+    $this->modelo->Registrar_historial(
+      "Migrado ". $var ." ". $ubi_viej[0]['nombre_ubi'] ." ". $var1 ." ". $ubic_act[0]['nombre_ubi'] .".",
+      $datos_persona['cedula_persona']
+  );
+  }
 
  /*if($editado){
   //$this->editar_comunidad_indigena($datos_persona);
@@ -1321,8 +1408,18 @@ public function eliminar_mision(){
 
 public function eliminar_proyecto(){
   $registros=$this->modelo->Consultar_Tabla_division($_POST['cedula_persona']);
+  $consultadivision = $this->Consult_Tabl_divis($_POST['id']);
   if($registros){
     echo $this->Eliminar_Tablas_divisiones($_POST['id']);
+    $arr = explode(" ",$consultadivision[0]['areas']);
+    if($arr[0]== "Área"){
+     $var = "";
+    }else{
+     $var = "Área de";
+    }
+    $this->modelo->Registrar_historial(
+      "Removido de la división de ". $consultadivision[0]['divisiones'] .", ".$var." ". $consultadivision[0]['areas'] .".",
+      $_POST['cedula_persona']);
   }else{
     echo 0;
   }
@@ -1401,7 +1498,7 @@ public function get_divisionesyareas(){
 public function add_division_areas(){
   $divisiones=$_POST['divisiones_info'];
   $divisiones_persona=$this->Consultar_comparacion_division($_POST['cedula_persona']);
-  $areas_all=$this->modelo->Consultar_Tabla_divisiones($divisiones['nueva_areas']);
+  $areas_all=$this->modelo->Consultar_Tabla_divisiones($divisiones['nueva_areas'],$_POST['cedula_persona']);
   $retornar=$areas_all;
   $existe=false;
   if($areas_all){ 
@@ -1409,6 +1506,17 @@ public function add_division_areas(){
             $divisiones['nueva_areas'],
             $_POST['cedula_persona']
      );
+     $consultadivision1 = $this->Consult_Tabl_divis1($divisiones['nueva_areas'],$_POST['cedula_persona']);
+     $arr = explode(" ",$consultadivision1[0]['areas']);
+     if($arr[0]== "Área"){
+      $var = "";
+     }else{
+      $var = "Área de";
+     }
+     $this->modelo->Registrar_historial(
+      "Agregado a la división de ". $consultadivision1[0]['divisiones'] .", ".$var ." ". $consultadivision1[0]['areas'] .".",
+      $_POST['cedula_persona']
+);
     }else{
       $retornar=0;
     } 

@@ -517,10 +517,10 @@ class Personas_Class extends Modelo
         }
     }
 
-    public function Consultar_Tabla_divisiones($areas)
+    public function Consultar_Tabla_divisiones($areas,$cedula)
     {
 
-        $sql               = "SELECT areas.id_area as id_area FROM personas,personas_areas,areas,divisiones WHERE personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_division = divisiones.id_division and areas.id_area = $areas";
+        $sql               = "SELECT areas.id_area as id_area FROM personas,personas_areas,areas,divisiones WHERE personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_division = divisiones.id_division and areas.id_area = $areas and personas.cedula_persona = $cedula";
         try {
             $datos = $this->conexion->prepare($sql);
             $datos->execute();
@@ -578,6 +578,27 @@ class Personas_Class extends Modelo
 
             return true;
 
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Registrar_historial($descripcion,$cedula)
+    {
+
+        try {
+            $datos = $this->conexion->prepare('INSERT INTO historial_funcionario (
+                cedula_persona,
+                Descripcion     
+                ) VALUES (
+                :cedulaf,
+                :Descripcionf
+                )');
+
+            $datos->execute([
+                'cedulaf'    =>  $cedula,
+                'Descripcionf'      =>  $descripcion
+            ]);
         } catch (PDOException $e) {
             return $this->Capturar_Error($e);
         }
@@ -693,6 +714,22 @@ class Personas_Class extends Modelo
     public function Consultaregresos()
     {
         $tabla= "SELECT *, date_format(personas.fecha_nacimiento, '%d/%m/%Y') as fecha_nacimientoc, date_format(personas.fecha_notificacion, '%d/%m/%Y') as fecha_notificacionc,date_format(personas.ing_seniat, '%d/%m/%Y') as ing_seniatc,date_format(personas.ing_publica, '%d/%m/%Y') as ing_publicac,date_format(personas.ult_designacion, '%d/%m/%Y') as ult_designacionc  FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,personas_egresados,egresados WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and personas.cedula_persona = personas_egresados.cedula_persona and egresados.id_egresado = personas_egresados.id_egresado and personas.estado=0 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Consultarhistorialfuncionario()
+    {
+        $tabla= "SELECT *, date_format(historial_funcionario.Fecha, '%d/%m/%Y a las %r') as fecha_cambio FROM personas,historial_funcionario,ubicaciones WHERE personas.cedula_persona = historial_funcionario.cedula_persona and ubicaciones.id_ubicacion = personas.id_ubicacion ORDER BY historial_funcionario.Fecha DESC";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);

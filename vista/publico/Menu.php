@@ -88,6 +88,12 @@
                                         <p>Consultar Egresados</p>
                                     </a>
                                 </li>
+                                <li class="nav-item" onclick="cambio_modulo('Consultar personas')">
+                                    <a href="<?php echo constant('URL'); ?>Personas/Consultahistorialfuncionario/" class="nav-link">
+                                        <i class="fa fa-list nav-icon text-info"></i>
+                                        <p>Historial del Funcionario</p>
+                                    </a>
+                                </li>
                             <?php } ?>
 
                         </ul>

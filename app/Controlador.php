@@ -100,6 +100,65 @@ class Controlador
             return $errorReturn;
         }
     }
+
+    public function Consult_Tabl_divis($id)
+    {
+
+        $sql               = "SELECT areas.nombre_area as areas, divisiones.nombre_division as divisiones FROM personas_areas,areas,divisiones WHERE personas_areas.id_area = areas.id_area and areas.id_division = divisiones.id_division and personas_areas.id_persona_area = " . $id . "";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+
+    public function Consult_Tabl_divis1($id,$cedula)
+    {
+
+        $sql               = "SELECT areas.nombre_area as areas, divisiones.nombre_division as divisiones FROM personas_areas,areas,divisiones WHERE personas_areas.id_area = areas.id_area and areas.id_division = divisiones.id_division  and personas_areas.cedula_persona = $cedula and personas_areas.id_area = " . $id . "";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+
+    public function Consultar_ubicacion_act($id)
+    {
+
+        $sql               = "SELECT nombre_ubi FROM ubicaciones  WHERE id_ubicacion = " . $id . "";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+    
+    
     
 
 

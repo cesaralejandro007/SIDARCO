@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
+<input type="hidden" id="campoubic">
       <div class="modal-body">
         <center>
           <div style='width:98%;overflow-y: scroll;height:400px'>
@@ -161,7 +161,7 @@
     <td style='width:50%' class='text-center'>
       <table style='width:100%'>
         <tr>
-          <td style='width:20%'>Diviciones y áreas</td>
+          <td style='width:20%'>Divisiones y áreas</td>
           <td style='width:60%'>
             <select id='nueva_division' style='width:100%;'>
               <option value='0'>-Seleccione División-</option>

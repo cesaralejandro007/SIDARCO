@@ -419,6 +419,7 @@ function editar_datos(
 
   inf_persona["cedula_persona"] = persona_info["cedula_persona"];
   modal_title.innerHTML = "Editar persona: " + persona_info["cedula_persona"];
+  document.getElementById("campoubic").value = persona_info["id_ubicacion"];
   vn1.value = persona_info["primer_nombre"];
   vn2.value = persona_info["segundo_nombre"];
   va1.value = persona_info["primer_apellido"];
@@ -784,6 +785,7 @@ btn_guardar.onclick = function () {
                     inf_persona["genero"] = vgen.value;
                     inf_persona["nivel_educativo"] = vnedu.value;
                     inf_persona["ubicacion"] = vubic.value;
+                    inf_persona["ubicacion1"] = document.getElementById("campoubic").value;
                     inf_persona["nomina"] = vnomina.value;
                     /* 
                     inf_persona["sexualidad"] = vorsex.value;
@@ -884,7 +886,7 @@ function editar_persona() {
     url: BASE_URL + "Personas/modificar_persona",
     data: { datos_persona: inf_persona },
   }).done(function (result) {
-   // alert(result);
+   //alert(result);
     if (result == 1) {
       swal({
         type: "success",
@@ -1350,6 +1352,7 @@ document.getElementById("spanaddproyect").onclick = function () {
       url: BASE_URL + "Personas/add_division_areas",
       data: { "divisiones_info": divisiones_areas, "cedula_persona": inf_persona['cedula_persona']}
     }).done(function (result) {
+      //alert(result);
       if (result == 0) {
         swal({
           type: "error",
