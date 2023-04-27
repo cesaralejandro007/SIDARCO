@@ -8,7 +8,7 @@ $(function() {
             "infoPostFix": "",
             "infoFiltered": "(filtrado de un total de _MAX_ registros)",
             "loadingRecords": "Cargando...",
-            "lengthMenu": "<div class='d-flex m-1'><div><p class='p-1' style='font-size:14px'>Mostrar</p></div> <div>_MENU_</div> <div><p class='p-1' style='font-size:14px'>registros</p></div></div>",
+            "lengthMenu": "<div class='d-flex m-1'><div><p class='px-1' style='font-size:14px'>Mostrar</p></div> <div>_MENU_</div> <div><p class='px-1' style='font-size:14px'>registros</p></div></div>",
             "paginate": {
                 "first": "Primero",
                 "last": "Último",

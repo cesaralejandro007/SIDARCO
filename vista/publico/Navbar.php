@@ -120,9 +120,12 @@
                  <!-- Menu Body -->
                  
                  <!-- Menu Footer-->
-                 <li class="user-footer">
-                    
-                     <a href="<?php echo constant('URL'); ?>login/Salir" class="btn btn-flat float-right" style="background: #9D2323; color:white">
+                 <li class="d-flex justify-content-between p-1">
+                 <a href="<?php echo constant('URL'); ?>vista/perfil/perfil" class="btn btn-flat" style="background:#105399; color:white">
+                 <i class="fas fa-user"></i>
+                         Perfil
+                     </a>
+                     <a href="<?php echo constant('URL'); ?>login/Salir" class="btn btn-flat" style="background: #9D2323; color:white">
                          <i class="fas fa-power-off fa-fw"></i>
                          Salir
                      </a>
