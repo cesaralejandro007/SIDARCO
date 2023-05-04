@@ -11,15 +11,18 @@ class Login extends Controlador
 
     public function Cargar_Vistas(){$this->vista->Cargar_Vistas('login/index');}
 
-    public function set_Usuario_Actual($cedula, $nombre, $apellido, $correo, $estado, $rol_inicio)
+    public function set_Usuario_Actual($cedula, $nombre, $apellido, $genero, $correo,$telefono,$estado, $rol_inicio,$inicio_sesion)
     {
         $_SESSION['cedula_usuario'] = $cedula;
         $_SESSION['nombre']         = $nombre;
         $_SESSION['apellido']       = $apellido;
+        $_SESSION['genero']         = $genero;
         $_SESSION['correo']         = $correo;
+        $_SESSION['telefono']       = $telefono;
         $_SESSION['estado']         = $estado;
         $_SESSION['rol_inicio']     = $rol_inicio;
         $_SESSION['modulo_actual']  = "Inicio";
+        $_SESSION['inicio_sesion']  = $inicio_sesion;
 
         $this->Cargar_Modelo("seguridad");$permisos = $this->modelo->get_permisos_rol($rol_inicio);
 
@@ -48,7 +51,6 @@ class Login extends Controlador
         if (isset($_POST['peticion'])) {$peticion = $_POST['peticion'];} else { $peticion = $peticion[0];}
 
         switch ($peticion) {
-
             case 'Login':$this->Cargar_Vistas();break;
 
             case 'Ingreso':
@@ -93,9 +95,12 @@ class Login extends Controlador
                                 $tabla_usuario['cedula_persona'],
                                 $tabla_usuario['primer_nombre'],
                                 $tabla_usuario['primer_apellido'],
+                                $tabla_usuario['genero'],
                                 $tabla_usuario['correo'],
+                                $tabla_usuario['telefono'],
                                 $tabla_usuario['estado'],
-                                $tabla_usuario['rol_inicio']
+                                $tabla_usuario['rol_inicio'],
+                                $tabla_usuario['inicio_sesion']
                             );
 
                             if ($tabla_usuario['rol_inicio'] != 'Habitante') {

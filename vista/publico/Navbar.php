@@ -121,7 +121,7 @@
                  
                  <!-- Menu Footer-->
                  <li class="d-flex justify-content-between p-1">
-                 <a href="<?php echo constant('URL'); ?>vista/perfil/perfil" class="btn btn-flat" style="background:#105399; color:white">
+                 <a href="<?php echo constant('URL'); ?>perfil/perfil" class="btn btn-flat" style="background:#105399; color:white">
                  <i class="fas fa-user"></i>
                          Perfil
                      </a>

@@ -18,7 +18,10 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
+
     <section class="content">
+        <input id="sesion_iniciada" type="hidden" value="<?php echo $_SESSION['inicio_sesion']; ?>">
+        <input id="cedula_persona" type="hidden" value="<?php echo $_SESSION['cedula_usuario'] ?>">
         <!-- Info boxes -->
         <div class="row">
             <div class="col-12 col-sm-6 col-md-4">
@@ -208,6 +211,7 @@
     <!-- /.content -->
     <!-- /.content -->
 </div>
+
 <!-- /.content-wrapper -->
 <?php include(call . "Fin.php"); ?>
 <?php include(call . "style-agenda.php"); ?>

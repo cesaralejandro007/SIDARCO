@@ -58,4 +58,22 @@ class Inicio extends Controlador
         unset($this->datos,$this->vista->datos,);
     }
 
+    public function Verificar_password(){
+        $contrasena=$this->Codificar($_POST['verificar_password']);
+          $v = $this->modelo->consultar_password($contrasena,$_POST['cedula_persona']);
+          if($v == 1){
+            echo 1;
+          }else{
+            echo 0;
+          }
+      }
+
+    public function cambiar_password(){
+        $preguntas=$this->Codificar($_POST['preguntas']);
+        $contrasena=$this->Codificar($_POST['password']);
+          $this->modelo->cambiar_password($contrasena,$preguntas,$_POST['cedula_persona']);
+          $_SESSION['inicio_sesion'] = 2;
+          echo 1;
+      }
+
 }
