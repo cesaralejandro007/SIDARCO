@@ -1,4 +1,3 @@
-alert(document.getElementById("prueba").textContent);
 document.getElementById("editarperfil").onclick = function(){
         Swal.fire({
             title: 'Cambiar contraseña',
