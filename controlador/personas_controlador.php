@@ -144,9 +144,11 @@ public function Registros()
   $this->vista->condiciones=$this->modelo->get_condiciones();
   $this->vista->proyectos=$this->modelo->get_proyectos(); 
   //$this->vista->proyectos=$this->modelo->get_divisiones();
-  $this->vista->egresados=$this->Consultar_Tabla_egresados("egresados");
+  $this->vista->nomina=$this->Consultar_nomina("nomina"); 
+  $this->vista->egreso=$this->Consultar_egreso("egresados"); 
+  $this->vista->cargo_nominal=$this->consultar_cargo("cargo_nominal");
   $this->vista->ubicaciones=$this->Consultar_Tabla_ubicaciones("ubicaciones");
-  $this->vista->edo_funcionario=$this->Consultar_Tabla_edo_fun("estados_funcionarios");
+  $this->vista->estado_fun=$this->Consultar_Tabla_edo_fun("estados_funcionarios");
   $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
  /*  $this->vista->proyectos=$this->modelo->get_divisiones(); */
   $this->vista->Cargar_Vistas('personas/registrar');

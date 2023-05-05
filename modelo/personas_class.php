@@ -90,8 +90,9 @@ class Personas_Class extends Modelo
                 inscripcion_ivss,
                 fideicomiso,
                 telf_casa,
-                id_estado_fun,
-                cargos
+                id_nomina,
+                inicio_sesion,
+                id_estado_fun
                 ) VALUES (
                 :cedula_persona,
                 :primer_nombre,
@@ -124,8 +125,9 @@ class Personas_Class extends Modelo
                 :inscripcion_ivss,
                 :fideicomiso,
                 :telf_casa,
-                :id_estado_fun,
-                :cargos
+                :id_nomina,
+                :inicio_sesion,
+                :id_estado_fun
                 )');
 
             $datos->execute([
@@ -160,8 +162,9 @@ class Personas_Class extends Modelo
                 'inscripcion_ivss'      =>       $data['inscripcion_ivss'],
                 'fideicomiso'           =>       $data['fideicomiso'],
                 'telf_casa'             =>       $data['telf_casa'],
+                'id_nomina'             =>       $data['id_nomina'],
+                'inicio_sesion'         =>       1,
                 'id_estado_fun'         =>       $data['id_estado_fun'],
-                'cargos'                =>       $data['cargo_nominal']
             ]);
 
             return true;
@@ -1201,7 +1204,7 @@ public function get_organizaciones()
      public function get_proyectos()
      {
 
-         $tabla            = "SELECT * FROM proyecto WHERE estado=1";
+         $tabla            = "SELECT * FROM proyecto";
          $respuestaArreglo = '';
          try {
              $datos = $this->conexion->prepare($tabla);

@@ -624,7 +624,7 @@
                                             <div class="col-md-12 mt-2">
                                                 <div class="form-group">
                                                     <label for="correo">
-                                                        Correo Electronico
+                                                        Correo Electronico personal
                                                     </label>
                                                     <div class="input-group">
                                                         <input class="form-control no-espacios" id="correo" name="datos[correo]"
@@ -656,6 +656,31 @@
                                            </div>
 
                                             </div>
+                                            <div class="col-md-12 mt-2">
+                                                <div class="form-group">
+                                                    <label for="correo">
+                                                        Correo Electronico institucional
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <input class="form-control no-espacios" id="correo" name="datos[correo]"
+                                                        placeholder="Correo" type="text">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">@</span>
+                                                        </div>
+                                                        <select class="custom-select" id="tipo_correo"
+                                                        name="datos[tipo_correo]">
+                                                        <option selected="" value="@gmail.com">
+                                                            seniat.gob.ve
+                                                        </option>
+                                                    </select>
+                                                </input>
+                                            </div>
+
+                                           </div>
+
+                                           </div>
+
+
                                             <!--  -->
                                             <div class="col-md-9 mt-2">
                                     
@@ -694,7 +719,7 @@
                                          <div class="col-md-3 mt-2">  
                                          
                                                 <label for="telf_casa">
-                                                    Teléfono de casa
+                                                    Teléfono local
                                                 </label>
                                                 <span style='display:none;color:red' id='valid_40'>Ingrese el número de casa</span>
                                                 <div class="input-group">
@@ -899,7 +924,7 @@
 
                              <div class="col-md-6 mt-2">
                             <div class="form-group">
-                                <label for="fecha_notificacion">Fecha de la noticación</label> 
+                                <label for="fecha_notificacion">Fecha de notificación</label> 
                                 <span style='display:none; color:red' id='valid_30'>Ingrese fecha de notificación</span>
                             <input class="form-control" name="datos[fecha_notificacion]"  id="fecha_notificacion" type="date"></input>
                                          </div>
@@ -975,7 +1000,7 @@
                                                 </select>
                                             </div>
                                         </div>
-
+<!---------------------------------------------------------------------------------------------------------->
                                         <div class="col-md-6 mt-2">
                                             <label for="fideicomiso">
                                                 Posee cuenta de fideicomiso
@@ -996,17 +1021,19 @@
                                             </div>
                                         </div>
                         <br>
-
+<!--------------------------------------------------------------------------------------------------------------------------->
          <div class="col-md-12 mt-2">
-        <label for="cond_laboral">
+        <label for="egresado">
             Egresado de nómina
 <!--             <p> Condicion Laboral </p>
  -->        </label>
-        <span style='display:none;color:red' id='valid_27'>Campo sin llenar</span>
+        <span style='display:none;color:red' id='valid_36'>Campo sin llenar</span>
+
         <table style='width:100%'><tr>
-            <td>
+
+             <td>
                <select class="form-control" id="egresado"
-               name="datos[sector_laboral]" style="width: 100%">
+               name="datos[egresado]" style="width: 100%">
                <option value='vacio'>-Seleccione-</option>
                <option value="1">
                 Sí
@@ -1015,20 +1042,27 @@
              No
          </option>
      </select>
- </td>
- <!-- <td style='display:none;' id='ver_sector_formal'>
+ </td> 
+
+
+
+  <!-- <td style='display:none;' id='ver_sector_formal'>
    
    <input  class="form-control" id="tipo_sector_formal"
    name="datos[tipo_sector_formal]" type="date">
+</td> -->
+        
 
-</td>
-                -->
+
+
 <td style='display:none;' id='ver_egresado'>
 <!-- <div class="input-group"> -->
+ 
+<span style='display:none;color:red' id='valid_37'>Campo sin llenar</span>
 
-<select class="form-control" id="egresado_nomina" style= "width: 80%;">
+<select class="form-control" id="egresado_nomina" style= "width: 100%;" placeholder="Indique motivo de egreso">
                     <option value='vacio' >-Seleccione-</option>
-                    <?php foreach ($this->egresados as $egre) { ?>
+                    <?php foreach ($this->egreso as $egre) { ?>
                <option value='<?php echo $egre["id_egresado"]; ?>'><?php echo $egre['nombre_egresado'];?></option>
                <?php  } ?></select>
 
@@ -1041,51 +1075,151 @@
 </tr></table>
 </div>
   
-      
-                        
-     <div class="col-md-12 mt-2">
-        <label for="cond_laboral">
+<!--------------------------------------------------------------------------------------------------->    
+        
+  
+<!--------------------------------------------------------------------------------------------------------------------------->
+ 
+<div class="col-md-12 mt-2">
+        <label for="nomina">
+         Nómina a la que pertenece 
+        </label>
+        <span style='display:none;color:red' id='valid_38'>Campo sin llenar</span>
+        <table style='width:100%'><tr><td>
+            <!-- <div class="input-group"> -->
+
+<select class="form-control" id="nomina" style= "width: 100%;">
+                    <option value='vacio' >-Seleccione-</option>
+                    <?php foreach ($this->nomina as $nomi) { ?>
+               <option value='<?php echo $nomi["id_nomina"]; ?>'><?php echo $nomi['nombre_nomina'];?></option>
+               <?php  } ?></select>
+
+<!--                </div>
+ -->             </td>
+
+<!--  <td style='display:none;' id='ver_grado'>
+   
+   <input  class="form-control" id="tipo_sector_formal"
+   name="datos[tipo_sector_formal]" type="date">
+
+</td>
+       -->  
+
+<td style='display:none;' id='ver_grado'>
+<!-- <div class="input-group"> -->
+
+<span style='display:none;color:red' id='valid_39'>Campo sin llenar</span>
+<select class="form-control" id="grado_fun" placeholder="Indique el grado o jerarquía" >
+                    <option value='vacio' >-Seleccione-</option>
+               <option value='Coronel'>Coronel</option>
+               <option value='Tiniente'>Teniente</option>
+            </select>
+
+</td>
+
+</tr></table>
+
+<!-- <input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name=""> -->
+
+</div> 
+
+
+<!----------------------------------------------------------------------------->
+<!-- Prueba -->
+
+
+<!-- <div class="col-md-12 mt-2">
+        <label for="cargo_nominal">
             Cargo nominal
-<!--             <p> Condicion Laboral </p>
- -->        </label>
+           <p> Condicion Laboral </p>
+        </label>
         <span style='display:none;color:red' id='valid_27'>Campo sin llenar</span>
         <table style='width:100%'><tr><td>
             <div class="input-group">
 
-             <select class='form-control' id="cargo_nominal" style=" width:100%" >
-                <option value='0'>Seleccione</option>
-                <option value='contratado'>Contratado</option>
-                <option value='Fijo'>Fijo</option>
-                <option value='Grado 99'>Grado 99</option>
-
-            <!--     <?php foreach ($this->condiciones as $cond) { ?>
-                    <option value='<?php echo $cond["nombre_cond_laboral"]; ?>'><?php echo $cond['nombre_cond_laboral'];?></option>
-                    <?php      } ?></select>
-                    <input style='display:none' class='form-control' type="text" id='nombre_cond_nueva'  placeholder="Nombre de la condición laboral" > -->
+             <select class='form-control' id="nomina_new" style=" width:100%" >
+                    <option value='vacio' >-Seleccione-</option>
+                    <?php foreach ($this->nomina as $nomi) { ?>
+               <option value='<?php echo $nomi["id_nomina"]; ?>'><?php echo $cargo['nombre_nomina'];?></option>
+               <?php  } ?></select>
                 </div>
             </td>
             <td>
-               <select class="form-control" id="sector_laboral"
+             <td style='display:none;' id='ver_grado_new'> 
+
+            <select class="form-control" id="estado_fun_new" style= "width: 80%;">
+                    <option value='1' >-Seleccione estado del funcionario-</option>
+                    
+                 
+               <option >
+                           Hola
+                    </option>
+               </select>
+               </td>
+               <select class="form-control" id="estado_funcionario"
                name="datos[sector_laboral]" >
-               <option value='vacio'>-Sector Laboral-</option>
+               <option value='vacio'>-Estado del funcionario-</option>
                <option value="1">
-                Inactivo
+                Seleccionar
             </option>
-            <option value="2">
-             Activo
-         </option>
-     </select>
- </td>
- <td style='display:none;' id='ver_sector_formal'>
- <select class="form-control" id="id_estado_fun" style= "width: 80%;">
+             <option value="2">
+             Presente
+         </option> 
+     </select> 
+ </td> 
+  
+
+</tr></table>
+</div>
+ -->
+
+
+
+
+<!--------------------------------------------------------------------------------------------------->    
+                        
+
+     <div class="col-md-12 mt-2">
+        <label for="cargo_nominal">
+            Cargo nominal
+<!--             <p> Condicion Laboral </p>
+ -->        </label>
+        <span style='display:none;color:red' id='valid_40'>Campo sin llenar</span>
+        <table style='width:100%'><tr><td>
+            <div class="input-group">
+
+             <select class='form-control' id="cargo_nominal" style=" width:100%" >
                     <option value='vacio' >-Seleccione-</option>
-                    <?php foreach ($this->edo_funcionario as $edo_fun) { ?>
+                    <?php foreach ($this->cargo_nominal as $cargo) { ?>
+               <option value='<?php echo $cargo["id_cargo"]; ?>'><?php echo $cargo['nombre_cargo'];?></option>
+               <?php  } ?></select>
+                </div>
+            </td>
+
+            <td>
+           
+            <!-- <td style='display:none;' id='ver_estado_fun'> -->
+            <span style='display:none;color:red' id='valid_41'>Campo sin llenar</span>
+            <select class="form-control" id="estado_fun" style= "width: 100%;" placeholder="Indique estado del funcionario">
+                    <option value='1' >-Seleccione estado del funcionario-</option>
+                    
+                    <?php foreach ($this->estado_fun as $edo_fun) { ?>
                <option value='<?php echo $edo_fun["id_estado_fun"]; ?>'><?php echo $edo_fun['nombre_estado_fun'];?></option>
                <?php  } ?></select>
-</td>
-<!-- <td>
-<input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name="">
-</td> -->
+               </td>
+               <!-- <select class="form-control" id="estado_funcionario"
+               name="datos[sector_laboral]" >
+               <option value='vacio'>-Estado del funcionario-</option>
+               <option value="1">
+                Seleccionar
+            </option>
+             <option value="2">
+             Presente
+         </option> -->
+     </select> 
+ </td> 
+                
+  
 
 </tr></table>
 </div>
@@ -1138,13 +1272,13 @@
 
 <!---------------------------------------------------------------------------------------------------------------------------------->
 
-  <div class="col-md-12 mt-2">
+   <div class="col-md-12 mt-2">
 
 
 <label for="ocupacion">
  Cargo Funcional
 </label>
-<span style='display:none;color:red' id='valid_26'>Ingrese la ocupación</span>
+<span style='display:none;color:red' id='valid_42'>Ingrese la ocupación</span>
 <table style='width:100%'>
 
 <tr><td>
@@ -1169,24 +1303,28 @@
     <td><!-- <input type="button" id='agregar_cargo' class="btn btn-info" type="button" value="Agregar"> Agregar</button>&nbsp;&nbsp; -->  
 
 </tr></table> 
-<div>
+
+
+<div>    <!--     Descomentar-->
+
+
   <!--    
    <div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE; width: 800;height: 200px !important' id='cargos_personas'> -->
 
 
 
 </div>   
-
+ 
 
 <!----------------------------------------------------------------------------------------------------------------------------------->
                 <div class="col-md-12 mt-2">
                                         
-                <label >
+                <label for="id_ubicacion" >
                 <!-- Proyectos ubicaciones -->
               Ubicación del funcionario o funcionaria
              </label>
+             <span style='display:none;color:red' id='valid_43'>Ingrese la ubicación</span>
               <table style='width:100%'>
-              
                  <!--<tr><td style='width:120%'> -->
 
                 <div  id='proyect_agregados'>
@@ -1197,6 +1335,8 @@
                <option value='<?php echo $ubi["id_ubicacion"]; ?>'><?php echo $ubi['nombre_ubi'];?></option>
                <?php  } ?></select>
           </div> 
+
+                   
           
           <div class="col-md-12">
 
@@ -1231,36 +1371,39 @@
 </td>
 
     
-    <td><button id='agregar' class="btn btn-info" type="button">Agregar</button>&nbsp;&nbsp;</td></tr></table>
+    <td><button id='agregar_ubicacion' class="btn btn-info" type="button">Agregar</button>&nbsp;&nbsp;</td></tr></table>
    <!-- <div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE; width: 800;height: 200px !important' id='ubicaciones_personas'> -->
 
 
 <!-- </div> -->
+<div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE;width: 100%;height: 200px !important' id='ubicaciones_persona'>
 
 </div>
+</div>
                         <br>
-                           
+                       <!--  <div>
+                        </div>  Aqui vemos que tal -->                  
 
-
+<!--------------------------------------------------------------------------------------------------------------->
 
             <div class="col-md-12 mt-2">
                 <label >
                 <!-- Proyectos=Titulos obtenidos -->
               Títulos obtenidos
              </label>
-             <table style='width:100%'><tr><td style='width:120%'>
+             <table style='width:100%'><tr><td >
 
                 <div  id='proyectos_agregados'>
 
-                    <select class="form-control" id="proyectos" name="datos[proyctos]" style= "width: 550px;">
-                    <option value='vacio' >-Seleccione-</option>
-                    <?php foreach ($this->proyectos as $pr) { ?>
-                      <option value="<?php echo $pr['id_proyecto']; ?>"><?php echo $pr['nombre_titulo']; ?></option>
+                    <select class="form-control" id="proyectos" name="datos[proyctos]" style= "width: 100%">
+                    <option value='0' >-Seleccione-</option>
+                    <?php foreach ($this->proyectos as $pro) { ?>
+                      <option value="<?php echo $pro['id_proyecto']; ?>"><?php echo $pro['nombre_proyecto']; ?></option>
                   <?php   } ?>
               </select>
 
               <td>
-                  <input id='descripcion' class='form-control no-simbolos' style="width: 500px" placeholder="Descripción del título" >
+                  <input id='descripcion' class='form-control' style=" width: 100%" placeholder="Descripción del título" >
                 
             </td>
 
@@ -1282,7 +1425,8 @@
             <table style='width:100%'>
             
         </table>
-     </div> 
+     </div>
+
 <!--  </td><td><input type="button" id="otro_proyecto" value="Otro" class='btn btn-info'></td>
  <td ><input type="button" id="agregar_proyecto" value="Agregar" class='btn btn-primary'></td></tr></table> -->
  <!-- </div>  -->
@@ -1296,6 +1440,9 @@
 </div> 
 
  </div>
+ 
+ <!---------------------------------------------------------------------------------------------------------------------->            
+
 <div class="tab-pane" id="panel4" role="tabpanel">
     <div class="row">
         <div class="col-md-12 text-center mt-2">

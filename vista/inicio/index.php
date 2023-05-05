@@ -21,7 +21,7 @@
 
     <section class="content">
         <input id="sesion_iniciada" type="hidden" value="<?php echo $_SESSION['inicio_sesion']; ?>">
-        <input id="cedula_persona" type="hidden" value="<?php echo $_SESSION['cedula_usuario'] ?>">
+        <input id="cedula_persona" type="hidden" value="<?php echo $_SESSION['cedula_usuario']; ?>">
         <!-- Info boxes -->
         <div class="row">
             <div class="col-12 col-sm-6 col-md-4">
@@ -158,7 +158,7 @@
                     <!-- /.card-footer -->
                 </div>
                 <!-- /.card -->
-            </div>
+            </div><br>
 
             <div class="col-md-4">
                 <!-- Info Boxes Style 2 -->
