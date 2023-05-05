@@ -75,5 +75,11 @@ class Inicio extends Controlador
           $_SESSION['inicio_sesion'] = 2;
           echo 1;
       }
-
+      public function actualizarperfil(){
+          $this->modelo->actualizarperfil($_POST['correo'],$_POST['telefono'],$_POST['cedula']);
+          $_SESSION['correo'] = $_POST['correo'];
+          $_SESSION['telefono'] = $_POST['telefono'];
+          echo 1;
+      }
+      
 }

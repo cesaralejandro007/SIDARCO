@@ -28,11 +28,18 @@
                                     <div>
                                         <h6 class="p-0 m-1">Datos personales</h6>
                                     </div>
+                                    <div>
                                     <button class="btn btn-outline-primary m-1 px-2"  style="padding:3px"
                                         id="editarperfil" 
                                         style="cursor: pointer">
                                         <i class="fas fa-user-edit"></i> Editar perfil
                                     </button>
+                                    <button class="btn btn-outline-primary m-1 px-2"  style="padding:3px"
+                                        id="editarpassword" 
+                                        style="cursor: pointer">
+                                        <i class="fas fa-key"></i>Editar Contraseña
+                                    </button>
+                                    </div>
                                 </div><!-- /.container-fluid -->
                             </div>
                             <input id="correo1" type="hidden" value="<?php echo $_SESSION['correo']; ?>">
