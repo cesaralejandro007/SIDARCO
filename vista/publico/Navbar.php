@@ -101,14 +101,14 @@
          
          <li class="nav-item dropdown user-menu">
              <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                 <img src="<?php echo constant('URL')?>config/img/users/user-3.png"
+                 <img src="<?php if($_SESSION['genero']=="M"){echo constant('URL')?>config/img/users/img1.jpg <?php }else{echo constant('URL')?>config/img/users/img2.jpg<?php } ?>" 
                      class="user-image img-circle elevation-2" alt="User Image">
                  <span class="d-none d-md-inline"><?php echo $_SESSION['nombre']." ".$_SESSION['apellido'] ; ?></span><i class="fas fa-sort-down fa-fw"></i>
              </a>
              <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                  <!-- User image -->
                  <li class="user-header" style="background:#15406D">
-                     <img src="<?php echo constant('URL')?>config/img/users/user-3.png" class="img-circle elevation-2"
+                     <img src="<?php if($_SESSION['genero']=="M"){echo constant('URL')?>config/img/users/img1.jpg <?php }else{echo constant('URL')?>config/img/users/img2.jpg <?php } ?>" class="img-circle elevation-2"
                          alt="User Image">
                      <p class="text-white">
                      <?php echo $_SESSION['nombre']." ".$_SESSION['apellido'] ; ?>

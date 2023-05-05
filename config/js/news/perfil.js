@@ -1,7 +1,12 @@
 var keyup_telefono = /^[0-9]{11}$/;
 var keyup_correo = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC]{3,25}[@]{1}[A-Za-z0-9]{3,8}[.]{1}[A-Za-z]{2,4}$/;
+<<<<<<< HEAD
 var keyup_contrasena = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.#%$^&*!?:]{5,8}$/;
 
+=======
+var keyup_contrasena = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.@#%$^&*!?:]{5,8}$/;
+var keyup_seguridad = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.@#%$^&*!?:]{3,25}$/;
+>>>>>>> 7c0de66e5c5482177d1e4e9000a72e138309cb4f
 
 document.getElementById("editarpassword").onclick = function(){
         Swal.fire({
@@ -9,10 +14,9 @@ document.getElementById("editarpassword").onclick = function(){
             html:
             '<span id="validarcontrasena0"></span>' +
             '<label for="message-text" style="color: rgb(21, 64, 109);" class="col-form-label">Ingrese su contraseña actual:</label>'+
-            '<input type="password" id="input0" placeholder="Contraseña actual" class="form-control mb-2"><span id="v1"></span>',
+            '<div class="input-group mt-1"><input id="input0" maxlength="8" class="form-control mb-2" type="password" placeholder="Contraseña actual"/><div class="input-group-append"><button id="show_password" class="btn border border-left-0 mb-2" type="button" onclick="mostrarPasswordactual()"><i class="fas fa-low-vision" style="font-size:16px; color:#8C8F92"></i></div></div>',
             confirmButtonColor: '#15406D',
             confirmButtonText: "Siguiente",
-            allowOutsideClick: false,
             focusConfirm: true,
             preConfirm: () => {
                 $.ajax({
@@ -44,27 +48,41 @@ document.getElementById("editarpassword").onclick = function(){
         function cambiarpassword(){
     Swal.fire({
         title: 'Cambiar contraseña',
-        html:
+        html:                        
           '<span id="validarcontrasena1"></span>' +
           '<label for="message-text" style="color: rgb(21, 64, 109);" class="col-form-label">Informacion de contraseña:</label><br>'+
+<<<<<<< HEAD
           '<span id="v1" style="font-size:14px"></span><input type="password" id="input1" placeholder="Contraseña" class="form-control mb-2">' +
           '<span id="v2" style="font-size:14px"></span><input type="password" id="input2" placeholder="Confirmar contraseña" class="form-control mb-2">'+
           '<label for="message-text" style="color: rgb(21, 64, 109);" class="col-form-label">Preguntas de seguridad:</label>'+
           '<span id="v3" style="font-size:14px"></span><input type="text" id="color" placeholder="Ingrese el color favorito" class="form-control mb-2">' +
           '<span id="v4" style="font-size:14px"></span><input type="text" id="animal" placeholder="Ingrese el animal favorito" class="form-control mb-2">' +
           '<span id="v5" style="font-size:14px"></span><input type="text" id="mascota" placeholder="Ingrese el nombre de la primera mascota" class="form-control mb-2">',
+=======
+          '<span id="v1" style="font-size:14px"></span><div class="input-group mt-1"><input id="input1" maxlength="8" class="form-control mb-2" type="password" placeholder="Contraseña"/><div class="input-group-append"><button id="show_password" class="btn border border-left-0 mb-2" type="button" onclick="mostrarPassword()"><i class="fas fa-low-vision" style="font-size:16px; color:#8C8F92"></i></div></div>' +
+          '<span id="v2" style="font-size:14px"></span><div class="input-group mt-1"><input id="input2" maxlength="8" class="form-control mb-2" type="password" placeholder="Contraseña"/><div class="input-group-append"><button id="show_password" class="btn border border-left-0 mb-2" type="button" onclick="mostrarPassword1()"><i class="fas fa-low-vision" style="font-size:16px; color:#8C8F92"></i></div></div>'+
+          '<label for="message-text" style="color: rgb(21, 64, 109);" class="col-form-label">Preguntas de seguridad:</label><br>'+
+          '<span id="v3" style="font-size:14px"></span><input type="text" maxlength="25" id="color" placeholder="Ingrese el color favorito" class="form-control mb-2">' +
+          '<span id="v4" style="font-size:14px"></span><input type="text" maxlength="25" id="animal" placeholder="Ingrese el animal favorito" class="form-control mb-2">' +
+          '<span id="v5" style="font-size:14px"></span><input type="text" maxlength="25" id="mascota" placeholder="Ingrese el nombre de la primera mascota" class="form-control mb-2">',
+>>>>>>> 7c0de66e5c5482177d1e4e9000a72e138309cb4f
         confirmButtonColor: '#15406D',
         confirmButtonText: "Cambiar",
         focusConfirm: true,
         preConfirm: () => {
             if(document.getElementById('input1').value != "" && document.getElementById('input2').value != "" && document.getElementById('color').value != "" && document.getElementById('animal').value != "" && document.getElementById('mascota').value != ""){
             if(document.getElementById('input1').value == document.getElementById('input2').value){
+              a = valida_registrar1();
+              if (a != "") {
+                  return false;
+                  } else {
                 preguntas_seguridad = document.getElementById('color').value.toLowerCase()+document.getElementById('animal').value.toLowerCase()+document.getElementById('mascota').value.toLowerCase();
                 cambiarcontraseña( 
                     document.getElementById('input1').value,
                     preguntas_seguridad,
                     document.getElementById("cedula_persona").value
                     );
+                }
             }else{
                 document.getElementById("validarcontrasena1").innerHTML = '<div class="alert alert-dismissible fade show pl-5" style="background:#9D2323; color:white" role="alert">La contraseña no coincide.<i class="far fa-backspace p-0 m-0 d-none" id="cerraralert" data-dismiss="alert" aria-label="Close"></i></div>';
                 setTimeout(function () {
@@ -84,6 +102,7 @@ document.getElementById("editarpassword").onclick = function(){
 
 
       //-------------------------------------------------------------------------------
+<<<<<<< HEAD
 
       document.getElementById("input1").onkeyup = function () {
         r = validarkeyup(
@@ -105,6 +124,69 @@ document.getElementById("editarpassword").onclick = function(){
           "El formato debe ser ejemplo@gmail.com"
         );
       };
+=======
+      document.getElementById("input1").onkeypress = function (e) {
+        er = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC@,.#%$^&*!?:]*$/;
+        validarkeypress(er, e);
+      };
+      document.getElementById("input1").onkeyup = function () {
+        r = validarkeyup(
+          keyup_contrasena,
+          this,
+          document.getElementById("v1"),
+          "El campo debe contener de 5 a 8 caracteres"
+        );
+      };
+      document.getElementById("input2").onkeypress = function (e) {
+        er = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC@,.#%$^&*!?:]*$/;
+        validarkeypress(er, e);
+      };
+      document.getElementById("input2").onkeyup = function () {
+        r = validarkeyup(
+          keyup_contrasena,
+          this,
+          document.getElementById("v2"),
+          "El campo debe contener de 5 a 8 caracteres"
+        );
+      };
+      document.getElementById("color").onkeypress = function (e) {
+        er = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC@,.#%$^&*!?:]*$/;
+        validarkeypress(er, e);
+      };
+    document.getElementById("color").onkeyup = function () {
+        r = validarkeyup(
+          keyup_seguridad,
+          this,
+          document.getElementById("v3"),
+          "El campo debe contener de 3 a 25 caracteres"
+        );
+        document.getElementById("animal").onkeypress = function (e) {
+          er = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC@,.#%$^&*!?:]*$/;
+          validarkeypress(er, e);
+        };
+      document.getElementById("animal").onkeyup = function () {
+          r = validarkeyup(
+            keyup_seguridad,
+            this,
+            document.getElementById("v4"),
+            "El campo debe contener de 3 a 25 caracteres"
+          );
+        };
+      
+      document.getElementById("mascota").onkeypress = function (e) {
+        er = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC@,.#%$^&*!?:]*$/;
+          validarkeypress(er, e);
+        };
+      document.getElementById("mascota").onkeyup = function () {
+          r = validarkeyup(
+            keyup_seguridad,
+            this,
+            document.getElementById("v5"),
+            "El campo debe contener de 3 a 25 caracteres"
+          );
+        };
+      };
+>>>>>>> 7c0de66e5c5482177d1e4e9000a72e138309cb4f
     }
     function cambiarcontraseña(contrasena,preguntas,cedula){
         $.ajax({
@@ -205,6 +287,55 @@ document.getElementById("editarpassword").onclick = function(){
 
     }
 
+<<<<<<< HEAD
+=======
+    function valida_registrar1() {
+      var error = false;
+      contrasena1 = validarkeyup(
+        keyup_contrasena,
+        document.getElementById("input1"),
+        document.getElementById("v1"),
+        "El campo debe contener de 5 a 8 caracteres"
+      );
+      contrasena2 = validarkeyup(
+        keyup_contrasena,
+        document.getElementById("input2"),
+        document.getElementById("v2"),
+        "El campo debe contener de 5 a 8 caracteres"
+      );
+      color = validarkeyup(
+        keyup_seguridad,
+        document.getElementById("color"),
+        document.getElementById("v3"),
+        "El campo debe contener de 3 a 25 caracteres"
+      );
+      animal = validarkeyup(
+        keyup_seguridad,
+        document.getElementById("animal"),
+        document.getElementById("v4"),
+        "El campo debe contener de 3 a 25 caracteres"
+      );
+      mascota = validarkeyup(
+        keyup_seguridad,
+        document.getElementById("mascota"),
+        document.getElementById("v5"),
+        "El campo debe contener de 3 a 25 caracteres"
+      );
+
+      if (
+        contrasena1 == 0 ||
+        contrasena2 == 0 ||
+        color == 0 || 
+        animal == 0 || 
+        mascota == 0 
+      ) {
+        //variable==0, indica que hubo error en la validacion de la etiqueta
+        error = true;
+      }
+      return error;
+    }
+
+>>>>>>> 7c0de66e5c5482177d1e4e9000a72e138309cb4f
         
 function valida_registrar() {
     var error = false;
@@ -229,6 +360,36 @@ function valida_registrar() {
     }
     return error;
   }
+<<<<<<< HEAD
+=======
+  
+  function mostrarPasswordactual() {
+    var cambio = document.getElementById("input0");
+    if (cambio.type == "password") {
+      cambio.type = "text";
+    } else {
+      cambio.type = "password";
+    }
+  }
+
+  function mostrarPassword() {
+    var cambio = document.getElementById("input1");
+    if (cambio.type == "password") {
+      cambio.type = "text";
+    } else {
+      cambio.type = "password";
+    }
+  }
+
+  function mostrarPassword1() {
+    var cambio = document.getElementById("input2");
+    if (cambio.type == "password") {
+      cambio.type = "text";
+    } else {
+      cambio.type = "password";
+    }
+  }
+>>>>>>> 7c0de66e5c5482177d1e4e9000a72e138309cb4f
 
   function validarkeyup(er, etiqueta, etiquetamensaje, mensaje) {
     a = er.test(etiqueta.value);
