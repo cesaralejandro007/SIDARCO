@@ -93,6 +93,8 @@ final class Iniciar_Sistema
             }
         }
     }
+
+    
     public function Establecer_Directorio()
     {
         $this->directorrio = rtrim(getcwd(), '\\');
