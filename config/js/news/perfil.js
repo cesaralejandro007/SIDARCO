@@ -1,12 +1,7 @@
 var keyup_telefono = /^[0-9]{11}$/;
 var keyup_correo = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC]{3,25}[@]{1}[A-Za-z0-9]{3,8}[.]{1}[A-Za-z]{2,4}$/;
-<<<<<<< HEAD
-var keyup_contrasena = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.#%$^&*!?:]{5,8}$/;
-
-=======
 var keyup_contrasena = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.@#%$^&*!?:]{5,8}$/;
 var keyup_seguridad = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.@#%$^&*!?:]{3,25}$/;
->>>>>>> 7c0de66e5c5482177d1e4e9000a72e138309cb4f
 
 document.getElementById("editarpassword").onclick = function(){
         Swal.fire({
@@ -51,21 +46,12 @@ document.getElementById("editarpassword").onclick = function(){
         html:                        
           '<span id="validarcontrasena1"></span>' +
           '<label for="message-text" style="color: rgb(21, 64, 109);" class="col-form-label">Informacion de contraseña:</label><br>'+
-<<<<<<< HEAD
-          '<span id="v1" style="font-size:14px"></span><input type="password" id="input1" placeholder="Contraseña" class="form-control mb-2">' +
-          '<span id="v2" style="font-size:14px"></span><input type="password" id="input2" placeholder="Confirmar contraseña" class="form-control mb-2">'+
-          '<label for="message-text" style="color: rgb(21, 64, 109);" class="col-form-label">Preguntas de seguridad:</label>'+
-          '<span id="v3" style="font-size:14px"></span><input type="text" id="color" placeholder="Ingrese el color favorito" class="form-control mb-2">' +
-          '<span id="v4" style="font-size:14px"></span><input type="text" id="animal" placeholder="Ingrese el animal favorito" class="form-control mb-2">' +
-          '<span id="v5" style="font-size:14px"></span><input type="text" id="mascota" placeholder="Ingrese el nombre de la primera mascota" class="form-control mb-2">',
-=======
           '<span id="v1" style="font-size:14px"></span><div class="input-group mt-1"><input id="input1" maxlength="8" class="form-control mb-2" type="password" placeholder="Contraseña"/><div class="input-group-append"><button id="show_password" class="btn border border-left-0 mb-2" type="button" onclick="mostrarPassword()"><i class="fas fa-low-vision" style="font-size:16px; color:#8C8F92"></i></div></div>' +
           '<span id="v2" style="font-size:14px"></span><div class="input-group mt-1"><input id="input2" maxlength="8" class="form-control mb-2" type="password" placeholder="Contraseña"/><div class="input-group-append"><button id="show_password" class="btn border border-left-0 mb-2" type="button" onclick="mostrarPassword1()"><i class="fas fa-low-vision" style="font-size:16px; color:#8C8F92"></i></div></div>'+
           '<label for="message-text" style="color: rgb(21, 64, 109);" class="col-form-label">Preguntas de seguridad:</label><br>'+
           '<span id="v3" style="font-size:14px"></span><input type="text" maxlength="25" id="color" placeholder="Ingrese el color favorito" class="form-control mb-2">' +
           '<span id="v4" style="font-size:14px"></span><input type="text" maxlength="25" id="animal" placeholder="Ingrese el animal favorito" class="form-control mb-2">' +
           '<span id="v5" style="font-size:14px"></span><input type="text" maxlength="25" id="mascota" placeholder="Ingrese el nombre de la primera mascota" class="form-control mb-2">',
->>>>>>> 7c0de66e5c5482177d1e4e9000a72e138309cb4f
         confirmButtonColor: '#15406D',
         confirmButtonText: "Cambiar",
         focusConfirm: true,
@@ -102,29 +88,6 @@ document.getElementById("editarpassword").onclick = function(){
 
 
       //-------------------------------------------------------------------------------
-<<<<<<< HEAD
-
-      document.getElementById("input1").onkeyup = function () {
-        r = validarkeyup(
-          keyup_telefono,
-          this,
-          document.getElementById("v1"),
-          "Solo numeros de 11  digitos"
-        );
-      };
-      document.getElementById("correo").onkeypress = function (e) {
-        er = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC@.-]*$/;
-        validarkeypress(er, e);
-      };
-    document.getElementById("correo").onkeyup = function () {
-        r = validarkeyup(
-          keyup_correo,
-          this,
-          document.getElementById("va1"),
-          "El formato debe ser ejemplo@gmail.com"
-        );
-      };
-=======
       document.getElementById("input1").onkeypress = function (e) {
         er = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC@,.#%$^&*!?:]*$/;
         validarkeypress(er, e);
@@ -186,7 +149,6 @@ document.getElementById("editarpassword").onclick = function(){
           );
         };
       };
->>>>>>> 7c0de66e5c5482177d1e4e9000a72e138309cb4f
     }
     function cambiarcontraseña(contrasena,preguntas,cedula){
         $.ajax({
@@ -287,8 +249,6 @@ document.getElementById("editarpassword").onclick = function(){
 
     }
 
-<<<<<<< HEAD
-=======
     function valida_registrar1() {
       var error = false;
       contrasena1 = validarkeyup(
@@ -335,7 +295,6 @@ document.getElementById("editarpassword").onclick = function(){
       return error;
     }
 
->>>>>>> 7c0de66e5c5482177d1e4e9000a72e138309cb4f
         
 function valida_registrar() {
     var error = false;
@@ -360,8 +319,6 @@ function valida_registrar() {
     }
     return error;
   }
-<<<<<<< HEAD
-=======
   
   function mostrarPasswordactual() {
     var cambio = document.getElementById("input0");
@@ -389,7 +346,6 @@ function valida_registrar() {
       cambio.type = "password";
     }
   }
->>>>>>> 7c0de66e5c5482177d1e4e9000a72e138309cb4f
 
   function validarkeyup(er, etiqueta, etiquetamensaje, mensaje) {
     a = er.test(etiqueta.value);

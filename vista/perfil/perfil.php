@@ -37,8 +37,6 @@
                                     <button class="btn btn-outline-primary m-1 px-2"  style="padding:3px"
                                         id="editarpassword" 
                                         style="cursor: pointer">
-
-                                        <i class="fas fa-user-edit"></i> Editar Contraseña=======
                                         <i class="fas fa-key"></i>Editar Contraseña
 
                                     </button>
