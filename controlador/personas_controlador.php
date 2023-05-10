@@ -148,6 +148,7 @@ public function Registros()
   $this->vista->egreso=$this->Consultar_egreso("egresados"); 
   $this->vista->cargo_nominal=$this->consultar_cargo("cargo_nominal");
   $this->vista->ubicaciones=$this->Consultar_Tabla_ubicaciones("ubicaciones");
+  $this->vista->estados=$this->Consultar_Tabla_Estados("estados");
   $this->vista->estado_fun=$this->Consultar_Tabla_edo_fun("estados_funcionarios");
   $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
  /*  $this->vista->proyectos=$this->modelo->get_divisiones(); */
@@ -667,7 +668,7 @@ public function registrar_transporte(){
 
 }
 
-public function registrar_proyectos(){
+/* public function registrar_proyectos(){
   $proyectos=$this->modelo->get_divisiones();
   $datos=$_POST['datos'];
   $cont=0;
@@ -676,7 +677,8 @@ public function registrar_proyectos(){
     if($pro['id_proyecto']==$datos['proyecto']){
       $this->modelo->Registrar_persona_proyecto([
        "cedula_persona"   =>   $datos['cedula_persona'],
-       "id_proyecto"     =>     $pro['id_proyecto']
+       "id_proyecto"     =>     $pro['id_proyecto'],
+       "descripcion"     =>     $pro['descripcion']
      ]);
  
       $cont++;
@@ -701,8 +703,48 @@ public function registrar_proyectos(){
    }
  }
  
- }
+ } */
 
+ public function registrar_proyecto(){
+  $proyectos=$this->modelo->get_proyectos();
+  $datos=$_POST['datos'];
+
+ 
+/*   foreach ($proyectos as $pro) { */
+ /*    if($pro['id_proyecto']==$datos['id_titulos']){ */
+  for ($i = 0; $i < count($datos); $i++) {
+    foreach ($proyectos as $pro) {
+        if ($pro['id_proyecto'] == $datos[$i]['id_titulos']) {
+      $this->modelo->Registrar_persona_proyecto([
+       "cedula_persona"   =>   $datos[$i]['cedula_persona'],
+       "id_titulos"     =>     $pro['id_proyecto'],
+       "descripcion"     =>     $datos[$i]['descripcion']
+     ]);
+  }
+  
+}
+ 
+ 
+/*   if($cont==0){
+ 
+ 
+   if($this->modelo->registrar_proyectos($datos['proyecto'])){
+     $id=$this->Ultimo_Ingresado("proyecto","id_proyecto");
+ 
+     foreach ($id as $i) {
+       echo  $this->modelo->Registrar_persona_proyecto([
+         "cedula_persona"   =>     $datos['cedula_persona'],
+         "id_proyecto"     =>     $i['MAX(id_proyecto)']
+       ]);
+     }
+ 
+ 
+   }
+ } */
+ 
+ }
+ echo count($datos);
+ }
 
 
 

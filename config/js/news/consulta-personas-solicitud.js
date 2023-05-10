@@ -1,4 +1,4 @@
-var lupa=document.getElementById('consultaPersona');
+/* var lupa=document.getElementById('consultaPersona'); */
 var cedula_persona=document.getElementById("cedulaPersona");
 var div_validacion=document.getElementById("mensajeValidacionPersona");
 var div_form_solicitud=document.getElementById("formulario-consulta-persona");
@@ -10,7 +10,7 @@ var boton_enviar=document.getElementById("enviar-solicitud");
  
 localStorage.clear();
  
-
+/* 
 lupa.onclick=function(){
 	if(cedula_persona.value==""){
 		div_validacion.innerHTML="Ingrese su cédula";
@@ -77,7 +77,7 @@ lupa.onclick=function(){
             });
 	}
 }
-
+ */
 
 function get_antiguedad(fecha){
 	var actual=new Date();

@@ -89,7 +89,6 @@
     <!-- ============================================================== -->
     <?php include(call . "Script.php"); ?>
     <script src="<?php echo constant('URL') ?>config/js/news/Validacion_Login.js"></script>
-    <script src="<?php echo constant('URL') ?>config/js/news/consulta-personas-solicitud.js"></script>
 </body>
 
 </html>

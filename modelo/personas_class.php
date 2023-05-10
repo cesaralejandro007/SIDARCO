@@ -58,7 +58,7 @@ class Personas_Class extends Modelo
     {
 
         try {
-            $datos = $this->conexion->prepare('INSERT INTO personas (
+            $datos = $this->conexion->prepare('INSERT INTO personas(
                 cedula_persona,
                 primer_nombre,
                 segundo_nombre,
@@ -92,6 +92,8 @@ class Personas_Class extends Modelo
                 telf_casa,
                 id_nomina,
                 inicio_sesion,
+                id_cargo,
+                id_estado,
                 id_estado_fun
                 ) VALUES (
                 :cedula_persona,
@@ -127,6 +129,8 @@ class Personas_Class extends Modelo
                 :telf_casa,
                 :id_nomina,
                 :inicio_sesion,
+                :id_cargo,
+                :id_estado,
                 :id_estado_fun
                 )');
 
@@ -155,7 +159,7 @@ class Personas_Class extends Modelo
                 'id_ubicacion'          =>       $data['id_ubicacion'],
                 'ing_seniat'            =>       $data['fecha_seniat'],
                 'ing_publica'           =>       $data['fecha_publica'],
-                'fecha_notificacion'    =>       $dats['fecha_notificacion'],
+                'fecha_notificacion'    =>       $data['fecha_notificacion'],
                 'ult_designacion'       =>       $data['ult_designacion'],
                 'prima'                 =>       $data['prima'],
                 'declaracion_j'         =>       $data['declaracion_j'],
@@ -164,7 +168,9 @@ class Personas_Class extends Modelo
                 'telf_casa'             =>       $data['telf_casa'],
                 'id_nomina'             =>       $data['id_nomina'],
                 'inicio_sesion'         =>       1,
-                'id_estado_fun'         =>       $data['id_estado_fun'],
+                'id_cargo'              =>       $data['cargo_nominal'],
+                'id_estado'             =>       $data['id_estado'],
+                'id_estado_fun'         =>       $data['id_estado_fun']
             ]);
 
             return true;
@@ -418,23 +424,26 @@ class Personas_Class extends Modelo
     {
 
         try {
-            $datos = $this->conexion->prepare('INSERT INTO persona_proyecto (
+            $datos = $this->conexion->prepare('INSERT INTO persona_proyecto(
                 cedula_persona,
                 id_proyecto,
-                estado            
+                estado,
+                descripcion           
                 ) VALUES (
                     :cedula_persona,
                     :id_proyecto,
-                    :estado
+                    :estado,
+                    :descripcion
                 )');
 
             $datos->execute([
                 'cedula_persona'      => $data['cedula_persona'],
-                'id_proyecto'   => $data['id_proyecto'], 
+                'id_proyecto'   => $data['id_titulos'], 
                 'estado'   => 1,
+                'descripcion'   => $data['descripcion']
             ]);
 
-            return true;
+            return $data['descripcion'];
 
         } catch (PDOException $e) {
             return $this->Capturar_Error($e);
