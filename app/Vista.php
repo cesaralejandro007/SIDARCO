@@ -1,6 +1,6 @@
 <?php
 // =============VISTA==============
-class Vista 
+class Vista    
 {
     public function __construct()
     {}
