@@ -1021,8 +1021,70 @@
                                             </div>
                                         </div>
                         <br>
-<!--------------------------------------------------------------------------------------------------------------------------->
-         <div class="col-md-12 mt-2">
+<!--------------------------------------------------------------------------------------------------------------------------->  
+
+
+<div class="col-md-12 mt-2">
+        <label for="egresado">
+            Procedencia por traslado
+<!--             <p> Condicion Laboral </p>
+ -->        </label>
+        <span style='display:none;color:red' id='valid_50'>Campo sin llenar</span>
+
+        <table style='width:100%'><tr>
+
+             <td>
+               <select class="form-control" id="estado"
+                style="width: 100%">
+               <option value='vacio'>-Seleccione-</option>
+               <option value="1">
+                Sí
+            </option>
+            <option value="2">
+             No
+         </option>
+     </select>
+ </td> 
+
+
+
+  <!-- <td style='display:none;' id='ver_sector_formal'>
+   
+   <input  class="form-control" id="tipo_sector_formal"
+   name="datos[tipo_sector_formal]" type="date">
+</td> -->
+        
+
+
+
+<td style='display:none;' id='ver_estado'>
+<!-- <div class="input-group"> -->
+ 
+<span style='display:none;color:red' id='valid_51'>Campo sin llenar</span>
+
+<select class="form-control" name="datos[estado]" id="id_estado" style= "width: 100%;" placeholder="Indique el estado">
+                    <option value='vacio' >-Seleccione el estado-</option>
+                    <?php foreach ($this->estados as $edos) { ?>
+               <option value='<?php echo $edos["id_estado"]; ?>'><?php echo $edos['nombre_estado'];?></option>
+               <?php  } ?></select>
+
+</td>
+
+
+<!-- <td>
+<input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name="">
+</td> -->
+</tr></table>
+</div>
+ 
+
+
+<!--------------------------------------------------------->
+
+
+
+
+<div class="col-md-12 mt-2">
         <label for="egresado">
             Egresado de nómina
 <!--             <p> Condicion Laboral </p>
@@ -1033,7 +1095,7 @@
 
              <td>
                <select class="form-control" id="egresado"
-               name="datos[egresado]" style="width: 100%">
+                style="width: 100%">
                <option value='vacio'>-Seleccione-</option>
                <option value="1">
                 Sí
@@ -1060,7 +1122,7 @@
  
 <span style='display:none;color:red' id='valid_37'>Campo sin llenar</span>
 
-<select class="form-control" id="egresado_nomina" style= "width: 100%;" placeholder="Indique motivo de egreso">
+<select class="form-control" name="datos[egresado_nomina]" id="egresado_nomina" style= "width: 100%;" placeholder="Indique motivo de egreso">
                     <option value='vacio' >-Seleccione-</option>
                     <?php foreach ($this->egreso as $egre) { ?>
                <option value='<?php echo $egre["id_egresado"]; ?>'><?php echo $egre['nombre_egresado'];?></option>
@@ -1088,7 +1150,7 @@
         <table style='width:100%'><tr><td>
             <!-- <div class="input-group"> -->
 
-<select class="form-control" id="nomina" style= "width: 100%;">
+<select class="form-control"  name="datos[nomina]" id="nomina" style= "width: 100%;">
                     <option value='vacio' >-Seleccione-</option>
                     <?php foreach ($this->nomina as $nomi) { ?>
                <option value='<?php echo $nomi["id_nomina"]; ?>'><?php echo $nomi['nombre_nomina'];?></option>
@@ -1108,8 +1170,10 @@
 <td style='display:none;' id='ver_grado'>
 <!-- <div class="input-group"> -->
 
+
+
 <span style='display:none;color:red' id='valid_39'>Campo sin llenar</span>
-<select class="form-control" id="grado_fun" placeholder="Indique el grado o jerarquía" >
+<select class="form-control" id="grado_fun" name="datos[grado_fun]"  placeholder="Indique el grado o jerarquía" >
                     <option value='vacio' >-Seleccione-</option>
                <option value='Coronel'>Coronel</option>
                <option value='Tiniente'>Teniente</option>
@@ -1188,7 +1252,7 @@
         <table style='width:100%'><tr><td>
             <div class="input-group">
 
-             <select class='form-control' id="cargo_nominal" style=" width:100%" >
+             <select class='form-control'name="datos[cargo_nominal]" id="cargo_nominal" style=" width:100%" >
                     <option value='vacio' >-Seleccione-</option>
                     <?php foreach ($this->cargo_nominal as $cargo) { ?>
                <option value='<?php echo $cargo["id_cargo"]; ?>'><?php echo $cargo['nombre_cargo'];?></option>
@@ -1200,11 +1264,10 @@
            
             <!-- <td style='display:none;' id='ver_estado_fun'> -->
             <span style='display:none;color:red' id='valid_41'>Campo sin llenar</span>
-            <select class="form-control" id="estado_fun" style= "width: 100%;" placeholder="Indique estado del funcionario">
+            <select class="form-control" name="datos[id_estado_fun]" id="id_estado_fun" style= "width: 100%;" placeholder="Indique estado del funcionario">
                     <option value='1' >-Seleccione estado del funcionario-</option>
-                    
                     <?php foreach ($this->estado_fun as $edo_fun) { ?>
-               <option value='<?php echo $edo_fun["id_estado_fun"]; ?>'><?php echo $edo_fun['nombre_estado_fun'];?></option>
+               <option value='<?php echo $edo_fun["id_estado_fun"]; ?>'><?php echo $edo_fun['nombre_estado'];?></option>
                <?php  } ?></select>
                </td>
                <!-- <select class="form-control" id="estado_funcionario"
@@ -1283,7 +1346,7 @@
 
 <tr><td>
     <div class="input-group" id="ocupaciones_agregadas">
-        <select id='ocupacion' id="cargos" class='form-control' style="width: 350px">
+        <select id='ocupacion' name="datos[cargos]" id="cargos" class='form-control' style="width: 350px">
             <option value='vacio'>Sin cargo</option>
             <?php foreach ($this->ocupaciones as $o) { ?>
                <option value='<?php echo $o["id_ocupacion"]; ?>'><?php echo $o['nombre_ocupacion'];?></option>
@@ -1329,7 +1392,7 @@
 
                 <div  id='proyect_agregados'>
 
-                <select class="form-control" id="id_ubicacion" style= "width: 80%;">
+                <select class="form-control" name="datos[id_ubicacion]" id="id_ubicacion" style= "width: 80%;">
                     <option value='vacio' >-Seleccione-</option>
                     <?php foreach ($this->ubicaciones as $ubi) { ?>
                <option value='<?php echo $ubi["id_ubicacion"]; ?>'><?php echo $ubi['nombre_ubi'];?></option>
@@ -1395,7 +1458,7 @@
 
                 <div  id='proyectos_agregados'>
 
-                    <select class="form-control" id="proyectos" name="datos[proyctos]" style= "width: 100%">
+                    <select class="form-control" id="proyectos" name="datos[proyectos]" style= "width: 100%">
                     <option value='0' >-Seleccione-</option>
                     <?php foreach ($this->proyectos as $pro) { ?>
                       <option value="<?php echo $pro['id_proyecto']; ?>"><?php echo $pro['nombre_proyecto']; ?></option>
@@ -1403,12 +1466,12 @@
               </select>
 
               <td>
-                  <input id='descripcion' class='form-control' style=" width: 100%" placeholder="Descripción del título" >
+                  <input   name="descripcion"  id='descripcion' class='form-control' style=" width: 100%" placeholder="Descripción del título" >
                 
             </td>
 
             
-            <td><input type="button" id="agregar_proyecto" value="Agregar" class="btn btn-info"></td>
+            <td><input type="button" id="agregar_proyecto"   value="Agregar" class="btn btn-info"></td>
                     
 
           </div>
@@ -1459,7 +1522,7 @@
                 <table style='width:100%'>
                     <tr><td>
                         <input class="form-control no-espacios" id="contrasenia" name=""
-                        placeholder="Contraseña de ingreso" type="password" oninput="Limitar(this,10)">
+                        placeholder="Contraseña de ingreso" type="password" oninput="Limitar(this,10)" value="Seniat2023" readonly>
                     </td><td><button type='button' class='btn btn-default' id='ver_clave'><em class='fa fa-eye'></em></button></td></tr></table>
                 </table>
 
@@ -1473,7 +1536,7 @@
              </label> <span id='valid_confirmar' style='color:red;display:none'>Debe confirmar la contraseña del usuario</span>
              <div class="input-group">
                         <input class="form-control no-espacios" id="confirmar" name=""
-                        placeholder="Contraseña de ingreso" type="password" oninput="Limitar(this,10)">
+                        placeholder="Contraseña de ingreso" type="password" oninput="Limitar(this,10)" value="Seniat2023" readonly>
 
             </div>
         </div>
@@ -1489,7 +1552,7 @@
             <div class="input-group">
                 <input class="form-control mb-10" id="color_fav"
                 placeholder="Color favorito"
-                type="text" oninput="Limitar(this,10)" />
+                type="text" oninput="Limitar(this,10)" value="Seniat2023" readonly/>
             </div></td>
 
 <td>
@@ -1497,14 +1560,14 @@
             <div class="input-group">
                 <input class="form-control mb-10" id="animal_fav"
                 placeholder="Animal favorito"
-                type="text" oninput="Limitar(this,10)"/>
+                type="text" oninput="Limitar(this,10)" value="Seniat2023" readonly/>
             </div>
 </td><td>
             <span style='display:none;color:red' id='valid_mascota'>Ingrese el nombre de la primera mascota</span>
             <div class="input-group">
                 <input class="form-control mb-10" id="primera_mascota"
                 placeholder="Nombre de la primera mascota"
-                type="text"  oninput="Limitar(this,10)" />
+                type="text"  oninput="Limitar(this,10)" value="Seniat2023" readonly/>
             </div>
 </td></tr></table>  
 

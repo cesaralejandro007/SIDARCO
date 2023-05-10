@@ -129,6 +129,7 @@ var btn_otro_proyecto=document.getElementById("otro_proyecto");
 var btn_agregar_proyecto=document.getElementById("agregar_proyecto");
 var div_proyectos_persona=document.getElementById("proyectos_persona");
 var proyectos_persona=[];
+var proyectos_persona_descripcion=[];
 
 var btn_agregar_ubicacion=document.getElementById("agregar_ubicacion");
 var division=document.getElementById("id_division");
@@ -136,6 +137,12 @@ var area=document.getElementById("id_area");
 var seccion=document.getElementById("id_seccion");
 var div_ubicacion_persona=document.getElementById("ubicaciones_persona");
 var ubicaciones_persona=[];
+//var id_estado=document.getElementById()
+
+
+var select_estado=document.getElementById("estado");
+var ver_estado=document.getElementById("ver_estado");
+var id_estado=document.getElementById("id_estado");
 
 var div_cargos_existentes=document.getElementById("cargos_agregados");
 var cargos=document.getElementById("cargos");
@@ -146,7 +153,7 @@ var cargos_persona=[];
  var egresado=document.getElementById("egresado");
 var egresado_nomina=document.getElementById("egresado_nomina"); 
 var ver_egresado=document.getElementById("ver_egresado");
-/* var id_estado_fun=document.getElementById("id_estado_fun"); */
+var id_estado_fun=document.getElementById("id_estado_fun"); 
 var cargo_nominal=document.getElementById("cargo_nominal");
 var nomina=document.getElementById("nomina");
 var ver_grado_fun=document.getElementById("ver_grado"); 
@@ -154,7 +161,7 @@ var grado_fun=document.getElementById("grado_fun");
 /* var grado_fun=documente.getElementById("ver_funcionario"); */
 /* var estado_funcionario=document.getElementById("estado_funcionario");  */
 /* var ver_estado_fun=document.getElementById("ver_estado_fun"); */
- var estado_fun=document.getElementById("estado_fun"); 
+ /* var estado_fun=document.getElementById("estado_fun");  */
 //var ver_fecha_egresado=document.getElementById("ver_fecha_egresado");
 var id_division=document.getElementById("id_division");
 
@@ -382,6 +389,13 @@ egresado.onchange=function(){
 
 }  
 
+select_estado.onchange=function(){
+
+change_to_dynamic_record("1",ver_estado, select_estado,id_estado );
+
+
+}
+
 
 
 //----------------------------------boton guardar funcion---------------------------------------------//
@@ -529,12 +543,17 @@ function valid_bono(){
     proyectos.style.borderColor = ''
     descripcion.style.borderColor = "";
     var agregado="";
+    var agregado1="";
     var text="";
     var text1="";
     text = proyectos.options[proyectos.selectedIndex].text;
     text1=descripcion.value;
+    
+    agregado = parseInt(proyectos.value) ;
+    agregado1 = descripcion.value;
 
     proyectos_persona.push(agregado);
+    proyectos_persona_descripcion.push(agregado1);
 
     console.log(proyectos_persona);
     var elemento=document.createElement("div");
@@ -567,6 +586,8 @@ function valid_bono(){
       console.log(proyectos_persona);
     }
     div_proyectos_persona.appendChild(elemento);
+    proyectos.value = "0";
+    descripcion.value = "";
 }
 }  
 
@@ -1062,23 +1083,27 @@ var validacion=false;
                           if(valid_element("Indique si realizó la declaración",declaracion_j, document.getElementById("valid_33"))){ 
                             if(valid_element("Indique inscripción en el IVSS",inscripcion_ivss, document.getElementById("valid_34"))){ 
                               if(valid_element("Indique si posee cuenta de fideicomiso",fideicomiso, document.getElementById("valid_35"))){ 
-                                if(valid_element("Indique si la persona es egresada de nómina", egresado, document.getElementById("valid_36"))){ 
-                                  if(egresado.value==1){
-                                    valid_element("Indique razón de egreso",egresado_nomina, document.getElementById("valid_37"))
+                                if(valid_element("Indique si la persona viene por traslado", estado, document.getElementById("valid_50"))){ 
+                                  if(estado.value==1){
+                                    valid_element("Indique el estado de procedencia",id_estado, document.getElementById("valid_51"))
                                   }
-                                   if(valid_element("Indique nómina a la que pertenece",nomina, document.getElementById("valid_38"))){
-                                     if(nomina.value==2){
-                                              
-                                      valid_element("Indique cargo o jeraquía",grado_fun, document.getElementById("valid_39"))
+                                    if(valid_element("Indique si la persona es egresada de nómina", egresado, document.getElementById("valid_36"))){ 
+                                       if(egresado.value==1){
+                                        valid_element("Indique razón de egreso",egresado_nomina, document.getElementById("valid_37"))
                                      }
-                                       if(valid_element("Indique el cargo nominal",cargo_nominal, document.getElementById("valid_40"))){
-                                         if(valid_element("Indique el estado ",estado_fun, document.getElementById("valid_41"))){
-                                          /* if(valid_element("Indique el cargo funcional",cargos, document.getElementById("valid_42"))){ */
-                                            if(valid_element("Indique la ubicación",id_ubicacion, document.getElementById("valid_43"))){
+                                         if(valid_element("Indique nómina a la que pertenece",nomina, document.getElementById("valid_38"))){
+                                           if(nomina.value==2){
+                                              
+                                               valid_element("Indique cargo o jeraquía",grado_fun, document.getElementById("valid_39"))
+                                             }
+                                               if(valid_element("Indique el cargo nominal",cargo_nominal, document.getElementById("valid_40"))){
+                                                 if(valid_element("Indique el estado ",id_estado_fun, document.getElementById("valid_41"))){
+                                                    /* if(valid_element("Indique el cargo funcional",cargos, document.getElementById("valid_42"))){ */
+                                                   if(valid_element("Indique la ubicación",id_ubicacion, document.getElementById("valid_43"))){
 
                           validacion=true;
 
-                                    } }  } } } } } } } } } } } 
+                                    } }  } } } } } } } } } } } }
             
 
 /* 
@@ -2085,12 +2110,9 @@ function enviar_informacion(){
   //datos_persona['sexualidad']=sexualidad.value;
   datos_persona['nacionalidad']=nacionalidad.value;
   datos_persona['nivel_educativo']=nivel_educativo.value;
-  //datos_persona['afrodescendencia']=afrodescendencia.value;
-  //datos_persona['antiguedad_comunidad']=tiempo_comunidad.value;
   //datos_persona['jefe_familia']=jefe_familia.value;
   //datos_persona['propietario_vivienda']=propietario_vivienda.value;
   //datos_persona['jefe_calle']=jefe_calle.value;
-  //datos_persona['miliciano']=miliciano.value;
   //datos_persona['comunidad_indigena']=comunidad_indigena.value;
   datos_persona['direccion']=direccion.value; 
   datos_persona['telefono']=telefono.value;
@@ -2108,6 +2130,7 @@ function enviar_informacion(){
   datos_persona['id_nomina']=nomina.value;
   datos_persona['id_estado_fun']=id_estado_fun.value;
   datos_persona['cargo_nominal']=cargo_nominal.value;
+  datos_persona['id_estado']=id_estado.value;
   correo.value==""?datos_persona['correo']="No posee" : datos_persona['correo']=correo.value+tipo_correo.value;
   datos_persona['contrasenia']=contrasenia.value;
   datos_persona['preguntas_seguridad']=color.value.toLowerCase()+animal.value.toLowerCase()+mascota.value.toLowerCase();
@@ -2151,7 +2174,6 @@ function enviar_informacion(){
     url:BASE_URL+"Personas/registrar_persona",
     data:{"datos":datos_persona}
   }).done(function(result){
-
     console.log(result);
 
     if(result==1){
@@ -2164,7 +2186,7 @@ function enviar_informacion(){
      
 
 
-     registrar_condicion_laboral();
+     //registrar_condicion_laboral();
 
      /* if(cargos_persona.length!=0){
       registrar_cargos_persona();
@@ -2172,10 +2194,10 @@ function enviar_informacion(){
       */
 
 
-     if(proyectos_persona.length!=0){
-      registrar_proyectos_persona();
+   /*   if(proyectos_persona.length!=0){
+      registrar_titulos_persona();
     }
-
+ */
     
 
 
@@ -2196,7 +2218,7 @@ function enviar_informacion(){
     }
 
     if(proyectos_persona.length!=0){
-      registrar_proyectos_persona();
+      registrar_titulos_persona();
     }
 
 
@@ -2207,7 +2229,7 @@ function enviar_informacion(){
 */
 
 if(proyectos_persona.length!=0){
-  registrar_proyectos_persona();
+  registrar_titulos_persona();
 }
     swal({
      title:"Éxito",
@@ -2272,26 +2294,26 @@ function registrar_bonos_persona(){
 }
 
 
-function registrar_proyectos_persona(){
-
+function registrar_titulos_persona(){
+  var datos_proyectos = [];
  for(var i=0;i<proyectos_persona.length;i++){
-
    var datos=new Object();
-   datos['proyecto']=proyectos_persona[i];
+   datos['id_titulos']=proyectos_persona[i];
+   datos['descripcion']=proyectos_persona_descripcion[i];
    datos['cedula_persona']=cedula.value;
-
-
+   datos_proyectos.push(datos);
+  }
    $.ajax({
     type:"POST",
-    url:BASE_URL+"Personas/registrar_proyectos",
-    data:{"datos":datos}
+    url:BASE_URL+"Personas/registrar_proyecto",
+    data:{"datos":datos_proyectos}
   }).done(function(result){
+    alert(result);
     console.log(result);
   })
 }
 
 
-}
 function registrar_misiones_persona(){
 
  for(var i=0;i<misiones_persona.length;i++){
@@ -2503,4 +2525,3 @@ function registrar_org_politica(){
    });
  }
 */
-
