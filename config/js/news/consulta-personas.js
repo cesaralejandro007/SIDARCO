@@ -5,7 +5,8 @@ function ver_datos(
   transporte,
   bonos,
   misiones,
-  divisiones
+  divisiones,
+  titulos
   /* comunidad_i,
   org_politica */
 ){
@@ -16,6 +17,7 @@ function ver_datos(
   var bonos_info = JSON.parse(bonos);
   var misiones_info = JSON.parse(misiones);
   var divisiones = JSON.parse(divisiones);
+  var titulos = JSON.parse(titulos);
 /*   var comunidad_i_info = JSON.parse(comunidad_i);
   var org_politica_info = JSON.parse(org_politica); */
 
@@ -110,7 +112,7 @@ var transp;
     tabla6 +=
       "<td ><div style='width:100%;overflow-y:scroll;border-radius:6px;height:200px;'><center>" +
       texto;
-    tabla6 += "</center></div></td>";
+    tabla6 += "</div></td>";
   }
 
   if (misiones_info.length == 0) {
@@ -126,7 +128,7 @@ var transp;
     tabla6 +=
       "<td ><div style='width:100%;overflow-y:scroll;border-radius:6px'><center>" +
       texto;
-    tabla6 += "</center></div></td></tr><table>";
+    tabla6 += "</div></td></tr><table>";
   }
 
   var tabla7 =
@@ -139,7 +141,19 @@ var transp;
   "</td><td style='width:25%'> " +
   persona_info["fecha_notificacion"] +
   "</td>" +
-  "</center></div></td></tr><table>";
+  "</div></td></tr><table>";
+
+  var tabla9 =
+  "<br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:33%'>Cargo</td><td style='width:33%'>Procedencia por estado</td><td style='width:33%'>Estado del funcionario</td></tr>";
+  tabla9 +=
+  "<tr><td style='width:33%'> " + 
+  persona_info["nombre_cargo"]+
+  "</td><td style='width:33%'> "+ 
+  persona_info["nombre_estado_procedencia"]+ 
+  "</td><td style='width:33%'> "+ 
+  persona_info["nombre_estado"] +
+  "</td>" +
+  "</div></td></tr><table>";
 
   var tabla8 =
   "<br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:20%'>Prima</td><td style='width:20%'>Fideicomiso</td><td style='width:20%'>Declaración Jurada</td><td style='width:20%'>Inscripción IVSS</td></tr>";
@@ -153,7 +167,31 @@ var transp;
   "</td><td style='width:20%'> " +
   persona_info["inscripcion_ivss"]+ 
   "</td>" +
-  "</center></div></td></tr><table>";
+  "</div></td></tr><table>";
+
+  var tabla10 = "<br>"+
+  "<div><div><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Títulos obtenidos</div>"+
+  "<table class='table table-hover border'>";
+  if (titulos.length == 0) {
+    tabla10 += "<tr><td colspan='4'>No aplica</td></tr></table><br>";
+  } else {
+    var texto = "";
+    texto =
+        "<tr class='text-dark' style='background:#AEB6BF;'>"+
+          "<td style='background:#AEB6BF;font-weight:bold;'>Títulos</td><td style='background:#AEB6BF;font-weight:bold'>Descripción</td>"+
+        "</tr>";
+    for (var i = 0; i < titulos.length; i++) {
+      texto +=
+        "<tr><td style=''>" +
+        titulos[i]["titulo"] +
+        "</td><td style=''>" +
+        titulos[i]["descripcion"] +
+        "</td></tr>";
+    }
+
+    tabla10 +=texto;
+    tabla10 += "</table>";
+  }
 
   tabla +=
     "<br>" +
@@ -163,34 +201,41 @@ var transp;
     "<br>" +
     tabla7 +
     "<br>" +
-    tabla8;
-  tabla +=
-    "<br><br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Ubicación del funcionario</div></tr>";
+    tabla9 +
+    "<br>" +
+    tabla8 +
+    "<br>" +
+    tabla10;
+  
+
+
+  tabla +=  "<div><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Ubicación del funcionario</div>"+
+  "<table class='table table-hover border' style='width:100%'>";
 
   if (divisiones.length == 0) {
-    tabla += "<tr><td colspan='4'>No aplica</td></tr></table>";
+    tabla += "<tr><td colspan='4'>No aplica</td></tr></table></div><br>";
   } else {
-    var texto = "";
-    texto =
-      "<table style='width:100%' class='table table-hover border-dark'><tr class='text-dark' style='background:#AEB6BF;'><td style='width:25% background:#AEB6BF;font-weight:bold;'>Divisiones</td><td style='width:25% background:#AEB6BF;font-weight:bold'>Áreas</td><td style='width:25% background:#AEB6BF;font-weight:bold'>Secciones</td></tr>";
+    var texto1 = "";
+    texto1 =
+      "<tr class='text-dark' style='background:#AEB6BF;'><td style='width:25% background:#AEB6BF;font-weight:bold;'>Divisiones</td><td style='width:25% background:#AEB6BF;font-weight:bold'>Áreas</td><td style='width:25% background:#AEB6BF;font-weight:bold'>Secciones</td></tr>";
     for (var i = 0; i < divisiones.length; i++) {
-      texto +=
+      texto1 +=
         "<tr><td style='width:25%'>" +
         divisiones[i]["division"] +
         "</td><td style='width:25%'>" +
         divisiones[i]["area"] +
         "</td>";
-      texto +=
+      texto1 +=
         "<td style='width:25%'>" +
         divisiones[i]["seccion"] +
         "</td></tr>";
     }
 
-    tabla +=
-      "<tr><td colspan='4'><div style='width:100%;overflow-y:scroll;border-radius:6px;height:200px;'><center>" +
-      texto;
-    tabla += "</center></div></td></tr></table>";
+    tabla +=texto1;
+    tabla += "</table></div></div>";
+    
   }
+
 
   swal({
     title:
@@ -352,6 +397,9 @@ var vedoc = document.getElementById("edoc");
 var vnedu = document.getElementById("nedu");
 var vubic = document.getElementById("ubic");
 var vnomina = document.getElementById("idnomina");
+var vcargo = document.getElementById("cargo");
+var vppestado = document.getElementById("ppestado");
+var vestad_funcionario = document.getElementById("estad_funcionario");
 var vmili = document.getElementById("mili");
 var vjeffam = document.getElementById("jeffam");
 var vingresos = document.getElementById("ingresos");
@@ -390,6 +438,7 @@ var vbonos = document.getElementById("bonos");
 var vmisiones = document.getElementById("misiones");
 var vproyectos = document.getElementById("proyectos");
 var vdivisionesareas = document.getElementById("divisionesareas");
+var vtitulos = document.getElementById("titulos_obtenidos");
 var btn_guardar = document.getElementById("guardar_cambios");
 var inf_persona = new Object();
 var add_bono = document.getElementById("add_bono");
@@ -402,6 +451,7 @@ function editar_datos(
   bonos,
   misiones,
   divisiones,
+  titulos,
   comunidad_i,
   org_politica
 ) {
@@ -411,6 +461,7 @@ function editar_datos(
   var ocupacion_info = JSON.parse(ocupacion);
   var condicion_lab_info = JSON.parse(condicion_lab);
   var divisiones = JSON.parse(divisiones);
+  var titulos = JSON.parse(titulos);
   /*   var transporte_info = JSON.parse(transporte); */
 /*   var bonos_info = JSON.parse(bonos);
   var misiones_info = JSON.parse(misiones); */
@@ -444,6 +495,11 @@ function editar_datos(
   vinscripcion_ivss.value = persona_info["inscripcion_ivss"];
   vfideicomiso.value = persona_info["fideicomiso"];
   vgrado.value = persona_info["grado_resguardo"];
+
+  vcargo.value = persona_info["id_cargo"];
+  vppestado.value = persona_info["id_estado"];
+  vestad_funcionario.value = persona_info["id_estado_fun"];
+
   if(vnomina.value == 2){
     $(".jq").removeClass("d-none");
   }else{
@@ -523,6 +579,30 @@ function editar_datos(
     }
   } */
 
+  if (titulos.length == 0) {
+    vdivisionesareas.innerHTML = "No aplica";
+    } else {
+      var texto = "";
+      vtitulos.innerHTML = "";
+      for (var i = 0; i < titulos.length; i++) {
+        var texto = "";
+        vtitulos.innerHTML = "";
+        console.log(titulos);
+        texto +=
+          "<table class='table table-hover border-dark' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:45%'>Títulos</td><td style='width:45%'>Descripción</td><td style='width:10%'>Eliminar</td></tr>";
+        for (var i = 0; i < titulos.length; i++) {
+          texto +=
+            "<tr><td style='width:25%'>" +
+            titulos[i]["titulo"] +
+            "</td><td style='width:25%'>" +
+            titulos[i]["descripcion"] +
+            "</td>";
+          texto +=
+            "<td style='width:25%;'><span onclick='borrar_titulos(" + titulos[i]['id'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar titulo' style='font-size:22px'></span></td></tr>";
+        }
+        vtitulos.innerHTML += texto + "</table>";
+      }
+    }
 
 
 if (divisiones.length == 0) {
@@ -690,6 +770,48 @@ btn_guardar.onclick = function () {
                         vnomina.focus();
                       }, 2000);
                     }else {
+                      vcargo.style.borderColor = "";
+                      if (vcargo.value == "0") {
+                        swal({
+                          type: "error",
+                          title: "Error",
+                          text: "Debe ingresar el tipo de cargo",
+                          timer: 2000,
+                          showConfirmButton: false,
+                        });
+                        setTimeout(function () {
+                          vcargo.style.borderColor = "red";
+                          vcargo.focus();
+                        }, 2000);
+                      }else {
+                        vppestado.style.borderColor = "";
+                        if (vppestado.value == "0") {
+                          swal({
+                            type: "error",
+                            title: "Error",
+                            text: "Debe ingresar el tipo de procedencia por estado",
+                            timer: 2000,
+                            showConfirmButton: false,
+                          });
+                          setTimeout(function () {
+                            vppestado.style.borderColor = "red";
+                            vppestado.focus();
+                          }, 2000);
+                        }else {
+                          vestad_funcionario.style.borderColor = "";
+                          if (vestad_funcionario.value == "0") {
+                            swal({
+                              type: "error",
+                              title: "Error",
+                              text: "Debe ingresar el tipo de estado del funcionario",
+                              timer: 2000,
+                              showConfirmButton: false,
+                            });
+                            setTimeout(function () {
+                              vestad_funcionario.style.borderColor = "red";
+                              vestad_funcionario.focus();
+                            }, 2000);
+                          }else {
                     vingresos.style.borderColor = "";
                     if (vingresos.value == "") {
                       swal({
@@ -787,6 +909,9 @@ btn_guardar.onclick = function () {
                     inf_persona["ubicacion"] = vubic.value;
                     inf_persona["ubicacion1"] = document.getElementById("campoubic").value;
                     inf_persona["nomina"] = vnomina.value;
+                    inf_persona["cargo"] = vcargo.value;
+                    inf_persona["procedencia_estado"] = vppestado.value;
+                    inf_persona["estado_funcionario"] = vestad_funcionario.value;
                     /* 
                     inf_persona["sexualidad"] = vorsex.value;
                     inf_persona["estado_civil"] = vedoc.value;*/                    
@@ -874,6 +999,9 @@ btn_guardar.onclick = function () {
             }
           }
         }
+      }
+    }
+  }
       }
     }
   }
@@ -1234,14 +1362,53 @@ $.ajax({
   })
 }
 
+
+function cargar_titulos() {
+
+  $.ajax({
+      type: "POST",
+      url: BASE_URL + "Personas/get_titulos",
+      data: { "cedula_persona": inf_persona['cedula_persona'] }
+    }).done(function (result) {
+      console.log(result);
+      if (result != 0) {
+        result = JSON.parse(result);
+        vtitulos.innerHTML = "";
+        for (var i = 0; i < result.length; i++) {
+          var texto = "";
+          vtitulos.innerHTML = "";
+          console.log(result);
+          texto +=
+            "<table class='table table-hover border-dark' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:45%'>Títulos</td><td style='width:45%'>Descripción</td><td style='width:10%'>Eliminar</td></tr>";
+          for (var i = 0; i < result.length; i++) {
+            texto +=
+              "<tr><td style='width:25%'>" +
+              result[i]["titulo"] +
+              "</td><td style='width:25%'>" +
+              result[i]["descripcion"] +
+              "</td>";
+            texto +=
+              "<td style='width:25%;'><span onclick='borrar_titulos(" + result[i]['id'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar titulo' style='font-size:22px'></span></td></tr>";
+          }
+          vtitulos.innerHTML += texto + "</table>";
+        }
+      }
+      else {
+        vtitulos.innerHTML = "<p> No aplica</p>";
+      }
+    })
+  }
+
 function borrar_proyecto(id) {
   swal({
     type: "warning",
     title: "¿Estás seguro?",
-    text: "Está por eliminar el proyecto asociado a esta persona, ¿desea continuar?",
+    text: "Está por eliminar la división y área asociado a esta persona, ¿desea continuar?",
     showCancelButton: true,
     confirmButtonText: "Sí",
-    cancelButtonText: "No"
+    cancelButtonText: "No",
+    cancelButtonColor: '#d33',
+    confirmButtonColor: '#9D2323'
   }, function (isConfirm) {
     if (isConfirm) {
       $.ajax({
@@ -1266,6 +1433,39 @@ function borrar_proyecto(id) {
   });
 }
 
+function borrar_titulos(id) {
+  swal({
+    type: "warning",
+    title: "¿Estás seguro?",
+    text: "Está por eliminar el título asociado a esta persona, ¿desea continuar?",
+    showCancelButton: true,
+    cancelButtonColor: '#d33',
+    confirmButtonColor: '#9D2323',
+    confirmButtonText: "Sí",
+    cancelButtonText: "No"
+  }, function (isConfirm) {
+    if (isConfirm) {
+      $.ajax({
+        type: "POST",
+        url: BASE_URL + "Personas/eliminar_titulos",
+        data: { "id": id, "cedula_persona": inf_persona['cedula_persona'] }
+      }).done(function (result) {
+        if (result==1) {
+          cargar_titulos(cedula);
+          $('#example1').DataTable().clear().destroy();
+          cargar_tabla_personas();
+        }else{
+          cargar_titulos(cedula);
+          document.getElementById("validartitulos").innerHTML = '<div class="alert alert-dismissible fade show" style="background:#9D2323; color:white" role="alert">Error de la BASE DE DATOS!<i class="far fa-times" id="cerraralert" data-dismiss="alert" aria-label="Close"></i></div>';
+          setTimeout(function () {
+            $("#cerraralert").click();
+          }, 6000);
+        }
+      });
+    }
+
+  });
+}
 
 
 
@@ -1370,6 +1570,64 @@ document.getElementById("spanaddproyect").onclick = function () {
       document.getElementById("nueva_division").value = '0'
       document.getElementById("nueva_areas").value = "0";
       document.getElementById("nuevo_secciones").value = "0";
+    });
+
+
+  }
+}
+
+
+document.getElementById("spanaddtitulo").onclick = function () {
+  document.getElementById("descripcion_titulos").style.borderColor = "";
+  if (document.getElementById("titulos").value == 0) {
+    swal({
+      type: "error",
+      title: "Error",
+      text: "Debe seleccionar tipo de titulo",
+      timer: 2000,
+      showConfirmButton: false
+    });
+    setTimeout(function () {
+      document.getElementById("titulos").style.borderColor = 'red'
+    });
+  }else if(document.getElementById("descripcion_titulos").value == ""){
+    document.getElementById("titulos").style.borderColor = "";
+    swal({
+      type: "error",
+      title: "Error",
+      text: "Debe ingresar descripción de título",
+      timer: 2000,
+      showConfirmButton: false
+    });
+    setTimeout(function () {
+      document.getElementById("descripcion_titulos").style.borderColor = 'red'
+    });
+  }else{
+    document.getElementById("titulos").style.borderColor = "";
+    document.getElementById("descripcion_titulos").style.borderColor = "";
+    var titulos = new Object();
+    titulos['titulo'] = document.getElementById("titulos").value;
+    titulos['descipcion_titulo'] = document.getElementById("descripcion_titulos").value;
+    $.ajax({
+      type: "POST",
+      url: BASE_URL + "Personas/add_titulos",
+      data: { "titulos_info": titulos, "cedula_persona": inf_persona['cedula_persona']}
+    }).done(function (result) {
+      if (result == 0) {
+        swal({
+          type: "error",
+          title: "Error",
+          text: "Esta persona ya se encuentra asignada a ésta Área",
+          timer: 2300,
+          showConfirmButton: false
+        });
+      }else {
+        cargar_titulos(inf_persona["cedula_persona"]);
+        $('#example1').DataTable().clear().destroy();
+        cargar_tabla_personas();
+      }
+      document.getElementById("titulos").value = '0'
+      document.getElementById("descripcion_titulos").value = "";
     });
 
 

@@ -135,9 +135,43 @@
                 <td style='width:25%'><input type="date" id='desig' class='form-control'></td>
               </tr>
             </table>
-
             <br>
-              <table style='width:98%;' border='1'>
+            <table style='width:98%;' border='1'>
+              <tr class='text-dark' style='background:#AEB6BF;font-weight:bold'>
+                <td style='width:25%'>Cargo</td>
+                <td style='width:25%'>Procedencia por estado</td>
+                <td style='width:25%'>Estado del funcionario</td>
+              </tr>
+              <tr>
+                <td style='width:25%'>                
+                <select class='form-control' id='cargo'>
+                    <option value='0'>-Seleccione-</option>
+                    <?php foreach ($this->cargo as $p) { ?>
+                      <option value='<?php echo $p['id_cargo'] ?>'><?php echo $p['nombre_cargo']; ?></option>
+                    <?php } ?>
+                  </select>
+                </td><center></center>
+                <td style='width:25%'>
+                <select class='form-control' id='ppestado'>
+                    <option value='0'>-Seleccione-</option>
+                    <?php foreach ($this->pp_estado as $p) { ?>
+                      <option value='<?php echo $p['id_estado'] ?>'><?php echo $p['nombre_estado_procedencia']; ?></option>
+                    <?php } ?>
+                  </select>
+                </td>
+                <td style='width:25%'>
+                <select class='form-control' id='estad_funcionario'>
+                    <option value='0'>-Seleccione-</option>
+                    <?php foreach ($this->estad_funcionario as $p) { ?>
+                      <option value='<?php echo $p['id_estado_fun'] ?>'><?php echo $p['nombre_estado']; ?></option>
+                    <?php } ?>
+                  </select>
+              </td>
+              </tr>
+            </table>
+            <br>
+
+            <table style='width:98%;' border='1'>
               <tr class='text-dark' style='background:#AEB6BF;font-weight:bold'>
                 <td style='width:25%'>Prima</td>
                 <td style='width:25%'>Fideicomiso</td>
@@ -145,13 +179,76 @@
                 <td style='width:25%'>Inscripción IVSS</td>
               </tr>
               <tr>
-                <td style='width:25%'><input type="text" id='prima1' class='form-control' placeholder="Primer nombre"></td>
-                <td style='width:25%'><input type="text" id='fideicomiso' class='form-control' placeholder="Segundo Nombre"></td>
-                <td style='width:25%'><input type="text" id='declara' class='form-control' placeholder="Primer Apellido"></td>
-                <td style='width:25%'><input type="text" id='inscripcion_ivss' class='form-control' placeholder="Segundo Apellido"></td>
+                <td style='width:25%'>
+                  <select class='form-control' id='prima1'>
+                    <option value=''>-Seleccione-</option>
+                    <option value='Si posee'>Si posee</option>
+                    <option value='No posee'>No posee</option>
+                  </select>
+                </td>
+                <td style='width:25%'>
+                  <select class='form-control' id='fideicomiso'>
+                    <option value=''>-Seleccione-</option>
+                    <option value='Si posee'>Si posee</option>
+                    <option value='No posee'>No posee</option>
+                  </select>
+                </td>
+                <td style='width:25%'>
+                  <select class='form-control' id='declara'>
+                    <option value=''>-Seleccione-</option>
+                    <option value='Si posee'>Si posee</option>
+                    <option value='No posee'>No posee</option>
+                  </select>
+                </td>
+                <td style='width:25%'>
+                  <select class='form-control' id='inscripcion_ivss'>
+                    <option value=''>-Seleccione-</option>
+                    <option value='Si posee'>Si posee</option>
+                    <option value='No posee'>No posee</option>
+                  </select>
+                </td>
               </tr>
             </table>
             <br>
+            <span id="validartitulos"></span>
+<table style='width:98%' border='1'>
+
+  <tr style='background:#15406D;color:white; font-weight:bold;'>
+
+    <td style='width:50%' class='text-center'>
+      <table style='width:100%'>
+        <tr>
+          <td style='width:20%'>Títulos obtenidos</td>
+          <td style='width:60%'>
+            <select id='titulos' style='width:100%;'>
+              <option value='0'>-Seleccione titulo-</option>
+              <?php foreach ($this->titulos as $p) { ?>
+                <option value='<?php echo $p['id_proyecto'] ?>'><?php echo $p['nombre_proyecto']; ?></option>
+              <?php } ?>
+            <textarea type="text" id='descripcion_titulos' class='' placeholder="Descripcion"  style='width:100%;'></textarea>
+          </td>
+ <!--          <td style='text-align:center;width:10%'>
+            <span class='fa fa-plus-square' id='spannewproyect' title="Crear nuevo proyecto" style='font-size:25px;cursor:pointer'></span>
+          </td> -->
+          <td style='text-align:center;width:10%'>
+            <span class='fa fa-plus-circle' id='spanaddtitulo' title="Agregar titulos" style='font-size:25px;cursor:pointer'></span>
+          </td>
+        </tr>
+      </table>
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td style='width:100%'>
+      <div style='width:100%;overflow-y:scroll;border-radius:6px;height:200px;' id='titulos_obtenidos'>
+
+    </div>
+  </td>
+</tr>
+</table>
+<br>
             
             <span id="validarareas"></span>
 <table style='width:98%' border='1'>

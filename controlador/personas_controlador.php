@@ -210,6 +210,10 @@ public function Consultas()
   $this->vista->bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
   $this->vista->misiones=$this->Consultar_Tabla("misiones",1,"id_mision");
   $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
+  $this->vista->titulos=$this->Consultar_Tabla_divisiones("proyecto");
+  $this->vista->cargo=$this->Consultar_Tabla_divisiones("cargo_nominal");
+  $this->vista->pp_estado=$this->Consultar_Tabla_divisiones("estados");
+  $this->vista->estad_funcionario=$this->Consultar_Tabla_divisiones("estados_funcionarios");
   $this->vista->nomina=$this->Consultar_Tabla_divisiones("nomina");
   $this->vista->ubicacion=$this->Consultar_Tabla_divisiones("ubicaciones");
 
@@ -230,6 +234,10 @@ public function Consultasegresos()
   $this->vista->bonos=$this->Consultar_Tabla("bonos",1,"id_bono");
   $this->vista->misiones=$this->Consultar_Tabla("misiones",1,"id_mision");
   $this->vista->divisiones=$this->Consultar_Tabla_divisiones("divisiones");
+  $this->vista->titulos=$this->Consultar_Tabla_divisiones("proyecto");
+  $this->vista->cargo=$this->Consultar_Tabla_divisiones("cargo_nominal");
+  $this->vista->estad_funcionario=$this->Consultar_Tabla_divisiones("estados_funcionarios");
+  $this->vista->pp_estado=$this->Consultar_Tabla_divisiones("estados");
   $this->vista->nomina=$this->Consultar_Tabla_divisiones("nomina");
   $this->vista->ubicacion=$this->Consultar_Tabla_divisiones("ubicaciones");
   $this->vista->secciones=$this->Consultar_Tabla_divisiones("secciones"); 
@@ -418,6 +426,7 @@ public function consultar_informacion_persona(){
    $bonos=json_encode($this->modelo->get_bonos_persona($p['cedula_persona']));
    $misiones=json_encode($this->modelo->get_misiones_persona($p['cedula_persona']));
    $divisiones=json_encode($this->modelo->get_divisiones($p['cedula_persona']));
+   $titulos=json_encode($this->modelo->get_titulos($p['cedula_persona']));
    //$comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
    $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona']));
    $persona=json_encode($p);
@@ -450,9 +459,12 @@ public function consultar_informacion_persona(){
     "inscripcion_ivss"          =>$p['inscripcion_ivss'],
     "fideicomiso"          =>$p['fideicomiso'],
     "grado_resguardo"          =>$p['grado_resguardo'],
-    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`)'><span class='fa fa-eye'></span></button>",
+    "cargo"                       =>$p['nombre_cargo'],
+    "procedencias_estado"          =>$p['nombre_estado_procedencia'],
+    "estado_funcionario"          =>$p['nombre_estado'],
+    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`)'><span class='fa fa-eye'></span></button>",
 
-    "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
+    "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
 
 
     "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Egresar persona' onclick='egresar_datos(`".$p['cedula_persona']."`)'><i class='fas fa-user-slash' style='color:white'></i></button>",
@@ -475,6 +487,7 @@ public function consultar_informacion_persona_egresos(){
    $bonos=json_encode($this->modelo->get_bonos_persona($p['cedula_persona']));
    $misiones=json_encode($this->modelo->get_misiones_persona($p['cedula_persona']));
    $divisiones=json_encode($this->modelo->get_divisiones($p['cedula_persona']));
+   $titulos=json_encode($this->modelo->get_titulos($p['cedula_persona']));
    //$comunidad_i=json_encode($this->modelo->get_comunidad_indigena_persona($p['cedula_persona']));
    $org_politica=json_encode($this->modelo->get_org_politica_persona($p['cedula_persona']));
    $persona=json_encode($p);
@@ -508,9 +521,12 @@ public function consultar_informacion_persona_egresos(){
     "declaracion_j"          =>$p['declaracion_j'],
     "inscripcion_ivss"          =>$p['inscripcion_ivss'],
     "fideicomiso"          =>$p['fideicomiso'],
-    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
+    "cargo"                       =>$p['nombre_cargo'],
+    "procedencias_estado"          =>$p['nombre_estado_procedencia'],
+    "estado_funcionario"          =>$p['nombre_estado'],
+    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
 
-    "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
+    "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
 
     "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Ingresar persona' onclick='ingresar_datos(`".$p['cedula_persona']."`)'><span class='fas fa-user-alt'></span></button>",
   ];
@@ -1469,6 +1485,11 @@ public function eliminar_proyecto(){
   }
 }
 
+public function eliminar_titulos(){
+    echo $this->Eliminar_Tablas_titulos($_POST['id']);
+}
+
+
 
 public function get_misiones(){
   $misiones=$this->Consultar_Columna("persona_misiones","cedula_persona",$_POST['cedula_persona']);
@@ -1539,6 +1560,15 @@ public function get_divisionesyareas(){
   echo json_encode($divisiones);
 }
 
+
+public function get_titulos(){
+
+
+  $titulos=$this->Consultar_Columna_titulos($_POST["cedula_persona"]);
+
+  echo json_encode($titulos);
+}
+
 public function add_division_areas(){
   $divisiones=$_POST['divisiones_info'];
   $divisiones_persona=$this->Consultar_comparacion_division($_POST['cedula_persona']);
@@ -1564,6 +1594,59 @@ public function add_division_areas(){
     }else{
       $retornar=0;
     } 
+/*    $id=$this->Ultimo_Ingresado("proyecto","id_proyecto");
+   $this->modelo->Registrar_persona_proyecto([
+     "cedula_persona"=>$_POST['cedula_persona'],
+     "id_proyecto"=>$id[0]['MAX(id_proyecto)']
+   ]); */
+
+
+/*      if($retornar!=0){
+      $this->modelo->Registrar_persona_proyecto([
+        "cedula_persona"=>$_POST['cedula_persona'],
+        "id_proyecto"=>$proyecto['proyecto']
+      ]);
+     } */
+
+  
+
+ /*  } */
+
+ /*  else{
+    foreach($proyecto_persona as $pp){
+      if($pp['id_proyecto']==$proyecto['proyecto']){
+        $retornar=0;
+      }
+    }
+
+    if($retornar!=0){
+     $this->modelo->Registrar_persona_proyecto([
+       "cedula_persona"=>$_POST['cedula_persona'],
+       "id_proyecto"=>$proyecto['proyecto']
+     ]);
+    }
+
+ 
+  } */
+
+  echo $retornar;
+}
+
+
+public function add_titulos(){
+  $titulos=$_POST['titulos_info'];
+/*   $titulos_all=$this->modelo->Consultar_Tabla_titulos($titulos['titulo'],$_POST['cedula_persona']);
+  $retornar=$areas_all; */
+/*   if($titulos_all){  */
+     $this->modelo->Registrar_titulo(
+            $titulos['titulo'],
+            $titulos['descipcion_titulo'],
+            $_POST['cedula_persona']
+     );
+     $retornar=1;
+/*     }else{
+      $retornar=0;
+    }  */
 /*    $id=$this->Ultimo_Ingresado("proyecto","id_proyecto");
    $this->modelo->Registrar_persona_proyecto([
      "cedula_persona"=>$_POST['cedula_persona'],

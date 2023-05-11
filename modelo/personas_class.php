@@ -549,6 +549,28 @@ class Personas_Class extends Modelo
             return $errorReturn;
         }
     }
+
+/*     public function Consultar_Tabla_titulos($titulos,$cedula)
+    {
+
+        $sql               = "SELECT proyecto.nombre_proyecto FROM personas,persona_proyecto,proyecto WHERE personas.cedula_persona = persona_proyecto.cedula_persona and persona_proyecto.id_proyecto = proyecto.id_proyecto AND personas.cedula_persona = $cedula AND persona_proyecto.id_proyecto = $titulos";
+        try {
+            $datos = $this->conexion->prepare($sql);
+            $datos->execute();
+            $respuesta_arreglo1 = $datos->rowCount();
+            if ($respuesta_arreglo1 > 0){
+                return false;
+            }else{
+                return true;
+            }
+        } catch (PDOException $e) {
+
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    } */
+
     public function Consultar_Tabla_division($cedula)
     {
 
@@ -586,6 +608,36 @@ class Personas_Class extends Modelo
             $datos->execute([
                 'id_cedula_persona'    =>  $cedula,
                 'id_area_division'      =>  $area
+            ]);
+
+            return true;
+
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Registrar_titulo($titulo,$descripcion,$cedula)
+    {
+
+        try {
+            $datos = $this->conexion->prepare('INSERT INTO persona_proyecto (
+                cedula_persona,
+                id_proyecto,
+                estado,     
+                descripcion
+                ) VALUES (
+                :cedula_persona,
+                :id_proyecto,
+                :estado,
+                :descripcion
+                )');
+
+            $datos->execute([
+                'cedula_persona'    =>  $cedula,
+                'id_proyecto'      =>  $titulo,
+                'estado'      =>  1,
+                'descripcion'      =>  $descripcion
             ]);
 
             return true;
@@ -709,7 +761,7 @@ class Personas_Class extends Modelo
 
     public function Consultar()
     {
-        $tabla= "SELECT *, date_format(personas.fecha_nacimiento, '%d/%m/%Y') as fecha_nacimientoc, date_format(personas.fecha_notificacion, '%d/%m/%Y') as fecha_notificacionc,date_format(personas.ing_seniat, '%d/%m/%Y') as ing_seniatc,date_format(personas.ing_publica, '%d/%m/%Y') as ing_publicac,date_format(personas.ult_designacion, '%d/%m/%Y') as ult_designacionc  FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,nomina WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and nomina.id_nomina = personas.id_nomina and personas.estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
+        $tabla= "SELECT *, date_format(personas.fecha_nacimiento, '%d/%m/%Y') as fecha_nacimientoc, date_format(personas.fecha_notificacion, '%d/%m/%Y') as fecha_notificacionc,date_format(personas.ing_seniat, '%d/%m/%Y') as ing_seniatc,date_format(personas.ing_publica, '%d/%m/%Y') as ing_publicac,date_format(personas.ult_designacion, '%d/%m/%Y') as ult_designacionc  FROM personas,ubicaciones,personas_areas,areas,divisiones,secciones,nomina,cargo_nominal,estados,estados_funcionarios WHERE personas.id_ubicacion = ubicaciones.id_ubicacion and personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_seccion = secciones.id_seccion and nomina.id_nomina = personas.id_nomina and personas.id_cargo = cargo_nominal.id_cargo and personas.id_estado = estados.id_estado and  personas.id_estado_fun = estados_funcionarios.id_estado_fun and personas.estado=1 GROUP BY personas.cedula_persona ORDER BY primer_nombre ASC";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -856,7 +908,10 @@ class Personas_Class extends Modelo
                 declaracion_j           =:declaracion_j,
                 inscripcion_ivss        =:inscripcion_ivss,
                 fideicomiso             =:fideicomiso,
-                id_nomina               =:nomina
+                id_nomina               =:nomina,
+                id_cargo                =:cargo,
+                id_estado               =:pro_estado,
+                id_estado_fun           =:estado_fun
 
                 WHERE cedula_persona =:cedula_persona"
             );
@@ -886,7 +941,10 @@ class Personas_Class extends Modelo
                 'declaracion_j'             =>$data['declaracionj'],
                 'inscripcion_ivss'          =>$data['inscripcionivss'],
                 'fideicomiso'               =>$data['fideicomiso'],
-                'nomina'                    =>$data['nomina']
+                'nomina'                    =>$data['nomina'],
+                'cargo'                     =>$data['cargo'],
+                'pro_estado'                =>$data['procedencia_estado'],
+                'estado_fun'                =>$data['estado_funcionario']
             ]);
 
             return true;
@@ -1324,6 +1382,24 @@ public function get_organizaciones()
      {
 
          $tabla            = "SELECT personas_areas.id_persona_area as id, divisiones.nombre_division as division, areas.nombre_area as area, secciones.nombre_seccion as seccion FROM personas,personas_areas,areas,divisiones,secciones WHERE personas.cedula_persona = personas_areas.cedula_persona and personas_areas.id_area = areas.id_area and areas.id_division = divisiones.id_division and areas.id_seccion = secciones.id_seccion and personas.cedula_persona= " . $cedula . "";
+       
+         $respuestaArreglo = '';
+         try {
+             $datos = $this->conexion->prepare($tabla);
+             $datos->execute();
+             $datos->setFetchMode(PDO::FETCH_ASSOC);
+             $respuestaArreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+             return $respuestaArreglo;
+         } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+         }
+     }
+
+     public function get_titulos($cedula)
+     {
+
+         $tabla            = "SELECT persona_proyecto.id_persona_proyecto as id, proyecto.nombre_proyecto as titulo, persona_proyecto.descripcion as descripcion FROM personas,persona_proyecto,proyecto WHERE personas.cedula_persona = persona_proyecto.cedula_persona and persona_proyecto.id_proyecto = proyecto.id_proyecto and personas.cedula_persona= " . $cedula . "";
        
          $respuestaArreglo = '';
          try {
