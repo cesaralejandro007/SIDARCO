@@ -62,21 +62,23 @@
             <table style='width:98%;' border='1'>
             <div class='border border-bottom-0 border-dark rounded-top p-1' style='width:98%;background:#15406D;color:white;font-weight:bold'>Datos de Contacto</div>
               <tr class='text-dark' style='background:#AEB6BF;font-weight:bold'>
-                <td style='width:25%'>Teléfono</td>
-                <td style='width:25%'>Telefono de Casa</td>
-                <td style='width:25%'>WhatsApp</td>
-                <td style='width:25%'>Correo</td>
+                <td style='width:20%'>Teléfono</td>
+                <td style='width:20%'>Telefono de Casa</td>
+                <td style='width:20%'>WhatsApp</td>
+                <td style='width:20%'>Correo</td>
+                <td style='width:20%'>Correo Institucional</td>
               </tr>
               <tr>
-                <td style='width:25%'><input type="text" id='tlf' class='form-control' placeholder="Teléfono"></td>
-                <td style='width:25%'><input type="text" id='tlfc' class='form-control' placeholder="Telefono de Casa"></td>
-                <td style='width:25%'>
+                <td style='width:20%'><input type="text" id='tlf' class='form-control' placeholder="Teléfono"></td>
+                <td style='width:20%'><input type="text" id='tlfc' class='form-control' placeholder="Telefono de Casa"></td>
+                <td style='width:20%'>
                   <select class='form-control' id='ws'>
                     <option value='0'>No</option>
                     <option value='1'>Si</option>
                   </select>
                 </td>
-                <td style='width:25%'><input type="text" id='cor' class='form-control' placeholder="Correo"></td>
+                <td style='width:20%'><input type="text" id='cor' class='form-control' placeholder="Correo"></td>
+                <td style='width:20%'><input type="text" id='correoins' class='form-control' placeholder="Correo Institucional"></td>
               </tr>
             </table>
            

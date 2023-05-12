@@ -567,6 +567,18 @@ class Controlador
         }
     }
 
+    public function eliminardatos_egresados($cedula)
+    {
+        try {
+            $query = $this->conexion->prepare("DELETE FROM personas_egresados WHERE cedula_persona = $cedula");
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function Desactivar($tabla, $id_tabla, $param)
     {
 

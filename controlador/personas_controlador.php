@@ -292,6 +292,7 @@ public function consultar_informacion_persona_ingreso(){
     "whatsapp"          =>$whatsapp,
     "telf_casa"          =>$p['telf_casa'],
     "correo"          =>$p['correo'],
+    "correo_institucional"          =>$p['correo_institucional'],
     "fecha_nacimiento"          =>$p['fecha_nacimientoc'],
     "genero"          =>$genero,
     "nacionalidad"          =>$p['nacionalidad'],
@@ -341,6 +342,7 @@ public function consultar_informacion_persona_compleanos(){
     "whatsapp"          =>$whatsapp,
     "telf_casa"          =>$p['telf_casa'],
     "correo"          =>$p['correo'],
+    "correo_institucional"          =>$p['correo_institucional'],
     "fecha_nacimiento"          =>$p['fecha_nacimientoc'],
     "genero"          =>$genero,
     "nacionalidad"          =>$p['nacionalidad'],
@@ -392,6 +394,7 @@ public function consultar_informacion_persona_nomina(){
     "whatsapp"          =>$whatsapp,
     "telf_casa"          =>$p['telf_casa'],
     "correo"          =>$p['correo'],
+    "correo_institucional"          =>$p['correo_institucional'],
     "fecha_nacimiento"          =>$p['fecha_nacimientoc'],
     "genero"          =>$genero,
     "nacionalidad"          =>$p['nacionalidad'],
@@ -444,6 +447,7 @@ public function consultar_informacion_persona(){
     "whatsapp"          =>$whatsapp,
     "telf_casa"          =>$p['telf_casa'],
     "correo"          =>$p['correo'],
+    "correo_institucional"          =>$p['correo_institucional'],
     "fecha_nacimiento"          =>$p['fecha_nacimientoc'],
     "genero"          =>$genero,
     "nacionalidad"          =>$p['nacionalidad'],
@@ -507,6 +511,7 @@ public function consultar_informacion_persona_egresos(){
     "whatsapp"          =>$whatsapp,
     "telf_casa"          =>$p['telf_casa'],
     "correo"          =>$p['correo'],
+    "correo_institucional"          =>$p['correo_institucional'],
     "fecha_nacimiento"          =>$p['fecha_nacimientoc'],
     "genero"          =>$genero,
     "nacionalidad"          =>$p['nacionalidad'],
@@ -562,6 +567,7 @@ public function consultar_informacion_persona_historia(){
     "whatsapp"          =>$whatsapp,
     "telf_casa"          =>$p['telf_casa'],
     "correo"          =>$p['correo'],
+    "correo_institucional"          =>$p['correo_institucional'],
     "fecha_nacimiento"          =>$p['fecha_nacimientoc'],
     "genero"          =>$genero,
     "nacionalidad"          =>$p['nacionalidad'],
@@ -1023,8 +1029,7 @@ public function ingresar_persona(){
     echo 1;
   }
 
-
-
+  $this->eliminardatos_egresados($cedula);
 }
 
 

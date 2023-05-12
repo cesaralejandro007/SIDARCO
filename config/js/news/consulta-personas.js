@@ -44,17 +44,19 @@ function ver_datos(
     "</td></tr></table>";
 
   var tabla2 =
-    "<br><table style='width:100%' border='1'><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Datos de Contacto</div><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:25%'>Correo</td><td style='width:25%'>Teléfono</td><td style='width:25%'>Teléfono de Casa</td><td style='width:25%'>WhatsApp</td></tr>";    
+    "<br><table style='width:100%' border='1'><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Datos de Contacto</div><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:20%'>Correo</td><td style='width:20%'>Correo Institucional</td><td style='width:20%'>Teléfono</td><td style='width:20%'>Teléfono de Casa</td><td style='width:20%'>WhatsApp</td></tr>";    
   tabla2 +=
-    "<tr><td style='width:25%'><em class='fa fa-envelope'></em> " +
-    persona_info["correo"];
+    "<tr><td style='width:20%'><em class='fa fa-envelope'></em> " +
+    persona_info["correo"]+"</td>" + 
+    "<td style='width:20%'><em class='fa fa-envelope'></em>" +
+    persona_info["correo_institucional"];
 
   tabla2 +=
-    "</td><td style='width:25%'><em class='fa fa-phone'></em> " +
+    "</td><td style='width:20%'><em class='fa fa-phone'></em> " +
     persona_info["telefono"] +
-    "</td><td style='width:25%'>" +
+    "</td><td style='width:20%'>" +
     persona_info["telf_casa"] +
-    "</td><td style='width:25%'><em class='fa fa-whatsapp'></em> " +
+    "</td><td style='width:20%'><em class='fa fa-whatsapp'></em> " +
     get_letras(persona_info["whatsapp"]) +
     "</td></tr></table>";
 
@@ -390,6 +392,7 @@ var vtlfc = document.getElementById("tlfc");
 var vtlf = document.getElementById("tlf");
 var vws = document.getElementById("ws");
 var vcor = document.getElementById("cor");
+var vcorreoi = document.getElementById("correoins");
 var vfnac = document.getElementById("fnac");
 var vgen = document.getElementById("gen");
 var vnac = document.getElementById("nac");
@@ -455,7 +458,6 @@ function editar_datos(
   comunidad_i,
   org_politica
 ) {
-
   $("#edit_persona").modal({ backdrop: "static", keyboard: false });
   var persona_info = JSON.parse(persona);
   var ocupacion_info = JSON.parse(ocupacion);
@@ -463,9 +465,9 @@ function editar_datos(
   var divisiones = JSON.parse(divisiones);
   var titulos = JSON.parse(titulos);
   /*   var transporte_info = JSON.parse(transporte); */
-/*   var bonos_info = JSON.parse(bonos);
+  /*  var bonos_info = JSON.parse(bonos);
   var misiones_info = JSON.parse(misiones); */
-/*   var comunidad_i_info = JSON.parse(comunidad_i); */
+  /*   var comunidad_i_info = JSON.parse(comunidad_i); */
   /* var org_politica_info = JSON.parse(org_politica); */
 
   inf_persona["cedula_persona"] = persona_info["cedula_persona"];
@@ -480,6 +482,7 @@ function editar_datos(
   vtlf.value = persona_info["telefono"];
   vws.value = persona_info["whatsapp"];
   vcor.value = persona_info["correo"];
+  vcorreoi.value = persona_info["correo_institucional"];
   vfnac.value = persona_info["fecha_nacimiento"];
   vgen.value = persona_info["genero"];
   vedoc.value = persona_info["estado_civil"];
@@ -580,7 +583,7 @@ function editar_datos(
   } */
 
   if (titulos.length == 0) {
-    vdivisionesareas.innerHTML = "No aplica";
+    vtitulos.innerHTML = "No se han seleccionado títulos";
     } else {
       var texto = "";
       vtitulos.innerHTML = "";
@@ -872,6 +875,11 @@ btn_guardar.onclick = function () {
                       inf_persona["correo"] = "No posee";
                     } else {
                       inf_persona["correo"] = vcor.value;
+                    }
+                    if (vcorreoi.value == "No posee" || vcorreoi.value == "") {
+                      inf_persona["correo_institucional"] = "No posee";
+                    } else {
+                      inf_persona["correo_institucional"] = vcorreoi.value;
                     }
                     if (vtlfc.value == "No posee" || vtlfc.value == "") {
                       inf_persona["telefono_casa"] = "No posee";

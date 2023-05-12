@@ -61,19 +61,19 @@
                                             <input type="text" id="Generof" class="form-control" placeholder="Genero" data-index="11">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Nacc" class="form-control" placeholder="Nacionalidad" data-index="16">
+                                            <input type="text" id="Nacc" class="form-control" placeholder="Nacionalidad" data-index="17">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Fechanf" class="form-control" placeholder="Fecha de Nacimiento" data-index="17">
+                                            <input type="text" id="Fechanf" class="form-control" placeholder="Fecha de Nacimiento" data-index="18">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Estadoc" class="form-control" placeholder="Estado Civil" data-index="18">
+                                            <input type="text" id="Estadoc" class="form-control" placeholder="Estado Civil" data-index="19">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Nivelef" class="form-control" placeholder="Nivel Educativo" data-index="19">
+                                            <input type="text" id="Nivelef" class="form-control" placeholder="Nivel Educativo" data-index="20">
                                         </div>
                                         <div style="" class="m-1">
-                                            <input type="text" id="Ubicc" class="form-control" placeholder="Ubicación" data-index="20">
+                                            <input type="text" id="Ubicc" class="form-control" placeholder="Ubicación" data-index="21">
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +103,8 @@
                             <th>Teléfono</th>
                             <th>Whatsapp</th>
                             <th>Telefono de Casa</th>
-                            <th>correo</th>
+                            <th>Correo</th>
+                            <th>Correo institucional</th>
                             <th>Nacionalidad</th>
                             <th>Fecha de Nacimiento</th>
                             <th>Estado Civil</th>
@@ -197,6 +198,9 @@
             data:"correo"
         },
         {
+            data:"correo_institucional"
+        },
+        {
             data:"nacionalidad"
         },
         {
@@ -254,7 +258,7 @@
       titleAttr: 'Exportar a Excel',
       className: 'btn text-success border border-success',
       exportOptions: {
-        columns: [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+        columns: [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]
     }
     },
     {
@@ -285,7 +289,7 @@
     // Splice the image in after the header, but before the table
 },
       exportOptions: {
-        columns: [3,5,6,12,13,14,15]
+        columns: [3,4,7,9,11,12,17]
     }
 },
   ]  
@@ -361,7 +365,8 @@
                             <th>Teléfono</th>
                             <th>Whatsapp</th>
                             <th>Telefono de Casa</th>
-                            <th>correo</th>
+                            <th>Correo</th>
+                            <th>Correo institucional</th>
                             <th>Nacionalidad</th>
                             <th>Fecha de Nacimiento</th>
                             <th>Estado Civil</th>

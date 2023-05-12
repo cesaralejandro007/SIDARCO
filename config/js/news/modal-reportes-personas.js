@@ -22,7 +22,8 @@ document.getElementById("button-addon").onclick = function(){
            '<th>Teléfono</th>'+
            '<th>Whatsapp</th>'+
            '<th>Telefono de Casa</th>'+
-           '<th>correo</th>'+
+           '<th>Correo</th>'+
+           '<th>Correo institucional</th>'+
            '<th>Nacionalidad</th>'+
            '<th>Fecha de Nacimiento</th>'+
            '<th>Estado Civil</th>'+
@@ -144,6 +145,9 @@ document.getElementById("button-addon").onclick = function(){
   data:"correo"
   },
   {
+    data:"correo_institucional"
+  },
+  {
   data:"nacionalidad"
   },
   {
@@ -254,7 +258,8 @@ customize: function ( doc ) {
            '<th>Teléfono</th>'+
            '<th>Whatsapp</th>'+
            '<th>Telefono de Casa</th>'+
-           '<th>correo</th>'+
+           '<th>Correo</th>'+
+           '<th>Correo institucional</th>'+
            '<th>Nacionalidad</th>'+
            '<th>Fecha de Nacimiento</th>'+
            '<th>Estado Civil</th>'+
@@ -355,7 +360,8 @@ customize: function ( doc ) {
          '<th>Teléfono</th>'+
          '<th>Whatsapp</th>'+
          '<th>Telefono de Casa</th>'+
-         '<th>correo</th>'+
+         '<th>Correo</th>'+
+         '<th>Correo institucional</th>'+
          '<th>Nacionalidad</th>'+
          '<th>Fecha de Nacimiento</th>'+
          '<th>Estado Civil</th>'+
@@ -475,6 +481,9 @@ customize: function ( doc ) {
   data:"correo"
   },
   {
+    data:"correo_institucional"
+  },
+  {
   data:"nacionalidad"
   },
   {
@@ -585,7 +594,8 @@ customize: function ( doc ) {
          '<th>Teléfono</th>'+
          '<th>Whatsapp</th>'+
          '<th>Telefono de Casa</th>'+
-         '<th>correo</th>'+
+         '<th>Correo</th>'+
+         '<th>Correo institucional</th>'+
          '<th>Nacionalidad</th>'+
          '<th>Fecha de Nacimiento</th>'+
          '<th>Estado Civil</th>'+
@@ -644,7 +654,8 @@ customize: function ( doc ) {
            '<th>Teléfono</th>'+
            '<th>Whatsapp</th>'+
            '<th>Telefono de Casa</th>'+
-           '<th>correo</th>'+
+           '<th>Correo</th>'+
+           '<th>Correo institucional</th>'+
            '<th>Nacionalidad</th>'+
            '<th>Fecha de Nacimiento</th>'+
            '<th>Estado Civil</th>'+
@@ -771,6 +782,9 @@ customize: function ( doc ) {
   data:"correo"
   },
   {
+    data:"correo_institucional"
+  },
+  {
   data:"nacionalidad"
   },
   {
@@ -883,7 +897,8 @@ customize: function ( doc ) {
            '<th>Teléfono</th>'+
            '<th>Whatsapp</th>'+
            '<th>Telefono de Casa</th>'+
-           '<th>correo</th>'+
+           '<th>Correo</th>'+
+           '<th>Correo institucional</th>'+
            '<th>Nacionalidad</th>'+
            '<th>Fecha de Nacimiento</th>'+
            '<th>Estado Civil</th>'+
@@ -923,7 +938,8 @@ customize: function ( doc ) {
          '<th>Teléfono</th>'+
          '<th>Whatsapp</th>'+
          '<th>Telefono de Casa</th>'+
-         '<th>correo</th>'+
+         '<th>Correo</th>'+
+         '<th>Correo institucional</th>'+
          '<th>Nacionalidad</th>'+
          '<th>Fecha de Nacimiento</th>'+
          '<th>Estado Civil</th>'+
@@ -1051,6 +1067,9 @@ data:"telf_casa"
 data:"correo"
 },
 {
+  data:"correo_institucional"
+},
+{
 data:"nacionalidad"
 },
 {
@@ -1165,7 +1184,8 @@ tabla +'<tfoot>'+
          '<th>Teléfono</th>'+
          '<th>Whatsapp</th>'+
          '<th>Telefono de Casa</th>'+
-         '<th>correo</th>'+
+         '<th>Correo</th>'+
+         '<th>Correo institucional</th>'+
          '<th>Nacionalidad</th>'+
          '<th>Fecha de Nacimiento</th>'+
          '<th>Estado Civil</th>'+
