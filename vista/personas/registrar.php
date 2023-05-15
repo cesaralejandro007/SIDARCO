@@ -1151,7 +1151,7 @@
             <!-- <div class="input-group"> -->
 
 <select class="form-control"  name="datos[nomina]" id="nomina" style= "width: 100%;">
-                    <option value='vacio' >-Seleccione el grado o jerarquía-</option>
+                    <option value='vacio' >-Seleccione-</option>
                     <?php foreach ($this->nomina as $nomi) { ?>
                <option value='<?php echo $nomi["id_nomina"]; ?>'><?php echo $nomi['nombre_nomina'];?></option>
                <?php  } ?></select>
@@ -1174,7 +1174,7 @@
 
 <span style='display:none;color:red' id='valid_39'>Campo sin llenar</span>
 <select class="form-control" id="grado_fun" name="datos[grado_fun]"  placeholder="Indique el grado o jerarquía" >
-                    <option value='vacio' >-Seleccione-</option>
+                    <option value='vacio' >-Seleccione  el grado o jerarquía-</option>
                <option value='Coronel'>Coronel</option>
                <option value='Tiniente'>Teniente</option>
             </select>

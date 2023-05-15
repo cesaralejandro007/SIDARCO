@@ -620,6 +620,39 @@ class Personas_Class extends Modelo
         }
     }
 
+    public function Registrar_persona_egreso($data)
+    {
+
+        try {
+            $datos = $this->conexion->prepare('INSERT INTO personas_egresados (
+                cedula_persona,
+                id_egresado,
+                descripcion,
+                fecha_egreso    
+                ) VALUES (
+                :id_cedula_persona,
+                :id_egresado,
+                :descripcion,
+                :fecha_egreso
+                )');
+
+            $datos->execute([
+                'cedula_persona'         =>  $data['cedula_persona'],
+                'id_egresado'            =>  $data['id_egresado']
+            ]);
+
+            return true;
+
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
+
+
+
+
+
     public function Registrar_titulo($titulo,$descripcion,$cedula)
     {
 
@@ -722,6 +755,8 @@ class Personas_Class extends Modelo
             return $this->Capturar_Error($e);
         }
     }
+
+
 
 
     public function get_areas(){
