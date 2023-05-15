@@ -70,6 +70,7 @@ class Personas_Class extends Modelo
                 fecha_nacimiento,
                 telefono,
                 correo,
+                correo_institucional,
                 estado_civil,
                 genero,
                 whatsapp,
@@ -107,6 +108,7 @@ class Personas_Class extends Modelo
                 :fecha_nacimiento,
                 :telefono,
                 :correo,
+                :correo_institucional,
                 :estado_civil,
                 :genero,
                 :whatsapp,
@@ -146,6 +148,7 @@ class Personas_Class extends Modelo
                 'fecha_nacimiento'      =>       $data['fecha_nacimiento'],
                 'telefono'              =>       $data['telefono'],
                 'correo'                =>       $data['correo'],
+                'correo_institucional'  =>       $data['correo_institucional'],
                 'estado_civil'          =>       $data['estado_civil'],
                 'genero'                =>       $data['genero'],
                 'whatsapp'              =>       $data['whatsapp'],
@@ -198,7 +201,7 @@ class Personas_Class extends Modelo
 
 
 
-/*      public function Registrar_transporte($data)
+     public function Registrar_transporte($data)
     {
 
         try {
@@ -223,7 +226,7 @@ class Personas_Class extends Modelo
         } catch (PDOException $e) {
             return $this->Capturar_Error($e);
         }
-    } */
+    } 
 
 
 /*  public function Registrar_persona_ocupacion($data)
@@ -693,8 +696,56 @@ class Personas_Class extends Modelo
         }
     }
 
+    public function Registrar_persona_area($data)
+    {
 
-                public function Registrar_persona_mision($data)
+        try {
+            $datos = $this->conexion->prepare('INSERT INTO personas_areas(
+                cedula_persona,
+                id_area
+                          
+                ) VALUES (
+                    :cedula_persona,
+                    :id_area
+                    
+                )');
+
+            $datos->execute([
+                'cedula_persona'      => $data['cedula_persona'],
+                'id_area'         => $data['id_area']
+                
+            ]);
+
+            return $data['id_area'];
+
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
+
+    public function get_areas(){
+
+        $tabla            = "SELECT * FROM areas";
+         $respuestaArreglo = '';
+         try {
+             $datos = $this->conexion->prepare($tabla);
+             $datos->execute();
+             $datos->setFetchMode(PDO::FETCH_ASSOC);
+             $respuestaArreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+             return $respuestaArreglo;
+         } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+         }
+
+       }
+
+    
+
+
+
+    /*             public function Registrar_persona_mision($data)
     {
 
         try {
@@ -725,7 +776,7 @@ class Personas_Class extends Modelo
         } catch (PDOException $e) {
             return $this->Capturar_Error($e);
         }
-    }
+    } */
    
    
  /*   public function Registrar_cond_laboral($data){

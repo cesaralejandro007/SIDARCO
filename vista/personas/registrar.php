@@ -659,17 +659,17 @@
                                             <div class="col-md-12 mt-2">
                                                 <div class="form-group">
                                                     <label for="correo">
-                                                        Correo Electronico institucional
+                                                        Correo Electrónico institucional
                                                     </label>
                                                     <div class="input-group">
-                                                        <input class="form-control no-espacios" id="correo" name="datos[correo]"
-                                                        placeholder="Correo" type="text">
+                                                        <input class="form-control no-espacios" id="correo_institucional" name="datos[correo_institucional]"
+                                                        placeholder="Correo institucional" type="text">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">@</span>
                                                         </div>
-                                                        <select class="custom-select" id="tipo_correo"
-                                                        name="datos[tipo_correo]">
-                                                        <option selected="" value="@gmail.com">
+                                                        <select class="custom-select" id="tipo_correo_inst"
+                                                        name="datos[tipo_correo_inst]">
+                                                        <option selected="" value="@seniat.gob.ve">
                                                             seniat.gob.ve
                                                         </option>
                                                     </select>
@@ -1065,7 +1065,7 @@
 <select class="form-control" name="datos[estado]" id="id_estado" style= "width: 100%;" placeholder="Indique el estado">
                     <option value='vacio' >-Seleccione el estado-</option>
                     <?php foreach ($this->estados as $edos) { ?>
-               <option value='<?php echo $edos["id_estado"]; ?>'><?php echo $edos['nombre_estado'];?></option>
+               <option value='<?php echo $edos["id_estado"]; ?>'><?php echo $edos['nombre_estado_procedencia'];?></option>
                <?php  } ?></select>
 
 </td>
@@ -1122,7 +1122,7 @@
  
 <span style='display:none;color:red' id='valid_37'>Campo sin llenar</span>
 
-<select class="form-control" name="datos[egresado_nomina]" id="egresado_nomina" style= "width: 100%;" placeholder="Indique motivo de egreso">
+<select class="form-control" name="datos[id_egresado]" id="egresado_nomina" style= "width: 100%;" placeholder="Indique motivo de egreso">
                     <option value='vacio' >-Seleccione-</option>
                     <?php foreach ($this->egreso as $egre) { ?>
                <option value='<?php echo $egre["id_egresado"]; ?>'><?php echo $egre['nombre_egresado'];?></option>
@@ -1151,7 +1151,7 @@
             <!-- <div class="input-group"> -->
 
 <select class="form-control"  name="datos[nomina]" id="nomina" style= "width: 100%;">
-                    <option value='vacio' >-Seleccione-</option>
+                    <option value='vacio' >-Seleccione el grado o jerarquía-</option>
                     <?php foreach ($this->nomina as $nomi) { ?>
                <option value='<?php echo $nomi["id_nomina"]; ?>'><?php echo $nomi['nombre_nomina'];?></option>
                <?php  } ?></select>
@@ -1408,7 +1408,7 @@
 <table style='width:100%'><tr><td>
 
 
-    <select class='form-control no-simbolos' id='id_division' style="width: 100%">
+    <select class='form-control no-simbolos' id='id_division' name="datos[id_division]" style="width: 100%">
       <option value='0' >-Seleccione división-</option>
       <?php foreach ($this->divisiones as $e) {?>
         <option value='<?php echo $e['id_division']; ?>'><?php echo $e['nombre_division']; ?></option>
@@ -1418,14 +1418,14 @@
 </td>
 
 <td>
-<select class='form-control no-simbolos' id='id_area' style="width: 100%">
+<select class='form-control no-simbolos' id='id_area' name="datos[id_area]" style="width: 100%">
       <option value='0' >-Seleccione área-</option>
 </select>
 
 </td>
 
 <td>
-<select class='form-control no-simbolos' id='id_seccion' style="width: 100%">
+<select class='form-control no-simbolos' id='id_seccion' name="datos[id_seccion]"  style="width: 100%">
       <option value='0' >-Secccione sección-</option>
 </select>
 

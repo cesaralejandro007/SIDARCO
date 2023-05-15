@@ -447,7 +447,6 @@ public function consultar_informacion_persona(){
     "whatsapp"          =>$whatsapp,
     "telf_casa"          =>$p['telf_casa'],
     "correo"          =>$p['correo'],
-    "correo_institucional"          =>$p['correo_institucional'],
     "fecha_nacimiento"          =>$p['fecha_nacimientoc'],
     "genero"          =>$genero,
     "nacionalidad"          =>$p['nacionalidad'],
@@ -511,7 +510,6 @@ public function consultar_informacion_persona_egresos(){
     "whatsapp"          =>$whatsapp,
     "telf_casa"          =>$p['telf_casa'],
     "correo"          =>$p['correo'],
-    "correo_institucional"          =>$p['correo_institucional'],
     "fecha_nacimiento"          =>$p['fecha_nacimientoc'],
     "genero"          =>$genero,
     "nacionalidad"          =>$p['nacionalidad'],
@@ -567,7 +565,6 @@ public function consultar_informacion_persona_historia(){
     "whatsapp"          =>$whatsapp,
     "telf_casa"          =>$p['telf_casa'],
     "correo"          =>$p['correo'],
-    "correo_institucional"          =>$p['correo_institucional'],
     "fecha_nacimiento"          =>$p['fecha_nacimientoc'],
     "genero"          =>$genero,
     "nacionalidad"          =>$p['nacionalidad'],
@@ -768,6 +765,49 @@ public function registrar_transporte(){
  echo count($datos);
  }
 
+
+ public function registrar_ubicacion(){
+  $ubicaciones_fun=$this->modelo->get_areas();
+  $datos=$_POST['datos'];
+
+ 
+  for ($i = 0; $i < count($datos); $i++) {
+    foreach ($ubicaciones_fun as $ubi) {
+        if ($ubi['id_area'] == $datos[$i]['id_area']) {
+      $this->modelo->Registrar_persona_area([
+       "cedula_persona"   =>   $datos[$i]['cedula_persona'],
+       "id_area"          =>     $ubi['id_area']
+     ]);
+  }
+  
+
+ 
+ }
+
+ }
+
+ }
+
+ /* public function registrar_egresados(){
+  $ubicaciones_fun=$this->get_areas();
+  $datos=$_POST['datos'];
+
+ 
+  for ($i = 0; $i < count($datos); $i++) {
+    foreach ($ubicaciones_fun as $ubi) {
+        if ($ubi['id_area'] == $datos[$i]['id_area']) {
+      $this->modelo->Registrar_persona_area([
+       "cedula_persona"   =>   $datos[$i]['cedula_persona'],
+       "id_area"          =>     $ubi['id_area']
+     ]);
+  }
+
+ }
+
+ }
+
+ } */
+ 
 
 
 public function registrar_ocupacion(){
@@ -1017,9 +1057,8 @@ public function egresar_persona(){
     echo 1;
   }
 
-
-
 }
+
 
 public function ingresar_persona(){
 
@@ -1029,7 +1068,8 @@ public function ingresar_persona(){
     echo 1;
   }
 
-  $this->eliminardatos_egresados($cedula);
+
+
 }
 
 

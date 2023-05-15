@@ -66,6 +66,8 @@ var codigo_discapacidad=document.getElementById("codigo_discapacidad");
 var div_info_contacto=document.getElementById("panel3");
 var correo=document.getElementById("correo");
 var tipo_correo=document.getElementById("tipo_correo");
+var correo_institucional=document.getElementById("correo_institucional");
+var tipo_correo_inst=document.getElementById("tipo_correo_inst");
 var telefono=document.getElementById("telefono");
 var telf_casa=document.getElementById("telf_casa");
 var whatsapp=document.getElementById("whatsapp");
@@ -630,10 +632,16 @@ btn_agregar_ubicacion.onclick=function(){
     id_division.style.borderColor = ''
     id_area.style.borderColor = "";
 
+    var area1="";
+
     text=division.options[division.selectedIndex].text;
     text1=area.options[area.selectedIndex].text;
     text2=seccion.options[seccion.selectedIndex].text;
   
+    area1=parseInt(area.value);
+
+    ubicaciones_persona.push(area1);
+
    console.log(proyectos_persona);
    var elemento=document.createElement("div");
    var table=document.createElement("table");
@@ -672,7 +680,9 @@ btn_agregar_ubicacion.onclick=function(){
    div_ubicacion_persona.appendChild(elemento);
   }
 
-    
+    id_division.value="0";
+    id_area.value="0";
+    id_seccion.value="0";
      
 
   }
@@ -2132,6 +2142,7 @@ function enviar_informacion(){
   datos_persona['cargo_nominal']=cargo_nominal.value;
   datos_persona['id_estado']=id_estado.value;
   correo.value==""?datos_persona['correo']="No posee" : datos_persona['correo']=correo.value+tipo_correo.value;
+  correo_institucional.value==""?datos_persona['correo_institucional']="No posee" : datos_persona['correo_institucional']=correo_institucional.value+tipo_correo_inst.value;
   datos_persona['contrasenia']=contrasenia.value;
   datos_persona['preguntas_seguridad']=color.value.toLowerCase()+animal.value.toLowerCase()+mascota.value.toLowerCase();
   seguridad['registrar']=='1'?datos_persona['rol_inicio']=rol.value:datos_persona['rol_inicio']='Habitante';
@@ -2228,6 +2239,10 @@ function enviar_informacion(){
 
 */
 
+if(ubicaciones_persona.length!=0){
+  registrar_areas_persona();
+}
+
 if(proyectos_persona.length!=0){
   registrar_titulos_persona();
 }
@@ -2244,6 +2259,10 @@ if(proyectos_persona.length!=0){
 })
 
 }
+
+
+
+
 
 
 function registrar_carnets(carnet,tipo){
@@ -2312,6 +2331,27 @@ function registrar_titulos_persona(){
     console.log(result);
   })
 }
+
+
+function registrar_areas_persona(){
+  var datos_ubicacion = [];
+ for(var i=0;i<ubicaciones_persona.length;i++){
+   var datos=new Object();
+   datos['id_area']=ubicaciones_persona[i];
+   datos['cedula_persona']=cedula.value;
+   datos_ubicacion.push(datos); 
+   alert(datos_ubicacion)
+  }
+  $.ajax({
+    type:"POST",
+    url:BASE_URL+"Personas/registrar_ubicacion",
+    data:{"datos":datos_ubicacion}
+  }).done(function(result){
+    alert(result);
+     console.log(result); 
+   }) 
+}
+
 
 
 function registrar_misiones_persona(){
