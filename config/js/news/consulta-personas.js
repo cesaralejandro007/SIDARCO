@@ -856,7 +856,63 @@ btn_guardar.onclick = function () {
                             vfechan.style.borderColor = "red";
                             vfechan.focus();
                           }, 2000);
-                        } else {
+                        }else {
+                          vprima1.style.borderColor = "";
+                          if (vprima1.value == "") {
+                            swal({
+                              type: "error",
+                              title: "Error",
+                              text: "Debe seleccionar el campo prima",
+                              timer: 2000,
+                              showConfirmButton: false,
+                            });
+                            setTimeout(function () {
+                              vprima1.style.borderColor = "red";
+                              vprima1.focus();
+                            }, 2000);
+                          }else {
+                            vfideicomiso.style.borderColor = "";
+                            if (vfideicomiso.value == "") {
+                              swal({
+                                type: "error",
+                                title: "Error",
+                                text: "Debe seleccionar el campo fideicomiso",
+                                timer: 2000,
+                                showConfirmButton: false,
+                              });
+                              setTimeout(function () {
+                                vfideicomiso.style.borderColor = "red";
+                                vfideicomiso.focus();
+                              }, 2000);
+                            }else {
+                              vdclara.style.borderColor = "";
+                              if (vdclara.value == "") {
+                                swal({
+                                  type: "error",
+                                  title: "Error",
+                                  text: "Debe seleccionar el campo 	Declaración Jurada",
+                                  timer: 2000,
+                                  showConfirmButton: false,
+                                });
+                                setTimeout(function () {
+                                  vdclara.style.borderColor = "red";
+                                  vdclara.focus();
+                                }, 2000);
+                              }else {
+                                vinscripcion_ivss.style.borderColor = "";
+                                if (vinscripcion_ivss.value == "") {
+                                  swal({
+                                    type: "error",
+                                    title: "Error",
+                                    text: "Debe seleccionar el campo Inscripción IVSS",
+                                    timer: 2000,
+                                    showConfirmButton: false,
+                                  });
+                                  setTimeout(function () {
+                                    vinscripcion_ivss.style.borderColor = "red";
+                                    vinscripcion_ivss.focus();
+                                  }, 2000);
+                                }else {
 
                     inf_persona["primer_nombre"] = vn1.value;
                     inf_persona["segundo_nombre"] = vn2.value;
@@ -886,26 +942,6 @@ btn_guardar.onclick = function () {
                     } else{
                       inf_persona["telefono_casa"] = vtlfc.value;
                     }
-                    if (vprima1.value == "No posee" || vprima1.value == "") {
-                      inf_persona["prima"] = "No posee";
-                    } else{
-                      inf_persona["prima"] = vprima1.value;
-                    }
-                    if (vdclara.value == "No posee" || vdclara.value == "") {
-                      inf_persona["declaracionj"] = "No posee";
-                    } else{
-                      inf_persona["declaracionj"] = vdclara.value;
-                    }
-                    if (vinscripcion_ivss.value == "No posee" || vinscripcion_ivss.value == "") {
-                      inf_persona["inscripcionivss"] = "No posee";
-                    } else{
-                      inf_persona["inscripcionivss"] = vinscripcion_ivss.value;
-                    }
-                    if (vfideicomiso.value == "No posee" || vfideicomiso.value == "") {
-                      inf_persona["fideicomiso"] = "No posee";
-                    } else{
-                      inf_persona["fideicomiso"] = vfideicomiso.value;
-                    }
                     if (vgrado.value == "N/A" || vgrado.value == "") {
                       inf_persona["grado_resguardo"] = "N/A";
                     } else{
@@ -918,6 +954,10 @@ btn_guardar.onclick = function () {
                     inf_persona["ubicacion1"] = document.getElementById("campoubic").value;
                     inf_persona["nomina"] = vnomina.value;
                     inf_persona["cargo"] = vcargo.value;
+                    inf_persona["prima"] = vprima1.value;
+                    inf_persona["declaracionj"] = vdclara.value;
+                    inf_persona["inscripcionivss"] = vinscripcion_ivss.value;
+                    inf_persona["fideicomiso"] = vfideicomiso.value;
                     inf_persona["procedencia_estado"] = vppestado.value;
                     inf_persona["estado_funcionario"] = vestad_funcionario.value;
                     /* 
@@ -1014,6 +1054,7 @@ btn_guardar.onclick = function () {
     }
   }
   }
+}}}}
 }}}
 function editar_persona() {
   //alert(JSON.stringify(inf_persona, null, 4));
