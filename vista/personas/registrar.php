@@ -895,614 +895,389 @@
                 <div class="tab-pane" id="panel3" role="tabpanel">
 
 
-                    <div class="row  mt-2">
-                        <div class="col-md-12 text-center mt-2">
-                            <h4>
-                                Información laboral
-                            </h4>
-                        </div>
-                        <div class="col-md-6 mt-2">
-                              <div class="form-group">
-                                   <label for="ing_seniat">
-                                     Ingreso al SENIAT
-                                      </label>
-                                          <span style='display:none;color:red' id='valid_28'>Fecha de ingreso al SENIAT</span>
-                                              <input class="form-control mb-10" id="ing_seniat"   name="ing_seniat" type="date"> 
-                                                   </div>
-                                                       </div>
+                    <div class="col-md-12 text-center mt-2">
+                        <h4>Información laboral</h4>
+                    </div>
+                        <div class="row mt-2 d-flex flex-wrap">
+                            <div class="col-md-3 mt-2">
+                                <div class="form-group">
+                                    <label for="ing_seniat">Ingreso al SENIAT</label>
+                                    <span style='display:none;color:red' id='valid_28'>Fecha de ingreso al SENIAT</span>
+                                    <input class="form-control" id="ing_seniat"   name="ing_seniat" type="date"> 
+                                </div>
+                            </div>
 
-                        <div class="col-md-6 mt-2">
-                            <div class="form-group">
-                                <label for="ing_publica">Ingreso a la administrtación pública </label> 
-                                <span style='display:none; color:red' id='valid_29'>Fecha de ingreso a la administración pública</span>
-                            <input class="form-control mb-10" name="datos[ing_publica]"  id="ing_publica" type="date" style="width: 100%">
-                                                    </div>
-                                                    </div>
+                            <div class="col-md-3 mt-2">
+                                <div class="form-group">
+                                    <label for="ing_publica">Ingreso a la admin. pública </label> 
+                                    <span style='display:none; color:red' id='valid_29'>Fecha de ingreso a la administración pública</span>
+                                    <input class="form-control" name="datos[ing_publica]"  id="ing_publica" type="date" style="width: 100%">
+                                </div>
+                            </div>
                         
-                                                   
+                            <div class="col-md-3 mt-2">
+                                <div class="form-group">
+                                    <label for="fecha_notificacion">Fecha de notificación</label> 
+                                    <span style='display:none; color:red' id='valid_30'>Ingrese fecha de notificación</span>
+                                    <input class="form-control" name="datos[fecha_notificacion]"  id="fecha_notificacion" type="date"></input>
+                                </div>
+                            </div>
 
+                            <div class="col-md-3 mt-2">
+                                <div class="form-group">
+                                    <label for="ult_designacion">Última designación</label> 
+                                    <span style='display:none; color:red' id='valid_31'>Ingrese fecha de designación</span>
+                                    <input class="form-control" name="datos[ult_designacion]"  id="ult_designacion" type="date"></input>
+                                </div>
+                            </div>
 
-                             <div class="col-md-6 mt-2">
-                            <div class="form-group">
-                                <label for="fecha_notificacion">Fecha de notificación</label> 
-                                <span style='display:none; color:red' id='valid_30'>Ingrese fecha de notificación</span>
-                            <input class="form-control" name="datos[fecha_notificacion]"  id="fecha_notificacion" type="date"></input>
-                                         </div>
-                                         </div>
-
-                                         <div class="col-md-6 mt-2">
-                            <div class="form-group">
-                                <label for="ult_designacion">Última designación</label> 
-                                <span style='display:none; color:red' id='valid_31'>Ingrese fecha de designación</span>
-                            <input class="form-control" name="datos[ult_designacion]"  id="ult_designacion" type="date"></input>
-                                                    </div>
-                        
-                        </div>
-                                         
-
-                                         <div class="col-md-6 mt-2">
-                                            <label for="prima">
-                                                Cobra Prima
-                                            </label>
-                                            <span style='display:none;color:red' id='valid_32'>Debe seleccionar si recibe prima</span>
-                                            <div class="input-group">
-                                                <select class="custom-select" id="prima" name="datos[prima]">
-                                                    <option selected="" value="vacio">
-                                                        -Seleccione-
-                                                    </option>
-                                                    <option value="S">
-                                                            Sí
-                                                    </option>
-                                                    <option value="N">
-                                                        No
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
+                            <div class="col-md-3 mt-2">
+                                <label for="prima">Cobra Prima</label>
+                                <span style='display:none;color:red' id='valid_32'>Debe seleccionar si recibe prima</span>
+                                <div class="input-group">
+                                    <select class="custom-select" id="prima" name="datos[prima]">
+                                        <option selected="" value="vacio">
+                                            -Seleccione-
+                                        </option>
+                                        <option value="S">
+                                                Sí
+                                        </option>
+                                        <option value="N">
+                                            No
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
                                             
                                         <!-- Si cesar realiza los filtro en consultar no modifico el value de los select -->
-                                        <div class="col-md-6 mt-2">
-                                            <label for="declaracion_j">
-                                                Declaración Jurada
-                                            </label>
-                                            <span style='display:none;color:red' id='valid_33'>Debe seleccionar alguna opción</span>
-                                            <div class="input-group">
-                                                <select class="custom-select" id="declaracion_j" name="datos[declaracion_j]">
-                                                    <option selected="" value="vacio">
-                                                        -Seleccione-
-                                                    </option>
-                                                    <option value="S">
-                                                            Sí
-                                                    </option>
-                                                    <option value="N">
-                                                        No
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="col-md-6 mt-2">
-                                            <label for="incripcion_ivss">
-                                                Inscripción en el IVSS
-                                            </label>
-                                            <span style='display:none;color:red' id='valid_34'>Debe seleccionar alguna opción</span>
-                                            <div class="input-group">
-                                                <select class="custom-select" id="inscripcion_ivss" name="datos[inscripcion_ivss]">
-                                                    <option selected="" value="vacio">
-                                                        -Seleccione-
-                                                    </option>
-                                                    <option value="S">
-                                                            Sí
-                                                    </option>
-                                                    <option value="N">
-                                                        No
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
+                            <div class="col-md-3 mt-2">
+                                <label for="declaracion_j">Declaración Jurada</label>
+                                <span style='display:none;color:red' id='valid_33'>Debe seleccionar alguna opción</span>
+                                <div class="input-group">
+                                    <select class="custom-select" id="declaracion_j" name="datos[declaracion_j]">
+                                        <option selected="" value="vacio">
+                                            -Seleccione-
+                                        </option>
+                                        <option value="S">
+                                                Sí
+                                        </option>
+                                        <option value="N">
+                                            No
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col-md-3 mt-2">
+                                <label for="incripcion_ivss">Inscripción en el IVSS</label>
+                                <span style='display:none;color:red' id='valid_34'>Debe seleccionar alguna opción</span>
+                                <div class="input-group">
+                                    <select class="custom-select" id="inscripcion_ivss" name="datos[inscripcion_ivss]">
+                                        <option selected="" value="vacio">
+                                            -Seleccione-
+                                        </option>
+                                        <option value="S">
+                                                Sí
+                                        </option>
+                                        <option value="N">
+                                            No
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
 <!---------------------------------------------------------------------------------------------------------->
-                                        <div class="col-md-6 mt-2">
-                                            <label for="fideicomiso">
-                                                Posee cuenta de fideicomiso
-                                            </label>
-                                            <span style='display:none;color:red' id='valid_35'>Debe seleccionar alguna opción</span>
-                                            <div class="input-group">
-                                                <select class="custom-select" id="fideicomiso" name="datos[fideicomiso]" style="width: 80%">
-                                                    <option selected="" value="vacio">
-                                                        -Seleccione-
-                                                    </option>
-                                                    <option value="S">
-                                                            Sí
-                                                    </option>
-                                                    <option value="N">
-                                                        No
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                        <br>
+                            <div class="col-md-3 mt-2">
+                                <label for="fideicomiso">Posee cuenta de fideicomiso</label>
+                                <span style='display:none;color:red' id='valid_35'>Debe seleccionar alguna opción</span>
+                                <div class="input-group">
+                                    <select class="custom-select" id="fideicomiso" name="datos[fideicomiso]" style="width: 80%">
+                                        <option selected="" value="vacio">
+                                            -Seleccione-
+                                        </option>
+                                        <option value="S">
+                                                Sí
+                                        </option>
+                                        <option value="N">
+                                            No
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
 <!--------------------------------------------------------------------------------------------------------------------------->  
 
+                            <div class="col-md-6 mt-2">
+                                <label for="egresado">Procedencia por traslado</label>
+                                <span style='display:none;color:red' id='valid_50'>Campo sin llenar</span>
+                                <table style='width:100%'>
+                                    <tr>
+                                        <td>
+                                            <select class="form-control" id="estado"
+                                                style="width: 100%">
+                                                <option value='vacio'>-Seleccione-</option>
+                                                <option value="1">
+                                                Sí
+                                                </option>
+                                                <option value="2">
+                                                No
+                                                </option>
+                                            </select>
+                                        </td> 
+                                                <!-- <td style='display:none;' id='ver_sector_formal'>
 
-<div class="col-md-12 mt-2">
-        <label for="egresado">
-            Procedencia por traslado
-<!--             <p> Condicion Laboral </p>
- -->        </label>
-        <span style='display:none;color:red' id='valid_50'>Campo sin llenar</span>
+                                                <input  class="form-control" id="tipo_sector_formal"
+                                                name="datos[tipo_sector_formal]" type="date">
+                                                </td> -->
+                                        <td style='display:none;' id='ver_estado'>  
+                                            <!-- <div class="input-group"> -->
+                                            <span style='display:none;color:red' id='valid_51'>Campo sin llenar</span>
+                                            <select class="form-control" name="datos[estado]" id="id_estado" style= "width: 100%;" placeholder="Indique el estado">
+                                                <option value='vacio' >-Seleccione el estado-</option>
+                                                <?php foreach ($this->estados as $edos) { ?>
+                                                <option value='<?php echo $edos["id_estado"]; ?>'><?php echo $edos['nombre_estado_procedencia'];?></option>
+                                                <?php  } ?>
+                                            </select>
+                                        </td>
 
-        <table style='width:100%'><tr>
-
-             <td>
-               <select class="form-control" id="estado"
-                style="width: 100%">
-               <option value='vacio'>-Seleccione-</option>
-               <option value="1">
-                Sí
-            </option>
-            <option value="2">
-             No
-         </option>
-     </select>
- </td> 
-
-
-
-  <!-- <td style='display:none;' id='ver_sector_formal'>
-   
-   <input  class="form-control" id="tipo_sector_formal"
-   name="datos[tipo_sector_formal]" type="date">
-</td> -->
-        
-
-
-
-<td style='display:none;' id='ver_estado'>
-<!-- <div class="input-group"> -->
+                                        <!-- <td>
+                                        <input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name="">
+                                        </td> -->
+                                    </tr>
+                                </table>
+                            </div>              
  
-<span style='display:none;color:red' id='valid_51'>Campo sin llenar</span>
-
-<select class="form-control" name="datos[estado]" id="id_estado" style= "width: 100%;" placeholder="Indique el estado">
-                    <option value='vacio' >-Seleccione el estado-</option>
-                    <?php foreach ($this->estados as $edos) { ?>
-               <option value='<?php echo $edos["id_estado"]; ?>'><?php echo $edos['nombre_estado_procedencia'];?></option>
-               <?php  } ?></select>
-
-</td>
-
-
-<!-- <td>
-<input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name="">
-</td> -->
-</tr></table>
-</div>
- 
-
-
 <!--------------------------------------------------------->
 
-
-
-
-<div class="col-md-12 mt-2">
-        <label for="egresado">
-            Egresado de nómina
-<!--             <p> Condicion Laboral </p>
- -->        </label>
-        <span style='display:none;color:red' id='valid_36'>Campo sin llenar</span>
-
-        <table style='width:100%'><tr>
-
-             <td>
-               <select class="form-control" id="egresado"
-                style="width: 100%">
-               <option value='vacio'>-Seleccione-</option>
-               <option value="1">
-                Sí
-            </option>
-            <option value="2">
-             No
-         </option>
-     </select>
- </td> 
-
-
-
-  <!-- <td style='display:none;' id='ver_sector_formal'>
-   
-   <input  class="form-control" id="tipo_sector_formal"
-   name="datos[tipo_sector_formal]" type="date">
-</td> -->
-        
-
-
-
-<td style='display:none;' id='ver_egresado'>
-<!-- <div class="input-group"> -->
- 
-<span style='display:none;color:red' id='valid_37'>Campo sin llenar</span>
-
-<select class="form-control" name="datos[id_egresado]" id="egresado_nomina" style= "width: 100%;" placeholder="Indique motivo de egreso">
-                    <option value='vacio' >-Seleccione-</option>
-                    <?php foreach ($this->egreso as $egre) { ?>
-               <option value='<?php echo $egre["id_egresado"]; ?>'><?php echo $egre['nombre_egresado'];?></option>
-               <?php  } ?></select>
-
-</td>
-
-
-<!-- <td>
-<input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name="">
-</td> -->
-</tr></table>
-</div>
-  
+                            <div class="col-md-6 mt-2">
+                                <label for="egresado">Egresado de nómina</label>
+                                <span style='display:none;color:red' id='valid_36'>Campo sin llenar</span>
+                                <table style='width:100%'>
+                                    <tr>
+                                        <td>
+                                            <select class="form-control" id="egresado" style="width: 100%">
+                                                <option value='vacio'>-Seleccione-</option>
+                                                <option value="1">
+                                                Sí
+                                                </option>
+                                                <option value="2">
+                                                No
+                                                </option>
+                                            </select>
+                                        </td> 
+                                                <!-- <td style='display:none;' id='ver_sector_formal'>
+                                                <input  class="form-control" id="tipo_sector_formal"
+                                                name="datos[tipo_sector_formal]" type="date">
+                                                </td> -->
+                                        <td style='display:none;' id='ver_egresado'>
+                                            <!-- <div class="input-group"> -->
+                                            <span style='display:none;color:red' id='valid_37'>Campo sin llenar</span>
+                                            <select class="form-control" name="datos[id_egresado]" id="egresado_nomina" style= "width: 100%;" placeholder="Indique motivo de egreso">
+                                                <option value='vacio' >-Seleccione-</option>
+                                                <?php foreach ($this->egreso as $egre) { ?>
+                                                <option value='<?php echo $egre["id_egresado"]; ?>'><?php echo $egre['nombre_egresado'];?></option>
+                                                <?php  } ?>
+                                            </select>
+                                        </td>
+                                                <!-- <td>
+                                                <input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name="">
+                                                </td> -->
+                                    </tr>
+                                </table>
+                            </div>
 <!--------------------------------------------------------------------------------------------------->    
-        
-  
 <!--------------------------------------------------------------------------------------------------------------------------->
- 
-<div class="col-md-12 mt-2">
-        <label for="nomina">
-         Nómina a la que pertenece 
-        </label>
-        <span style='display:none;color:red' id='valid_38'>Campo sin llenar</span>
-        <table style='width:100%'><tr><td>
-            <!-- <div class="input-group"> -->
+                            <div class="col-md-6 mt-2">
+                                <label for="nomina">Nómina a la que pertenece </label>
+                                <span style='display:none;color:red' id='valid_38'>Campo sin llenar</span>
+                                <table style='width:100%'>
+                                    <tr>
+                                        <td>
+                                            <!-- <div class="input-group"> -->
+                                            <select class="form-control"  name="datos[nomina]" id="nomina" style= "width: 100%;">
+                                                <option value='vacio' >-Seleccione el grado o jerarquía-</option>
+                                                <?php foreach ($this->nomina as $nomi) { ?>
+                                                <option value='<?php echo $nomi["id_nomina"]; ?>'><?php echo $nomi['nombre_nomina'];?></option>
+                                                <?php  } ?>
+                                            </select>
+                                        </td>
 
-<select class="form-control"  name="datos[nomina]" id="nomina" style= "width: 100%;">
-                    <option value='vacio' >-Seleccione el grado o jerarquía-</option>
-                    <?php foreach ($this->nomina as $nomi) { ?>
-               <option value='<?php echo $nomi["id_nomina"]; ?>'><?php echo $nomi['nombre_nomina'];?></option>
-               <?php  } ?></select>
-
-<!--                </div>
- -->             </td>
-
-<!--  <td style='display:none;' id='ver_grado'>
-   
-   <input  class="form-control" id="tipo_sector_formal"
-   name="datos[tipo_sector_formal]" type="date">
-
-</td>
-       -->  
-
-<td style='display:none;' id='ver_grado'>
-<!-- <div class="input-group"> -->
-
-
-
-<span style='display:none;color:red' id='valid_39'>Campo sin llenar</span>
-<select class="form-control" id="grado_fun" name="datos[grado_fun]"  placeholder="Indique el grado o jerarquía" >
-                    <option value='vacio' >-Seleccione-</option>
-               <option value='Coronel'>Coronel</option>
-               <option value='Tiniente'>Teniente</option>
-            </select>
-
-</td>
-
-</tr></table>
-
-<!-- <input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name=""> -->
-
-</div> 
+                                            <!--  <td style='display:none;' id='ver_grado'>
+                                            <input  class="form-control" id="tipo_sector_formal"
+                                            name="datos[tipo_sector_formal]" type="date">
+                                            </td>
+                                            -->  
+                                        <td style='display:none;' id='ver_grado'>
+                                            <!-- <div class="input-group"> -->
+                                            <span style='display:none;color:red' id='valid_39'>Campo sin llenar</span>
+                                            <select class="form-control" id="grado_fun" name="datos[grado_fun]"  placeholder="Indique el grado o jerarquía" >
+                                                <option value='vacio' >-Seleccione-</option>
+                                                <option value='Coronel'>Coronel</option>
+                                                <option value='Tiniente'>Teniente</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                    <!-- <input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name=""> -->
+                            </div>      
 
 
 <!----------------------------------------------------------------------------->
 <!-- Prueba -->
-
-
-<!-- <div class="col-md-12 mt-2">
-        <label for="cargo_nominal">
-            Cargo nominal
-           <p> Condicion Laboral </p>
-        </label>
-        <span style='display:none;color:red' id='valid_27'>Campo sin llenar</span>
-        <table style='width:100%'><tr><td>
-            <div class="input-group">
-
-             <select class='form-control' id="nomina_new" style=" width:100%" >
-                    <option value='vacio' >-Seleccione-</option>
-                    <?php foreach ($this->nomina as $nomi) { ?>
-               <option value='<?php echo $nomi["id_nomina"]; ?>'><?php echo $cargo['nombre_nomina'];?></option>
-               <?php  } ?></select>
-                </div>
-            </td>
-            <td>
-             <td style='display:none;' id='ver_grado_new'> 
-
-            <select class="form-control" id="estado_fun_new" style= "width: 80%;">
-                    <option value='1' >-Seleccione estado del funcionario-</option>
-                    
-                 
-               <option >
-                           Hola
-                    </option>
-               </select>
-               </td>
-               <select class="form-control" id="estado_funcionario"
-               name="datos[sector_laboral]" >
-               <option value='vacio'>-Estado del funcionario-</option>
-               <option value="1">
-                Seleccionar
-            </option>
-             <option value="2">
-             Presente
-         </option> 
-     </select> 
- </td> 
-  
-
-</tr></table>
-</div>
- -->
-
-
-
-
 <!--------------------------------------------------------------------------------------------------->    
                         
 
-     <div class="col-md-12 mt-2">
-        <label for="cargo_nominal">
-            Cargo nominal
-<!--             <p> Condicion Laboral </p>
- -->        </label>
-        <span style='display:none;color:red' id='valid_40'>Campo sin llenar</span>
-        <table style='width:100%'><tr><td>
-            <div class="input-group">
-
-             <select class='form-control'name="datos[cargo_nominal]" id="cargo_nominal" style=" width:100%" >
-                    <option value='vacio' >-Seleccione-</option>
-                    <?php foreach ($this->cargo_nominal as $cargo) { ?>
-               <option value='<?php echo $cargo["id_cargo"]; ?>'><?php echo $cargo['nombre_cargo'];?></option>
-               <?php  } ?></select>
-                </div>
-            </td>
-
-            <td>
-           
-            <!-- <td style='display:none;' id='ver_estado_fun'> -->
-            <span style='display:none;color:red' id='valid_41'>Campo sin llenar</span>
-            <select class="form-control" name="datos[id_estado_fun]" id="id_estado_fun" style= "width: 100%;" placeholder="Indique estado del funcionario">
-                    <option value='1' >-Seleccione estado del funcionario-</option>
-                    <?php foreach ($this->estado_fun as $edo_fun) { ?>
-               <option value='<?php echo $edo_fun["id_estado_fun"]; ?>'><?php echo $edo_fun['nombre_estado'];?></option>
-               <?php  } ?></select>
-               </td>
-               <!-- <select class="form-control" id="estado_funcionario"
-               name="datos[sector_laboral]" >
-               <option value='vacio'>-Estado del funcionario-</option>
-               <option value="1">
-                Seleccionar
-            </option>
-             <option value="2">
-             Presente
-         </option> -->
-     </select> 
- </td> 
-                
-  
-
-</tr></table>
-</div>
-
-
-
-
-
- <!-- <div class="col-md-12 mt-2">
-                <label > Cargos Funcionales </label>
-             <table style='width:100%'><tr><td style='width:120%'>
-
-                <div  id='cargos_agregados'>
-
-                    <select class="form-control" id="cargos" name="datos[ocupaciones]" style= "width: 550px;">
-                    <option value='vacio' >-Seleccione-</option>
-                    <?php foreach ($this->ocupaciones as $o) { ?>
-               <option value='<?php echo $o["id_ocupacion"]; ?>'><?php echo $o['nombre_ocupacion'];?></option>
-               <?php  } ?></select>
-
-                <td>
-                   <input id='descripcion' class='form-control no-simbolos' style="width: 500px" placeholder="Descripción del car " > 
-                  <input type="button" id="agregar_cargo" value="Agregar" class="btn btn-info">
-            </td> 
-
-            
-            <td>
-                    
-
-          </div> 
-
-           <div>
-          
-           <td>
-                <textarea id='descripcion' class='form-control no-simbolos' placeholder=" Informatica, Aduanero" rows="1"></textarea> 
-            </td> 
-                       
-                    
-     </div>  
-
-     
-     </div> 
-     </table>
- <div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE;width: 100%;height: 200px !important' id='cargos_personas'>
- </div>
-
- </div> 
- -->
-                   
-
+        <div class="col-md-6 mt-2">
+            <label for="cargo_nominal">Cargo nominal</label>
+            <span style='display:none;color:red' id='valid_40'>Campo sin llenar</span>
+            <table style='width:100%'>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <select class='form-control'name="datos[cargo_nominal]" id="cargo_nominal" style=" width:100%" >
+                                <option value='vacio' >-Seleccione-</option>
+                                <?php foreach ($this->cargo_nominal as $cargo) { ?>
+                                <option value='<?php echo $cargo["id_cargo"]; ?>'><?php echo $cargo['nombre_cargo'];?></option>
+                                <?php  } ?>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <!-- <td style='display:none;' id='ver_estado_fun'> -->
+                        <span style='display:none;color:red' id='valid_41'>Campo sin llenar</span>
+                        <select class="form-control" name="datos[id_estado_fun]" id="id_estado_fun" style= "width: 100%;" placeholder="Indique estado del funcionario">
+                            <option value='1' >-Seleccione estado del funcionario-</option>
+                            <?php foreach ($this->estado_fun as $edo_fun) { ?>
+                            <option value='<?php echo $edo_fun["id_estado_fun"]; ?>'><?php echo $edo_fun['nombre_estado'];?></option>
+                            <?php  } ?>
+                        </select>
+                    </td>
+                            <!-- <select class="form-control" id="estado_funcionario"
+                            name="datos[sector_laboral]" >
+                            <option value='vacio'>-Estado del funcionario-</option>
+                            <option value="1">
+                            Seleccionar
+                            </option>
+                            <option value="2">
+                            Presente
+                            </option> </select>  -->
+                </tr>
+            </table>
+        </div>
 <!---------------------------------------------------------------------------------------------------------------------------------->
+        <div class="col-md-12 mt-2">
+            <label for="ocupacion">Cargo Funcional</label>
+            <span style='display:none;color:red' id='valid_42'>Ingrese la ocupación</span>
+            <table style='width:100%'>
+                <tr>
+                    <td>
+                        <div class="input-group" id="ocupaciones_agregadas">
+                            <select id='ocupacion' name="datos[cargos]" id="cargos" class='form-control' style="width: 350px">
+                                <option value='vacio'>Sin cargo</option>
+                                <?php foreach ($this->ocupaciones as $o) { ?>
+                                <option value='<?php echo $o["id_ocupacion"]; ?>'><?php echo $o['nombre_ocupacion'];?></option>
+                                <?php  } ?>
+                            </select>
+                            <input style='display:none' type="text" class='form-control' id='ocupacion_nueva' name="ocupacion" placeholder="Ocupación de la persona">
+                            <!-- <td><input type="button" id='agregar_cargo' class="btn btn-info" type="button" value="Agregar"></td> -->
+                        </div>
+                        <!--  <input type="button" id='btn_nueva_ocupacion' class='btn btn-info' value='Nueva' name="">  -->          
+                    <td><!-- <input type="button" id='agregar_cargo' class="btn btn-info" type="button" value="Agregar"> Agregar</button>&nbsp;&nbsp; -->  
+                </tr>
+            </table> 
+        <div><!--Descomentar--><!--<div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE; width: 800;height: 200px !important' id='cargos_personas'> -->
 
-   <div class="col-md-12 mt-2">
-
-
-<label for="ocupacion">
- Cargo Funcional
-</label>
-<span style='display:none;color:red' id='valid_42'>Ingrese la ocupación</span>
-<table style='width:100%'>
-
-<tr><td>
-    <div class="input-group" id="ocupaciones_agregadas">
-        <select id='ocupacion' name="datos[cargos]" id="cargos" class='form-control' style="width: 350px">
-            <option value='vacio'>Sin cargo</option>
-            <?php foreach ($this->ocupaciones as $o) { ?>
-               <option value='<?php echo $o["id_ocupacion"]; ?>'><?php echo $o['nombre_ocupacion'];?></option>
-               <?php  } ?></select>
-
-               <input style='display:none' type="text" class='form-control' id='ocupacion_nueva' name="ocupacion" placeholder="Ocupación de la persona">
-           
-               <!-- <td><input type="button" id='agregar_cargo' class="btn btn-info" type="button" value="Agregar"></td> -->
-           
-            </div>
-       </td>
-       
-         <td>
-       <!--  <input type="button" id='btn_nueva_ocupacion' class='btn btn-info' value='Nueva' name="">  -->        
-    
-    </td> 
-    <td><!-- <input type="button" id='agregar_cargo' class="btn btn-info" type="button" value="Agregar"> Agregar</button>&nbsp;&nbsp; -->  
-
-</tr></table> 
-
-
-<div>    <!--     Descomentar-->
-
-
-  <!--    
-   <div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE; width: 800;height: 200px !important' id='cargos_personas'> -->
-
-
-
-</div>   
  
 
 <!----------------------------------------------------------------------------------------------------------------------------------->
-                <div class="col-md-12 mt-2">
-                                        
-                <label for="id_ubicacion" >
-                <!-- Proyectos ubicaciones -->
-              Ubicación del funcionario o funcionaria
-             </label>
-             <span style='display:none;color:red' id='valid_43'>Ingrese la ubicación</span>
-              <table style='width:100%'>
-                 <!--<tr><td style='width:120%'> -->
-
+        <div class="col-md-12 mt-2">                                
+            <label for="id_ubicacion" >Ubicación del funcionario o funcionaria</label>
+            <span style='display:none;color:red' id='valid_43'>Ingrese la ubicación</span>
+            <table style='width:100%'>
+                    <!--<tr><td style='width:120%'> -->
                 <div  id='proyect_agregados'>
-
-                <select class="form-control" name="datos[id_ubicacion]" id="id_ubicacion" style= "width: 80%;">
-                    <option value='vacio' >-Seleccione-</option>
-                    <?php foreach ($this->ubicaciones as $ubi) { ?>
-               <option value='<?php echo $ubi["id_ubicacion"]; ?>'><?php echo $ubi['nombre_ubi'];?></option>
-               <?php  } ?></select>
-          </div> 
-
-                   
-          
-          <div class="col-md-12">
-
-<!-- <label>Ubicación</label> -->
-<span id='valid_enfermedad' style='color:red'></span>
-<table style='width:100%'><tr><td>
-
-
-    <select class='form-control no-simbolos' id='id_division' name="datos[id_division]" style="width: 100%">
-      <option value='0' >-Seleccione división-</option>
-      <?php foreach ($this->divisiones as $e) {?>
-        <option value='<?php echo $e['id_division']; ?>'><?php echo $e['nombre_division']; ?></option>
-    <?php }?>
-</select>
-
-</td>
-
-<td>
-<select class='form-control no-simbolos' id='id_area' name="datos[id_area]" style="width: 100%">
-      <option value='0' >-Seleccione área-</option>
-</select>
-
-</td>
-
-<td>
-<select class='form-control no-simbolos' id='id_seccion' name="datos[id_seccion]"  style="width: 100%">
-      <option value='0' >-Secccione sección-</option>
-</select>
-
-
-
-</td>
-
-    
-    <td><button id='agregar_ubicacion' class="btn btn-info" type="button">Agregar</button>&nbsp;&nbsp;</td></tr></table>
-   <!-- <div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE; width: 800;height: 200px !important' id='ubicaciones_personas'> -->
-
-
-<!-- </div> -->
-<div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE;width: 100%;height: 200px !important' id='ubicaciones_persona'>
-
-</div>
-</div>
+                    <select class="form-control mt-2" name="datos[id_ubicacion]" id="id_ubicacion" style= "width: 100%;">
+                        <option value='vacio' >-Seleccione-</option>
+                        <?php foreach ($this->ubicaciones as $ubi) { ?>
+                        <option value='<?php echo $ubi["id_ubicacion"]; ?>'><?php echo $ubi['nombre_ubi'];?></option>
+                        <?php  } ?>
+                    </select>
+                </div> 
+                <div class="col-md-12">
+                    <!-- <label>Ubicación</label> -->
+                    <span id='valid_enfermedad' style='color:red'></span>
+                    <table style='width:100%'>
+                        <tr>
+                            <td class="col-md-4 p-0">
+                                <select class='form-control no-simbolos mt-2' id='id_division' name="datos[id_division]" style="width: 100%">
+                                    <option value='0' >-Seleccione división-</option>
+                                    <?php foreach ($this->divisiones as $e) {?>
+                                        <option value='<?php echo $e['id_division']; ?>'><?php echo $e['nombre_division']; ?></option>
+                                    <?php }?>
+                                </select>
+                            </td>
+                            <td class="col-md-3 p-0">
+                                <select class='form-control no-simbolos mt-2' id='id_area' name="datos[id_area]" style="width: 100%">
+                                    <option value='0' >-Seleccione área-</option>
+                                </select>
+                            </td>
+                            <td class="col-md-3 p-0">
+                                <select class='form-control no-simbolos mt-2' id='id_seccion' name="datos[id_seccion]"  style="width: 100%">
+                                    <option value='0' >-Secccione sección-</option>
+                                </select>
+                            </td>
+                            <td class="p-0">
+                                <button id='agregar_ubicacion' class="btn btn-info mt-2" type="button">Agregar</button>&nbsp;&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                            <!-- <div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE; width: 800;height: 200px !important' id='ubicaciones_personas'> -->
+                            <!-- </div> -->
+                    <div class="col-md-12 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CEF6F5;width: 100%;height: 200px !important' id='ubicaciones_persona'>
+                    </div>
+                </div>
+        </div>   
                         <br>
                        <!--  <div>
                         </div>  Aqui vemos que tal -->                  
 
-<!--------------------------------------------------------------------------------------------------------------->
+                    <!--------------------------------------------------------------------------------------------------------------->
 
-            <div class="col-md-12 mt-2">
-                <label >
-                <!-- Proyectos=Titulos obtenidos -->
-              Títulos obtenidos
-             </label>
-             <table style='width:100%'><tr><td >
-
+        <div class="col-md-12 mt-2">
+            <label >
+            Títulos obtenidos
+            </label>
+            <table style='width:100%'><tr>
                 <div  id='proyectos_agregados'>
+                    <td class="col-md-5 p-0">
+                        <select class="form-control" id="proyectos" name="datos[proyectos]" style= "width: 100%">
+                            <option value='0' >-Seleccione-</option>
+                            <?php foreach ($this->proyectos as $pro) { ?>
+                            <option value="<?php echo $pro['id_proyecto']; ?>"><?php echo $pro['nombre_proyecto']; ?></option>
+                            <?php   } ?>
+                        </select>
+                    </td>
+                    <td class="col-md-5 p-0">
+                        <input   name="descripcion"  id='descripcion' class='form-control' style=" width: 100%" placeholder="Descripción del título">
+                    </td>
+                    <td class="p-0">
+                        <input type="button" id="agregar_proyecto"   value="Agregar" class="btn btn-info">
+                    </td>
+                </div> 
+            </table>
+        </div>
 
-                    <select class="form-control" id="proyectos" name="datos[proyectos]" style= "width: 100%">
-                    <option value='0' >-Seleccione-</option>
-                    <?php foreach ($this->proyectos as $pro) { ?>
-                      <option value="<?php echo $pro['id_proyecto']; ?>"><?php echo $pro['nombre_proyecto']; ?></option>
-                  <?php   } ?>
-              </select>
+                <!--  </td><td><input type="button" id="otro_proyecto" value="Otro" class='btn btn-info'></td>
+                <td ><input type="button" id="agregar_proyecto" value="Agregar" class='btn btn-primary'></td></tr></table> -->
+                <!-- </div>  -->
 
-              <td>
-                  <input   name="descripcion"  id='descripcion' class='form-control' style=" width: 100%" placeholder="Descripción del título" >
-                
-            </td>
+        <div class="col-md-12 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CEF6F5;width: 100%;height: 200px !important' id='proyectos_persona'>
+        </div>
 
-            
-            <td><input type="button" id="agregar_proyecto"   value="Agregar" class="btn btn-info"></td>
-                    
+    </div> 
 
-          </div>
-
-          <div>
-          
-           <td>
-              <!--  <textarea id='descripcion' class='form-control no-simbolos' placeholder=" Informatica, Aduanero" rows="1"></textarea> -->
-            </td>
-                       
-  <div>
-           <div  style='display:none' id='nuevo_proyecto'>
-
-            <table style='width:100%'>
-            
-        </table>
-     </div>
-
-<!--  </td><td><input type="button" id="otro_proyecto" value="Otro" class='btn btn-info'></td>
- <td ><input type="button" id="agregar_proyecto" value="Agregar" class='btn btn-primary'></td></tr></table> -->
- <!-- </div>  -->
-
-<div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE;width: 100%;height: 200px !important' id='proyectos_persona'>
+    </div> 
 
 </div>
-
-</div> 
-
-</div> 
-
- </div>
  
  <!---------------------------------------------------------------------------------------------------------------------->            
 
@@ -1609,21 +1384,21 @@
 
     <div class="col-md-12 mt-4">
         <div style="float: left;">
-            <a id="anterior" style='display:none' type="button" class="btn  btn-info">
+            <a id="anterior" style='display:none' type="button" class="btn btn-secondary text-white">
                 Anterior
             </a>
         </div>
     </div>
     <div class="col-md-12 mt-4">
         <div style="float: right;">
-            <a id="siguiente" type="button" class="btn  btn-info">
+            <a id="siguiente" type="button" class="btn btn-primary text-white">
                 Siguiente
             </a>
         </div>
     </div>
     <div class="text-center m-t-20" id="botones-finales" style='display:none'>
         <div class="col-xs-12">
-            <input type="button" class="btn  btn-primary m-r-10" name="" id="guardar" value="Guardar">
+            <input type="button" class="btn text-white m-r-10" style="background:#15406D" name="" id="guardar" value="Guardar">
         </div>
     </div>
 </div>
