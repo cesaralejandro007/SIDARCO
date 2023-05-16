@@ -2199,7 +2199,7 @@ function enviar_informacion(){
 
      //registrar_condicion_laboral();
 
-      if(egresado.length!=2){
+      if(egresado.length!=0){
         registrar_egresado();
     }
       
@@ -2354,18 +2354,19 @@ function registrar_areas_persona(){
 
 
 function registrar_egresado(){
-
-  var datos_egresado=new Object();
-    datos_egresado['cedula_persona']=cedula.value;
-    datos_egresado['id_egresado']=egresado_nomina.value;
-  
+/*   var datos_egreso= [];
+  var datos=new Object();
+    datos['cedula_persona']=cedula.value;
+    datos['id_egresado']=egresado_nomina.value;
+    datos_egreso.push(datos);
+    alert(datos_egreso); */
     $.ajax({
      type:"POST",
      url:BASE_URL+"Personas/registrar_egresado_persona",
-     data:{"datos":datos_egresado}
+     data:{"cedula_persona":cedula.value,"id_egresado":egresado_nomina.value}
    }).done(function(result){
-    alert(result);
-    console.log(result); 
+     console.log(result)
+    
    })
    
   }

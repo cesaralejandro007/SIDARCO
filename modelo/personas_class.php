@@ -620,25 +620,24 @@ class Personas_Class extends Modelo
         }
     }
 
+
+
+
     public function Registrar_persona_egreso($data)
     {
 
         try {
             $datos = $this->conexion->prepare('INSERT INTO personas_egresados (
                 cedula_persona,
-                id_egresado,
-                descripcion,
-                fecha_egreso    
+                id_egresado 
                 ) VALUES (
-                :id_cedula_persona,
-                :id_egresado,
-                :descripcion,
-                :fecha_egreso
+                :cedula_persona,
+                :id_egresado 
                 )');
 
             $datos->execute([
                 'cedula_persona'         =>  $data['cedula_persona'],
-                'id_egresado'            =>  $data['id_egresado']
+                'id_egresado'            =>  $data['id_egresado'] 
             ]);
 
             return true;
@@ -647,7 +646,6 @@ class Personas_Class extends Modelo
             return $this->Capturar_Error($e);
         }
     }
-
 
 
 

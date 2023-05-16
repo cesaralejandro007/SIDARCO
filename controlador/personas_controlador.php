@@ -1064,22 +1064,21 @@ public function egresar_persona(){
 
 public function registrar_egresado_persona(){
 
-  $ubicaciones_fun=$this->Consultar_Tabla_egresados(); 
-  $datos=$_POST['datos'];
+   
+  $datos=[
+    "cedula_persona" =>  $_POST['cedula'],
+    "id_egresado" =>$_POST['id_egresado']
+  ];
 
-    foreach ($ubicaciones_fun as $ubi) {
-        if ($ubi['id_egresado'] == $datos['id_egresado']) {
-            $this->modelo->Registrar_persona_egreso([
-              "cedula_persona"   =>   $datos['cedula_persona'],
-              "id_egresado"      =>     $ubi['id_egresado']
-            ]);
+  $this->modelo->Registrar_persona_egreso($datos);
+
+  /* echo $datos; */
+
           
-     
-  }
+}   
+  
 
- }
 
-}
 
 
 public function ingresar_persona(){
