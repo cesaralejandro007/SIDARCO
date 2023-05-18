@@ -1072,7 +1072,7 @@ public function registrar_egresado_persona(){
 
   $this->modelo->Registrar_persona_egreso($datos);
 
-  /* echo $datos; */
+   echo $datos; 
 
           
 }   

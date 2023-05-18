@@ -107,7 +107,7 @@
                                             <div class="col-md-12 text-center">
                                                 <h2>
                                                     Información  Personal
-                                                </h2>
+                                                </h4>
                                             </div>
                                             
                                             <div class="col-md-12 mt-2">
@@ -121,7 +121,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 mt-4">
+                                            <div class="col-md-3 mt-4">
                                                 <label for="primer_nombre">
                                                     Primer nombre
                                                 </label>
@@ -134,7 +134,7 @@
 
                                             </div>
 
-                                            <div class="col-md-6 mt-4">
+                                            <div class="col-md-3 mt-4">
                                                 <label for="segundo_nombre">
                                                     Segundo nombre
                                                 </label>
@@ -147,9 +147,9 @@
 
                                             </div>
 
-                                            <div class="col-md-6 mt-2">
+                                            <div class="col-md-3 mt-2">
                                                 <label for="primer_apellido">
-                                                    Primer Apellido
+                                                    Primer apellido
                                                 </label>
                                                 <span style='display:none;color:red' id='valid_4'>Ingrese el primer apellido</span>
                                                 <div class="input-group">
@@ -160,9 +160,9 @@
 
                                             </div>
 
-                                            <div class="col-md-6 mt-2">
+                                            <div class="col-md-3 mt-2">
                                                 <label for="segundo_apellido">
-                                                    Segundo Apellido
+                                                    Segundo apellido
                                                 </label>
                                                 <span style='display:none;color:red' id='valid_5'>Ingrese el segundo apellido</span>
                                                 <div class="input-group">
@@ -172,7 +172,8 @@
                                                 </div>
 
                                             </div>
-                                            <div class="col-md-6 mt-2">
+
+                                            <div class="col-md-3 mt-2">
                                                 <div class="form-group">
                                                     <label for="fecha_nacimiento">
                                                         Fecha De Nacimiento 
@@ -185,7 +186,7 @@
                                         </div>
 
                                    
-                                        <div class="col-md-6 mt-2">
+                                        <div class="col-md-3 mt-2">
                                             <label for="estado_civil">
                                                 Estado Civil
                                             </label>
@@ -207,7 +208,8 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 mt-2">
+
+                                        <div class="col-md-3 mt-2">
                                             <label for="genero">
                                                 Género
                                             </label>
@@ -245,7 +247,7 @@
 
 -->
 
-                                    <div class="col-md-6 mt-2">
+                                    <div class="col-md-3 mt-2">
                                         <label for="nacionalidad">
                                             Nacionalidad
                                         </label>
@@ -974,52 +976,14 @@
 <!--------------------------------------------------------->
 
                             <div class="col-md-6 mt-2">
-                                <label for="egresado">Egresado de nómina</label>
-                                <span style='display:none;color:red' id='valid_36'>Campo sin llenar</span>
-                                <table style='width:100%'>
-                                    <tr>
-                                        <td>
-                                            <select class="form-control" id="egresado" style="width: 100%">
-                                                <option value='vacio'>-Seleccione-</option>
-                                                <option value="1">
-                                                Sí
-                                                </option>
-                                                <option value="2">
-                                                No
-                                                </option>
-                                            </select>
-                                        </td> 
-                                                <!-- <td style='display:none;' id='ver_sector_formal'>
-                                                <input  class="form-control" id="tipo_sector_formal"
-                                                name="datos[tipo_sector_formal]" type="date">
-                                                </td> -->
-                                        <td style='display:none;' id='ver_egresado'>
-                                            <!-- <div class="input-group"> -->
-                                            <span style='display:none;color:red' id='valid_37'>Campo sin llenar</span>
-                                            <select class="form-control" name="datos[id_egresado]" id="egresado_nomina" style= "width: 100%;" placeholder="Indique motivo de egreso">
-                                                <option value='vacio' >-Seleccione-</option>
-                                                <?php foreach ($this->egreso as $egre) { ?>
-                                                <option value='<?php echo $egre["id_egresado"]; ?>'><?php echo $egre['nombre_egresado'];?></option>
-                                                <?php  } ?>
-                                            </select>
-                                        </td>
-                                                <!-- <td>
-                                                <input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name="">
-                                                </td> -->
-                                    </tr>
-                                </table>
-                            </div>
-<!--------------------------------------------------------------------------------------------------->    
-<!--------------------------------------------------------------------------------------------------------------------------->
-                            <div class="col-md-6 mt-2">
-                                <label for="nomina">Nómina a la que pertenece </label>
+                            <label for="nomina">Nómina a la que pertenece </label>
                                 <span style='display:none;color:red' id='valid_38'>Campo sin llenar</span>
                                 <table style='width:100%'>
                                     <tr>
                                         <td>
                                             <!-- <div class="input-group"> -->
                                             <select class="form-control"  name="datos[nomina]" id="nomina" style= "width: 100%;">
-                                                <option value='vacio' >-Seleccione el grado o jerarquía-</option>
+                                                <option value='vacio' >-Seleccione-</option>
                                                 <?php foreach ($this->nomina as $nomi) { ?>
                                                 <option value='<?php echo $nomi["id_nomina"]; ?>'><?php echo $nomi['nombre_nomina'];?></option>
                                                 <?php  } ?>
@@ -1035,15 +999,37 @@
                                             <!-- <div class="input-group"> -->
                                             <span style='display:none;color:red' id='valid_39'>Campo sin llenar</span>
                                             <select class="form-control" id="grado_fun" name="datos[grado_fun]"  placeholder="Indique el grado o jerarquía" >
-                                                <option value='vacio' >-Seleccione-</option>
+                                                <option value='vacio' >-Seleccione  el grado o jerarquía-</option>
                                                 <option value='Coronel'>Coronel</option>
                                                 <option value='Tiniente'>Teniente</option>
                                             </select>
                                         </td>
                                     </tr>
                                 </table>
-                                    <!-- <input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name=""> -->
-                            </div>      
+                            </div>
+<!--------------------------------------------------------------------------------------------------->    
+<!--------------------------------------------------------------------------------------------------------------------------->
+                            <div class="col-md-6 mt-2">
+                            <label for="ocupacion">Cargo Funcional</label>
+            <span style='display:none;color:red' id='valid_42'>Ingrese la ocupación</span>
+            <table style='width:100%'>
+                <tr>
+                    <td>
+                        <div class="input-group" id="ocupaciones_agregadas">
+                            <select id='ocupacion' name="datos[cargos]" id="cargos" class='form-control' style="width: 350px">
+                                <option value='vacio'>Sin cargo</option>
+                                <?php foreach ($this->ocupaciones as $o) { ?>
+                                <option value='<?php echo $o["id_ocupacion"]; ?>'><?php echo $o['nombre_ocupacion'];?></option>
+                                <?php  } ?>
+                            </select>
+                            <input style='display:none' type="text" class='form-control' id='ocupacion_nueva' name="ocupacion" placeholder="Ocupación de la persona">
+                            <!-- <td><input type="button" id='agregar_cargo' class="btn btn-info" type="button" value="Agregar"></td> -->
+                        </div>
+                        <!--  <input type="button" id='btn_nueva_ocupacion' class='btn btn-info' value='Nueva' name="">  -->          
+                    <td><!-- <input type="button" id='agregar_cargo' class="btn btn-info" type="button" value="Agregar"> Agregar</button>&nbsp;&nbsp; -->  
+                </tr>
+            </table> <!-- <input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name=""> -->
+          </div>      
 
 
 <!----------------------------------------------------------------------------->
@@ -1090,25 +1076,49 @@
         </div>
 <!---------------------------------------------------------------------------------------------------------------------------------->
         <div class="col-md-12 mt-2">
-            <label for="ocupacion">Cargo Funcional</label>
-            <span style='display:none;color:red' id='valid_42'>Ingrese la ocupación</span>
-            <table style='width:100%'>
-                <tr>
-                    <td>
-                        <div class="input-group" id="ocupaciones_agregadas">
-                            <select id='ocupacion' name="datos[cargos]" id="cargos" class='form-control' style="width: 350px">
-                                <option value='vacio'>Sin cargo</option>
-                                <?php foreach ($this->ocupaciones as $o) { ?>
-                                <option value='<?php echo $o["id_ocupacion"]; ?>'><?php echo $o['nombre_ocupacion'];?></option>
-                                <?php  } ?>
-                            </select>
-                            <input style='display:none' type="text" class='form-control' id='ocupacion_nueva' name="ocupacion" placeholder="Ocupación de la persona">
-                            <!-- <td><input type="button" id='agregar_cargo' class="btn btn-info" type="button" value="Agregar"></td> -->
-                        </div>
-                        <!--  <input type="button" id='btn_nueva_ocupacion' class='btn btn-info' value='Nueva' name="">  -->          
-                    <td><!-- <input type="button" id='agregar_cargo' class="btn btn-info" type="button" value="Agregar"> Agregar</button>&nbsp;&nbsp; -->  
-                </tr>
-            </table> 
+        <label for="egresado">Egresado de nómina</label>
+                                <span style='display:none;color:red' id='valid_36'>Campo sin llenar</span>
+                                <table style='width:100%'>
+                                    <tr>
+                                        <td>
+                                            <select class="form-control" id="egresado" style="width: 100%">
+                                                <option value='vacio'>-Seleccione-</option>
+                                                <option value="1">
+                                                Sí
+                                                </option>
+                                                <option value="2">
+                                                No
+                                                </option>
+                                            </select>
+                                        </td> 
+                                                <!-- <td style='display:none;' id='ver_sector_formal'>
+                                                <input  class="form-control" id="tipo_sector_formal"
+                                                name="datos[tipo_sector_formal]" type="date">
+                                                </td> -->
+                                        <td style='display:none;' id='ver_egresado'>
+                                            <!-- <div class="input-group"> -->
+                                            <span style='display:none;color:red' id='valid_37'>Campo sin llenar</span>
+                                            <select class="form-control" name="datos[id_egresado]" id="egresado_nomina" style= "width: 100%;" placeholder="Indique motivo de egreso">
+                                                <option value='vacio' >-Seleccione-</option>
+                                                <?php foreach ($this->egreso as $egre) { ?>
+                                                <option value='<?php echo $egre["id_egresado"]; ?>'><?php echo $egre['nombre_egresado'];?></option>
+                                                <?php  } ?>
+                                            </select>
+                           
+                                        </td>
+                                       
+
+
+                                        <td style='display:none;' id='ver_descripcion'>
+                                            <!-- <div class="input-group"> -->
+                                            <span style='display:none;color:red' id='valid'>Campo sin llenar</span>
+                                            <input type="text" name="datos[descripcion]" id="descripcion" style= "width: 100%;" placeholder="fecha de egreso">
+                                        </td>
+                                                <!-- <td>
+                                                <input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name="">
+                                                </td> -->
+                                    </tr>
+                                </table>
         <div><!--Descomentar--><!--<div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE; width: 800;height: 200px !important' id='cargos_personas'> -->
 
  
@@ -1209,9 +1219,9 @@
 <div class="tab-pane" id="panel4" role="tabpanel">
     <div class="row">
         <div class="col-md-12 text-center mt-2">
-            <h2>
+            <h4>
                 Información de Usuario
-            </h2>
+            </h4>
         </div>
         <div class="col-md-12 mt-2">
             <div class="form-group">
@@ -1281,7 +1291,7 @@
                             <div class="input-group">
                                 <select class='form-control' id='rol_usuario'>
                                     <option value='vacio'>-Seleccione-</option>
-                                    <option value='Habitante'>Habitante</option>
+                                    <option value='Habitante'>Funcionaria/o</option>
                                      <option value='Super Usuario'>Super Usuario</option>
                                       <option value='Administrador'>Administrador</option>
                                 </select>
