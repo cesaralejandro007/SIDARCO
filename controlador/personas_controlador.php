@@ -1062,6 +1062,24 @@ public function egresar_persona(){
 
 }
 
+public function registrar_egresado_persona(){
+
+   
+  $datos=[
+    "cedula_persona" =>  $_POST['cedula'],
+    "id_egresado" =>$_POST['id_egresado']
+  ];
+
+  $this->modelo->Registrar_persona_egreso($datos);
+
+  /* echo $datos; */
+
+          
+}   
+  
+
+
+
 
 public function ingresar_persona(){
 

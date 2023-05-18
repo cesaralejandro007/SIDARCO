@@ -244,39 +244,6 @@
                                     </div>
 
 -->
-<!--
-
-
-
-                                        <div class="col-md-6 mt-2">
-                                            <label for="sexualidad">
-                                                Orientación sexual
-                                            </label>
-                                            <span style='display:none;color:red' id='valid_9'>Ingresela orientación sexual</span>
-                                            <div class="input-group">
-                                                <select class="custom-select" id="sexualidad"
-                                                name="datos[sexualidad]">
-                                                <option selected="" value="vacio">
-                                                    -Seleccione-
-                                                </option>
-                                                <option value="Heterosexual">
-                                                    Heterosexual
-                                                </option>
-                                                <option value="Homosexual">
-                                                    Homosexual
-                                                </option>
-                                                <option value="Bisexual">
-                                                    Bisexual
-                                                </option>
-                                                <option value="Otro">
-                                                    Otro
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
--->
 
                                     <div class="col-md-6 mt-2">
                                         <label for="nacionalidad">
@@ -305,27 +272,6 @@
                                            
                                         </div>
                                     </div>
-<!--
-                                    <div class="col-md-6 mt-2">
-                                        <label for="afrodescendencia">
-                                            Afrodescendencia
-                                        </label>
-                                        <span style='display:none;color:red' id='valid_12'>Indique si es afrodescendente</span>
-                                       <select class="custom-select" id="afrodescendencia"
-                                        name="afrodescendencia">
-                                        <option selected="" value="vacio">
-                                            -Seleccione-
-                                        </option>
-                                        <option value="1">
-                                            Si
-                                        </option>
-                                        <option value="0">
-                                         No
-                                     </option>
-
-                                 </select>
-                             </div>
--->
 
 <!--
 
@@ -393,27 +339,6 @@
      </div>
 -->
 
-<!--
-     <div class="col-md-6 mt-2">
-        <label for="miliciano">
-            Miliciano
-        </label>
-        <span style='display:none;color:red' id='valid_17'>Indique si es miliciano</span> 
-        <select class="custom-select" id="miliciano"
-        name="miliciano">
-        <option selected="" value="vacio">
-            -Seleccione-
-        </option>
-        <option value="1">
-            Si
-        </option>
-        <option value="0">
-         No
-     </option>
-
- </select>
-</div>
--->
 
 <div class="col-md-6 mt-2">
     <label for="transporte">
@@ -1298,7 +1223,7 @@
                     <tr><td>
                         <input class="form-control no-espacios" id="contrasenia" name=""
                         placeholder="Contraseña de ingreso" type="password" oninput="Limitar(this,10)" value="Seniat2023" readonly>
-                    </td><td><button type='button' class='btn btn-default' id='ver_clave'><em class='fa fa-eye'></em></button></td></tr></table>
+        <td><button type='button' class='btn btn-default' id='ver_clave'><em class='fa fa-eye'></em></button></td></tr></table>
                 </table>
 
             </div>

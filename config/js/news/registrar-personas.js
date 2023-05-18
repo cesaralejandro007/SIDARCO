@@ -2199,10 +2199,10 @@ function enviar_informacion(){
 
      //registrar_condicion_laboral();
 
-     /* if(cargos_persona.length!=0){
-      registrar_cargos_persona();
+      if(egresado.length!=0){
+        registrar_egresado();
     }
-      */
+      
 
 
    /*   if(proyectos_persona.length!=0){
@@ -2353,6 +2353,25 @@ function registrar_areas_persona(){
 }
 
 
+function registrar_egresado(){
+/*   var datos_egreso= [];
+  var datos=new Object();
+    datos['cedula_persona']=cedula.value;
+    datos['id_egresado']=egresado_nomina.value;
+    datos_egreso.push(datos);
+    alert(datos_egreso); */
+    $.ajax({
+     type:"POST",
+     url:BASE_URL+"Personas/registrar_egresado_persona",
+     data:{"cedula_persona":cedula.value,"id_egresado":egresado_nomina.value}
+   }).done(function(result){
+     console.log(result)
+    
+   })
+   
+  }
+
+
 
 function registrar_misiones_persona(){
 
@@ -2501,21 +2520,7 @@ if(lleno){
 
 
 } */
-
-function registrar_egresado(){
-
-  var datos_egresado=new Object();
-  datos_egresado['cedula_persona']=cedula.value;
-  datos_egreado['egresado_nomina']=egresado_nomina.value;
-
-  $.ajax({
-   type:"POST",
-   url:BASE_URL+"Personas/",
-   data:{"datos":datos_egresado}
- }).done(function(result){
- });
-
-}
+  
 
 
 /*
