@@ -76,7 +76,7 @@ class Login extends Controlador
                     $this->Cargar_Modelo("personas");$datos_u = $this->modelo->Consultar();
 
                     foreach ($datos_u as $tabla_usuario) {
-                        if ($tabla_usuario['cedula_persona'] == $_POST['cedula_usuario'] && $tabla_usuario['contrasenia'] == $contrasenia) {
+                        if ($tabla_usuario['cedula_persona'] == $_POST['cedula_usuario'] && $tabla_usuario['contrasenia'] == $contrasenia && $tabla_usuario['estatus'] == 1) {
 
                             $this->Cargar_Modelo("bitacora");
                             $this->modelo->__SET("SQL", "SQL_02");$this->modelo->__SET("tipo", "1");

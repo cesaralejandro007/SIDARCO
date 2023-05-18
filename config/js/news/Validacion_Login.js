@@ -91,7 +91,11 @@ function Respuesta_Controlador(respuesta, form) {
         $("#cedula").css("border-color", "#F14B4B");
         $("#cedula").focus();
         $("#mensaje-cedula").html("Usuario No Registrado.");
-    } else {
+    }else if (respuesta == 3) {
+        $("#cedula").css("border-color", "#F14B4B");
+        $("#cedula").focus();
+        $("#mensaje-cedula").html("Usuario deshabilitado.");
+    }  else {
         if (respuesta == 1) {
             $("#contrasenia").blur();
             form.serialize();

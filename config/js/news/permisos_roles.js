@@ -319,7 +319,7 @@ function cambio_estado_permiso(cedula,estado){
 	$.ajax({
 		type:"POST",
 		url:BASE_URL+"Seguridad/cambio_estado",
-		data:{'cedula_persona':cedula,"estado":parseInt(estado)}
+		data:{'cedula_persona':cedula,"estatus":parseInt(estado)}
 	}).done(function(result){
 		console.log(result);
 		var mensaje="";

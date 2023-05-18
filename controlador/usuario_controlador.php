@@ -128,6 +128,8 @@ class Usuario extends Controlador
 
             if ($existe['estado'] == 0) {
                 echo 0;
+            }else if ($existe['estatus'] == 0) {
+                echo 3;
             } else {
 
                 if ($contrasenia == $password) {

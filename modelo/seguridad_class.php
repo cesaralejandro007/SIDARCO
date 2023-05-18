@@ -121,7 +121,7 @@ class Seguridad_Class extends Modelo
           public function cambio_estado($data)
     {    
 
-        $sql     = 'UPDATE personas SET estado=:estado  WHERE cedula_persona = :cedula_persona'; 
+        $sql     = 'UPDATE personas SET estatus=:estatus  WHERE cedula_persona = :cedula_persona'; 
         $arreglo = '';
 
         try {
@@ -130,7 +130,7 @@ class Seguridad_Class extends Modelo
 
             $datos->execute([
                 'cedula_persona'     => $data['cedula_persona'],
-                'estado'       => $data['estado']
+                'estatus'       => $data['estatus']
              ]);
 
             return true;
