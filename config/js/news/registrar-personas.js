@@ -155,6 +155,9 @@ var cargos_persona=[];
  var egresado=document.getElementById("egresado");
 var egresado_nomina=document.getElementById("egresado_nomina"); 
 var ver_egresado=document.getElementById("ver_egresado");
+var ver_fecha=document.getElementById("fecha");
+var ver_descripcion=document.getElementById("ver_descripcion");
+var descripcion=document.getElementById("descripcion");
 var id_estado_fun=document.getElementById("id_estado_fun"); 
 var cargo_nominal=document.getElementById("cargo_nominal");
 var nomina=document.getElementById("nomina");
@@ -385,7 +388,7 @@ org_politica.onchange=function(){
 
 egresado.onchange=function(){
 
-  change_to_dynamic_record("1",ver_egresado,egresado,egresado_nomina);
+  change_to_dynamic_record("1",ver_egresado, egresado,egresado_nomina);
 
 
 
@@ -2363,13 +2366,16 @@ function registrar_egresado(){
     $.ajax({
      type:"POST",
      url:BASE_URL+"Personas/registrar_egresado_persona",
-     data:{"cedula_persona":cedula.value,"id_egresado":egresado_nomina.value}
+     data:{"cedula":cedula.value,"id_egresado":egresado_nomina.value}
    }).done(function(result){
-     console.log(result)
+    alert(result);
+     console.log(result);
     
    })
    
   }
+
+  
 
 
 

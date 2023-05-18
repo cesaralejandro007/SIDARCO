@@ -640,6 +640,7 @@ class Personas_Class extends Modelo
                 'id_egresado'            =>  $data['id_egresado'] 
             ]);
 
+                    echo $datos;
             return true;
 
         } catch (PDOException $e) {
@@ -1040,7 +1041,7 @@ class Personas_Class extends Modelo
         }
     }
 
-    public function Actualizar_cond_laboral($data)
+    /* public function Actualizar_cond_laboral($data)
     {
 
         try {
@@ -1067,7 +1068,7 @@ class Personas_Class extends Modelo
         } catch (PDOException $e) {
             return $this->Capturar_Error($e);
         }
-    }
+    } */
 
     public function Eliminar($param)
     {
