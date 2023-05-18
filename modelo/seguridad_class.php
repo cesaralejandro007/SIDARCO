@@ -50,7 +50,7 @@ class Seguridad_Class extends Modelo
     public function get_permisos($cedula) 
     {
 
-        $tabla = "SELECT  PUM.* , M.nombre FROM permisos_usuario_modulo PUM , modulos M WHERE PUM.cedula_usuario = $cedula AND M.id_modulo = PUM.id_modulo";
+        $tabla = "SELECT  PUM.* , M.nombre FROM roles_permisos_modulo PUM , modulos M WHERE PUM.cedula_usuario = $cedula AND M.id_modulo = PUM.id_modulo";
 
         $respuestaArreglo = '';
         try {

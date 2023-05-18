@@ -121,7 +121,7 @@
             </div></td><td>
             <div >
                 <h3>Configuración de roles:</h3><br>
-               <div class="info-box mb-3 " style="background:#073E4D;color:white">
+               <div class="info-box mb-3 " style="background:#06333E;color:white">
         <span class="info-box-icon"><i class="fa fa-universal-access"></i></span>
 
         <div class="info-box-content">
@@ -131,9 +131,19 @@
         <!-- /.info-box-content -->
     </div>
 
+    <div class="info-box mb-3 " style="background:#074251;color:white">
+        <span class="info-box-icon"><i class="fas fa-users"></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">Jefe de división</span>
+        </div>
+         <span class="fa fa-cog cog-icon" onclick="get_permisos_rol('Jefe de división');" style="font-size:30px"></span>
+        <!-- /.info-box-content -->
+    </div>
+
 
       <div class="info-box mb-3 " style="background:#125D71;color:white">
-        <span class="info-box-icon"><i class="fa fa-user-circle"></i></span>
+        <span class="info-box-icon"><i class="fas fa-user-shield"></i></span>
 
         <div class="info-box-content">
             <span class="info-box-text">Administrador</span>
@@ -142,13 +152,24 @@
         <!-- /.info-box-content -->
     </div>
 
-      <div class="info-box mb-3 " style="background:#3295B0;color:white">
+    
+    <div class="info-box mb-3 " style="background:#3295B0;color:white">
+        <span class="info-box-icon"><i class="fa fa-user-circle"></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">Usuario</span>
+        </div>
+       <span class="fa fa-cog cog-icon" onclick="get_permisos_rol('Usuario');" style="font-size:30px"></span>
+        <!-- /.info-box-content -->
+    </div>
+
+      <div class="info-box mb-3 " style="background:#41BBDD;color:white">
         <span class="info-box-icon"><i class="fa fa-user"></i></span>
 
         <div class="info-box-content">
-            <span class="info-box-text">Habitante</span>
+            <span class="info-box-text">Funcionario</span>
         </div>
-         <span class="fa fa-cog cog-icon" onclick="get_permisos_rol('Habitante');" style="font-size:30px"></span>
+         <span class="fa fa-cog cog-icon" onclick="get_permisos_rol('Funcionario');" style="font-size:30px"></span>
         <!-- /.info-box-content -->
     </div>
 
