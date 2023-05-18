@@ -12,22 +12,21 @@
                     <input type="hidden" name="" id="cedulaOculta">
                     <input type="hidden" name="" id="rolOculto">
                     <div class="form-group">
-
                         <div class="col-md-12 ">
                             <div class="form-group">
-
                                 <label for="ro">Rol del usuario</label>
                                 <div class="input-group">
                                     <select class='form-control' id="rol_user">
                                         <option value='0'>Seleccione...</option>
-                                        <option value='Habitante'>Habitante</option>
                                         <option value='Super Usuario'>Super Usuario</option>
+                                        <option value='Jefe de división'>Jefe de división</option>
                                         <option value='Administrador'>Administrador</option>
+                                        <option value='Usuario'>Usuario</option>
+                                        <option value='Funcionario'>Funcionario</option>
 
                                     </select>
                                     </input>
                                 </div>
-
                                 <br>
                                 <label for="contrasenia">
                                     Contraseña del usuario
