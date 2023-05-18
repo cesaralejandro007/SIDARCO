@@ -533,7 +533,7 @@ public function consultar_informacion_persona_egresos(){
 
     "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
 
-    "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Ingresar persona' onclick='ingresar_datos(`".$p['cedula_persona']."`)'><span class='fas fa-user-alt'></span></button>",
+    "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Ingresar persona' onclick='ingresar_datos(`".$p['cedula_persona']."`,`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fas fa-user-alt'></span></button>",
   ];
 }
 

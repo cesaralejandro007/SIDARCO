@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id='modal-title'>Editar persona</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" id="modalpersona" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -301,7 +301,6 @@
         </center>
       </div>
       <div class="modal-footer ">
-        <button type="button" class="btn btn-default" onclick="cerrarmodal1()" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn" style="background:#15406D; color:white" id='guardar_cambios'>Guardar cambios</button>
       </div>
     </div>

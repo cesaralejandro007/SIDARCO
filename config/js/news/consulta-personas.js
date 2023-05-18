@@ -339,7 +339,8 @@ function egresar(v1,v2,v3){
 }
 
 
-function ingresar_datos(cedula) {
+function ingresar_datos(cedula,persona,ocupacion,condicion_lab,transporte,bonos,misiones,divisiones,titulos,org_politica) {
+
   swal(
     {
       title: "Atención",
@@ -370,10 +371,10 @@ function ingresar_datos(cedula) {
                 showConfirmButton: false,
                 timer: 2000,
               });
-
-              setTimeout(function () {
-                location.reload();
-              }, 1000);
+              editar_datos(persona,ocupacion,condicion_lab,transporte,bonos,misiones,divisiones,titulos,org_politica);
+              vingresos.value = "";
+              $("#edit_persona").modal({ backdrop: "static", keyboard: false });
+              $('#modalpersona').remove();
             }, 500);
           }
         });
@@ -381,6 +382,7 @@ function ingresar_datos(cedula) {
     }
   );
 }
+
 
 
 var modal_title = document.getElementById("modal-title");
