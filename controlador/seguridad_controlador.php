@@ -27,7 +27,7 @@ class Seguridad extends Controlador
         foreach ($usuarios as $u) {
             $permisos = $this->modelo->get_permisos($u['cedula_persona']);
 
-            if ($u['estado'] == '1') {
+            if ($u['estatus'] == '1') {
                 $estado = "<em class='fa fa-minus-circle negativo' onclick='cambiar_estado_persona(`" . $u['cedula_persona'] . "`,0)'></em><span style='display:none'>Activo</span>";
             } else {
                 $estado = "<em class='fa fa-plus-circle positivo' onclick='cambiar_estado_persona(`" . $u['cedula_persona'] . "`,1)'></em><span style='display:none'>Bloqueado</span>";
@@ -100,7 +100,7 @@ class Seguridad extends Controlador
     {
         echo $this->modelo->cambio_estado([
             "cedula_persona" => $_POST["cedula_persona"],
-            "estado"         => $_POST['estado'],
+            "estatus"         => $_POST['estatus'],
         ]);
 
     }
