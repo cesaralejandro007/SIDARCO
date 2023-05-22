@@ -89,19 +89,18 @@ function ver_datos(
     ? (org = "No")
     : (org = org_politica_info[0]["nombre_org"]);
  */  
-var transp;
+    var transp;
 
-  transporte_info.length == 0
-    ? (transp = "Público")
-    : (transp = transporte_info[0]["descripcion_transporte"]);
-
+    transporte_info.length == 0
+      ? (transp = "Público")
+      : (transp = transporte_info[0]["transporte"]);
 /*   tabla6 +=
     "<tr><td style='width:25%'><em class='fa fa-puzzle-piece'></em> " +
     org +
     "</td>";
  */
   tabla6 +=
-    "<td style='width:25%'><em class='fa fa-car'></em> " + transp + "</td>";
+    "<td style='width:25%'><em class='fa fa-car'></em></td>";
 
   if (bonos_info.length == 0) {
     tabla6 += "<td style='width:25%'>No aplica</td>";
@@ -146,13 +145,17 @@ var transp;
   "</div></td></tr><table>";
 
   var tabla9 =
-  "<br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:33%'>Cargo</td><td style='width:33%'>Procedencia por estado</td><td style='width:33%'>Estado del funcionario</td></tr>";
+  "<br><table style='width:100%' border='1'><tr  class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:20%'>Transporte</td><td style='width:20%'>Tipo de transporte</td><td style='width:20%'>Cargo</td><td style='width:20%'>Procedencia por estado</td><td style='width:20%'>Estado del funcionario</td></tr>";
   tabla9 +=
-  "<tr><td style='width:33%'> " + 
+  "<tr><td style='width:20%'> " + 
+  transporte_info[0]["tipo_transporte"]+
+  "<td style='width:20%'> " + 
+  transporte_info[0]["descripcion_transporte"]+
+  "</td><td style='width:20%'> "+ 
   persona_info["nombre_cargo"]+
-  "</td><td style='width:33%'> "+ 
+  "</td><td style='width:20%'> "+ 
   persona_info["nombre_estado_procedencia"]+ 
-  "</td><td style='width:33%'> "+ 
+  "</td><td style='width:20%'>"+ 
   persona_info["nombre_estado"] +
   "</td>" +
   "</div></td></tr><table>";
