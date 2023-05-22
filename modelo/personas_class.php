@@ -198,8 +198,26 @@ class Personas_Class extends Modelo
         }  
     }
 
+    public function Actualizar_transporte($cedula_persona,$transporte,$observacion)
+    {
+        try {
+            $query = $this->conexion->prepare("UPDATE transporte  SET
+                tipo_transporte           =:tipo_transporte,
+                descripcion_transporte    =:descripcion_transporte
+                WHERE cedula_propietario =:cedula_persona"
+            );
 
+            $query->execute([
+                'cedula_persona'            =>$cedula_persona, 
+                'tipo_transporte'            =>$transporte, 
+                'descripcion_transporte'      =>$observacion
+            ]);
+            return true;
 
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    } 
 
      public function Registrar_transporte($data)
     {

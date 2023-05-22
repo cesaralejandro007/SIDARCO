@@ -88,15 +88,13 @@
             <div class='border border-bottom-0 border-dark rounded-top p-1' style='width:98%;background:#15406D;color:white;font-weight:bold'>Datos Laborales</div>
               <tr class='text-dark' style='background:#AEB6BF;font-weight:bold'>
                 <td style='width:20%'>Nivel educativo</td>
-                <td style='width:20%'>Condición Laboral</td>
                 <td style='width:20%'>Ubicación</td>
                 <td style='width:20%'>Nomina</td>
                 <td class="d-none jq" style='width:20%'>Grado/JQ</td>
               </tr>
               <tr>
-                <td style='width:20%'><input type="text" id='nedu' class='form-control' placeholder="Nivel educativo"></td>
                 <td style='width:20%'>
-                  <input type="text" id='condil' class='form-control'>
+                  <input type="text" id='nedu' class='form-control' placeholder="Nivel educativo">
                 </td>
                   <td style='width:20%'>
                   <select class='form-control' id='ubic'>
@@ -115,7 +113,7 @@
                   </select>
                 </td>
                 <td style='width:20%' class="d-none jq">
-                <input type="text" id='jqresguardo' class='form-control'>
+                  <input type="text" id='jqresguardo' class='form-control'>
                 </td>
               </tr>
             </table>
@@ -140,12 +138,24 @@
             <br>
             <table style='width:98%;' border='1'>
               <tr class='text-dark' style='background:#AEB6BF;font-weight:bold'>
-                <td style='width:25%'>Cargo</td>
-                <td style='width:25%'>Procedencia por estado</td>
-                <td style='width:25%'>Estado del funcionario</td>
+                <td style='width:20%'>Transporte</td>
+                <td class="d-none tr" style='width:20%'>Indique el tipo de transporte</td>
+                <td style='width:20%'>Cargo</td>
+                <td style='width:20%'>Procedencia por estado</td>
+                <td style='width:20%'>Estado del funcionario</td>
               </tr>
               <tr>
-                <td style='width:25%'>                
+              <td style='width:20%'>
+                <select class='form-control' id='transporte_public'>
+                      <option value='0'>-Seleccione-</option>
+                      <option value='Público'>Público</option>
+                      <option value='Privado'>Privado</option>
+                  </select>
+                </td>
+                <td style='width:20%' class="d-none tr">
+                  <input type="text" id='observacion_transporte' class='form-control'>
+                </td>
+                <td style='width:20%'>                
                 <select class='form-control' id='cargo'>
                     <option value='0'>-Seleccione-</option>
                     <?php foreach ($this->cargo as $p) { ?>
@@ -153,7 +163,7 @@
                     <?php } ?>
                   </select>
                 </td><center></center>
-                <td style='width:25%'>
+                <td style='width:20%'>
                 <select class='form-control' id='ppestado'>
                     <option value='0'>-Seleccione-</option>
                     <?php foreach ($this->pp_estado as $p) { ?>
@@ -161,7 +171,7 @@
                     <?php } ?>
                   </select>
                 </td>
-                <td style='width:25%'>
+                <td style='width:20%'>
                 <select class='form-control' id='estad_funcionario'>
                     <option value='0'>-Seleccione-</option>
                     <?php foreach ($this->estad_funcionario as $p) { ?>

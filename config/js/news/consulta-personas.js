@@ -402,6 +402,7 @@ var vedoc = document.getElementById("edoc");
 var vnedu = document.getElementById("nedu");
 var vubic = document.getElementById("ubic");
 var vnomina = document.getElementById("idnomina");
+var vtransporte = document.getElementById("transporte_public");
 var vcargo = document.getElementById("cargo");
 var vppestado = document.getElementById("ppestado");
 var vestad_funcionario = document.getElementById("estad_funcionario");
@@ -416,6 +417,7 @@ var vdclara = document.getElementById("declara");
 var vinscripcion_ivss = document.getElementById("inscripcion_ivss");
 var vfideicomiso = document.getElementById("fideicomiso");
 var vgrado = document.getElementById('jqresguardo');
+var vobservaciont = document.getElementById('observacion_transporte');
 
 var vjefcas = document.getElementById("jefcas");
 var vprivlib = document.getElementById("privlib");
@@ -466,7 +468,7 @@ function editar_datos(
   var condicion_lab_info = JSON.parse(condicion_lab);
   var divisiones = JSON.parse(divisiones);
   var titulos = JSON.parse(titulos);
-  /*   var transporte_info = JSON.parse(transporte); */
+  var transporte_info = JSON.parse(transporte);
   /*  var bonos_info = JSON.parse(bonos);
   var misiones_info = JSON.parse(misiones); */
   /*   var comunidad_i_info = JSON.parse(comunidad_i); */
@@ -500,10 +502,18 @@ function editar_datos(
   vinscripcion_ivss.value = persona_info["inscripcion_ivss"];
   vfideicomiso.value = persona_info["fideicomiso"];
   vgrado.value = persona_info["grado_resguardo"];
-
+  vtransporte.value = transporte_info[0]['tipo_transporte'];
+  vobservaciont.value = transporte_info[0]['descripcion_transporte'];
   vcargo.value = persona_info["id_cargo"];
   vppestado.value = persona_info["id_estado"];
   vestad_funcionario.value = persona_info["id_estado_fun"];
+  
+
+  if(vtransporte.value == "Privado"){
+    $(".tr").removeClass("d-none");
+  }else{
+    $(".tr").addClass("d-none");
+  }
 
   if(vnomina.value == 2){
     $(".jq").removeClass("d-none");
@@ -518,6 +528,16 @@ function editar_datos(
     }else{
       $(".jq").addClass("d-none");
       vgrado.value="";
+    }
+  }
+
+  document.getElementById('transporte_public').onchange =function(){
+    if(vtransporte.value == 'Privado'){
+      $(".tr").removeClass("d-none");
+      vobservaciont.value="";
+    }else{
+      $(".tr").addClass("d-none");
+      vobservaciont.value="";
     }
   }
 /*   vmili.value = persona_info["miliciano"]; */
@@ -775,6 +795,34 @@ btn_guardar.onclick = function () {
                         vnomina.focus();
                       }, 2000);
                     }else {
+                      vtransporte.style.borderColor = "";
+                      if (vtransporte.value == "0") {
+                        swal({
+                          type: "error",
+                          title: "Error",
+                          text: "Debe ingresar el tipo de transporte",
+                          timer: 2000,
+                          showConfirmButton: false,
+                        });
+                        setTimeout(function () {
+                          vtransporte.style.borderColor = "red";
+                          vtransporte.focus();
+                        }, 2000);
+                      }else {
+                        vobservaciont.style.borderColor = "";
+                      if (vobservaciont.value == "" && vtransporte.value == "Privado") {
+                        swal({
+                          type: "error",
+                          title: "Error",
+                          text: "Debe indicar el tipo de transporte",
+                          timer: 2000,
+                          showConfirmButton: false,
+                        });
+                        setTimeout(function () {
+                          vobservaciont.style.borderColor = "red";
+                          vobservaciont.focus();
+                        }, 2000);
+                      }else {
                       vcargo.style.borderColor = "";
                       if (vcargo.value == "0") {
                         swal({
@@ -915,7 +963,6 @@ btn_guardar.onclick = function () {
                                     vinscripcion_ivss.focus();
                                   }, 2000);
                                 }else {
-
                     inf_persona["primer_nombre"] = vn1.value;
                     inf_persona["segundo_nombre"] = vn2.value;
                     inf_persona["primer_apellido"] = va1.value;
@@ -949,12 +996,18 @@ btn_guardar.onclick = function () {
                     } else{
                       inf_persona["grado_resguardo"] = vgrado.value;
                     }
+                    if (vobservaciont.value == "N/A" || vobservaciont.value == "") {
+                      inf_persona["observacion_transporte"] = "N/A";
+                    } else{
+                      inf_persona["observacion_transporte"] = vobservaciont.value;
+                    }
                     inf_persona["fecha_nacimiento"] = vfnac.value;
                     inf_persona["genero"] = vgen.value;
                     inf_persona["nivel_educativo"] = vnedu.value;
                     inf_persona["ubicacion"] = vubic.value;
                     inf_persona["ubicacion1"] = document.getElementById("campoubic").value;
                     inf_persona["nomina"] = vnomina.value;
+                    inf_persona["transporte"] = vtransporte.value;
                     inf_persona["cargo"] = vcargo.value;
                     inf_persona["prima"] = vprima1.value;
                     inf_persona["declaracionj"] = vdclara.value;
@@ -1057,7 +1110,7 @@ btn_guardar.onclick = function () {
   }
   }
 }}}}
-}}}
+}}}}}
 function editar_persona() {
   //alert(JSON.stringify(inf_persona, null, 4));
   $.ajax({

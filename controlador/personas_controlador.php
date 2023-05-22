@@ -470,7 +470,6 @@ public function consultar_informacion_persona(){
 
     "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
 
-
     "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Egresar persona' onclick='egresar_datos(`".$p['cedula_persona']."`)'><i class='fas fa-user-slash' style='color:white'></i></button>",
   ];
 
@@ -1150,8 +1149,10 @@ public function get_info_habitante(){
 public function modificar_persona(){
   $datos_persona=$_POST["datos_persona"];
   $editado=$this->modelo->Actualizar($datos_persona);
+  $this->modelo->Actualizar_transporte($datos_persona["cedula_persona"],$datos_persona['transporte'],$datos_persona['observacion_transporte'],);
   $ubi_viej=$this->Consultar_ubicacion_act($datos_persona['ubicacion1']);
   $ubic_act=$this->Consultar_ubicacion_act($datos_persona['ubicacion']);
+  
   if($ubi_viej != $ubic_act){
     if($ubi_viej[0]['nombre_ubi'] == 'GRTI-RCO'){
       $var1 = "al Sector/Unidad de";
