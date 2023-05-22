@@ -22,4 +22,3 @@
 <?php } ?>
 <script src="<?php echo constant('URL')?>config/js/news/add_acciones.js"></script> 
 <script src="<?php echo constant('URL')?>config/js/news/consultar-permisos.js"></script> 
-   

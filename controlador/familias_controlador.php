@@ -43,12 +43,21 @@ class Familias extends Controlador
         $this->vista->Cargar_Vistas('familia/consultar');
     }
 
-     public function registrar_familia(){
+    /* public function Consultas()
+    {
+        $this->Seguridad_de_Session();
+        $persona=$this->modelo->Consultar_personas();
+        $this->vista->personas=$persona;
+        $this->vista->Cargar_Vistas('familia/consultarIntegrante');
+    } */
+
+    public function registrar_familia(){
         $datos_familia=$_POST['datos'];
 
-        $resultado= $this->modelo->Registrar_Familia($datos_familia);
+       /*  $resultado= */
+         $this->modelo->Registrar_Familia($datos_familia);
         
-        if($resultado){
+      /*   if($resultado){
            $id=$this->Ultimo_Ingresado("familia","id_familia");
            foreach ($id as  $i) {
             foreach ($datos_familia['integrantes'] as $inte) {
@@ -58,10 +67,10 @@ class Familias extends Controlador
             ]);
          }
      }
- }
+ } */
 echo $resultado;
 
-} 
+}
 //----------------------Registrar Integrantes------------------
 
 public function registrar_integrante(){
@@ -82,10 +91,10 @@ public function registrar_integrante(){
 }
 echo $resultado;
 
-}
+} 
 
 
-/* public function consultar_info_familia(){
+public function consultar_info_familia(){
      $familias=$this->modelo->get_familias();
      $retornar=[];
 
@@ -111,7 +120,7 @@ echo $resultado;
 
 
      $this->Escribir_JSON($retornar);
-} */
+}
 
 
 public function Consultas_cedulaV2()
@@ -135,7 +144,7 @@ public function Consultas_cedulaV2()
 
 
 
-/* public function consultar_familia_datos(){
+public function consultar_familia_datos(){
      
      $familias=$this->modelo->get_familias();
      $retornar=[];
@@ -165,7 +174,7 @@ public function Consultas_cedulaV2()
 
 
      $this->Escribir_JSON($retornar);
-} */
+}
 
 
 public function eliminar_logica(){
@@ -217,7 +226,7 @@ public function eliminar_familia(){
   echo json_encode($retornar);
 
 }
-/* 
+
   public function actualizar_familia(){
         $datos_familia=$_POST['datos'];
 
@@ -236,7 +245,7 @@ public function eliminar_familia(){
  }
 echo $resultado;
 
-} */
+}
 
 
 }

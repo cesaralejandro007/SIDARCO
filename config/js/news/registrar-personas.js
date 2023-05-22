@@ -237,12 +237,9 @@ genero.onchange=function(){valid_element("Debe indicar el género de la persona"
 //sexualidad.onchange=function(){valid_element("Debe indicar la orientación sexual de la persona",sexualidad,document.getElementById("valid_9"));}
 nacionalidad.onkeyup=function(){valid_element("Debe ingresar la nacionalidad de la persona",nacionalidad,document.getElementById("valid_10"));}
 nivel_educativo.onkeyup=function(){valid_element("Debe ingresar el nivel educativo de la persona",nivel_educativo,document.getElementById("valid_11"));}
-//afrodescendencia.onchange=function(){valid_element("Debe indicar si la persona es afrodescendente",afrodescendencia,document.getElementById("valid_12"));}
-//tiempo_comunidad.onchange=function(){valid_element("Debe ingresar la fecha en que la persona llegó a la comunidad",tiempo_comunidad,document.getElementById("valid_13"));}
 //jefe_familia.onchange=function(){valid_element("Debe indicar si la persona es jefe de familia",jefe_familia,document.getElementById("valid_14"));}
 //propietario_vivienda.onchange=function(){valid_element("Debe indicar si la persona es propietario dela vivienda",propietario_vivienda,document.getElementById("valid_15"));}
 //jefe_calle.onchenge=function(){valid_element("Debe indicar si la persona es jefe de calle",jefe_calle,document.getElementById("valid_16"));}
-//miliciano.onchange=function(){valid_element("Debe indicar si la persona pertenece o perteneció a la milicia",miliciano,document.getElementById("valid_17"));}
 //privado_libertad.onchange=function(){valid_element("Debe indicar si la persona es privada de libertad",privado_libertad,document.getElementById("valid_20"));}
 
 function valid_info_personal(){
@@ -261,7 +258,7 @@ function valid_info_personal(){
                 document.getElementById("valid_6").style.display='';
                 fecha_nacimiento.style.borderColor="red";
 
-              } 
+              }
               else{
 
                 document.getElementById("valid_6").style.display='none';
@@ -296,8 +293,7 @@ function valid_info_personal(){
 
                                           }
 
-
-//-------------------------------Funcion de boton siguiente-------------------------------------//
+//-------------------------Funcion de boton siguiente-------------------------------------//
 
 btn_siguiente.onclick=function(){
   funcion_siguiente();
@@ -2262,6 +2258,7 @@ if(proyectos_persona.length!=0){
 })
 
 }
+
 
 
 

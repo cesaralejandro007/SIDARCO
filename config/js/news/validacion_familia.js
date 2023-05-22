@@ -179,6 +179,11 @@ btn_agregar.onclick=function(){
 
 
 
+
+
+
+	
+
 function valid_integrantes_agregados(){
 	var validar=true;
 	for(var i=0;i<integrantes.length;i++){
@@ -193,6 +198,11 @@ function valid_integrantes_agregados(){
 
 	return validar;
 }
+
+
+
+
+
 
 
 vivienda.onchange=function(){

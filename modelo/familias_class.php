@@ -91,7 +91,8 @@
                 segundo_nombre, 
                 primer_apellido,
                 segundo_apellido,
-                estado
+                estado,
+                fecha_nacimiento
 
                 ) VALUES (
                 :id_vivienda,
@@ -100,17 +101,19 @@
                 :segundo_nombre, 
                 :primer_apellido,
                 :segundo_apellido,
-                :estado
+                :estado,
+                :fecha_nacimiento
             )');
 
             $datos->execute([
-                'id_vivienda'         => $data['id_vivienda'],
-                'cedula'              => $data["cedula_persona"],
-                'primer_nombre'       => $data['primer_nombre'],
+                'id_vivienda'  => $data['id_vivienda'],
+                'cedula' => $data["cedula"],
+                'primer_nombre'        => $data['primer_nombre'],
                 'segundo_nombre'      => $data['segundo_nombre'],
-                'primer_apellido'     =>$data['primer_apellido'],
-                'segundo_apellido'    =>$data['segundo_apellido'],
-                'estado'              => $data['estado']
+                'primer_apellido'        =>$data['primer_apellido'],
+                'segundo_apellido'          =>$data['segundo_apellido'],
+                'estado'                    => $data['estado'],
+                'fecha_nacimiento'          =>$data['fecha_nacimiento']
             ]);
 
             return true;
@@ -119,6 +122,7 @@
             return $this->Capturar_Error($e);
         }
     }
+
 
 
     public function Actualizar_Familia($data)
@@ -155,7 +159,7 @@
         }
     }
 
-        public function Registrar_Integrante($data){
+       /*  public function Registrar_Integrante($data){
 
             try{
 
@@ -201,10 +205,7 @@
 
 
 
-
-
-
-        }
+        } */
 
 
 

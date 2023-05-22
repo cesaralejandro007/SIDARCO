@@ -1,8 +1,11 @@
+
+
+var btn_guardar=document.getElementById("guardar")
 var cedula=document.getElementById("cedula");
-var primer_nombre=document.getElemeteById("primer_nombre");
+var primer_nombre=document.getElementById("primer_nombre");
 var segundo_nombre=document.getElementById("segundo_nombre");
 var primer_apellido=document.getElementById("primer_apellido");
-var segundo_apellido=document.getElemetById("segundo_apellido");
+var segundo_apellido=document.getElementById("segundo_apellido");
 var fecha_nacimiento=document.getElementById("fecha_nacimiento");
 var genero=document.getElementById("genero");
 var nacionalidad=document.getElementById("nacionalidad");
@@ -134,7 +137,7 @@ function validad_info(){
     if(valid_element("Debe ingresar el documento de identidad", cedula, document.getElementById("valid_1"))){
         if(persona_existe(cedula.value)){
             if(valid_element("Debe ingresar el primer nombre de la persona",primer_nombre, document.getElementById("valid_2"))){
-              if(valid_element("Debe ingresar el primer apellido de la persona", primer_apellido, document.getElemetById("valid_4"))){
+              if(valid_element("Debe ingresar el primer apellido de la persona", primer_apellido, document.getElementById("valid_4"))){
                
 
                 validacion=true;
@@ -159,30 +162,38 @@ return validacion;
 
 
 
+//----------------Función para enviar la información---------------
 
 
-
+btn_guardar.onclick=function(){
+  enviar_info_integrantes();
+}
 
 
 //---------------Funcion para enviar la información al controlador------------
 
 function enviar_info_integrantes(){
-    
 
+   
+    
+datos_persona=new Object();
 datos_persona['cedula']=cedula.value;
 datos_persona['primer_nombre']=primer_nombre.value;
 datos_persona['segundo_nombre']=segundo_nombre.value;
-datos_persona['primer_apellido']=perimer_apellido.value;
+datos_persona['primer_apellido']=primer_apellido.value;
 datos_persona['segundo_apellido']=segundo_apellido.value;
+datos_persona['fecha_nacimiento']=fecha_nacimiento.value;
+datos_persona['estado']=1;
 
+alert(datos_persona);
 
 $.ajax({
 
 type:"POST",
-url:BASE_URL+"Familias/registrar_integrante",
+url:BASE_URL+"Familias/registrar_familia",
 data:{"datos":datos_persona}
 }).done(function(result){
-
+alert(result);
     console.log(result);
 
     if(result==1){
@@ -196,7 +207,7 @@ data:{"datos":datos_persona}
                showConfirmButton:false
              });
 
-
+         
     }
 
 

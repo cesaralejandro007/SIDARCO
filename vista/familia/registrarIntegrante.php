@@ -38,7 +38,7 @@
                                                 <div class="input-group">
                                                     <input class="form-control input-numero solo-numeros" id="cedula"
                                                     name="datos[cedula]" placeholder="Cedula de identidad"
-                                                    type="number" oninput="Limite(this,8)"/>
+                                                    type="number" oninput="Limitar(this,8)"/>
                                                 </div>
                                             </div>
 
@@ -100,14 +100,14 @@
                                                         Fecha De Nacimiento 
                                                     </label> <span style='display:none;color:red' id='valid_6'>Ingrese la fecha de nacimiento</span>
                                                     <input class="form-control" id="fecha_nacimiento"
-                                                    name="fecha_nacimiento" type="date">
+                                                    name="datos[fecha_nacimiento]" type="date">
                                                 </input>
                                             </div>
 
                                         </div>
 
 
-                                        <div class="col-md-3 mt-2">
+                            <!--             <div class="col-md-3 mt-2">
                                             <label for="genero">
                                                 Género
                                             </label>
@@ -154,7 +154,7 @@
                                            
                                         </div>
                                     </div>
-
+ -->
                        
                                 
 <!------------------------------------------------------------------------------------------------------------------------> 
@@ -220,7 +220,7 @@
                     <div class="text-center m-t-20">
                         -->
                         <div class="col-xs-12">
-                            <input type="button" class="btn" style="background:#15406D; color:white" name="" id="enviar" value="Guardar">
+                            <input type="button" class="btn" style="background:#15406D; color:white" name="" id="guardar" value="Guardar">
                             
                         </div>
                     </div>
@@ -237,7 +237,7 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<script src="<?php echo constant('URL')?>config/js/news/registrar_integrantes.js"></script> 
+<script type="text/javascript" src="<?php echo constant('URL') ?>config/js/news/registrar-integrantes.js"></script>
 <?php include (call."Fin.php"); ?>
 <?php include (call."Style-seguridad.php"); ?>
 
