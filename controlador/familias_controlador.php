@@ -23,6 +23,15 @@ class Familias extends Controlador
         $this->vista->Cargar_Vistas('familia/registrar');
     }
 
+
+    public function Integrantes(){
+
+      $this->Seguridad_de_Session();
+      $this->vista->Cargar_Vistas('familia/registrarIntegrante');
+
+    }
+
+
     public function Consultas()
     {
         $this->Seguridad_de_Session();
@@ -34,7 +43,7 @@ class Familias extends Controlador
         $this->vista->Cargar_Vistas('familia/consultar');
     }
 
-    public function registrar_familia(){
+     public function registrar_familia(){
         $datos_familia=$_POST['datos'];
 
         $resultado= $this->modelo->Registrar_Familia($datos_familia);
@@ -52,10 +61,31 @@ class Familias extends Controlador
  }
 echo $resultado;
 
+} 
+//----------------------Registrar Integrantes------------------
+
+public function registrar_integrante(){
+  $datos_integrante=$_POST['datos'];
+
+  $resultado= $this->modelo->Registrar_Integrante($datos_integrante);
+  
+  if($resultado){
+     $id=$this->Ultimo_Ingresado("familia","id_familia");
+     foreach ($id as  $i) {
+      foreach ($datos_familia['integrantes'] as $inte) {
+       $this->modelo->Registrar_persona_familia([
+          "cedula_persona"         =>  $inte,
+          "id_familia"            =>   $i['MAX(id_familia)']
+      ]);
+   }
+}
+}
+echo $resultado;
+
 }
 
 
-public function consultar_info_familia(){
+/* public function consultar_info_familia(){
      $familias=$this->modelo->get_familias();
      $retornar=[];
 
@@ -81,9 +111,31 @@ public function consultar_info_familia(){
 
 
      $this->Escribir_JSON($retornar);
+} */
+
+
+public function Consultas_cedulaV2()
+{
+
+ $persona=$this->Consultar_Columna("personas","cedula_persona",$_POST['cedula']);
+
+ if(count($persona)==0){
+   echo 0;
+ }
+ else{
+  if($persona[0]['estado'] == 0){
+    echo 2;
+  }
+  else{
+    echo 1;
+  }
+ }
+
 }
 
-public function consultar_familia_datos(){
+
+
+/* public function consultar_familia_datos(){
      
      $familias=$this->modelo->get_familias();
      $retornar=[];
@@ -113,7 +165,7 @@ public function consultar_familia_datos(){
 
 
      $this->Escribir_JSON($retornar);
-}
+} */
 
 
 public function eliminar_logica(){
@@ -165,7 +217,7 @@ public function eliminar_familia(){
   echo json_encode($retornar);
 
 }
-
+/* 
   public function actualizar_familia(){
         $datos_familia=$_POST['datos'];
 
@@ -184,7 +236,7 @@ public function eliminar_familia(){
  }
 echo $resultado;
 
-}
+} */
 
 
 }

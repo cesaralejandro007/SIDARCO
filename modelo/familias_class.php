@@ -86,31 +86,31 @@
         try {
             $datos = $this->conexion->prepare('INSERT INTO familia (
                 id_vivienda,
-                condicion_ocupacion,
-                nombre_familia, 
-                observacion, 
-                telefono_familia,
-                ingreso_mensual_aprox,
+                cedula,
+                primer_nombre, 
+                segundo_nombre, 
+                primer_apellido,
+                segundo_apellido,
                 estado
 
                 ) VALUES (
                 :id_vivienda,
-                :condicion_ocupacion,
-                :nombre_familia, 
-                :observacion, 
-                :telefono_familia,
-                :ingreso_mensual_aprox,
+                :cedula,
+                :primer_nombre, 
+                :segundo_nombre, 
+                :primer_apellido,
+                :segundo_apellido,
                 :estado
             )');
 
             $datos->execute([
-                'id_vivienda'  => $data['id_vivienda'],
-                'condicion_ocupacion' => $data["condicion_ocupacion"],
-                'nombre_familia'        => $data['nombre_familia'],
-                'observacion'      => $data['observacion'],
-                'telefono_familia'    =>$data['telefono_familia'],
-                'ingreso_mensual_aprox'        =>$data['ingreso_mensual_aprox'],
-                'estado'      => $data['estado']
+                'id_vivienda'         => $data['id_vivienda'],
+                'cedula'              => $data["cedula_persona"],
+                'primer_nombre'       => $data['primer_nombre'],
+                'segundo_nombre'      => $data['segundo_nombre'],
+                'primer_apellido'     =>$data['primer_apellido'],
+                'segundo_apellido'    =>$data['segundo_apellido'],
+                'estado'              => $data['estado']
             ]);
 
             return true;
@@ -119,6 +119,8 @@
             return $this->Capturar_Error($e);
         }
     }
+
+
     public function Actualizar_Familia($data)
     {
 
@@ -152,6 +154,63 @@
             return $this->Capturar_Error($e);
         }
     }
+
+        public function Registrar_Integrante($data){
+
+            try{
+
+           
+            $datos=$this->conexion->prepare("INSERT INTO familia ()
+            id_familia,
+            id_vivienda,
+            cedula,
+            primer_nombre,
+            segundo_nombre,
+            primer_apellido,
+            segundo_apellido
+            
+             VALUES(
+
+            :id_familia,
+            :id_vivienda,
+            :cedula,
+            :primer_nombre,
+            :segundo_nombre,
+            :primer_apellido,
+            :segundo_apellido
+
+             )");
+
+            $datos->execute([
+                
+            'cedula'        => $data['cedula'],
+            'primer_nombre' => $data['primer_nombre'],
+            ''
+
+
+
+
+
+            ])
+
+
+
+            }catch(PdoException $e){
+
+            }
+
+
+
+
+
+
+        }
+
+
+
+
+
+
 
     public function Registrar_persona_familia($data)
     {

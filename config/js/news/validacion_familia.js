@@ -106,6 +106,7 @@ function enviar_informacion(){
 
 
 
+
 integrantes_input.onkeyup=function(){
 	if(integrantes_input.value!=''){
 		valid_integrantes.innerHTML='';
