@@ -8,11 +8,16 @@ class Familias extends Controlador
      //   $this->Cargar_Modelo("familias");
     }
 
+
+
+
     public function Cargar_Vistas()
     {
         $this->Seguridad_de_Session();
         $this->vista->Cargar_Vistas('familia/consultar'); 
     }   
+
+
     public function Registros()
     {
         $this->Seguridad_de_Session();
@@ -20,15 +25,9 @@ class Familias extends Controlador
         $this->vista->viviendas=$viviendas;
         $persona=$this->modelo->Consultar_personas();
         $this->vista->personas=$persona;
+        $integrante=$this->modelo->Integrantes_consultas();
+        $this->vista->integrantes=$integrante;
         $this->vista->Cargar_Vistas('familia/registrar');
-    }
-
-
-    public function Integrantes(){
-
-      $this->Seguridad_de_Session();
-      $this->vista->Cargar_Vistas('familia/registrarIntegrante');
-
     }
 
 
@@ -51,13 +50,13 @@ class Familias extends Controlador
         $this->vista->Cargar_Vistas('familia/consultarIntegrante');
     } */
 
-    public function registrar_familia(){
+   /*  public function registrar_familia(){
         $datos_familia=$_POST['datos'];
 
-       /*  $resultado= */
-         $this->modelo->Registrar_Familia($datos_familia);
+        $resultado
+          $this->modelo->Registrar_Familia($datos_familia); 
         
-      /*   if($resultado){
+         if($resultado){
            $id=$this->Ultimo_Ingresado("familia","id_familia");
            foreach ($id as  $i) {
             foreach ($datos_familia['integrantes'] as $inte) {
@@ -67,13 +66,43 @@ class Familias extends Controlador
             ]);
          }
      }
- } */
+ } 
 echo $resultado;
 
+}  */
+
+
+//---------------------Registrar en tabla puente---------------
+
+
+public function registrar_integrante_fun(){
+  $integrante=$this->modelo->Integrantes_consultas();
+  $datos=$_POST['datos'];
+
+ 
+/*   foreach ($proyectos as $pro) { */
+ /*    if($pro['id_proyecto']==$datos['id_titulos']){ */
+  for ($i = 0; $i < count($datos); $i++) {
+    foreach ($integrante as $pro) {
+        if ($pro['id_familia'] == $datos[$i]['id_familia']) {
+      $this->modelo->Registrar_persona_familia([
+       "cedula"   =>   $datos[$i]['cedula'],
+       "id_familia"     =>     $pro['id_familia'],
+       "nombre_familia"     =>     $pro['nombre_familia'],
+       "descripcion_familia"  =>   $pro['descripcion_familia']
+     ]);
+  }
 }
+ 
+ }
+ echo count($datos);
+ }
+
+
 //----------------------Registrar Integrantes------------------
 
 public function registrar_integrante(){
+
   $datos_integrante=$_POST['datos'];
 
   $resultado= $this->modelo->Registrar_Integrante($datos_integrante);
@@ -105,19 +134,16 @@ public function consultar_info_familia(){
 
 
          $retornar[]=[
-                "familia" => $f['nombre_familia'],
-                "telefono" => $f['telefono_familia'],
-                "direccion" => $f['direccion_vivienda'],
-                "Nro Casa" => $f['numero_casa'],
-                "ingreso_mensual"=> $f['ingreso_mensual_aprox'],
-                "ver"  => "<button class='btn'  style='background:#15406D; color:white; font-weight:bold' onclick='ver_familia(`".json_encode($integrantes)."`,`".$f['nombre_familia']."`,`".$f['telefono_familia']."`,`".$f['direccion_vivienda']."`,`".$f['numero_casa']."`,`".$f['ingreso_mensual_aprox']."`)' type='button'><em class='fa fa-eye'></em></button>",
-                "editar" => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia'].",".$f['id_familia_persona'].")'><em class='fa fa-edit'></em></button>",
-                "eliminar" =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$f['id_familia']."`)' type='button'><em class='fa fa-trash'></em></button>"
+                "familia"           => $f['nombre_familia'],
+                "telefono"          => $f['telefono_familia'],
+                "direccion"         => $f['direccion_vivienda'],
+                "Nro Casa"          => $f['numero_casa'],
+                "ingreso_mensual"   => $f['ingreso_mensual_aprox'],
+                "ver"               => "<button class='btn'  style='background:#15406D; color:white; font-weight:bold' onclick='ver_familia(`".json_encode($integrantes)."`,`".$f['nombre_familia']."`,`".$f['telefono_familia']."`,`".$f['direccion_vivienda']."`,`".$f['numero_casa']."`,`".$f['ingreso_mensual_aprox']."`)' type='button'><em class='fa fa-eye'></em></button>",
+                "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia'].",".$f['id_familia_persona'].")'><em class='fa fa-edit'></em></button>",
+                "eliminar"          =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$f['id_familia']."`)' type='button'><em class='fa fa-trash'></em></button>"
          ];
      }
-
-      
-
 
      $this->Escribir_JSON($retornar);
 }
@@ -141,6 +167,22 @@ public function Consultas_cedulaV2()
  }
 
 }
+
+
+
+ public function Consultas_cedula()
+{
+
+ $persona=$this->modelo->Buscar_Persona($_POST['cedula']);
+
+ if(count($persona)==0){
+   echo 0;
+ }
+ else{
+   $this->Escribir_JSON($persona);
+ }
+
+} 
 
 
 

@@ -25,7 +25,7 @@
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
+                                   <!--  <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
                                         <a class="nav-link" data-toggle="tab" href="#panel6" role="tab">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-user"></i>
@@ -34,7 +34,7 @@
                                                 Documentos Personales
                                             </span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
                                         <a class="nav-link" data-toggle="tab" href="#panel7" role="tab">
                                             <span class="hidden-sm-up">
@@ -56,174 +56,12 @@
                                                     Miembro de Familia
                                                 </h2>
                                             </div>
-
-                                            <div class="col-md-6 mt-4">
-                                                <label for="primer_nombre">
-                                                    Primer Nombre
-                                                </label>
-                                                <div class="input-group">
-                                                    <input class="form-control mb-10" id="primer_nombre"
-                                                        name="datos[primer_nombre]" placeholder="Primer Nombre"
-                                                        type="text" />
-                                                </div>
-
-                                            </div>
-
-                                            <div class="col-md-6 mt-4">
-                                                <label for="segundo_nombre">
-                                                    Segundo Nombre
-                                                </label>
-                                                <div class="input-group">
-                                                    <input class="form-control mb-10" id="segundo_nombre"
-                                                        name="datos[segundo_nombre]" placeholder="Segundo Nombre"
-                                                        type="text" />
-                                                </div>
-
-                                            </div>
-
-                                            <div class="col-md-6 mt-2">
-                                                <label for="primer_apellido">
-                                                    Primer Apellido
-                                                </label>
-                                                <div class="input-group">
-                                                    <input class="form-control mb-10" id="primer_apellido"
-                                                        name="datos[primer_apellido]" placeholder="Primer Apellido"
-                                                        type="text" />
-                                                </div>
-
-                                            </div>
-
-                                            <div class="col-md-6 mt-2">
-                                                <label for="segundo_apellido">
-                                                    Segundo Apellido
-                                                </label>
-                                                <div class="input-group">
-                                                    <input class="form-control mb-10" id="segundo_apellido"
-                                                        name="datos[segundo_apellido]" placeholder="Segundo Apellido"
-                                                        type="text" />
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-6 mt-2">
-                                                <div class="form-group">
-                                                    <label for="fecha_nacimiento">
-                                                        Fecha De Nacimiento
-                                                    </label>
-                                                    <input class="form-control" id="fecha_nacimiento"
-                                                        name="fecha_nacimiento" type="date">
-                                                    </input>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-6 mt-2">
-                                                <label for="genero">
-                                                    Genero
-                                                </label>
-                                                <div class="input-group">
-                                                    <select class="custom-select" id="genero" name="datos[genero]">
-                                                        <option selected="" value="0">
-                                                            ...
-                                                        </option>
-                                                        <option value="Masculino">
-                                                            Masculino
-                                                        </option>
-                                                        <option value="Femenino">
-                                                            Femenino
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mt-2">
-                                                <label for="tipo_persona">
-                                                    Tipo Persona
-                                                </label>
-                                                <div class="input-group">
-                                                    <select class="custom-select" id="tipo_persona"
-                                                        name="datos[tipo_persona]">
-                                                        <option value="Padre">
-                                                            Padre
-                                                        </option>
-                                                        <option value="Madre" selected="">
-                                                            Madre
-                                                        </option>
-                                                        <option value="Hijo">
-                                                            Hijo
-                                                        </option>
-                                                        <option value="Hija">
-                                                            Hija
-                                                        </option>
-                                                        <option value="Hacinamiento">
-                                                            Hacinamiento
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 mt-2">
-                                                <label for="genero">
-                                                    Estado Civil
-                                                </label>
-                                                <div class="input-group">
-                                                    <select class="custom-select" id="genero" name="datos[genero]">
-                                                        <option selected="" value="0">
-                                                            ...
-                                                        </option>
-                                                        <option value="Casado(a)">
-                                                            Casado(a)
-                                                        </option>
-                                                        <option value="Soltero(a)">
-                                                            Soltero(a)
-                                                        </option>
-                                                        <option value="Viudo(a)">
-                                                            Viudo(a)
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mt-2">
-                                                <div class="form-group">
-                                                    <label for="fecha_nacimiento">
-                                                        Fecha De Nacimiento
-                                                    </label>
-                                                    <input class="form-control" id="fecha_nacimiento"
-                                                        name="fecha_nacimiento" type="date">
-                                                    </input>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-6 mt-2">
-                                                <label for="genero">
-                                                    Genero
-                                                </label>
-                                                <div class="input-group">
-                                                    <select class="custom-select" id="genero" name="datos[genero]">
-                                                        <option selected="" value="0">
-                                                            ...
-                                                        </option>
-                                                        <option value="Masculino">
-                                                            Masculino
-                                                        </option>
-                                                        <option value="Femenino">
-                                                            Femenino
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="panel6" role="tabpanel">
-                                        <div class="row">
-                                            <div class="col-md-12 text-center">
-                                                <h2>
-                                                    Documentos
-                                                </h2>
-                                            </div>
                                             <div class="col-md-1 mt-2">
                                                 <label for="tcedula">
                                                     Tipo
                                                 </label>
                                                 <div class="input-group">
-                                                    <select class="custom-select" id="tcedula" name="datos[tcedula]">
+                                                    <select class="custom-select" id="tcedula" >
                                                         <option selected="" value="V">
                                                             V
                                                         </option>
@@ -250,71 +88,193 @@
                                                     Cedula
                                                 </label>
                                                 <div class="input-group">
-                                                    <input class="form-control input-numero" id="cedula"
+                                                    <input class="form-control input-numero solo-numeros no-espacios" id="cedula"
                                                         name="datos[cedula]" placeholder="Cedula de identidad"
                                                         type="text-center" />
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-6 mt-4">
-                                                <label for=""> Carnet de la Patria</label>
-                                            </div>
-                                            <div class="col-md-6 mt-4">
-                                                <label for=""> Carnet de el PSUV (opcional)</label>
-                                            </div>
-                                            <div class="col-md-6 mt-2">
-                                                <label for="serial_patria">
-                                                    Serial Patria
+                                            <div class="col-md-3 mt-4">
+                                                <label for="primer_nombre">
+                                                    Primer Nombre
                                                 </label>
                                                 <div class="input-group">
-                                                    <input class="form-control mb-10" id="serial_patria"
-                                                        name="datos[serial_patria]" placeholder="Serial" type="text" />
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 mt-2">
-                                                <label for="serial_psuv">
-                                                    Serial PSUV
-                                                </label>
-                                                <div class="input-group">
-                                                    <input class="form-control mb-10" id="serial_psuv"
-                                                        name="datos[serial_psuv]" placeholder="Serial" type="text" />
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 mt-2">
-                                                <label for="codigo_patria">
-                                                    Codigo Patria
-                                                </label>
-                                                <div class="input-group">
-                                                    <input class="form-control mb-10" id="codigo_patria"
-                                                        name="datos[codigo_patria]" placeholder="Codigo" type="text" />
+                                                    <input class="form-control mb-10 solo-letras" id="primer_nombre"
+                                                        name="datos[primer_nombre]" placeholder="Primer Nombre"
+                                                        type="text" />
                                                 </div>
 
                                             </div>
 
-                                            <div class="col-md-6 mt-2">
-                                                <label for="codigo_psuv">
-                                                    Codigo PSUV
+                                            <div class="col-md-3 mt-4">
+                                                <label for="segundo_nombre">
+                                                    Segundo Nombre
                                                 </label>
                                                 <div class="input-group">
-                                                    <input class="form-control mb-10" id="codigo_psuv"
-                                                        name="datos[codigo_psuv]" placeholder="Codigo" type="text" />
+                                                    <input class="form-control mb-10 solo-letras" id="segundo_nombre"
+                                                        name="datos[segundo_nombre]" placeholder="Segundo Nombre"
+                                                        type="text" />
                                                 </div>
-                                            </div> 
+
+                                            </div>
+
+                                            <div class="col-md-3 mt-2">
+                                                <label for="primer_apellido">
+                                                    Primer Apellido
+                                                </label>
+                                                <div class="input-group">
+                                                    <input class="form-control mb-10 solo-letras" id="primer_apellido"
+                                                        name="datos[primer_apellido]" placeholder="Primer Apellido"
+                                                        type="text" />
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-3 mt-2">
+                                                <label for="segundo_apellido">
+                                                    Segundo Apellido
+                                                </label>
+                                                <div class="input-group">
+                                                    <input class="form-control mb-10 solo-letras" id="segundo_apellido"
+                                                        name="datos[segundo_apellido]" placeholder="Segundo Apellido"
+                                                        type="text" />
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-3 mt-2">
+                                                <div class="form-group">
+                                                    <label for="fecha_nacimiento">
+                                                        Fecha De Nacimiento
+                                                    </label>
+                                                    <input class="form-control" id="fecha_nacimiento"
+                                                        name="fecha_nacimiento" type="date">
+                                                    </input>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-3 mt-2">
+                                                <label for="genero">
+                                                    Género
+                                                </label>
+                                                <div class="input-group">
+                                                    <select class="custom-select" id="genero" name="datos[genero]">
+                                                        <option selected="" value="0">
+                                                            ...
+                                                        </option>
+                                                        <option value="M">
+                                                            Masculino
+                                                        </option>
+                                                        <option value="F">
+                                                            Femenino
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mt-2">
+                                                <label for="tipo_persona">
+                                                    Tipo de parentezco 
+                                                </label>
+                                                <div class="input-group">
+                                                    <select class="custom-select" id="tipo_persona"
+                                                        name="datos[tipo_persona]">
+                                                        <option selected="" value="0">
+                                                            ...
+                                                        </option>
+                                                        <option value="Padre">
+                                                            Padre
+                                                        </option>
+                                                        <option value="Madre" selected="">
+                                                            Madre
+                                                        </option>
+                                                        <option value="Hijo">
+                                                            Hijo
+                                                        </option>
+                                                        <option value="Hija">
+                                                            Hija
+                                                        </option>
+                                                        <option value=Conyugue">
+                                                            Conyugue 
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mt-2">
+                                                <label for="tipo_persona">
+                                                    Nivel educativo  
+                                                </label>
+                                                <div class="input-group">
+                                                    <select class="custom-select" id="nivel_educativo"
+                                                        name="datos[nivel_educativo]">
+                                                        <option selected="" value="0">
+                                                            ...
+                                                        </option>
+                                                        <option value="preescolar">
+                                                            Preescolar
+                                                        </option>
+                                                        <option value="primaria" selected="">
+                                                            Primaria
+                                                        </option>
+                                                        <option value="diversificada" selected="">
+                                                            Diversificada 
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                         <div class="col-md-4 mt-2">
+                                                <label for="camisa">
+                                                  Talla de camisa
+                                                </label>
+                                            <div class="input-group">
+                                                    <input class="form-control mb-10" id="camisa"
+                                                        name="datos[Camisa]" placeholder="Talla de camisa" type="text" />
+                                                </div>
+                                            </div>
+                                          <div class="col-md-4 mt-2">
+                                                <label for="pantalon">
+                                                   Talla de pantalón 
+                                                </label>
+                                                <div class="input-group">
+                                                    <input class="form-control mb-10" id="pantalon"
+                                                        name="datos[pantalon]" placeholder="Talla de pantalón" type="text" />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 mt-2">
+                                                <label for="calzado">
+                                                   Número de calzado
+                                                </label>
+                                                <div class="input-group">
+                                                    <input class="form-control mb-10" id="calzado"
+                                                        name="datos[codigo_patria]" placeholder="Número de calzado" type="text" />
+                                                </div>
+
+                                            </div>
+
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="panel6" role="tabpanel">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <h2>
+                                                    Tallas y números
+                                                </h2>
+                                            </div>
+                                            
+
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="panel7" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
                                                 <h2>
-                                                    Informacion de Contacto
+                                                    Información de Contacto
                                                 </h2>
                                             </div>
                                             <div class="col-md-12 mt-2">
                                                 <div class="form-group">
                                                     <label for="correo">
-                                                        Correo Electronico
+                                                        Correo Electrónico
                                                     </label>
                                                     <div class="input-group">
                                                         <input class="form-control" id="correo" name="datos[correo]"
@@ -348,10 +308,10 @@
 
                                             <div class="col-md-10 mt-2">
                                                 <label for="telefono_personal">
-                                                    Telefono Personal
+                                                    Teléfono personal
                                                 </label>
                                                 <div class="input-group">
-                                                    <input class="form-control mb-10" id="telefono_personal"
+                                                    <input class="form-control mb-10 solo-numeros" id="telefono_personal"
                                                         name="datos[telefono_personal]" placeholder="0000-000-0000"
                                                         type="text" />
                                                 </div>
@@ -363,7 +323,7 @@
                                                 </label>
                                                 <div class="input-group">
                                                     <div class="form-check mr-2 mt-2">
-                                                        <input class="form-check-input" type="radio"
+                                                        <input class="form-check-input " type="radio"
                                                             name="data[wathsapp]" id="no">
                                                         <label class="form-check-label" for="no">No</label>
                                                     </div>
@@ -374,17 +334,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12 mt-2">
-                                                <label for="telefono_casa">
-                                                    Telefono de Casa
-                                                </label>
-                                                <div class="input-group">
-                                                    <input class="form-control mb-10" id="telefono_casa"
-                                                        name="datos[telefono_casa]" placeholder="0000-000-0000"
-                                                        type="text" />
-                                                </div>
-
-                                            </div>
+            
                                         </div>
                                     </div>
                                     
@@ -396,8 +346,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                <input type="submit" class="btn  btn-success m-r-10" name="" id="" value="Guardar">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <input type="submit" class="btn btn-primary" name="" id="guardar_integrantes" value="Guardar">
             </div>
         </div>
         <!-- /.modal-content -->

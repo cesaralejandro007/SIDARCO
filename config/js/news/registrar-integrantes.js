@@ -1,6 +1,6 @@
 
-
-var btn_guardar=document.getElementById("guardar")
+var btn_integrantes=document.getElementById("btn_nuevo");
+var btn_guardar=document.getElementById("guardar_integrantes")
 var cedula=document.getElementById("cedula");
 var primer_nombre=document.getElementById("primer_nombre");
 var segundo_nombre=document.getElementById("segundo_nombre");
@@ -10,9 +10,20 @@ var fecha_nacimiento=document.getElementById("fecha_nacimiento");
 var genero=document.getElementById("genero");
 var nacionalidad=document.getElementById("nacionalidad");
 var nivel=document.getElementById("nivel_educativo");
+var correo=document.getElementById("correo");
+var telefono=document.getElementById("telefono_personal");
 var datos_persona=[];
 
 
+
+btn_integrantes.onclick=function(){
+
+
+$('#agregar').modal().show();
+
+
+
+}
 
 
 //------------------------Validación de la cédula----------------------------->
@@ -174,8 +185,6 @@ btn_guardar.onclick=function(){
 
 function enviar_info_integrantes(){
 
-   
-    
 datos_persona=new Object();
 datos_persona['cedula']=cedula.value;
 datos_persona['primer_nombre']=primer_nombre.value;
@@ -184,6 +193,10 @@ datos_persona['primer_apellido']=primer_apellido.value;
 datos_persona['segundo_apellido']=segundo_apellido.value;
 datos_persona['fecha_nacimiento']=fecha_nacimiento.value;
 datos_persona['estado']=1;
+datos_persona['genero']=genero.value;
+datos_persona['nivel_educativo']=nivel.value;
+datos_persona['correo']=correo.value;
+datos_persona['telefono']=telefono.value;
 
 alert(datos_persona);
 

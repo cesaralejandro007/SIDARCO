@@ -118,14 +118,6 @@
                                     </a>
                                 </li>
                             <?php } ?>
-                            <?php if ($_SESSION['Nucleo familiar']['consultar'] == '1') { ?>
-                                <li class="nav-item" onclick="cambio_modulo('Consultar familias')">
-                                    <a href="<?php echo constant('URL'); ?>Familias/consultarIntegrante/" class="nav-link">
-                                        <i class="fa fa-list nav-icon text-info"></i>
-                                        <p>Consultar Integrantes</p>
-                                    </a>
-                                </li>
-                            <?php } ?>
                             <?php if ($_SESSION['Nucleo familiar']['registrar'] == '1') { ?>
                                 <li class="nav-item" onclick="cambio_modulo('Registrar familia')">
                                     <a href="<?php echo constant('URL'); ?>Familias/Registros/" class="nav-link">

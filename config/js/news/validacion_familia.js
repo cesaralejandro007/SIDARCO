@@ -5,7 +5,8 @@ var valid_telefono_familia=document.getElementById("valid_3");
 var valid_ingreso_familia=document.getElementById("valid_4");
 var valid_integrantes=document.getElementById("valid_5");
 var vivienda=document.getElementById("vivienda_familia");
-var btn_vivienda_nueva=document.getElementById("nueva_vivienda");
+var btn_personas_nueva=document.getElementById("nueva_personas");
+var cedula=document.getElementById("cedula");
 var nombre_familia=document.getElementById("nombre_familia");
 var telefono_familia=document.getElementById('telefono_familia');
 var ingreso_aprox = document.getElementById("ingreso_aprox");
@@ -21,14 +22,81 @@ var condicion_ocupacion_input=document.getElementById("input_condicion_ocupacion
 var boton_otro_cond=document.getElementById("nueva_condicion_ocupacion");
 var valid_cond_ocupacion=document.getElementById("valid_cond_ocupacion");
 
-btn_vivienda_nueva.onclick=function(){
-	window.open(BASE_URL+"Viviendas/Registros/");
-}
+//-----------------------------Modal integrantes---------------------------
 
+/* var btn_guardar_integrante=document.getElementById("guardar_integrantes");
+var cedula_integrante=document.getElementById("cedula");
+var primer_nombre=document.getElementById("primer_nombre");
+var segundo_nombre=document.getElementById("segundo_nombre");
+var primer_apellido=document.getElementById("primer_apellido");
+var segundo_apellido=document.getElementById("segundo_apellido");
+var fecha_nacimiento=document.getElementById("fecha_nacimiento");
+var genero=document.getElementById("genero");
+var parentezco=document.getElementById("parentezco");
+var correo=document.getElementById("correo");
+var telefono_personal=document.getElementById("telefono_personal"); */
+//--------------------------------------------------------------------------
+btn_personas_nueva.onclick=function(){
 
-btn_nuevo_integrante.onclick=function(){
 	window.open(BASE_URL+"Personas/Registros/");
 }
+
+
+/* btn_nuevo_integrante.onclick=function(){
+
+	$('#agregar').modal().show();
+
+	/* window.open(modal+"agregar-familiares");
+} */
+
+//---------------------------Validacion de boton de integrantes-------------------
+
+/* btn_guardar_integrante.onclick = function() {
+    if (cedula_integrante.value == "") {
+        swal({
+            type: "error",
+            title: "Error",
+            text: "Debe especificar qué tipo de evento se está creando",
+            timer: 2000,
+            showConfirmButton: false
+        });
+        cedula_integrante.focus();
+        cedula_integrante.style.borderColor = "red";
+    } else{
+
+		guardar_integrantes();
+
+	}
+
+} */
+
+//--------------------------Envio de informaciòn de usuario-------------
+
+
+
+/* function guardar_integrantes(){
+ var datos_integrante= new Object();
+
+ datos_integrante['cedula']=cedula.value;
+ datos_integrantes['primer_nombre']=primer_nombre.value;
+ datos_integrantes['segundo_nombre']=segundo_nombre.value;
+ datos_integrantes['primer_apellido']=primer_apellido.value;
+ datos_integrantes['segundo_apellido']=segundo_apellido.value;
+ datos_integrantes['fecha_nacimiento']=fecha_nacimiento.value;
+ datos_integrantes['genero']=genero.value;
+ datos_integrantes['correo']=correo.value;
+ datos_integrantes['telefono_personal']=telefono_personal.value;
+ 
+
+
+
+
+
+} */
+
+
+
+
 
 
 btn_guardar.onclick=function(){
@@ -36,7 +104,7 @@ btn_guardar.onclick=function(){
 }
 
 
-boton_otro_cond.onclick=function(){
+/* boton_otro_cond.onclick=function(){
 	if(condicion_ocupacion_input.style.display=='none'){
          condicion_ocupacion_input.style.display='';
          condicion_ocupacion_select.style.display='none';
@@ -51,7 +119,7 @@ boton_otro_cond.onclick=function(){
          boton_otro_cond.innerHTML='Otra';
          condicion_ocupacion_input.value='';
 	}
-}
+} */
 
 
     document.onkeypress=function(e){
@@ -71,23 +139,25 @@ function enviar_informacion(){
 	if(validar_informacion()){
    
    var datos_familia=new Object();
-   datos_familia['id_vivienda']=parseInt(vivienda.value);
+   /* datos_familia['id_vivienda']=parseInt(vivienda.value); */
+   datos_familia['id_familia']=nombre_familia.value;
+   datos_familia['cedula']=cedula.value;
    datos_familia['nombre_familia']=nombre_familia.value;
-   datos_familia['telefono_familia']=telefono_familia.value;
-   datos_familia['ingreso_mensual_aprox']=ingreso_aprox.value;
-   condicion_ocupacion_select.style.display!='none'?datos_familia['condicion_ocupacion']=condicion_ocupacion_select.value:datos_familia['condicion_ocupacion']=condicion_ocupacion_input.value
-   observaciones.value==''?datos_familia['observacion']="Sin observaciones":datos_familia['observacion']=observaciones.value;
-   
+   datos_familia['descripcion_familia']=observaciones.value;
+ /*   condicion_ocupacion_select.style.display!='none'?datos_familia['condicion_ocupacion']=condicion_ocupacion_select.value:datos_familia['condicion_ocupacion']=condicion_ocupacion_input.value
+   observaciones.value==''?datos_familia['descripcion_familia']="Sin observaciones":datos_familia['descripcion_familia']=observaciones.value; */
+   alert(datos_familia);
    datos_familia['integrantes']=integrantes;
    datos_familia['estado']=1;   
 
 
 	$.ajax({
          type:"POST",
-         url:BASE_URL+"Familias/registrar_familia",
+         url:BASE_URL+"Familias/registrar_integrante_fun",
          data:{"datos":datos_familia}
 	}).done(function(result){
            console.log(result);
+		   alert(result);
             
             swal({
             	title:"Éxito",
@@ -127,16 +197,17 @@ btn_agregar.onclick=function(){
          valid_integrantes.innerHTML="";
 		$.ajax({
 			type: 'POST',
-			url: BASE_URL + 'Personas/Consultas_cedula',
+			url: BASE_URL + 'Familias/Consultas_cedula',
 			data:{'cedula':integrantes_input.value}
 		})
 		.done(function (datos) {
 
+     /*  alert(datos); */
 
 			if(datos!=0){
 
 				var result=JSON.parse(datos);
-                integrantes.push(result[0]['cedula_persona']);
+                integrantes.push(result[0]['cedula']);
                 integrantes_input.value='';
                 var div=document.createElement("div");
                 div.style.width='100%';
@@ -205,7 +276,7 @@ function valid_integrantes_agregados(){
 
 
 
-vivienda.onchange=function(){
+/* vivienda.onchange=function(){
 	if(vivienda.value!='vacio'){
 		valid_vivienda.innerHTML='';
 	}
@@ -230,7 +301,7 @@ condicion_ocupacion_input.onkeyup=function(){
 	else{
 		valid_cond_ocupacion.innerHTML="Campo vacío";
 	}
-}
+} */
 
 
 nombre_familia.onkeyup=function(){
@@ -242,7 +313,7 @@ nombre_familia.onkeyup=function(){
 	}
 }
 
-telefono_familia.onkeyup=function(){
+/* telefono_familia.onkeyup=function(){
 	if(telefono_familia.value!=''){
 		valid_telefono_familia.innerHTML='';
 	}
@@ -258,29 +329,13 @@ ingreso_aprox.onkeyup=function(){
 	else{
 		valid_ingreso_familia.innerHTML="Ingrese el ingreso mensual aproximado";
 	}
-}
+} */
 
 
 
 
 	function validar_informacion(){
 		var validar=false;
-		if(vivienda.value=="vacio"){
-			valid_vivienda.innerHTML="Debe seleccionar la vivienda de la familia";
-		}
-		else{
-			valid_vivienda.innerHTML="";
-            
-            if((condicion_ocupacion_input.style.display!='none' && condicion_ocupacion_input.value=='') || (condicion_ocupacion_select.style.display!='none' && condicion_ocupacion_select.value=='0')){
-            	valid_cond_ocupacion.innerHTML='Campo vacío';
-            	condicion_ocupacion_input.focus();
-            	condicion_ocupacion_select.focus();
-            }
-            else{
-
-               valid_cond_ocupacion.innerHTML='';
-
-
 
 			if(nombre_familia.value==""){
 				valid_nombre_familia.innerHTML="Debe ingresar el nombre de la familia";
@@ -288,19 +343,7 @@ ingreso_aprox.onkeyup=function(){
 			}
 			else{
               valid_nombre_familia.innerHTML="";
-              if(telefono_familia.value==""){
-              	valid_telefono_familia.innerHTML="Ingrese el teléfono de la familia";
-              	telefono_familia.focus();
-              }
-              else{
-              	valid_telefono_familia.innerHTML="";
 
-              	if(ingreso_aprox.value==""){
-              		valid_ingreso_familia.innerHTML="Ingrese el ingreso mensual aproximado";
-              		ingreso_aprox.focus();
-              	}
-              	else{
-              		valid_ingreso_familia.innerHTML="";
 
               		if(integrantes.length<2){
               			valid_integrantes.innerHTML="Ingrese al menos 2 integrantes de la familia";
@@ -312,10 +355,10 @@ ingreso_aprox.onkeyup=function(){
               		}
               	}
 
-              }
-		}
-	}
+              
+		
+	
 
 		return validar;
-	}
+	
 }

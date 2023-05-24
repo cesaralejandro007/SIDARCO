@@ -604,6 +604,9 @@ public function Consultas_cedula()
 
 }
 
+
+
+
 public function Consultas_cedulaV2()
 {
 
@@ -744,24 +747,6 @@ public function registrar_transporte(){
   }
   
 }
- 
- 
-/*   if($cont==0){
- 
- 
-   if($this->modelo->registrar_proyectos($datos['proyecto'])){
-     $id=$this->Ultimo_Ingresado("proyecto","id_proyecto");
- 
-     foreach ($id as $i) {
-       echo  $this->modelo->Registrar_persona_proyecto([
-         "cedula_persona"   =>     $datos['cedula_persona'],
-         "id_proyecto"     =>     $i['MAX(id_proyecto)']
-       ]);
-     }
- 
- 
-   }
- } */
  
  }
  echo count($datos);
