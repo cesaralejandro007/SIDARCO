@@ -163,9 +163,6 @@ return validacion;
 
 }
 
-
-
-
   
 
 //----------------Validación de datos de integrantes-----------------

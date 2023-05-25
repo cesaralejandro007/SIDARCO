@@ -171,34 +171,6 @@
                                             </div>
                                             <div class="col-md-3 mt-2">
                                                 <label for="tipo_persona">
-                                                    Tipo de parentezco 
-                                                </label>
-                                                <div class="input-group">
-                                                    <select class="custom-select" id="tipo_persona"
-                                                        name="datos[tipo_persona]">
-                                                        <option selected="" value="0">
-                                                            ...
-                                                        </option>
-                                                        <option value="Padre">
-                                                            Padre
-                                                        </option>
-                                                        <option value="Madre" selected="">
-                                                            Madre
-                                                        </option>
-                                                        <option value="Hijo">
-                                                            Hijo
-                                                        </option>
-                                                        <option value="Hija">
-                                                            Hija
-                                                        </option>
-                                                        <option value=Conyugue">
-                                                            Conyugue 
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 mt-2">
-                                                <label for="tipo_persona">
                                                     Nivel educativo  
                                                 </label>
                                                 <div class="input-group">

@@ -258,9 +258,6 @@
 
 
 
-
-
-
     public function Registrar_persona_familia($data)
     {
 
@@ -269,12 +266,14 @@
                 id_familia,
                 cedula_persona,
                 nombre_familia,
-                descripcion_familia
+                descripcion_familia,
+                parentezco
                 ) VALUES (
                 :id_familia,
                 :cedula_persona,
                 :nombre_familia,
-                :descripcion_familia
+                :descripcion_familia,
+                :parentezco
 
             )');
 
@@ -282,7 +281,8 @@
                 'id_familia'      => $data['id_familia'],
                 'cedula_persona'   => $data['cedula_persona'],
                 'nombre_familia'    =>$data['nombre_familia'],
-                'descripcion_familia' =>$data['descripcion_familia']
+                'descripcion_familia' =>$data['descripcion_familia'],
+                'parentezco'          =>$data['parentezco']
             ]);
 
             return true;

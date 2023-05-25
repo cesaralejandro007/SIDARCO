@@ -79,17 +79,18 @@ public function registrar_integrante_fun(){
   $integrante=$this->modelo->Integrantes_consultas();
   $datos=$_POST['datos'];
 
- 
+ echo $datos;
 /*   foreach ($proyectos as $pro) { */
  /*    if($pro['id_proyecto']==$datos['id_titulos']){ */
   for ($i = 0; $i < count($datos); $i++) {
     foreach ($integrante as $pro) {
         if ($pro['id_familia'] == $datos[$i]['id_familia']) {
       $this->modelo->Registrar_persona_familia([
-       "cedula"   =>   $datos[$i]['cedula'],
        "id_familia"     =>     $pro['id_familia'],
-       "nombre_familia"     =>     $pro['nombre_familia'],
-       "descripcion_familia"  =>   $pro['descripcion_familia']
+       "cedula_persona"         =>  $datos[$i]['cedula_persona'],
+       "nombre_familia"     =>     $datos[$i]['nombre_familia'],
+       "descripcion_familia"  =>   $datos[$i]['descripcion_familia'],
+       "parentezco"           =>    $datos[$i]['parentezco']
      ]);
   }
 }

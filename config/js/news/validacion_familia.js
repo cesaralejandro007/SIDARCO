@@ -1,4 +1,5 @@
 var integrantes=[];
+var parentezco_array2=[];
 var valid_vivienda=document.getElementById('valid_1');
 var valid_nombre_familia=document.getElementById("valid_2");
 var valid_telefono_familia=document.getElementById("valid_3");
@@ -6,10 +7,10 @@ var valid_ingreso_familia=document.getElementById("valid_4");
 var valid_integrantes=document.getElementById("valid_5");
 var vivienda=document.getElementById("vivienda_familia");
 var btn_personas_nueva=document.getElementById("nueva_personas");
-var cedula=document.getElementById("cedula");
+var cedula=document.getElementById("cedula_persona");
 var nombre_familia=document.getElementById("nombre_familia");
-var telefono_familia=document.getElementById('telefono_familia');
-var ingreso_aprox = document.getElementById("ingreso_aprox");
+var parentezco=document.getElementById("parentezco");
+
 var integrantes_input=document.getElementById("integrante_input");
 var btn_nuevo_integrante=document.getElementById("btn_nuevo");
 var btn_agregar_integrante=document.getElementById("btn_agregar");
@@ -74,55 +75,12 @@ btn_personas_nueva.onclick=function(){
 
 
 
-/* function guardar_integrantes(){
- var datos_integrante= new Object();
-
- datos_integrante['cedula']=cedula.value;
- datos_integrantes['primer_nombre']=primer_nombre.value;
- datos_integrantes['segundo_nombre']=segundo_nombre.value;
- datos_integrantes['primer_apellido']=primer_apellido.value;
- datos_integrantes['segundo_apellido']=segundo_apellido.value;
- datos_integrantes['fecha_nacimiento']=fecha_nacimiento.value;
- datos_integrantes['genero']=genero.value;
- datos_integrantes['correo']=correo.value;
- datos_integrantes['telefono_personal']=telefono_personal.value;
- 
-
-
-
-
-
-} */
-
-
-
-
-
-
 btn_guardar.onclick=function(){
 	enviar_informacion();
 }
 
 
-/* boton_otro_cond.onclick=function(){
-	if(condicion_ocupacion_input.style.display=='none'){
-         condicion_ocupacion_input.style.display='';
-         condicion_ocupacion_select.style.display='none';
-         boton_otro_cond.innerHTML='Atrás';
-         condicion_ocupacion_input.focus();
-         condicion_ocupacion_select.value='0';
-
-	}
-	else{
-    condicion_ocupacion_input.style.display='none';
-         condicion_ocupacion_select.style.display='';
-         boton_otro_cond.innerHTML='Otra';
-         condicion_ocupacion_input.value='';
-	}
-} */
-
-
-    document.onkeypress=function(e){
+  /*   document.onkeypress=function(e){
  if(e.which == 13  || e.keyCode==13 ) {
 
       enviar_informacion();
@@ -130,26 +88,27 @@ btn_guardar.onclick=function(){
        
        }
        else{return true;}
-}
-
+} */
 
 
 function enviar_informacion(){
 
 	if(validar_informacion()){
    var datos_familia=[];
-   var datos=new Object();
-   /* datos_familia['id_vivienda']=parseInt(vivienda.value); */
-   datos['id_familia']=nombre_familia.value;
-   datos['cedula']=cedula.value;
-   datos['nombre_familia']=nombre_familia.value;
-   datos['descripcion_familia']=observaciones.value;
- /*   condicion_ocupacion_select.style.display!='none'?datos_familia['condicion_ocupacion']=condicion_ocupacion_select.value:datos_familia['condicion_ocupacion']=condicion_ocupacion_input.value
-   observaciones.value==''?datos_familia['descripcion_familia']="Sin observaciones":datos_familia['descripcion_familia']=observaciones.value; */
-   $datos_familia.push(datos);
- 
-   alert(datos_familia);
+   for(var i=0; i<integrantes.length; i++){
+	var datos=new Object();
+	datos['id_familia']=integrantes[i];
+	datos['cedula_persona']=cedula.value;
+	datos['nombre_familia']=nombre_familia.value;
+	datos['descripcion_familia']=observaciones.value;
+	datos['parentezco']=parentezco_array2[i];
+	datos_familia.push(datos);
+  
+	alert(datos_familia);
 
+   }
+   alert(datos['parentezco']);
+  
   /*  datos_familia['integrantes']=integrantes;
    datos_familia['estado']=1;   */ 
 
@@ -175,11 +134,8 @@ function enviar_informacion(){
 
 	});
 }
-}
-
-
-
-
+ }
+ 
 integrantes_input.onkeyup=function(){
 	if(integrantes_input.value!=''){
 		valid_integrantes.innerHTML='';
@@ -209,8 +165,12 @@ btn_agregar.onclick=function(){
 
 			if(datos!=0){
 
+				var parentezco_array="";
+				 parentezco_array = parentezco.value;
+
 				var result=JSON.parse(datos);
-                integrantes.push(result[0]['cedula']);
+                integrantes.push(result[0]['id_familia']);
+				parentezco_array2.push(parentezco_array);
                 integrantes_input.value='';
                 var div=document.createElement("div");
                 div.style.width='100%';
@@ -219,15 +179,18 @@ btn_agregar.onclick=function(){
 				var tr=document.createElement("tr");
 				var td1=document.createElement("td");
 				var td2=document.createElement("td");
+				var td3=document.createElement("td");
 				td1.innerHTML=result[0]['primer_nombre']+" "+result[0]['primer_apellido'];
+				td2.innerHTML=document.getElementById("parentezco").value;
 				var btn=document.createElement("input");
 				btn.type="button";
 				btn.className="btn btn-danger";
 				btn.value="X";
-				td2.style.textAlign="right";
-				td2.appendChild(btn);
+				td3.style.textAlign="right";
+				td3.appendChild(btn);
 				tr.appendChild(td1);
 				tr.appendChild(td2);
+				tr.appendChild(td3);
 				tabla.appendChild(tr);
 				div.appendChild(tabla);
 				var hr=document.createElement("hr");
@@ -243,12 +206,17 @@ btn_agregar.onclick=function(){
 			}
 			else{
 				valid_integrantes.innerHTML="Esta persona no está registrada";
+			
+			
+			
 			}
+			parentezco.value="0";
 
 		});
 
 }
 }
+
 	}
 
 
