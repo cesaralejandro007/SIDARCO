@@ -27,10 +27,46 @@
     }
 
 
+
+
     public function Consultar_personas()
     {
 
         $tabla            = "SELECT * FROM personas WHERE estado=1";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Buscar_Persona($cedula)
+    {
+
+        $tabla            = "SELECT * FROM familia WHERE cedula=$cedula AND estado=1";
+        $respuestaArreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuestaArreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuestaArreglo;
+        } catch (PDOException $e) {
+
+           return $this->Capturar_Error($e);
+        }
+    } 
+
+    public function Integrantes_consultas()
+    {
+
+        $tabla            = "SELECT * FROM familia WHERE estado=1";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -85,32 +121,44 @@
 
         try {
             $datos = $this->conexion->prepare('INSERT INTO familia (
-                id_vivienda,
-                condicion_ocupacion,
-                nombre_familia, 
-                observacion, 
-                telefono_familia,
-                ingreso_mensual_aprox,
-                estado
+                cedula,
+                primer_nombre, 
+                segundo_nombre, 
+                primer_apellido,
+                segundo_apellido,
+                estado,
+                fecha_nacimiento,
+                genero,
+                nivel_educativo,
+                correo,
+                telefono
 
                 ) VALUES (
-                :id_vivienda,
-                :condicion_ocupacion,
-                :nombre_familia, 
-                :observacion, 
-                :telefono_familia,
-                :ingreso_mensual_aprox,
-                :estado
+                :cedula,
+                :primer_nombre, 
+                :segundo_nombre, 
+                :primer_apellido,
+                :segundo_apellido,
+                :estado,
+                :fecha_nacimiento,
+                :genero,
+                :nivel_educativo,
+                :correo,
+                :telefono
             )');
 
             $datos->execute([
-                'id_vivienda'  => $data['id_vivienda'],
-                'condicion_ocupacion' => $data["condicion_ocupacion"],
-                'nombre_familia'        => $data['nombre_familia'],
-                'observacion'      => $data['observacion'],
-                'telefono_familia'    =>$data['telefono_familia'],
-                'ingreso_mensual_aprox'        =>$data['ingreso_mensual_aprox'],
-                'estado'      => $data['estado']
+                'cedula' => $data["cedula"],
+                'primer_nombre'        => $data['primer_nombre'],
+                'segundo_nombre'      => $data['segundo_nombre'],
+                'primer_apellido'        =>$data['primer_apellido'],
+                'segundo_apellido'          =>$data['segundo_apellido'],
+                'estado'                    => $data['estado'],
+                'fecha_nacimiento'          =>$data['fecha_nacimiento'],
+                'genero'          =>$data['genero'],
+                'nivel_educativo'          =>$data['nivel_educativo'],
+                'correo'          =>$data['correo'],
+                'telefono'          =>$data['telefono']
             ]);
 
             return true;
@@ -119,6 +167,12 @@
             return $this->Capturar_Error($e);
         }
     }
+
+
+
+
+
+
     public function Actualizar_Familia($data)
     {
 
@@ -153,21 +207,82 @@
         }
     }
 
+       /*  public function Registrar_Integrante($data){
+
+            try{
+
+           
+            $datos=$this->conexion->prepare("INSERT INTO familia ()
+            id_familia,
+            id_vivienda,
+            cedula,
+            primer_nombre,
+            segundo_nombre,
+            primer_apellido,
+            segundo_apellido
+            
+             VALUES(
+
+            :id_familia,
+            :id_vivienda,
+            :cedula,
+            :primer_nombre,
+            :segundo_nombre,
+            :primer_apellido,
+            :segundo_apellido
+
+             )");
+
+            $datos->execute([
+                
+            'cedula'        => $data['cedula'],
+            'primer_nombre' => $data['primer_nombre'],
+            ''
+
+
+
+
+
+            ])
+
+
+
+            }catch(PdoException $e){
+
+            }
+
+
+
+        } */
+
+
+
+
     public function Registrar_persona_familia($data)
     {
 
         try {
             $datos = $this->conexion->prepare('INSERT INTO familia_personas (
                 id_familia,
-                cedula_persona        
+                cedula_persona,
+                nombre_familia,
+                descripcion_familia,
+                parentezco
                 ) VALUES (
                 :id_familia,
-                :cedula_persona
+                :cedula_persona,
+                :nombre_familia,
+                :descripcion_familia,
+                :parentezco
+
             )');
 
             $datos->execute([
                 'id_familia'      => $data['id_familia'],
-                'cedula_persona'   => $data['cedula_persona']
+                'cedula_persona'   => $data['cedula_persona'],
+                'nombre_familia'    =>$data['nombre_familia'],
+                'descripcion_familia' =>$data['descripcion_familia'],
+                'parentezco'          =>$data['parentezco']
             ]);
 
             return true;

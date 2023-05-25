@@ -300,6 +300,9 @@ boton_crear.onclick = function() {
         $('#ver').modal().show();
     }
 }
+
+
+
 //===========================================================================//
 back_mes.onclick = function() {
     var mes_back = 0;

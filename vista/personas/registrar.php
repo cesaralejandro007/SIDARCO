@@ -1291,9 +1291,11 @@
                             <div class="input-group">
                                 <select class='form-control' id='rol_usuario'>
                                     <option value='vacio'>-Seleccione-</option>
-                                    <option value='Habitante'>Funcionaria/o</option>
-                                     <option value='Super Usuario'>Super Usuario</option>
-                                      <option value='Administrador'>Administrador</option>
+                                    <option value='Funcionario'>Funcionaria/o</option>
+                                    <option value='Usuario'>Usuario</option>
+                                    <option value='Jefe de división'>Jefa de división</option>
+                                    <option value='Administrador'>Administrador</option>
+                                    <option value='Super Usuario'>Súper Usuario</option>
                                 </select>
                             </div>
 

@@ -316,6 +316,10 @@ class Controlador
         }
     }
 
+
+
+    
+
     public function Consultar_Tabla_divisiones($tabla)
     {
 

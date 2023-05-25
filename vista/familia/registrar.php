@@ -42,22 +42,23 @@
                                                 </h2>
                                             </div>
 
-                                            <div class="col-md-6 mt-4">
+                                            <div class="col-md-12 mt-4">
                                                 <label for="primer_nombre">
-                                                    Vivienda
+                                                    Funcionaria o Funcionario responsable de familia
                                                 </label>
                                                 <span id='valid_1' style="color:red;"></span>
                                                 <div class="input-group">
-                                                    <select id='vivienda_familia' class='form-control'>
-                                                        <option value='vacio'>-Seleccione-</option>
-                                                         <?php foreach ($this->viviendas as $v) { ?>
-                                                                     <option value='<?php echo $v["id_vivienda"] ;?>'><?php echo $v['numero_casa']; ?></option>
-                                                        <?php } ?>
-                                                    </select><button class='btn btn-info' type='button' id='nueva_vivienda'>Nuevo</button>
+                                                <input type="text" class='form-control letras_numeros' id='cedula' placeholder="Buscar cédula" name="datos['cedula_persona']" list='lista' oninput="Limitar(this,15)">
+                                                            <datalist id='lista'>
+                                                                <?php foreach ($this->personas as $p) { ?>
+                                                                         <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['primer_nombre']." ".$p['primer_apellido']; ?></option>
+                                                            <?php    } ?>
+                                                            </datalist>
+                                                    <button class='btn btn-info' type='button' id='nueva_personas'>Nueva</button>
                                                 </div>
 
                                             </div>
-                                             <div class="col-md-6 mt-4">
+<!--                                              <div class="col-md-6 mt-4">
                                                 <label for="segundo_apellido">
                                                  Condición en que ocupa la vivienda
                                                 </label> <span id='valid_cond_ocupacion' style='color:red'></span>
@@ -74,7 +75,7 @@
                                             <input style='display:none' type="text" maxlength="20" id='input_condicion_ocupacion' placeholder="Especifique..." class='form-control solo-letras' name="" oninput="Limitar(this,15)">
  
                                            </td><td><button class='btn btn-info' type='button' id='nueva_condicion_ocupacion'>Otra</button></td></tr></table>
-                                                </div>
+                                                </div> -->
 
 
                                             <div class="col-md-6 mt-2">
@@ -89,7 +90,7 @@
 
                                             </div>
 
-                                            <div class="col-md-6 mt-2">
+       <!--                                      <div class="col-md-6 mt-2">
                                                 <label for="primer_apellido">
                                                     Téléfono de familia
                                                 </label><span id='valid_3' style="color:red;"></span>
@@ -99,9 +100,9 @@
                                                         type="number" oninput="Limitar(this,12)"/>
                                                 </div>
 
-                                            </div>
+                                            </div> -->
 
-                                            <div class="col-md-6 mt-2">
+                 <!--                            <div class="col-md-6 mt-2">
                                                 <label for="segundo_apellido">
                                                     Ingreso mensual Aprox
                                                 </label><span id='valid_4' style="color:red;"></span>
@@ -112,7 +113,7 @@
                                                 </div>
 
                                             </div>
-
+ -->
 
 
                                              <div class="col-md-6 mt-2">
@@ -134,27 +135,56 @@
                                                    <table style='width:100%'>
                                                     <tr>
                                                         <td>
-                                                            <input type="number" class='form-control letras_numeros' id='integrante_input' placeholder="Buscar cédula" name="" list='lista_personas' oninput="Limitar(this,15)">
-                                                            <datalist id='lista_personas'>
-                                                                <?php foreach ($this->personas as $p) { ?>
-                                                                         <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['primer_nombre']." ".$p['primer_apellido']; ?></option>
+                                                        <input type="text" class='form-control letras_numeros' id='integrante_input' placeholder="Buscar cédula"  list='lista_persona' name="datos[id_familia]" oninput="Limitar(this,15)">
+                                                            <datalist id='lista_persona'>
+                                                                <?php foreach ($this->integrantes as $int) { ?>
+                                                                         <option value='<?php echo $int['cedula'];?>'><?php echo $int['primer_apellido'].''.$int['primer_apellido']; ?></option>
                                                             <?php    } ?>
                                                             </datalist>
+                                                            <td class="col-md-6 p-0">
+                                                            <select class="custom-select" id="parentezco"
+                                                        name="datos[parentezco]" >
+                                                        <option selected="" value="0">
+                                                            -Seleccione el tipo de parentezco-
+                                                        </option>
+                                                        <option value="Padre">
+                                                            Padre
+                                                        </option>
+                                                        <option value="Madre" >
+                                                            Madre
+                                                        </option>
+                                                        <option value="Hijo">
+                                                            Hijo
+                                                        </option>
+                                                        <option value="Hija">
+                                                            Hija
+                                                        </option>
+                                                        <option value="Conyugue">
+                                                            Conyugue 
+                                                        </option>
+                                                    </select>
+                                                                   </td>
                                                         </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
                                                       </tr>
                                                       <tr><td colspan='2'><br>
                                                            <div style='background:#D4E6F4;overflow-y: scroll;width: 95%;height:200px;'><center>
-                                                            <div style='width:95%' id='integrantes_agregados'></div>
+                                                            <div style='width:100%' id='integrantes_agregados'></div>
                                                         </center>
                                                            </div>
                                                       </td>
-                                                       
                                                    </table>
                                                 </div>
 
                                             </div>
-
-                                          
+<!-- 
+                                            <div class="col-md-4 mt-2">
+                                                <label for="tipo_persona">
+                                                    Tipo de parentezco 
+                                                </label>
+                                                <div class="input-group">
+                                                   
+                                                </div>
+                                            </div> -->
 
 
                                          </div></div></div>
@@ -176,8 +206,9 @@
     <!-- /.content -->
     <!-- /.content -->
 </div>
-<?php include modal."agregar-familiares.php"; ?>
 <script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/validacion_familia.js"></script>
+<?php include modal."agregar-familiares.php"; ?>
+<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/registrar-integrantes.js"></script>
 <!-- /.content-wrapper -->
 <?php include (call."Fin.php"); ?>
 
