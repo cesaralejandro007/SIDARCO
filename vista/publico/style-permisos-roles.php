@@ -12,7 +12,7 @@
 
 
 .negativo{
-	color:#02A20C;
+	color:#15406D;
 	font-size:22px;
 	cursor:pointer;
 }
