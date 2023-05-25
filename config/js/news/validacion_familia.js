@@ -137,18 +137,21 @@ btn_guardar.onclick=function(){
 function enviar_informacion(){
 
 	if(validar_informacion()){
-   
-   var datos_familia=new Object();
+   var datos_familia=[];
+   var datos=new Object();
    /* datos_familia['id_vivienda']=parseInt(vivienda.value); */
-   datos_familia['id_familia']=nombre_familia.value;
-   datos_familia['cedula']=cedula.value;
-   datos_familia['nombre_familia']=nombre_familia.value;
-   datos_familia['descripcion_familia']=observaciones.value;
+   datos['id_familia']=nombre_familia.value;
+   datos['cedula']=cedula.value;
+   datos['nombre_familia']=nombre_familia.value;
+   datos['descripcion_familia']=observaciones.value;
  /*   condicion_ocupacion_select.style.display!='none'?datos_familia['condicion_ocupacion']=condicion_ocupacion_select.value:datos_familia['condicion_ocupacion']=condicion_ocupacion_input.value
    observaciones.value==''?datos_familia['descripcion_familia']="Sin observaciones":datos_familia['descripcion_familia']=observaciones.value; */
+   $datos_familia.push(datos);
+ 
    alert(datos_familia);
-   datos_familia['integrantes']=integrantes;
-   datos_familia['estado']=1;   
+
+  /*  datos_familia['integrantes']=integrantes;
+   datos_familia['estado']=1;   */ 
 
 
 	$.ajax({
@@ -250,11 +253,6 @@ btn_agregar.onclick=function(){
 
 
 
-
-
-
-	
-
 function valid_integrantes_agregados(){
 	var validar=true;
 	for(var i=0;i<integrantes.length;i++){
@@ -269,10 +267,6 @@ function valid_integrantes_agregados(){
 
 	return validar;
 }
-
-
-
-
 
 
 
