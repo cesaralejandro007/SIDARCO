@@ -745,8 +745,8 @@ public function registrar_transporte(){
        "descripcion"     =>     $datos[$i]['descripcion']
      ]);
   }
-  
 }
+
  
  }
  echo count($datos);

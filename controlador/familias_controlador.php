@@ -50,13 +50,16 @@ class Familias extends Controlador
         $this->vista->Cargar_Vistas('familia/consultarIntegrante');
     } */
 
-   /*  public function registrar_familia(){
+
+
+    public function registrar_familia(){
         $datos_familia=$_POST['datos'];
 
-        $resultado
-          $this->modelo->Registrar_Familia($datos_familia); 
+        echo $datos_familia;
         
-         if($resultado){
+          $this->modelo->Registrar_Fami($datos_familia); 
+        
+     /*     if($resultado){
            $id=$this->Ultimo_Ingresado("familia","id_familia");
            foreach ($id as  $i) {
             foreach ($datos_familia['integrantes'] as $inte) {
@@ -66,11 +69,10 @@ class Familias extends Controlador
             ]);
          }
      }
- } 
-echo $resultado;
+  } */ 
 
-}  */
-
+}  
+ 
 
 //---------------------Registrar en tabla puente---------------
 

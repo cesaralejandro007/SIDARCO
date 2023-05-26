@@ -116,7 +116,7 @@
     }
 
 
-    public function Registrar_Familia($data)
+    public function Registrar_Fami($data)
     {
 
         try {

@@ -86,11 +86,11 @@
                                             <div class="col-md-11 mt-2">
                                                 <label for="cedula">
                                                     Cedula
-                                                </label>
+                                                </label> <span id='valid_1' style="color:red;" ></span>
                                                 <div class="input-group">
                                                     <input class="form-control input-numero solo-numeros no-espacios" id="cedula"
                                                         name="datos[cedula]" placeholder="Cedula de identidad"
-                                                        type="text-center" />
+                                                        type="text-center" oninput="Limitar(this,8)"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 mt-4">
@@ -100,7 +100,7 @@
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="primer_nombre"
                                                         name="datos[primer_nombre]" placeholder="Primer Nombre"
-                                                        type="text" />
+                                                        type="text" oninput="Limitar(this,15)" />
                                                 </div>
 
                                             </div>
@@ -112,7 +112,7 @@
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="segundo_nombre"
                                                         name="datos[segundo_nombre]" placeholder="Segundo Nombre"
-                                                        type="text" />
+                                                        type="text" oninput="Limitar(this,15)"/>
                                                 </div>
 
                                             </div>
@@ -124,7 +124,7 @@
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="primer_apellido"
                                                         name="datos[primer_apellido]" placeholder="Primer Apellido"
-                                                        type="text" />
+                                                        type="text" oninput="Limitar(this,15)" />
                                                 </div>
 
                                             </div>
@@ -136,11 +136,12 @@
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="segundo_apellido"
                                                         name="datos[segundo_apellido]" placeholder="Segundo Apellido"
-                                                        type="text" />
+                                                        type="text" oninput="Limitar(this,15)" />
                                                 </div>
 
                                             </div>
-                                            <div class="col-md-3 mt-2">
+
+                                            <div class="col-md-4 mt-2">
                                                 <div class="form-group">
                                                     <label for="fecha_nacimiento">
                                                         Fecha De Nacimiento
@@ -151,7 +152,7 @@
                                                 </div>
 
                                             </div>
-                                            <div class="col-md-3 mt-2">
+                                            <div class="col-md-4 mt-2">
                                                 <label for="genero">
                                                     Género
                                                 </label>
@@ -169,7 +170,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3 mt-2">
+                                            <div class="col-md-4 mt-2">
                                                 <label for="tipo_persona">
                                                     Nivel educativo  
                                                 </label>
@@ -182,10 +183,10 @@
                                                         <option value="preescolar">
                                                             Preescolar
                                                         </option>
-                                                        <option value="primaria" selected="">
+                                                        <option value="primaria" >
                                                             Primaria
                                                         </option>
-                                                        <option value="diversificada" selected="">
+                                                        <option value="diversificada" >
                                                             Diversificada 
                                                         </option>
                                                     </select>
@@ -197,8 +198,8 @@
                                                   Talla de camisa
                                                 </label>
                                             <div class="input-group">
-                                                    <input class="form-control mb-10" id="camisa"
-                                                        name="datos[Camisa]" placeholder="Talla de camisa" type="text" />
+                                                    <input class="form-control mb-10 solo-letras" id="camisa"
+                                                        name="datos[Camisa]" placeholder="Talla de camisa" type="text" oninput="Limitar(this,3)"/>
                                                 </div>
                                             </div>
                                           <div class="col-md-4 mt-2">
@@ -206,8 +207,8 @@
                                                    Talla de pantalón 
                                                 </label>
                                                 <div class="input-group">
-                                                    <input class="form-control mb-10" id="pantalon"
-                                                        name="datos[pantalon]" placeholder="Talla de pantalón" type="text" />
+                                                    <input class="form-control mb-10 solo-letras" id="pantalon"
+                                                        name="datos[pantalon]" placeholder="Talla de pantalón" type="text" oninput="Limitar(this,3)"/>
                                                 </div>
                                             </div>
 
@@ -216,8 +217,8 @@
                                                    Número de calzado
                                                 </label>
                                                 <div class="input-group">
-                                                    <input class="form-control mb-10" id="calzado"
-                                                        name="datos[codigo_patria]" placeholder="Número de calzado" type="text" />
+                                                    <input class="form-control mb-10 solo-numeros" id="calzado"
+                                                        name="datos[codigo_patria]" placeholder="Número de calzado" type="number" oninput="Limitar(this,2)"/>
                                                 </div>
 
                                             </div>
@@ -249,8 +250,8 @@
                                                         Correo Electrónico
                                                     </label>
                                                     <div class="input-group">
-                                                        <input class="form-control" id="correo" name="datos[correo]"
-                                                            placeholder="Correo" type="text">
+                                                        <input class="form-control letras-numeros" id="correo" name="datos[correo]"
+                                                            placeholder="Correo" type="text" oninput="Limitar(this,30)">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">@</span>
                                                         </div>
@@ -285,7 +286,7 @@
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-numeros" id="telefono_personal"
                                                         name="datos[telefono_personal]" placeholder="0000-000-0000"
-                                                        type="text" />
+                                                        type="text" oninput="Limitar(this, 11)"/>
                                                 </div>
 
                                             </div>

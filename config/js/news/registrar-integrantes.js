@@ -203,12 +203,9 @@ type:"POST",
 url:BASE_URL+"Familias/registrar_familia",
 data:{"datos":datos_persona}
 }).done(function(result){
-alert(result);
     console.log(result);
+    alert(result);
 
-    if(result==1){
-
-       
               swal({
                title:"Éxito",
                text:"La persona ha sido registrada exitosamente",
@@ -218,7 +215,7 @@ alert(result);
              });
 
          
-    }
+           /*   setTimeout(function(){location.href=BASE_URL+"Familias/registrar";},1000); */
 
 
 

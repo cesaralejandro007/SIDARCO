@@ -78,7 +78,7 @@
                                                 </div> -->
 
 
-                                            <div class="col-md-6 mt-2">
+                                            <div class="col-md-4 mt-2">
                                                 <label for="segundo_nombre">
                                                     Nombre de familia
                                                 </label><span id='valid_2' style="color:red;"></span>
@@ -116,12 +116,12 @@
  -->
 
 
-                                             <div class="col-md-6 mt-2">
+                                             <div class="col-md-8 mt-2">
                                                 <label for="segundo_apellido">
                                                     Observaciones (opcional)
                                                 </label>
                                                 <div class="input-group">
-                                                  <textarea class='form-control' id='observaciones_familia' ></textarea>
+                                                  <input class='form-control' id='observaciones_familia'  placeholder="Observación de la familia"  type="text" >
                                                 </div>
 
                                             </div>
@@ -167,7 +167,7 @@
                                                         </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
                                                       </tr>
                                                       <tr><td colspan='2'><br>
-                                                           <div style='background:#D4E6F4;overflow-y: scroll;width: 95%;height:200px;'><center>
+                                                           <div style='background:#D4E6F4;overflow-y: scroll;width: 100%; height:200px;'><center>
                                                             <div style='width:100%' id='integrantes_agregados'></div>
                                                         </center>
                                                            </div>

@@ -11,6 +11,8 @@ var cedula=document.getElementById("cedula_persona");
 var nombre_familia=document.getElementById("nombre_familia");
 var parentezco=document.getElementById("parentezco");
 
+
+
 var integrantes_input=document.getElementById("integrante_input");
 var btn_nuevo_integrante=document.getElementById("btn_nuevo");
 var btn_agregar_integrante=document.getElementById("btn_agregar");
@@ -22,6 +24,8 @@ var condicion_ocupacion_select=document.getElementById("select-cond-ocupacion");
 var condicion_ocupacion_input=document.getElementById("input_condicion_ocupacion");
 var boton_otro_cond=document.getElementById("nueva_condicion_ocupacion");
 var valid_cond_ocupacion=document.getElementById("valid_cond_ocupacion");
+
+
 
 //-----------------------------Modal integrantes---------------------------
 
@@ -107,7 +111,6 @@ function enviar_informacion(){
 	alert(datos_familia);
 
    }
-   alert(datos['parentezco']);
   
   /*  datos_familia['integrantes']=integrantes;
    datos_familia['estado']=1;   */ 
