@@ -6,7 +6,7 @@ var texto_integrantes="";
  for(var i=0;i<integrants.length;i++){
  	console.log(integrants[i]['cedula_persona']);
  	texto_integrantes+="<table style='width:100%'><tr><td>"+integrants[i]['primer_nombre']+" "+integrants[i]['primer_apellido'];
- 	texto_integrantes+="</td><td>"+integrants[i]['cedula_persona']+"</td></tr></table><br><hr>";
+ 	texto_integrantes+="</td><td>"+integrants[i]['cedula_persona']+"</td><td>"+integrants[i]['parentezco']+"</td></tr></table><br><hr>";
  }
 
  var texto_swal="<center><em class='fa fa-users' style='font-size:60px'></em></center><br>";

@@ -15,10 +15,8 @@
         </div><!-- /.container-fluid -->
     </div> 
     <!-- /.content-header -->
-
     <!-- Main content -->
     <section class="content">
-
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
@@ -26,13 +24,13 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered  table-hover">
+                <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Familia</th>
                             <th>Teléfono</th>
                             <th>Dirección</th>
-                            <th>Nro Casa</th>
+                            <th>Integrantes</th>
                             <th>Ingreso mensual aprox</th>
                             <th style="width: 20px;">Ver</th> 
                             <?php if($_SESSION['Nucleo familiar']['modificar']){ ?>
@@ -65,7 +63,7 @@
                                             "data": "direccion"
                                         },
                                         {
-                                            "data":"Nro Casa"
+                                            "data":"integrantes"
                                         },
                                         {
                                             "data":"ingreso_mensual"
@@ -212,7 +210,7 @@ var condicion_ocupacion_input=document.getElementById("input_condicion_ocupacion
                             <th>Familia</th>
                             <th>Teléfono</th>
                             <th>Dirección</th>
-                            <th>Nro Casa</th>
+                            <th>Integrantes</th>
                             <th>Ingreso mensual aprox</th>
                             <th>Ver</th> 
                             <?php if($_SESSION['Nucleo familiar']['modificar']){ ?>

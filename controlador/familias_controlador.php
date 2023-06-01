@@ -131,19 +131,22 @@ public function consultar_info_familia(){
      foreach ($familias as $f) {
         
         $integrantes=$this->modelo->get_integrantes($f['id_familia']);
- 
-
-
+        $integrantes_familia  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td></tr></thead><tbody>";
+        foreach ($this->modelo->get_integrantes($f['cedula_persona']) as $en) {
+                $integrantes_familia .="<tr><td>". $en['cedula'] ."</td><td>" . $en['primer_nombre']." " .$en['primer_apellido'] ."</td><td>" . $en['parentezco']. "</td></tr>";
+        }
+        $integrantes_familia .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td></tr></tfoot></table>";
+        $integrantes_familia = "<div style='overflow-y:scroll;width:100%;height:100px;'>" . $integrantes_familia . "</div>";
          $retornar[]=[
                 "familia"           => $f['nombre_familia'],
                 "telefono"          => $f['telefono_familia'],
                 "direccion"         => $f['direccion_vivienda'],
-                "Nro Casa"          => $f['numero_casa'],
+                "integrantes"          => $integrantes_familia,
                 "ingreso_mensual"   => $f['ingreso_mensual_aprox'],
                 "ver"               => "<button class='btn'  style='background:#15406D; color:white; font-weight:bold' onclick='ver_familia(`".json_encode($integrantes)."`,`".$f['nombre_familia']."`,`".$f['telefono_familia']."`,`".$f['direccion_vivienda']."`,`".$f['numero_casa']."`,`".$f['ingreso_mensual_aprox']."`)' type='button'><em class='fa fa-eye'></em></button>",
                 "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia'].",".$f['id_familia_persona'].")'><em class='fa fa-edit'></em></button>",
                 "eliminar"          =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$f['id_familia']."`)' type='button'><em class='fa fa-trash'></em></button>"
-         ];
+          ];
      }
 
      $this->Escribir_JSON($retornar);
