@@ -44,11 +44,11 @@
 
                                             <div class="col-md-12 mt-4">
                                                 <label for="primer_nombre">
-                                                    Funcionaria o Funcionario responsable de familia
+                                                    Funcionaria o funcionario responsable de familia
                                                 </label>
                                                 <span id='valid_1' style="color:red;"></span>
                                                 <div class="input-group">
-                                                <input type="text" class='form-control letras_numeros' id='cedula' placeholder="Buscar cédula" name="datos['cedula_persona']" list='lista' oninput="Limitar(this,15)">
+                                                <input type="text" class='form-control letras_numeros' id='cedula_persona' placeholder="Buscar cédula" name="datos['cedula_persona']" list='lista' oninput="Limitar(this,15)">
                                                             <datalist id='lista'>
                                                                 <?php foreach ($this->personas as $p) { ?>
                                                                          <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['primer_nombre']." ".$p['primer_apellido']; ?></option>
@@ -57,7 +57,7 @@
                                                     <button class='btn btn-info' type='button' id='nueva_personas'>Nueva</button>
                                                 </div>
 
-                                            </div>
+                                                </div>
 <!--                                              <div class="col-md-6 mt-4">
                                                 <label for="segundo_apellido">
                                                  Condición en que ocupa la vivienda
@@ -138,7 +138,7 @@
                                                         <input type="text" class='form-control letras_numeros' id='integrante_input' placeholder="Buscar cédula"  list='lista_persona' name="datos[id_familia]" oninput="Limitar(this,15)">
                                                             <datalist id='lista_persona'>
                                                                 <?php foreach ($this->integrantes as $int) { ?>
-                                                                         <option value='<?php echo $int['cedula'];?>'><?php echo $int['primer_apellido'].''.$int['primer_apellido']; ?></option>
+                                                                         <option value='<?php echo $int['cedula_integrante'];?>'><?php echo $int['primer_apellido'].''.$int['primer_apellido']; ?></option>
                                                             <?php    } ?>
                                                             </datalist>
                                                             <td class="col-md-6 p-0">
@@ -167,7 +167,7 @@
                                                         </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
                                                       </tr>
                                                       <tr><td colspan='2'><br>
-                                                           <div style='background:#D4E6F4;overflow-y: scroll;width: 100%; height:200px;'><center>
+                                                           <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
                                                             <div style='width:100%' id='integrantes_agregados'></div>
                                                         </center>
                                                            </div>

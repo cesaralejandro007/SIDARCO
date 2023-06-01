@@ -49,7 +49,7 @@
     public function Buscar_Persona($cedula)
     {
 
-        $tabla            = "SELECT * FROM familia WHERE cedula=$cedula AND estado=1";
+        $tabla            = "SELECT * FROM familia WHERE cedula_integrante=$cedula AND estado=1";
         $respuestaArreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -121,7 +121,7 @@
 
         try {
             $datos = $this->conexion->prepare('INSERT INTO familia (
-                cedula,
+                cedula_integrante,
                 primer_nombre, 
                 segundo_nombre, 
                 primer_apellido,
@@ -134,7 +134,7 @@
                 telefono
 
                 ) VALUES (
-                :cedula,
+                :cedula_integrante,
                 :primer_nombre, 
                 :segundo_nombre, 
                 :primer_apellido,
@@ -148,17 +148,17 @@
             )');
 
             $datos->execute([
-                'cedula' => $data["cedula"],
+                'cedula_integrante'    => $data['cedula_integrante'],
                 'primer_nombre'        => $data['primer_nombre'],
-                'segundo_nombre'      => $data['segundo_nombre'],
-                'primer_apellido'        =>$data['primer_apellido'],
-                'segundo_apellido'          =>$data['segundo_apellido'],
-                'estado'                    => $data['estado'],
-                'fecha_nacimiento'          =>$data['fecha_nacimiento'],
-                'genero'          =>$data['genero'],
-                'nivel_educativo'          =>$data['nivel_educativo'],
-                'correo'          =>$data['correo'],
-                'telefono'          =>$data['telefono']
+                'segundo_nombre'       => $data['segundo_nombre'],
+                'primer_apellido'      =>$data['primer_apellido'],
+                'segundo_apellido'     =>$data['segundo_apellido'],
+                'estado'               => $data['estado'],
+                'fecha_nacimiento'     =>$data['fecha_nacimiento'],
+                'genero'               =>$data['genero'],
+                'nivel_educativo'      =>$data['nivel_educativo'],
+                'correo'               =>$data['correo'],
+                'telefono'             =>$data['telefono']
             ]);
 
             return true;

@@ -88,15 +88,15 @@
                                                     Cedula
                                                 </label> <span id='valid_1' style="color:red;" ></span>
                                                 <div class="input-group">
-                                                    <input class="form-control input-numero solo-numeros no-espacios" id="cedula"
-                                                        name="datos[cedula]" placeholder="Cedula de identidad"
-                                                        type="text-center" oninput="Limitar(this,8)"/>
+                                                    <input class="form-control " id="cedula_integrante"
+                                                        name="datos[cedula_integrante]" placeholder="Cedula de identidad"
+                                                        type="text-center" />
                                                 </div>
                                             </div>
                                             <div class="col-md-3 mt-4">
                                                 <label for="primer_nombre">
                                                     Primer Nombre
-                                                </label>
+                                                </label><span id="valid_2" style="color:red"></span>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="primer_nombre"
                                                         name="datos[primer_nombre]" placeholder="Primer Nombre"
@@ -108,7 +108,7 @@
                                             <div class="col-md-3 mt-4">
                                                 <label for="segundo_nombre">
                                                     Segundo Nombre
-                                                </label>
+                                                </label> <span id="valid_3" style="color: red;"></span>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="segundo_nombre"
                                                         name="datos[segundo_nombre]" placeholder="Segundo Nombre"

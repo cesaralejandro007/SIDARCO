@@ -42,7 +42,7 @@
                              <td><button type='button' id='registrar_btn' class="btn btn-info" onclick='window.open(BASE_URL+"Personas/Registros")'>Registrar</button></td>
 
                              <td><button type='button' class="btn btn-info" id='seleccionar_persona'>Seleccionar</button></td>
-                         </tr></table>
+                          </tr></table>
 
                      </div>
                  </div>
@@ -50,7 +50,6 @@
 
                  <div id='second' style='display:none'>
                      <div class='row'>
-
                          <div class="col-md-12">
 
                              <label>Enfermedad</label> <span id='valid_enfermedad' style='color:red'></span>

@@ -8,9 +8,6 @@ class Familias extends Controlador
      //   $this->Cargar_Modelo("familias");
     }
 
-
-
-
     public function Cargar_Vistas()
     {
         $this->Seguridad_de_Session();
@@ -57,7 +54,7 @@ class Familias extends Controlador
 
         echo $datos_familia;
         
-          $this->modelo->Registrar_Fami($datos_familia); 
+        $this->modelo->Registrar_Fami($datos_familia); 
         
      /*     if($resultado){
            $id=$this->Ultimo_Ingresado("familia","id_familia");
@@ -176,7 +173,7 @@ public function Consultas_cedulaV2()
  public function Consultas_cedula()
 {
 
- $persona=$this->modelo->Buscar_Persona($_POST['cedula']);
+ $persona=$this->modelo->Buscar_Persona($_POST['cedula_integrante']);
 
  if(count($persona)==0){
    echo 0;

@@ -1,7 +1,7 @@
-
 var btn_integrantes=document.getElementById("btn_nuevo");
 var btn_guardar=document.getElementById("guardar_integrantes")
-var cedula=document.getElementById("cedula");
+var cedula_integrante=document.getElementById("cedula_integrante");
+/* var cedula_persona=document.getElementById("cedula_persona"); */
 var primer_nombre=document.getElementById("primer_nombre");
 var segundo_nombre=document.getElementById("segundo_nombre");
 var primer_apellido=document.getElementById("primer_apellido");
@@ -13,15 +13,12 @@ var nivel=document.getElementById("nivel_educativo");
 var correo=document.getElementById("correo");
 var telefono=document.getElementById("telefono_personal");
 var datos_persona=[];
-
+var persona_existente=false;
 
 
 btn_integrantes.onclick=function(){
 
-
 $('#agregar').modal().show();
-
-
 
 }
 
@@ -29,10 +26,10 @@ $('#agregar').modal().show();
 //------------------------Validación de la cédula----------------------------->
 
 
-cedula.oninput=function(){
+ /* cedula.oninput=function(){
     if (cedula.value.length >9) cedula.value =cedula.value.slice(0, 9);
   
-  }
+   }
   
   cedula.onkeyup=function(){
   
@@ -40,20 +37,20 @@ cedula.oninput=function(){
     $.ajax({
   
      type:"POST",
-     url:BASE_URL+"Personas/Consultas_cedulaV2",
+     url:BASE_URL+"Personas/Consultas_cedula",
      data:{'cedula':cedula.value}
   
    }).done(function(result){
     console.log(result);
     persona_existente=result;
   
-  })
+    })
   
-  }
+  }  */
 
 //------------------Validación de persona existentes---------------
 
-function persona_existe(){
+/* function persona_existe(){
 
     if(persona_existente==0){
       return true;
@@ -109,10 +106,10 @@ function persona_existe(){
    }
   
   }
-
+ */
 //-----------------------------------Validación genérica----------------------------------------//
 
-function valid_element(mensaje_error,element,span_element){
+/* function valid_element(mensaje_error,element,span_element){
 
 
 
@@ -134,14 +131,14 @@ function valid_element(mensaje_error,element,span_element){
   
     return validado;
   
-  }
+  } */
 
 
 
 
 //---------------------Validación de campos--------------------------
 
-function validad_info(){
+/* function validad_info(){
 
     var validacion=false;
 
@@ -161,7 +158,7 @@ function validad_info(){
 
 return validacion;
 
-}
+} */
 
   
 
@@ -183,7 +180,7 @@ btn_guardar.onclick=function(){
 function enviar_info_integrantes(){
 
 datos_persona=new Object();
-datos_persona['cedula']=cedula.value;
+datos_persona['cedula_integrante']=cedula_integrante.value; 
 datos_persona['primer_nombre']=primer_nombre.value;
 datos_persona['segundo_nombre']=segundo_nombre.value;
 datos_persona['primer_apellido']=primer_apellido.value;
@@ -194,6 +191,7 @@ datos_persona['genero']=genero.value;
 datos_persona['nivel_educativo']=nivel.value;
 datos_persona['correo']=correo.value;
 datos_persona['telefono']=telefono.value;
+
 
 alert(datos_persona);
 
@@ -215,7 +213,7 @@ data:{"datos":datos_persona}
              });
 
          
-           /*   setTimeout(function(){location.href=BASE_URL+"Familias/registrar";},1000); */
+             setTimeout(function(){location.href=BASE_URL+"Familias/registros";},1000); 
 
 
 

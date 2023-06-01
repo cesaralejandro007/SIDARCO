@@ -7,7 +7,7 @@ var valid_ingreso_familia=document.getElementById("valid_4");
 var valid_integrantes=document.getElementById("valid_5");
 var vivienda=document.getElementById("vivienda_familia");
 var btn_personas_nueva=document.getElementById("nueva_personas");
-var cedula=document.getElementById("cedula_persona");
+var cedula_persona=document.getElementById("cedula_persona");
 var nombre_familia=document.getElementById("nombre_familia");
 var parentezco=document.getElementById("parentezco");
 
@@ -30,7 +30,7 @@ var valid_cond_ocupacion=document.getElementById("valid_cond_ocupacion");
 //-----------------------------Modal integrantes---------------------------
 
 /* var btn_guardar_integrante=document.getElementById("guardar_integrantes");
-var cedula_integrante=document.getElementById("cedula");
+var cedula_persona_integrante=document.getElementById("cedula_persona");
 var primer_nombre=document.getElementById("primer_nombre");
 var segundo_nombre=document.getElementById("segundo_nombre");
 var primer_apellido=document.getElementById("primer_apellido");
@@ -57,7 +57,7 @@ btn_personas_nueva.onclick=function(){
 //---------------------------Validacion de boton de integrantes-------------------
 
 /* btn_guardar_integrante.onclick = function() {
-    if (cedula_integrante.value == "") {
+    if (cedula_persona_integrante.value == "") {
         swal({
             type: "error",
             title: "Error",
@@ -65,8 +65,8 @@ btn_personas_nueva.onclick=function(){
             timer: 2000,
             showConfirmButton: false
         });
-        cedula_integrante.focus();
-        cedula_integrante.style.borderColor = "red";
+        cedula_persona_integrante.focus();
+        cedula_persona_integrante.style.borderColor = "red";
     } else{
 
 		guardar_integrantes();
@@ -102,7 +102,7 @@ function enviar_informacion(){
    for(var i=0; i<integrantes.length; i++){
 	var datos=new Object();
 	datos['id_familia']=integrantes[i];
-	datos['cedula_persona']=cedula.value;
+	datos['cedula_persona']=cedula_persona.value;
 	datos['nombre_familia']=nombre_familia.value;
 	datos['descripcion_familia']=observaciones.value;
 	datos['parentezco']=parentezco_array2[i];
@@ -160,7 +160,7 @@ btn_agregar.onclick=function(){
 		$.ajax({
 			type: 'POST',
 			url: BASE_URL + 'Familias/Consultas_cedula',
-			data:{'cedula':integrantes_input.value}
+			data:{'cedula_integrante':integrantes_input.value}
 		})
 		.done(function (datos) {
 

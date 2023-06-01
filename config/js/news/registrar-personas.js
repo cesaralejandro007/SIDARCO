@@ -989,7 +989,7 @@ function valid_element(mensaje_error,element,span_element){
 
   var validado=true;
 
-  if(element.value=="vacio" || element.value==""){
+  if(element.value=="vacio" || element.value=="" ){
 
     element.focus();
     element.style.borderColor="red";
