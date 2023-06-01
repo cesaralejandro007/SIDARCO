@@ -84,7 +84,7 @@
     public function get_familias()
     {
 
-        $tabla            = "SELECT F.*,V.* FROM familia F , vivienda V WHERE F.estado=1 AND F.id_vivienda=V.id_vivienda";
+        $tabla            = "SELECT F.*,fp.* FROM familia F , familia_personas fp WHERE F.estado=1 AND F.id_familia=fp.id_familia GROUP BY fp.cedula_persona";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -98,10 +98,10 @@
         }
     }
 
-    public function get_integrantes($id_familia)
+    public function get_integrantes($cedula_persona)
     {
 
-        $tabla            = "SELECT P.* FROM familia_personas FP, personas P WHERE FP.id_familia='$id_familia' AND FP.cedula_persona = P.cedula_persona";
+        $tabla            = "SELECT P.*,FP. *,f. * FROM familia_personas FP, personas P, familia f WHERE P.cedula_persona='$cedula_persona' AND f.id_familia = FP.id_familia AND FP.cedula_persona = P.cedula_persona";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
