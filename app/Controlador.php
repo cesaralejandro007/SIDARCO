@@ -601,6 +601,23 @@ class Controlador
         }
     }
 
+    public function eliminar_familia_F($param)
+    {
+
+        try {
+            $query = $this->conexion->prepare("DELETE FROM familia_personas WHERE cedula_persona = :cedula_persona");
+            $query->execute([
+                'cedula_persona' => $param
+            ]);
+
+            return true;
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function Accion($accion)
     {
 
