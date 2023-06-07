@@ -112,8 +112,7 @@
                                             
                                             <div class="col-md-12 mt-2">
                                                 <label for="cedula">
-                                                Documento de identidad                                               </label> <span style='color:red;display:none' id='valid_1'>Ingrese el documento de identidad</span>
-
+                                                Documento de identidad </label> <span style='color:red;display:none' id='valid_1'>Ingrese el documento de identidad</span>
                                                 <div class="input-group">
                                                     <input class="form-control input-numero solo-numeros" id="cedula"
                                                     name="datos[cedula]" placeholder="Cedula de identidad"
@@ -432,24 +431,12 @@
 </div>
            -->
 <!-- 
-                                            <div class="col-md-6 mt-2">
-                                                <label for="institucion">
-                                                    Institucion Academica
-                                                </label>
-                                                <div class="input-group">
-                                                    <input class="form-control mb-10" id="institucion"
-                                                        name="datos[institucion]" placeholder="Institucion Academica"
-                                                        type="text" />
-                                                </div>
-                                            </div> -->
-
-
 
 
                                         </div>
 
                                     </div>
-                                     <!--
+                        
                                     <div class="tab-pane" id="panel3" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-12 text-center">

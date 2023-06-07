@@ -16,7 +16,7 @@
                             <div class="vtabs">
                                 <ul class="nav nav-tabs tabs-vertical" role="tablist">
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a class="nav-link active" data-toggle="tab" href="#panel5" role="tab">
+                                        <a class="nav-link active" data-toggle="tab" id="tab_1" href="#panel5" role="tab">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-home"></i>
                                             </span>
@@ -25,7 +25,7 @@
                                             </span>
                                         </a>
                                     </li>
-                                   <!--  <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
+                                <!--  <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
                                         <a class="nav-link" data-toggle="tab" href="#panel6" role="tab">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-user"></i>
@@ -36,12 +36,12 @@
                                         </a>
                                     </li> -->
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a class="nav-link" data-toggle="tab" href="#panel7" role="tab">
+                                        <a class="nav-link" data-toggle="tab" id="tab_2" href="#panel7" role="tab">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-email"></i>
                                             </span>
                                             <span class="hidden-xs-down">
-                                                Informacion de Contacto
+                                                Información de Contacto
                                             </span>
                                         </a>
                                     </li>
@@ -120,7 +120,7 @@
                                             <div class="col-md-3 mt-2">
                                                 <label for="primer_apellido">
                                                     Primer Apellido
-                                                </label>
+                                                </label><span id="valid_4" style="color: red;"></span>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="primer_apellido"
                                                         name="datos[primer_apellido]" placeholder="Primer Apellido"
@@ -132,7 +132,7 @@
                                             <div class="col-md-3 mt-2">
                                                 <label for="segundo_apellido">
                                                     Segundo Apellido
-                                                </label>
+                                                </label><span id="valid_5" style="color: red;"></span>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="segundo_apellido"
                                                         name="datos[segundo_apellido]" placeholder="Segundo Apellido"
@@ -145,7 +145,7 @@
                                                 <div class="form-group">
                                                     <label for="fecha_nacimiento">
                                                         Fecha De Nacimiento
-                                                    </label>
+                                                    </label><span id="valid_6" style="color: red;"></span>
                                                     <input class="form-control" id="fecha_nacimiento"
                                                         name="fecha_nacimiento" type="date">
                                                     </input>
@@ -155,7 +155,7 @@
                                             <div class="col-md-4 mt-2">
                                                 <label for="genero">
                                                     Género
-                                                </label>
+                                                    </label><span id="valid_7" style="color:red;"></span>
                                                 <div class="input-group">
                                                     <select class="custom-select" id="genero" name="datos[genero]">
                                                         <option selected="" value="0">
@@ -173,7 +173,7 @@
                                             <div class="col-md-4 mt-2">
                                                 <label for="tipo_persona">
                                                     Nivel educativo  
-                                                </label>
+                                                </label><span id="valid_8" style="color:red;"></span>
                                                 <div class="input-group">
                                                     <select class="custom-select" id="nivel_educativo"
                                                         name="datos[nivel_educativo]">
@@ -205,7 +205,7 @@
                                           <div class="col-md-4 mt-2">
                                                 <label for="pantalon">
                                                    Talla de pantalón 
-                                                </label>
+                                                </label><span id="valid_9" style="color:red;"></span>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="pantalon"
                                                         name="datos[pantalon]" placeholder="Talla de pantalón" type="text" oninput="Limitar(this,3)"/>
@@ -215,7 +215,7 @@
                                             <div class="col-md-4 mt-2">
                                                 <label for="calzado">
                                                    Número de calzado
-                                                </label>
+                                                </label><span id="valid_10" style="color:red;"></span>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-numeros" id="calzado"
                                                         name="datos[codigo_patria]" placeholder="Número de calzado" type="number" oninput="Limitar(this,2)"/>
@@ -237,6 +237,9 @@
 
                                         </div>
                                     </div>
+
+
+            
                                     <div class="tab-pane" id="panel7" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
@@ -248,10 +251,10 @@
                                                 <div class="form-group">
                                                     <label for="correo">
                                                         Correo Electrónico
-                                                    </label>
+                                                    </label><span id="valid_12" style="color: red;"></span>
                                                     <div class="input-group">
                                                         <input class="form-control letras-numeros" id="correo" name="datos[correo]"
-                                                            placeholder="Correo" type="text" oninput="Limitar(this,30)">
+                                                            placeholder="Correo" type="text" oninput="Limitar(this,30)"><span id="valid_"></span>
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">@</span>
                                                         </div>
@@ -277,19 +280,21 @@
                                                     </div>
 
                                                 </div>
-                                            </div>
+                                                </div>
+
 
                                             <div class="col-md-10 mt-2">
                                                 <label for="telefono_personal">
                                                     Teléfono personal
-                                                </label>
+                                                </label><span id="valid_13" style="color: red;" ></span>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-numeros" id="telefono_personal"
                                                         name="datos[telefono_personal]" placeholder="0000-000-0000"
                                                         type="text" oninput="Limitar(this, 11)"/>
                                                 </div>
-
                                             </div>
+
+                                            
                                             <div class="col-md-2 mt-3">
                                                 <label for="telefono_personal">
                                                     <i class="fa fa-whatsapp" style="font-size: 15px;"></i> WhatsApp
@@ -318,10 +323,32 @@
                 </div>
                 </form>
             </div>
-            <div class="modal-footer">
+            <!--Footer -->
+        <div class="card-footer">
+
+    <div class="col-md-12 mt-4">
+        <div style="float: left;">
+            <a id="anterior" style='display:none' type="button" class="btn btn-secondary text-white">
+                Anterior
+            </a>
+        </div>
+    </div>
+    <div class="col-md-12 mt-4">
+        <div style="float: right;">
+            <a id="siguiente" type="button" class="btn btn-primary text-white">
+                Siguiente
+            </a>
+        </div>
+    </div>
+    <div class="text-center m-t-20" id="botones-finales" style='display:none'>
+        <div class="col-xs-12">
+            <input type="submit" class="btn btn-primary" style="background:#15406D" name="" id="guardar_integrantes" value="Guardar">
+        </div>
+    </div>
+</div>  <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <input type="submit" class="btn btn-primary" name="" id="guardar_integrantes" value="Guardar">
-            </div>
+                <input type="submit" class="btn btn-primary" name="" id="guardar_integrante" value="Guardar">
+            </div>  -->
         </div>
         <!-- /.modal-content -->
     </div>

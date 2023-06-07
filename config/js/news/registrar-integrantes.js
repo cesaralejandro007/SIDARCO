@@ -1,7 +1,4 @@
-var btn_integrantes=document.getElementById("btn_nuevo");
-var btn_guardar=document.getElementById("guardar_integrantes")
 var cedula_integrante=document.getElementById("cedula_integrante");
-/* var cedula_persona=document.getElementById("cedula_persona"); */
 var primer_nombre=document.getElementById("primer_nombre");
 var segundo_nombre=document.getElementById("segundo_nombre");
 var primer_apellido=document.getElementById("primer_apellido");
@@ -10,23 +7,137 @@ var fecha_nacimiento=document.getElementById("fecha_nacimiento");
 var genero=document.getElementById("genero");
 var nacionalidad=document.getElementById("nacionalidad");
 var nivel=document.getElementById("nivel_educativo");
+var camisa=document.getElementById("camisa");
+var pantalon=document.getElementById("pantalon");
+var calzado=document.getElementById("calzado");
 var correo=document.getElementById("correo");
 var telefono=document.getElementById("telefono_personal");
 var datos_persona=[];
 var persona_existente=false;
+var boton_integrante=document.getElementById("guardar_integrantes");
 
 
+
+//------------------------Botones-------------------------
+
+var index=0;
+var btn_siguiente=document.getElementById("siguiente");
+var btn_anterior=document.getElementById("anterior");
+var btn_guardar=document.getElementById("guardar");
+var btn_finales=document.getElementById("botones-finales");
+var btn_integrantes=document.getElementById("btn_nuevo");
+
+
+var tab_persona=document.getElementById("tab_1");
+var div_persona=document.getElementById("panel5");
+var tab_contacto=document.getElementById("tab_2");
+var div_contacto=document.getElementById("panel7");
+//---------------------Llamada del modal-------------------------------
 btn_integrantes.onclick=function(){
 
-$('#agregar').modal().show();
+  $('#agregar').modal().show();
+  
+  }
+
+//-------------Boton siguiente---------------------
+
+btn_siguiente.onclick=function(){
+
+  funcion_siguiente();
+
+}
+
+//------------- Boton guardar-----------------------
+
+ boton_integrante.onclick=function(){
+
+  enviar_info_integrantes();
+
+} 
+//-------------Boton anterior-----------------------
+
+btn_anterior.onclick=function(){
+
+  index--;
+  control_indice();
+
+
+}
+
+//----------------Funcion siguiente-----------------
+
+function funcion_siguiente(){
+
+
+  switch(index){
+  case 0:
+      if(valida_info()){
+        index++;
+      }
+
+    break;
+
+  case 1:
+      if(valida_contacto()){
+
+         enviar_info_integrantes(); 
+
+      }
+    break;
+  }
+
+
+control_indice();
+
+}
+
+//-----------------Funcion control indice-----------
+
+
+function control_indice(){
+
+    switch(index){
+
+      case 0:
+
+      btn_anterior.style.display='none';
+      btn_finales.style.display='none'; 
+      btn_siguiente.style.display='block';
+
+
+      tab_persona.className='nav-link active';
+      div_persona.style.display='block';
+
+      tab_contacto.className='';
+      div_contacto.style.display='none';
+
+      break;
+
+      case 1:
+        btn_anterior.style.display='block';
+        btn_siguiente.style.display='none'; 
+        btn_finales.style.display='block'; 
+
+
+        tab_contacto.className='nav-link active';
+        div_contacto.style.display='block';
+
+        tab_persona.className='';
+        div_persona.style.display='none';
+
+      break;
+
+    }
 
 }
 
 
-//------------------------Validación de la cédula----------------------------->
 
 
- /* cedula.oninput=function(){
+//--------------Validación de la cédula--------------->
+
+
+  cedula.oninput=function(){
     if (cedula.value.length >9) cedula.value =cedula.value.slice(0, 9);
   
    }
@@ -37,7 +148,7 @@ $('#agregar').modal().show();
     $.ajax({
   
      type:"POST",
-     url:BASE_URL+"Personas/Consultas_cedula",
+     url:BASE_URL+"Familias/Consultas_cedula",
      data:{'cedula':cedula.value}
   
    }).done(function(result){
@@ -46,11 +157,11 @@ $('#agregar').modal().show();
   
     })
   
-  }  */
+  } 
 
 //------------------Validación de persona existentes---------------
 
-/* function persona_existe(){
+ function persona_existe(){
 
     if(persona_existente==0){
       return true;
@@ -106,61 +217,89 @@ $('#agregar').modal().show();
    }
   
   }
- */
+ 
 //-----------------------------------Validación genérica----------------------------------------//
 
-/* function valid_element(mensaje_error,element,span_element){
-
-
+ function valid_element(mensaje_error,element,span_element){
 
     var validado=true;
   
     if(element.value=="vacio" || element.value==""){
   
       element.focus();
-      element.style.borderColor="red";
+      /* element.style.borderColor="red";  */
       validado=false;
       span_element.style.display='';
       span_element.innerHTML=mensaje_error;
     }
   
     else{
-      element.style.borderColor="";
+       /* element.style.borderColor="";  */
       span_element.style.display='none';
     }
   
     return validado;
   
-  } */
+  } 
 
 
 
 
-//---------------------Validación de campos--------------------------
+//---------------------Validación de campos personas--------------------------
 
-/* function validad_info(){
+ function valida_info(){
 
     var validacion=false;
 
     if(valid_element("Debe ingresar el documento de identidad", cedula, document.getElementById("valid_1"))){
-        if(persona_existe(cedula.value)){
+        if(persona_existe(cedula.value)){ 
             if(valid_element("Debe ingresar el primer nombre de la persona",primer_nombre, document.getElementById("valid_2"))){
               if(valid_element("Debe ingresar el primer apellido de la persona", primer_apellido, document.getElementById("valid_4"))){
-               
-
-                validacion=true;
+                if(valid_element("Debe ingresar la fecha de nacimiento", fecha_nacimiento, document.getElementById("fecha_nacimiento"))){ 
+                if(new Date(fecha_nacimiento.value)>new Date){
+                  document.getElementById("valid_6").innerHTML="Fecha de nacimiento erronea";
+                  document.getElementById("valid_6").style.display='';
+                  fecha_nacimiento.style.borderColor="red";
+              
+                }else{
+                  document.getElementById("valid_6").style.display='none';
+                  document.getElementById("valid_6").innerHTML="Ingrese la fecha de nacimiento";
+                  fecha_nacimiento.style.borderColor="";
+                  if(valid_element("Ingrese el género", genero, document.getElementById("valid_6"))){
+                    if(valid_element("Ingrese el nivel educativo", nivel, document.getElementById("valid_7"))){
+                      if(valid_element("Ingrese la talla de camisa", camisa, document.getElementById("valid_8") )){ 
+                    
+                        validacion=true;
+                    }
+                  }
+                }
               }
-
             }
+          }
+          }
         }
-    }
-
+      }
+        /* } */
 
 return validacion;
 
-} */
+} 
 
-  
+//---------------- Validación de datos de contacto---------------------
+
+function valida_contacto(){
+
+  var validacion=false;
+
+  if(valid_element("Debe ingresar el correo electronico", correo, document.getElementById("valid_12"))){
+    if(valid_element("Debe ingresar el número de teléfono", telefono, document.getElementById("Valid_13"))){
+
+      validacion=true;
+
+    }
+  }
+  return validacion;
+} 
 
 //----------------Validación de datos de integrantes-----------------
 
@@ -170,9 +309,9 @@ return validacion;
 //----------------Función para enviar la información---------------
 
 
-btn_guardar.onclick=function(){
+/* btn_guardar.onclick=function(){
   enviar_info_integrantes();
-}
+} */
 
 
 //---------------Funcion para enviar la información al controlador------------
@@ -205,15 +344,15 @@ data:{"datos":datos_persona}
     alert(result);
 
               swal({
-               title:"Éxito",
-               text:"La persona ha sido registrada exitosamente",
-               type:"success",
-               timer:2000,
-               showConfirmButton:false
-             });
+              title:"Éxito",
+              text:"La persona ha sido registrada exitosamente",
+              type:"success",
+              timer:2000,
+              showConfirmButton:false
+            });
 
-         
-             setTimeout(function(){location.href=BASE_URL+"Familias/registros";},1000); 
+        
+          setTimeout(function(){location.href=BASE_URL+"Familias/registros";},1000); 
 
 
 
