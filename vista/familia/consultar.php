@@ -28,11 +28,9 @@
                     <thead>
                         <tr>
                             <th>Familia</th>
-                            <th>Teléfono</th>
-                            <th>Dirección</th>
+                            <th>Descripción</th>
+                            <th>Responsable de Familia</th>
                             <th>Integrantes</th>
-                            <th>Ingreso mensual aprox</th>
-                            <th style="width: 20px;">Ver</th> 
                             <?php if($_SESSION['Nucleo familiar']['modificar']){ ?>
                                 <th style="width: 20px;">Editar</th>
                             <?php } ?>
@@ -57,19 +55,13 @@
                                             "data": "familia"
                                         },
                                         {
-                                            "data": "telefono"
+                                            "data": "descripcion"
                                         },
                                         {
-                                            "data": "direccion"
+                                            "data": "responsable"
                                         },
                                         {
                                             "data":"integrantes"
-                                        },
-                                        {
-                                            "data":"ingreso_mensual"
-                                        },
-                                        {
-                                            "data": "ver"
                                         },
                                         <?php if($_SESSION['Nucleo familiar']['modificar']){ ?>
                                             {
@@ -208,11 +200,9 @@ var condicion_ocupacion_input=document.getElementById("input_condicion_ocupacion
                     <tfoot>
                         <tr>
                             <th>Familia</th>
-                            <th>Teléfono</th>
-                            <th>Dirección</th>
+                            <th>Descripció<noscript></noscript></th>
+                            <th>Responsable de Familia</th>
                             <th>Integrantes</th>
-                            <th>Ingreso mensual aprox</th>
-                            <th>Ver</th> 
                             <?php if($_SESSION['Nucleo familiar']['modificar']){ ?>
                                 <th>Editar</th>
                             <?php } ?>
