@@ -13,7 +13,7 @@ var parentezco=document.getElementById("parentezco");
 
 
 
-var integrantes_input=document.getElementById("integrante_input");
+var integrantes_input=document.getElementById("cedula_integrante");
 var btn_nuevo_integrante=document.getElementById("btn_nuevo");
 var btn_agregar_integrante=document.getElementById("btn_agregar");
 var div_integrantes=document.getElementById("integrantes_agregados");
@@ -108,7 +108,7 @@ function enviar_informacion(){
 	datos['parentezco']=parentezco_array2[i];
 	datos_familia.push(datos);
   
-	alert(datos_familia);
+	//alert(datos_familia);
 
    }
   
@@ -122,14 +122,14 @@ function enviar_informacion(){
          data:{"datos":datos_familia}
 	}).done(function(result){
            console.log(result);
-		   alert(result);
+		   //alert(result);
             
             swal({
-            	title:"Éxito",
-            	text:"Familia registrada satisfactoriamente",
-            	timer:2000,
-            	showConfirmButton:false,
-            	type:"success"
+            title:"Éxito",
+            text:"Familia registrada satisfactoriamente",
+            timer:2000,
+            showConfirmButton:false,
+            type:"success"
             });
 
             setTimeout(function(){location.href=BASE_URL+"Familias/Consultas";},1000);
@@ -156,16 +156,15 @@ btn_agregar.onclick=function(){
 		valid_integrantes.innerHTML="";
         
         if(valid_integrantes_agregados()){
-         valid_integrantes.innerHTML="";
+        valid_integrantes.innerHTML="";
 		$.ajax({
 			type: 'POST',
-			url: BASE_URL + 'Familias/Consultas_cedula',
+			url: BASE_URL + 'Familias/Consultar_cedula',
 			data:{'cedula_integrante':integrantes_input.value}
 		})
 		.done(function (datos) {
 
-     /*  alert(datos); */
-
+alert(datos);
 			if(datos!=0){
 
 				var parentezco_array="";
@@ -184,6 +183,7 @@ btn_agregar.onclick=function(){
 				var td2=document.createElement("td");
 				var td3=document.createElement("td");
 				td1.innerHTML=result[0]['primer_nombre']+" "+result[0]['primer_apellido'];
+				td1.innerHTML=document.getElementById("cedula_integrante").value;
 				td2.innerHTML=document.getElementById("parentezco").value;
 				var btn=document.createElement("input");
 				btn.type="button";
@@ -202,7 +202,7 @@ btn_agregar.onclick=function(){
 				div_integrantes.appendChild(div);
 				btn.onclick=function(){
                        div_integrantes.removeChild(div);
-                       integrantes.splice(integrantes.indexOf(result[0]['cedula_persona']),1);
+                       integrantes.splice(integrantes.indexOf(result[0]['cedula_integrante']),1);
                        console.log(integrantes);
 				}
 				console.log(integrantes);

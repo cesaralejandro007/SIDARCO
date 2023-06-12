@@ -135,7 +135,7 @@
                                                    <table style='width:100%'>
                                                     <tr>
                                                         <td>
-                                                        <input type="text" class='form-control letras_numeros' id='integrante_input' placeholder="Buscar cédula"  list='lista_persona' name="datos[id_familia]" oninput="Limitar(this,15)">
+                                                        <input type="text" class='form-control letras_numeros' id='cedula_integrante' placeholder="Buscar cédula"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
                                                             <datalist id='lista_persona'>
                                                                 <?php foreach ($this->integrantes as $int) { ?>
                                                                          <option value='<?php echo $int['cedula_integrante'];?>'><?php echo $int['primer_apellido'].''.$int['primer_apellido']; ?></option>

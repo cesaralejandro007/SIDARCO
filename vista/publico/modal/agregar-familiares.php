@@ -60,7 +60,7 @@
                                                 <label for="tcedula">
                                                     Tipo
                                                 </label>
-                                                <div class="input-group">
+                                                <div class="input-group solo-letras">
                                                     <select class="custom-select" id="tcedula" >
                                                         <option selected="" value="V">
                                                             V
@@ -86,58 +86,67 @@
                                             <div class="col-md-11 mt-2">
                                                 <label for="cedula">
                                                     Cedula
-                                                </label> <span id='valid_1' style="color:red;" ></span>
+                                                </label> 
                                                 <div class="input-group">
-                                                    <input class="form-control " id="cedula_integrante"
+                                                    <input class="form-control solo-numeros " id="cedula_integrante_modal"
                                                         name="datos[cedula_integrante]" placeholder="Cedula de identidad"
-                                                        type="text-center" />
+                                                        type="text-center" oninput="Limitar(this,8)"/> 
                                                 </div>
+                                                <span id='valid_1' style="color:red;" ></span>
                                             </div>
                                             <div class="col-md-3 mt-4">
                                                 <label for="primer_nombre">
                                                     Primer Nombre
-                                                </label><span id="valid_2" style="color:red"></span>
+                                                </label>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="primer_nombre"
                                                         name="datos[primer_nombre]" placeholder="Primer Nombre"
                                                         type="text" oninput="Limitar(this,15)" />
+                                                      
                                                 </div>
+                                                <span id="valid_2" style="color: red;"></span>
 
                                             </div>
 
                                             <div class="col-md-3 mt-4">
                                                 <label for="segundo_nombre">
                                                     Segundo Nombre
-                                                </label> <span id="valid_3" style="color: red;"></span>
+                                                </label> 
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="segundo_nombre"
                                                         name="datos[segundo_nombre]" placeholder="Segundo Nombre"
                                                         type="text" oninput="Limitar(this,15)"/>
+                                                      
                                                 </div>
+                                                <span id="valid_3" style="color: red;"></span>
 
                                             </div>
 
                                             <div class="col-md-3 mt-2">
                                                 <label for="primer_apellido">
                                                     Primer Apellido
-                                                </label><span id="valid_4" style="color: red;"></span>
+                                                </label>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="primer_apellido"
                                                         name="datos[primer_apellido]" placeholder="Primer Apellido"
                                                         type="text" oninput="Limitar(this,15)" />
+                                                       
                                                 </div>
+                                                <span id="valid_4" style="color: red;"></span>
 
                                             </div>
 
                                             <div class="col-md-3 mt-2">
                                                 <label for="segundo_apellido">
                                                     Segundo Apellido
-                                                </label><span id="valid_5" style="color: red;"></span>
+                                                </label>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="segundo_apellido"
                                                         name="datos[segundo_apellido]" placeholder="Segundo Apellido"
                                                         type="text" oninput="Limitar(this,15)" />
+                                                       
                                                 </div>
+                                                <span id="valid_5" style="color: red;"></span>
 
                                             </div>
 
@@ -145,21 +154,22 @@
                                                 <div class="form-group">
                                                     <label for="fecha_nacimiento">
                                                         Fecha De Nacimiento
-                                                    </label><span id="valid_6" style="color: red;"></span>
+                                                    </label>
                                                     <input class="form-control" id="fecha_nacimiento"
                                                         name="fecha_nacimiento" type="date">
-                                                    </input>
+                                                      
                                                 </div>
+                                                <span id="valid_6" style="color: red;"></span>
 
                                             </div>
                                             <div class="col-md-4 mt-2">
                                                 <label for="genero">
                                                     Género
-                                                    </label><span id="valid_7" style="color:red;"></span>
+                                                    </label>
                                                 <div class="input-group">
                                                     <select class="custom-select" id="genero" name="datos[genero]">
-                                                        <option selected="" value="0">
-                                                            ...
+                                                        <option selected="" value="">
+                                                            -Seleccione-
                                                         </option>
                                                         <option value="M">
                                                             Masculino
@@ -168,17 +178,19 @@
                                                             Femenino
                                                         </option>
                                                     </select>
+                                                    
                                                 </div>
+                                                <span id="valid_7" style="color:red;"></span>
                                             </div>
                                             <div class="col-md-4 mt-2">
                                                 <label for="tipo_persona">
                                                     Nivel educativo  
-                                                </label><span id="valid_8" style="color:red;"></span>
+                                                </label>
                                                 <div class="input-group">
                                                     <select class="custom-select" id="nivel_educativo"
                                                         name="datos[nivel_educativo]">
-                                                        <option selected="" value="0">
-                                                            ...
+                                                        <option selected="" value="">
+                                                        -Seleccione-
                                                         </option>
                                                         <option value="preescolar">
                                                             Preescolar
@@ -190,37 +202,60 @@
                                                             Diversificada 
                                                         </option>
                                                     </select>
+                                                    
                                                 </div>
+                                                <span id="valid_8" style="color:red;"></span>
                                             </div>
 
-                                         <div class="col-md-4 mt-2">
+                                        <div class="col-md-4 mt-2">
                                                 <label for="camisa">
-                                                  Talla de camisa
+                                                Talla de camisa
                                                 </label>
                                             <div class="input-group">
-                                                    <input class="form-control mb-10 solo-letras" id="camisa"
-                                                        name="datos[Camisa]" placeholder="Talla de camisa" type="text" oninput="Limitar(this,3)"/>
-                                                </div>
+                                            <input class="form-control mb-10 solo-letras" list='camisaa' id="camisa"
+                                            name="datos[Camisa]" placeholder="Talla de camisa"  oninput="Limitar(this,3)"/>
+                
+                                                    <datalist id='camisaa' >
+                                                    <option value="XXS">
+                                                    <option value="XS">
+                                                    <option value="S">
+                                                    <option value="M">
+                                                    <option value="L"> 
+                                                    </datalist>
+                                                    
+                                                    </div>
+                                                    <span id="valid_9" style="color: red;" ></span>
                                             </div>
-                                          <div class="col-md-4 mt-2">
+                                        <div class="col-md-4 mt-2">
                                                 <label for="pantalon">
-                                                   Talla de pantalón 
-                                                </label><span id="valid_9" style="color:red;"></span>
+                                            Talla de pantalón 
+                                                </label>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="pantalon"
-                                                        name="datos[pantalon]" placeholder="Talla de pantalón" type="text" oninput="Limitar(this,3)"/>
-                                                </div>
+                                                        name="datos[pantalon]" list='pantalonn' placeholder="Talla de pantalón" type="text" oninput="Limitar(this,3)"/>
+                                                   
+                                                    <datalist id="pantalonn">
+                                                    <option value="SS">
+                                                    <option value="S">
+                                                    <option value="M">
+                                                    <option value="L">
+                                                    <option value="XL">
+                                                    </datalist>
+                                                   
+                                                   
+                                                    </div>
+                                                    <span id="valid_10" style="color:red;"></span>
                                             </div>
 
                                             <div class="col-md-4 mt-2">
                                                 <label for="calzado">
-                                                   Número de calzado
-                                                </label><span id="valid_10" style="color:red;"></span>
+                                                Número de calzado
+                                                </label>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-numeros" id="calzado"
                                                         name="datos[codigo_patria]" placeholder="Número de calzado" type="number" oninput="Limitar(this,2)"/>
-                                                </div>
-
+                                                    </div>
+                                                    <span id="valid_11" style="color:red;"></span>
                                             </div>
 
                                             

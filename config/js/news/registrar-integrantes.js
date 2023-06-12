@@ -1,4 +1,4 @@
-var cedula_integrante=document.getElementById("cedula_integrante");
+var cedula_integrante=document.getElementById("cedula_integrante_modal");
 var primer_nombre=document.getElementById("primer_nombre");
 var segundo_nombre=document.getElementById("segundo_nombre");
 var primer_apellido=document.getElementById("primer_apellido");
@@ -14,6 +14,7 @@ var correo=document.getElementById("correo");
 var telefono=document.getElementById("telefono_personal");
 var datos_persona=[];
 var persona_existente=false;
+cedula_integrante.focus();
 var boton_integrante=document.getElementById("guardar_integrantes");
 
 
@@ -114,6 +115,7 @@ function control_indice(){
       break;
 
       case 1:
+
         btn_anterior.style.display='block';
         btn_siguiente.style.display='none'; 
         btn_finales.style.display='block'; 
@@ -126,40 +128,38 @@ function control_indice(){
         div_persona.style.display='none';
 
       break;
-
-    }
-
+  }
 }
 
 
+//----------------------Validación de la cédula------------------->
 
 
-//--------------Validación de la cédula--------------->
-
-
-  cedula.oninput=function(){
-    if (cedula.value.length >9) cedula.value =cedula.value.slice(0, 9);
+  cedula_integrante.oninput=function(){
+    if (cedula_integrante.value.length >9) cedula_integrante.value =cedula_integrante.value.slice(0, 9);
   
-   }
+  }
   
-  cedula.onkeyup=function(){
+  cedula_integrante.onkeyup=function(){
   
-    valid_element("Debe ingresar el documento de identidad de la persona",cedula,document.getElementById("valid_1"));
+    valid_element("Debe ingresar el documento de identidad de la persona",cedula_integrante,document.getElementById("valid_1"));
     $.ajax({
   
      type:"POST",
-     url:BASE_URL+"Familias/Consultas_cedula",
-     data:{'cedula':cedula.value}
+     url:BASE_URL+"Familias/Consultas_cedula_integrante",
+     data:{'cedula_integrante':cedula_integrante.value}
   
    }).done(function(result){
     console.log(result);
-    persona_existente=result;
+   alert(result); 
+     persona_existente=result; 
+   
   
     })
   
   } 
 
-//------------------Validación de persona existentes---------------
+//----------Validación de persona existentes---------------
 
  function persona_existe(){
 
@@ -173,12 +173,12 @@ function control_indice(){
       swal({
        type:"error",
        title:"Error",
-       text:"Esta persona ya se encuentra registrada en el sistema",
+       text:"Ésta persona ya se encuentra registrada en el sistema",
        showConfirmButton:false,
        timer:2000
      });
   
-      setTimeout(function(){cedula.style.borderColor="red";cedula.focus();},2000);
+      setTimeout(function(){cedula_integrante.style.borderColor="red";cedula_integrante.focus();},2000);
   
     }
   
@@ -196,7 +196,7 @@ function control_indice(){
       $.ajax({
         type:"POST",
         url:BASE_URL+"Seguridad/cambio_estado",
-        data:{"cedula_persona":cedula.value,"estado":1}
+        data:{"cedula_integrante_persona":cedula_integrante.value,"estado":1}
       }).done(function(result){
         if(result){
   setTimeout(function(){
@@ -208,7 +208,7 @@ function control_indice(){
             timer:2000
           });
   
-          setTimeout(function(){location.href=BASE_URL+"Personas/Consultas"},2000);
+          setTimeout(function(){location.href=BASE_URL+"Familias/Consultas"},2000);
           },500);
         }
       });
@@ -251,34 +251,39 @@ function control_indice(){
 
     var validacion=false;
 
-    if(valid_element("Debe ingresar el documento de identidad", cedula, document.getElementById("valid_1"))){
-        if(persona_existe(cedula.value)){ 
-            if(valid_element("Debe ingresar el primer nombre de la persona",primer_nombre, document.getElementById("valid_2"))){
-              if(valid_element("Debe ingresar el primer apellido de la persona", primer_apellido, document.getElementById("valid_4"))){
-                if(valid_element("Debe ingresar la fecha de nacimiento", fecha_nacimiento, document.getElementById("fecha_nacimiento"))){ 
-                if(new Date(fecha_nacimiento.value)>new Date){
-                  document.getElementById("valid_6").innerHTML="Fecha de nacimiento erronea";
-                  document.getElementById("valid_6").style.display='';
+    if(valid_element("Debe ingresar el documento de identidad", cedula_integrante, document.getElementById("valid_1"))){
+        if(persona_existe(cedula_integrante.value)){ 
+            if(valid_element("Ingrese el nombre de la persona",primer_nombre, document.getElementById("valid_2"))){
+              if(valid_element("Ingrese el apellido", primer_apellido, document.getElementById("valid_4"))){
+                if(valid_element("Ingrese fecha de nacimiento", fecha_nacimiento, document.getElementById("valid_6"))){ 
+                  if(new Date(fecha_nacimiento.value)>new Date){
+                  document.getElementById("valid_6").innerHTML="la fecha no debe ser mayor a la actual";
+                   document.getElementById("valid_6").style.display=''; 
                   fecha_nacimiento.style.borderColor="red";
               
                 }else{
-                  document.getElementById("valid_6").style.display='none';
+                  /* document.getElementById("valid_6").style.display=''; */
                   document.getElementById("valid_6").innerHTML="Ingrese la fecha de nacimiento";
                   fecha_nacimiento.style.borderColor="";
-                  if(valid_element("Ingrese el género", genero, document.getElementById("valid_6"))){
-                    if(valid_element("Ingrese el nivel educativo", nivel, document.getElementById("valid_7"))){
-                      if(valid_element("Ingrese la talla de camisa", camisa, document.getElementById("valid_8") )){ 
-                    
-                        validacion=true;
+                  if(valid_element("Ingrese el género", genero, document.getElementById("valid_7"))){
+                    if(valid_element("Ingrese el nivel educativo", nivel, document.getElementById("valid_8"))){
+                      if(valid_element("Ingrese la talla de camisa", camisa, document.getElementById("valid_9") )){ 
+                        if(valid_element("Ingrese talla de pantalon", pantalon, document.getElementById("valid_10"))){
+                          if(valid_element("Ingrese el nùmero de calzado", calzado, document.getElementById("valid_11"))){
+
+
+                            validacion=true;
+                        }
+                      }
                     }
                   }
                 }
               }
             }
           }
-          }
         }
       }
+    }
         /* } */
 
 return validacion;
@@ -332,7 +337,7 @@ datos_persona['correo']=correo.value;
 datos_persona['telefono']=telefono.value;
 
 
-alert(datos_persona);
+//alert(datos_persona);
 
 $.ajax({
 
@@ -341,7 +346,7 @@ url:BASE_URL+"Familias/registrar_familia",
 data:{"datos":datos_persona}
 }).done(function(result){
     console.log(result);
-    alert(result);
+    //alert(result);
 
               swal({
               title:"Éxito",

@@ -153,35 +153,43 @@ public function consultar_info_familia(){
 public function Consultas_cedulaV2()
 {
 
- $persona=$this->Consultar_Columna("personas","cedula_persona",$_POST['cedula']);
+ $persona=$this->consultar_familias($_POST['cedula_integrante']);
 
  if(count($persona)==0){
-   echo 0;
+   echo $_POST['cedula_integrante'];
  }
  else{
   if($persona[0]['estado'] == 0){
-    echo 2;
+    json_encode($persona);
+  
   }
+  
   else{
-    echo 1;
+    echo $persona;
   }
- }
+ } 
 
 }
 
 
 
- public function Consultas_cedula()
+public function Consultas_cedula_integrante()
 {
+  $persona=$this->Consultar_Columna("familia","cedula_integrante",$_POST['cedula_integrante']);
 
- $persona=$this->modelo->Buscar_Persona($_POST['cedula_integrante']);
+  if(count($persona==0)){
+    echo 0;
+  }
+  else{
+    if($persona[0]['estado'] == 0){
+     echo 2;
+   }
+   else{
+     echo 1;
 
- if(count($persona)==0){
-   echo 0;
- }
- else{
-   $this->Escribir_JSON($persona);
- }
+   } 
+
+  } 
 
 } 
 

@@ -286,7 +286,10 @@ function valid_info_personal(){
                                                
                                                
 
-                                            }  } } } } } } }  }   }  } } } }
+                                            }  } } } } } } 
+                                          
+                                          
+                                          }  }   }  } } } }
 
 
                                             return validacion;

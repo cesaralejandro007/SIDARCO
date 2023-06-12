@@ -316,9 +316,25 @@ class Controlador
         }
     }
 
+    public function consultar_familias($param)
+    {
 
+        $tabla = "SELECT * FROM familia WHERE cedula_integrante= $param";
 
-    
+        $respuestaArreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuestaArreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuestaArreglo;
+        } catch (PDOException $e) {
+            $errorReturn = ['estatus' => false];
+            $errorReturn += ['info' => "error sql:{$e}"];
+            return $errorReturn;
+        }
+    }
+   
 
     public function Consultar_Tabla_divisiones($tabla)
     {
