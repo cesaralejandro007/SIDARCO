@@ -74,7 +74,7 @@
                                                </select>
                                             <input style='display:none' type="text" maxlength="20" id='input_condicion_ocupacion' placeholder="Especifique..." class='form-control solo-letras' name="" oninput="Limitar(this,15)">
  
-                                           </td><td><button class='btn btn-info' type='button' id='nueva_condicion_ocupacion'>Otra</button></td></tr></table>
+                                        </td><td><button class='btn btn-info' type='button' id='nueva_condicion_ocupacion'>Otra</button></td></tr></table>
                                                 </div> -->
 
 
@@ -116,29 +116,29 @@
  -->
 
 
-                                             <div class="col-md-8 mt-2">
+                                            <div class="col-md-8 mt-2">
                                                 <label for="segundo_apellido">
                                                     Observaciones (opcional)
                                                 </label>
                                                 <div class="input-group">
-                                                  <input class='form-control' id='observaciones_familia'  placeholder="Observación de la familia"  type="text" >
+                                                <input class='form-control' id='observaciones_familia'  placeholder="Observación de la familia"  type="text" >
                                                 </div>
 
                                             </div>
 
 
-                                              <div class="col-md-12 mt-2">
+                                            <div class="col-md-12 mt-2">
                                                 <label for="segundo_apellido">
                                                     Integrantes
                                                 </label><span id='valid_5' style="color:red;"></span>
                                                 <div class="input-group">
-                                                   <table style='width:100%'>
+                                                <table style='width:100%'>
                                                     <tr>
                                                         <td>
                                                         <input type="text" class='form-control letras_numeros' id='cedula_integrante' placeholder="Buscar cédula"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
                                                             <datalist id='lista_persona'>
                                                                 <?php foreach ($this->integrantes as $int) { ?>
-                                                                         <option value='<?php echo $int['cedula_integrante'];?>'><?php echo $int['primer_apellido'].''.$int['primer_apellido']; ?></option>
+                                                                <option value='<?php echo $int['id_familia'];?>'><?php echo $int['cedula_integrante'].''.$int['primer_nombre'].''.$int['primer_apellido']; ?></option>
                                                             <?php    } ?>
                                                             </datalist>
                                                             <td class="col-md-6 p-0">

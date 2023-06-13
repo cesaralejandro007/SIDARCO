@@ -247,7 +247,7 @@ function valid_info_personal(){
   var validacion=false;
 
   if(valid_element("Debe ingresar el documento de identidad de la persona",cedula,document.getElementById("valid_1"))){
-   if(persona_existe(cedula.value)){  
+   if(persona_existe(cedula.value)){ 
      if(valid_element("Debe ingresar el primer nombre de la persona",primer_nombre,document.getElementById("valid_2"))){
        if(valid_element("Debe ingresar el segundo nombre de la persona",segundo_nombre,document.getElementById("valid_3"))){
          if(valid_element("Debe ingresar el primer apellido de la persona",primer_apellido,document.getElementById("valid_4"))){
@@ -1424,7 +1424,7 @@ function persona_existe(){
     confirmButtonText:"Sí, activar",
     cancelButtonText:"No"
   },function(isConfirm){
-   if(isConfirm){
+  if(isConfirm){
     $.ajax({
       type:"POST",
       url:BASE_URL+"Seguridad/cambio_estado",
