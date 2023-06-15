@@ -319,7 +319,7 @@ class Controlador
     public function consultar_familias($param)
     {
 
-        $tabla = "SELECT * FROM familia WHERE cedula_integrante= $param";
+        $tabla = "SELECT * FROM familia_personas WHERE cedula_persona= $param";
 
         $respuestaArreglo = '';
         try {

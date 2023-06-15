@@ -155,19 +155,16 @@ public function Consultas_cedulaV2()
 
  $persona=$this->consultar_familias($_POST['cedula_persona']);
 
+
  if(count($persona)==0){
-   echo 0;
+  echo 0;
  }
  else{
-  if($persona[0]['estado'] == 0){
-   echo 2;
+  echo 1;
   
   }
   
-  else{
-    echo 1;
-  }
- } 
+ 
 
 }
 
@@ -182,10 +179,10 @@ public function Consultas_cedula_integrante()
   }
   else{
     if($persona[0]['estado'] == 0){
-     echo 2;
+    echo 2;
    }
    else{
-     echo 1;
+    echo 1;
 
    } 
 
@@ -196,13 +193,29 @@ public function Consultas_cedula_integrante()
 public function Consultas_cedula()
 {
 
- $persona=$this->modelo->Buscar_Persona($_POST['cedula_integrante']);
+ $persona=$this->modelo->Buscar_Persona($_POST['cedula_integrante'], $_POST['parentezco']);
 
  if(count($persona)==0){
    echo 0;
  }
  else{
    $this->Escribir_JSON($persona);
+ }
+
+}
+
+public function Consultas_cedula_funcionario()
+{
+
+
+
+ $persona=$this->Consultar_Columna("familia_personas","cedula_persona",$_POST['cedula_persona']);
+ if(count($persona)==0){
+   echo 0;
+ }
+ else{
+  echo 1;
+ 
  }
 
 }
