@@ -1102,6 +1102,21 @@ class Personas_Class extends Modelo
             return $this->Capturar_Error($e);
         }
     }
+
+    public function eliminarregistrosegresos($cedula)
+    {
+        try {
+
+            $query = $this->conexion->prepare('DELETE FROM personas_egresados WHERE cedula_persona = :cedula_persona');
+            $query->execute(['cedula_persona' => $cedula]);
+
+            return true;
+
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
     //=======================================================================
 
    
@@ -1503,9 +1518,7 @@ public function get_organizaciones()
 
      public function get_titulos($cedula)
      {
-
-         $tabla            = "SELECT persona_proyecto.id_persona_proyecto as id, proyecto.nombre_proyecto as titulo, persona_proyecto.descripcion as descripcion FROM personas,persona_proyecto,proyecto WHERE personas.cedula_persona = persona_proyecto.cedula_persona and persona_proyecto.id_proyecto = proyecto.id_proyecto and personas.cedula_persona= " . $cedula . "";
-       
+        $tabla            = "SELECT persona_proyecto.id_persona_titulo as id, proyecto.nombre_titulo as titulo, persona_proyecto.descripcion as descripcion FROM personas,persona_proyecto,proyecto WHERE personas.cedula_persona = persona_proyecto.cedula_persona and persona_proyecto.id_titulo = proyecto.id_titulo and personas.cedula_persona = " . $cedula . "";       
          $respuestaArreglo = '';
          try {
              $datos = $this->conexion->prepare($tabla);
