@@ -1070,6 +1070,7 @@ public function ingresar_persona(){
   $cedula=$_POST['cedula_persona'];
 
   if($this->Activar("personas","cedula_persona",$cedula)){
+    $this->modelo->eliminarregistrosegresos($cedula);
     echo 1;
   }
 
