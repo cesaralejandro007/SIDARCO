@@ -343,47 +343,10 @@ function egresar(v1,v2,v3){
 
 
 function ingresar_datos(cedula,persona,ocupacion,condicion_lab,transporte,bonos,misiones,divisiones,titulos,org_politica) {
-
-  swal(
-    {
-      title: "Atención",
-      text:
-        "Estás por Ingresar la persona con cédula " +
-        cedula +
-        ", si lo haces será registrado en ingresos, ¿Desea continuar?",
-      type: "warning",
-      showCancelButton: true,
-      cancelButtonColor: '#d33',
-      confirmButtonColor: '#9D2323',
-      cancelButtonText: "No",
-      confirmButtonText: "Si",
-    },
-    function (isConfirm) {
-      if (isConfirm) {
-        $.ajax({
-          type: "POST",
-          url: BASE_URL + "Personas/ingresar_persona",
-          data: { cedula_persona: cedula },
-        }).done(function (result) {
-          if (result == 1) {
-            setTimeout(function () {
-              swal({
-                title: "Éxtito",
-                text: "La persona ha sido Ingresad@ satisfactoriamente",
-                type: "success",
-                showConfirmButton: false,
-                timer: 2000,
-              });
-              editar_datos(persona,ocupacion,condicion_lab,transporte,bonos,misiones,divisiones,titulos,org_politica);
-              vingresos.value = "";
-              $("#edit_persona").modal({ backdrop: "static", keyboard: false });
-              $('#modalpersona').remove();
-            }, 500);
-          }
-        });
-      }
-    }
-  );
+  editar_datos(persona,ocupacion,condicion_lab,transporte,bonos,misiones,divisiones,titulos,org_politica);
+  vingresos.value = "";
+  $("#edit_persona").modal({ backdrop: "static", keyboard: false });
+  $('#modalpersona').remove();
 }
 
 
@@ -606,7 +569,6 @@ function editar_datos(
       vmisiones.innerHTML += " <table style='width:95%'><tr><td>- " + misiones_info[i]["nombre_mision"] + "  (" + recibe + ")</td><td style='text-align:right'><span onclick='borrar_mision(" + misiones_info[i]['id_persona_mision'] + ",`" + persona_info['cedula_persona'] + "`)' class='iconDelete fa fa-times-circle' title='Eliminar misión' style='font-size:22px'></span></td></tr></table><br><hr>";
     }
   } */
-
   if (titulos.length == 0) {
     vtitulos.innerHTML = "No se han seleccionado títulos";
     } else {
@@ -1121,15 +1083,57 @@ function editar_persona() {
     url: BASE_URL + "Personas/modificar_persona",
     data: { datos_persona: inf_persona },
   }).done(function (result) {
-   //alert(result);
     if (result == 1) {
-      swal({
-        type: "success",
-        title: "Éxito",
-        text: "Se han almacenado los cambios correctamente",
-        timer: 2000,
-        showConfirmButton: false
-      });
+      if(document.getElementById("modulo").value == "egresos"){
+        swal(
+          {
+            title: "Atención",
+            text:
+              "Estás por Ingresar la persona con cédula " +
+              inf_persona["cedula_persona"] +
+              ", si lo haces será registrado en ingresos, ¿Desea continuar?",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            confirmButtonColor: '#9D2323',
+            cancelButtonText: "No",
+            confirmButtonText: "Si",
+            closeOnConfirm: false,
+          },
+          function (isConfirm) {
+            if (isConfirm) {
+              $.ajax({
+                type: "POST",
+                url: BASE_URL + "Personas/ingresar_persona",
+                data: { cedula_persona: inf_persona["cedula_persona"]},
+              }).done(function (result) {
+                if (result == 1) {
+                    swal({
+                      title: "Éxtito",
+                      text: "La persona ha sido Ingresad@ satisfactoriamente",
+                      type: "success",
+                      timer: 2000,
+                      showConfirmButton: false,
+                    });
+                }
+                if(isConfirm != false){
+                  setTimeout(function () {
+                    location.reload();
+                  }, 2000);
+                }
+              });
+            }
+          }
+        );
+      }else{
+        swal({
+          type: "success",
+          title: "Éxito",
+          text: "Se han almacenado los cambios correctamente",
+          timer: 2000,
+          showConfirmButton: false
+        });
+      }
       setTimeout(function () {
         $('#example1').DataTable().clear().destroy();
         cargar_tabla_personas(); $("#edit_persona").modal("hide");
