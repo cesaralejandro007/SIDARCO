@@ -676,19 +676,19 @@ class Personas_Class extends Modelo
         try {
             $datos = $this->conexion->prepare('INSERT INTO persona_proyecto (
                 cedula_persona,
-                id_proyecto,
+                id_titulo,
                 estado,     
                 descripcion
                 ) VALUES (
                 :cedula_persona,
-                :id_proyecto,
+                :id_titulo,
                 :estado,
                 :descripcion
                 )');
 
             $datos->execute([
                 'cedula_persona'    =>  $cedula,
-                'id_proyecto'      =>  $titulo,
+                'id_titulo'      =>  $titulo,
                 'estado'      =>  1,
                 'descripcion'      =>  $descripcion
             ]);

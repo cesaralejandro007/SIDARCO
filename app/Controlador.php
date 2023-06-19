@@ -447,7 +447,7 @@ class Controlador
     public function Consultar_Columna_titulos($cedula)
     {
 
-        $tabla = "SELECT persona_proyecto.id_persona_proyecto as id, proyecto.nombre_proyecto as titulo, persona_proyecto.descripcion as descripcion FROM personas,persona_proyecto,proyecto WHERE personas.cedula_persona = persona_proyecto.cedula_persona and persona_proyecto.id_proyecto = proyecto.id_proyecto and personas.cedula_persona= " . $cedula . "";
+        $tabla = "SELECT persona_proyecto.id_persona_titulo as id, proyecto.nombre_titulo as titulo, persona_proyecto.descripcion as descripcion FROM personas,persona_proyecto,proyecto WHERE personas.cedula_persona = persona_proyecto.cedula_persona and persona_proyecto.id_titulo = proyecto.id_titulo and personas.cedula_persona=" . $cedula . "";
 
         $respuestaArreglo = '';
         try {
@@ -517,7 +517,7 @@ class Controlador
     {
         try {
 
-            $query = $this->conexion->prepare("DELETE FROM persona_proyecto WHERE id_persona_proyecto= " . $id . "");
+            $query = $this->conexion->prepare("DELETE FROM persona_proyecto WHERE id_persona_titulo = " . $id . "");
             $query->execute();
             return 1;
 
