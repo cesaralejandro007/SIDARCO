@@ -48,10 +48,11 @@
                                                 </label>
                                                 <span id='valid_1' style="color:red;"></span>
                                                 <div class="input-group">
-                                                <input type="text" class='form-control letras_numeros' id='cedula_persona' placeholder="Buscar cédula" name="datos['cedula_persona']" list='lista' oninput="Limitar(this,15)">
-                                                            <datalist id='lista'>
+                                                <input type="text"  class='form-control letras_numeros' id='cedula_persona' placeholder="Buscar cédula" name="datos['cedula_persona']" list='lista' oninput="Limitar(this,15)">
+                                                            <datalist id='lista' >
+                                                            <option selected="" value=""></option>
                                                                 <?php foreach ($this->personas as $p) { ?>
-                                                                         <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['primer_nombre']." ".$p['primer_apellido']; ?></option>
+                                                                        <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['primer_nombre']." ".$p['primer_apellido']; ?></option>
                                                             <?php    } ?>
                                                             </datalist>
                                                     <button class='btn btn-info' type='button' id='nueva_personas'>Nueva</button>
@@ -60,7 +61,7 @@
                                                 </div>
 <!--                                              <div class="col-md-6 mt-4">
                                                 <label for="segundo_apellido">
-                                                 Condición en que ocupa la vivienda
+                                                Condición en que ocupa la vivienda
                                                 </label> <span id='valid_cond_ocupacion' style='color:red'></span>
                                                 <table style='width: 100%'><tr><td>
                                                <select class='form-control' id='select-cond-ocupacion'>
@@ -138,10 +139,13 @@
                                                         <input type="text" class='form-control letras_numeros' id='cedula_integrante' placeholder="Buscar cédula"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
                                                             <datalist id='lista_persona'>
                                                                 <?php foreach ($this->integrantes as $int) { ?>
-                                                                <option value='<?php echo $int['id_familia'];?>'><?php echo $int['cedula_integrante'].''.$int['primer_nombre'].''.$int['primer_apellido']; ?></option>
+                                                                <option value='<?php echo $int['cedula_integrante'];?>'><?php echo $int['primer_nombre'].''.$int['primer_apellido']; ?></option>
                                                             <?php    } ?>
                                                             </datalist>
                                                             <td class="col-md-6 p-0">
+                                                                <!-- <label for="parentezco">
+                                                                    Parentezco
+                                                                </label> -->
                                                             <select class="custom-select" id="parentezco"
                                                         name="datos[parentezco]" >
                                                         <option selected="" value="0">

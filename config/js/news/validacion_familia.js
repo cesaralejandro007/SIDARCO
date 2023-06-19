@@ -1,6 +1,7 @@
 var integrantes=[];
-var integrantes=[];
+var integrantess=[];
 var parentezco_array2=[];
+var parentezco_array3=[];
 var persona_existente=false;
 var valid_cedula=document.getElementById('valid_1');
 var valid_nombre_familia=document.getElementById("valid_2");
@@ -12,6 +13,8 @@ var btn_personas_nueva=document.getElementById("nueva_personas");
 var cedula_persona=document.getElementById("cedula_persona");
 var nombre_familia=document.getElementById("nombre_familia");
 var parentezco=document.getElementById("parentezco");
+var valid_parentezco=document.getElementById("valid_5"); 
+
 
 var integrantes_input=document.getElementById("cedula_integrante");
 var btn_nuevo_integrante=document.getElementById("btn_nuevo");
@@ -80,9 +83,11 @@ btn_personas_nueva.onclick=function(){
 
 btn_guardar.onclick=function(){
 
-		enviar_informacion();
-	
+enviar_informacion();
+
 }
+
+
 
 
   /*   document.onkeypress=function(e){
@@ -98,11 +103,9 @@ btn_guardar.onclick=function(){
 
 function enviar_informacion(){
 
-	
-
- 	if(validar_informacion()){ 
-   var datos_familia=[];
-   for(var i=0; i<integrantes.length; i++){
+if(validar_informacion()){ 
+var datos_familia=[];
+for(var i=0; i<integrantes.length; i++){
 	var datos=new Object();
 	datos['id_familia']=integrantes[i];
 	datos['cedula_persona']=cedula_persona.value;
@@ -110,14 +113,12 @@ function enviar_informacion(){
 	datos['descripcion_familia']=observaciones.value;
 	datos['parentezco']=parentezco_array2[i];
 	datos_familia.push(datos);
-  
+
 	alert(datos_familia);
 
    }  
-  
   /*  datos_familia['integrantes']=integrantes;
    datos_familia['estado']=1;   */ 
-
 
 	$.ajax({
          type:"POST",
@@ -136,14 +137,10 @@ function enviar_informacion(){
             });
 
             setTimeout(function(){location.href=BASE_URL+"Familias/Consultas";},1000);
-
-
 	});
 }
  }
 
-
- 
 integrantes_input.onkeyup=function(){
 	if(integrantes_input.value!=''){
 		valid_integrantes.innerHTML='';
@@ -159,26 +156,35 @@ btn_agregar.onclick=function(){
 	}
 	else{
 		valid_integrantes.innerHTML="";
-        
-        if(valid_integrantes_agregados()){
-        valid_integrantes.innerHTML="";
+
+		    if(parentezco.value=="0"){
+			parentezco.focus();
+			valid_parentezco.innerHTML='  Debe agregar el parentezco';
+
+		} else { 
+         
+        if(valid_parentezco_agregados() && valid_integrantes_agregados() ){
+        valid_parentezco.innerHTML="";
 		$.ajax({
 			type: 'POST',
 			url: BASE_URL + 'Familias/Consultas_cedula',
-			data:{'cedula_integrante':integrantes_input.value}
+			data:{'cedula_integrante':integrantes_input.value, 'parentezco':parentezco.value}
 		})
-		.done(function (datos) {
+		.done(function (datos){
 
-/* alert(datos); */
+             alert(datos); 
 			if(datos!=0){
 
 				var parentezco_array="";
-				 parentezco_array = parentezco.value;
+				parentezco_array = parentezco.value;
 
 				var result=JSON.parse(datos);
                 integrantes.push(result[0]['id_familia']);
-				integrantess
-				parentezco_array2.push(parentezco_array);
+				integrantess.push(result[0]['cedula_integrante']);
+				parentezco_array3.push(result[0]['parentezco']);
+				alert(parentezco_array3); 
+			/* 	parentezco_array2.push(parentezco_array); 
+				alert(parentezco_array2); */
                 integrantes_input.value='';
                 var div=document.createElement("div");
                 div.style.width='100%';
@@ -224,8 +230,30 @@ btn_agregar.onclick=function(){
 
 }
 }
+	}
 
 }
+//----------------------------Validar elemento-----------------------
+
+ function valid_element(mensaje_error, element, span_element){
+
+	var validado=true;
+
+	if(element.value=="vacio" || element.value==""){
+
+		element.focus();
+		element.style.borderColor="red";
+		validado=false;
+		span_element.style.display="";
+		span_element.innerTHML=mensaje_error;
+	}else{
+		element.style.borderColor="";
+		element.style.display='none';
+
+	}
+	return validado;
+
+ }
 
 //--------------------------Validacion de cedula----------------------------------
 
@@ -235,12 +263,13 @@ cedula_persona.onkeyup=function(){
 	$.ajax({
   
 	 type:"POST",
-	 url:BASE_URL+"Personas/Consultas_cedulaV2",
-	 data:{'cedula':cedula_persona.value}
+	 url:BASE_URL+"Familias/Consultas_cedula_funcionario",
+	 data:{'cedula_persona':cedula_persona.value}
   
    }).done(function(result){
 	console.log(result);
 	persona_existente=result;
+	 alert(persona_existente); 
   
   })
   
@@ -269,47 +298,17 @@ function persona_existe(){
 	}
   
   
-	if(persona_existente==2){
-	 swal({
-	  type:"warning",
-	  title:"Atención",
-	  text:"Este usuario se encuentra inactivo, ¿desea activarlo nuevamente?",
-	  showCancelButton:true,
-	  confirmButtonText:"Sí, activar",
-	  cancelButtonText:"No"
-	},function(isConfirm){
-	if(isConfirm){
-	  $.ajax({
-		type:"POST",
-		url:BASE_URL+"Seguridad/cambio_estado",
-		data:{"cedula_persona":cedula.value,"estado":1}
-	  }).done(function(result){
-		if(result){
-  setTimeout(function(){
-		  swal({
-			type:"success",
-			title:"Éxito",
-			text:"Se ha reactivado la persona satisfactoriamente",
-			showConfirmButton:false,
-			timer:2000
-		  });
-  
-		  setTimeout(function(){location.href=BASE_URL+"Personas/Consultas"},2000);
-		  },500);
-		}
-	  });
-	}
-  })
-   }
+	
+	
 }
 
 
-//---------------------Validacion de integrantes en el DIV------------------------------------------------------- 
+//---------------------Validacion de integrantes en el DIV-------------------- 
 function valid_integrantes_agregados(){
 
 	var validar=true;
-	for(var i=0;i<integrantes.length;i++){
-		if(integrantes[i]==integrantes_input.value){
+	for(var i=0;i<integrantess.length;i++){
+		if(integrantess[i]==integrantes_input.value){
 			validar=false;
 			
 		}
@@ -322,35 +321,28 @@ function valid_integrantes_agregados(){
 	return validar;
 }
 
+//------------------Validacion de parentezco en el DIV-----------------------
 
+function valid_parentezco_agregados(){
 
-/* vivienda.onchange=function(){
-	if(vivienda.value!='vacio'){
-		valid_vivienda.innerHTML='';
-	}
-	else{
-		valid_vivienda.innerHTML="Debe seleccionar la vivienda de la familia";
-	}
+var validar=true;
+for(var i=0; i<parentezco_array3.length;i++){
+if(parentezco_array3[i]==parentezco.value){
+	/* alert(parentezco_array3); */
+   validar=false;
 }
 
-condicion_ocupacion_select.onchange=function(){
-	if(condicion_ocupacion_select.value!=''){
-		valid_cond_ocupacion.innerHTML='';
-	}
-	else{
-		valid_cond_ocupacion.innerHTML="Campo vacío";
-	}
+}
+if(!validar){
+
+	valid_parentezco.innerHTML="Ya fue ingresado este parentezco";
+
+	
+}
+return validar;
 }
 
-condicion_ocupacion_input.onkeyup=function(){
-	if(condicion_ocupacion_select.value!=''){
-		valid_cond_ocupacion.innerHTML='';
-	}
-	else{
-		valid_cond_ocupacion.innerHTML="Campo vacío";
-	}
-} */
-
+//----------------------------------------------------------------------------
 
 nombre_familia.onkeyup=function(){
 	if(nombre_familia.value!=''){
@@ -358,6 +350,7 @@ nombre_familia.onkeyup=function(){
 	}
 	else{
 		valid_nombre_familia.innerHTML="Debe ingresar el nombre de la familiao";
+		nombre_familia.focus();
 	}
 }
 
@@ -379,21 +372,20 @@ ingreso_aprox.onkeyup=function(){
 	}
 } */
 
-
-
-
-	 function validar_informacion(){
+	function validar_informacion(){
 		var validar=false;
-
-		
-			if(nombre_familia.value==""){
-				valid_nombre_familia.innerHTML="Debe ingresar el nombre de la familia";
-				nombre_familia.focus();
+		if(persona_existe(cedula_persona.value)){ 
+			if(cedula_persona.value==""){
+				valid_cedula.innerHTML="Debe ingresar el nombre de la familia";
+				cedula_persona.focus();
 			}
 			else{
-            valid_nombre_familia.innerHTML="";
-
-
+        
+	 	if(nombre_familia.value=="" ){
+			valid_nombre_familia.innerHTML="Debe ingresar la cedula";
+			nombre_familia.focus();
+		}else { 
+ 
         if(integrantes.length<2){
         valid_integrantes.innerHTML="Ingrese al menos 2 integrantes de la familia";
         integrantes_input.focus();
@@ -402,8 +394,10 @@ ingreso_aprox.onkeyup=function(){
         valid_integrantes.innerHTML="";
         validar=true;
             }
-            }
-
+		}
+		 } 
+		}
+		
 		return validar;
 	
 } 
