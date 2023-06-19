@@ -100,6 +100,7 @@
                                         </a>
                                     </li>
                                 </ul>
+
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="panel1" role="tabpanel">
@@ -109,7 +110,6 @@
                                                     Información  Personal
                                                 </h4>
                                             </div>
-                                            
                                             <div class="col-md-12 mt-2">
                                                 <label for="cedula">
                                                 Documento de identidad </label> <span style='color:red;display:none' id='valid_1'>Ingrese el documento de identidad</span>
@@ -184,7 +184,7 @@
 
                                         </div>
 
-                                   
+                        
                                         <div class="col-md-3 mt-2">
                                             <label for="estado_civil">
                                                 Estado Civil
@@ -230,22 +230,20 @@
 <!--
                                         
                                         <div class="col-md-6 mt-2">
-                                      <label for="tiempo_comunidad">
-                                    Tiempo en la comunidad    
-                                  </label>
-                                  <span style='display:none;color:red' id='valid_13'>Campo vacío</span>
-                                  <div class="input-group">
-                                    <input  class="form-control mb-10" id="tiempo_comunidad"
-                                    name="datos[tiempo_comunidad]"
-                                    type="date" />
-                                    <button type="button" class="btn btn-default" id='desde_siempre'>Desde siempre</button>
-                                    </div>
+                                        <label for="tiempo_comunidad">
+                                        Tiempo en la comunidad    
+                                        </label>
+                                        <span style='display:none;color:red' id='valid_13'>Campo vacío</span>
+                                        <div class="input-group">
+                                        <input  class="form-control mb-10" id="tiempo_comunidad"
+                                        name="datos[tiempo_comunidad]"
+                                        type="date" />
+                                        <button type="button" class="btn btn-default" id='desde_siempre'>Desde siempre</button>
+                                        </div>
 
 
-                                    </div>
-
+                                        </div>
 -->
-
                                     <div class="col-md-3 mt-2">
                                         <label for="nacionalidad">
                                             Nacionalidad
@@ -374,6 +372,8 @@
 </td></tr>
 </table>
 </div>
+           </div>
+           </div>
            
 <!--
 <div class="col-md-6 mt-2">
@@ -521,12 +521,12 @@
                                                 </div>
                                             </div>
            
-                                        </div>
+                                            </div>
 
-                                    </div>
-           -->
-                                   <!-- <div class="tab-pane" id="panel2" role="tabpanel">-->
-
+                                            </div>
+                                            -->
+                                            <!-- <div class="tab-pane" id="panel2" role="tabpanel">-->
+                                    <!-- </div> -->
                                     <div class="tab-pane" id="panel2" role="tabpanel">
 
                                         <div class="row">
@@ -641,7 +641,7 @@
                                                     name="datos[telf_casa]" placeholder="0000-000-0000"
                                                     type="number" oninput="Limitar(this,12)"/>
                                                 </div>
-           </div>
+                                            </div>
                                                 <br>
 
                                                 <div class="col-md-9 mt-2">
@@ -652,12 +652,12 @@
                                             <input type="text" class="form-control mb-10" name="datos[direccion]" id="direccion"  style="resize: both; width: 100%; heigth: 200px" placeholder="Indique dirección"> 
                                            
                     
-                                       </div>
+                                        </div>
            
-                                </div>
-                                </div>
+                                      </div>
+                                        </div>
            
-           </div>
+                                    </div>
                                      
                                      <!--   <div class="col-md-12 mt-2">
                                                 <label for="telefono_casa">
@@ -795,11 +795,7 @@
                                     </td>
                                 </tr>
                             </table>
-                        </div>
-
-
-
-
+                                                    </div>
 
                     </div>
 
@@ -1174,12 +1170,12 @@
                         <select class="form-control" id="proyectos" name="datos[proyectos]" style= "width: 100%">
                             <option value='0' >-Seleccione-</option>
                             <?php foreach ($this->proyectos as $pro) { ?>
-                            <option value="<?php echo $pro['id_proyecto']; ?>"><?php echo $pro['nombre_proyecto']; ?></option>
+                            <option value="<?php echo $pro['id_titulo']; ?>"><?php echo $pro['nombre_titulo']; ?></option>
                             <?php   } ?>
                         </select>
                     </td>
                     <td class="col-md-5 p-0">
-                        <input   name="descripcion"  id='descripcion' class='form-control' style=" width: 100%" placeholder="Descripción del título">
+                        <input  name="datos[descripcion]"  id="descripcion" class='form-control' style=" width: 100%" placeholder="Descripción del título" >
                     </td>
                     <td class="p-0">
                         <input type="button" id="agregar_proyecto"   value="Agregar" class="btn btn-info">
@@ -1195,13 +1191,13 @@
         <div class="col-md-12 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CEF6F5;width: 100%;height: 200px !important' id='proyectos_persona'>
         </div>
 
-    </div> 
+        </div> 
 
-    </div> 
+        </div> 
 
-</div>
+    </div>
  
- <!---------------------------------------------------------------------------------------------------------------------->            
+<!---------------------------------------------------------------------------------------------------------------------->            
 
 <div class="tab-pane" id="panel4" role="tabpanel">
     <div class="row">

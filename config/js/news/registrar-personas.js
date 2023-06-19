@@ -29,7 +29,6 @@ var nacionalidad=document.getElementById("nacionalidad");
 var nivel_educativo=document.getElementById("nivel_educativo");
 //var afrodescendencia=document.getElementById("afrodescendencia");
 //var tiempo_comunidad=document.getElementById("tiempo_comunidad");
-//var privado_libertad=document.getElementById("privado_libertad");
 //var jefe_familia=document.getElementById("jefe_familia");
 //var miliciano=document.getElementById("miliciano");
 var cedula=document.getElementById("cedula");
@@ -48,9 +47,6 @@ cedula.focus();
 
 //------------------ Documentos personales----------------------------------  -------//
 
-
-var tab_doc_personales=document.getElementById("tab_2");
-var div_doc_personales=document.getElementById("panel2");
 /*
 var serial_patria=document.getElementById("serial_patria");
 var codigo_patria=document.getElementById("codigo_patria");
@@ -62,8 +58,8 @@ var codigo_discapacidad=document.getElementById("codigo_discapacidad");
 
 //------------------ Información de contacto-----------------------------------------//
 
-
-var div_info_contacto=document.getElementById("panel3");
+var tab_doc_personales=document.getElementById("tab_2");
+var div_doc_personales=document.getElementById("panel2");
 var correo=document.getElementById("correo");
 var tipo_correo=document.getElementById("tipo_correo");
 var correo_institucional=document.getElementById("correo_institucional");
@@ -102,6 +98,7 @@ var nombre_mision=document.getElementById("nombre_mision");
 
 //var //tab_info_laboral=document.getElementById("tab_5");
 //var //div_info_laboral=document.getElementById("panel5");
+var div_info_contacto=document.getElementById("panel3");
 var tab_info_contacto=document.getElementById("tab_3");
 var ocupacion=document.getElementById("ocupacion");
 var btn_nueva_ocupacion=document.getElementById("btn_nueva_ocupacion");
@@ -158,6 +155,7 @@ var ver_egresado=document.getElementById("ver_egresado");
 var ver_fecha=document.getElementById("fecha");
 var ver_descripcion=document.getElementById("ver_descripcion");
 var descripcion=document.getElementById("descripcion");
+
 var id_estado_fun=document.getElementById("id_estado_fun"); 
 var cargo_nominal=document.getElementById("cargo_nominal");
 var nomina=document.getElementById("nomina");
@@ -281,10 +279,10 @@ function valid_info_personal(){
                                           // if(valid_comunidad_indigena()){  
                                             //if(valid_element("Debe indicar si la persona es privada de libertad",privado_libertad,document.getElementById("valid_20"))){
                                               
-                                               
+                                              
                                               validacion=true;
-                                               
-                                               
+                                            
+                                            
 
                                             }  } } } } } } 
                                           
@@ -300,7 +298,6 @@ function valid_info_personal(){
 
 btn_siguiente.onclick=function(){
   funcion_siguiente();
-
 }
 
 //-------------------------------Funcion de boton anterior-------------------------------------//
@@ -376,7 +373,7 @@ org_politica.onchange=function(){
 }  */
 
 
- nomina.onchange=function(){
+nomina.onchange=function(){
 
 
   change_to_dynamic_record("2",ver_grado_fun,nomina,grado_fun);
@@ -531,7 +528,9 @@ function valid_bono(){
 //------------------------------------funcion agregar bonos-----------------------------//
  
  btn_agregar_proyecto.onclick=function(){
-  if(proyectos.value==0 || descripcion.value==''){
+  
+  alert(proyectos.value);
+  if( proyectos.value=="0" ||  descripcion.value=="0" ){
     swal({
      title:"Error",
      text:"Debe seleccionar la información del título",
@@ -591,7 +590,7 @@ function valid_bono(){
     }
     div_proyectos_persona.appendChild(elemento);
     proyectos.value = "0";
-    descripcion.value = "";
+    /* descripcion.value = ""; */
 }
 }  
 
@@ -1014,7 +1013,7 @@ function valid_element(mensaje_error,element,span_element){
 //_----------------------------validar info laboral--------------------------------------------//
 
 
-fecha_seniat.onchange=function(){valid_element("Debe ingresar la fecha de ingreso al seniat",fecha_seniat,document.getElementById("valid_28"));}
+/* fecha_seniat.onchange=function(){valid_element("Debe ingresar la fecha de ingreso al seniat",fecha_seniat,document.getElementById("valid_28"));}
 
 if(valid_element("Debe indicar la fecha de ingreso al SENIAT",fecha_seniat,document.getElementById("valid_28"))){
   if(new Date(fecha_seniat.value)>new Date()){
@@ -1030,64 +1029,33 @@ if(valid_element("Debe indicar la fecha de ingreso al SENIAT",fecha_seniat,docum
     document.getElementById("valid_28")
   
   
-  }
+  } */
 
 
 function valid_info_laboral(){
 
- /* var validar=true; */
-
-/*  if(ocupacion_nueva.style.display=='none'){
-  if(valid_element("Debe indicar la ocupación de la persona",ocupacion,document.getElementById("valid_26"))){
-    validar=true;
-  }
-}
-else{
-  if(valid_element("Debe indicar la ocupación de la persona",ocupacion_nueva,document.getElementById("valid_26"))){
-    validar=true;
-  }
-} */
-
-/* if(validar){
- if(valid_cond_laboral()){
-
-
-   validar=true;
-
- }
- else{
-  validar=false;
-}
-}
-
- */
 var validacion=false;
-
-  /*    if(valid_element("Debe ingresar el primer nombre de la persona",primer_nombre,document.getElementById("valid_2"))){
-       if(valid_element("Debe ingresar el segundo nombre de la persona",segundo_nombre,document.getElementById("valid_3"))){
-         if(valid_element("Debe ingresar el primer apellido de la persona",primer_apellido,document.getElementById("valid_4"))){
-           if(valid_element("Debe ingresar el segundo apellido de la persona",segundo_apellido,document.getElementById("valid_5"))){ */
-           
-           if(valid_element("Indique la fecha de ingreso al SENIAT",fecha_seniat,document.getElementById("valid_28"))){
+      
+          if(valid_element("Indique la fecha de ingreso al SENIAT",fecha_seniat,document.getElementById("valid_28"))){
             if(new Date(fecha_seniat.value)>new Date()){
-             document.getElementById("valid_28").innerHTML="La fecha no puede ser mayor a la actual"
+            document.getElementById("valid_28").innerHTML="La fecha no puede ser mayor a la actual"
               document.getElementById("valid_28").style.display='';
               fecha_seniat.style.borderColor="red";
             }
-             if(valid_element("Indique fecha de ingreso a la administración",fecha_publica,document.getElementById("valid_29"))){
-               if(new Date(fecha_publica.value)>new Date()){
-                 document.getElementById("valid_29").innerHTML="La fecha no puede ser mayor a la actual"
-                 document.getElementById("valid_29").style.display='';
-                 fecha_publica.style.borderColor="red";
-               }
+            if(valid_element("Indique fecha de ingreso a la administración",fecha_publica,document.getElementById("valid_29"))){
+              if(new Date(fecha_publica.value)>new Date()){
+                document.getElementById("valid_29").innerHTML="La fecha no puede ser mayor a la actual"
+                document.getElementById("valid_29").style.display='';
+                fecha_publica.style.borderColor="red";
+              }
                 if(valid_element("Indique fecha de notificación",fecha_notificacion,document.getElementById("valid_30"))){
-                 if(new Date(fecha_notificacion.value)>new Date()){
-                   document.getElementById("valid_30").innerHTML="La fecha no puede ser mayor a la actual"
-                   document.getElementById("valid_30").style.display='';
-                   fecha_notificacion.style.borderColor="red";
-                 }
-                   if(valid_element("Indique fecha de designación", ult_designacion,document.getElementById("valid_31"))){ 
-                     if(new Date(ult_designacion.value)>new Date()){
+                if(new Date(fecha_notificacion.value)>new Date()){
+                  document.getElementById("valid_30").innerHTML="La fecha no puede ser mayor a la actual"
+                  document.getElementById("valid_30").style.display='';
+                  fecha_notificacion.style.borderColor="red";
+                }
+                  if(valid_element("Indique fecha de designación", ult_designacion,document.getElementById("valid_31"))){ 
+                    if(new Date(ult_designacion.value)>new Date()){
                         document.getElementById("valid_31").innerHTML="La fecha no puede ser mayor a la actual"
                         document.getElementById("valid_31").style.display='';
                         ult_designacion.style.borderColor="red";
@@ -1100,64 +1068,26 @@ var validacion=false;
                                     valid_element("Indique el estado de procedencia",id_estado, document.getElementById("valid_51"))
                                   }
                                     if(valid_element("Indique si la persona es egresada de nómina", egresado, document.getElementById("valid_36"))){ 
-                                       if(egresado.value==1){
+                                      if(egresado.value==1){
                                         valid_element("Indique razón de egreso",egresado_nomina, document.getElementById("valid_37"))
-                                     }
-                                         if(valid_element("Indique nómina a la que pertenece",nomina, document.getElementById("valid_38"))){
-                                           if(nomina.value==2){
+                                    }
+                                        if(valid_element("Indique nómina a la que pertenece",nomina, document.getElementById("valid_38"))){
+                                          if(nomina.value==2){
                                               
-                                               valid_element("Indique cargo o jeraquía",grado_fun, document.getElementById("valid_39"))
-                                             }
-                                               if(valid_element("Indique el cargo nominal",cargo_nominal, document.getElementById("valid_40"))){
-                                                 if(valid_element("Indique el estado ",id_estado_fun, document.getElementById("valid_41"))){
+                                              valid_element("Indique cargo o jeraquía",grado_fun, document.getElementById("valid_39"))
+                                            }
+                                              if(valid_element("Indique el cargo nominal",cargo_nominal, document.getElementById("valid_40"))){
+                                                if(valid_element("Indique el estado ",id_estado_fun, document.getElementById("valid_41"))){
                                                     /* if(valid_element("Indique el cargo funcional",cargos, document.getElementById("valid_42"))){ */
-                                                   if(valid_element("Indique la ubicación",id_ubicacion, document.getElementById("valid_43"))){
+                                                  if(valid_element("Indique la ubicación",id_ubicacion, document.getElementById("valid_43"))){
 
                           validacion=true;
 
                                     } }  } } } } } } } } } } } }
-            
-
-/* 
-
-
-             if(valid_element("Fecha de ingreso a la administración pública",fecha_publica,document.getElementById("valid_29"))){
-               if(new Date(fecha_publica.value)>new Date()){
-                document.getElementById("valid_29").innerHTML="La fecha de ingreso no de ser mayor a la actual";
-                document.getElementById("valid_29").style.display='';
-                fecha_publica.style.borderColor="red";
-
-              } 
-              else{
-
-                document.getElementById("valid_29").style.display='none';
-                document.getElementById("valid_29").innerHTML="Ingrese la fecha a la administración pública";
-                fecha_publica.style.borderColor="";
-              }
-
-
-                if(valid_element("Debe indicar el estado civil de la persona",estado_civil,document.getElementById("valid_7"))){
-                 if(valid_element("Debe indicar el género de la persona",genero,document.getElementById("valid_8"))){
-                 //if(valid_element("Debe indicar la orientación sexual de la persona",sexualidad,document.getElementById("valid_9"))){
-                     if(valid_element("Debe ingresar la nacionalidad de la persona",nacionalidad,document.getElementById("valid_10"))){
-                       if(valid_element("Debe ingresar el nivel educativo de la persona",nivel_educativo,document.getElementById("valid_11"))){
-                       
-                                               
-                                              
-                                               
-                                               
-
-                                            }  } } } }  */
-
 
                                             return validacion;
 
                                           }
-
-
-/* return validar;
-
-} */
 
 
 //------------------------------------------------------------------------------------------------//
@@ -1177,10 +1107,6 @@ var validacion=false;
     ocupacion_nueva.value='';
   }
 } */
-
-
-
-
 
 //--------------------------------------------------------------------------------------------------//
 
@@ -1285,17 +1211,14 @@ function valid_info_contacto(){
 
 	var validar=false;
 
- if(valid_element("Debe ingresar el número de teléfono de la persona",telefono,document.getElementById("valid_21"))){
-   if(valid_element("Seleccione una opción",whatsapp,document.getElementById("valid_22"))){
-   if(valid_element("Debe ingresar la dirección de habitacion de la persona",direccion,document.getElementById("valid_23"))){
+if(valid_element("Debe ingresar el número de teléfono de la persona",telefono,document.getElementById("valid_21"))){
+  if(valid_element("Seleccione una opción",whatsapp,document.getElementById("valid_22"))){
+  if(valid_element("Debe ingresar la dirección de habitacion de la persona",direccion,document.getElementById("valid_23"))){
     /*  if(valid_element("Debe ecribir la fecha de ingreso al SENIAT",fecha_seniat,document.getElementById("valid_28"))){ */
 
-     
-   
       validar=true;
 
   }	} } 
-
 
   return validar;
 
@@ -1579,7 +1502,6 @@ else{
   ver_rol.style.display='none';
 }
 
-
 rol.onchange=function(){
   valid_element("Seleccione el rol del usuario",rol,document.getElementById("valid_rol"));
 }
@@ -1615,19 +1537,19 @@ function valid_info_usuario(){
             return validar;
 
           }
-
-
-
 //-------------------------------- Control de índice-------------------------------------------//
 
 function control_indice(){
 
+  alert(index);
 
 	switch(index){
 
+
     case 0:
     btn_anterior.style.display='none';
-
+  
+    
     tab_info_personal.className='nav-link active';
     div_info_personal.style.display="block";
    //  cedula.focus();
@@ -1635,13 +1557,11 @@ function control_indice(){
    tab_doc_personales.className='';
    div_doc_personales.style.display="none";
 
-   tab_info_contacto.className="";
+   tab_info_contacto.className='';
    div_info_contacto.style.display="none";
 
-   tab_info_politica.className="";
-   div_info_politica.style.display="none";
-
-
+   tab_info_politica.className='';
+   div_info_politica.style.display="none"; 
 
    //tab_info_laboral.className="";
    //div_info_laboral.style.display="none";
@@ -1661,12 +1581,11 @@ function control_indice(){
   tab_info_personal.className='';
   div_info_personal.style.display="none";
 
-  tab_info_contacto.className="";
+  tab_info_contacto.className='';
   div_info_contacto.style.display="none";
 
-  tab_info_politica.className="";
+  tab_info_politica.className='';
   div_info_politica.style.display="none";
-
 
   //tab_info_laboral.className="";
   //div_info_laboral.style.display="none";
@@ -1688,7 +1607,7 @@ function control_indice(){
   div_info_personal.style.display="none";
 
   
-  tab_info_politica.className="";
+  tab_info_politica.className='';
   div_info_politica.style.display="none";
 
   //tab_info_laboral.className="";
@@ -1696,7 +1615,6 @@ function control_indice(){
 
   //tab_info_usuario.className="";
   //div_info_usuario.style.display="none";
-
 
   break;
 
@@ -1709,7 +1627,7 @@ function control_indice(){
   tab_info_politica.className="nav-link active";
   div_info_politica.style.display="block";
 
-  tab_info_contacto.className="";
+  tab_info_contacto.className='';
   div_info_contacto.style.display="none";
 
   tab_doc_personales.className='';
@@ -1717,23 +1635,13 @@ function control_indice(){
 
 
   tab_info_personal.className='';
-  div_info_personal.style.display="none";  
-
- 
-  
+  div_info_personal.style.display="none";   
 
  //tab_info_laboral.className="";
   //div_info_laboral.style.display="none";
 
   //tab_info_usuario.className="";
   //div_info_usuario.style.display="none";
-
-
-
- 
-
-
- 
 
 
   break;
@@ -1765,33 +1673,6 @@ div_doc_personales.style.display="none";
 
   break;
   */
-/*
-  case 5:
-  btn_siguiente.style.display='none';
-  botones_finales.style.display="block";
-
-  //tab_info_usuario.className="nav-link active";
-  //div_info_usuario.style.display="block";
-
-  //tab_info_laboral.className="";
-  ////div_info_laboral.style.display="none";
-
-
-  tab_doc_personales.className='';
-  div_doc_personales.style.display="none";
-
-  tab_info_personal.className='';
-  div_info_personal.style.display="none";
-
-  tab_info_contacto.className="";
-  div_info_contacto.style.display="none";
-
- tab_info_politica.className="";
-  div_info_politica.style.display="none";
-
-  break;
-
-*/
 
 }
 }
@@ -1840,8 +1721,6 @@ serial_patria.onkeyup=function(){
     });
 
   }
-}
-
 
 codigo_patria.onkeyup=function(){
   if(codigo_patria.value!=""){
