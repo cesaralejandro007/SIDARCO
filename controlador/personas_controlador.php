@@ -593,7 +593,7 @@ $this->Escribir_JSON($info_completa);
 public function Consultas_cedula()
 {
 
- $persona=$this->modelo->Buscar_Persona($_POST['cedula']);
+ $persona=$this->modelo->Buscar_Persona($_POST['cedula'], $_POST['parentezco']);
 
  if(count($persona)==0){
    echo 0;
@@ -683,7 +683,9 @@ public function registrar_transporte(){
 
   $datos=[
     "cedula_propietario" =>  $_POST['cedula_propietario'],
-    "descripcion_transporte" =>$_POST['descripcion_transporte']
+    "tipo_transporte"    =>$_POST['transporte'],
+    "descripcion_transporte"        => $_POST['tipo_transporte']
+    
   ];
 
   $this->modelo->Registrar_transporte($datos);
@@ -738,10 +740,10 @@ public function registrar_transporte(){
  /*    if($pro['id_proyecto']==$datos['id_titulos']){ */
   for ($i = 0; $i < count($datos); $i++) {
     foreach ($proyectos as $pro) {
-        if ($pro['id_proyecto'] == $datos[$i]['id_titulos']) {
+        if ($pro['id_titulo'] == $datos[$i]['id_titulo']) {
       $this->modelo->Registrar_persona_proyecto([
        "cedula_persona"   =>   $datos[$i]['cedula_persona'],
-       "id_titulos"     =>     $pro['id_proyecto'],
+       "id_titulo"     =>     $pro['id_titulo'],
        "descripcion"     =>     $datos[$i]['descripcion']
      ]);
   }

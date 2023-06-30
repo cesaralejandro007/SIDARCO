@@ -17,8 +17,8 @@ class Agenda extends Controlador
         $this->modelo->__SET("SQL", "SQL_04");$this->datos["calles"] = $this->modelo->Administrar();
         $this->modelo->__SET("SQL", "SQL_05");$this->datos["inmuebles"] = $this->modelo->Administrar();
 
-        foreach ($this->datos["calles"] as $c) {$ubicaciones[] = $c['nombre_calle'];}
-        foreach ($this->datos["inmuebles"] as $i) {$ubicaciones[] = $i['nombre_inmueble'];}
+        foreach ($this->datos["lugar_evento"] as $c) {$ubicaciones[] = $c['nombre_lugar_evento'];}
+        /* foreach ($this->datos["inmuebles"] as $i) {$ubicaciones[] = $i['nombre_inmueble'];} */
 
         $this->datos["ubicaciones"] = $ubicaciones;
         $this->vista->datos = $this->datos;

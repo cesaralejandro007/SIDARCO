@@ -169,7 +169,6 @@ public function Consultas_cedulaV2()
 }
 
 
-
 public function Consultas_cedula_integrante()
 {
   $persona=$this->Consultar_Columna("familia","cedula_integrante",$_POST['cedula_integrante']);
@@ -196,10 +195,10 @@ public function Consultas_cedula()
  $persona=$this->modelo->Buscar_Persona($_POST['cedula_integrante'], $_POST['parentezco']);
 
  if(count($persona)==0){
-   echo 0;
+   echo 0;        
  }
  else{
-   $this->Escribir_JSON($persona);
+    $this->Escribir_JSON($persona); 
  }
 
 }

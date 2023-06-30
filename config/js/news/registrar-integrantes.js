@@ -14,10 +14,10 @@ var correo=document.getElementById("correo");
 var telefono=document.getElementById("telefono_personal");
 var datos_persona=[];
 var persona_existente=false;
-cedula_integrante.focus();
+cedula_integrante.focus(); 
 var boton_integrante=document.getElementById("guardar_integrantes");
-
-
+var element;
+var mensaje_error;
 
 //------------------------Botones-------------------------
 
@@ -135,14 +135,14 @@ function control_indice(){
 //----------------------Validación de la cédula------------------->
 
 
-  cedula_integrante.oninput=function(){
+  /* cedula_integrante.oninput=function(){
     if (cedula_integrante.value.length >9) cedula_integrante.value =cedula_integrante.value.slice(0, 9);
   
-  }
+  } */
   
   cedula_integrante.onkeyup=function(){
   
-    valid_element("Debe ingresar el documento de identidad de la persona",cedula_integrante,document.getElementById("valid_1"));
+    valid_element("Debe ingresar el documento de identidad de la persona", cedula_integrante ,document.getElementById("valid_1"));
     $.ajax({
   
      type:"POST",
@@ -151,7 +151,7 @@ function control_indice(){
   
    }).done(function(result){
     console.log(result);
-   alert(result); 
+   /* alert(result);  */
      persona_existente=result; 
    
   
@@ -227,14 +227,15 @@ function control_indice(){
     if(element.value=="vacio" || element.value==""){
   
       element.focus();
-      /* element.style.borderColor="red";  */
+      element.style.borderColor="red"; 
+      span_element.innerHTML=mensaje_error; 
       validado=false;
       span_element.style.display='';
-      span_element.innerHTML=mensaje_error;
+      
     }
   
     else{
-       /* element.style.borderColor="";  */
+      /* element.style.borderColor="";  */
       span_element.style.display='none';
     }
   
@@ -253,11 +254,11 @@ function control_indice(){
 
     if(valid_element("Debe ingresar el documento de identidad", cedula_integrante, document.getElementById("valid_1"))){
         if(persona_existe(cedula_integrante.value)){ 
-            if(valid_element("Ingrese el nombre de la persona",primer_nombre, document.getElementById("valid_2"))){
+            if(valid_element("Ingrese el nombre de la persona", primer_nombre, document.getElementById("valid_2"))){
               if(valid_element("Ingrese el apellido", primer_apellido, document.getElementById("valid_4"))){
                 if(valid_element("Ingrese fecha de nacimiento", fecha_nacimiento, document.getElementById("valid_6"))){ 
                   if(new Date(fecha_nacimiento.value)>new Date){
-                  document.getElementById("valid_6").innerHTML="la fecha no debe ser mayor a la actual";
+                  document.getElementById("valid_6").innerHTML="La fecha no debe ser mayor a la actual";
                    document.getElementById("valid_6").style.display=''; 
                   fecha_nacimiento.style.borderColor="red";
               
@@ -269,7 +270,7 @@ function control_indice(){
                     if(valid_element("Ingrese el nivel educativo", nivel, document.getElementById("valid_8"))){
                       if(valid_element("Ingrese la talla de camisa", camisa, document.getElementById("valid_9") )){ 
                         if(valid_element("Ingrese talla de pantalon", pantalon, document.getElementById("valid_10"))){
-                          if(valid_element("Ingrese el nùmero de calzado", calzado, document.getElementById("valid_11"))){
+                          if(valid_element("Ingrese el número de calzado", calzado, document.getElementById("valid_11"))){
 
 
                             validacion=true;

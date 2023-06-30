@@ -50,7 +50,7 @@
     public function Buscar_Persona($cedula, $parentezco)
     {
 
-        $tabla            = "SELECT * FROM  familia_personas as fp  inner join familia as fa WHERE fa.cedula_integrante='$cedula' and fp.parentezco='$parentezco' ";
+        $tabla            = "SELECT * FROM  familia, familia_personas WHERE cedula_integrante='$cedula' or parentezco='$parentezco' ";
         $respuestaArreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -60,7 +60,7 @@
             return $respuestaArreglo;
         } catch (PDOException $e) {
 
-           return $this->Capturar_Error($e);
+        return $this->Capturar_Error($e);
         }
     } 
 

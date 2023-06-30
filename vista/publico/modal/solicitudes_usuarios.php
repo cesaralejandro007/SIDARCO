@@ -12,9 +12,10 @@
                 <b>Documento a solicitar</b>
                 <select class="form-control" id="documento-solicitado">
                   <option value='0'>Seleccione el documento</option>
-                  <option value='Residencia'>Constancia de Residencia</option>
-                  <option value='Buena conducta'>Constancia de buena conducta</option>
-                  <option value='No poseer vivienda'>Constancia de no poseer vivienda</option>
+                  <option value='Trabajo'>Constancia de Trabajo</option>
+                  <option value='Egreso'>Constancia de Egreso</option>
+                 <!--  <option value='Buena conducta'>Constancia de Egreso</option> -->
+                 <!--  <option value='No poseer vivienda'></option> -->
               </select>
               <div id="valid_doc" style="color:red"></div>
               <br>
@@ -120,6 +121,8 @@
                     showConfirmButton:false,
                     timer:2000,
                 });
+
+                $('#solicitar_constancia').modal('hide');
 
                 doc.value='0';
                 mot.value='';

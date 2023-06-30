@@ -154,7 +154,7 @@ var egresado_nomina=document.getElementById("egresado_nomina");
 var ver_egresado=document.getElementById("ver_egresado");
 var ver_fecha=document.getElementById("fecha");
 var ver_descripcion=document.getElementById("ver_descripcion");
-var descripcion=document.getElementById("descripcion");
+var descripcion_egresados=document.getElementById("descripcion_egresados");
 
 var id_estado_fun=document.getElementById("id_estado_fun"); 
 var cargo_nominal=document.getElementById("cargo_nominal");
@@ -507,7 +507,6 @@ function valid_bono(){
     }
   }
 
-
   if(!validar){
     document.getElementById("valid_24").innerHTML="Este bono ya fue agregado";
     document.getElementById("valid_24").style.display='';
@@ -529,8 +528,8 @@ function valid_bono(){
  
  btn_agregar_proyecto.onclick=function(){
   
-  alert(proyectos.value);
-  if( proyectos.value=="0" ||  descripcion.value=="0" ){
+  alert(descripcion.value);
+  if( proyectos.value=="0" ||  descripcion.value=="" ){
     swal({
      title:"Error",
      text:"Debe seleccionar la información del título",
@@ -590,7 +589,7 @@ function valid_bono(){
     }
     div_proyectos_persona.appendChild(elemento);
     proyectos.value = "0";
-    /* descripcion.value = ""; */
+     descripcion.value = ""; 
 }
 }  
 
@@ -616,11 +615,11 @@ function valid_bono(){
 
 
 btn_agregar_ubicacion.onclick=function(){
-  if (id_division.value == 0 || id_area.value == 0) {
+  if (id_division.value == 0 || id_area.value == 0 || id_seccion.value==0) {
     swal({
       type: "error",
       title: "Error",
-      text: "Debe ingresar los datos de la división y área",
+      text: "Debe ingresar los datos de la división, área y sección",
       timer: 2000,
       showConfirmButton: false
     });
@@ -687,10 +686,6 @@ btn_agregar_ubicacion.onclick=function(){
      
 
   }
- 
-  
-
-
 
 
 //----------------------------------Funcion agregar cargos funcionales-----------------------//
@@ -1541,7 +1536,7 @@ function valid_info_usuario(){
 
 function control_indice(){
 
-  alert(index);
+ /*  alert(index); */
 
 	switch(index){
 
@@ -2199,7 +2194,7 @@ function registrar_titulos_persona(){
   var datos_proyectos = [];
  for(var i=0;i<proyectos_persona.length;i++){
    var datos=new Object();
-   datos['id_titulos']=proyectos_persona[i];
+   datos['id_titulo']=proyectos_persona[i];
    datos['descripcion']=proyectos_persona_descripcion[i];
    datos['cedula_persona']=cedula.value;
    datos_proyectos.push(datos);
@@ -2286,7 +2281,7 @@ function registrar_transporte(){
  $.ajax({
    type:"POST",
    url:BASE_URL+"Personas/registrar_transporte",
-   data:{"cedula_propietario":cedula.value,"descripcion_transporte":tipo_transporte.value}
+   data:{"cedula_propietario":cedula.value, "tipo_transporte":transporte.value,"descripcion_transporte":tipo_transporte.value}
 
  });
 
