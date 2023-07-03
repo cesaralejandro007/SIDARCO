@@ -35,7 +35,8 @@ class Familias extends Controlador
          $viviendas=$this->modelo->Consultar_viviendas();
         $this->vista->viviendas=$viviendas;
         $persona=$this->modelo->Consultar_personas();
-        $this->vista->personas=$persona;
+        $persona_familia=$this->modelo->Consultar_familia();
+        $this->vista->personas=$persona_familia;
         $this->vista->Cargar_Vistas('familia/consultar');
     }
 
@@ -93,11 +94,45 @@ public function registrar_integrante_fun(){
      ]);
   }
 }
- 
  }
  echo count($datos);
  }
 
+ public function agregar_integrante_fun(){
+  $verificarBD = $this->modelo->existe($_POST['cedula_integrante']);
+  $verificarsiexiste = $this->modelo->existeintegrante($_POST['cedula_integrante']);
+  if($verificarsiexiste){
+    $this->Escribir_JSON(0);
+  }else if($verificarBD){
+    $this->Escribir_JSON(1);
+  }else if(!empty($_POST['parentezco'])){
+    $verificarexistepadre = $this->modelo->existepadre($_POST['cedula_responsable']);
+    $verificarexistemadre = $this->modelo->existemadre($_POST['cedula_responsable']);
+    $verificarexisteconyugue = $this->modelo->existeconyugue($_POST['cedula_responsable']);
+    if($_POST['parentezco'] == "Padre" && count($verificarexistepadre)==1){
+      $this->Escribir_JSON(2);
+    }else{
+      if($_POST['parentezco'] == "Madre" && count($verificarexistemadre)==1){
+        $this->Escribir_JSON(3);
+      }else{
+        if($_POST['parentezco'] == "Conyugue" && count($verificarexisteconyugue)==1){
+          $this->Escribir_JSON(4);
+        }else{
+          $integrante=$this->modelo->Integrantes_familia($_POST['cedula_integrante']);
+          $this->modelo->Registrar_persona_familia([
+           "id_familia"     =>     $integrante[0]['id_familia'],
+           "cedula_persona"         =>  $_POST['cedula_responsable'],
+           "nombre_familia"     =>     $_POST['nombre_familia'],
+           "descripcion_familia"  =>   $_POST['descripcion_familia'],
+           "parentezco"           =>    $_POST['parentezco']
+         ]);
+         $integrante_nuevos = $this->modelo->get_integrantes($_POST['cedula_responsable']);
+         $this->Escribir_JSON($integrante_nuevos);
+        }
+      }
+    }
+  }
+}
 
 //----------------------Registrar Integrantes------------------
 
@@ -141,7 +176,7 @@ public function consultar_info_familia(){
                 "descripcion"          => $f['descripcion_familia'],
                 "responsable"         => $f['cedula_persona']." ".$f['primer_nombre_p']." ".$f['primer_apellido_p'],
                 "integrantes"          => $integrantes_familia,
-                "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia'].",".$f['id_familia_persona'].")'><em class='fa fa-edit'></em></button>",
+                "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia_persona'].",".$f['id_familia'].",".$f['cedula_persona'].")'><em class='fa fa-edit'></em></button>",
                 "eliminar"          =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$f['cedula_persona']."`)' type='button'><em class='fa fa-trash'></em></button>"
           ];
      }
@@ -163,9 +198,6 @@ public function Consultas_cedulaV2()
   echo 1;
   
   }
-  
- 
-
 }
 
 
@@ -182,17 +214,15 @@ public function Consultas_cedula_integrante()
    }
    else{
     echo 1;
-
    } 
-
   } 
 
 } 
 
-public function Consultas_cedula()
+public function Consultar_integrante_personas()
 {
 
- $persona=$this->modelo->Buscar_Persona($_POST['cedula_integrante'], $_POST['parentezco']);
+ $persona=$this->modelo->Consultar_integrante($_POST['cedula']);
 
  if(count($persona)==0){
    echo 0;        
@@ -203,11 +233,9 @@ public function Consultas_cedula()
 
 }
 
+
 public function Consultas_cedula_funcionario()
 {
-
-
-
  $persona=$this->Consultar_Columna("familia_personas","cedula_persona",$_POST['cedula_persona']);
  if(count($persona)==0){
    echo 0;
@@ -216,43 +244,18 @@ public function Consultas_cedula_funcionario()
   echo 1;
  
  }
-
 }
-
-
 
 public function consultar_familia_datos(){
      
      $familias=$this->modelo->get_familias();
-     $retornar=[];
-
      foreach ($familias as $f) {
-        
-        if ($f['id_familia'] == $_POST['id_familia']) {
-            
-            $integrantes=$this->modelo->get_integrantes($_POST['id_familia']);
-
-
-         $retornar[]=[
-                "id_familia" => $f['id_familia'],
-                "familia" => $f['nombre_familia'],
-                "telefono" => $f['telefono_familia'],
-                "direccion" => $f['direccion_vivienda'],
-                "id_vivienda" => $f['id_vivienda'],
-                "ingreso_mensual"=> $f['ingreso_mensual_aprox'],
-                "condicion_ocupacion"=> $f['condicion_ocupacion'],
-                "observacion"=> $f['observacion'],
-                "integrantes"  => json_encode($integrantes),
-         ];
+        if ($f['id_familia'] == $_POST['id_familia']) { 
+            $integrantes=$this->modelo->get_integrantes($_POST['cedula_responsable']);
         }
      }
-
-      
-
-
-     $this->Escribir_JSON($retornar);
+     $this->Escribir_JSON($integrantes);
 }
-
 
 public function eliminar_de_familias(){
   echo $this->eliminar_familia_F($_POST['id']);
@@ -285,46 +288,19 @@ public function eliminar_familia(){
 
   public function eliminar_integrantes(){
   $retornar=0;
-  
-  if($this->Eliminar_Tablas("familia_personas","cedula_persona",$_POST['cedula_persona'])){
-    $integrantes=$this->Consultar_Columna("familia_personas","cedula_persona",$_POST['cedula_persona']);
-    if(count($integrantes)!=0){
-      $retornar=[];
-      for($i=0;$i<count($integrantes);$i++){
+  $integrantes=$this->Consultar_Columna("familia_personas","cedula_persona",$_POST['cedula_persona']);
 
-         $retornar[]=[
-           "cedula_persona"=>$integrantes[0]['cedula_persona'],
-           "id_familia_persona"=>$integrantes[$i]['id_familia_persona']
-         ];
-      }
-    }
+  if(count($integrantes)!=1){
+    $this->Eliminar_Tablas("familia_personas","id_familia_persona",$_POST['id_familia_persona']);
+    $retornar = $this->modelo->get_integrantes($_POST['cedula_persona']);
   }
-
   echo json_encode($retornar);
-
 }
 
   public function actualizar_familia(){
-        $datos_familia=$_POST['datos'];
-
-        $resultado= $this->modelo->Actualizar_Familia($datos_familia);
-        
-        if($resultado){
-           $id=$this->Ultimo_Ingresado("familia","id_familia");
-           foreach ($id as  $i) {
-            foreach ($datos_familia['integrantes'] as $inte) {
-             $this->modelo->Registrar_persona_familia([
-                "cedula_persona"         =>  $inte,
-                "id_familia"            =>   $i['MAX(id_familia)']
-            ]);
-         }
-     }
- }
-echo $resultado;
-
+    $datos_familia=$_POST['datos'];
+    $resultado= $this->modelo->Actualizar_Familia($datos_familia);
+    echo $data['responsable_familia'];
+  }
 }
-
-
-}
-
 ?> 

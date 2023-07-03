@@ -90,33 +90,20 @@
                                 })
 
                                 $(document).on('click', '#enviar', function() {
-                                    var vivienda=document.getElementById("vivienda_familia");
                                     var nombre_familia=document.getElementById("nombre_familia");
-                                    var telefono_familia=document.getElementById('telefono_familia');
-                                    var ingreso_aprox = document.getElementById("ingreso_aprox");
-                                    var observaciones=document.getElementById("observaciones_familia");
-                                    var condicion_ocupacion_select=document.getElementById("select-cond-ocupacion");
-var condicion_ocupacion_input=document.getElementById("input_condicion_ocupacion");
+                                    var descripcion_familia=document.getElementById('descripcion_familia');
+                                    var responsable=document.getElementById("responsable_familia");
                                     var datos_familia=new Object();
-                                    datos_familia['id_vivienda']=parseInt(vivienda.value);
                                     datos_familia['nombre_familia']=nombre_familia.value;
-                                    datos_familia['telefono_familia']=telefono_familia.value;
-                                    datos_familia['ingreso_mensual_aprox']=ingreso_aprox.value;
-                                    condicion_ocupacion_select.style.display!='none'?datos_familia['condicion_ocupacion']=condicion_ocupacion_select.value:datos_familia['condicion_ocupacion']=condicion_ocupacion_input.value
-                                    observaciones.value==''?datos_familia['observacion']="Sin observaciones":datos_familia['observacion']=observaciones.value;
-
-                                    datos_familia['integrantes']=integrantes;
-                                    datos_familia['estado']=1;   
-                                    datos_familia['id_familia']=$('#id_familia').val()
-
-
+                                    datos_familia['descripcion_familia']=descripcion_familia.value;
+                                    datos_familia['responsable_familia']=responsable.value;
+alert(nombre_familia.value);
                                     $.ajax({
                                      type:"POST",
                                      url:BASE_URL+"Familias/actualizar_familia",
                                      data:{"datos":datos_familia}
                                  }).done(function(result){
                                    console.log(result);
-
                                    swal({
                                     title:"Éxito",
                                     text:"Familia Actualizada satisfactoriamente",
@@ -124,76 +111,83 @@ var condicion_ocupacion_input=document.getElementById("input_condicion_ocupacion
                                     showConfirmButton:false,
                                     type:"success"
                                 });
-
-                                   // setTimeout(function(){location.href=BASE_URL+"Familias/Consultas";},1000);
-
-
+                                   setTimeout(function(){location.href=BASE_URL+"Familias/Consultas";},2000);
                                });
                              });
 
                                 $(document).on('click', '#btn_agregar', function() {
-
-                                    if(integrantes_input.value==""){
+                                    
+                                    if(integrantes_input.value=="" || document.getElementById('parentezco').value ==""){
                                         integrantes_input.focus();
-                                        valid_integrantes.innerHTML='Debe ingresar la cédula o el nombre de una persona';
+                                        valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Debe ingresar la cédula y el parentezco.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                        setTimeout(function () {
+                                            $("#cerraralert1").click();
+                                        }, 6000);
                                     }
                                     else{
                                         valid_integrantes.innerHTML="";
-
                                         if(valid_integrantes_agregados()){
-                                           valid_integrantes.innerHTML="";
-                                           $.ajax({
+                                            valid_integrantes.innerHTML="";
+                                            $.ajax({
                                             type: 'POST',
-                                            url: BASE_URL + 'Personas/Consultas_cedula',
-                                            data:{'cedula':integrantes_input.value}
-                                        })
-                                           .done(function (datos) {
-
-
-                                            if(datos!=0){
-
-                                                var result=JSON.parse(datos);
-                                                integrantes.push(result[0]['cedula_persona']);
-                                                integrantes_input.value='';
-                                                var div=document.createElement("div");
-                                                div.style.width='100%';
-                                                var tabla=document.createElement("table");
-                                                tabla.style.width='100%';
-                                                var tr=document.createElement("tr");
-                                                var td1=document.createElement("td");
-                                                var td2=document.createElement("td");
-                                                td1.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-"+result[0]['primer_nombre']+" "+result[0]['primer_apellido'];
-                                                var btn=document.createElement("input");
-                                                btn.type="button";
-                                                btn.className="btn btn-danger";
-                                                btn.value="X";
-                                                td2.style.textAlign="right";
-                                                td2.appendChild(btn);
-                                                tr.appendChild(td1);
-                                                tr.appendChild(td2);
-                                                tabla.appendChild(tr);
-                                                div.appendChild(tabla);
-                                                var hr=document.createElement("hr");
-                                                div.appendChild(tabla);
-                                                div.appendChild(hr);
-                                                div_integrantes.appendChild(div);
-                                                btn.onclick=function(){
-                                                 div_integrantes.removeChild(div);
-                                                 integrantes.splice(integrantes.indexOf(result[0]['cedula_persona']),1);
-                                                 console.log(integrantes);
-                                             }
-                                             console.log(integrantes);
-                                         }
-                                         else{
-                                            valid_integrantes.innerHTML="Esta persona no está registrada";
+                                            url: BASE_URL + 'Familias/agregar_integrante_fun',
+                                            data:{'cedula_integrante':integrantes_input.value,'cedula_responsable':document.getElementById('responsable_familia').value
+                                                ,'nombre_familia':document.getElementById('nombre_familia').value,'descripcion_familia':document.getElementById('descripcion_familia').value
+                                                ,'parentezco':document.getElementById('parentezco').value}
+                                            })
+                                            .done(function (datos) {
+                                                var integrantes = JSON.parse(datos);
+                                                if(integrantes==0){
+                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Esta persona no está registrada.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                    setTimeout(function () {
+                                                        $("#cerraralert1").click();
+                                                    }, 6000);
+                                                }else if(integrantes==1){
+                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El integrante ya se encuetra registrado en la familia.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                    setTimeout(function () {
+                                                        $("#cerraralert1").click();
+                                                    }, 6000);
+                                                }else if(integrantes==2){
+                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Un padre ya se encuetra registrado en la familia.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                    setTimeout(function () {
+                                                        $("#cerraralert1").click();
+                                                    }, 6000);
+                                                }else if(integrantes==3){
+                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Una madre ya se encuetra registrado en la familia.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                    setTimeout(function () {
+                                                        $("#cerraralert1").click();
+                                                    }, 6000);
+                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Un conyugue ya se encuetra registrado en la familia.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                    setTimeout(function () {
+                                                        $("#cerraralert1").click();
+                                                    }, 6000);
+                                                }else{
+                                                    integrantes_agregados.innerHTML="";
+                                                    for (var i = 0; i < integrantes.length; i++) {
+                                                    var texto = "";
+                                                    integrantes.innerHTML = "";
+                                                    console.log(integrantes);
+                                                    texto +=
+                                                        "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
+                                                    for (var i = 0; i < integrantes.length; i++) {
+                                                        texto +=
+                                                        "<tr><td>" +
+                                                        integrantes[i]["cedula_integrante"] +
+                                                        "</td><td>" +
+                                                        integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
+                                                        "</td><td>" +
+                                                        integrantes[i]["parentezco"] +
+                                                        "</td>";
+                                                        texto +=
+                                                        "<td><span onclick='borrar(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                                    }
+                                                    integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+                                                    }
+                                                }
+                                            });
                                         }
-
-                                    });
-
-                                       }
-                                   }
+                                    }
                                });
-
                             });
                         </script>
                     </tbody>
@@ -228,35 +222,41 @@ var condicion_ocupacion_input=document.getElementById("input_condicion_ocupacion
 <script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/consultar-familias.js"></script>
 
 <script type="text/javascript">
-    function editar(id_familia,id_familia_persona){
-document.getElementById("id_familia").value =id_familia;
+    function editar(id_familia_persona,id_familia,responsable_cedula){
+        $("#actualizar").modal({ backdrop: "static", keyboard: false });
      $.ajax({
          type:"POST",
          url:BASE_URL+"Familias/consultar_familia_datos",
-         data:{'id_familia':id_familia}
+         data:{'id_familia_persona':id_familia_persona,'id_familia':id_familia,'cedula_responsable':responsable_cedula}
      }).done(function(datos){
-         var data = JSON.parse(datos);
-         var familia = document.getElementById('integrantes_agregados');
-
-         if (data.length == 0) {
+        var data = JSON.parse(datos);
+        var familia = document.getElementById('integrantes_agregados');
+        if (data.length == 0) {
             familia.innerHTML = "No aplica";
-        } else {
-            familia.innerHTML = "";
+        }else {
+            integrantes_agregados.innerHTML="";
             for (var i = 0; i < data.length; i++) {
-                document.getElementById("vivienda_familia").value =data[i]['id_vivienda'];
-                document.getElementById("select-cond-ocupacion").value =data[i]['condicion_ocupacion'];
-                document.getElementById("nombre_familia").value =data[i]['familia'];
-                document.getElementById("telefono_familia").value =data[i]['telefono'];
-                document.getElementById("observaciones_familia").value =data[i]['observacion'];
-                document.getElementById("ingreso_aprox").value =data[i]['ingreso_mensual'];
-
-                var inte = JSON.parse(data[i]['integrantes']);
-
-                for (var j = 0; j < inte.length; j++) {
-                    var tabl=
-                    familia.innerHTML += " <table style='width:95%'><tr><hr><td>-" + inte[j]["primer_nombre"]+" " +inte[j]["primer_nombre"]+ "</td><td style='text-align:right'><span onclick='borrar_familia("+data[i]['id_familia']+","+inte[j]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar Familia' style='font-size:22px'></span></td></tr></table><br><hr>";
-                }
-                console.log(data)
+                document.getElementById("nombre_familia").value =data[i]['nombre_familia'];
+                document.getElementById("descripcion_familia").value =data[i]['descripcion_familia'];
+                document.getElementById("responsable_familia").value =data[i]['cedula_persona'];
+            var texto = "";
+            data.innerHTML = "";
+            console.log(data);
+            texto +=
+                "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
+            for (var i = 0; i < data.length; i++) {
+                texto +=
+                "<tr><td>" +
+                data[i]["cedula_integrante"] +
+                "</td><td>" +
+                data[i]["primer_nombre"]+" "+data[i]["primer_apellido"] +
+                "</td><td>" +
+                data[i]["parentezco"] +
+                "</td>";
+                texto +=
+                "<td><span onclick='borrar(" + data[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+data[i]['id_familia_persona']+","+data[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+            }
+            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
             }
         }
 
@@ -278,9 +278,36 @@ document.getElementById("id_familia").value =id_familia;
           url:BASE_URL+"Familias/eliminar_integrantes",
           data:{"id_familia_persona":id,"cedula_persona":cedula_param}
       }).done(function(result){
-          result=JSON.parse(result);
-          actualizar_integrantes(result,cedula_param);
-          editar(id);
+        var integrantes = JSON.parse(result);
+        if(integrantes!=0){
+            integrantes_agregados.innerHTML="";
+            for (var i = 0; i < integrantes.length; i++) {
+            var texto = "";
+            integrantes.innerHTML = "";
+            console.log(integrantes);
+            texto +=
+                "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
+            for (var i = 0; i < integrantes.length; i++) {
+                texto +=
+                "<tr><td>" +
+                integrantes[i]["cedula_integrante"] +
+                "</td><td>" +
+                integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
+                "</td><td>" +
+                integrantes[i]["parentezco"] +
+                "</td>";
+                texto +=
+                "<td><span onclick='borrar(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+            }
+            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+            }
+        }
+        else{
+        valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">De tener por lo menos un integrante registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+        setTimeout(function () {
+            $("#cerraralert1").click();
+        }, 6000);
+        }
           
       })
   }
