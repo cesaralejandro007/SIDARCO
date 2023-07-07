@@ -19,7 +19,7 @@
 
     <!-- Main content -->
     <section class="content">
-
+    <input type="hidden" id="modulo" class="form-control" placeholder="modulo" value="egresos">
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
@@ -125,7 +125,7 @@
 
                   cargar_tabla_personas();
 
- 
+
 
  function cargar_tabla_personas(){
     $(function() {

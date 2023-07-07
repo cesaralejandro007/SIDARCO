@@ -235,7 +235,7 @@
             <select id='titulos' style='width:100%;'>
               <option value='0'>-Seleccione titulo-</option>
               <?php foreach ($this->titulos as $p) { ?>
-                <option value='<?php echo $p['id_proyecto'] ?>'><?php echo $p['nombre_proyecto']; ?></option>
+                <option value='<?php echo $p['id_titulo'] ?>'><?php echo $p['nombre_titulo']; ?></option>
               <?php } ?>
             <textarea type="text" id='descripcion_titulos' class='' placeholder="Descripcion"  style='width:100%;'></textarea>
           </td>

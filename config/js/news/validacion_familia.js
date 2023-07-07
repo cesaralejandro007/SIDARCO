@@ -150,6 +150,7 @@ integrantes_input.onkeyup=function(){
 
 
 btn_agregar.onclick=function(){
+	
 	if(integrantes_input.value==""){
 		integrantes_input.focus();
 		valid_integrantes.innerHTML='Debe ingresar la cédula o el nombre de una persona';
@@ -166,22 +167,27 @@ btn_agregar.onclick=function(){
         if(valid_parentezco_agregados() && valid_integrantes_agregados() ){
         valid_parentezco.innerHTML="";
 		$.ajax({
-			type: 'POST',
+			type: 'POST', 
 			url: BASE_URL + 'Familias/Consultas_cedula',
-			data:{'cedula_integrante':integrantes_input.value, 'parentezco':parentezco.value}
+			data:{'cedula_integrante':integrantes_input.value, 'parentezco': parentezco.value}
 		})
 		.done(function (datos){
 
              alert(datos); 
+
 			if(datos!=0){
 
-				var parentezco_array="";
-				parentezco_array = parentezco.value;
+				/* var texto="";
+				texto=integrantes_input.options[integrantes_input.selectedIndex].text; */
+
+				/* var parentezco_array="";
+				parentezco_array = parentezco.value; */
 
 				var result=JSON.parse(datos);
                 integrantes.push(result[0]['id_familia']);
 				integrantess.push(result[0]['cedula_integrante']);
-				parentezco_array3.push(result[0]['parentezco']);
+				alert(integrantess);
+				parentezco_array3.push(parentezco.value);
 				alert(parentezco_array3); 
 			/* 	parentezco_array2.push(parentezco_array); 
 				alert(parentezco_array2); */
@@ -194,7 +200,7 @@ btn_agregar.onclick=function(){
 				var td1=document.createElement("td");
 				var td2=document.createElement("td");
 				var td3=document.createElement("td");
-				td1.innerHTML=result[0]['primer_nombre']+" "+result[0]['primer_apellido'];
+				td1.innerHTML= result[0]['primer_nombre']+" "+result[0]['primer_apellido']; 
 				td2.innerHTML=document.getElementById("parentezco").value;
 				var btn=document.createElement("input");
 				btn.type="button";
@@ -224,15 +230,17 @@ btn_agregar.onclick=function(){
 			
 			
 			}
-			parentezco.value="0";
+			/* parentezco.value="0"; */
 
 		});
 
 }
 }
-	}
+}
 
 }
+
+
 //----------------------------Validar elemento-----------------------
 
  function valid_element(mensaje_error, element, span_element){
@@ -328,16 +336,13 @@ function valid_parentezco_agregados(){
 var validar=true;
 for(var i=0; i<parentezco_array3.length;i++){
 if(parentezco_array3[i]==parentezco.value){
-	/* alert(parentezco_array3); */
    validar=false;
 }
-
 }
+
 if(!validar){
 
 	valid_parentezco.innerHTML="Ya fue ingresado este parentezco";
-
-	
 }
 return validar;
 }

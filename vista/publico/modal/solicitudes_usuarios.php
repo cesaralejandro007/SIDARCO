@@ -15,6 +15,9 @@
                   <option value='Trabajo'>Constancia de Trabajo</option>
                   <option value='Buena conducta'>Constancia de Egreso</option>
                   <option value='No poseer vivienda'>Constancia de no poseer vivienda</option>
+                  <option value='Egreso'>Constancia de Egreso</option>
+                 <!--  <option value='Buena conducta'>Constancia de Egreso</option> -->
+                 <!--  <option value='No poseer vivienda'></option> -->
               </select>
               <div id="valid_doc" style="color:red"></div>
               <br>
@@ -121,7 +124,7 @@
                     timer:2000,
                 });
 
-                 $("#solicitar_constancia").modal('hide'); 
+                $('#solicitar_constancia').modal('hide');
 
                 doc.value='0';
                 mot.value='';

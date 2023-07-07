@@ -85,7 +85,7 @@
                                             </div>
                                             <div class="col-md-11 mt-2">
                                                 <label for="cedula">
-                                                    Cedula
+                                                    Cédula
                                                 </label> 
                                                 <div class="input-group">
                                                     <input class="form-control solo-numeros " id="cedula_integrante_modal"
@@ -122,7 +122,7 @@
 
                                             </div>
 
-                                            <div class="col-md-3 mt-2">
+                                            <div class="col-md-3 mt-4">
                                                 <label for="primer_apellido">
                                                     Primer Apellido
                                                 </label>
@@ -136,7 +136,7 @@
 
                                             </div>
 
-                                            <div class="col-md-3 mt-2">
+                                            <div class="col-md-3 mt-4">
                                                 <label for="segundo_apellido">
                                                     Segundo Apellido
                                                 </label>
@@ -150,7 +150,7 @@
 
                                             </div>
 
-                                            <div class="col-md-4 mt-2">
+                                            <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label for="fecha_nacimiento">
                                                         Fecha De Nacimiento
@@ -162,7 +162,7 @@
                                                 <span id="valid_6" style="color: red;"></span>
 
                                             </div>
-                                            <div class="col-md-4 mt-2">
+                                            <div class="col-md-4 mt-4">
                                                 <label for="genero">
                                                     Género
                                                     </label>
@@ -182,7 +182,7 @@
                                                 </div>
                                                 <span id="valid_7" style="color:red;"></span>
                                             </div>
-                                            <div class="col-md-4 mt-2">
+                                            <div class="col-md-4 mt-4">
                                                 <label for="tipo_persona">
                                                     Nivel educativo  
                                                 </label>

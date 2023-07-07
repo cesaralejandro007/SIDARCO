@@ -20,7 +20,7 @@
 
     <!-- Main content -->
     <section class="content">
-
+    <input type="hidden" id="modulo" class="form-control" placeholder="modulo" value="ingreso">
         <!-- Default box -->
         <div class="card">
             <div class="card-header">

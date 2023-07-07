@@ -208,8 +208,8 @@ class Personas_Class extends Modelo
             );
 
             $query->execute([
-                'cedula_persona'            =>$cedula_persona, 
-                'tipo_transporte'            =>$transporte, 
+                'cedula_persona'              =>$cedula_persona, 
+                'tipo_transporte'             =>$transporte, 
                 'descripcion_transporte'      =>$observacion
             ]);
             return true;
@@ -225,18 +225,21 @@ class Personas_Class extends Modelo
         try {
             $datos = $this->conexion->prepare('INSERT INTO transporte (
                 cedula_propietario,
+                tipo_transporte,
                 descripcion_transporte,
                 estado            
                 ) VALUES (
                     :cedula_propietario,
+                    :tipo_transporte,
                     :descripcion_transporte,
                     :estado
                 )');
 
             $datos->execute([
-                'cedula_propietario'      => $data['cedula_propietario'],
+                'cedula_propietario'       => $data['cedula_propietario'],
+                'tipo_transporte'          => $data['tipo_transporte'],
                 'descripcion_transporte'   => $data['descripcion_transporte'], 
-                'estado'   => 1,
+                'estado'                   => 1,
             ]);
 
             return true;
@@ -447,19 +450,19 @@ class Personas_Class extends Modelo
         try {
             $datos = $this->conexion->prepare('INSERT INTO persona_proyecto(
                 cedula_persona,
-                id_proyecto,
+                id_titulo,
                 estado,
                 descripcion           
                 ) VALUES (
                     :cedula_persona,
-                    :id_proyecto,
+                    :id_titulo,
                     :estado,
                     :descripcion
                 )');
 
             $datos->execute([
                 'cedula_persona'      => $data['cedula_persona'],
-                'id_proyecto'   => $data['id_titulos'], 
+                'id_titulo'   => $data['id_titulo'], 
                 'estado'   => 1,
                 'descripcion'   => $data['descripcion']
             ]);
@@ -676,19 +679,19 @@ class Personas_Class extends Modelo
         try {
             $datos = $this->conexion->prepare('INSERT INTO persona_proyecto (
                 cedula_persona,
-                id_proyecto,
+                id_titulo,
                 estado,     
                 descripcion
                 ) VALUES (
                 :cedula_persona,
-                :id_proyecto,
+                :id_titulo,
                 :estado,
                 :descripcion
                 )');
 
             $datos->execute([
                 'cedula_persona'    =>  $cedula,
-                'id_proyecto'      =>  $titulo,
+                'id_titulo'      =>  $titulo,
                 'estado'      =>  1,
                 'descripcion'      =>  $descripcion
             ]);
