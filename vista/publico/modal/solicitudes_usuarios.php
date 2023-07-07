@@ -12,8 +12,8 @@
                 <b>Documento a solicitar</b>
                 <select class="form-control" id="documento-solicitado">
                   <option value='0'>Seleccione el documento</option>
-                  <option value='Residencia'>Constancia de Residencia</option>
-                  <option value='Buena conducta'>Constancia de buena conducta</option>
+                  <option value='Trabajo'>Constancia de Trabajo</option>
+                  <option value='Buena conducta'>Constancia de Egreso</option>
                   <option value='No poseer vivienda'>Constancia de no poseer vivienda</option>
               </select>
               <div id="valid_doc" style="color:red"></div>
@@ -25,9 +25,9 @@
               <center><button id="enviar-solicitud" class="btn btn-info">Enviar solicitud</button></center>
           </div> 
       </div>
-      <div class="modal-footer ">
+      <!-- <div class="modal-footer ">
         <button type="button" class="btn btn-info" data-dismiss="modal" id='cerrar'>Cerrar</button>
-    </div>
+    </div> -->
 </div>
 <!-- /.modal-content -->
 </div>
@@ -43,14 +43,14 @@
     var boton_enviar=document.getElementById("enviar-solicitud");
     var cerrar=document.getElementById("cerrar");
 
-    cerrar.onclick=function(){
+ /*    cerrar.onclick=function(){
         doc.style.borderColor='';
         valid_doc.innerHTML="";
         mot.style.borderColor='';
         valid_mot.innerHTML="";
         mot.value='';
         doc.value='0';
-    }
+    } */
 
     doc.onchange=function(){
         if(doc.value!='0'){
@@ -120,6 +120,8 @@
                     showConfirmButton:false,
                     timer:2000,
                 });
+
+                 $("#solicitar_constancia").modal('hide'); 
 
                 doc.value='0';
                 mot.value='';

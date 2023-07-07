@@ -28,7 +28,7 @@
         <div style="width:100%;text-align: right;font-size:24px"><em class="fa fa-clock-o" ></em> <span id="fecha_solicitud">Fecha</span></div>
         <center>
           <br>
-    <span style="font-size:80px" class="fa fa-user-o"></span> <h4 id="persona">Pruieba</h4>
+    <span style="font-size:80px" class="fa fa-user-o"></span> <h4 id="persona">Prueba</h4>
     </center>
     <br>
  <span style="font-size:60px" class="fa fa-file-text-o"></span></td><td ><h5 id="tipo_constancia">constancia</h5>
