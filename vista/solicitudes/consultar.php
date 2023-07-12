@@ -62,7 +62,7 @@
     <!-- Main content -->
     <section class="content">
   <center>
-   <div style="width:95%;background: white;height: 100vh;border-radius: 30px;">
+   <div style="width:95%;background: white;height: 77vh;border-radius: 30px;">
 <div style="width:90%;text-align: justify; ">
 
     <br>
@@ -78,7 +78,7 @@
   <br>
 <span style="font-size:60px" class="fa fa-question-circle-o"></span></td><td ><h5 id="motivo">Motivo de solicitud</h5>
   <br><br>
-  <center><button type="button" class="btn btn-primary" id="aprobar">Aprobar</button> <button type="button" class="btn btn-danger" id="rechazar">Rechazar</button></center>
+  <center><button type="button" class="btn btn" style="background:#15406D;color:white" id="aprobar">Aprobar</button> <button type="button" class="btn btn-danger" style="background:#9D2323; color:white" id="rechazar">Rechazar</button></center>
   <br><br>
 
 </div>

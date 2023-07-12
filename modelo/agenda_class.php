@@ -46,7 +46,7 @@ class Agenda_Class extends Modelo
 
     private function SQL_04()
     {
-        return "SELECT nombre_calle FROM calles WHERE estado=1 ORDER BY id_calle ASC";
+        return "SELECT nombre_lugar FROM lugar_evento WHERE estado=1 ORDER BY id_lugar_evento ASC";
     }
 
     private function SQL_05()

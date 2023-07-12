@@ -146,7 +146,7 @@
 
                                             </div>
 
-                                            <div class="col-md-3 mt-2">
+                                            <div class="col-md-3 mt-4">
                                                 <label for="primer_apellido">
                                                     Primer apellido
                                                 </label>
@@ -159,7 +159,7 @@
 
                                             </div>
 
-                                            <div class="col-md-3 mt-2">
+                                            <div class="col-md-3 mt-4">
                                                 <label for="segundo_apellido">
                                                     Segundo apellido
                                                 </label>
@@ -347,7 +347,7 @@
     <table style="width:100%">
         <tr><td>
             <select  class="custom-select" id="transporte"
-            name="transporte">
+            name="datos[transporte]">
             <option selected="" value="vacio">
                 -Seleccione-
             </option>
@@ -360,7 +360,7 @@
 
      </select></td><td style='display:none' id='tipo_transporte_view'>
 
-       <input type="text" id='tipo_transporte' name="tipo_transporte" placeholder="Indique el tipo de transporte" class="form-control letras_numeros" list='transportes_regitrados' oninput="Limitar(this,15)"> 
+       <input type="text" id='tipo_transporte' name="datos[tipo_transporte]" placeholder="Indique el tipo de transporte" class="form-control letras_numeros" list='transportes_regitrados' oninput="Limitar(this,15)"> 
 
        <datalist id='transportes_regitrados'>
            <?php foreach ($this->transportes as $tr) { ?>
@@ -1095,7 +1095,7 @@
                                         <td style='display:none;' id='ver_descripcion'>
                                             <!-- <div class="input-group"> -->
                                             <span style='display:none;color:red' id='valid'>Campo sin llenar</span>
-                                            <input type="text" name="datos[descripcion]" id="descripcion" style= "width: 100%;" placeholder="fecha de egreso">
+                                            <input type="text" name="datos[descripcion]" id="descripcion_egresados" style= "width: 100%;" placeholder="fecha de egreso">
                                         </td>
                                                 <!-- <td>
                                                 <input type="button" class='btn btn-info' id='nueva_cond' value='Nueva' name="">
@@ -1167,7 +1167,7 @@
             <table style='width:100%'><tr>
                 <div  id='proyectos_agregados'>
                     <td class="col-md-5 p-0">
-                        <select class="form-control" id="proyectos" name="datos[proyectos]" style= "width: 100%">
+                        <select class="form-control" id="proyectos" name="datos[id_titulo]" style= "width: 100%">
                             <option value='0' >-Seleccione-</option>
                             <?php foreach ($this->proyectos as $pro) { ?>
                             <option value="<?php echo $pro['id_titulo']; ?>"><?php echo $pro['nombre_titulo']; ?></option>
@@ -1175,7 +1175,7 @@
                         </select>
                     </td>
                     <td class="col-md-5 p-0">
-                        <input  name="datos[descripcion]"  id="descripcion" class='form-control' style=" width: 100%" placeholder="Descripción del título" >
+                        <input  type="text" name="datos[descripcion]"  id="descripcion" class='form-control' style=" width: 100%" placeholder="Descripción del título" >
                     </td>
                     <td class="p-0">
                         <input type="button" id="agregar_proyecto"   value="Agregar" class="btn btn-info">

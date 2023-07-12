@@ -188,7 +188,7 @@ function ver_datos(
     for (var i = 0; i < titulos.length; i++) {
       texto +=
         "<tr><td style=''>" +
-        titulos[i]["titulo"] +
+        titulos[i]["id_titulo"] +
         "</td><td style=''>" +
         titulos[i]["descripcion"] +
         "</td></tr>";

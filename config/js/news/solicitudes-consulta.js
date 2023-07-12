@@ -67,10 +67,11 @@ $.ajax({
 
 rechazar.onclick = function () {
   var textoSwal =
-    "Está por rechazar la solicitud de un documento ¿desea continuar?<br><br>";
+    "Está por rechazar la solicitud de un documento, ¿desea continuar?<br><br>";
   textoSwal +=
     "<textArea class='form-control' placeholder='Motivo de rechazo' id='text-area'></textArea><br>";
   textoSwal += "<div style='color:red' id='valid-text-area'></div>";
+  textoSwal+="<input type='file' name='' id='' >";
 
   swal(
     {
@@ -511,7 +512,7 @@ function getAntiguedad(anios) {
 }
 
 (function () {
-  emailjs.init("user_HmtuJhVZ1daCClSuC185g");
+  emailjs.init("FkfUl3sk-5Rnom4kE");
 })();
 const vue = new Vue({
   el: "#app",
@@ -526,13 +527,13 @@ const vue = new Vue({
   methods: {
     enviar() {
       let data = {
-        from_name: "C.C Prados de Occidente",
+        from_name: "SIDARCO RCO-SENIAT",
         from_email: solicitante["correo"],
         message: solicitante["mensaje"],
         subject: solicitante["sujeto"],
       };
 
-      emailjs.send("service_rbn54tj", "template_vqh9lqb", data).then(
+      emailjs.send("service_lk24nsd", "template_reio6cg", data).then(
         function (response) {
           if (response.text === "OK") {
             location.href = BASE_URL + "Solicitudes/";
