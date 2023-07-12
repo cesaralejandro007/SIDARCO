@@ -3,9 +3,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Editar Datos de Familia</h4>
-                <button type="button" class="close" id="cerrarmodalfamilia" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div> 
             <div class="modal-body">
                 <form action="" enctype="multipart/form-data"

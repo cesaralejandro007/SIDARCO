@@ -31,7 +31,3 @@ function eliminar(id){
 		}
 	})
 }
-
-document.getElementById("cerrarmodalfamilia").onclick = function(){
-	location.reload();
-}

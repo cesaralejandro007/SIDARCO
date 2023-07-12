@@ -1,6 +1,8 @@
 <?php include (call."Inicio.php"); ?>
 <?php include (call."data-table.php"); ?>
+<style> 
 
+</style>
 <!-- Contenido de la pagina -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -90,29 +92,47 @@
                                 })
 
                                 $(document).on('click', '#enviar', function() {
-                                    var nombre_familia=document.getElementById("nombre_familia");
-                                    var descripcion_familia=document.getElementById('descripcion_familia');
-                                    var responsable=document.getElementById("responsable_familia");
-                                    var datos_familia=new Object();
-                                    datos_familia['nombre_familia']=nombre_familia.value;
-                                    datos_familia['descripcion_familia']=descripcion_familia.value;
-                                    datos_familia['responsable_familia']=responsable.value;
-alert(nombre_familia.value);
-                                    $.ajax({
-                                     type:"POST",
-                                     url:BASE_URL+"Familias/actualizar_familia",
-                                     data:{"datos":datos_familia}
-                                 }).done(function(result){
-                                   console.log(result);
-                                   swal({
-                                    title:"Éxito",
-                                    text:"Familia Actualizada satisfactoriamente",
-                                    timer:2000,
-                                    showConfirmButton:false,
-                                    type:"success"
-                                });
-                                   setTimeout(function(){location.href=BASE_URL+"Familias/Consultas";},2000);
-                               });
+
+                                    swal({
+                                            title: "Atención",
+                                            text:
+                                            "Estás por actualizar el nucleo familiar de la familia " +
+                                            document.getElementById("nombre_familia").value +
+                                            ", ¿Desea continuar?",
+                                            type: "warning",
+                                            showCancelButton: true,
+                                            cancelButtonColor: '#d33',
+                                            confirmButtonColor: '#15406D',
+                                            cancelButtonText: "No",
+                                            confirmButtonText: "Si",
+                                            closeOnConfirm: false,
+                                        },
+                                        function (isConfirm) {
+                                            if (isConfirm) {
+                                                var nombre_familia=document.getElementById("nombre_familia");
+                                                        var descripcion_familia=document.getElementById('descripcion_familia');
+                                                        var responsable=document.getElementById("responsable_familia");
+                                                        var datos_familia=new Object();
+                                                        datos_familia['nombre_familia']=nombre_familia.value;
+                                                        datos_familia['descripcion_familia']=descripcion_familia.value;
+                                                        datos_familia['responsable_familia']=responsable.value;
+                                                        $.ajax({
+                                                        type:"POST",
+                                                        url:BASE_URL+"Familias/actualizar_familia",
+                                                        data:{"datos":datos_familia}
+                                                    }).done(function(result){
+                                                    console.log(result);
+                                                    swal({
+                                                        title:"Éxito",
+                                                        text:"Familia Actualizada satisfactoriamente",
+                                                        timer:2000,
+                                                        showConfirmButton:false,
+                                                        type:"success"
+                                                    });
+                                                    setTimeout(function(){location.href=BASE_URL+"Familias/Consultas";},2000);
+                                                });
+                                            }
+                                        });
                              });
 
                                 $(document).on('click', '#btn_agregar', function() {
@@ -179,7 +199,7 @@ alert(nombre_familia.value);
                                                         integrantes[i]["parentezco"] +
                                                         "</td>";
                                                         texto +=
-                                                        "<td><span onclick='borrar(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                                        "<td><span onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
                                                     }
                                                     integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
                                                     }
@@ -254,7 +274,7 @@ alert(nombre_familia.value);
                 data[i]["parentezco"] +
                 "</td>";
                 texto +=
-                "<td><span onclick='borrar(" + data[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+data[i]['id_familia_persona']+","+data[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                "<td><span onclick='editar_integrante(" + data[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+data[i]['id_familia_persona']+","+data[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
             }
             integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
             }
@@ -262,7 +282,104 @@ alert(nombre_familia.value);
 
     });
  }
-
+ function editar_integrante(id) {
+         $.ajax({
+         type:"POST",
+         url:BASE_URL+"Familias/consultar_familia_integrante",
+         data:{'id_familia_integrante':id}
+     }).done(function(datos){
+        var data = JSON.parse(datos);
+        
+    Swal.fire({
+        title: 'Información personal del integrante de la familia:',
+        html:
+        '<span id="validarcontrasena0"></span>'+
+        '<div class="row d-flex justify-content-center  m-0">'+
+            '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Cedula</span>'+
+                '<input type="text" id="cedula_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Cedula" value="'+ data[0].cedula_integrante +'""></div>'+
+            '</div>'+
+        '<div class="row d-flex justify-content-center  m-0">'+
+            '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Primer Nombre</span>'+
+                '<input type="text" id="nombre_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Nombre" value="'+ data[0].primer_nombre +'"">'+
+            '</div>'+
+            '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Primer Apellido</span>'+
+                '<input type="text" id="apellido_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].primer_apellido +'"">'+
+            '</div>'+
+        '</div>'+
+        '<div class="row d-flex justify-content-center  m-0">'+
+            '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Parentezco</span>'+
+                '<select class="form-control" id="parentezco_integrante"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="0">--Seleccione--</option><option value="Padre">Padre</option><option value="Madre">Madre</option><option value="Hijo">Hijo</option><option value="Hija">Hija</option><option value="Conyuge">Conyuge</option></select>'+
+            '</div>'+
+        '</div>',
+        confirmButtonColor: '#15406D',
+        confirmButtonText: "Actualizar",
+        width: '800px',
+        padding: '1em',
+        customClass: {
+            modal: 'no-scroll',
+        },
+        focusConfirm: true,
+        preConfirm: () => {
+            $.ajax({
+            type: "POST",
+            url: BASE_URL + "Familias/modificar_integrante",
+            data: { "id": id, 
+                    "cedula_persona" : data[0].cedula_persona,
+                    "id_familia" : data[0].id_familia,
+                    "cedula_integrante": document.getElementById('cedula_integrante').value,
+                    "nombre_integrante": document.getElementById("nombre_integrante").value, 
+                    "apellido_integrante": document.getElementById("apellido_integrante").value,
+                    "parentezco_integrante": document.getElementById("parentezco_integrante").value
+                  }
+            }).done(function (result) {
+                swal({
+                      title: "Éxtito",
+                      text: "La persona ha sido modificad@ satisfactoriamente",
+                      type: "success",
+                      timer: 2000,
+                      showConfirmButton: false,
+                    });
+                var integrantes = JSON.parse(result);
+                if(integrantes!=0){
+                    integrantes_agregados.innerHTML="";
+                    for (var i = 0; i < integrantes.length; i++) {
+                    var texto = "";
+                    integrantes.innerHTML = "";
+                    console.log(integrantes);
+                    texto +=
+                        "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
+                    for (var i = 0; i < integrantes.length; i++) {
+                        texto +=
+                        "<tr><td>" +
+                        integrantes[i]["cedula_integrante"] +
+                        "</td><td>" +
+                        integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
+                        "</td><td>" +
+                        integrantes[i]["parentezco"] +
+                        "</td>";
+                        texto +=
+                        "<td><span  onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                    }
+                    integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+                    }
+                }
+                else{
+                valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">De tener por lo menos un integrante registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                setTimeout(function () {
+                    $("#cerraralert1").click();
+                }, 6000);
+                }
+            });
+            }
+        })
+        document.getElementById("parentezco_integrante").value = data[0].parentezco;
+    });
+ }
+ 
  function borrar_familia(id,cedula_param){
     swal({
       type:"warning",
@@ -297,7 +414,7 @@ alert(nombre_familia.value);
                 integrantes[i]["parentezco"] +
                 "</td>";
                 texto +=
-                "<td><span onclick='borrar(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                "<td><span  onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
             }
             integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
             }
