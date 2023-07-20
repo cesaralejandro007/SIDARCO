@@ -499,8 +499,8 @@ public function consultar_informacion_persona_egresos(){
 
    $info_completa[]=[
     "nombre_egresado"    =>    $p['nombre_egresado'],
-    "descripcion_egresado"    =>    $p['descripcion'],
-    "fecha_egreso"    =>    $p['fecha_engreso'],
+    "descripcion_egresado"    =>    $p['descripcion_egresado'],
+    "fecha_egreso"    =>    $p['fecha_egreso'],
     "cedula"    =>    $p['cedula_persona'],
     "primer_nombre"  =>$p['primer_nombre'],
     "segundo_nombre"          =>$p['segundo_nombre'],
