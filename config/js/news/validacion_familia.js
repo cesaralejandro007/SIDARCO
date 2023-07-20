@@ -168,7 +168,7 @@ btn_agregar.onclick=function(){
         valid_parentezco.innerHTML="";
 		$.ajax({
 			type: 'POST', 
-			url: BASE_URL + 'Familias/Consultas_cedula',
+			url: BASE_URL + 'Familias/Consultas_cedula_integrante',
 			data:{'cedula_integrante':integrantes_input.value, 'parentezco': parentezco.value}
 		})
 		.done(function (datos){
@@ -183,8 +183,8 @@ btn_agregar.onclick=function(){
 				/* var parentezco_array="";
 				parentezco_array = parentezco.value; */
 
-				var result=JSON.parse(datos);
-                integrantes.push(result[0]['id_familia']);
+				 var result=JSON.parse(datos); 
+                /* integrantes.push(result[0]['id_familia']); */
 				integrantess.push(result[0]['cedula_integrante']);
 				alert(integrantess);
 				parentezco_array3.push(parentezco.value);
@@ -230,7 +230,7 @@ btn_agregar.onclick=function(){
 			
 			
 			}
-			/* parentezco.value="0"; */
+			 parentezco.value="0";
 
 		});
 

@@ -206,7 +206,8 @@ public function Consultas_cedula_integrante()
   $persona=$this->Consultar_Columna("familia","cedula_integrante",$_POST['cedula_integrante']);
 
   if(count($persona==0)){
-    echo 0;
+    $this->Escribir_JSON($persona);
+   /*  echo 0; */
   }
   else{
     if($persona[0]['estado'] == 0){
