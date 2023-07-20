@@ -18,6 +18,7 @@ function ver_datos(
   var misiones_info = JSON.parse(misiones);
   var divisiones = JSON.parse(divisiones);
   var titulos = JSON.parse(titulos);
+
 /*   var comunidad_i_info = JSON.parse(comunidad_i);
   var org_politica_info = JSON.parse(org_politica); */
 
@@ -39,9 +40,9 @@ function ver_datos(
   persona_info["fecha_nacimiento"] +
   "</td><td style='width:20%'><em class='fa fa-globe'></em> " +
   persona_info["nacionalidad"] +
-    "</td><td style='width:20%'><em class='fa fa-address-card'></em> " +
-    persona_info["estado_civil"] +
-    "</td></tr></table>";
+  "</td><td style='width:20%'><em class='fa fa-address-card'></em> " +
+  persona_info["estado_civil"] +
+  "</td></tr></table>";
 
   var tabla2 =
     "<br><table style='width:100%' border='1'><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Datos de Contacto</div><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td style='width:20%'>Correo</td><td style='width:20%'>Correo Institucional</td><td style='width:20%'>Teléfono</td><td style='width:20%'>Teléfono de Casa</td><td style='width:20%'>WhatsApp</td></tr>";    
@@ -188,7 +189,7 @@ function ver_datos(
     for (var i = 0; i < titulos.length; i++) {
       texto +=
         "<tr><td style=''>" +
-        titulos[i]["id_titulo"] +
+        titulos[i]["titulo"] +
         "</td><td style=''>" +
         titulos[i]["descripcion"] +
         "</td></tr>";
@@ -212,8 +213,6 @@ function ver_datos(
     "<br>" +
     tabla10;
   
-
-
   tabla +=  "<div><div class='border border-bottom-0 border-dark rounded-top p-1' style='background:#15406D;color:white;font-weight:bold'>Ubicación del funcionario</div>"+
   "<table class='table table-hover border' style='width:100%'>";
 
@@ -240,7 +239,6 @@ function ver_datos(
     tabla += "</table></div></div>";
     
   }
-
 
   swal({
     title:
@@ -297,6 +295,7 @@ Swal.fire({
     }
   }
 })
+
 function egresar(v1,v2,v3){
   swal(
     {
@@ -341,15 +340,12 @@ function egresar(v1,v2,v3){
 }
 }
 
-
 function ingresar_datos(cedula,persona,ocupacion,condicion_lab,transporte,bonos,misiones,divisiones,titulos,org_politica) {
   editar_datos(persona,ocupacion,condicion_lab,transporte,bonos,misiones,divisiones,titulos,org_politica);
   vingresos.value = "";
   $("#edit_persona").modal({ backdrop: "static", keyboard: false });
   $('#modalpersona').remove();
 }
-
-
 
 var modal_title = document.getElementById("modal-title");
 var vn1 = document.getElementById("n1");
