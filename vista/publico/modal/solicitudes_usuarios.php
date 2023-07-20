@@ -13,9 +13,9 @@
                 <select class="form-control" id="documento-solicitado">
                   <option value='0'>Seleccione el documento</option>
                   <option value='Trabajo'>Constancia de Trabajo</option>
-                  <option value='Buena conducta'>Constancia de Egreso</option>
-                  <option value='No poseer vivienda'>Constancia de no poseer vivienda</option>
                   <option value='Egreso'>Constancia de Egreso</option>
+                  <!-- <option value='No poseer vivienda'>Constancia de Egreso</option> -->
+                  
                  <!--  <option value='Buena conducta'>Constancia de Egreso</option> -->
                  <!--  <option value='No poseer vivienda'></option> -->
               </select>
