@@ -169,6 +169,63 @@
         }
     }
 
+    public function get_familias_integrante($id)
+    {
+
+        $tabla            = "SELECT * FROM familia_personas,familia WHERE familia_personas.id_familia = familia.id_familia AND familia_personas.id_familia_persona = $id";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Actualizar_Familia_integrante($id,$parentezco)
+    {
+
+        try {
+            $query = $this->conexion->prepare("UPDATE familia_personas  SET
+                parentezco           =:parentezco
+                WHERE id_familia_persona =:id_familia_persona"
+            );
+            $query->execute([
+                'parentezco'            =>$parentezco, 
+                'id_familia_persona'            =>$id
+            ]);
+
+            return 1;
+
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Actualizar_tabla_familia($id_familia,$cedula,$nombre,$apellido)
+    {
+
+        try {
+            $query = $this->conexion->prepare("UPDATE familia  SET
+                cedula_integrante           ='$cedula',
+                primer_nombre          ='$nombre',
+                primer_apellido         ='$apellido'
+                WHERE id_familia ='$id_familia'"
+             );
+
+            $query->execute();
+
+            return 1;
+
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
     public function existe($cedula_integrante)
     {
         $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia AND familia.cedula_integrante = $cedula_integrante";

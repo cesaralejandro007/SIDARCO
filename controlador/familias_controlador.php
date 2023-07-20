@@ -234,14 +234,24 @@ public function Consultar_integrante_personas()
 
 }
 
+public function modificar_integrante(){
+  $editado=$this->modelo->Actualizar_Familia_integrante($_POST["id"],$_POST["parentezco_integrante"]);
+  $editado2=$this->modelo->Actualizar_tabla_familia( $_POST["id_familia"],$_POST["cedula_integrante"],$_POST["nombre_integrante"],$_POST["apellido_integrante"]);
+  $retornar = $this->modelo->get_integrantes($_POST['cedula_persona']);
+  if($editado==1 && $editado2 ==1){
+    echo json_encode($retornar);
+  }  
+}
+
 
 public function Consultas_cedula_funcionario()
 {
  $persona=$this->Consultar_Columna("familia_personas","cedula_persona",$_POST['cedula_persona']);
  if(count($persona)==0){
+
    echo 0;
- }
- else{
+
+ }else{
   echo 1;
  
  }
@@ -256,6 +266,12 @@ public function consultar_familia_datos(){
         }
      }
      $this->Escribir_JSON($integrantes);
+}
+
+public function consultar_familia_integrante(){
+  $integrante_familias=$this->modelo->get_familias_integrante($_POST['id_familia_integrante']);
+
+  $this->Escribir_JSON($integrante_familias);
 }
 
 public function eliminar_de_familias(){
