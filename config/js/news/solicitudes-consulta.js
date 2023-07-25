@@ -150,11 +150,10 @@ aprobar.onclick = function () {
     fecha_actual.getFullYear();
   var contenido = get_formato(solicitante);
 
-  /* contenido =
+   contenido =
     "<div style='width:100%;height:300px !important; overflow-y:scroll;background:#E0F6F5'><center><div style='width:90%'><br>" +
     contenido +
-    "</div></center></div>"; */
-
+    "</div></center></div>"; 
   swal(
     {
       title: "¿Ya revisó toda la información del documento?",
@@ -166,6 +165,7 @@ aprobar.onclick = function () {
       confirmButtonText: "Si, aprobar",
       closeOnConfirm: true,
     },
+
     function (isConfirm) {
       if (isConfirm) {
         $.ajax({
@@ -177,7 +177,7 @@ aprobar.onclick = function () {
             observaciones: "Aprobada el " + fecha_actual,
           },
         });
-
+ 
         swal({
           title: "Exito",
           text: "La solicitud ha sido aprobada",
