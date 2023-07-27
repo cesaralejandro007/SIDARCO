@@ -105,13 +105,13 @@ function enviar_informacion(){
 
 if(validar_informacion()){ 
 var datos_familia=[];
-for(var i=0; i<integrantes.length; i++){
+for(var i=0; i<integrantess.length; i++){
 	var datos=new Object();
-	datos['id_familia']=integrantes[i];
+	datos['id_familia']=integrantess[i];
 	datos['cedula_persona']=cedula_persona.value;
 	datos['nombre_familia']=nombre_familia.value;
 	datos['descripcion_familia']=observaciones.value;
-	datos['parentezco']=parentezco_array2[i];
+	datos['parentezco']=parentezco_array3[i];
 	datos_familia.push(datos);
 
 	alert(datos_familia);
@@ -185,7 +185,7 @@ btn_agregar.onclick=function(){
 
 				 var result=JSON.parse(datos); 
                 /* integrantes.push(result[0]['id_familia']); */
-				integrantess.push(result[0]['cedula_integrante']);
+				integrantess.push(result[0]['id_familia']);
 				alert(integrantess);
 				parentezco_array3.push(parentezco.value);
 				alert(parentezco_array3); 
@@ -381,24 +381,24 @@ ingreso_aprox.onkeyup=function(){
 		var validar=false;
 		if(persona_existe(cedula_persona.value)){ 
 			if(cedula_persona.value==""){
-				valid_cedula.innerHTML="Debe ingresar el nombre de la familia";
+				valid_cedula.innerHTML="Debe ingresar la cédula del reponsable";
 				cedula_persona.focus();
 			}
 			else{
         
 	 	if(nombre_familia.value=="" ){
-			valid_nombre_familia.innerHTML="Debe ingresar la cedula";
+			valid_nombre_familia.innerHTML="Debe ingresar el nombre de la familia";
 			nombre_familia.focus();
-		}else { 
+		} else { 
  
-        if(integrantes.length<2){
-        valid_integrantes.innerHTML="Ingrese al menos 2 integrantes de la familia";
+         if(integrantess.length<1){
+        valid_integrantess.innerHTML="Ingrese al menos 1 integrante ";
         integrantes_input.focus();
         }
         else{
         valid_integrantes.innerHTML="";
         validar=true;
-            }
+            }  
 		}
 		 } 
 		}

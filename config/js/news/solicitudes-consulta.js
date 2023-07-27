@@ -6,7 +6,19 @@ var tipo = document.getElementById("tipo_constancia");
 var motivo = document.getElementById("motivo");
 var aprobar = document.getElementById("aprobar");
 var rechazar = document.getElementById("rechazar");
+/* var archivo =document.getElementById("file-3"); */
 var solicitante = "";
+
+
+
+/* const inputElement = document.getElementById("file-3");
+inputElement.addEventListener("change", (event) => {
+  const selectedFile = event.target.files[0];
+  const filePath = URL.createObjectURL(selectedFile);
+  alert(filePath);
+}); */
+
+
 
 $.ajax({
   type: "POST",
@@ -150,22 +162,22 @@ aprobar.onclick = function () {
     fecha_actual.getFullYear();
   var contenido = get_formato(solicitante);
 
-  /* contenido =
+  /*  contenido =
     "<div style='width:100%;height:300px !important; overflow-y:scroll;background:#E0F6F5'><center><div style='width:90%'><br>" +
     contenido +
-    "</div></center></div>"; */
-
+    "</div></center></div>";  */
   swal(
     {
       title: "¿Ya revisó toda la información del documento?",
-      text: contenido,
+     /*  text: contenido, */
       html: true,
-      customClass: "bigSwalV2",
+      customClass: "smallSwalV2",
       showCancelButton: true,
       cancelButtonText: "Regresar",
       confirmButtonText: "Si, aprobar",
       closeOnConfirm: true,
     },
+
     function (isConfirm) {
       if (isConfirm) {
         $.ajax({
@@ -177,7 +189,7 @@ aprobar.onclick = function () {
             observaciones: "Aprobada el " + fecha_actual,
           },
         });
-
+ 
         swal({
           title: "Exito",
           text: "La solicitud ha sido aprobada",
@@ -533,6 +545,10 @@ const vue = new Vue({
         from_email: solicitante["correo"],
         message: solicitante["mensaje"],
         subject: solicitante["sujeto"],
+        attachments: [{
+          filename: [""],
+          path: '',
+        }]
       };
 
       emailjs.send("service_lk24nsd", "template_reio6cg", data).then(
