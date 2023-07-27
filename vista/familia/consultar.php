@@ -158,26 +158,27 @@
                                             .done(function (datos) {
                                                 var integrantes = JSON.parse(datos);
                                                 if(integrantes==0){
-                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Esta persona no está registrada.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Persona no está registrada.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
                                                     setTimeout(function () {
                                                         $("#cerraralert1").click();
                                                     }, 6000);
                                                 }else if(integrantes==1){
-                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El integrante ya se encuetra registrado en la familia.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Cedula ya registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
                                                     setTimeout(function () {
                                                         $("#cerraralert1").click();
                                                     }, 6000);
                                                 }else if(integrantes==2){
-                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Un padre ya se encuetra registrado en la familia.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Padre ya registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
                                                     setTimeout(function () {
                                                         $("#cerraralert1").click();
                                                     }, 6000);
                                                 }else if(integrantes==3){
-                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Una madre ya se encuetra registrado en la familia.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Madre ya registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
                                                     setTimeout(function () {
                                                         $("#cerraralert1").click();
                                                     }, 6000);
-                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Un conyugue ya se encuetra registrado en la familia.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                }else if(integrantes==4){
+                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Conyuge ya encuetra.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
                                                     setTimeout(function () {
                                                         $("#cerraralert1").click();
                                                     }, 6000);
@@ -293,7 +294,7 @@
     Swal.fire({
         title: 'Información personal del integrante de la familia:',
         html:
-        '<span id="validarcontrasena0"></span>'+
+        '<span id="validar_editar_integrant"></span>'+
         '<div class="row d-flex justify-content-center  m-0">'+
             '<div class="input-group mb-3 col-12">'+
                 '<span class="input-group-text" id="inputGroup-sizing-default">Cedula</span>'+
@@ -336,44 +337,69 @@
                     "parentezco_integrante": document.getElementById("parentezco_integrante").value
                   }
             }).done(function (result) {
-                swal({
-                      title: "Éxtito",
-                      text: "La persona ha sido modificad@ satisfactoriamente",
-                      type: "success",
-                      timer: 2000,
-                      showConfirmButton: false,
+                if(result==1){
+                    document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Cedula ya registrada.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                    setTimeout(function () {
+                        $("#cerraralert2").click();
+                    }, 6000);
+                }else if(result==2){
+                    document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Padre ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                    setTimeout(function () {
+                        $("#cerraralert2").click();
+                    }, 6000);
+                    return false;
+                }else if(result==3){
+                    document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Madre ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                    setTimeout(function () {
+                        $("#cerraralert2").click();
+                    }, 6000);
+                }else if(result==4){
+                    document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Conyuge ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                    setTimeout(function () {
+                        $("#cerraralert2").click();
+                    }, 6000);
+                }else{
+                    swal({
+                        title: "Éxtito",
+                        text: "La persona ha sido modificada satisfactoriamente",
+                        type: "success",
+                        timer: 2000,
+                        showConfirmButton: false,
                     });
-                var integrantes = JSON.parse(result);
-                if(integrantes!=0){
-                    integrantes_agregados.innerHTML="";
-                    for (var i = 0; i < integrantes.length; i++) {
-                    var texto = "";
-                    integrantes.innerHTML = "";
-                    console.log(integrantes);
-                    texto +=
-                        "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
-                    for (var i = 0; i < integrantes.length; i++) {
-                        texto +=
-                        "<tr><td>" +
-                        integrantes[i]["cedula_integrante"] +
-                        "</td><td>" +
-                        integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
-                        "</td><td>" +
-                        integrantes[i]["parentezco"] +
-                        "</td>";
-                        texto +=
-                        "<td><span  onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
-                    }
+                    var integrantes = JSON.parse(result);
+                    if(integrantes!=0){
+                        integrantes_agregados.innerHTML="";
+                        for (var i = 0; i < integrantes.length; i++) {
+                            var texto = "";
+                            integrantes.innerHTML = "";
+                            console.log(integrantes);
+                            texto +=
+                            "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
+                            for (var i = 0; i < integrantes.length; i++) {
+                                texto +=
+                                "<tr><td>" +
+                                integrantes[i]["cedula_integrante"] +
+                                "</td><td>" +
+                                integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
+                                "</td><td>" +
+                                integrantes[i]["parentezco"] +
+                                "</td>";
+                                texto +=
+                                "<td><span  onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                            }
                     integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
-                    }
                 }
+                Swal.close('mi-sweet-alert');
+            }
                 else{
-                valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">De tener por lo menos un integrante registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
-                setTimeout(function () {
-                    $("#cerraralert1").click();
-                }, 6000);
+                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">De tener por lo menos un integrante registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                    setTimeout(function () {
+                        $("#cerraralert1").click();
+                    }, 6000);
+                }
                 }
             });
+            return false;
             }
         })
         document.getElementById("parentezco_integrante").value = data[0].parentezco;

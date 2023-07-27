@@ -15,7 +15,6 @@ function eliminar(id){
 				url:BASE_URL+"Familias/eliminar_de_familias",
 				data:{'id':id}
 			}).done(function(result){
-				alert(result);
                      setTimeout(function(){
                     	swal({
                     		type:"success",
