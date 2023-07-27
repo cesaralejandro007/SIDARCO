@@ -9,7 +9,6 @@
                 <div class="col-sm-12">
                     <h1 class="m-0" id="title-solicitud">Consejo Comunal Prados de Occidente</h1>
                 </div><!-- /.col -->
-
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
