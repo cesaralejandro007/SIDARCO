@@ -169,6 +169,24 @@
         }
     }
 
+    public function get_integrante($cedula_integrante)
+    {
+
+        $tabla            = "";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+    
+
     public function get_familias_integrante($id)
     {
 
@@ -245,6 +263,25 @@
             return $this->Capturar_Error($e);
         }
     }
+    public function existe1($cedula_integrante,$id)
+    {
+        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia AND familia.cedula_integrante = $cedula_integrante AND familia.id_familia != $id";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $respuesta = $datos->rowCount();
+            if($respuesta > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
     
     public function existeintegrante($cedula_integrante)
     {
@@ -281,6 +318,21 @@
             return $this->Capturar_Error($e);
         }
     }
+    public function existepadre_edit($cedula_responsable, $id)
+    {
+        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Padre' AND familia.id_familia != $id";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
 
     public function existemadre($cedula_responsable)
     {
@@ -298,9 +350,41 @@
         }
     }
 
+    public function existemadre_edit($cedula_responsable,$id)
+    {
+        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Madre' AND familia.id_familia != $id";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
     public function existeconyugue($cedula_responsable)
     {
-        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Conyugue'";
+        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Conyuge'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function existeconyugue_edit($cedula_responsable,$id)
+    {
+        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Conyuge' AND familia.id_familia != $id";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
