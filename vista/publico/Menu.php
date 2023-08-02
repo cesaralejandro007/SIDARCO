@@ -258,18 +258,42 @@
         </li>
     <?php } ?>
                 -->
-
-
-
-
-
-
-
-                    <?php if ($_SESSION['Enfermos']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0') { ?>
-                        <li class="nav-header">Salud</li>
+                <?php if ($_SESSION['Nucleo familiar']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0') { ?>
+                       <li class="nav-header">Salud</li>
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fa fa-ambulance"></i>
+                                <p>
+                                    Gestionar Historial Clínico
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <?php if ($_SESSION['Nucleo familiar']['registrar'] == '1') { ?>
+                                    <li class="nav-item" onclick="cambio_modulo('Registrar historial')">
+                                        <a href="<?php echo constant('URL'); ?>Historial/Registros/" class="nav-link">
+                                            <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
+                                            <p>Registrar Historial</p>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($_SESSION['Nucleo familiar']['consultar'] == '1') { ?>
+                                    <li class="nav-item" onclick="cambio_modulo('Consultar historial')">
+                                        <a href="<?php echo constant('URL'); ?>Historial/Consultas/" class="nav-link">
+                                            <i class="fa fa-list nav-icon text-info"></i>
+                                            <p>Consultar Historial</p>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    <?php } ?>
+
+
+                    <?php if ($_SESSION['Enfermos']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0') { ?>
+                       <!--   <li class="nav-header">Salud</li> -->
+                        <li class="nav-item"> 
+                             <a href="javascript:void(0)" class="nav-link">
+                                <i class="nav-icon fa fa-ambulance"></i> 
                                 <p>
                                     Gestionar Patologías 
                                 </p>
