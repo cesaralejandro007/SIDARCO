@@ -26,19 +26,35 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+            <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header" style="background:#AEB6BF;">
+                            <h3 class="card-title font-weight-bold">CRITERIOS DE BUSQUEDA</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" style="color:black"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex justify-content-center">
+                           <button class="btn btn-outline-primary"  id="reporte_merienda">Reporte de la caja de merienda</button>
+                        </div>
+                    </div>
+
+            </div>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Familia</th>
-                            <th>Descripción</th>
-                            <th>Responsable de Familia</th>
-                            <th>Integrantes</th>
                             <?php if($_SESSION['Nucleo familiar']['modificar']){ ?>
                                 <th style="width: 20px;">Editar</th>
                             <?php } ?>
                             <?php if($_SESSION['Nucleo familiar']['eliminar']){ ?>
                                 <th style="width: 20px;">Eliminar</th>
                             <?php } ?>
+                            <th>Familia</th>
+                            <th>Descripción</th>
+                            <th>Responsable de Familia</th>
+                            <th>Ubicación</th>
+                            <th>Cargo</th>
+                            <th>Integrantes</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,9 +67,24 @@
                                 }).done(function(datos) {
                                     var data = JSON.parse(datos);
 
-                                    $("#example1").DataTable({
+                                    var table = $("#example1").DataTable({
+                                        dom: "<'row'<'col-sm-6'l><'col-sm-6'f>>" +
+                                            "<'row'<'col-sm-12'tr>>" +
+                                            "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+                                        orderCellsTop: true,  
                                         "data": data,
-                                        "columns": [{
+                                        "columns": [
+                                        <?php if($_SESSION['Nucleo familiar']['modificar']){ ?>
+                                            {
+                                                "data": "editar"
+                                            },
+                                        <?php } ?>
+                                        <?php if($_SESSION['Nucleo familiar']['eliminar']){ ?>  
+                                            {
+                                                "data": "eliminar"
+                                            },
+                                        <?php } ?>
+                                        {
                                             "data": "familia"
                                         },
                                         {
@@ -63,30 +94,28 @@
                                             "data": "responsable"
                                         },
                                         {
-                                            "data":"integrantes"
+                                            "data": "ubicacion"
                                         },
-                                        <?php if($_SESSION['Nucleo familiar']['modificar']){ ?>
-                                            {
-                                                "data": "editar"
-                                            },
-                                        <?php } ?>
-                                        <?php if($_SESSION['Nucleo familiar']['eliminar']){ ?>  
-                                            {
-                                                "data": "eliminar"
-                                            }
-                                        <?php } ?>
+                                        {
+                                            "data": "cargo"
+                                        },
+                                        {
+                                            "data":"integrantes"
+                                        }
                                         ],
-                                        "responsive": true,
-                                        "autoWidth": false,
-                                        "ordering": true,
-                                        "info": true,
-                                        "processing": true,
-                                        "pageLength": 10,
-                                        "lengthMenu": [5, 10, 20, 30, 40, 50, 100]
-                                    }).buttons().container().appendTo(
-                                    '#example1_wrapper .col-md-6:eq(0)');
+                                        responsive: true,
+                                        autoWidth: false,
+                                        ordering: true,
+                                        info: true,
+                                        processing: true,
+                                        pageLength: 10,
+                                        lengthMenu: [5, 10, 20, 30, 40, 50, 100], 
+                                    });
+                                    table.buttons().container()
+                                    .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
 
-                                    
+                                    table.buttons().container()
+                                    .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
                                 }).fail(function() {
                                     alert("error")
                                 })
@@ -214,16 +243,18 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Familia</th>
-                            <th>Descripció<noscript></noscript></th>
-                            <th>Responsable de Familia</th>
-                            <th>Integrantes</th>
                             <?php if($_SESSION['Nucleo familiar']['modificar']){ ?>
                                 <th>Editar</th>
                             <?php } ?>
                             <?php if($_SESSION['Nucleo familiar']['eliminar']){ ?>
                                 <th>Eliminar</th>
                             <?php } ?>
+                            <th>Familia</th>
+                            <th>Descripció<noscript></noscript></th>
+                            <th>Responsable de Familia</th>
+                            <th>Ubicación</th>
+                            <th>Cargo</th>
+                            <th>Integrantes</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -240,6 +271,8 @@
 <!-- /.content-wrapper -->
 <?php include (call."Fin.php"); ?>
 <?php include (call."style-agenda.php"); ?>
+
+<script type="text/javascript" src="<?php echo constant('URL')?>config/plugins/datatables/media/js/sum.js"></script>
 <script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/consultar-familias.js"></script>
 
 <script type="text/javascript">
@@ -289,7 +322,7 @@
          url:BASE_URL+"Familias/consultar_familia_integrante",
          data:{'id_familia_integrante':id}
      }).done(function(datos){
-        var data = JSON.parse(datos);
+         var data = JSON.parse(datos);
         
     Swal.fire({
         title: 'Información personal del integrante de la familia:',
@@ -307,13 +340,47 @@
             '</div>'+
             '<div class="input-group mb-3 col-6">'+
                 '<span class="input-group-text" id="inputGroup-sizing-default">Primer Apellido</span>'+
-                '<input type="text" id="apellido_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].primer_apellido +'"">'+
+                '<input type="text" id="segundo_nombre_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].primer_apellido +'"">'+
             '</div>'+
         '</div>'+
         '<div class="row d-flex justify-content-center  m-0">'+
-            '<div class="input-group mb-3 col-12">'+
+        '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Primer Apellido</span>'+
+                '<input type="text" id="apellido_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].primer_apellido +'"">'+
+            '</div>'+
+            '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Primer Apellido</span>'+
+                '<input type="text" id="segundo_apellido_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].primer_apellido +'"">'+
+            '</div>'+
+        '</div>'+
+        '<div class="row d-flex justify-content-center  m-0">'+
+            '<div class="input-group mb-3 col-6">'+
                 '<span class="input-group-text" id="inputGroup-sizing-default">Parentezco</span>'+
-                '<select class="form-control" id="parentezco_integrante"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="0">--Seleccione--</option><option value="Padre">Padre</option><option value="Madre">Madre</option><option value="Hijo">Hijo</option><option value="Hija">Hija</option><option value="Conyuge">Conyuge</option></select>'+
+                '<select class="form-control" id="parentezco_integrante"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="'+ data[0].parentezco +'"><option value="0">--Seleccione--</option><option value="Padre">Padre</option><option value="Madre">Madre</option><option value="Hijo">Hijo</option><option value="Hija">Hija</option><option value="Conyuge">Conyuge</option></select>'+
+            '</div>'+
+            '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Genero</span>'+
+                '<select class="form-control" id="ID_genero" value="'+ data[0].genero +'" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="0">--Seleccione--</option><option value="Masculino">Masculino</option><option value="F">Femenino</option></select>'+
+            '</div>'+
+        '</div>'+
+        '<div class="row d-flex justify-content-center  m-0">'+
+            '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">fecha de nacimiento</span>'+
+                '<input type="date" id="fecha_nacimiento" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default value="'+ data[0].fecha_nacimiento +'"">'+
+            '</div>'+
+            '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Nivel educativo</span>'+
+                '<input type="text" id="nivel_educativo" value="'+ data[0].nivel_educativo +'" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
+            '</div>'+
+        '</div>'+
+        '<div class="row d-flex justify-content-center  m-0">'+
+            '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Correo</span>'+
+                '<input type="text" id="Correo" value="'+ data[0].correo +'" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
+            '</div>'+
+            '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Telefono</span>'+
+                '<input type="text" id="Telefono" value="'+ data[0].telefono +'" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
             '</div>'+
         '</div>',
         confirmButtonColor: '#15406D',
