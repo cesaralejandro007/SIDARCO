@@ -161,7 +161,6 @@ echo $resultado;
 public function consultar_info_familia(){
      $familias=$this->modelo->get_familias();
      $retornar=[];
-
      foreach ($familias as $f) {
         
         $integrantes=$this->modelo->get_integrantes($f['cedula_persona']);
@@ -175,13 +174,60 @@ public function consultar_info_familia(){
                 "familia"           => $f['nombre_familia'],
                 "descripcion"          => $f['descripcion_familia'],
                 "responsable"         => $f['cedula_persona']." ".$f['primer_nombre_p']." ".$f['primer_apellido_p'],
+                "ubicacion"  =>  $f['nombre_ubi'],
+                "cargo"  =>  $f['nombre_cargo'],
                 "integrantes"          => $integrantes_familia,
                 "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia_persona'].",".$f['id_familia'].",".$f['cedula_persona'].")'><em class='fa fa-edit'></em></button>",
                 "eliminar"          =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$f['cedula_persona']."`)' type='button'><em class='fa fa-trash'></em></button>"
           ];
      }
-
      $this->Escribir_JSON($retornar);
+}
+
+
+public function consultar_info_familia_caja(){
+  $familias=$this->modelo->get_familias();
+  $retornar=[];
+  foreach ($familias as $f) {
+    $array_comprobar = [];
+     $integrantes=$this->modelo->get_integrantes($f['cedula_persona']);
+     $integrantes_familia  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Edad</td></tr></thead><tbody>";
+     foreach ($this->modelo->get_integrantes($f['cedula_persona']) as $en) {
+            if($en['edad'] < 13  && ($en['parentezco']== "Hijo" || $en['parentezco']== "Hija")){
+              $integrantes_familia .="<tr><td>". $en['cedula_integrante'] ."</td><td>" . $en['primer_nombre']." " .$en['primer_apellido'] ."</td><td>" . $en['parentezco']. "</td><td>" . $en['edad']. "</td></tr>";
+              array_push($array_comprobar,1);
+            }else if($en['edad'] >= 13  && ($en['parentezco']== "Hijo" || $en['parentezco']== "Hija")){
+              $integrantes_familia .="<tr style='background:#FBBAB8'><td>". $en['cedula_integrante'] ."</td><td>" . $en['primer_nombre']." " .$en['primer_apellido'] ."</td><td>" . $en['parentezco']. "</td><td>" . $en['edad']. "</td></tr>";
+              array_push($array_comprobar,0);
+            }
+     }
+     $contador= 0;
+     for ($i = 0; $i < count($array_comprobar); $i++) {
+     if($array_comprobar[$i]==1){
+       $contador++;
+     }
+    }
+     $integrantes_familia .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Edad</td></tr></tfoot></table>";
+     $integrantes_familia = "<div style='overflow-y:scroll;width:100%;height:100px;'>" . $integrantes_familia . "</div>";
+    if (in_array(1, $array_comprobar)) {
+      $retornar[]=[
+             "familia"           => $f['nombre_familia'],
+             "descripcion"          => $f['descripcion_familia'],
+             "responsable"         => $f['cedula_persona']." ".$f['primer_nombre_p']." ".$f['primer_apellido_p'],
+             "ubicacion"  =>  $f['nombre_ubi'],
+             "cargo"  =>  $f['nombre_cargo'],
+             "hijos_menores" => $contador,
+             "integrantes"          => $integrantes_familia,
+             "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia_persona'].",".$f['id_familia'].",".$f['cedula_persona'].")'><em class='fa fa-edit'></em></button>",
+             "eliminar"          =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$f['cedula_persona']."`)' type='button'><em class='fa fa-trash'></em></button>"
+       ];
+    }else{
+      $integrantes_familia = [];
+    }
+  }
+  $nuevo_elemento = array('cantidad_familias' => count($retornar));
+
+  $this->Escribir_JSON($retornar);
 }
 
 

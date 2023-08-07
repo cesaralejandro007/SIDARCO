@@ -138,7 +138,7 @@
     public function get_familias()
     {
 
-        $tabla            = "SELECT F.*,fp.*, p.primer_nombre as primer_nombre_p, p.primer_apellido as primer_apellido_p FROM familia F, personas p, familia_personas fp WHERE F.estado=1 AND F.id_familia=fp.id_familia AND fp.cedula_persona = p.cedula_persona GROUP BY fp.cedula_persona";
+        $tabla            = "SELECT F.*,fp.*,cn.*,up.*, p.primer_nombre as primer_nombre_p, p.primer_apellido as primer_apellido_p FROM familia F, personas p, cargo_nominal cn ,ubicaciones up ,familia_personas fp WHERE F.estado=1 AND F.id_familia=fp.id_familia AND fp.cedula_persona = p.cedula_persona AND cn.id_cargo = p.id_cargo and up.id_ubicacion = p.id_ubicacion GROUP BY fp.cedula_persona";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -154,8 +154,7 @@
 
     public function get_integrantes($cedula_persona)
     {
-
-        $tabla            = "SELECT P.*,FP.*,f.*, f.cedula_integrante as cedula_persona_f, f.primer_nombre as primer_nombre_f, f.primer_apellido as primer_apellido_f FROM familia_personas FP, personas P, familia f WHERE P.cedula_persona='$cedula_persona' AND f.id_familia = FP.id_familia AND FP.cedula_persona = P.cedula_persona";
+        $tabla            = "SELECT P.*,FP.*,f.*, TIMESTAMPDIFF(YEAR, F.fecha_nacimiento, CURDATE()) - CASE WHEN MONTH(f.fecha_nacimiento) > MONTH(CURDATE()) OR (MONTH(f.fecha_nacimiento) = MONTH(CURDATE()) AND DAY(f.fecha_nacimiento) > DAY(CURDATE()))THEN 1 ELSE 0 END AS edad, f.cedula_integrante as cedula_persona_f, f.primer_nombre as primer_nombre_f, f.primer_apellido as primer_apellido_f , f.fecha_nacimiento as fecha_nacimiento_f , f.genero as genero_f, f.nivel_educativo as nivel_educativo_f, f.correo as correo_f, f.telefono as telefono_f FROM familia_personas FP, personas P, familia f, cargo_nominal cn ,ubicaciones up WHERE P.cedula_persona='$cedula_persona' AND f.id_familia = FP.id_familia AND FP.cedula_persona = P.cedula_persona AND cn.id_cargo = P.id_cargo and up.id_ubicacion = P.id_ubicacion ";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
