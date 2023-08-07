@@ -223,7 +223,7 @@
 </div>
 <script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/validacion_familia.js"></script>
 <?php include modal."agregar-familiares.php"; ?>
-<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/registrar-integrantes.js"></script>
+<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/registrar-historial.js"></script>
 <!-- /.content-wrapper -->
 <?php include (call."Fin.php"); ?>
 
