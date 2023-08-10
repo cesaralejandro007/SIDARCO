@@ -88,7 +88,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-5 text-center">
-                                        <img src="<?php echo constant('URL');?>" alt="user-avatar"
+                                        <img src="<?php echo constant('URL');?>config/img/users/user-3.png" alt="user-avatar"
                                             class="img-circle img-fluid" width="100">
                                     </div>
                                 </div>

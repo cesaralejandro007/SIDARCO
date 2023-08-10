@@ -210,7 +210,7 @@ class Controlador
         }
     }
 
-    public function Consultar_Tabla_sin_estado($tabla, $estado, $orden)
+    public function Consultar_Tabla_sin_estado($tabla, $orden)
     {
 
         $sql               = "SELECT * FROM  $tabla  ORDER BY $orden ASC";

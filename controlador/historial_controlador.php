@@ -24,6 +24,8 @@ class Historial extends Controlador
         $this->vista->personas=$persona;
         $integrante=$this->modelo->Integrantes_consultas();
         $this->vista->integrantes=$integrante;
+        $habit_psicol=$this->Consultar_Tabla_sin_estado("habit_psicol","nombre_psicol");
+        $this->vista->habit_psicols=$habit_psicol;
         $this->vista->Cargar_Vistas('historial/registrar');
     }
 

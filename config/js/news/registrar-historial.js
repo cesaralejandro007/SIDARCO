@@ -1,17 +1,6 @@
-var cedula_integrante=document.getElementById("cedula_integrante_modal");
-var primer_nombre=document.getElementById("primer_nombre");
-var segundo_nombre=document.getElementById("segundo_nombre");
-var primer_apellido=document.getElementById("primer_apellido");
-var segundo_apellido=document.getElementById("segundo_apellido");
-var fecha_nacimiento=document.getElementById("fecha_nacimiento");
-var genero=document.getElementById("genero");
-var nacionalidad=document.getElementById("nacionalidad");
-var nivel=document.getElementById("nivel_educativo");
-var camisa=document.getElementById("camisa");
-var pantalon=document.getElementById("pantalon");
-var calzado=document.getElementById("calzado");
-var correo=document.getElementById("correo");
-var telefono=document.getElementById("telefono_personal");
+var cedula_integrante=document.getElementById("cedula_persona");
+var tipo_sangre=document.getElementById("tipo_sangre");
+var peso=document.getElementById("peso");
 var datos_persona=[];
 var persona_existente=false;
 cedula_integrante.focus(); 
@@ -26,19 +15,12 @@ var btn_siguiente=document.getElementById("siguiente");
 var btn_anterior=document.getElementById("anterior");
 var btn_guardar=document.getElementById("guardar");
 var btn_finales=document.getElementById("botones-finales");
-var btn_integrantes=document.getElementById("btn_nuevo");
 
 
 var tab_persona=document.getElementById("tab_1");
 var div_persona=document.getElementById("panel5");
 var tab_contacto=document.getElementById("tab_2");
 var div_contacto=document.getElementById("panel7");
-//---------------------Llamada del modal-------------------------------
-btn_integrantes.onclick=function(){
-
-  $('#agregar').modal().show();
-  
-  }
 
 //-------------Boton siguiente---------------------
 
