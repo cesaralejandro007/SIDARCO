@@ -123,6 +123,7 @@ document.getElementById("editarpassword").onclick = function(){
           document.getElementById("v3"),
           "El campo debe contener de 3 a 25 caracteres"
         );
+    };
         document.getElementById("animal").onkeypress = function (e) {
           er = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC@,.#%$^&*!?:]*$/;
           validarkeypress(er, e);
@@ -148,7 +149,7 @@ document.getElementById("editarpassword").onclick = function(){
             "El campo debe contener de 3 a 25 caracteres"
           );
         };
-      };
+      
     }
     function cambiarcontraseña(contrasena,preguntas,cedula){
         $.ajax({

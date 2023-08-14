@@ -276,6 +276,16 @@
 <script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/consultar-familias.js"></script>
 
 <script type="text/javascript">
+
+    var keyup_cedula = /^[0-9]{7,8}$/;
+    var keyup_nombre = /^[A-ZÁÉÍÓÚ][a-zñáéíóú\s]{2,30}$/;
+    var keyup_apellido = /^[A-ZÁÉÍÓÚ][a-zñáéíóú\s]{2,30}$/;
+    var keyup_genero = /^[A-ZÁÉÍÓÚ][a-zñáéíóú]{7,8}$/;
+    var generica = /^[A-ZÁÉÍÓÚa-zñáéíóú]{2,15}$/;
+    var keyup_telefono = /^[0-9]{11}$/;
+    var keyup_correo =/^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC]{3,25}[@]{1}[A-Za-z0-9]{3,8}[.]{1}[A-Za-z]{2,4}$/;
+    var keyup_direccion = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.#%$^&*:\s]{2,100}$/;
+
     function editar(id_familia_persona,id_familia,responsable_cedula){
         $("#actualizar").modal({ backdrop: "static", keyboard: false });
      $.ajax({
@@ -316,164 +326,425 @@
 
     });
  }
- function editar_integrante(id) {
-         $.ajax({
-         type:"POST",
-         url:BASE_URL+"Familias/consultar_familia_integrante",
-         data:{'id_familia_integrante':id}
-     }).done(function(datos){
-         var data = JSON.parse(datos);
-        
-    Swal.fire({
-        title: 'Información personal del integrante de la familia:',
-        html:
-        '<span id="validar_editar_integrant"></span>'+
-        '<div class="row d-flex justify-content-center  m-0">'+
+    function editar_integrante(id) {
+        $.ajax({
+            type:"POST",
+            url:BASE_URL+"Familias/consultar_familia_integrante",
+            data:{'id_familia_integrante':id}
+        }).done(function(datos){
+            var data = JSON.parse(datos);
+            console.log(datos);
+        Swal.fire({
+            title: 'Información personal del integrante de la familia:',
+            html:
+            '<span id="validar_editar_integrant"></span>'+
+            '<span id="v1" style="font-size:14px"></span>'+
+            '<div class="d-flex align-items-start">'+
+
+
             '<div class="input-group mb-3 col-12">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Cedula</span>'+
-                '<input type="text" id="cedula_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Cedula" value="'+ data[0].cedula_integrante +'""></div>'+
+            '<span class="input-group-text" id="inputGroup-sizing-default">Cedula</span>'+
+            '<input type="text" id="cedula_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Cedula" value="'+ data[0].cedula_integrante +'""></div>'+
             '</div>'+
-        '<div class="row d-flex justify-content-center  m-0">'+
+
+
+            '<div class="d-flex align-items-start">'+
+
             '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Primer Nombre</span>'+
-                '<input type="text" id="nombre_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Nombre" value="'+ data[0].primer_nombre +'"">'+
+            '<span class="input-group-text" id="inputGroup-sizing-default">Primer Nombre</span>'+
+            '<input type="text" id="nombre_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Nombre" value="'+ data[0].primer_nombre +'"">'+
+            '<span id="v2" style="font-size:14px"></span>'+
+                '</div>'+
+                '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Segundo Nombre</span>'+
+                '<input type="text" id="segundo_nombre_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].segundo_nombre +'"">'+
+                '<span id="v3" style="font-size:14px"></span>'+
+                '</div>'+
             '</div>'+
+
+
+            '<div class="d-flex align-items-start">'+
+
             '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Primer Apellido</span>'+
-                '<input type="text" id="segundo_nombre_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].primer_apellido +'"">'+
+            '<span class="input-group-text" id="inputGroup-sizing-default">Primer Apellido</span>'+
+            '<input type="text" id="apellido_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].primer_apellido +'"">'+
+            '<span id="v4" style="font-size:14px"></span>'+
+                '</div>'+
+                '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Segundo Apellido</span>'+
+                '<input type="text" id="segundo_apellido_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].segundo_apellido +'"">'+
+                '<span id="v5" style="font-size:14px"></span>'+
+                '</div>'+
+
+
             '</div>'+
-        '</div>'+
-        '<div class="row d-flex justify-content-center  m-0">'+
-        '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Primer Apellido</span>'+
-                '<input type="text" id="apellido_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].primer_apellido +'"">'+
-            '</div>'+
+            '<div class="d-flex align-items-start">'+
+
             '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Primer Apellido</span>'+
-                '<input type="text" id="segundo_apellido_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].primer_apellido +'"">'+
+            '<span class="input-group-text" id="inputGroup-sizing-default">Parentezco</span>'+
+            '<select class="form-control" id="parentezco_integrante"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="Padre">Padre</option><option value="Madre">Madre</option><option value="Hijo">Hijo</option><option value="Hija">Hija</option><option value="Conyuge">Conyuge</option></select>'+
+            '<span id="v6" style="font-size:14px"></span>'+
+                '</div>'+
+                '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text">Genero</span>'+
+                '<select class="form-control" id="ID_genero" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="M">Masculino</option><option value="F">Femenino</option></select>'+
+                '<span id="v6" style="font-size:14px"></span>'+
+                '</div>'+
+
+
             '</div>'+
-        '</div>'+
-        '<div class="row d-flex justify-content-center  m-0">'+
+            '<div class="d-flex align-items-start">'+
+
             '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Parentezco</span>'+
-                '<select class="form-control" id="parentezco_integrante"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="'+ data[0].parentezco +'"><option value="0">--Seleccione--</option><option value="Padre">Padre</option><option value="Madre">Madre</option><option value="Hijo">Hijo</option><option value="Hija">Hija</option><option value="Conyuge">Conyuge</option></select>'+
-            '</div>'+
-            '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Genero</span>'+
-                '<select class="form-control" id="ID_genero" value="'+ data[0].genero +'" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="0">--Seleccione--</option><option value="Masculino">Masculino</option><option value="F">Femenino</option></select>'+
-            '</div>'+
-        '</div>'+
-        '<div class="row d-flex justify-content-center  m-0">'+
-            '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">fecha de nacimiento</span>'+
-                '<input type="date" id="fecha_nacimiento" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default value="'+ data[0].fecha_nacimiento +'"">'+
-            '</div>'+
-            '<div class="input-group mb-3 col-6">'+
+            '<span class="input-group-text" id="inputGroup-sizing-default">fecha de nacimiento</span>'+
+            '<input type="date" id="fecha_nacimiento" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default value="'+ data[0].fecha_nacimiento +'"">'+
+            '<span id="v7" style="font-size:14px"></span>'+
+                '</div>'+
+                '<div class="input-group mb-3 col-6">'+
                 '<span class="input-group-text" id="inputGroup-sizing-default">Nivel educativo</span>'+
                 '<input type="text" id="nivel_educativo" value="'+ data[0].nivel_educativo +'" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
+                '<span id="v9" style="font-size:14px"></span>'+
+                '</div>'+
+
+
             '</div>'+
-        '</div>'+
-        '<div class="row d-flex justify-content-center  m-0">'+
+            '<div class="d-flex align-items-start">'+
+
             '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Correo</span>'+
-                '<input type="text" id="Correo" value="'+ data[0].correo +'" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
-            '</div>'+
-            '<div class="input-group mb-3 col-6">'+
+            '<span class="input-group-text" id="inputGroup-sizing-default">Correo</span>'+
+            '<input type="text" id="Correo" value="'+ data[0].correo +'" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
+            '<span id="v10" style="font-size:14px"></span>'+
+                '</div>'+
+                '<div class="input-group mb-3 col-6">'+
                 '<span class="input-group-text" id="inputGroup-sizing-default">Telefono</span>'+
-                '<input type="text" id="Telefono" value="'+ data[0].telefono +'" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
-            '</div>'+
-        '</div>',
-        confirmButtonColor: '#15406D',
-        confirmButtonText: "Actualizar",
-        width: '800px',
-        padding: '1em',
-        customClass: {
-            modal: 'no-scroll',
-        },
-        focusConfirm: true,
-        preConfirm: () => {
-            $.ajax({
-            type: "POST",
-            url: BASE_URL + "Familias/modificar_integrante",
-            data: { "id": id, 
-                    "cedula_persona" : data[0].cedula_persona,
-                    "id_familia" : data[0].id_familia,
-                    "cedula_integrante": document.getElementById('cedula_integrante').value,
-                    "nombre_integrante": document.getElementById("nombre_integrante").value, 
-                    "apellido_integrante": document.getElementById("apellido_integrante").value,
-                    "parentezco_integrante": document.getElementById("parentezco_integrante").value
-                  }
-            }).done(function (result) {
-                if(result==1){
-                    document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Cedula ya registrada.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
-                    setTimeout(function () {
-                        $("#cerraralert2").click();
-                    }, 6000);
-                }else if(result==2){
-                    document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Padre ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
-                    setTimeout(function () {
-                        $("#cerraralert2").click();
-                    }, 6000);
-                    return false;
-                }else if(result==3){
-                    document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Madre ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
-                    setTimeout(function () {
-                        $("#cerraralert2").click();
-                    }, 6000);
-                }else if(result==4){
-                    document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Conyuge ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
-                    setTimeout(function () {
-                        $("#cerraralert2").click();
-                    }, 6000);
-                }else{
-                    swal({
-                        title: "Éxtito",
-                        text: "La persona ha sido modificada satisfactoriamente",
-                        type: "success",
-                        timer: 2000,
-                        showConfirmButton: false,
-                    });
-                    var integrantes = JSON.parse(result);
-                    if(integrantes!=0){
-                        integrantes_agregados.innerHTML="";
-                        for (var i = 0; i < integrantes.length; i++) {
-                            var texto = "";
-                            integrantes.innerHTML = "";
-                            console.log(integrantes);
-                            texto +=
-                            "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
-                            for (var i = 0; i < integrantes.length; i++) {
-                                texto +=
-                                "<tr><td>" +
-                                integrantes[i]["cedula_integrante"] +
-                                "</td><td>" +
-                                integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
-                                "</td><td>" +
-                                integrantes[i]["parentezco"] +
-                                "</td>";
-                                texto +=
-                                "<td><span  onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                '<input type="text" id="Telefono" value="'+ data[0].telefono +'" class="form-control" maxlength="11" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
+                '<span id="v11" style="font-size:14px"></span>'+
+                '</div>'+
+
+
+            '</div>',
+            confirmButtonColor: '#15406D',
+            confirmButtonText: "Actualizar",
+            width: '800px',
+            padding: '1em',
+            customClass: {
+                modal: 'no-scroll',
+            },
+            focusConfirm: true,
+            preConfirm: () => {
+                if(document.getElementById('cedula_integrante').value != ""
+                 && document.getElementById('nombre_integrante').value != "" 
+                 && document.getElementById('segundo_nombre_integrante').value != "" 
+                 && document.getElementById('apellido_integrante').value != "" 
+                 && document.getElementById('segundo_apellido_integrante').value != ""
+                 && document.getElementById('parentezco_integrante').value != ""
+                 && document.getElementById('ID_genero').value != ""
+                 && document.getElementById('fecha_nacimiento').value != ""
+                 && document.getElementById('nivel_educativo').value != ""
+                 && document.getElementById('Correo').value != ""
+                 && document.getElementById('Telefono').value != ""){
+                    a = valida_registrar();
+                    if (a != "") {
+                        return false;
+                    }else {
+                        $.ajax({
+                        type: "POST",
+                        url: BASE_URL + "Familias/modificar_integrante",
+                        data: { "id": id, 
+                                "cedula_persona" : data[0].cedula_persona,
+                                "id_familia" : data[0].id_familia,
+                                "cedula_integrante": document.getElementById('cedula_integrante').value,
+                                "nombre_integrante": document.getElementById("nombre_integrante").value, 
+                                "segundo_nombre_integrante": document.getElementById("segundo_nombre_integrante").value, 
+                                "apellido_integrante": document.getElementById("apellido_integrante").value,
+                                "segundo_apellido_integrante": document.getElementById("segundo_apellido_integrante").value, 
+                                "parentezco_integrante": document.getElementById("parentezco_integrante").value,
+                                "genero": document.getElementById("ID_genero").value,
+                                "fecha_nacimiento": document.getElementById("fecha_nacimiento").value,
+                                "nivel_educativo": document.getElementById("nivel_educativo").value,
+                                "Correo": document.getElementById("Correo").value,
+                                "Telefono": document.getElementById("Telefono").value
                             }
-                    integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
-                }
-                Swal.close('mi-sweet-alert');
-            }
-                else{
-                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">De tener por lo menos un integrante registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                        }).done(function (result) {
+                            if(result==1){
+                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Cedula ya registrada.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                setTimeout(function () {
+                                    $("#cerraralert2").click();
+                                }, 6000);
+                            }else if(result==2){
+                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Padre ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                setTimeout(function () {
+                                    $("#cerraralert2").click();
+                                }, 6000);
+                                return false;
+                            }else if(result==3){
+                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Madre ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                setTimeout(function () {
+                                    $("#cerraralert2").click();
+                                }, 6000);
+                            }else if(result==4){
+                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Conyuge ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                setTimeout(function () {
+                                    $("#cerraralert2").click();
+                                }, 6000);
+                            }else{
+                                swal({
+                                    title: "Éxtito",
+                                    text: "La persona ha sido modificada satisfactoriamente",
+                                    type: "success",
+                                    timer: 2000,
+                                    showConfirmButton: false,
+                                });
+                                var integrantes = JSON.parse(result);
+                                if(integrantes!=0){
+                                    integrantes_agregados.innerHTML="";
+                                    for (var i = 0; i < integrantes.length; i++) {
+                                            var texto = "";
+                                            integrantes.innerHTML = "";
+                                            console.log(integrantes);
+                                            texto +=
+                                            "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
+                                            for (var i = 0; i < integrantes.length; i++) {
+                                                texto +=
+                                                "<tr><td>" +
+                                                integrantes[i]["cedula_integrante"] +
+                                                "</td><td>" +
+                                                integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
+                                                "</td><td>" +
+                                                integrantes[i]["parentezco"] +
+                                                "</td>";
+                                                texto +=
+                                                "<td><span  onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                            }
+                                            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+                                        }
+                                        Swal.close('mi-sweet-alert');   
+                                }
+                                else{
+                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">De tener por lo menos un integrante registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                    setTimeout(function () {
+                                        $("#cerraralert1").click();
+                                    }, 6000);
+                                }
+                            }
+                        });
+                        return false;
+                    }
+                }else{
+                    document.getElementById("validar_editar_integrant").innerHTML = '<div class="alert alert-dismissible fade show pl-5" style="background:#9D2323; color:white" role="alert">Complete los campos solicitados.<i class="far fa-backspace p-0 m-0 d-none" id="cerraralert" data-dismiss="alert" aria-label="Close"></i></div>';
                     setTimeout(function () {
-                        $("#cerraralert1").click();
-                    }, 6000);
+                        $("#cerraralert").click();
+                    }, 3000);
+                    return false;
                 }
-                }
-            });
-            return false;
             }
         })
-        document.getElementById("parentezco_integrante").value = data[0].parentezco;
-    });
- }
- 
- function borrar_familia(id,cedula_param){
+            document.getElementById("parentezco_integrante").value = data[0].parentezco;
+            document.getElementById("ID_genero").value = data[0].genero;
+            document.getElementById("fecha_nacimiento").value = data[0].fecha_nacimiento;
+
+
+    document.getElementById("cedula_integrante").onkeypress = function (e) {
+        er = /^[0-9]*$/;
+        validarkeypress(er, e);
+    };
+    document.getElementById("cedula_integrante").onkeyup = function () {
+    r = validarkeyup(
+        keyup_cedula,
+        this,
+        document.getElementById("v1"),
+        "El formato debe ser 99999999"
+    );
+    };
+    document.getElementById("nombre_integrante").onkeypress = function (e) {
+         er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
+        validarkeypress(er, e);
+    };
+    document.getElementById("nombre_integrante").onkeyup = function () {
+    r = validarkeyup(
+        keyup_nombre,
+        this,
+        document.getElementById("v2"),
+        "Solo letras de 3 a 30 caracteres, siendo la primera en mayúscula."
+    );
+    };
+    document.getElementById("segundo_nombre_integrante").onkeypress = function (e) {
+         er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
+        validarkeypress(er, e);
+    };
+    document.getElementById("segundo_nombre_integrante").onkeyup = function () {
+        r = validarkeyup(
+            keyup_nombre,
+            this,
+            document.getElementById("v3"),
+            "Solo letras de 3 a 30 caracteres, siendo la primera en mayúscula."
+        );
+    };
+    document.getElementById("apellido_integrante").onkeypress = function (e) {
+         er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
+        validarkeypress(er, e);
+    };
+    document.getElementById("apellido_integrante").onkeyup = function () {
+        r = validarkeyup(
+        keyup_apellido,
+        this,
+        document.getElementById("v4"),
+        "Solo letras de 3 a 30 caracteres, siendo la primera en mayúscula."
+        );
+    };
+    document.getElementById("segundo_apellido_integrante").onkeypress = function (e) {
+         er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
+        validarkeypress(er, e);
+    };
+    document.getElementById("segundo_apellido_integrante").onkeyup = function () {
+        r = validarkeyup(
+        keyup_apellido,
+        this,
+        document.getElementById("v5"),
+        "Solo letras de 3 a 30 caracteres, siendo la primera en mayúscula."
+        );
+    };
+
+
+    document.getElementById("nivel_educativo").onkeypress = function (e) {
+         er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
+        validarkeypress(er, e);
+    };
+    document.getElementById("nivel_educativo").onkeyup = function () {
+        r = validarkeyup(
+        generica,
+        this,
+        document.getElementById("v9"),
+        "El campo debe contener de 3 a 25 caracteres"
+        );
+    };
+    document.getElementById("Correo").onkeypress = function (e) {
+        er = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC@.-]*$/;
+        validarkeypress(er, e);
+    };
+    document.getElementById("Correo").onkeyup = function () {
+        r = validarkeyup(
+        keyup_correo,
+        this,
+        document.getElementById("v10"),
+        "El formato debe ser ejemplo@gmail.com"
+        );
+    };
+    document.getElementById("Telefono").onkeypress = function (e) {
+        er = /^[0-9]*$/;
+        validarkeypress(er, e);
+    };
+    document.getElementById("Telefono").onkeyup = function () {
+        r = validarkeyup(
+        keyup_telefono,
+        this,
+        document.getElementById("v11"),
+        "Solo numeros de 11 digitos"
+        );
+    };
+
+        });
+    }
+
+
+  
+    function validarkeypress(er, e) {
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key);
+        a = er.test(tecla);
+        if (!a) {
+            e.preventDefault();
+        }
+    }
+
+
+    function valida_registrar() {
+      var error = false;
+      cedula_integrante = validarkeyup(
+        keyup_cedula,
+        document.getElementById("cedula_integrante"),
+        document.getElementById("v1"),
+        "El campo debe contener de 5 a 8 caracteres"
+      );
+      nombre_integrante = validarkeyup(
+        keyup_nombre,
+        document.getElementById("nombre_integrante"),
+        document.getElementById("v2"),
+        "El campo debe contener de 5 a 8 caracteres"
+      );
+      segundo_nombre_integrante = validarkeyup(
+        keyup_nombre,
+        document.getElementById("segundo_nombre_integrante"),
+        document.getElementById("v3"),
+        "El campo debe contener de 3 a 25 caracteres"
+      );
+      apellido_integrante = validarkeyup(
+        keyup_apellido,
+        document.getElementById("apellido_integrante"),
+        document.getElementById("v4"),
+        "El campo debe contener de 3 a 25 caracteres"
+      );
+      segundo_apellido_integrante = validarkeyup(
+        keyup_apellido,
+        document.getElementById("segundo_apellido_integrante"),
+        document.getElementById("v5"),
+        "El campo debe contener de 3 a 25 caracteres"
+      );
+
+      nivel_educativo = validarkeyup(
+        generica,
+        document.getElementById("nivel_educativo"),
+        document.getElementById("v9"),
+        "El campo debe contener de 3 a 25 caracteres"
+      );
+
+      Correo = validarkeyup(
+        keyup_correo,
+        document.getElementById("Correo"),
+        document.getElementById("v10"),
+        "El campo debe contener de 3 a 25 caracteres"
+      );
+
+      Telefono = validarkeyup(
+        keyup_telefono,
+        document.getElementById("Telefono"),
+        document.getElementById("v11"),
+        "El campo debe contener de 3 a 25 caracteres"
+      );
+
+      if (
+        cedula_integrante == 0 ||
+        nombre_integrante == 0 ||
+        segundo_nombre_integrante == 0 ||
+        apellido_integrante == 0 ||
+        segundo_apellido_integrante == 0 ||
+        nivel_educativo == 0 || 
+        Correo == 0 || 
+        Telefono == 0 
+      ) {
+        //variable==0, indica que hubo error en la validacion de la etiqueta
+        error = true;
+      }
+      return error;
+    }
+
+    
+function validarkeyup(er, etiqueta, etiquetamensaje, mensaje) {
+  a = er.test(etiqueta.value);
+  if (!a) {
+    etiquetamensaje.innerText = mensaje;
+    etiquetamensaje.style.color = "red";
+    etiqueta.classList.add("is-invalid");
+    return 0;
+  } else {
+    etiquetamensaje.innerText = "";
+    etiqueta.classList.remove("is-invalid");
+    etiqueta.classList.add("is-valid");
+    return 1;
+  }
+}
+
+function borrar_familia(id,cedula_param){
     swal({
       type:"warning",
       title:"¿Está seguro?",
