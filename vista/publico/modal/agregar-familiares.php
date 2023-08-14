@@ -88,7 +88,7 @@
                                                     Cédula
                                                 </label> 
                                                 <div class="input-group">
-                                                    <input class="form-control solo-numeros " id="cedula_integrante_modal"
+                                                <input class="form-control solo-numeros " id="cedula_integrante_modal"
                                                         name="datos[cedula_integrante]" placeholder="Cedula de identidad"
                                                         type="text-center" oninput="Limitar(this,8)"/> 
                                                 </div>

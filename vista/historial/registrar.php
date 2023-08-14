@@ -29,9 +29,82 @@
             <form action="<?php echo constant('URL'); ?>Familias/Nuevo_Familia" enctype="multipart/form-data"
                 id="formulario" method="POST" name="formulario">
                 <!-- card-body -->
+
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
+                        <div class="vtabs">
+                                <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
+                                        <a class="nav-link active" id='tab_1'>
+                                            <span class="hidden-sm-up">
+                                                <i class="ti-home"></i>
+                                            </span>
+                                            <span class="hidden-xs-down">
+                                                Información Personal
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
+                                        <a id='tab_2' >
+                                            <span class="hidden-sm-up">
+                                                <i class="ti-user"></i>
+                                            </span>
+                                            <span class="hidden-xs-down">
+                                                Antecedentes patológicos 
+                                                <!--carnets-->
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
+                                        <a id='tab_3' >
+                                            <span class="hidden-sm-up">
+                                                <i class="ti-email"></i>
+                                            </span>
+                                            <span class="hidden-xs-down">
+                                                
+                                                Información Laboral
+                                                <!--DATOS DE CONTACTO-->
+                                                
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <!--
+                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
+                                        <a id='tab_3' >
+                                            <span class="hidden-sm-up">
+                                                <i class="ti-email"></i>
+                                            </span>
+                                            <span class="hidden-xs-down">
+                                                Información política
+                                            </span>
+                                        </a>
+                                    </li>
+--><!--
+                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
+                                        <a id='tab_5'>
+                                            <span class="hidden-sm-up">
+                                                <i class="ti-email"></i>
+                                            </span>
+                                            <span class="hidden-xs-down">
+                                                Información laboral
+                                            </span>
+                                        </a>
+                                    </li>
+-->
+                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
+                                        <a id='tab_4'>
+                                            <span class="hidden-sm-up">
+                                                <i class="ti-email"></i>
+                                            </span>
+                                            <span class="hidden-xs-down">
+                                                Información de usuario
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="panel1" role="tabpanel">
@@ -59,33 +132,16 @@
                                                 </div>
 
                                                 </div>
-<!--                                              <div class="col-md-6 mt-4">
-                                                <label for="segundo_apellido">
-                                                Condición en que ocupa la vivienda
-                                                </label> <span id='valid_cond_ocupacion' style='color:red'></span>
-                                                <table style='width: 100%'><tr><td>
-                                               <select class='form-control' id='select-cond-ocupacion'>
-                                                   <option value='0'>-Seleccione-</option>
-                                                   <option value='Adjudicada'>Adjudicada</option>
-                                                   <option value='Alquilada'>Alquilada</option>
-                                                   <option value="Invadida">Invadida</option>
-                                                   <option value='Prestada'>Prestada</option>
-                                                   <option value='Propia pagada'>Propia pagada</option>
-                                                   <option value='Propia pagándose'>Propia pagándose</option>
-                                               </select>
-                                            <input style='display:none' type="text" maxlength="20" id='input_condicion_ocupacion' placeholder="Especifique..." class='form-control solo-letras' name="" oninput="Limitar(this,15)">
- 
-                                        </td><td><button class='btn btn-info' type='button' id='nueva_condicion_ocupacion'>Otra</button></td></tr></table>
-                                                </div> -->
+
 
 
                                             <div class="col-md-4 mt-2">
-                                                <label for="segundo_nombre">
+                                                <label for="tipo_sangre">
                                                     Tipo de sangre
                                                 </label><span id='valid_2' style="color:red;"></span>
                                                 <div class="input-group">
-                                                    <input class="form-control mb-10 solo-letras" id="nombre_familia"
-                                                        name="datos[nombre_familia]" placeholder="Nombre de la familia"
+                                                    <input class="form-control mb-10 solo-letras" id="tipo_sangre"
+                                                        name="datos[tipo_sangre]" placeholder="Tipo de sangre"
                                                         type="text" oninput="Limitar(this,25)" />
                                                 </div>
 
@@ -118,38 +174,38 @@
 
 
                                             <div class="col-md-4 mt-2">
-                                                <label for="segundo_apellido">
+                                                <label for="peso">
                                                     Peso
                                                 </label>
                                                 <div class="input-group">
-                                                <input class='form-control' id='observaciones_familia'  placeholder="Observación de la familia"  type="text" >
+                                                <input class='form-control' id='peso'  placeholder="Peso de la persona"  type="text" >
                                                 </div>
 
                                             </div>
                                             <div class="col-md-4 mt-2">
-                                                <label for="segundo_apellido">
+                                                <label for="altura">
                                                     Altura
                                                 </label>
                                                 <div class="input-group">
-                                                <input class='form-control' id='observaciones_familia'  placeholder="Observación de la familia"  type="text" >
+                                                <input class='form-control' id='altura'  placeholder="Altura de la persona"  type="text" >
                                                 </div>
 
                                             </div>
 
 
                                             <div class="col-md-12 mt-2">
-                                                <label for="segundo_apellido">
+                                                <label for="habit_psicol">
                                                    Hábitos psicológicos
                                                 </label><span id='valid_5' style="color:red;"></span>
                                                 <div class="input-group">
                                                 <table style='width:100%'>
                                                     <tr>
                                                         <td>
-                                                        <input type="text" class='form-control letras_numeros' id='cedula_integrante' placeholder="Buscar hábitos"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
+                                                        <input type="text" class='form-control letras_numeros' id='habit_psicol' placeholder="Buscar hábitos"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
                                                             <datalist id='lista_persona'>
-                                                                <?php foreach ($this->integrantes as $int) { ?>
-                                                                <option value='<?php echo $int['cedula_integrante'];?>'><?php echo $int['primer_nombre'].''.$int['primer_apellido']; ?></option>
-                                                            <?php    } ?>
+                                                                <?php foreach ($this->habit_psicols as $int) { ?>
+                                                                <option value='<?php echo $int['nombre_psicol'];?>'><?php echo $int['id_habit_psicol']; ?></option>
+                                                            <?php } ?>
                                                             </datalist>
                                                             <td class="col-md-6 p-0">
                                                                 <!-- <label for="parentezco">
@@ -205,12 +261,32 @@
                                          </div></div></div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <div class="text-center m-t-20">
+                    <!-- <div class="text-center m-t-20">
                         <div class="col-xs-12">
                             <input type="button" class="btn" style="background:#15406D; color:white" name="" id="guardar" value="Guardar">
                             
                         </div>
-                    </div>
+                    </div> -->
+                    <div class="col-md-12 mt-4">
+        <div style="float: left;">
+            <a id="anterior" style='display:none' type="button" class="btn btn-secondary text-white">
+                Anterior
+            </a>
+        </div>
+    </div>
+    <div class="col-md-12 mt-4">
+        <div style="float: right;">
+            <a id="siguiente" type="button" class="btn btn-primary text-white">
+                Siguiente
+            </a>
+        </div>
+    </div>
+    <div class="text-center m-t-20" id="botones-finales" style='display:none'>
+        <div class="col-xs-12">
+            <input type="button" class="btn text-white m-r-10" style="background:#15406D" name="" id="guardar" value="Guardar">
+        </div>
+    </div>
+
                 </div>
             </form>
             <!-- /.card-footer-->
@@ -223,7 +299,7 @@
 </div>
 <script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/validacion_familia.js"></script>
 <?php include modal."agregar-familiares.php"; ?>
-<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/registrar-integrantes.js"></script>
+<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/registrar-historial.js"></script>
 <!-- /.content-wrapper -->
 <?php include (call."Fin.php"); ?>
 
