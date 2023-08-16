@@ -52,12 +52,12 @@ class Historial extends Controlador
 
 
 
-    public function registrar_familia(){
-        $datos_familia=$_POST['datos'];
+    public function registrar_historial(){
+        $datos_historial=$_POST['datos'];
 
-        echo $datos_familia;
+        echo $datos_historial;
         
-        $this->modelo->Registrar_Fami($datos_familia); 
+        $this->modelo->Registrar_historial($datos_historial); 
         
      /*     if($resultado){
            $id=$this->Ultimo_Ingresado("familia","id_familia");

@@ -4,7 +4,7 @@ var peso=document.getElementById("peso");
 var datos_persona=[];
 var persona_existente=false;
 cedula_integrante.focus(); 
-var boton_integrante=document.getElementById("guardar_integrantes");
+/* var boton_integrante=document.getElementById("guardar_integrantes"); */
 var element;
 var mensaje_error;
 
@@ -16,11 +16,12 @@ var btn_anterior=document.getElementById("anterior");
 var btn_guardar=document.getElementById("guardar");
 var btn_finales=document.getElementById("botones-finales");
 
-
 var tab_persona=document.getElementById("tab_1");
-var div_persona=document.getElementById("panel5");
-var tab_contacto=document.getElementById("tab_2");
-var div_contacto=document.getElementById("panel7");
+var div_persona=document.getElementById("panel1");
+var tab_antecedente=document.getElementById("tab_2");
+var div_antecedente=document.getElementById("panel2");
+var tab_alergias=document.getElementById("tab_3");
+var div_alergias=document.getElementById("panel3");
 
 //-------------Boton siguiente---------------------
 
@@ -30,13 +31,6 @@ btn_siguiente.onclick=function(){
 
 }
 
-//------------- Boton guardar-----------------------
-
- boton_integrante.onclick=function(){
-
-  enviar_info_integrantes();
-
-} 
 //-------------Boton anterior-----------------------
 
 btn_anterior.onclick=function(){
@@ -60,15 +54,16 @@ function funcion_siguiente(){
 
     break;
 
-  case 1:
-      if(valida_contacto()){
+  /* case 1:
+      if(valida_antecedente()){
 
-         enviar_info_integrantes(); 
+         enviar_info(); 
 
       }
     break;
+    */
   }
-
+ 
 
 control_indice();
 
@@ -79,37 +74,68 @@ control_indice();
 
 function control_indice(){
 
+  alert(index);
+
     switch(index){
 
       case 0:
 
       btn_anterior.style.display='none';
       btn_finales.style.display='none'; 
-      btn_siguiente.style.display='block';
+      btn_siguiente.style.display='block'; 
 
 
       tab_persona.className='nav-link active';
-      div_persona.style.display='block';
+      div_persona.style.display="block";
 
-      tab_contacto.className='';
-      div_contacto.style.display='none';
+      tab_antecedente.className='';
+      div_antecedente.style.display='none'; 
+
+      tab_alergias.className='';
+      div_alergias.style.display='none'; 
+
+      
 
       break;
 
       case 1:
 
         btn_anterior.style.display='block';
-        btn_siguiente.style.display='none'; 
-        btn_finales.style.display='block'; 
+        btn_siguiente.style.display='block'; 
+        btn_finales.style.display='none'; 
 
+        tab_antecedente.className='nav-link active';
+        div_antecedente.style.display='block';
 
-        tab_contacto.className='nav-link active';
-        div_contacto.style.display='block';
-
+        tab_alergias.className='';
+        div_alergias.style.display='none'; 
+        
         tab_persona.className='';
         div_persona.style.display='none';
 
+
+
       break;
+
+      case 2:
+
+      btn_anterior.style.display='block';
+      btn_siguiente.style.display='none'; 
+      btn_finales.style.display='block'; 
+     
+
+      tab_alergias.className='nav-link active';
+      div_alergias.style.display='block'; 
+      
+      tab_persona.className='';
+      div_persona.style.display='none';
+
+      tab_antecedente.className='';
+      div_antecedente.style.display='none';
+
+
+
+    break;
   }
 }
 
@@ -122,7 +148,7 @@ function control_indice(){
   
   } */
   
-  cedula_integrante.onkeyup=function(){
+ /*  cedula_integrante.onkeyup=function(){
   
     valid_element("Debe ingresar el documento de identidad de la persona", cedula_integrante ,document.getElementById("valid_1"));
     $.ajax({
@@ -133,19 +159,19 @@ function control_indice(){
   
    }).done(function(result){
     console.log(result);
-   /* alert(result);  */
+   /* alert(result);  
      persona_existente=result; 
    
   
     })
   
-  } 
+  }  */
 
 //----------Validación de persona existentes---------------
 
  function persona_existe(){
 
-    if(persona_existente==0){
+   /*  if(persona_existente==0){
       return true;
     }
   
@@ -196,7 +222,7 @@ function control_indice(){
       });
     }
   })
-   }
+   } */
   
   }
  
@@ -217,6 +243,7 @@ function control_indice(){
     }
   
     else{
+
       /* element.style.borderColor="";  */
       span_element.style.display='none';
     }
@@ -225,9 +252,6 @@ function control_indice(){
   
   } 
 
-
-
-
 //---------------------Validación de campos personas--------------------------
 
  function valida_info(){
@@ -235,17 +259,17 @@ function control_indice(){
     var validacion=false;
 
     if(valid_element("Debe ingresar el documento de identidad", cedula_integrante, document.getElementById("valid_1"))){
-        if(persona_existe(cedula_integrante.value)){ 
-            if(valid_element("Ingrese el nombre de la persona", primer_nombre, document.getElementById("valid_2"))){
-              if(valid_element("Ingrese el apellido", primer_apellido, document.getElementById("valid_4"))){
-                if(valid_element("Ingrese fecha de nacimiento", fecha_nacimiento, document.getElementById("valid_6"))){ 
-                  if(new Date(fecha_nacimiento.value)>new Date){
+       /* if(persona_existe(cedula_integrante.value)){  */
+            if(valid_element("Ingrese el tipo de sangre", tipo_sangre, document.getElementById("valid_2"))){
+              if(valid_element("Ingrese el peso", peso, document.getElementById("valid_3"))){
+                if(valid_element("Ingrese la altura", altura, document.getElementById("valid_4"))){ 
+                  /* if(new Date(fecha_nacimiento.value)>new Date){
                   document.getElementById("valid_6").innerHTML="La fecha no debe ser mayor a la actual";
                    document.getElementById("valid_6").style.display=''; 
                   fecha_nacimiento.style.borderColor="red";
               
                 }else{
-                  /* document.getElementById("valid_6").style.display=''; */
+                  /* document.getElementById("valid_6").style.display='';
                   document.getElementById("valid_6").innerHTML="Ingrese la fecha de nacimiento";
                   fecha_nacimiento.style.borderColor="";
                   if(valid_element("Ingrese el género", genero, document.getElementById("valid_7"))){
@@ -255,19 +279,20 @@ function control_indice(){
                           if(valid_element("Ingrese el número de calzado", calzado, document.getElementById("valid_11"))){
 
 
-                            validacion=true;
+                           
                         }
                       }
                     }
                   }
-                }
+                } */
+                validacion=true;
               }
             }
           }
-        }
-      }
-    }
-        /* } */
+      /*   }
+      
+    } */
+         } 
 
 return validacion;
 
@@ -275,9 +300,9 @@ return validacion;
 
 //---------------- Validación de datos de contacto---------------------
 
-function valida_contacto(){
+function valida_antecedente(){
 
-  var validacion=false;
+  /* var validacion=false;
 
   if(valid_element("Debe ingresar el correo electronico", correo, document.getElementById("valid_12"))){
     if(valid_element("Debe ingresar el número de teléfono", telefono, document.getElementById("Valid_13"))){
@@ -286,38 +311,33 @@ function valida_contacto(){
 
     }
   }
-  return validacion;
+  return validacion; */
 } 
-
-//----------------Validación de datos de integrantes-----------------
-
-
-
 
 //----------------Función para enviar la información---------------
 
 
-/* btn_guardar.onclick=function(){
-  enviar_info_integrantes();
-} */
+ btn_guardar.onclick=function(){
+  enviar_info();
+} 
 
 
 //---------------Funcion para enviar la información al controlador------------
 
-function enviar_info_integrantes(){
+function enviar_info(){
 
 datos_persona=new Object();
 datos_persona['cedula_integrante']=cedula_integrante.value; 
-datos_persona['primer_nombre']=primer_nombre.value;
-datos_persona['segundo_nombre']=segundo_nombre.value;
-datos_persona['primer_apellido']=primer_apellido.value;
-datos_persona['segundo_apellido']=segundo_apellido.value;
+datos_persona['tipo_sangre']=tipo_sangre.value;
+datos_persona['peso']=peso.value;
+datos_persona['altura']=altura.value;
+/* datos_persona['segundo_apellido']=segundo_apellido.value;
 datos_persona['fecha_nacimiento']=fecha_nacimiento.value;
 datos_persona['estado']=1;
 datos_persona['genero']=genero.value;
 datos_persona['nivel_educativo']=nivel.value;
 datos_persona['correo']=correo.value;
-datos_persona['telefono']=telefono.value;
+datos_persona['telefono']=telefono.value; */
 
 
 //alert(datos_persona);
@@ -325,7 +345,7 @@ datos_persona['telefono']=telefono.value;
 $.ajax({
 
 type:"POST",
-url:BASE_URL+"Familias/registrar_familia",
+url:BASE_URL+"Historial/registrar_historial",
 data:{"datos":datos_persona}
 }).done(function(result){
     console.log(result);
@@ -333,14 +353,14 @@ data:{"datos":datos_persona}
 
               swal({
               title:"Éxito",
-              text:"La persona ha sido registrada exitosamente",
+              text:"El historial clínico ha sido registrado exitosamente",
               type:"success",
               timer:2000,
               showConfirmButton:false
             });
 
         
-          setTimeout(function(){location.href=BASE_URL+"Familias/registros";},1000); 
+          setTimeout(function(){location.href=BASE_URL+"Historial/registros";},1000); 
 
 
 

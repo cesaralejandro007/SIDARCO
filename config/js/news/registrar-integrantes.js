@@ -78,13 +78,13 @@ function funcion_siguiente(){
 
     break;
 
-  case 1:
+   case 1:
       if(valida_contacto()){
 
          enviar_info_integrantes(); 
 
       }
-    break;
+    break; 
   }
 
 
@@ -140,7 +140,7 @@ function control_indice(){
   
   } */
   
-  cedula_integrante.onkeyup=function(){
+ /*  cedula_integrante.onkeyup=function(){
   
     valid_element("Debe ingresar el documento de identidad de la persona", cedula_integrante ,document.getElementById("valid_1"));
     $.ajax({
@@ -151,19 +151,20 @@ function control_indice(){
   
    }).done(function(result){
     console.log(result);
-   /* alert(result);  */
+   /* alert(result);  
      persona_existente=result; 
    
   
     })
   
-  } 
+  }  */
 
 //----------Validación de persona existentes---------------
 
  function persona_existe(){
 
     if(persona_existente==0){
+
       return true;
     }
   
