@@ -299,7 +299,7 @@ public function modificar_integrante(){
           echo json_encode(4);
         }else{
           $editado=$this->modelo->Actualizar_Familia_integrante($_POST["id"],$_POST["parentezco_integrante"]);
-          $editado2=$this->modelo->Actualizar_tabla_familia( $_POST["id_familia"],$_POST["cedula_integrante"],$_POST["nombre_integrante"],$_POST["apellido_integrante"]);
+          $editado2=$this->modelo->Actualizar_tabla_familia($_POST["id_familia"],$_POST["cedula_integrante"],$_POST["nombre_integrante"],$_POST["segundo_nombre_integrante"],$_POST["apellido_integrante"],$_POST["segundo_apellido_integrante"],$_POST["genero"],$_POST["fecha_nacimiento"],$_POST["nivel_educativo"],$_POST["Correo"],$_POST["Telefono"]);
           $retornar = $this->modelo->get_integrantes($_POST['cedula_persona']);
           if($editado==1 && $editado2 ==1){
             echo json_encode($retornar);

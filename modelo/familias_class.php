@@ -222,15 +222,21 @@
             return $this->Capturar_Error($e);
         }
     }
-
-    public function Actualizar_tabla_familia($id_familia,$cedula,$nombre,$apellido)
+    public function Actualizar_tabla_familia($id_familia,$cedula,$nombre,$segundo_nombre,$apellido,$segundo_apellido,$genero,$fecha_nacimiento,$nivel_educativo,$correo,$telefono)
     {
 
         try {
             $query = $this->conexion->prepare("UPDATE familia  SET
                 cedula_integrante           ='$cedula',
                 primer_nombre          ='$nombre',
-                primer_apellido         ='$apellido'
+                segundo_nombre          ='$segundo_nombre',
+                primer_apellido         ='$apellido',
+                segundo_apellido         ='$segundo_apellido',
+                genero         ='$genero',
+                fecha_nacimiento         ='$fecha_nacimiento',
+                nivel_educativo         ='$nivel_educativo',
+                correo         ='$correo',
+                telefono         ='$telefono'
                 WHERE id_familia ='$id_familia'"
              );
 
