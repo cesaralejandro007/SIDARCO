@@ -135,29 +135,32 @@ function control_indice(){
 //----------------------Validación de la cédula------------------->
 
 
-  /* cedula_integrante.oninput=function(){
+  cedula_integrante.oninput=function(){
     if (cedula_integrante.value.length >9) cedula_integrante.value =cedula_integrante.value.slice(0, 9);
   
-  } */
+  } 
   
- /*  cedula_integrante.onkeyup=function(){
+  
+  cedula_integrante.onkeyup=function(){
   
     valid_element("Debe ingresar el documento de identidad de la persona", cedula_integrante ,document.getElementById("valid_1"));
-    $.ajax({
+     $.ajax({
   
-     type:"POST",
-     url:BASE_URL+"Familias/Consultas_cedula_integrante",
-     data:{'cedula_integrante':cedula_integrante.value}
+    type:"POST",
+    url:BASE_URL+"Familias/Consultas_cedula_integrante",
+    data:{'cedula_integrante':cedula_integrante.value}
   
-   }).done(function(result){
+  }).done(function(result){
     console.log(result);
-   /* alert(result);  
-     persona_existente=result; 
-   
+      alert(result);  
+    persona_existente=result; 
   
-    })
+ /*     SI SE ENCUENTRA DATOS EN LA BASE DE DATOS SE VA A MANDAR A LA FUNCION DE PERSONA_EXISTE
+    SINO SE HACE LA VAIDACION DIRECTAMENTE */ 
   
-  }  */
+    }) 
+
+  }  
 
 //----------Validación de persona existentes---------------
 

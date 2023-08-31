@@ -334,6 +334,8 @@ class Controlador
             return $errorReturn;
         }
     }
+
+    
    
 
     public function Consultar_Tabla_divisiones($tabla)
@@ -352,6 +354,9 @@ class Controlador
             return $errorReturn;
         }
     }
+
+
+
 
     public function Consultar_Tabla_egresados($tabla)
     {

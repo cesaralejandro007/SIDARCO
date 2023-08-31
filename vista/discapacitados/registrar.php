@@ -85,14 +85,14 @@
 
                          </div>
 
-
+                                      
 
                      </div>
                      <br>
 
 
 
-                     <br>
+                    
 
                      <label>Discapacidades agregadas a <span id='nombre_persona'></span></label>
                      <center><div style='width:95%;height:200px;overflow-y: scroll;background: #D4E6F4'>
@@ -100,10 +100,72 @@
                          </center>
                          <br>
 
+
+                        <!--  <input type="text"> -->
+
+                         <div class="col-md-12">
+
+<label>Enfermedad</label> <span id='valid_enfermedad' style='color:red'></span>
+<table style='width:100%'><tr><td>
+    <input type="text" style='display:none' maxlength="30" placeholder="Enfermedad..." class='form-control ' id='enfermedad_input' name="" oninput="Limitar(this,35)">
+
+    <select class='form-control no-simbolos' id='enfermedad_select'>
+      <option value='vacio'>-Enfermedad-</option>
+      <?php foreach ($this->datos["enfermedad"] as $e) {?>
+        <option value='<?php echo $e['id_enfermedad']; ?>'><?php echo $e['nombre_enfermedad']; ?></option>
+    <?php }?>
+</select></td>
+
+<td><textarea id='medicamentos' class='form-control no-simbolos' placeholder="Ej: Parecetamol, Loratadina, Lozartan, etc..." rows="1"></textarea></td><td><button id='agregar' class="btn btn-info" type="button">Agregar</button>&nbsp;&nbsp;<button type='button' class="btn btn-primary" id='btn_nueva_enfermedad' >Nueva enfermedad</button></td></tr></table>
+
+
+</div>
+
+<br>
+
+<label>Enfermedades agregadas a <span id='nombre_persona'></span></label>
+                     <center><div style='width:95%;height:200px;overflow-y: scroll;background: #D4E6F4'>
+                         <center><div id='enfermedades_agregadas' style='width:95%'></div></div>
+                         </center>
+                         <br>
+
+
+
+
+
+
+
+
                          <center><input type="button" class="btn" style="background:#15406D; color:white;" name="" id="guardar" value="Guardar"></center>
+                         <div id='second' style='display:none'>
+
+                         
+
+
+                  
+
+                    
+
+                         <center><input type="button" class="btn" style="background:#15406D; color:white" name="" id="guardar" value="Guardar"></center>
                      </div></center>
                  </div>
+
+
+
+
+
+
              </div>
+                     
+                    </div></center>
+                 </div>
+             </div>
+
+
+            
+             
+
+
              <!-- /.card-body -->
 
          </form>
@@ -117,6 +179,7 @@
 </div>
 <?php include modal."agregar-familiares.php"; ?>
 <script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/validacion_discapacitados.js"></script>
+<script type="text/javascript" src="<?php echo constant('URL') ?>config/js/news/validacion_enfermos.js"></script>
 <!-- /.content-wrapper -->
 <?php include (call."Fin.php"); ?>
 

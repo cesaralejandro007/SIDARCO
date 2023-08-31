@@ -226,15 +226,17 @@
 <?php } ?>
             -->
 
-                    <!-- ===============================================================================================  
+                     
 <?php if ($_SESSION['Vacunados COVID']['consultar'] != '0' || $_SESSION['Vacunados COVID']['registrar'] != '0' || $_SESSION['Enfermos']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0' || $_SESSION['Discapacitados']['consultar'] != '0' || $_SESSION['Discapacitados']['registrar'] != '0') { ?>
+    <!-- <li class="nav-header">Salud</li> -->
     <li class="nav-header">Salud</li>
+
     <?php if ($_SESSION['Vacunados COVID']['consultar'] != '0' || $_SESSION['Vacunados COVID']['registrar'] != '0') { ?>
         <li class="nav-item">
             <a href="javascript:void(0)" class="nav-link">
                 <i class="nav-icon fa fa-bug"></i>
                 <p>
-                    Gestionar Vacunados Covid
+                    Gestionar Vacunas
                 </p>
             </a>
             <ul class="nav nav-treeview">
@@ -257,9 +259,8 @@
             </ul>
         </li>
     <?php } ?>
-                -->
+                
                 <?php if ($_SESSION['Nucleo familiar']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0') { ?>
-                       <li class="nav-header">Salud</li>
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link px-4">
                             <i class="fas fa-notes-medical px-1" style="font-size: 17px;"></i>
@@ -289,13 +290,14 @@
                     <?php } ?>
 
 
+
                     <?php if ($_SESSION['Enfermos']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0') { ?>
                        <!--   <li class="nav-header">Salud</li> -->
                         <li class="nav-item"> 
                              <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fa fa-ambulance"></i> 
                                 <p>
-                                    Gestionar Patologías 
+                                    Gestionar PCD y Pat.
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -319,7 +321,8 @@
                         </li>
                     <?php } ?>
 
-                    <?php if ($_SESSION['Discapacitados']['consultar'] != '0' || $_SESSION['Discapacitados']['registrar'] != '0') { ?>
+
+         <!--            <?php if ($_SESSION['Discapacitados']['consultar'] != '0' || $_SESSION['Discapacitados']['registrar'] != '0') { ?>
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fa fa-wheelchair"></i>
@@ -346,8 +349,10 @@
                                 <?php } ?>
                             </ul>
                         </li>
+
                     <?php } ?>
-                <?php } ?>
+                <?php } ?> -->
+
 
 
                 <?php if ($_SESSION['Enfermos']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0') { ?>

@@ -350,9 +350,11 @@
             
                                         </div>
                                     </div>
+                    
                                     
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -380,7 +382,10 @@
             <input type="submit" class="btn btn-primary" style="background:#15406D" name="" id="guardar_integrantes" value="Guardar">
         </div>
     </div>
-</div>  <!-- <div class="modal-footer">
+</div>  
+
+
+<!-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <input type="submit" class="btn btn-primary" name="" id="guardar_integrante" value="Guardar">
             </div>  -->
@@ -390,3 +395,4 @@
     <!-- /.modal-dialog --> 
 </div>
 <!-- /.modal -->
+<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/registrar-integrantes.js"></script>
