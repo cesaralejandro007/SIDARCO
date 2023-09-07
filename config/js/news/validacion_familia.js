@@ -168,7 +168,7 @@ btn_agregar.onclick=function(){
         valid_parentezco.innerHTML="";
 		$.ajax({
 			type: 'POST', 
-			url: BASE_URL + 'Familias/Consultas_cedula_integrante',
+			url: BASE_URL + 'Familias/Consultas_integrante',
 			data:{'cedula_integrante':integrantes_input.value, 'parentezco': parentezco.value}
 		})
 		.done(function (datos){

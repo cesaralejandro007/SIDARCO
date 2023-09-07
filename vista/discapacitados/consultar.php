@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Consulta de Personas con Discapacidad</h1>
+                    <h1 class="m-0">Consulta de personas con alguna discapacidad</h1>
                 </div><!-- /.col -->
                 <!-- /.col -->
             </div><!-- /.row -->

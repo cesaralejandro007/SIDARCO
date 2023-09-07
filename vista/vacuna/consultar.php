@@ -32,6 +32,7 @@
                         <tr>
                             <th>Cedula</th>
                             <th>Nombre y Apellido</th>
+                            <th>Nombre de la vacuna</th>
                             <th>Dosis</th>
                             <th>Fecha</th>
                             <th style="width: 115px;">Acciones</th>
@@ -52,6 +53,9 @@
                                         },
                                         {
                                             "data": "nombre_apellido"
+                                        },
+                                        {
+                                            "data": "nombre_vacuna"
                                         },
                                         {
                                             "data": "dosis"
@@ -146,6 +150,7 @@
                         <tr>
                             <th>Cedula</th>
                             <th>Nombre y Apellido</th>
+                            <th>Nombre de la vacuna</th>
                             <th>Dosis</th>
                             <th>Fecha</th>
                             <th>Acciones</th>

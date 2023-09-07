@@ -262,7 +262,47 @@ public function Consultas_cedula_integrante()
     {
       $persona=$this->Consultar_Columna("familia","cedula_integrante",$_POST['cedula_integrante']);
     
-      /* $this->Escribir_JSON($persona); */
+       /* $this->Escribir_JSON($persona);  */
+      
+   
+   }
+    else{
+      if(count($persona)==0) 
+      {
+       
+        echo 0; 
+      
+      /*   echo 2; */
+     
+    }else{
+
+      echo 1; 
+     }
+
+   
+    }
+   } 
+    
+  } 
+
+
+  public function Consultas_integrante()
+{
+
+  $consul=$this->Consultar_Tabla_divisiones("familia");
+
+  if(count($consul)==0){
+    
+     echo 0;  
+   
+  }
+  else{
+    if(count($consul)>0) 
+    {
+      $persona=$this->Consultar_Columna("familia","cedula_integrante",$_POST['cedula_integrante']);
+    
+       $this->Escribir_JSON($persona);  
+      
    
    }
     else{

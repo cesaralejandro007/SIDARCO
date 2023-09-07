@@ -52,6 +52,7 @@ function funcion_siguiente(){
 
 
   switch(index){
+    
   case 0:
       if(valida_info()){
         
@@ -121,7 +122,7 @@ function control_indice(){
         div_antecedente.style.display='block';
 
         tab_diagnostico.className='';
-        div_diagnostico.style.display='none';   
+        div_diagnostico.style.display='nne';   
         
         tab_persona.className='';
         div_persona.style.display='none'; 
@@ -137,7 +138,7 @@ function control_indice(){
       btn_finales.style.display='block'; 
      
 
-    tab_diagnostico.className='nav-link active';
+      tab_diagnostico.className='nav-link active';
       div_diagnostico.style.display='block';   
       
       tab_persona.className='';

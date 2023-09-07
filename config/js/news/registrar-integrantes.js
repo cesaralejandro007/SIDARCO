@@ -156,7 +156,7 @@ function control_indice(){
     persona_existente=result; 
   
  /*     SI SE ENCUENTRA DATOS EN LA BASE DE DATOS SE VA A MANDAR A LA FUNCION DE PERSONA_EXISTE
-    SINO SE HACE LA VAIDACION DIRECTAMENTE */ 
+    SINO SE HACE LA VALIDACION DIRECTAMENTE */ 
   
     }) 
 

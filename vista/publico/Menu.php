@@ -244,7 +244,7 @@
                     <li class="nav-item" onclick="cambio_modulo('Registrar vacunados covid')">
                         <a href="<?php echo constant('URL'); ?>Personas/Vacuna/" class="nav-link">
                             <i class="fa fa-plus-circle nav-icon " style="color:#EEA000"></i>
-                            <p>Registrar Vacunado Covid</p>
+                            <p>Registrar Vacunas</p>
                         </a>
                     </li>
                 <?php } ?>
@@ -252,7 +252,7 @@
                     <li class="nav-item" onclick="cambio_modulo('Consultar vacunados covid')">
                         <a href="<?php echo constant('URL'); ?>Personas/Vacunados/" class="nav-link">
                             <i class="fa fa-list nav-icon text-info"></i>
-                            <p>Consultar Vacunados Covid</p>
+                            <p>Consultar Vacunas</p>
                         </a>
                     </li>
                 <?php } ?>
@@ -290,9 +290,9 @@
                     <?php } ?>
 
 
-
+<!-- 
                     <?php if ($_SESSION['Enfermos']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0') { ?>
-                       <!--   <li class="nav-header">Salud</li> -->
+                        <li class="nav-header">Salud</li> 
                         <li class="nav-item"> 
                              <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fa fa-ambulance"></i> 
@@ -319,15 +319,15 @@
                                 <?php } ?>
                             </ul>
                         </li>
-                    <?php } ?>
+                    <?php } ?> -->
 
 
-         <!--            <?php if ($_SESSION['Discapacitados']['consultar'] != '0' || $_SESSION['Discapacitados']['registrar'] != '0') { ?>
+                     <?php if ($_SESSION['Discapacitados']['consultar'] != '0' || $_SESSION['Discapacitados']['registrar'] != '0') { ?>
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fa fa-wheelchair"></i>
                                 <p>
-                                    Gestionar Discapacidades
+                                Gestionar PCD 
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -335,7 +335,7 @@
                                     <li class="nav-item" onclick="cambio_modulo('Registrar discapacitados')">
                                         <a href="<?php echo constant('URL'); ?>Discapacitados/Administrar/Registros/" class="nav-link">
                                             <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
-                                            <p>Registrar Discapcitado</p>
+                                            <p>Registrar PCD</p>
                                         </a>
                                     </li>
                                 <?php } ?>
@@ -343,7 +343,7 @@
                                     <li class="nav-item" onclick="cambio_modulo('Consultar discapacitados')">
                                         <a href="<?php echo constant('URL'); ?>Discapacitados/Administrar/Consultas/" class="nav-link">
                                             <i class="fa fa-list nav-icon text-info"></i>
-                                            <p>Consultar Discapacitados</p>
+                                            <p>Consultar PCD</p>
                                         </a>
                                     </li>
                                 <?php } ?>
@@ -351,11 +351,11 @@
                         </li>
 
                     <?php } ?>
-                <?php } ?> -->
+                <?php } ?> 
 
 
 
-                <?php if ($_SESSION['Enfermos']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0') { ?>
+                <?php if ($_SESSION['Discapacitados']['consultar'] != '0' || $_SESSION['Discapacitados']['registrar'] != '0') { ?>
                     <li class="nav-item">
                         <a href="javascript:void(0)" class="nav-link">
                             <i class="nav-icon fas fa-heartbeat"></i>
@@ -364,19 +364,19 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <?php if ($_SESSION['Enfermos']['registrar'] == '1') { ?>
-                                <li class="nav-item" onclick="cambio_modulo('Registrar enfermos')">
-                                    <a href="<?php echo constant('URL'); ?>Enfermos/Administrar/Registros/" class="nav-link">
+                            <?php if ($_SESSION['Discapacitados']['registrar'] == '1') { ?>
+                                <li class="nav-item" onclick="cambio_modulo('Registrar presion arterial')">
+                                    <a href="<?php echo constant('URL'); ?>presion_arterial/Administrar/Registros/" class="nav-link">
                                         <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
-                                        <p>Registrar Presión Arterial</p>
+                                        <p>Registrar presión arterial</p>
                                     </a>
                                 </li>
                             <?php } ?>
-                            <?php if ($_SESSION['Enfermos']['consultar'] == '1') { ?>
-                                <li class="nav-item" onclick="cambio_modulo('Consultar enfermos')">
-                                    <a href="<?php echo constant('URL'); ?>Enfermos/Administrar/Consultas/" class="nav-link">
+                            <?php if ($_SESSION['Discapacitados']['consultar'] == '1') { ?>
+                                <li class="nav-item" onclick="cambio_modulo('Consultar presion_arterial')">
+                                    <a href="<?php echo constant('URL'); ?>presion_arterial/Administrar/Consultas/" class="nav-link">
                                         <i class="fa fa-list nav-icon text-info"></i>
-                                        <p>Consultar Presión Arterial</p>
+                                        <p>Consultar presión arterial</p>
                                     </a>
                                 </li>
                             <?php } ?>

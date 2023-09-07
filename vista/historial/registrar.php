@@ -80,23 +80,31 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="panel5" role="tabpanel">
                                         <div class="row">
-                                        <div class="col-md-12 mt-4">
+
+                                        <div class="col-md-12 text-center">
+                                                    <h2>
+                                                    Historial Clínico
+                                                    </h2>
+                                                </div> 
+                                            <div class="col-md-12 mt-4">
                                                 <label for="primer_nombre">
                                                     Cédula del funcionario o funcionaria
                                                 </label>
                                                 <span id='valid_1' style="color:red;"></span>
+                                            </div>
+
                                                 <div class="input-group">
                                                 <input type="text"  class='form-control letras_numeros' id='cedula_persona' placeholder="Buscar cédula" name="datos['cedula_persona']" list='lista' oninput="Limitar(this,15)">
                                                             <datalist id='lista' >
                                                             <option selected="" value=""></option>
                                                                 <?php foreach ($this->personas as $p) { ?>
                                                                         <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['primer_nombre']." ".$p['primer_apellido']; ?></option>
-                                                            <?php    } ?>
+                                                            <?php  } ?>
                                                             </datalist>
                                                     <button class='btn btn-info' type='button' id='nueva_personas'>Nueva</button>
                                                 </div>
 
-                                                </div>
+                                               <!--  </div> -->
 
                                
                                                 <div class="col-md-4 mt-2">
@@ -128,13 +136,13 @@
                                                 </label>
                                                 <span id='valid_4' style="color:red;"></span>
                                                 <div class="input-group">
-                                                <input class='form-control' id='altura'  placeholder="Altura de la persona"  type="text" >
+                                                    <input class='form-control' id='altura'  placeholder="Altura de la persona"  type="text" >
                                                 </div>
 
                                             </div> <!-- FOOTER -->
 
                                             
-                                        </div>
+                                         </div> 
                                    
                                       <div class="col-md-12 mt-2">
                                                 <label for="habit_psicol">
@@ -191,9 +199,9 @@
 
                                             </div>
                                     
-                                            </div>
+                                       </div> 
 
-
+                                <br>
 
                             <!---------------ANTECEDENTES Y ALERGIAS-------------------------->
 
@@ -215,6 +223,7 @@
                                                             <table style='width:100%'>
                                                             <tr>
                                                                 <td>
+                                                                    <input type="text" placeholder="Familiar o personal" class="form-control" id="" name="datos[tipo_ant]">
                                                                     <input type="text" class='form-control letras_numeros' id='habit_psicol' placeholder="Buscar hábitos"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
                                                                         <datalist id='lista_persona'>
                                                                             <?php foreach ($this->habit_psicols as $int) { ?>
@@ -240,6 +249,8 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+
 
                                             <div class="col-md-12 mt-2">
                                                 <label for="habit_psicol">
@@ -355,46 +366,59 @@
 
                             <!--------------------- Diagnóstico del paciente ----------------------------->
                         
-                          <div class="tab-pane active" id="panel3" role="tabpanel">
+                          <div class="tab-pane" id="panel3" role="tabpanel">
                                 <div class="row">
+                                    <div class="col-md-12 text-center">
+                                            <h2>
+                                                Diagnóstico del paciente
+                                            </h2>
+                                    </div> 
                                     <div class="col-md-12 mt-4">
-
-                                    
-                                               <!--    <label for="primer_nombre">
-                                                    Cédula del funcionario prueba
-                                                </label>
-                                                <span id='valid_1' style="color:red;"></span>
-                                        <div class="input-group">
-                                                <input type="text"  class='form-control letras_numeros' id='cedula_persona' placeholder="Buscar cédula" name="datos['cedula_persona']" list='lista' oninput="Limitar(this,15)">
-                                                            <datalist id='lista' >
-                                                            <option selected="" value=""></option>
-                                                                <?php foreach ($this->personas as $p) { ?>
-                                                                        <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['primer_nombre']." ".$p['primer_apellido']; ?></option>
-                                                            <?php    } ?>
-                                                            </datalist>
-                                                    <button class='btn btn-info' type='button' id='nueva_personas'>Nueva</button> -->
-                                        <!-- </div> -->
+                                        <label for="examen_f">Examen físico</label>
+                                        <span id="" style="color:red;"> <span>
+                                        <div>
+                                            <input type="text" class="form-control" placeholder="Resultado del examen" id="examen_f" name="datos[examen_f]">
+                                        </div>
                                     </div>
+
+                                    <div class="col-md-12 mt-4">
+                                        <label for="">IDX</label>
+                                        <span id="idx" style="color:red;"></span>
+                                        <div>
+                                            <input type="text" id="idx" name="datos[idx]" placeholder="Diagnóstico medico" class="form-control" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-4">
+                                        <label for="plan_trat">Plan de tratamiento</label>
+                                        <span id="idx" style="color:red;"></span>
+                                        <div>
+                                            <input type="text" id="plan_trat" name="datos[plan_trat]" placeholder="Plan de tratamiento" class="form-control" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-4">
+                                        <label for="evolucion">Evolución</label>
+                                        <span id="" style="color:red;"></span>
+                                        <div>
+                                            <input type="text" id="evolucion" name="datos[evolucion]" placeholder="Evolución del paciente" class="form-control" >
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
+                                    
+                        
 
 
 
 
 
 
-
-
-                            
-
-                            </div>  
-                            </div>  
-                    </div>    
-                            
-                    </div>    
-                 </div> 
+                        
                 <!-- </form> -->
-            <div class="card-footer">
+
+<div class="card-footer">
             
             <!--Footer -->
         
@@ -418,7 +442,7 @@
     </div>
 
 
-    </div><!--  FOOTER -->
+</div><!--  FOOTER -->
 
 
 </form>

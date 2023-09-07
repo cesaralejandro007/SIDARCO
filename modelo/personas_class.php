@@ -31,11 +31,13 @@ class Personas_Class extends Modelo
         try {
             $datos = $this->conexion->prepare('INSERT INTO vacuna_covid (
                 cedula_persona,
+                nombre_vacuna, 
                 dosis,
                 fecha_vacuna,
                 estado
                 ) VALUES (
                     :cedula_persona,
+                   :nombre_vacuna, 
                     :dosis,
                     :fecha_vacuna,
                     :estado
@@ -43,9 +45,10 @@ class Personas_Class extends Modelo
 
             $datos->execute([
                 'cedula_persona' => $data['cedula_persona'],
+               'nombre_vacuna' => $data['nombre_vacuna'],
                 'dosis' => $data['dosis'],
                 'fecha_vacuna' => $data['fecha_vacuna'],
-                'estado' => $data['estado'],
+                'estado' => $data['estado']
             ]);
 
             return true;
