@@ -32,7 +32,7 @@ class presion_arterial_Class extends Modelo
 
     private function SQL_01()
     {
-        return "SELECT * FROM discapacidad WHERE estado=1";
+        return "SELECT * FROM presiones_arteriales WHERE estado=1";
     }
 
     private function SQL_02()
@@ -57,7 +57,7 @@ class presion_arterial_Class extends Modelo
 
     private function SQL_06()
     {
-        return "INSERT INTO discapacidad_persona (cedula_persona, id_discapacidad, necesidades_discapacidad, observacion_discapacidad, en_cama) VALUES (:cedula_persona, :id_discapacidad, :necesidades_discapacidad, :observacion_discapacidad, :en_cama)";
+        return "INSERT INTO presiones_arteriales (cedula_persona, fecha_presion, t_a, f_c, nota) VALUES (:cedula_persona, :fecha_presion, :t_a, :f_c, :nota)";
     }
 
 }

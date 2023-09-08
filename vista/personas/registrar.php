@@ -52,6 +52,7 @@
                                             </span>
                                         </a>
                                     </li>
+                                    
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
                                         <a id='tab_3' >
                                             <span class="hidden-sm-up">
@@ -1210,9 +1211,9 @@
         <div class="col-md-12 mt-2">
             <div class="form-group">
                 <label for="correo">
-                 Contraseña
-             </label> <span id='valid_contrasenia' style='color:red;display:none'>Debe ingresar la contraseña del usuario</span>
-             <div class="input-group">
+                Contraseña
+                </label> <span id='valid_contrasenia' style='color:red;display:none'>Debe ingresar la contraseña del usuario</span>
+            <div class="input-group">
                 <table style='width:100%'>
                     <tr><td>
                         <input class="form-control no-espacios" id="contrasenia" name=""
@@ -1285,7 +1286,11 @@
 
                             
                         </div>
-</div>
+
+
+
+
+                    </div>
 
 
 

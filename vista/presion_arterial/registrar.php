@@ -31,7 +31,7 @@
                         <div class="col-md-12">
                          <label>Persona</label> <span id='valid_persona' style='color:red'></span>
                          <table style='width:100%'><tr><td>
-                             <input type="number" maxlength="15" placeholder="Buscar cédula" class='form-control no-simbolos letras_numeros' id='persona' name="" list='lista_personas' oninput="Limitar(this,15)">
+                             <input type="number" maxlength="15" placeholder="Buscar cédula" class='form-control ' id='persona' name="" list='lista_personas' oninput="Limitar(this,15)">
 
                              <datalist id='lista_personas'>
                                  <?php foreach ($this->datos["personas"] as $p) { ?>
@@ -52,29 +52,35 @@
 
                          <div class="col-md-12">
 
-                             <label>Discapacidad</label> <span id='valid_discapacidad' style='color:red'></span>
-                             <table style='width:100%'><tr><td>
-                                 <input type="text" style='display:none'  placeholder="Discapacidad..." class='form-control no-simbolos solo-letras' id='discapacidad_input' name="" oninput="Limitar(this,30)">
-
-                                 <select class='form-control no-simbolos' id='discapacidad_select'> 
-                                   <option value='vacio'>-Discapacidad-</option>
+                             <label>Presión arterial</label> <span id='valid_discapacidad' style='color:red'></span>
+                             <table style='width:100%'><tr>
+                                 <td>
+                                  <input type="text" style='display:none'  placeholder="Discapacidad..." class='form-control' id='discapacidad_input' name="" oninput="Limitar(this,30)"> 
+                                        
+                                 <select class='form-control' id='discapacidad_select' style='display:none' > 
+                                   <!--  <option value='vacio'>-Fecha-</option>
                                    <?php foreach ($this->datos["discapacidad"] as $d) { ?>
                                      <option value='<?php echo $d['id_discapacidad'];?>'><?php echo $d['nombre_discapacidad']; ?></option>
-                                 <?php   } ?>
-                             </select></td>
+                                 <?php   } ?>  -->
+                                   </select>
+                            </td> 
 
-                             <td>
+                            <!--  <td>
                                 <select id='en_cama' class='form-control no-simbolos'>
-                                    <option value='vacio'>-En cama-</option>
+                                    <option value='vacio'>-Tensión arterial-</option>
                                     <option value="1">Si</option>
                                     <option value='0'>No</option>
                                 </select>
+                             </td> -->
+                             <td>
+                             <span id='valid_fecha_hora' style='color:red'></span>
+                               <input type="datetime-local" class='form-control ' id='fecha_hora' placeholder="Tension arterial" name="">
                              </td>
                              <td>
-                               <input type="text" class='form-control no-simbolos' id='necesidades' placeholder="Necesidades (opcional)" name="">
+                               <input type="text" class='form-control ' id='necesidades' placeholder="Tension arterial" name="">
                              </td>
                             <td>
-                               <input type="text" class='form-control no-simbolos' id='observaciones' placeholder="Observaciones (opcional)" name="">
+                               <input type="text" class='form-control ' id='observaciones' placeholder="Frecuencia cardiaca" name="">
                              </td>
                              <td>
                                 <button id='agregar' class="btn btn-info" type="button">Agregar</button>&nbsp;&nbsp;<button type='button' class="btn btn-primary" id='btn_nueva_discapacidad' >Nueva discapacidad</button>
@@ -94,7 +100,7 @@
 
                     
 
-                     <label>Discapacidades agregadas a <span id='nombre_persona'></span></label>
+                     <label>Historial de presión arterial <span id='nombre_persona'></span></label>
                      <center><div style='width:95%;height:200px;overflow-y: scroll;background: #D4E6F4'>
                          <center><div id='discapacidades_agregadas' style='width:95%'></div></div>
                          </center>
@@ -179,8 +185,7 @@
  <!-- /.content -->
 </div>
 <?php include modal."agregar-familiares.php"; ?>
-<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/validacion_discapacitados.js"></script>
-<script type="text/javascript" src="<?php echo constant('URL') ?>config/js/news/validacion_enfermos.js"></script>
+<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/registrar_presion_arterial.js"></script>
 <!-- /.content-wrapper -->
 <?php include (call."Fin.php"); ?>
 

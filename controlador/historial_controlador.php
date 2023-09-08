@@ -205,7 +205,9 @@ public function Consultas_cedulaV2()
 
 public function Consultas_cedula_integrante()
 {
-  $persona=$this->Consultar_Columna("familia","cedula_integrante",$_POST['cedula_integrante']);
+  $consul=$this->Consultar_Tabla_divisiones("familia");
+
+  /* $persona=$this->Consultar_Columna("familia","cedula_integrante",$_POST['cedula_integrante']); */
 
   if(count($persona==0)){
     $this->Escribir_JSON($persona);
