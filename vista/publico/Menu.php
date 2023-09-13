@@ -132,8 +132,8 @@
 
                 <!-- ===============================================================================================  -->
                 <?php if ($_SESSION['Comite']['consultar'] != '0' || $_SESSION['Comite']['registrar'] != '0' || $_SESSION['Centros votacion']['consultar'] != '0' || $_SESSION['Centros votacion']['registrar'] != '0') { ?>
-                    <li class="nav-header">Administrativo</li>
-                    <?php if ($_SESSION['Comite']['consultar'] != '0' || $_SESSION['Comite']['registrar'] != '0') { ?>
+                     <li class="nav-header">Administrativo</li>
+                   <!-- <?php if ($_SESSION['Comite']['consultar'] != '0' || $_SESSION['Comite']['registrar'] != '0') { ?>
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fa fa-user"></i>
@@ -159,7 +159,8 @@
                                     </li>
                                 <?php } ?>
                             </ul>
-                        </li>
+                        </li> -->
+
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fa fa-user"></i>
@@ -459,17 +460,17 @@
                         <ul class="nav nav-treeview">
                             <?php if ($_SESSION['Inmuebles']['registrar'] != '0') { ?>
                                 <li class="nav-item" onclick="cambio_modulo('Registrar inmuebles')">
-                                    <a href="<?php echo constant('URL'); ?>Inmuebles/Administrar/Registros/" class="nav-link">
+                                    <a href="<?php echo constant('URL'); ?>Inventario/Administrar/Registros/" class="nav-link">
                                         <i class="fa fa-plus-circle nav-icon " style="color:#EEA000"></i>
-                                        <p>Registrar Inmuebles</p>
+                                        <p>Registrar inventario</p>
                                     </a>
                                 </li>
                             <?php } ?>
                             <?php if ($_SESSION['Inmuebles']['consultar'] != '0') { ?>
                                 <li class="nav-item" onclick="cambio_modulo('Consultar inmuebles')">
-                                    <a href="<?php echo constant('URL'); ?>Inmuebles/Administrar/Consultas/" class="nav-link">
+                                    <a href="<?php echo constant('URL'); ?>Inventario/Administrar/Consultas/" class="nav-link">
                                         <i class="fa fa-list nav-icon text-info"></i>
-                                        <p>Consultar Inmuebles</p>
+                                        <p>Consultar inventario</p>
                                     </a>
                                 </li>
                             <?php } ?>

@@ -92,6 +92,10 @@ class Seguridad extends Controlador
         $_SESSION['Discapacitados']    = $permisos[13];
         $_SESSION['Vacunados COVID']   = $permisos[14];
         $_SESSION['Seguridad']         = $permisos[15];
+        $_SESSION['Historial_clinico'] = $permisos[16];
+        $_SESSION['Presion_arterial']  = $permisos[17];
+        $_SESSION['Consultas']         = $permisos[18];
+
 
         echo json_encode($permisos); //json_encode($permisos);
     }

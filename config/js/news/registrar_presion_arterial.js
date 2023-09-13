@@ -12,9 +12,9 @@ var valid_fecha_hora = document.getElementById("valid_fecha_hora");
 var en_cama = document.getElementById("fecha_hora");
 var btn_agregar = document.getElementById("agregar");
 var discapacidades = [];
-var div_discapacidades = document.getElementById("discapacidades_agregadas");
-var necesidades = document.getElementById("necesidades");
-var observaciones = document.getElementById("observaciones");
+var div_discapacidades = document.getElementById("presiones_agregadas");
+var necesidades = document.getElementById("tension");
+var observaciones = document.getElementById("frecuencia");
 
 en_cama.onchange = function() {
     if (en_cama.value == 'vacio') {
@@ -75,7 +75,7 @@ btn_seleccionar.onclick = function() {
         persona.style.borderColor = '';
         $.ajax({
             type: "POST",
-            url: BASE_URL + "Discapacitados/Administrar",
+            url: BASE_URL + "presion_arterial/Administrar",
             data: {
                 peticion: "Personas",
                 "cedula": persona.value

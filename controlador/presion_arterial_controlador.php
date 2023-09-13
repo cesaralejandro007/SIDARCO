@@ -15,11 +15,12 @@ class presion_arterial extends Controlador
     // ==============================================================================
     public function Establecer_Consultas()
     {
+        //Método mágico __set ASIGNAMOS EL VALOR 
         $this->modelo->__SET("tipo", "0");
         $this->modelo->__SET("SQL", "SQL_03");$this->datos["personas"] = $this->modelo->Administrar();
-        $this->modelo->__SET("SQL", "SQL_01");$this->datos["discapacidad"] = $this->modelo->Administrar();
+        $this->modelo->__SET("SQL", "SQL_01");$this->datos["presion_arterial"] = $this->modelo->Administrar();
         $this->modelo->__SET("SQL", "SQL_04");$this->datos["discapacidades"] = $this->modelo->Administrar();
-        $this->modelo->__SET("SQL", "SQL_02");$this->datos["discapacitados"] = $this->modelo->Administrar();
+       /*  $this->modelo->__SET("SQL", "SQL_02");$this->datos["discapacitados"] = $this->modelo->Administrar(); */
         $this->vista->datos = $this->datos;
     }
     public function Administrar($peticion = null)
@@ -44,20 +45,21 @@ class presion_arterial extends Controlador
                 echo $this->mensaje;unset($_POST, $this->mensaje);
                 break;
             case 'Registrar':
-                for ($i = 0; $i < count($_POST['discapacidades']); $i++) {
-                    if ($_POST['discapacidades'][$i]['nuevo'] == '0') {
+                for ($i = 0; $i < count($_POST['presion_arterial']); $i++) {
+                    if ($_POST['presion_arterial'][$i]['nuevo'] == '0') {
                         $this->modelo->__SET("SQL", $_POST['sql']); $this->modelo->__SET("tipo", "1");
                         $this->modelo->Datos([
                             "cedula_persona"           => $_POST['cedula'],
-                            "id_discapacidad"          => $_POST['discapacidades'][$i]['discapacidad'],
-                            "necesidades_discapacidad" => $_POST['discapacidades'][$i]['necesidades'],
-                            "observacion_discapacidad" => $_POST['discapacidades'][$i]['observaciones'],
-                            "en_cama"                  => $_POST['discapacidades'][$i]['en_cama'],
+                            "fecha_presion"            => $_POST['presion_arterial'][$i]['fecha_tension'],
+                            "t_a"                      => $_POST['presion_arterial'][$i]['t_a'],
+                            "f_c"                      => $_POST['presion_arterial'][$i]['f_c'],
+                            "nota"                     => $_POST['presion_arterial'][$i]['nota'],
                         ]);
+
                         if ($this->modelo->Administrar()) {$this->mensaje = 1;}
                     } else {
                         $this->modelo->__SET("SQL", "_02_");$this->modelo->__SET("tipo", "1");
-                        $this->modelo->__SET("registrar", array("tabla" => "discapacidad", "columna" => "nombre_discapacidad"));
+                        $this->modelo->__SET("registrar", array("tabla" => "presiones_arteriales", "columna" => "nombre_discapacidad"));
                         $this->modelo->Datos(["nombre_discapacidad" => $_POST['discapacidades'][$i]['discapacidad'], "estado" => 1]);
 
                         if ($this->modelo->Administrar()) {
@@ -69,10 +71,10 @@ class presion_arterial extends Controlador
                                 $this->modelo->__SET("SQL", $_POST['sql']);$this->modelo->__SET("tipo", "1");
                                 $this->modelo->Datos([
                                     "cedula_persona"           => $_POST['cedula'],
-                                    "id_discapacidad"          => $id_e['MAX(id_discapacidad)'],
-                                    "necesidades_discapacidad" => $_POST['discapacidades'][$i]['necesidades'],
-                                    "observacion_discapacidad" => $_POST['discapacidades'][$i]['observaciones'],
-                                    "en_cama"                  => $_POST['discapacidades'][$i]['en_cama'],
+                                    "fecha_presion"            => $_POST['discapacidades'][$i]['fecha_presion'],
+                                    "t_a"                      => $_POST['discapacidades'][$i]['t_a'],
+                                    "f_c"                      => $_POST['discapacidades'][$i]['f_c'],
+                                    "nota"                     => $_POST['discapacidades'][$i]['nota'],
                                 ]);
                                 if ($this->modelo->Administrar()) {$this->mensaje = 1;}
                             }
@@ -81,28 +83,10 @@ class presion_arterial extends Controlador
                 }
                 echo $this->mensaje;unset($this->mensaje, $id, $_POST);
                 break;
-            case 'Consulta_Ajax':
-                $retornar = [];
-                foreach ($this->datos["discapacitados"] as $d) {
-                    $discapacidades_p  = '<table style="width:100%">';$id_discapacidad_p = [];
-                    foreach ($this->datos["discapacidades"] as $dis) {
-                        if ($dis['cedula_persona'] == $d['cedula_persona']) {
-                            $en_cama_valor = "";
-                            $dis['en_cama'] == '1' ? $en_cama_valor = 'Si' : $en_cama_valor = 'No';
-                            $discapacidades_p .= "<tr><td>" . $dis['nombre_discapacidad'] . "</td><td>" . $en_cama_valor . "</td><td>" . $dis['necesidades_discapacidad'] . "</td><td>" . $dis['observacion_discapacidad'] . "</td></tr>";
-                            $id_discapacidad_p[] = $dis['id_discapacidad_persona'] . "/";
-                        }
-                    }
-                    $discapacidades_p = "<div style='overflow-y:scroll;width:100%;height:100px;background:#D4E6F4;'>" . $discapacidades_p . "</div></table>";
+            case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["presiones_arteriales"]);break;
 
-                    $retornar[] = [
-                        "cedula"         => $d['cedula_persona'],
-                        "nombre"         => $d['primer_nombre'] . " " . $d['primer_apellido'],
-                        "discapacidades" => $discapacidades_p,
-                        "editar"         => "<button type='button' class='btn' style='background:#EEA000; color:white;' onclick='editar(`" . $d['cedula_persona'] . "`)' data-toggle='modal' data-target='#actualizar'><em class='fa fa-edit'></em></button>",
-                        "eliminar"       => "<button class='btn' style='background:#9D2323; color:white;' onclick='eliminar(`" . json_encode($id_discapacidad_p) . "`)' type='button'><em class='fa fa-trash'></em></button>",
-                    ];
-                }
+            
+                
                 $this->Escribir_JSON($retornar);
                 unset($retornar, $discapacidades_p, $id_discapacidad_p, $en_cama_valor);
                 break;

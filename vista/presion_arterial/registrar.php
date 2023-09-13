@@ -77,10 +77,10 @@
                                <input type="datetime-local" class='form-control ' id='fecha_hora' placeholder="Tension arterial" name="">
                              </td>
                              <td>
-                               <input type="text" class='form-control ' id='necesidades' placeholder="Tension arterial" name="">
+                               <input type="text" class='form-control ' id='tension' placeholder="Tension arterial" name="">
                              </td>
                             <td>
-                               <input type="text" class='form-control ' id='observaciones' placeholder="Frecuencia cardiaca" name="">
+                               <input type="text" class='form-control ' id='frecuencia' placeholder="Frecuencia cardiaca" name="">
                              </td>
                              <td>
                                 <button id='agregar' class="btn btn-info" type="button">Agregar</button>&nbsp;&nbsp;<button type='button' class="btn btn-primary" id='btn_nueva_discapacidad' >Nueva discapacidad</button>
