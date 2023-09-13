@@ -66,12 +66,12 @@
                                         {
                                             "data": function(data) {
                                                 return '<td class="text-center">' +
-                                                    '<a href="javascript:void(0)" style="margin-right: 5px;" class="btn bg-success btnEditar" onclick="editar(this)"  title="Actualizar"  type="button" >' +
+                                                    '<a href="javascript:void(0)" style="margin-right: 5px; background:#EEA000;" class="btn btnEditar" onclick="editar(this)"  title="Actualizar"  type="button" >' +
                                                     '<i class="fa fa-edit" style="color: white;"></i>' +
                                                     '</a>' +
 
-                                                    '<a href="javascript:void(0)" style="margin-right: 5px;" class="btn bg-danger mensaje-eliminar" title="Eliminar">' +
-                                                    '<i class="fa fa-trash"></i>' +
+                                                    '<a href="javascript:void(0)" style="margin-right: 5px; background:#9D2323;" class="btn  mensaje-eliminar" title="Eliminar">' +
+                                                    '<i class="fa fa-trash" style="color: white;"></i>' +
                                                     '</a>' +
                                                     '<p style="display: none;">' + data
                                                     .id_vacuna_covid + '</p>' +

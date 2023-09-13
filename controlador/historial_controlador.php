@@ -11,7 +11,7 @@ class Historial extends Controlador
     public function Cargar_Vistas()
     {
         $this->Seguridad_de_Session();
-        $this->vista->Cargar_Vistas('familia/consultar'); 
+        $this->vista->Cargar_Vistas('historial/consultar'); 
     }   
 
 
