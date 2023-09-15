@@ -1,221 +1,160 @@
-var persona = document.getElementById('persona');
-var valid_persona = document.getElementById("valid_persona");
-var btn_seleccionar = document.getElementById("seleccionar_persona");
-var span_persona = document.getElementById("nombre_persona");
-var div_info = document.getElementById("second");
-var registrar_btn = document.getElementById("registrar_btn");
-var btn_guardar = document.getElementById("guardar");
-var discapacidad_input = document.getElementById("discapacidad_input");
-var discapacidad_select = document.getElementById("discapacidad_select");
-var btn_nueva_discapacidad = document.getElementById("btn_nueva_discapacidad");
-var valid_fecha_hora = document.getElementById("valid_fecha_hora");
-var en_cama = document.getElementById("fecha_hora");
-var btn_agregar = document.getElementById("agregar");
-var discapacidades = [];
-var div_discapacidades = document.getElementById("presiones_agregadas");
-var necesidades = document.getElementById("tension");
-var observaciones = document.getElementById("frecuencia");
 
-en_cama.onchange = function() {
-    if (en_cama.value == 'vacio') {
-        valid_fecha_hora.innerHTML = 'Ingrese la discapacidad';
-        en_cama.style.borderColor = 'red';
-        en_cama.focus();
-    } else {
-        valid_fecha_hora.innerHTML = '';
-        en_cama.style.borderColor = '';
-    }
-}
-discapacidad_input.onchange = function() {
-    if (discapacidad_input.value == '') {
-        valid_fecha_hora.innerHTML = 'Ingrese la discapacidad';
-        discapacidad_input.style.borderColor = 'red';
-        discapacidad_input.focus();
-    } else {
-        valid_fecha_hora.innerHTML = '';
-        discapacidad_input.style.borderColor = '';
-    }
-}
-btn_nueva_discapacidad.onclick = function() {
-    if (discapacidad_input.style.display == 'none') {
-        valid_fecha_hora.innerHTML = '';
-        discapacidad_input.style.display = '';
-        discapacidad_select.style.display = 'none';
-        discapacidad_select.value = 'vacio';
-        discapacidad_input.focus();
-        btn_nueva_discapacidad.innerHTML = 'Atrás';
-    } else {
-        valid_fecha_hora.innerHTML = '';
-        discapacidad_input.style.display = 'none';
-        discapacidad_select.style.display = '';
-        discapacidad_input.value = '';
-        discapacidad_select.focus();
-        btn_nueva_discapacidad.innerHTML = 'Nueva discapacidad';
-    }
-}
-persona.onkeyup = function() {
-    if (persona.value == '' || persona.value == null) {
-        valid_persona.innerHTML = "Debe ingresar una persona";
-        persona.focus();
-        persona.style.borderColor = 'red';
-    } else {
-        valid_persona.innerHTML = "";
-        persona.focus();
-        persona.style.borderColor = '';
-    }
-}
-btn_seleccionar.onclick = function() {
-    if (persona.value == '' || persona.value == null) {
-        valid_persona.innerHTML = "Debe ingresar una persona";
-        persona.focus();
-        persona.style.borderColor = 'red';
-    } else {
-        valid_persona.innerHTML = "";
-        persona.focus();
-        persona.style.borderColor = '';
-        $.ajax({
-            type: "POST",
-            url: BASE_URL + "presion_arterial/Administrar",
-            data: {
-                peticion: "Personas",
-                "cedula": persona.value
-            },
-        }).done(function(result) {
-            if (result == 0) {
-                valid_persona.innerHTML = "Esta persona no se encuentra registrada";
+       var fecha_hora=document.getElementById("fecha_hora");
+       var tension =document.getElementById("tension");
+       var frecuencia=document.getElementById("frecuencia");
+       var valid_tension=document.getElementById("valid_tension");
+       var valid_fecha=document.getElementById("valid_fecha_hora");
+       var valid_frecuencia=document.getElementById("valid_frecuencia");
+       var btn_seleccionar=document.getElementById("seleccionar_persona");
+        var persona=document.getElementById("cedula_propietario");
+        var valid_persona=document.getElementById("valid_persona");
+        var span_persona=document.getElementById("nombre_persona");
+        var div_info= document.getElementById("second");
+
+
+        btn_seleccionar.onclick = function() {
+            if (persona.value == '' || persona.value == null) {
+                valid_persona.innerHTML = "Debe ingresar una persona";
+                persona.focus();
+                persona.style.borderColor = 'red';
             } else {
                 valid_persona.innerHTML = "";
-                var datos = JSON.parse(result);
-                span_persona.innerHTML = datos[0]['primer_nombre'] + " " + datos[0]['primer_apellido'];
-                persona.disabled = 'disabled';
-                btn_seleccionar.style.display = 'none';
-                div_info.style.display = '';
-                registrar_btn.style.display = 'none';
-            }
-        })
-    }
-}
-en_cama.onchange = function() {
-    if (en_cama.value == 'vacio') {
-        valid_fecha_hora.innerHTML = 'Indique si está en cama';
-        en_cama.style.borderColor = 'red';
-        en_cama.focus();
-    } else {
-        valid_fecha_hora.innerHTML = '';
-        en_cama.style.borderColor = '';
-    }
-}
-btn_agregar.onclick = function() {
-    if ((discapacidad_input.style.display != 'none' && discapacidad_input.value == '') || (discapacidad_input.style.display == 'none' && discapacidad_select.value == 'vacio')) {
-        valid_fecha_hora.innerHTML = 'Ingrese la discapacidad';
-        discapacidad_input.style.borderColor = 'red';
-        discapacidad_input.focus();
-    } else {
-        valid_fecha_hora.innerHTML = '';
-        discapacidad_input.style.borderColor = '';
-        if (en_cama.value == 'vacio') {
-            valid_fecha_hora.innerHTML = 'Indique si está en cama';
-            en_cama.style.borderColor = 'red';
-            en_cama.focus();
-        } else {
-            valid_fecha_hora.innerHTML = '';
-            en_cama.style.borderColor = '';
-            var disc = new Object();
-            var textoDiscapacidad = "";
-            var textoNecesidades = necesidades.value;
-            var textoObservaciones = observaciones.value;
-            var textoEnCama = en_cama.value;
-            discapacidad_input.style.display != 'none' ? disc['discapacidad'] = discapacidad_input.value : disc['discapacidad'] = discapacidad_select.value;
-           /*  discapacidad_input.style.display != 'none' ? textoDiscapacidad = discapacidad_input.value : textoDiscapacidad = discapacidad_select.options[discapacidad_select.selectedIndex].text; */
-            discapacidad_input.style.display != 'none' ? disc['nuevo'] = '1' : disc['nuevo'] = '0';
-            disc['en_cama'] = en_cama;
-            textoNecesidades == '' ? disc['necesidades'] = "No posee" : disc['necesidades'] = textoNecesidades;
-            textoObservaciones == '' ? disc['observaciones'] = "No posee" : disc['observaciones'] = textoNecesidades;
-            var div = document.createElement("div");
-            var table = document.createElement("table");
-            table.style.width = '100%';
-            var tr = document.createElement("tr");
-            var td1 = document.createElement("td");
-            var td2 = document.createElement("td");
-            var td3 = document.createElement("td");
-            var td4 = document.createElement("td");
-            var td5 = document.createElement("td");
-            td5.style.textAlign = 'right';
-            td1.innerHTML = textoDiscapacidad;
-            td2.innerHTML = textoEnCama;
-            td3.innerHTML = textoNecesidades;
-            td4.innerHTML = textoObservaciones;
-            necesidades.value = '';
-            observaciones.value = '';
-            discapacidad_select.value = 'vacio';
-            discapacidad_input.value = '';
-            en_cama.value = 'vacio';
-            var button = document.createElement("input");
-            button.type = 'button';
-            button.value = 'X';
-            button.className = 'btn btn-danger';
-            td5.appendChild(button);
-            tr.appendChild(td1);
-            tr.appendChild(td2);
-            tr.appendChild(td3);
-            tr.appendChild(td4);
-            tr.appendChild(td5);
-            table.appendChild(tr);
-            div.appendChild(table);
-            var hr = document.createElement("hr");
-            discapacidades.push(disc);
-            div.appendChild(hr);
-            div_discapacidades.appendChild(div);
-            console.log(discapacidades);
-            button.onclick = function() {
-                div_discapacidades.removeChild(div);
-                discapacidades.splice(discapacidades.indexOf(disc), 1);
-                console.log(discapacidades);
+                persona.focus();
+                persona.style.borderColor = '';
+                $.ajax({
+                    type: "POST",
+                    url: BASE_URL + "presion_arterial/Administrar",
+                    data: {
+                        peticion: "Personas",
+                        "cedula": persona.value
+                    },
+                }).done(function(result) {
+                    if (result == 0) {
+                        valid_persona.innerHTML = "Esta persona no se encuentra registrada";
+                    } else {
+                        valid_persona.innerHTML = "";
+                        var datos = JSON.parse(result);
+                        span_persona.innerHTML = datos[0]['primer_nombre'] + " " + datos[0]['primer_apellido'];
+                        persona.disabled = 'disabled';
+                        btn_seleccionar.style.display = 'none';
+                        div_info.style.display = '';
+                        registrar_btn.style.display = 'none';
+                    }
+                })
             }
         }
-    }
-}
-btn_guardar.onclick = function() {
-    if (en_cama.length == 0) {
-        swal({
-            type: "error",
-            title: "Error",
-            text: "Ingrese la fecha y hora",
-            timer: 2000,
-            showConfirmButton: false
-        })
-    } else {
-        $.ajax({
-            type: "POST",
-            url: BASE_URL + "presion_arterial/Administrar",
-            data: {
-                cedula: persona.value,
-                discapacidades: discapacidades,
-                peticion: "Registrar",
-                sql: "SQL_06",
-                accion: "Se ha registrado la tensión del portador de la Cedula: " + $('#cedula').val(),
-            },
-        }).done(function(result) {
-            if (result == 1) {
-                swal({
-                    title: "Registrado!",
-                    text: "El elemento fue registrado con exito.",
-                    type: "success",
-                    showConfirmButton: false
-                });
-                setTimeout(function() {
-                    location.href = BASE_URL + "presion_arterial/Administrar/Consultas"
-                }, 1000);
+
+        $(document).ready(function() { 
+            $("#enviar").on("click", function() {
+       /*   if (fecha_hora.value == '' && tension.value == '' && frecuencia.value == '') {
+            valid_fecha.innerHTML = 'Debe seleccionar una fecha y hora';
+            fecha_hora.style.borderColor = 'red';
+            valid_fecha.style.color = 'red';
+            fecha_hora.focus();
+            valid_tension.innerHTML = 'el campo de tensión no puede estar vacio';
+            tension.style.borderColor = 'red';
+            valid_tension.style.color = 'red';
+            tension.focus();
+            valid_frecuencia.innerHTML = 'el campo frecuencia no puede estar vacio';
+            frecuencia.style.borderColor = 'red';
+            valid_frecuencia.style.color = 'red';
+            frecuencia.focus(); */
+           /*  valid_persona.innerHTML = 'el campo cedula no puede estar vacio';
+            persona.style.borderColor = 'red';
+            valid_persona.style.color = 'red';
+            persona.focus(); */
+        
+        if (fecha_hora.value == '') {
+            valid_fecha.innerHTML = 'Debe seleccionar una fecha y hora';
+            fecha_hora.style.borderColor = 'red';
+            valid_fecha.style.color = 'red';
+            fecha_hora.focus();
+        } 
+        /* else {
+            valid_persona.innerHTML = '';
+            fecha_hora.style.borderColor = '';
+            if (direccion.value == '' || direccion.value == null) {
+                valid_tension.innerHTML = 'el campo direccion no puede estar vacio';
+                direccion.style.borderColor = 'red';
+                valid_tension.style.color = 'red';
+                direccion.focus();
             } else {
-                swal({
-                    title: "ERROR!",
-                    text: "Ha ocurrido un Error.</br>" + result,
-                    type: "error",
-                    html: true,
-                    showConfirmButton: true,
-                    customClass: "bigSwalV2",
-                });
-            }
-        });
+                valid_tension.innerHTML = '';
+                direccion.style.borderColor = '';
+                if (nombre_negocio.value == '' || nombre_negocio.value == null) {
+                    mensaje_negocio.innerHTML = 'el campo nombre no puede estar vacio';
+                    nombre_negocio.style.borderColor = 'red';
+                    mensaje_negocio.style.color = 'red';
+                    nombre_negocio.focus();
+                } else {
+                    mensaje_negocio.innerHTML = '';
+                    nombre_negocio.style.borderColor = '';
+                    if (persona.value == '' || persona.value == null) {
+                        valid_persona.innerHTML = 'el campo cedula no puede estar vacio';
+                        persona.style.borderColor = 'red';
+                        valid_persona.style.color = 'red';
+                        persona.focus();
+                    } */  
+                    else {
+                        valid_persona.innerHTML = '';
+                        persona.style.borderColor = '';
+                            var datos = {
+                                fecha_hora: $("#fecha_hora").val(),
+                                tension: $("#tension").val(),
+                                frecuencia: $("#frecuencia").val(),
+                                persona: $("#cedula_propietario").val(),
+                                estado: 1
+                            };
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: BASE_URL + 'presion_arterial/Administrar',
+                                        data: {
+                                            'datos': datos,
+                                            peticion: "Administrar",
+                                            sql: "SQL_02",
+                                            accion: "Se ha registrado un nuevo control arterial: "+datos.nombre_negocio,
+                                        },
+                                        success: function(respuesta) {
+                                            if (respuesta == 1) {
+                                                swal({
+                                                    title: "Exito!",
+                                                    text: "Se ha registrado de forma exitosa",
+                                                    type: "success",
+                                                    showConfirmButton: false,
+                                                });
+                                                setTimeout(function() {
+                                                    location.href = BASE_URL + 'presion_arterial/Administrar/Consultas';
+                                                }, 2000);
+                                            } else {
+                                                swal({
+                                                    title: "ERROR!",
+                                                    text: "Ha ocurrido un Error.</br>" + respuesta,
+                                                    type: "error",
+                                                    html: true,
+                                                    showConfirmButton: true,
+                                                    customClass: "bigSwalV2",
+                                                });
+                                            }
+                                        },
+                                        error: function(respuesta) {
+                                            alert("Error al enviar Controlador")
+                                        }
+                                    });
+                                }
+                            }
+               /*          }
+                    }
+        }
+
     }
-}
+}); */
+
+   /*  document.onkeypress = function(e) {
+        if (e.which == 13 || e.keyCode == 13) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+       */  
+            )})

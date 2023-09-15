@@ -31,7 +31,7 @@
                         <div class="col-md-12">
                          <label>Persona</label> <span id='valid_persona' style='color:red'></span>
                          <table style='width:100%'><tr><td>
-                             <input type="number" maxlength="15" placeholder="Buscar cédula" class='form-control ' id='persona' name="" list='lista_personas' oninput="Limitar(this,15)">
+                             <input type="number" maxlength="15" placeholder="Buscar cédula" class='form-control ' id='cedula_propietario' name="" list='lista_personas' oninput="Limitar(this,15)">
 
                              <datalist id='lista_personas'>
                                  <?php foreach ($this->datos["personas"] as $p) { ?>
@@ -52,9 +52,10 @@
 
                          <div class="col-md-12">
 
-                             <label>Presión arterial</label> <span id='valid_discapacidad' style='color:red'></span>
+                         <label>Historial de presión arterial de <span id='nombre_persona'></span></label>
+                             
                              <table style='width:100%'><tr>
-                                 <td>
+                                  <td>
                                   <input type="text" style='display:none'  placeholder="Discapacidad..." class='form-control' id='discapacidad_input' name="" oninput="Limitar(this,30)"> 
                                         
                                  <select class='form-control' id='discapacidad_select' style='display:none' > 
@@ -74,16 +75,18 @@
                              </td> -->
                              <td>
                              <span id='valid_fecha_hora' style='color:red'></span>
-                               <input type="datetime-local" class='form-control ' id='fecha_hora' placeholder="Tension arterial" name="">
+                               <input type="datetime-local" class='form-control ' id='fecha_hora' placeholder="Tension arterial" name="datos[fecha_hora]">
                              </td>
                              <td>
-                               <input type="text" class='form-control ' id='tension' placeholder="Tension arterial" name="">
+                             <span id='valid_tension' style='color:red'></span>
+                               <input type="text" class='form-control ' id='tension' placeholder="Tension arterial" name="datos[tension]">
                              </td>
                             <td>
-                               <input type="text" class='form-control ' id='frecuencia' placeholder="Frecuencia cardiaca" name="">
+                            <span id='valid_frecuencia' style='color:red'></span>
+                               <input type="text" class='form-control ' id='frecuencia' placeholder="Frecuencia cardiaca" name="datos[frecuencia]">
                              </td>
                              <td>
-                                <button id='agregar' class="btn btn-info" type="button">Agregar</button>&nbsp;&nbsp;<button type='button' class="btn btn-primary" id='btn_nueva_discapacidad' >Nueva discapacidad</button>
+                            <!--     <button id='agregar' class="btn btn-info" type="button">Agregar</button>&nbsp;&nbsp;<button type='button' class="btn btn-primary" id='btn_nueva_discapacidad' >Nueva discapacidad</button> -->
                             </td>
                         </tr>
                     </table>
@@ -100,11 +103,7 @@
 
                     
 
-                     <label>Historial de presión arterial <span id='nombre_persona'></span></label>
-                     <center><div style='width:95%;height:200px;overflow-y: scroll;background: #D4E6F4'>
-                         <center><div id='discapacidades_agregadas' style='width:95%'></div></div>
-                         </center>
-                         <br>
+                     
 
 
                         <!--  <input type="text"> -->
@@ -174,7 +173,7 @@
 
              <!-- /.card-body -->
 
-             <center><input type="button" class="btn" style="background:#15406D; color:white" name="" id="guardar" value="Guardar"></center>
+             <center><input type="button" class="btn" style="background:#15406D; color:white" name="" id="enviar" value="Guardar"></center>
          </form>
          <!-- /.card-footer-->
      </div>

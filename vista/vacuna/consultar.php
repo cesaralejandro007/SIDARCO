@@ -22,7 +22,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Consulta y Exportacion de Datos de Vacunas</h3>
+                <h3 class="card-title">Consulta y exportacion de datos</h3>
 
             </div>
             <!-- /.card-header -->

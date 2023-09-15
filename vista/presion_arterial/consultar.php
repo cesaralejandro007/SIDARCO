@@ -31,7 +31,7 @@
                         <tr>
                             <th>Cedula</th>
                             <th>Nombre</th>
-                            <th>Presiones arteriales</th>
+                            <th>Fecha y hora</th>
                             <?php if ($_SESSION['Discapacitados']['modificar']) {?>
                                 <th style="width: 20px;">Editar</th>
                             <?php }?>
@@ -60,7 +60,7 @@ $(function() {
                 }, {
                     "data": "nombre"
                 }, {
-                    "data": "presiones_arteriales"
+                    "data": "fecha_presion"
                 }, <?php if ($_SESSION['Discapacitados']['modificar']) {?> {
                     "data": "editar"
                 }, <?php }?>
@@ -206,7 +206,7 @@ $(function() {
     <tr>
        <th>Cedula</th>
        <th>Nombre</th>
-       <th>Presiones rateriales</th>
+       <th>Fecha y hora</th>
        <?php if ($_SESSION['Discapacitados']['modificar']) {?>
         <th style="width: 20px;">Editar</th>
     <?php }?>
@@ -225,7 +225,7 @@ $(function() {
 <!-- /.content -->
 <!-- /.content -->
 </div>
-<?php include modal . "editar-discapacitados.php";?>
+<?php include modal . "editar-presion-arterial.php";?>
 <!-- /.content-wrapper -->
 <script src="<?php echo constant('URL') ?>config/js/news/crud-discapacitados.js"></script>
 <?php include call . "Fin.php";?>

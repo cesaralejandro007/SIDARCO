@@ -418,7 +418,10 @@
                 genero,
                 nivel_educativo,
                 correo,
-                telefono
+                telefono,
+                camisa,
+                pantalon,
+                calzado
 
                 ) VALUES (
                 :cedula_integrante,
@@ -431,7 +434,10 @@
                 :genero,
                 :nivel_educativo,
                 :correo,
-                :telefono
+                :telefono,
+                :camisa,
+                :pantalon,
+                :calzado
             )');
 
             $datos->execute([
@@ -445,7 +451,10 @@
                 'genero'               =>$data['genero'],
                 'nivel_educativo'      =>$data['nivel_educativo'],
                 'correo'               =>$data['correo'],
-                'telefono'             =>$data['telefono']
+                'telefono'             =>$data['telefono'],
+                'camisa'               =>$data['camisa'],
+                'pantalon'             =>$data['pantalon'],
+                'calzado'              =>$data['calzado']
             ]);
 
             return true;

@@ -32,60 +32,26 @@ class presion_arterial extends Controlador
             case 'Registros':$this->vista->Cargar_Vistas('presion_arterial/registrar');break;
             case 'Consultas':$this->vista->Cargar_Vistas('presion_arterial/consultar');break;
 
-            case 'Eliminar':
-                $this->modelo->__SET("eliminar", array(
-                    "tabla"    => $_POST['estado']["tabla"],
-                    "id_tabla" => $_POST['estado']["id_tabla"])
-                );
-                $this->modelo->Datos([$_POST['estado']["id_tabla"] => $_POST['estado']["param"]]);
+            case 'Administrar':
+                if (isset($_POST['datos'])) {
+                    $this->modelo->Datos($_POST['datos']);
+                } else {
+                    $this->modelo->Estado($_POST['estado']);
+                    $this->modelo->Datos([
+                        $_POST['estado']["id_tabla"] => $_POST['estado']["param"],
+                        "estado"                     => $_POST['estado']["estado"],
+                    ]);
+                }
+
                 $this->modelo->__SET("SQL", $_POST['sql']);$this->modelo->__SET("tipo", "1");
 
-                if ($this->modelo->Administrar()) {$this->mensaje = 1;$this->Accion($_POST['accion']);}
+                if ($this->modelo->Administrar()) {$this->mensaje = 1; $this->Accion($_POST['accion']);}
 
                 echo $this->mensaje;unset($_POST, $this->mensaje);
                 break;
-            case 'Registrar':
-                for ($i = 0; $i < count($_POST['presion_arterial']); $i++) {
-                    if ($_POST['presion_arterial'][$i]['nuevo'] == '0') {
-                        $this->modelo->__SET("SQL", $_POST['sql']); $this->modelo->__SET("tipo", "1");
-                        $this->modelo->Datos([
-                            "cedula_persona"           => $_POST['cedula'],
-                            "fecha_presion"            => $_POST['presion_arterial'][$i]['fecha_tension'],
-                            "t_a"                      => $_POST['presion_arterial'][$i]['t_a'],
-                            "f_c"                      => $_POST['presion_arterial'][$i]['f_c'],
-                            "nota"                     => $_POST['presion_arterial'][$i]['nota'],
-                        ]);
 
-                        if ($this->modelo->Administrar()) {$this->mensaje = 1;}
-                    } else {
-                        $this->modelo->__SET("SQL", "_02_");$this->modelo->__SET("tipo", "1");
-                        $this->modelo->__SET("registrar", array("tabla" => "presiones_arteriales", "columna" => "nombre_discapacidad"));
-                        $this->modelo->Datos(["nombre_discapacidad" => $_POST['discapacidades'][$i]['discapacidad'], "estado" => 1]);
-
-                        if ($this->modelo->Administrar()) {
-                            $this->modelo->__SET("SQL", "_03_"); $this->modelo->__SET("tipo", "0");
-                            $this->modelo->__SET("ultimo", array("tabla" => "discapacidad", "id" => "id_discapacidad"));
-                            $id = $this->modelo->Administrar();
-
-                            foreach ($id as $id_e) {
-                                $this->modelo->__SET("SQL", $_POST['sql']);$this->modelo->__SET("tipo", "1");
-                                $this->modelo->Datos([
-                                    "cedula_persona"           => $_POST['cedula'],
-                                    "fecha_presion"            => $_POST['discapacidades'][$i]['fecha_presion'],
-                                    "t_a"                      => $_POST['discapacidades'][$i]['t_a'],
-                                    "f_c"                      => $_POST['discapacidades'][$i]['f_c'],
-                                    "nota"                     => $_POST['discapacidades'][$i]['nota'],
-                                ]);
-                                if ($this->modelo->Administrar()) {$this->mensaje = 1;}
-                            }
-                        }
-                    }
-                }
-                echo $this->mensaje;unset($this->mensaje, $id, $_POST);
-                break;
             case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["presiones_arteriales"]);break;
 
-            
                 
                 $this->Escribir_JSON($retornar);
                 unset($retornar, $discapacidades_p, $id_discapacidad_p, $en_cama_valor);

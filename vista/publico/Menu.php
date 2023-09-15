@@ -396,7 +396,7 @@
                         <ul class="nav nav-treeview">
                             <?php if ($_SESSION['Enfermos']['registrar'] == '1') { ?>
                                 <li class="nav-item" onclick="cambio_modulo('Registrar enfermos')">
-                                    <a href="<?php echo constant('URL'); ?>Enfermos/Administrar/Registros/" class="nav-link">
+                                    <a href="<?php echo constant('URL'); ?>Consultas/Administrar/Registros/" class="nav-link">
                                         <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
                                         <p>Realizar Consulta</p>
                                     </a>
@@ -404,7 +404,7 @@
                             <?php } ?>
                             <?php if ($_SESSION['Enfermos']['consultar'] == '1') { ?>
                                 <li class="nav-item" onclick="cambio_modulo('Consultar enfermos')">
-                                    <a href="<?php echo constant('URL'); ?>Enfermos/Administrar/Consultas/" class="nav-link">
+                                    <a href="<?php echo constant('URL'); ?>Consultas/Administrar/Consultas/" class="nav-link">
                                         <i class="fa fa-list nav-icon text-info"></i>
                                         <p>Consultar </p>
                                     </a>
@@ -414,6 +414,35 @@
                     </li>
                 <?php } ?>
 
+                <?php if ($_SESSION['Enfermos']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0') { ?>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link">
+
+                        <i class="nav-icon fas fa-file-medical"></i>
+                            <p>
+                                Gestionar Referencias médicas
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <?php if ($_SESSION['Enfermos']['registrar'] == '1') { ?>
+                                <li class="nav-item" onclick="cambio_modulo('Registrar enfermos')">
+                                    <a href="<?php echo constant('URL'); ?>Consultas/Administrar/Registros/" class="nav-link">
+                                        <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
+                                        <p>Registrar referencia</p>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <?php if ($_SESSION['Enfermos']['consultar'] == '1') { ?>
+                                <li class="nav-item" onclick="cambio_modulo('Consultar enfermos')">
+                                    <a href="<?php echo constant('URL'); ?>Consultas/Administrar/Consultas/" class="nav-link">
+                                        <i class="fa fa-list nav-icon text-info"></i>
+                                        <p>Consultar referencias </p>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </li>
+                <?php } ?>
 
                 <!-- ===============================================================================================  -->
                 <?php if ($_SESSION['Parto humanizado']['consultar'] != '0' || $_SESSION['Parto humanizado']['registrar'] != '0') { ?>

@@ -686,9 +686,9 @@ public function registrar_persona_habitante(){
 public function registrar_transporte(){
 
   $datos=[
-    "cedula_propietario" =>  $_POST['cedula_propietario'],
-    "tipo_transporte"    =>$_POST['transporte'],
-    "descripcion_transporte"        => $_POST['tipo_transporte']
+    "cedula_propietario"            =>  $_POST['cedula_propietario'],
+    "tipo_transporte"               =>  $_POST['tipo_transporte'],
+    "descripcion_transporte"        =>  $_POST['descripcion_transporte']
     
   ];
 

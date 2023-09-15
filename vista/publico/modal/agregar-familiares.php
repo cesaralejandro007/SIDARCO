@@ -256,7 +256,7 @@
                                                 </label>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-numeros" id="calzado"
-                                                        name="datos[codigo_patria]" placeholder="Número de calzado" type="number" oninput="Limitar(this,2)"/>
+                                                        name="datos[calzado]" placeholder="Número de calzado" type="number" oninput="Limitar(this,2)"/>
                                                     </div>
                                                     <span id="valid_11" style="color:red;"></span>
                                                 </div>
