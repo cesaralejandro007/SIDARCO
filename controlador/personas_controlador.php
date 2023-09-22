@@ -609,8 +609,6 @@ public function Consultas_cedula()
 }
 
 
-
-
 public function Consultas_cedulaV2()
 {
 

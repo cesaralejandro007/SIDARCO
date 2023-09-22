@@ -1155,7 +1155,7 @@
                     <div class="col-md-12 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CEF6F5;width: 100%;height: 200px !important' id='ubicaciones_persona'>
                     </div>
                 </div>
-        </div>   
+            </div>   
                         <br>
                        <!--  <div>
                         </div>  Aqui vemos que tal -->                  

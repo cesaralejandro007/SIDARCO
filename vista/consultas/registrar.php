@@ -29,15 +29,53 @@
             <form action="" enctype="multipart/form-data" id="formulario" method="POST" name="formulario" >
                 <!-- card-body -->
                 <div class="card-body">
+
                     <div class="card-block">
                         <div class="form-group row justify-content-center">
-                        <div class="col-md-6 mt-2">
+                        <div class="col-md-12 mt-2">                                
+            <label for="id_ubicacion" >Ubicación del funcionario o funcionaria</label>
+            <span style='display:none;color:red' id='valid_43'>Ingrese la ubicación</span>
+            <table style='width:100%'>
+                    <!--<tr><td style='width:120%'> -->
+                <div class="col-md-12">
+                    <!-- <label>Ubicación</label> -->
+                    <span id='valid_enfermedad' style='color:red'></span>
+                    <table style='width:100%'>
+                        <tr>
+                            <td class="col-md-6 p-0">
+                                <select class='form-control no-simbolos mt-2' id='cedula_persona' name="datos[cedula_persona]" style="width: 100%">
+                                    <option value='0' >-Seleccione Funcionario/a-</option>
+                                    <?php foreach($this->datos["personas"] as $p) {?>
+                                        <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['cedula_persona']." ".$p["primer_apellido"]; ?></option>
+                                    <?php }?>
+                                </select>
+                            </td>
+                            <td class="col-md-5 p-0">
+                                <select class='form-control no-simbolos mt-2' id='id_familia' name="datos[id_familia]" style="width: 100%">
+                                    <option value='0' >-Seleccione familiar-</option>
+                                </select>
+                            </td>
+                          
+                            <td class="p-0">
+                                <button id='agregar_ubicacion' class="btn btn-info mt-2" type="button">Agregar</button>&nbsp;&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                            <!-- <div class="col-md-10 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CFFEDE; width: 800;height: 200px !important' id='ubicaciones_personas'> -->
+                            <!-- </div> -->
+                    <!-- <div class="col-md-12 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CEF6F5;width: 100%;height: 200px !important' id='ubicaciones_persona'>
+                    </div> -->
+                </div>
+            </div>  
+
+
+                        <!-- <div class="col-md-6 mt-2">
                                 <label for="cedula_propietario">
                                     Funcionaria/o
                                 </label>
                                 <div class="input-group">
                                     <input list="cedula" id="cedula_propietario" name="datos[cedula_propietario]"
-                                        class="form-control no-simbolos letras_numeros" placeholder="Cedula" oninput="Limitar(this,15);"/>
+                                        class="form-control no-simbolos letras_numeros" placeholder="Cedula" oninput="Limitar(this,15);" />
                                     <datalist id="cedula">
                                         <?php foreach($this->datos["personas"] as $persona){   ?>
                                         <option value="<?php echo $persona["cedula_persona"];?>">
@@ -67,7 +105,7 @@
                                     
                                 </div>
                                 <span id="mensaje_calle"></span>
-                            </div>
+                            </div> -->
 
                            
                             <div class="col-md-6 mt-2">
@@ -130,7 +168,7 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<script src="<?php echo constant('URL')?>config/js/news/registrar_negocios.js"></script> 
+<script src="<?php echo constant('URL')?>config/js/news/registrar_consultas.js"></script> 
 <?php include (call."Fin.php"); ?>
 <?php include (call."Style-seguridad.php"); ?>
 

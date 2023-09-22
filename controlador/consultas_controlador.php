@@ -50,13 +50,21 @@ class Consultas extends Controlador
                 echo $this->mensaje;unset($_POST, $this->mensaje);
                 break;
 
-            case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["negocios"]);break;
+            case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["familia_personas"]);break;
 
             case 'Existente':
                 foreach ($this->datos["negocios"] as $key => $value) {
                     if ($value["rif_negocio"] == $_POST['rif_negocio']) {$existente = 1;} else {$existente = 0;}
                 }
                 echo ($existente);unset($existente);
+                break;
+
+            case 'Consulta_familia':
+
+                $cedula_persona=$_POST['cedula_persona'];
+                echo $this->vista->personas=$this->Consultar_Familia_Persona($cedula_persona);
+                return;
+
                 break;
 
             case 'Consultas_Calle':

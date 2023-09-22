@@ -1,4 +1,3 @@
-
 //--------------------------Indice y datos especificos de las tablas-------------------------------------//
 
 var index=0;
@@ -701,7 +700,7 @@ btn_agregar_ubicacion.onclick=function(){
       text=cargos.options[cargos.selectedIndex].text;
       
     }
-    else{
+    else  {
       
       
     }
