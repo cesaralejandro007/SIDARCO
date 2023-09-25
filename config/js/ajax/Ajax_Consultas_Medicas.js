@@ -1,7 +1,7 @@
 $(function() {
     $.ajax({   
         type: "POST",
-        url: BASE_URL + "Consultas/Administrar", 
+        url: BASE_URL + "Negocios/Administrar", 
         data: {
             peticion: "Consulta_Ajax",
         }, 

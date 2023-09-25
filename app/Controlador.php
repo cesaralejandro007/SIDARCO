@@ -186,6 +186,37 @@ class Controlador
         }
     }
 
+
+    public function Consultar_Familia_Persona($cedula_persona){
+
+        $sql="SELECT id_familia_persona, primer_nombre, primer_apellido from familia f inner join familia_personas p on p.cedula_persona= ".$cedula_persona."";
+        $respuesta_arreglo='';
+        try{ 
+        $datos=$this->conexion->prepare($sql);
+        $datos->execute();
+        $datos->setFetchMode(PDO::FETCH_ASSOC);
+        $respuesta_arreglo=$datos->fetchAll(PDO::FETCH_ASSOC);
+
+        $resul ="<option value='0'>-Seleccione Familiar-</option>";
+        foreach ($respuesta_arreglo as $p) {
+            $resul = $resul.  "<option value=". $p['id_familia_persona'] ." > ".$p['primer_nombre']." ".$p['primer_apellido']."</option>";
+        }
+        return $resul;
+        
+    }catch (PDOException $e) {
+
+        $errorReturn = ['estatus' => false];
+        $errorReturn += ['info' => "error sql:{$e}"];
+        return $errorReturn;
+    }
+
+    }
+
+
+
+
+    
+
     public function Consultar_Tabla_secciones($areas)
     {
         $sql               = "SELECT secciones.id_seccion as id_seccion, secciones.nombre_seccion as nombre_seccion FROM areas,secciones WHERE areas.id_seccion = secciones.id_seccion and areas.id_area = $areas";
@@ -334,6 +365,8 @@ class Controlador
             return $errorReturn;
         }
     }
+
+    
    
 
     public function Consultar_Tabla_divisiones($tabla)
@@ -352,6 +385,9 @@ class Controlador
             return $errorReturn;
         }
     }
+
+
+
 
     public function Consultar_Tabla_egresados($tabla)
     {

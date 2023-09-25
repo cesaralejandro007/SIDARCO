@@ -14,10 +14,10 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
+<!-- Main content -->
+<section class="content">
         <!-- Default box -->
-        <div class="card">
+        <div class="card"><!--LISTO-->
             <div class="card-header">
                 <h3 class="card-title">Formulario de Registro</h3>
                 <div class="card-tools">
@@ -26,116 +26,88 @@
                     </button>
                 </div>
             </div>
-            <form action="<?php echo constant('URL'); ?>Familias/Nuevo_Familia" enctype="multipart/form-data"
+            <form action="<?php echo constant('URL'); ?>" enctype="multipart/form-data"
                 id="formulario" method="POST" name="formulario">
-                <!-- card-body -->
-
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                        <div class="vtabs">
+                            <div class="vtabs">
                                 <ul class="nav nav-tabs tabs-vertical" role="tablist">
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a class="nav-link active" id='tab_1'>
+                                        <a class="nav-link active" data-toggle="tab" id="tab_1" href="#panel5" role="tab">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-home"></i>
                                             </span>
                                             <span class="hidden-xs-down">
-                                                Información Personal
+                                            Información básica del paciente
                                             </span>
                                         </a>
                                     </li>
-                                    
-                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_2' >
+                                <!--  <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
+                                        <a class="nav-link" data-toggle="tab" href="#panel6" role="tab">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-user"></i>
                                             </span>
                                             <span class="hidden-xs-down">
-                                                Antecedentes patológicos 
-                                                <!--carnets-->
+                                                Documentos Personales
                                             </span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_3' >
+                                        <a class="nav-link" data-toggle="tab" id="tab_2" href="#panel7" role="tab">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-email"></i>
                                             </span>
                                             <span class="hidden-xs-down">
-                                                
-                                                Información Laboral
-                                                <!--DATOS DE CONTACTO-->
-                                                
+                                            Antecedentes patológicos y alérgias
                                             </span>
                                         </a>
                                     </li>
 
-                                    <!--
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_3' >
+                                        <a class="nav-link" data-toggle="tab" id="tab_3" href="#panel3" role="tab">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-email"></i>
                                             </span>
                                             <span class="hidden-xs-down">
-                                                Información política
+                                            Diagnóstico del paciente
                                             </span>
                                         </a>
                                     </li>
---><!--
-                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_5'>
-                                            <span class="hidden-sm-up">
-                                                <i class="ti-email"></i>
-                                            </span>
-                                            <span class="hidden-xs-down">
-                                                Información laboral
-                                            </span>
-                                        </a>
-                                    </li>
--->
-                                    <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a id='tab_4'>
-                                            <span class="hidden-sm-up">
-                                                <i class="ti-email"></i>
-                                            </span>
-                                            <span class="hidden-xs-down">
-                                                Información de usuario
-                                            </span>
-                                        </a>
-                                    </li>
+                                    
                                 </ul>
                                 <!-- Tab panes -->
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="panel1" role="tabpanel">
+                                    <div class="tab-pane active" id="panel5" role="tabpanel">
                                         <div class="row">
-                                            <div class="col-md-12 text-center">
-                                                <h2>
-                                                    Historial Clínico
-                                                </h2>
-                                            </div>
 
+                                        <div class="col-md-12 text-center">
+                                                    <h2>
+                                                    Historial Clínico
+                                                    </h2>
+                                                </div> 
                                             <div class="col-md-12 mt-4">
                                                 <label for="primer_nombre">
                                                     Cédula del funcionario o funcionaria
                                                 </label>
                                                 <span id='valid_1' style="color:red;"></span>
+                                            </div>
+
                                                 <div class="input-group">
                                                 <input type="text"  class='form-control letras_numeros' id='cedula_persona' placeholder="Buscar cédula" name="datos['cedula_persona']" list='lista' oninput="Limitar(this,15)">
                                                             <datalist id='lista' >
                                                             <option selected="" value=""></option>
                                                                 <?php foreach ($this->personas as $p) { ?>
                                                                         <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['primer_nombre']." ".$p['primer_apellido']; ?></option>
-                                                            <?php    } ?>
+                                                            <?php  } ?>
                                                             </datalist>
                                                     <button class='btn btn-info' type='button' id='nueva_personas'>Nueva</button>
                                                 </div>
 
-                                                </div>
+                                               <!--  </div> -->
 
-
-
-                                            <div class="col-md-4 mt-2">
+                               
+                                                <div class="col-md-4 mt-2">
                                                 <label for="tipo_sangre">
                                                     Tipo de sangre
                                                 </label><span id='valid_2' style="color:red;"></span>
@@ -147,59 +119,38 @@
 
                                             </div>
 
-       <!--                                      <div class="col-md-6 mt-2">
-                                                <label for="primer_apellido">
-                                                    Téléfono de familia
-                                                </label><span id='valid_3' style="color:red;"></span>
-                                                <div class="input-group">
-                                                    <input class="form-control mb-10 solo-numeros" id="telefono_familia"
-                                                        name="datos[telefono_familia]" placeholder="telefono_familia"
-                                                        type="number" oninput="Limitar(this,12)"/>
-                                                </div>
-
-                                            </div> -->
-
-                 <!--                            <div class="col-md-6 mt-2">
-                                                <label for="segundo_apellido">
-                                                    Ingreso mensual Aprox
-                                                </label><span id='valid_4' style="color:red;"></span>
-                                                <div class="input-group">
-                                                    <input class="form-control mb-10 no-acentos" id="ingreso_aprox"
-                                                        name="datos[ingreso_aprox]" placeholder="Ingreso mensual aprox"
-                                                        type="text" oninput="Limitar(this,10)"/>
-                                                </div>
-
-                                            </div>
- -->
-
-
                                             <div class="col-md-4 mt-2">
                                                 <label for="peso">
                                                     Peso
                                                 </label>
+                                                <span id='valid_3' style="color:red;"></span>
                                                 <div class="input-group">
                                                 <input class='form-control' id='peso'  placeholder="Peso de la persona"  type="text" >
                                                 </div>
 
-                                            </div>
-                                            <div class="col-md-4 mt-2">
+                                             </div>
+
+                                             <div class="col-md-4 mt-2">
                                                 <label for="altura">
                                                     Altura
                                                 </label>
+                                                <span id='valid_4' style="color:red;"></span>
                                                 <div class="input-group">
-                                                <input class='form-control' id='altura'  placeholder="Altura de la persona"  type="text" >
+                                                    <input class='form-control' id='altura'  placeholder="Altura de la persona"  type="text" >
                                                 </div>
 
-                                            </div>
+                                            </div> <!-- FOOTER -->
 
-
-                                            <div class="col-md-12 mt-2">
+                                            
+                                         </div> 
+                                   
+                                      <div class="col-md-12 mt-2">
                                                 <label for="habit_psicol">
-                                                   Hábitos psicológicos
+                                                    Hábitos psicológicos
                                                 </label><span id='valid_5' style="color:red;"></span>
                                                 <div class="input-group">
-                                                <table style='width:100%'>
-                                                    <tr>
+                                                    <table style='width:100%'>
+                                                        <tr>
                                                         <td>
                                                         <input type="text" class='form-control letras_numeros' id='habit_psicol' placeholder="Buscar hábitos"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
                                                             <datalist id='lista_persona'>
@@ -213,7 +164,7 @@
                                                                     
                                                                 </label> -->
                                                                 <input type="text" placeholder="Descripción (opcional)" class="form-control letras_numeros" id="observacion" >
-                                                         <!--    <select class="custom-select" id="parentezco"
+                                                            <!--    <select class="custom-select" id="parentezco"
                                                         name="datos[parentezco]" >
                                                         <option selected="" value="0">
                                                             -Seleccione el tipo de parentezco-
@@ -233,72 +184,274 @@
                                                         <option value="Conyugue">
                                                             Conyugue 
                                                         </option>
-                                                    </select> -->
-                                                                   </td>
+                                                        </select> -->
+                                                        </td>
                                                         </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
-                                                      </tr>
-                                                      <tr><td colspan='2'><br>
-                                                           <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
+                                                        </tr>
+                                                        <tr><td colspan='2'><br>
+                                                        <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
                                                             <div style='width:100%' id='integrantes_agregados'></div>
                                                         </center>
-                                                           </div>
-                                                      </td>
-                                                   </table>
+                                                        </div>
+                                                        </td>
+                                                    </table>
                                                 </div>
 
                                             </div>
-<!-- 
-                                            <div class="col-md-4 mt-2">
-                                                <label for="tipo_persona">
-                                                    Tipo de parentezco 
-                                                </label>
-                                                <div class="input-group">
-                                                   
+                                    
+                                       </div> 
+
+                                <br>
+
+                            <!---------------ANTECEDENTES Y ALERGIAS-------------------------->
+
+            
+                                <div class="tab-pane" id="panel7" role="tabpanel">
+                                    <div class="row">
+                                                <div class="col-md-12 text-center">
+                                                    <h2>
+                                                    Antecedentes y alérgias
+                                                    </h2>
+                                                </div> 
+
+                                                <div class="col-md-12 mt-2">
+                                                    <div class="form-group">
+                                                        <label for="habit_psicol">
+                                                        Antecedentes patológicos
+                                                        </label><span id='valid_5' style="color:red;"></span>
+                                                        <div class="input-group">
+                                                            <table style='width:100%'>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="text" placeholder="Familiar o personal" class="form-control" id="" name="datos[tipo_ant]">
+                                                                    <input type="text" class='form-control letras_numeros' id='habit_psicol' placeholder="Buscar hábitos"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
+                                                                        <datalist id='lista_persona'>
+                                                                            <?php foreach ($this->habit_psicols as $int) { ?>
+                                                                            <option value='<?php echo $int['nombre_psicol'];?>'><?php echo $int['id_habit_psicol']; ?></option>
+                                                                            <?php } ?>
+                                                                        </datalist>
+                                                                        <td class="col-md-6 p-0">
+                                                                        <!-- <label for="parentezco">
+                                                                            Parentezco
+                                                                        </label> -->
+                                                                    <input type="text" placeholder="Descripción (opcional)" class="form-control letras_numeros" id="observacion" >
+                                                                </td>
+                                                                    </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
+                                                                        </tr>
+                                                                    <tr><td colspan='2'><br>
+                                                                <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
+                                                                <div style='width:100%' id='integrantes_agregados'></div>
+                                                                </center>
+                                                                </div>
+                                                            </td>
+                                                        </table>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div> -->
+                                            </div>
 
 
-                                         </div></div></div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <!-- <div class="text-center m-t-20">
-                        <div class="col-xs-12">
-                            <input type="button" class="btn" style="background:#15406D; color:white" name="" id="guardar" value="Guardar">
-                            
-                        </div>
-                    </div> -->
-                    <div class="col-md-12 mt-4">
-        <div style="float: left;">
-            <a id="anterior" style='display:none' type="button" class="btn btn-secondary text-white">
-                Anterior
-            </a>
-        </div>
-    </div>
-    <div class="col-md-12 mt-4">
+
+                                            <div class="col-md-12 mt-2">
+                                                <label for="habit_psicol">
+                                                Alergias
+                                                </label><span id='valid_5' style="color:red;"></span>
+                                                <div class="input-group">
+                                                    <table style='width:100%'>
+                                                        <tr>
+                                                        <td>
+                                                        <input type="text" class='form-control letras_numeros' id='habit_psicol' placeholder="Buscar hábitos"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
+                                                            <datalist id='lista_persona'>
+                                                                <?php foreach ($this->habit_psicols as $int) { ?>
+                                                                <option value='<?php echo $int['nombre_psicol'];?>'><?php echo $int['id_habit_psicol']; ?></option>
+                                                            <?php } ?>
+                                                            </datalist>
+                                                            <td class="col-md-6 p-0">
+                                                                <!-- <label for="parentezco">
+                                                                    Parentezco
+                                                                    
+                                                                </label> -->
+                                                                <input type="text" placeholder="Descripción (opcional)" class="form-control letras_numeros" id="observacion" >
+                                                            <!--    <select class="custom-select" id="parentezco"
+                                                        name="datos[parentezco]" >
+                                                        <option selected="" value="0">
+                                                            -Seleccione el tipo de parentezco-
+                                                        </option>
+                                                        <option value="Padre">
+                                                            Padre
+                                                        </option>
+                                                        <option value="Madre" >
+                                                            Madre
+                                                        </option>
+                                                        <option value="Hijo">
+                                                            Hijo
+                                                        </option>
+                                                        <option value="Hija">
+                                                            Hija
+                                                        </option>
+                                                        <option value="Conyugue">
+                                                            Conyugue 
+                                                        </option>
+                                                        </select> -->
+                                                        </td>
+                                                        </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
+                                                        </tr>
+                                                        <tr><td colspan='2'><br>
+                                                        <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
+                                                            <div style='width:100%' id='integrantes_agregados'></div>
+                                                        </center>
+                                                        </div>
+                                                        </td>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+
+                                    <div class="col-md-12 mt-2">
+                                        <div class="form-group">
+                                                <label for="habit_psicol">
+                                                    Intervenciones quirúrgicas 
+                                                </label>
+                                                <span id='valid_5' style="color:red;"></span>
+                                            <div class="input-group">
+                                                        <table style='width:100%'>
+                                                        <tr>
+                                                        <td>
+                                                        <input type="text" class='form-control letras_numeros' id='habit_psicol' placeholder="Buscar hábitos"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
+                                                            <datalist id='lista_persona'>
+                                                                <?php foreach ($this->habit_psicols as $int) { ?>
+                                                                <option value='<?php echo $int['nombre_psicol'];?>'><?php echo $int['id_habit_psicol']; ?></option>
+                                                            <?php } ?>
+                                                            </datalist>
+                                                            <td class="col-md-6 p-0">
+                                                                <!-- <label for="parentezco">
+                                                                    Parentezco
+                                                                </label> -->
+                                                                <input type="text" placeholder="Descripción (opcional)" class="form-control letras_numeros" id="observacion" >
+                                                                <!--    <select class="custom-select" id="parentezco"
+                                                                name="datos[parentezco]" >
+                                                                <option selected="" value="0">
+                                                                    -Seleccione el tipo de parentezco-
+                                                                </option>
+                                                                <option value="Padre">
+                                                                    Padre
+                                                                </option>
+                                                                <option value="Madre" >
+                                                                    Madre
+                                                                </option>
+                                                                <option value="Hijo">
+                                                                    Hijo
+                                                                </option>
+                                                                <option value="Hija">
+                                                                    Hija
+                                                                </option>
+                                                                <option value="Conyugue">
+                                                                    Conyugue 
+                                                                </option>
+                                                                </select> -->
+                                                            </td>
+                                                    </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td colspan='2'><br>
+                                                        <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
+                                                            <div style='width:100%' id='integrantes_agregados'></div> </center>
+                                                        </div>
+                                                    </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                            <!--------------------- Diagnóstico del paciente ----------------------------->
+                        
+                          <div class="tab-pane" id="panel3" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                            <h2>
+                                                Diagnóstico del paciente
+                                            </h2>
+                                    </div> 
+                                    <div class="col-md-12 mt-4">
+                                        <label for="examen_f">Examen físico</label>
+                                        <span id="" style="color:red;"> <span>
+                                        <div>
+                                            <input type="text" class="form-control" placeholder="Resultado del examen" id="examen_f" name="datos[examen_f]">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-4">
+                                        <label for="">IDX</label>
+                                        <span id="idx" style="color:red;"></span>
+                                        <div>
+                                            <input type="text" id="idx" name="datos[idx]" placeholder="Diagnóstico medico" class="form-control" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-4">
+                                        <label for="plan_trat">Plan de tratamiento</label>
+                                        <span id="idx" style="color:red;"></span>
+                                        <div>
+                                            <input type="text" id="plan_trat" name="datos[plan_trat]" placeholder="Plan de tratamiento" class="form-control" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-4">
+                                        <label for="evolucion">Evolución</label>
+                                        <span id="" style="color:red;"></span>
+                                        <div>
+                                            <input type="text" id="evolucion" name="datos[evolucion]" placeholder="Evolución del paciente" class="form-control" >
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                                    
+                        
+
+
+
+
+
+
+                        
+                <!-- </form> -->
+
+<div class="card-footer">
+            
+            <!--Footer -->
+        
+        <div class="col-md-12 mt-4">
         <div style="float: right;">
             <a id="siguiente" type="button" class="btn btn-primary text-white">
                 Siguiente
             </a>
         </div>
     </div>
-    <div class="text-center m-t-20" id="botones-finales" style='display:none'>
+    <div style="float: left;">
+            <a id="anterior" style='display:none' type="button" class="btn btn-secondary text-white">
+                Anterior
+            </a>
+        </div>
+
+        <div class="text-center m-t-20" id="botones-finales" style='display:none'>
         <div class="col-xs-12">
-            <input type="button" class="btn text-white m-r-10" style="background:#15406D" name="" id="guardar" value="Guardar">
+            <input type="submit" class="btn btn-primary" style="background:#15406D" name="" id="guardar_integrantes" value="Guardar">
         </div>
     </div>
 
-                </div>
-            </form>
-            <!-- /.card-footer-->
-        </div>
-        <!-- /.card -->
 
-    </section>
-    <!-- /.content -->
-    <!-- /.content -->
+</div><!--  FOOTER -->
+
+
+</form>
 </div>
-<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/validacion_familia.js"></script>
-<?php include modal."agregar-familiares.php"; ?>
+</section>
+
+
+</div>
+
 <script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/registrar-historial.js"></script>
 <!-- /.content-wrapper -->
 <?php include (call."Fin.php"); ?>

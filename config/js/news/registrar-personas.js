@@ -1,4 +1,3 @@
-
 //--------------------------Indice y datos especificos de las tablas-------------------------------------//
 
 var index=0;
@@ -225,12 +224,12 @@ btn_ver_clave.onclick=function(){
 
 primer_nombre.maxLength=segundo_nombre.maxLength=primer_apellido.maxLength=segundo_apellido.maxLength=12;
 nacionalidad.maxLength=nivel_educativo.maxLength=15;
-primer_nombre.onkeyup=function(){valid_element("Debe ingresar el primer nombre de la persona",primer_nombre,document.getElementById("valid_2"));}
-segundo_nombre.onkeyup=function(){valid_element("Debe ingresar el segundo nombre de la persona",segundo_nombre,document.getElementById("valid_3"));}
-primer_apellido.onkeyup=function(){valid_element("Debe ingresar el primer apellido de la persona",primer_apellido,document.getElementById("valid_4"));}
-segundo_apellido.onkeyup=function(){valid_element("Debe ingresar el segundo apellido de la persona",segundo_apellido,document.getElementById("valid_5"));}
-fecha_nacimiento.onchange=function(){valid_element("Debe indicar la fecha de nacimiento de la persona",fecha_nacimiento,document.getElementById("valid_6"));}
-estado_civil.onchange=function(){valid_element("Debe indicar el estado civil de la persona",estado_civil,document.getElementById("valid_7"));}
+primer_nombre.onkeyup=function(){valid_element("Ingrese primer nombre",primer_nombre,document.getElementById("valid_2"));}
+segundo_nombre.onkeyup=function(){valid_element("Ingrese segundo nombre",segundo_nombre,document.getElementById("valid_3"));}
+primer_apellido.onkeyup=function(){valid_element("Ingrese primer apellido ",primer_apellido,document.getElementById("valid_4"));}
+segundo_apellido.onkeyup=function(){valid_element("Ingrese segundo apellido",segundo_apellido,document.getElementById("valid_5"));}
+fecha_nacimiento.onchange=function(){valid_element("Ingrese fecha de nacimiento",fecha_nacimiento,document.getElementById("valid_6"));}
+estado_civil.onchange=function(){valid_element("Ingrese estado civil",estado_civil,document.getElementById("valid_7"));}
 genero.onchange=function(){valid_element("Debe indicar el género de la persona",genero,document.getElementById("valid_8"));}
 //sexualidad.onchange=function(){valid_element("Debe indicar la orientación sexual de la persona",sexualidad,document.getElementById("valid_9"));}
 nacionalidad.onkeyup=function(){valid_element("Debe ingresar la nacionalidad de la persona",nacionalidad,document.getElementById("valid_10"));}
@@ -246,11 +245,11 @@ function valid_info_personal(){
 
   if(valid_element("Debe ingresar el documento de identidad de la persona",cedula,document.getElementById("valid_1"))){
    if(persona_existe(cedula.value)){ 
-     if(valid_element("Debe ingresar el primer nombre de la persona",primer_nombre,document.getElementById("valid_2"))){
-       if(valid_element("Debe ingresar el segundo nombre de la persona",segundo_nombre,document.getElementById("valid_3"))){
-         if(valid_element("Debe ingresar el primer apellido de la persona",primer_apellido,document.getElementById("valid_4"))){
-           if(valid_element("Debe ingresar el segundo apellido de la persona",segundo_apellido,document.getElementById("valid_5"))){
-             if(valid_element("Debe indicar la fecha de nacimiento de la persona",fecha_nacimiento,document.getElementById("valid_6"))){
+     if(valid_element("Ingrese primer nombre",primer_nombre,document.getElementById("valid_2"))){
+       if(valid_element("Ingrese segundo nombre",segundo_nombre,document.getElementById("valid_3"))){
+         if(valid_element("Ingrese primer apellido",primer_apellido,document.getElementById("valid_4"))){
+           if(valid_element("Ingrese segundo apellido",segundo_apellido,document.getElementById("valid_5"))){
+             if(valid_element("Ingrese fecha de nacimiento",fecha_nacimiento,document.getElementById("valid_6"))){
                if(new Date(fecha_nacimiento.value)>new Date()){
                 document.getElementById("valid_6").innerHTML="Fecha de nacimiento errónea";
                 document.getElementById("valid_6").style.display='';
@@ -297,7 +296,9 @@ function valid_info_personal(){
 //-------------------------Funcion de boton siguiente-------------------------------------//
 
 btn_siguiente.onclick=function(){
+
   funcion_siguiente();
+  
 }
 
 //-------------------------------Funcion de boton anterior-------------------------------------//
@@ -699,7 +700,7 @@ btn_agregar_ubicacion.onclick=function(){
       text=cargos.options[cargos.selectedIndex].text;
       
     }
-    else{
+    else  {
       
       
     }

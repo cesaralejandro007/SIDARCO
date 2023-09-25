@@ -56,6 +56,7 @@
                                                     Miembro de Familia
                                                 </h2>
                                             </div>
+
                                             <div class="col-md-1 mt-2">
                                                 <label for="tcedula">
                                                     Tipo
@@ -83,6 +84,7 @@
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="col-md-11 mt-2">
                                                 <label for="cedula">
                                                     Cédula
@@ -94,6 +96,7 @@
                                                 </div>
                                                 <span id='valid_1' style="color:red;" ></span>
                                             </div>
+
                                             <div class="col-md-3 mt-4">
                                                 <label for="primer_nombre">
                                                     Primer Nombre
@@ -253,14 +256,13 @@
                                                 </label>
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-numeros" id="calzado"
-                                                        name="datos[codigo_patria]" placeholder="Número de calzado" type="number" oninput="Limitar(this,2)"/>
+                                                        name="datos[calzado]" placeholder="Número de calzado" type="number" oninput="Limitar(this,2)"/>
                                                     </div>
                                                     <span id="valid_11" style="color:red;"></span>
+                                                </div>
                                             </div>
-
-                                            
-                                        </div>
                                     </div>
+
                                     <div class="tab-pane" id="panel6" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
@@ -350,9 +352,11 @@
             
                                         </div>
                                     </div>
+                    
                                     
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -380,7 +384,10 @@
             <input type="submit" class="btn btn-primary" style="background:#15406D" name="" id="guardar_integrantes" value="Guardar">
         </div>
     </div>
-</div>  <!-- <div class="modal-footer">
+</div>  
+
+
+<!-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <input type="submit" class="btn btn-primary" name="" id="guardar_integrante" value="Guardar">
             </div>  -->
@@ -390,3 +397,4 @@
     <!-- /.modal-dialog --> 
 </div>
 <!-- /.modal -->
+<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/registrar-integrantes.js"></script>

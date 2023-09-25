@@ -45,7 +45,7 @@
                                 </p>
 
                                 <div class="text-center">
-                                     <img class="rounded" src="<?php echo constant('URL').ayuda?>login.jpg" width="100%">
+                                     <img class="rounded" src="<?php echo constant('URL').ayuda?>login.png" width="50%" height="400px">
                                 </img>
                                 </div>
                 </div>

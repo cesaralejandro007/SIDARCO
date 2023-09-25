@@ -314,49 +314,29 @@
         }
     }
 
-    public function Registrar_Fami($data)
+    public function Registrar_historial($data)
     {
 
         try {
-            $datos = $this->conexion->prepare('INSERT INTO familia (
-                cedula_integrante,
-                primer_nombre, 
-                segundo_nombre, 
-                primer_apellido,
-                segundo_apellido,
-                estado,
-                fecha_nacimiento,
-                genero,
-                nivel_educativo,
-                correo,
-                telefono
+            $datos = $this->conexion->prepare('INSERT INTO historiales_clinicos (
+                id_familia_persona,
+                sangre,
+                peso,
+                altura
 
                 ) VALUES (
-                :cedula_integrante,
-                :primer_nombre, 
-                :segundo_nombre, 
-                :primer_apellido,
-                :segundo_apellido,
-                :estado,
-                :fecha_nacimiento,
-                :genero,
-                :nivel_educativo,
-                :correo,
-                :telefono
+                :id_familia_persona,
+                :sangre, 
+                :peso,
+                :altura
+
             )');
 
             $datos->execute([
-                'cedula_integrante'    => $data['cedula_integrante'],
-                'primer_nombre'        => $data['primer_nombre'],
-                'segundo_nombre'       => $data['segundo_nombre'],
-                'primer_apellido'      =>$data['primer_apellido'],
-                'segundo_apellido'     =>$data['segundo_apellido'],
-                'estado'               => $data['estado'],
-                'fecha_nacimiento'     =>$data['fecha_nacimiento'],
-                'genero'               =>$data['genero'],
-                'nivel_educativo'      =>$data['nivel_educativo'],
-                'correo'               =>$data['correo'],
-                'telefono'             =>$data['telefono']
+                'id_familia_persona'    => $data['id_familia_persona'],
+                'sangre'                => $data['sangre'],
+                'peso'                  => $data['peso'],
+                'altura'                =>$data['altura']
             ]);
 
             return true;
@@ -365,8 +345,6 @@
             return $this->Capturar_Error($e);
         }
     }
-
-
 
 
 

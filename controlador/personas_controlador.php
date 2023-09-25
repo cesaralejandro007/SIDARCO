@@ -40,6 +40,7 @@ class Personas extends Controlador
       if ($this->modelo->Registrar_Vacuna(
         [
           'cedula_persona' => $_POST['cedula_persona'],
+           'nombre_vacuna'  => $_POST['nombre_vacuna'], 
           'dosis' => $dosis[$i],
           'fecha_vacuna' => $fecha[$i],
           'estado' => 1,
@@ -65,8 +66,10 @@ class Personas extends Controlador
 
       $dosis="";
       $fecha="";
+      $vacuna="";
       foreach ($this->vacunas as $key => $vacunado) {
        if ($persona["cedula_persona"] == $vacunado["cedula_persona"]) {
+        $vacuna .= $vacunado["nombre_vacuna"]."</br>";
         $dosis .= $vacunado["dosis"]."</br>";
 
         $fecha .= $vacunado["fecha_vacuna"]."</br>";
@@ -76,6 +79,7 @@ class Personas extends Controlador
     $datos[] = [
       "cedula_persona" => $persona["cedula_persona"],
       "nombre_apellido" => $persona["primer_nombre"]." ".$persona["primer_apellido"],
+      "nombre_vacuna"   => $vacuna,
       "dosis" => $dosis,
       "fecha_vacuna" => $fecha,
     ];
@@ -120,7 +124,7 @@ public function consulta_vacunado(){
   $this->Establecer_Consultas(); 
   $existe=true;
   foreach($this->vacunas as $v){
-    if($v['cedula_persona']==$_POST['cedula']){
+    if($v['cedula_persona']==$_POST['cedula_persona']){
       $existe=false;
     }
   }
@@ -605,8 +609,6 @@ public function Consultas_cedula()
 }
 
 
-
-
 public function Consultas_cedulaV2()
 {
 
@@ -682,9 +684,9 @@ public function registrar_persona_habitante(){
 public function registrar_transporte(){
 
   $datos=[
-    "cedula_propietario" =>  $_POST['cedula_propietario'],
-    "tipo_transporte"    =>$_POST['transporte'],
-    "descripcion_transporte"        => $_POST['tipo_transporte']
+    "cedula_propietario"            =>  $_POST['cedula_propietario'],
+    "tipo_transporte"               =>  $_POST['tipo_transporte'],
+    "descripcion_transporte"        =>  $_POST['descripcion_transporte']
     
   ];
 
@@ -1206,6 +1208,7 @@ foreach($vacunas as $v){
 if($retornar==1){
   $this->modelo->Registrar_Vacuna([
     "cedula_persona" =>$cedula,
+    "nombre_vacuna"   =>$_POST['nombre_vacuna'], 
     "dosis"=>$_POST['vacuna'],
     "fecha_vacuna"=>$_POST['fecha'],
     "estado"=>1

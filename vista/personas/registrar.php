@@ -52,6 +52,7 @@
                                             </span>
                                         </a>
                                     </li>
+                                    
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
                                         <a id='tab_3' >
                                             <span class="hidden-sm-up">
@@ -108,8 +109,9 @@
                                             <div class="col-md-12 text-center">
                                                 <h2>
                                                     Información  Personal
-                                                </h4>
+                                                </h2>
                                             </div>
+                                            
                                             <div class="col-md-12 mt-2">
                                                 <label for="cedula">
                                                 Documento de identidad </label> <span style='color:red;display:none' id='valid_1'>Ingrese el documento de identidad</span>
@@ -124,52 +126,52 @@
                                                 <label for="primer_nombre">
                                                     Primer nombre
                                                 </label>
-                                                <span style='display:none;color:red' id='valid_2'>Ingrese el primer nombre</span>
+                                                
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="primer_nombre"
                                                     name="datos[primer_nombre]" placeholder="Primer Nombre"
                                                     type="text" oninput="Limitar(this,15)"/>
                                                 </div>
-
+                                                <span style='display:none;color:red' id='valid_2'>Ingrese el primer nombre</span>
                                             </div>
 
                                             <div class="col-md-3 mt-4">
                                                 <label for="segundo_nombre">
                                                     Segundo nombre
                                                 </label>
-                                                <span style='display:none;color:red' id='valid_3'>Ingrese el segundo nombre</span>
+                                                
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="segundo_nombre"
                                                     name="datos[segundo_nombre]" placeholder="Segundo Nombre"
                                                     type="text" oninput="Limitar(this,15)" />
                                                 </div>
-
+                                                <span style='display:none;color:red' id='valid_3'>Ingrese el segundo nombre</span>
                                             </div>
 
                                             <div class="col-md-3 mt-4">
                                                 <label for="primer_apellido">
                                                     Primer apellido
                                                 </label>
-                                                <span style='display:none;color:red' id='valid_4'>Ingrese el primer apellido</span>
+                                                
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="primer_apellido"
                                                     name="datos[primer_apellido]" placeholder="Primer Apellido"
                                                     type="text" oninput="Limitar(this,15)"/>
                                                 </div>
-
+                                                <span style='display:none;color:red' id='valid_4'>Ingrese el primer apellido</span>
                                             </div>
 
                                             <div class="col-md-3 mt-4">
                                                 <label for="segundo_apellido">
                                                     Segundo apellido
                                                 </label>
-                                                <span style='display:none;color:red' id='valid_5'>Ingrese el segundo apellido</span>
+                                                
                                                 <div class="input-group">
                                                     <input class="form-control mb-10 solo-letras" id="segundo_apellido"
                                                     name="datos[segundo_apellido]" placeholder="Segundo Apellido"
                                                     type="text" oninput="Limitar(this,15)"/>
                                                 </div>
-
+                                                <span style='display:none;color:red' id='valid_5'>Ingrese el segundo apellido</span>
                                             </div>
 
                                             <div class="col-md-3 mt-2">
@@ -244,7 +246,7 @@
 
                                         </div>
 -->
-                                    <div class="col-md-3 mt-2">
+                                       <div class="col-md-3 mt-2">
                                         <label for="nacionalidad">
                                             Nacionalidad
                                         </label>
@@ -806,7 +808,7 @@
 
 
                     <div class="col-md-12 text-center mt-2">
-                        <h4>Información laboral</h4>
+                        <h2>Información laboral</h2>
                     </div>
                         <div class="row mt-2 d-flex flex-wrap">
                             <div class="col-md-3 mt-2">
@@ -1153,7 +1155,7 @@
                     <div class="col-md-12 mt-2" style='border-radius: 6px;overflow-y: scroll;background: #CEF6F5;width: 100%;height: 200px !important' id='ubicaciones_persona'>
                     </div>
                 </div>
-        </div>   
+            </div>   
                         <br>
                        <!--  <div>
                         </div>  Aqui vemos que tal -->                  
@@ -1202,16 +1204,16 @@
 <div class="tab-pane" id="panel4" role="tabpanel">
     <div class="row">
         <div class="col-md-12 text-center mt-2">
-            <h4>
+            <h2>
                 Información de Usuario
-            </h4>
+            </h2>
         </div>
         <div class="col-md-12 mt-2">
             <div class="form-group">
                 <label for="correo">
-                 Contraseña
-             </label> <span id='valid_contrasenia' style='color:red;display:none'>Debe ingresar la contraseña del usuario</span>
-             <div class="input-group">
+                Contraseña
+                </label> <span id='valid_contrasenia' style='color:red;display:none'>Debe ingresar la contraseña del usuario</span>
+            <div class="input-group">
                 <table style='width:100%'>
                     <tr><td>
                         <input class="form-control no-espacios" id="contrasenia" name=""
@@ -1284,7 +1286,11 @@
 
                             
                         </div>
-</div>
+
+
+
+
+                    </div>
 
 
 

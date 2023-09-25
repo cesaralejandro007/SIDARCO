@@ -49,6 +49,13 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-12 mt-2">
+                                <label for="nombre_vacuna">Nombre</label>
+                                <div>
+                                    <input type="text" class="form-control" id="nombre_vacuna" name="nombre_vacuna" placeholder="Indique el nombre de la vacuna">
+                                </div>
+                            </div>
+
 
                             <div class="col-md-12 mt-2">
                                 <label for="">
@@ -60,6 +67,9 @@
 
                                             <div class="input-group">
                                                 <select class="custom-select" id="dosis" name="dosis[]">
+                                                    <option value="Dosis Unica">
+                                                        Dosis única
+                                                    </option>
                                                     <option value="Primera Dosis">
                                                         Primera Dosis
                                                     </option>
@@ -80,7 +90,7 @@
                                         </td>
                                         <td class="">
                                             <div class="input-group ">
-                                                <button type="button" name="agregar" id="agregar" class="btn btn-success">Agregar</button>
+                                                <button type="button" name="agregar" id="agregar" class="btn btn-primary">Agregar</button>
                                             </div>
 
                                         </td>
@@ -97,7 +107,7 @@
                 <div class="card-footer">
                     <div class="text-center m-t-20">
                         <div class="col-xs-12">
-                            <input type="button" class="btn  btn-success m-r-10" name="" id="enviar" value="Guardar">
+                            <input type="button" class="btn" style="background:#15406D; color:white" name="" id="enviar" value="Guardar">
                             
                         </div>
                     </div>
@@ -117,8 +127,15 @@
 <?php include(call . "Fin.php"); ?>
 <script>
     $(document).ready(function() {
-        var i = 1;
+        var i = 0;
         $('#agregar').click(function() {
+            var html0 =
+                '<tr id="row' + i + '" >' +
+                '<td class="col-6">' +
+                '<div class="input-group"><select class="custom-select" id="dosis" name="dosis[]"><option selected value="Dosis Unica">Primera Dosis</option><option value="Dosis Unica">Dosis Única</option><option value="Dosis Unica">Tercera Dosis</option></select></div>' +
+                '</td>' +
+              
+                '</tr>';
             var html1 =
                 '<tr id="row' + i + '" >' +
                 '<td class="col-6">' +
@@ -128,8 +145,8 @@
                 '<div class="input-group"><input class="form-control no-simbolos" id="fecha" name="fecha[]" type="date"></div>' +
                 '</td>' +
                 '<td>' +
-                '<button type="button" name="eliminar" id="' + i +
-                '" class="btn btn-danger eliminar">X</button>' +
+                '<button type="button" style="background:#9D2323;" name="eliminar" id="' + i +
+                '" class=" eliminar">X</button>' +
                 '</td>' +
                 '</tr>';
             var html2 =
@@ -160,6 +177,9 @@
                 '</tr>';
 
 
+            if (i <= 0) {
+                document.getElementById("texto").innerHTML="No se puede agregar mas";
+            } else {
             if (i <= 1) {
                 $('#tabla').append(html2);
             } else {
@@ -168,7 +188,10 @@
                 } else {
                     if (i <= 3) {
                         document.getElementById("texto").innerHTML = "No puede agregar mas";
-                    } else {}
+                    } else {
+
+                    }
+                }
                 }
             }
 
@@ -187,7 +210,7 @@
 
         $(document).on('click', '#enviar', function() {
 
-            if (document.getElementById("cedula_persona").value != "") {
+            if (document.getElementById("cedula_persona").value != "" ) {
 
                 var todos_inputs = $('#tabla :input');
                 var dosis = [];

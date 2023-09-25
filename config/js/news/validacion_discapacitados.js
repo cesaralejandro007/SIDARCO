@@ -63,6 +63,9 @@ persona.onkeyup = function() {
         persona.style.borderColor = '';
     }
 }
+
+
+
 btn_seleccionar.onclick = function() {
     if (persona.value == '' || persona.value == null) {
         valid_persona.innerHTML = "Debe ingresar una persona";
@@ -94,6 +97,9 @@ btn_seleccionar.onclick = function() {
         })
     }
 }
+
+
+
 en_cama.onchange = function() {
     if (en_cama.value == 'vacio') {
         valid_discapacidad.innerHTML = 'Indique si está en cama';

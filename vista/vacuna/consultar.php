@@ -22,7 +22,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Consulta y Exportacion de Datos de Vacunas</h3>
+                <h3 class="card-title">Consulta y exportacion de datos</h3>
 
             </div>
             <!-- /.card-header -->
@@ -32,6 +32,7 @@
                         <tr>
                             <th>Cedula</th>
                             <th>Nombre y Apellido</th>
+                            <th>Nombre de la vacuna</th>
                             <th>Dosis</th>
                             <th>Fecha</th>
                             <th style="width: 115px;">Acciones</th>
@@ -54,6 +55,9 @@
                                             "data": "nombre_apellido"
                                         },
                                         {
+                                            "data": "nombre_vacuna"
+                                        },
+                                        {
                                             "data": "dosis"
                                         },
                                         {
@@ -62,12 +66,12 @@
                                         {
                                             "data": function(data) {
                                                 return '<td class="text-center">' +
-                                                    '<a href="javascript:void(0)" style="margin-right: 5px;" class="btn bg-success btnEditar" onclick="editar(this)"  title="Actualizar"  type="button" >' +
+                                                    '<a href="javascript:void(0)" style="margin-right: 5px; background:#EEA000;" class="btn btnEditar" onclick="editar(this)"  title="Actualizar"  type="button" >' +
                                                     '<i class="fa fa-edit" style="color: white;"></i>' +
                                                     '</a>' +
 
-                                                    '<a href="javascript:void(0)" style="margin-right: 5px;" class="btn bg-danger mensaje-eliminar" title="Eliminar">' +
-                                                    '<i class="fa fa-trash"></i>' +
+                                                    '<a href="javascript:void(0)" style="margin-right: 5px; background:#9D2323;" class="btn  mensaje-eliminar" title="Eliminar">' +
+                                                    '<i class="fa fa-trash" style="color: white;"></i>' +
                                                     '</a>' +
                                                     '<p style="display: none;">' + data
                                                     .id_vacuna_covid + '</p>' +
@@ -146,6 +150,7 @@
                         <tr>
                             <th>Cedula</th>
                             <th>Nombre y Apellido</th>
+                            <th>Nombre de la vacuna</th>
                             <th>Dosis</th>
                             <th>Fecha</th>
                             <th>Acciones</th>

@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Consulta de personas con alguna discapacidad</h1>
+                    <h1 class="m-0">Consulta de presión arterial</h1>
                 </div><!-- /.col -->
                 <!-- /.col -->
             </div><!-- /.row -->
@@ -22,7 +22,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Consulta y exportacion de datos</h3>
+                <h3 class="card-title">Consulta y exportacion datos</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -31,7 +31,7 @@
                         <tr>
                             <th>Cedula</th>
                             <th>Nombre</th>
-                            <th>Discapacidades</th>
+                            <th>Fecha y hora</th>
                             <?php if ($_SESSION['Discapacitados']['modificar']) {?>
                                 <th style="width: 20px;">Editar</th>
                             <?php }?>
@@ -45,14 +45,14 @@
 $(function() {
     $.ajax({
         type: "POST",
-        url: BASE_URL + "Discapacitados/Administrar",
+        url: BASE_URL + "presion_arterial/Administrar",
         data: {
             peticion: "Consulta_Ajax",
         },
     }).done(function(datos) {
         var data = JSON.parse(datos);
         var discapacidades = [];
-        var div_discapacidades = document.getElementById("discapacidades_agregadas");
+        var div_discapacidades = document.getElementById("presiones_agregadas");
         $("#example1").DataTable({
             "data": data,
             "columns": [{
@@ -60,7 +60,7 @@ $(function() {
                 }, {
                     "data": "nombre"
                 }, {
-                    "data": "discapacidades"
+                    "data": "fecha_presion"
                 }, <?php if ($_SESSION['Discapacitados']['modificar']) {?> {
                     "data": "editar"
                 }, <?php }?>
@@ -148,13 +148,13 @@ $(function() {
         $(document).on('click', '#enviar', function() {
             $.ajax({
                 type: "POST",
-                url: BASE_URL + "Discapacitados/Administrar",
+                url: BASE_URL + "presion_arterial/Administrar",
                 data: {
                     cedula: $('#cedula').val(),
                     discapacidades: discapacidades,
                     peticion: "Registrar",
                     sql: "SQL_06",
-                    accion: "Se ha Actualizado el  Discapacitado pordator de la Cedula: " + $('#cedula').val(),
+                    accion: "Se ha Actualizado el historial de presión de: " + $('#cedula').val(),
                 },
             }).done(function(result) {
                 if (result == 1) {
@@ -206,7 +206,7 @@ $(function() {
     <tr>
        <th>Cedula</th>
        <th>Nombre</th>
-       <th>Discapacidades</th>
+       <th>Fecha y hora</th>
        <?php if ($_SESSION['Discapacitados']['modificar']) {?>
         <th style="width: 20px;">Editar</th>
     <?php }?>
@@ -225,7 +225,7 @@ $(function() {
 <!-- /.content -->
 <!-- /.content -->
 </div>
-<?php include modal . "editar-discapacitados.php";?>
+<?php include modal . "editar-presion-arterial.php";?>
 <!-- /.content-wrapper -->
 <script src="<?php echo constant('URL') ?>config/js/news/crud-discapacitados.js"></script>
 <?php include call . "Fin.php";?>

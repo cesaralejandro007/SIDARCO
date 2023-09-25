@@ -26,7 +26,7 @@
                 </tr>
             </table>
             <br><br>
-        </center>
+            </center>
             <div class="modal-footer ">
             <input type="button" class="btn" style="background:#15406D; color:white" name="" id="enviarEditar" value="Guardar">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
