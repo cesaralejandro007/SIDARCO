@@ -530,9 +530,9 @@ public function consultar_informacion_persona_egresos(){
     "estado_funcionario"          =>$p['nombre_estado'],
     "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fa fa-eye'></span></button>",
 
-    "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
+    "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`,`".'editar_egresado'."`)'><span class='fa fa-edit'></span></button>",
 
-    "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Ingresar persona' onclick='ingresar_datos(`".$p['cedula_persona']."`,`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fas fa-user-alt'></span></button>",
+    "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Ingresar persona' onclick='ingresar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fas fa-user-alt'></span></button>",
   ];
 }
 

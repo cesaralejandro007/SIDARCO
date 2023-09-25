@@ -340,8 +340,20 @@ function egresar(v1,v2,v3){
 }
 }
 
-function ingresar_datos(cedula,persona,ocupacion,condicion_lab,transporte,bonos,misiones,divisiones,titulos,org_politica) {
-  editar_datos(persona,ocupacion,condicion_lab,transporte,bonos,misiones,divisiones,titulos,org_politica);
+function ingresar_datos(persona,ocupacion,condicion_lab,transporte,bonos,misiones,divisiones,titulos,comunidad_i,org_politica,accion) {
+  editar_datos(
+    persona,
+    ocupacion,
+    condicion_lab,
+    transporte,
+    bonos,
+    misiones,
+    divisiones,
+    titulos,
+    comunidad_i,
+    org_politica,
+    accion
+  );
   vingresos.value = "";
   $("#edit_persona").modal({ backdrop: "static", keyboard: false });
   $('#modalpersona').remove();
@@ -412,6 +424,7 @@ var btn_guardar = document.getElementById("guardar_cambios");
 var inf_persona = new Object();
 var add_bono = document.getElementById("add_bono");
 var add_mision = document.getElementById("add_mision");
+var accion;
 function editar_datos(
   persona,
   ocupacion,
@@ -421,9 +434,10 @@ function editar_datos(
   misiones,
   divisiones,
   titulos,
-  comunidad_i,
-  org_politica
+  org_politica,
+  accion
 ) {
+  document.getElementById("accion").value = accion;
   $("#edit_persona").modal({ backdrop: "static", keyboard: false });
   var persona_info = JSON.parse(persona);
   var ocupacion_info = JSON.parse(ocupacion);
@@ -1073,6 +1087,7 @@ btn_guardar.onclick = function () {
 }}}}
 }}}}}
 function editar_persona() {
+ 
   //alert(JSON.stringify(inf_persona, null, 4));
   $.ajax({
     type: "POST",
@@ -1080,7 +1095,7 @@ function editar_persona() {
     data: { datos_persona: inf_persona },
   }).done(function (result) {
     if (result == 1) {
-      if(document.getElementById("modulo").value == "egresos"){
+      if(document.getElementById("modulo").value == "egresos"  && document.getElementById("accion").value != "editar_egresado"){
         swal(
           {
             title: "Atención",
