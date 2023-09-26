@@ -156,7 +156,7 @@
 
     public function get_integrantes($cedula_persona)
     {
-        $tabla            = "SELECT P.*,FP.*,f.*, TIMESTAMPDIFF(YEAR, F.fecha_nacimiento, CURDATE()) - CASE WHEN MONTH(f.fecha_nacimiento) > MONTH(CURDATE()) OR (MONTH(f.fecha_nacimiento) = MONTH(CURDATE()) AND DAY(f.fecha_nacimiento) > DAY(CURDATE()))THEN 1 ELSE 0 END AS edad, f.cedula_integrante as cedula_persona_f, f.primer_nombre as primer_nombre_f, f.primer_apellido as primer_apellido_f , f.fecha_nacimiento as fecha_nacimiento_f , f.genero as genero_f, f.nivel_educativo as nivel_educativo_f, f.correo as correo_f, f.telefono as telefono_f FROM familia_personas FP, personas P, familia f, cargo_nominal cn ,ubicaciones up WHERE P.cedula_persona='$cedula_persona' AND f.id_familia = FP.id_familia AND FP.cedula_persona = P.cedula_persona AND cn.id_cargo = P.id_cargo and up.id_ubicacion = P.id_ubicacion ";
+        $tabla            = "SELECT P.*,FP.*,f.*, TIMESTAMPDIFF(YEAR, F.fecha_nacimiento, CURDATE()) - CASE WHEN MONTH(f.fecha_nacimiento) > MONTH(CURDATE()) OR (MONTH(f.fecha_nacimiento) = MONTH(CURDATE()) AND DAY(f.fecha_nacimiento) > DAY(CURDATE()))THEN 1 ELSE 0 END AS edad, f.cedula_integrante as cedula_persona_f,date_format(F.fecha_nacimiento, '%d/%m/%Y') as fecha_nacimientoFa, f.primer_nombre as primer_nombre_f, f.primer_apellido as primer_apellido_f , f.fecha_nacimiento as fecha_nacimiento_f , f.genero as genero_f, f.nivel_educativo as nivel_educativo_f, f.correo as correo_f, f.telefono as telefono_f FROM familia_personas FP, personas P, familia f, cargo_nominal cn ,ubicaciones up WHERE P.cedula_persona='$cedula_persona' AND f.id_familia = FP.id_familia AND FP.cedula_persona = P.cedula_persona AND cn.id_cargo = P.id_cargo and up.id_ubicacion = P.id_ubicacion ";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -226,7 +226,7 @@
             return $this->Capturar_Error($e);
         }
     }
-    public function Actualizar_tabla_familia($id_familia,$cedula,$nombre,$segundo_nombre,$apellido,$segundo_apellido,$genero,$fecha_nacimiento,$nivel_educativo,$correo,$telefono)
+    public function Actualizar_tabla_familia($id_familia,$cedula,$nombre,$segundo_nombre,$apellido,$segundo_apellido,$genero,$fecha_nacimiento,$nivel_educativo,$correo,$telefono,$camisa,$pantalon,$calazado)
     {
 
         try {
@@ -240,7 +240,10 @@
                 fecha_nacimiento         ='$fecha_nacimiento',
                 nivel_educativo         ='$nivel_educativo',
                 correo         ='$correo',
-                telefono         ='$telefono'
+                telefono         ='$telefono',
+                camisa         ='$camisa',
+                pantalon         ='$pantalon',
+                calzado         ='$calazado'
                 WHERE id_familia ='$id_familia'"
              );
 

@@ -164,11 +164,11 @@ public function consultar_info_familia(){
      foreach ($familias as $f) {
         
         $integrantes=$this->modelo->get_integrantes($f['cedula_persona']);
-        $integrantes_familia  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td></tr></thead><tbody>";
+        $integrantes_familia  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td></tr></thead><tbody>";
         foreach ($this->modelo->get_integrantes($f['cedula_persona']) as $en) {
-                $integrantes_familia .="<tr><td>". $en['cedula_integrante'] ."</td><td>" . $en['primer_nombre']." " .$en['primer_apellido'] ."</td><td>" . $en['parentezco']. "</td></tr>";
+                $integrantes_familia .="<tr><td>". $en['cedula_integrante'] ."</td><td>" . $en['primer_nombre']." " .$en['primer_apellido'] ."</td><td>" . $en['parentezco']. "</td><td>" . $en['camisa']. "</td><td>" . $en['pantalon']. "</td><td>" . $en['calzado']. "</td></tr>";
         }
-        $integrantes_familia .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td></tr></tfoot></table>";
+        $integrantes_familia .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td></tr></tfoot></table>";
         $integrantes_familia = "<div style='overflow-y:scroll;width:100%;height:100px;'>" . $integrantes_familia . "</div>";
          $retornar[]=[
                 "familia"           => $f['nombre_familia'],
@@ -359,7 +359,7 @@ public function modificar_integrante(){
           echo json_encode(4);
         }else{
           $editado=$this->modelo->Actualizar_Familia_integrante($_POST["id"],$_POST["parentezco_integrante"]);
-          $editado2=$this->modelo->Actualizar_tabla_familia($_POST["id_familia"],$_POST["cedula_integrante"],$_POST["nombre_integrante"],$_POST["segundo_nombre_integrante"],$_POST["apellido_integrante"],$_POST["segundo_apellido_integrante"],$_POST["genero"],$_POST["fecha_nacimiento"],$_POST["nivel_educativo"],$_POST["Correo"],$_POST["Telefono"]);
+          $editado2=$this->modelo->Actualizar_tabla_familia($_POST["id_familia"],$_POST["cedula_integrante"],$_POST["nombre_integrante"],$_POST["segundo_nombre_integrante"],$_POST["apellido_integrante"],$_POST["segundo_apellido_integrante"],$_POST["genero"],$_POST["fecha_nacimiento"],$_POST["nivel_educativo"],$_POST["Correo"],$_POST["Telefono"],$_POST["Camisa"],$_POST["Pantalon"],$_POST["Calzado"]);
           $retornar = $this->modelo->get_integrantes($_POST['cedula_persona']);
           if($editado==1 && $editado2 ==1){
             echo json_encode($retornar);

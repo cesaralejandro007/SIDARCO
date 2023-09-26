@@ -218,7 +218,7 @@
                                                     integrantes.innerHTML = "";
                                                     console.log(integrantes);
                                                     texto +=
-                                                        "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
+                                                        "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Fecha de nacimiento</td><td>Genero</td><td>Nivel educativo</td><td>Correo</td><td>Telefono</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td><td>editar</td><td>Eliminar</td></tr>";
                                                     for (var i = 0; i < integrantes.length; i++) {
                                                         texto +=
                                                         "<tr><td>" +
@@ -227,11 +227,27 @@
                                                         integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
                                                         "</td><td>" +
                                                         integrantes[i]["parentezco"] +
+                                                        "</td><td>" +
+                                                        integrantes[i]["fecha_nacimientoFa"] +
+                                                        "</td><td>" +
+                                                        integrantes[i]["genero"] +
+                                                        "</td><td>" +
+                                                        integrantes[i]["nivel_educativo"] +
+                                                        "</td><td>" +
+                                                        integrantes[i]["correo"] +
+                                                        "</td><td>" +
+                                                        integrantes[i]["telefono"] +
+                                                        "</td><td>" +
+                                                        integrantes[i]["camisa"] +
+                                                        "</td><td>" +
+                                                        integrantes[i]["pantalon"] +
+                                                        "</td><td>" +
+                                                        integrantes[i]["calzado"] +
                                                         "</td>";
                                                         texto +=
                                                         "<td><span onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
                                                     }
-                                                    integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+                                                    integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Fecha de nacimiento</td><td>Genero</td><td>Nivel educativo</td><td>Correo</td><td>Telefono</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td><td>editar</td><td>Eliminar</td></tr></table>";
                                                     }
                                                 }
                                             });
@@ -285,7 +301,9 @@
     var keyup_telefono = /^[0-9]{11}$/;
     var keyup_correo =/^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC]{3,25}[@]{1}[A-Za-z0-9]{3,8}[.]{1}[A-Za-z]{2,4}$/;
     var keyup_direccion = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.#%$^&*:\s]{2,100}$/;
-
+    var Camisa = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.\s]{1,30}$/;
+    var Pantalon = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.\s]{1,30}$/;
+    var Calzado = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.\s]{1,30}$/;
     function editar(id_familia_persona,id_familia,responsable_cedula){
         $("#actualizar").modal({ backdrop: "static", keyboard: false });
      $.ajax({
@@ -307,7 +325,7 @@
             data.innerHTML = "";
             console.log(data);
             texto +=
-                "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
+                "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Fecha de nacimiento</td><td>Genero</td><td>Nivel educativo</td><td>Correo</td><td>Telefono</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td><td>editar</td><td>Eliminar</td></tr>";
             for (var i = 0; i < data.length; i++) {
                 texto +=
                 "<tr><td>" +
@@ -316,11 +334,27 @@
                 data[i]["primer_nombre"]+" "+data[i]["primer_apellido"] +
                 "</td><td>" +
                 data[i]["parentezco"] +
+                "</td><td>" +
+                data[i]["fecha_nacimientoFa"] +
+                "</td><td>" +
+                data[i]["genero"] +
+                "</td><td>" +
+                data[i]["nivel_educativo"] +
+                "</td><td>" +
+                data[i]["correo"] +
+                "</td><td>" +
+                data[i]["telefono"] +
+                "</td><td>" +
+                data[i]["camisa"] +
+                "</td><td>" +
+                data[i]["pantalon"] +
+                "</td><td>" +
+                data[i]["calzado"] +
                 "</td>";
                 texto +=
                 "<td><span onclick='editar_integrante(" + data[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+data[i]['id_familia_persona']+","+data[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
             }
-            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Fecha de nacimiento</td><td>Genero</td><td>Nivel educativo</td><td>Correo</td><td>Telefono</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td><td>editar</td><td>Eliminar</td></tr></table>";
             }
         }
 
@@ -420,7 +454,26 @@
                 '<input type="text" id="Telefono" value="'+ data[0].telefono +'" class="form-control" maxlength="11" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
                 '<span id="v11" style="font-size:14px"></span>'+
                 '</div>'+
+            '</div>'+
+            '<div class="d-flex align-items-start">'+
+            '<div class="input-group mb-3 col-6">'+
+            '<span class="input-group-text" id="inputGroup-sizing-default">Camisa</span>'+
+            '<input type="text" id="Camisa" value="'+ data[0].camisa +'" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
+            '<span id="v12" style="font-size:14px"></span>'+
+            '</div>'+
+                '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Pantalon</span>'+
+                '<input type="text" id="Pantalon" value="'+ data[0].pantalon +'" class="form-control" maxlength="11" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
+                '<span id="v13" style="font-size:14px"></span>'+
+                '</div>'+
+            '</div>'+
+             '<div class="d-flex align-items-center justify-content-center">'+
 
+            '<div class="input-group mb-3 col-6">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Calzado</span>'+
+                '<input type="text" id="Calzado" value="'+ data[0].calzado +'" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
+                '<span id="v14" style="font-size:14px"></span>'+
+            '</div>'+
 
             '</div>',
             confirmButtonColor: '#15406D',
@@ -441,12 +494,36 @@
                  && document.getElementById('ID_genero').value != ""
                  && document.getElementById('fecha_nacimiento').value != ""
                  && document.getElementById('nivel_educativo').value != ""
-                 && document.getElementById('Correo').value != ""
-                 && document.getElementById('Telefono').value != ""){
+                 ){
                     a = valida_registrar();
                     if (a != "") {
                         return false;
                     }else {
+                        if (document.getElementById("Telefono").value == "N/A" || document.getElementById("Telefono").value == "") {
+                           var tlfm = "N/A";
+                        } else{
+                            var tlfm = document.getElementById("Telefono").value;
+                        }
+                        if (document.getElementById("Correo").value == "N/A" || document.getElementById("Correo").value == "") {
+                           var correom = "N/A";
+                        } else{
+                            var correom = document.getElementById("Correo").value;
+                        }
+                        if (document.getElementById("Camisa").value == "N/A" || document.getElementById("Camisa").value == "") {
+                           var Camisam = "N/A";
+                        } else{
+                            var Camisam = document.getElementById("Camisa").value;
+                        }
+                        if (document.getElementById("Pantalon").value == "N/A" || document.getElementById("Pantalon").value == "") {
+                           var Pantalonm = "N/A";
+                        } else{
+                            var Pantalonm = document.getElementById("Pantalon").value;
+                        }
+                        if (document.getElementById("Calzado").value == "N/A" || document.getElementById("Calzado").value == "") {
+                           var Calzadom = "N/A";
+                        } else{
+                            var Calzadom = document.getElementById("Calzado").value;
+                        }
                         $.ajax({
                         type: "POST",
                         url: BASE_URL + "Familias/modificar_integrante",
@@ -462,10 +539,13 @@
                                 "genero": document.getElementById("ID_genero").value,
                                 "fecha_nacimiento": document.getElementById("fecha_nacimiento").value,
                                 "nivel_educativo": document.getElementById("nivel_educativo").value,
-                                "Correo": document.getElementById("Correo").value,
-                                "Telefono": document.getElementById("Telefono").value
+                                "Correo": correom,
+                                "Telefono": tlfm,
+                                "Camisa": Camisam,
+                                "Pantalon": Pantalonm,
+                                "Calzado": Calzadom
                             }
-                        }).done(function (result) {
+                        }).done(function (result){
                             if(result==1){
                                 document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Cedula ya registrada.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
                                 setTimeout(function () {
@@ -503,7 +583,7 @@
                                             integrantes.innerHTML = "";
                                             console.log(integrantes);
                                             texto +=
-                                            "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
+                                            "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Fecha de nacimiento</td><td>Genero</td><td>Nivel educativo</td><td>Correo</td><td>Telefono</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td><td>editar</td><td>Eliminar</td></tr>";
                                             for (var i = 0; i < integrantes.length; i++) {
                                                 texto +=
                                                 "<tr><td>" +
@@ -512,11 +592,27 @@
                                                 integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
                                                 "</td><td>" +
                                                 integrantes[i]["parentezco"] +
+                                                "</td><td>" +
+                                                integrantes[i]["fecha_nacimientoFa"] +
+                                                "</td><td>" +
+                                                integrantes[i]["genero"] +
+                                                "</td><td>" +
+                                                integrantes[i]["nivel_educativo"] +
+                                                "</td><td>" +
+                                                integrantes[i]["correo"] +
+                                                "</td><td>" +
+                                                integrantes[i]["telefono"] +
+                                                "</td><td>" +
+                                                integrantes[i]["camisa"] +
+                                                "</td><td>" +
+                                                integrantes[i]["pantalon"] +
+                                                "</td><td>" +
+                                                integrantes[i]["calzado"] +
                                                 "</td>";
                                                 texto +=
                                                 "<td><span  onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
                                             }
-                                            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+                                            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Fecha de nacimiento</td><td>Genero</td><td>Nivel educativo</td><td>Correo</td><td>Telefono</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td><td>editar</td><td>Eliminar</td></tr></table>";
                                         }
                                         Swal.close('mi-sweet-alert');   
                                 }
@@ -643,11 +739,36 @@
         );
     };
 
+    document.getElementById("Camisa").onkeyup = function () {
+        r = validarkeyup(
+        Camisa,
+        this,
+        document.getElementById("v12"),
+        "El campo camisa debe contener letras de 1 a 30 caracteres"
+        );
+    };
+
+    document.getElementById("Pantalon").onkeyup = function () {
+        r = validarkeyup(
+        Pantalon,
+        this,
+        document.getElementById("v13"),
+        "El campo pantalon debe contener letras de 1 a 30 caracteres"
+        );
+    };
+
+    document.getElementById("Calzado").onkeyup = function () {
+        r = validarkeyup(
+        Calzado,
+        this,
+        document.getElementById("v14"),
+        "El campo calzado debe contener letras de 1 a 30 caracteres"
+        );
+    };
+
         });
     }
 
-
-  
     function validarkeypress(er, e) {
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key);
@@ -697,30 +818,13 @@
         document.getElementById("v9"),
         "El campo debe contener de 3 a 25 caracteres"
       );
-
-      Correo = validarkeyup(
-        keyup_correo,
-        document.getElementById("Correo"),
-        document.getElementById("v10"),
-        "El campo debe contener de 3 a 25 caracteres"
-      );
-
-      Telefono = validarkeyup(
-        keyup_telefono,
-        document.getElementById("Telefono"),
-        document.getElementById("v11"),
-        "El campo debe contener de 3 a 25 caracteres"
-      );
-
       if (
         cedula_integrante == 0 ||
         nombre_integrante == 0 ||
         segundo_nombre_integrante == 0 ||
         apellido_integrante == 0 ||
         segundo_apellido_integrante == 0 ||
-        nivel_educativo == 0 || 
-        Correo == 0 || 
-        Telefono == 0 
+        nivel_educativo == 0
       ) {
         //variable==0, indica que hubo error en la validacion de la etiqueta
         error = true;
@@ -767,7 +871,7 @@ function borrar_familia(id,cedula_param){
             integrantes.innerHTML = "";
             console.log(integrantes);
             texto +=
-                "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
+                "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Fecha de nacimiento</td><td>Genero</td><td>Nivel educativo</td><td>Correo</td><td>Telefono</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td><td>editar</td><td>Eliminar</td></tr>";
             for (var i = 0; i < integrantes.length; i++) {
                 texto +=
                 "<tr><td>" +
@@ -776,11 +880,27 @@ function borrar_familia(id,cedula_param){
                 integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
                 "</td><td>" +
                 integrantes[i]["parentezco"] +
+                "</td><td>" +
+                integrantes[i]["fecha_nacimientoFa"] +
+                "</td><td>" +
+                integrantes[i]["genero"] +
+                "</td><td>" +
+                integrantes[i]["nivel_educativo"] +
+                "</td><td>" +
+                integrantes[i]["correo"] +
+                "</td><td>" +
+                integrantes[i]["telefono"] +
+                "</td><td>" +
+                integrantes[i]["camisa"] +
+                "</td><td>" +
+                integrantes[i]["pantalon"] +
+                "</td><td>" +
+                integrantes[i]["calzado"] +
                 "</td>";
                 texto +=
                 "<td><span  onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
             }
-            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Fecha de nacimiento</td><td>Genero</td><td>Nivel educativo</td><td>Correo</td><td>Telefono</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td><td>editar</td><td>Eliminar</td></tr></table>";
             }
         }
         else{

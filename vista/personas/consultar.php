@@ -17,7 +17,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+    <input type="hidden" id="accion" class="form-control" placeholder="accion">
     <!-- Main content -->
     <section class="content">
     <input type="hidden" id="modulo" class="form-control" placeholder="modulo" value="ingreso">
