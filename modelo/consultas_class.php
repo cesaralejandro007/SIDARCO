@@ -37,7 +37,7 @@ class Consultas_Class extends Modelo
 
     private function SQL_02()
     {
-        return 'INSERT INTO negocios (id_calle, nombre_negocio, direccion_negocio, cedula_propietario, rif_negocio, estado) VALUES (:id_calle, :nombre_negocio, :direccion_negocio, :cedula_propietario, :rif_negocio, :estado)';
+        return 'INSERT INTO consultas (id_consulta, id_familia_persona, cedula_persona, fecha_consulta, motivo, instrucciones, id_inventario) VALUES (:id_consulta, :id_familia_persona, :cedula_persona, :fecha_consulta, :motivo, :instrucciones, :id_inventario)';
     }
 
     private function SQL_03()

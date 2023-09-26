@@ -3,13 +3,9 @@
 var cedula_persona=document.getElementById("cedula_persona");
 var id_familia=document.getElementById("id_familia");
 
-
-
-
-
-
-
 alert(cedula_persona);
+
+
 
 //Select del funcionario con su núcleo familiar
 cedula_persona.onchange = function () {
@@ -137,7 +133,7 @@ $(document).ready(function() {
                             };
                             $.ajax({
                                 type: 'POST',
-                                url: BASE_URL + 'Negocios/Administrar',
+                                url: BASE_URL + 'Consultas/Administrar',
                                 data: {
                                     'datos': datos,
                                     peticion: "Existente"
@@ -151,12 +147,12 @@ $(document).ready(function() {
                                 } else {
                                     $.ajax({
                                         type: 'POST',
-                                        url: BASE_URL + 'Negocios/Administrar',
+                                        url: BASE_URL + 'Consultas/Administrar',
                                         data: {
                                             'datos': datos,
                                             peticion: "Administrar",
                                             sql: "SQL_02",
-                                            accion: "Se ha registrado un nuevo negocio: "+datos.nombre_negocio,
+                                            accion: "Se ha registrado una nueva consulta ",
                                         },
                                         success: function(respuesta) {
                                             if (respuesta == 1) {
@@ -167,7 +163,7 @@ $(document).ready(function() {
                                                     showConfirmButton: false,
                                                 });
                                                 setTimeout(function() {
-                                                    location.href = BASE_URL + 'Negocios/Administrar/Consultas';
+                                                    location.href = BASE_URL + 'Consultas/Administrar/Consultas';
                                                 }, 2000);
                                             } else {
                                                 swal({
