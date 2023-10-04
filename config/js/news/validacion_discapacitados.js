@@ -15,6 +15,8 @@ var discapacidades = [];
 var div_discapacidades = document.getElementById("discapacidades_agregadas");
 var necesidades = document.getElementById("necesidades");
 var observaciones = document.getElementById("observaciones");
+
+
 discapacidad_select.onchange = function() {
     if (discapacidad_select.value == 'vacio') {
         valid_discapacidad.innerHTML = 'Ingrese la discapacidad';

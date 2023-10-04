@@ -1,0 +1,208 @@
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:33:58 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:36:59 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`sidarco2`.`inventario_consulta`, CONSTRAINT `fk_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `consulta` (`id_consulta`))
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:40:03 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`sidarco2`.`inventario_consulta`, CONSTRAINT `fk_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `consulta` (`id_consulta`))
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:55:18 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 03:56:58 PM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`sidarco2`.`inventario_consulta`, CONSTRAINT `fk_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `consulta` (`id_consulta`))
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 09:13:01 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY000]: General error: 2031 
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:01:06 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:02:13 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:02:13 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:02:25 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:02:25 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:06:18 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:06:26 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:06:33 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:06:34 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:07:04 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:07:04 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY000]: General error: 2031 
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:07:49 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:07:49 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY000]: General error: 2031 
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:35:11 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY000]: General error: 2031 
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:35:11 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:35:56 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY000]: General error: 2031 
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:35:56 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:37:30 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:38:33 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 10:50:18 AM
+    [Archivo] => C:\xampp\htdocs\dashboard\www\SIDARCO\app\Modelo.php
+    [Linea] => 52
+    [Mensaje] => SQLSTATE[HY093]: Invalid parameter number
+)

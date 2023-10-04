@@ -131,8 +131,8 @@
                 <?php } ?>
 
                 <!-- ===============================================================================================  -->
-                <?php if ($_SESSION['Comite']['consultar'] != '0' || $_SESSION['Comite']['registrar'] != '0' || $_SESSION['Centros votacion']['consultar'] != '0' || $_SESSION['Centros votacion']['registrar'] != '0') { ?>
-                     <li class="nav-header">Administrativo</li>
+             <!--    <?php if ($_SESSION['Comite']['consultar'] != '0' || $_SESSION['Comite']['registrar'] != '0' || $_SESSION['Centros votacion']['consultar'] != '0' || $_SESSION['Centros votacion']['registrar'] != '0') { ?>
+                     <li class="nav-header">Administrativo</li> -->
                    <!-- <?php if ($_SESSION['Comite']['consultar'] != '0' || $_SESSION['Comite']['registrar'] != '0') { ?>
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link">
@@ -161,7 +161,7 @@
                             </ul>
                         </li> -->
 
-                        <li class="nav-item">
+      <!--                   <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link">
                                 <i class="nav-icon fa fa-user"></i>
                                 <p>
@@ -186,7 +186,7 @@
                                     </li>
                                 <?php } ?>
                             </ul>
-                        </li>
+                        </li> -->
 
 
 
@@ -543,7 +543,7 @@
 
 
             <!-- ===============================================================================================  -->
-            <?php if ($_SESSION['Negocios']['consultar'] != '0' || $_SESSION['Negocios']['registrar'] != '0' || $_SESSION['Inmuebles']['consultar'] != '0' || $_SESSION['Inmuebles']['registrar'] != '0') { ?>
+           <!--  <?php if ($_SESSION['Negocios']['consultar'] != '0' || $_SESSION['Negocios']['registrar'] != '0' || $_SESSION['Inmuebles']['consultar'] != '0' || $_SESSION['Inmuebles']['registrar'] != '0') { ?>
                 <li class="nav-header">Edificaciones</li>
                 <?php if ($_SESSION['Negocios']['consultar'] != '0' || $_SESSION['Negocios']['registrar'] != '0') { ?>
                     <li class="nav-item">
@@ -573,7 +573,7 @@
                         </ul>
                     </li>
 
-                <?php } ?>
+                <?php } ?> -->
 
 
 
@@ -739,7 +739,7 @@
                 </p>
             </a>
         </li>
- -->
+ --><!-- 
                             <li class="nav-item">
                                 <a href="<?php echo constant('URL'); ?>Reportes/Estadisticas" class="nav-link">
                                     <i class="fa fa-signal nav-icon"></i>
@@ -747,7 +747,7 @@
                                         Generar Estadísticas
                                     </p>
                                 </a>
-                            </li>
+                            </li> -->
 
                         </ul>
                     </li>
@@ -803,7 +803,7 @@
                 </p>
             </a>
         </li>
- -->
+ --><!-- 
                             <li class="nav-item">
                                 <a href="<?php echo constant('URL'); ?>Reportes/Estadisticas" class="nav-link">
                                     <i class="fa fa-signal nav-icon"></i>
@@ -811,7 +811,7 @@
                                         Generar Estadísticas
                                     </p>
                                 </a>
-                            </li>
+                            </li> -->
 
                         </ul>
                     </li>

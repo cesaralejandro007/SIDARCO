@@ -219,6 +219,7 @@ btn_ver_clave.onclick=function(){
   }
 }
 
+
 //--------------------------validar informacion personal----------------------------------------//
 
 
@@ -500,6 +501,7 @@ btn_agregar_bono.onclick=function(){
 //------------------------------------------------------------------------------------//
 
 function valid_bono(){
+  
   var validar=true;
 
   for(var i=0;i<bonos_persona.length;i++){
@@ -523,6 +525,7 @@ function valid_bono(){
   }
 
   return validar;
+
 }
 
 //------------------------------------funcion agregar bonos-----------------------------//

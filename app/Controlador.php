@@ -189,7 +189,7 @@ class Controlador
 
     public function Consultar_Familia_Persona($cedula_persona){
 
-        $sql="SELECT id_familia_persona, primer_nombre, primer_apellido from familia f inner join familia_personas p on p.cedula_persona= ".$cedula_persona."";
+        $sql="SELECT id_familia_persona, primer_nombre, primer_apellido from familia f inner join familia_personas p on p.id_familia_persona= ".$cedula_persona."";
         $respuesta_arreglo='';
         try{ 
         $datos=$this->conexion->prepare($sql);
@@ -199,7 +199,7 @@ class Controlador
 
         $resul ="<option value='0'>-Seleccione Familiar-</option>";
         foreach ($respuesta_arreglo as $p) {
-            $resul = $resul.  "<option value=". $p['id_familia_persona'] ." > ".$p['primer_nombre']." ".$p['primer_apellido']."</option>";
+            $resul = $resul.  "<option value=". $p['id_familia'] ." > ".$p['primer_nombre']." ".$p['primer_apellido']."</option>";
         }
         return $resul;
         
