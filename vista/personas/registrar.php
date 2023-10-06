@@ -600,7 +600,7 @@
                                             <!--  -->
                                             <div class="col-md-9 mt-2">
                                     
-                                          <label for="telefono_personal">
+                                          <label for="telefono">
                                             Teléfono Personal
                                           </label>
                                            <span style='display:none;color:red' id='valid_21'>Ingrese el número de teléfono</span>
@@ -919,7 +919,7 @@
 <!--------------------------------------------------------------------------------------------------------------------------->  
 
                             <div class="col-md-6 mt-2">
-                                <label for="egresado">Procedencia por traslado</label>
+                                <label for="estado">Procedencia por traslado</label>
                                 <span style='display:none;color:red' id='valid_50'>Campo sin llenar</span>
                                 <table style='width:100%'>
                                     <tr>
@@ -995,7 +995,7 @@
 <!--------------------------------------------------------------------------------------------------->    
 <!--------------------------------------------------------------------------------------------------------------------------->
                             <div class="col-md-6 mt-2">
-                            <label for="ocupacion">Cargo Funcional</label>
+                            <label for="cargos">Cargo Funcional</label>
             <span style='display:none;color:red' id='valid_42'>Ingrese la ocupación</span>
             <table style='width:100%'>
                 <tr>
@@ -1163,7 +1163,7 @@
                     <!--------------------------------------------------------------------------------------------------------------->
 
         <div class="col-md-12 mt-2">
-            <label >
+            <label for="proyectos" >
             Títulos obtenidos
             </label>
             <table style='width:100%'><tr>
@@ -1210,7 +1210,7 @@
         </div>
         <div class="col-md-12 mt-2">
             <div class="form-group">
-                <label for="correo">
+                <label for="contrasenia">
                 Contraseña
                 </label> <span id='valid_contrasenia' style='color:red;display:none'>Debe ingresar la contraseña del usuario</span>
             <div class="input-group">
@@ -1226,7 +1226,7 @@
 
         <div class="col-md-12 mt-2">
             <div class="form-group">
-                <label for="correo">
+                <label for="confirmar">
                  Confirmar contraseña
              </label> <span id='valid_confirmar' style='color:red;display:none'>Debe confirmar la contraseña del usuario</span>
              <div class="input-group">
@@ -1238,7 +1238,7 @@
 
         <br>
 
-        <label for="telefono_personal">
+        <label for="color_fav">
             Preguntas de seguridad
         </label>
         <div class="col-md-12 mt-2">
@@ -1270,7 +1270,7 @@
     </div>
 
     <div class="col-md-12 mt-2" id='ver_rol' style='display:none'>
-                            <label for="nombre_calle">
+                            <label for="rol_usuario">
                                Rol
                             </label> <span id='valid_rol' style='display:none;color:red'></span>
                             <div class="input-group">

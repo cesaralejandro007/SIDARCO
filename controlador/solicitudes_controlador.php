@@ -76,13 +76,13 @@ class Solicitudes extends Controlador
 
                 switch ($s['tipo_constancia']) {
 
-                    case "Residencia":
+                    case "Trabajo":
 
                         $header_constancia = "<table style='width:100%'><tr><td style='width:10%'></td><td style='width:80%'>REPUBLICA BOLIVARIANA DE VENEZUELA<br>CONSEJO COMUNAL<br>PRADOS DE OCCIDENTE SECTOR III<br>RIF. J-30725585 CODIGO 13-03-04-608-0002<br>Barquisimeto Municipio Iribarren<br>Parroquia Guerrera Ana Soto Estado Lara<br><u><h4>CONSTANCIA DE RESIDENCIA</h4></u></td><td style='width:10%'></td></tr></table>";
 
                         break;
 
-                    case "Buena conducta":
+                    case "Egreso":
                         break;
 
                     case "No poseer vivienda":

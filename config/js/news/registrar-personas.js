@@ -42,8 +42,6 @@ var tipo_transporte=document.getElementById("tipo_transporte");
 var persona_existente=false;
 cedula.focus();
 
-
-
 //------------------ Documentos personales----------------------------------  -------//
 
 /*
@@ -532,7 +530,7 @@ function valid_bono(){
  
  btn_agregar_proyecto.onclick=function(){
   
-  alert(descripcion.value);
+ 
   if( proyectos.value=="0" ||  descripcion.value=="" ){
     swal({
      title:"Error",
@@ -1546,7 +1544,7 @@ function control_indice(){
 
 
     case 0:
-    btn_anterior.style.display='none';
+    btn_anterior.style.display='none'; 
   
     
     tab_info_personal.className='nav-link active';
@@ -2142,10 +2140,6 @@ if(proyectos_persona.length!=0){
 
 
 
-
-
-
-
 function registrar_carnets(carnet,tipo){
 
   if(carnet!=' '){
@@ -2159,6 +2153,7 @@ function registrar_carnets(carnet,tipo){
   }
 
 }
+
 
 /*  function registrar_ubicacion(){
 
@@ -2208,7 +2203,7 @@ function registrar_titulos_persona(){
     url:BASE_URL+"Personas/registrar_proyecto",
     data:{"datos":datos_proyectos}
   }).done(function(result){
-    alert(result);
+   
     console.log(result);
   })
 }
@@ -2221,14 +2216,14 @@ function registrar_areas_persona(){
    datos['id_area']=ubicaciones_persona[i];
    datos['cedula_persona']=cedula.value;
    datos_ubicacion.push(datos); 
-   alert(datos_ubicacion)
+   
   }
   $.ajax({
     type:"POST",
     url:BASE_URL+"Personas/registrar_ubicacion",
     data:{"datos":datos_ubicacion}
   }).done(function(result){
-    alert(result);
+   
      console.log(result); 
    }) 
 }
@@ -2246,7 +2241,7 @@ function registrar_egresado(){
      url:BASE_URL+"Personas/registrar_egresado_persona",
      data:{"cedula":cedula.value,"id_egresado":egresado_nomina.value}
    }).done(function(result){
-    alert(result);
+   
      console.log(result);
     
    })

@@ -26,12 +26,12 @@
 
 
       switch(result_s[i]['tipo_constancia']){
-        case 'Residencia':
+        case 'Trabajo':
         icono_s="<i class='fas fa-home'></i>";
         texto_mensaje+="Ha realizado una solicitud de constancia de "+result_s[i]['tipo_constancia'];
 
         break;
-        case 'Buena conducta':
+        case 'Egreso':
         icono_s="<i class='fas fa-address-card'></i>";
         texto_mensaje+="Ha realizado una solicitud de constancia de "+result_s[i]['tipo_constancia'];
 
@@ -97,7 +97,7 @@
   }
 
   if(cantidad.innerHTML!="0" && cantidad_s.innerHTML!="0"){
-    texto_titulo="("+(parseInt(cantidad_s.innerHTML)+parseInt(cantidad.innerHTML))+")C.C Prados de Occidente";
+    texto_titulo="("+(parseInt(cantidad_s.innerHTML)+parseInt(cantidad.innerHTML))+")División de administración";
   }
 
   page_title.innerHTML=texto_titulo;

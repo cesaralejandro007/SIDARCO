@@ -115,7 +115,7 @@
 
                         <div class="row">
                             <div class="col-md-6 mt-2">
-                                <label for="direccion">
+                                <label for="fecha_consulta">
                                     Fecha de consulta
                                 </label>
                                 <div class="input-group">
@@ -129,7 +129,7 @@
             
 
                             <div class="col-md-6 mt-2">
-                                <label for="nombre_negocio">
+                                <label for="motivo">
                                     Motivo de consulta
                                 </label>
                                 <div class="form-group">
@@ -144,7 +144,7 @@
                             
                         <div class="row">
                             <div class="col-md-6 mt-2">
-                                <label for="rif_negocio">
+                                <label for="instrucciones">
                                 Instrucciones
                                 </label>
                                 <div class="input-group">
@@ -157,7 +157,7 @@
                                         <br>
 
                                         <div class="col-md-6 mt-2">
-                                                <label for="segundo_apellido">
+                                                <label for="inventario">
                                                     Medicamentos recetados
                                                 </label><span id='valid_5' style="color:red;"></span>
                                                 <div class="input-group">

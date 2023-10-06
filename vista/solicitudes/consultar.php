@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0" id="title-solicitud">Consejo Comunal Prados de Occidente</h1>
+                    <h1 class="m-0" id="title-solicitud">División de administración </h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -80,10 +80,15 @@
  <label class="form-label" for="FormFile"></label>
  <input class="form-control" style=""    accept="application/pdf" type="file" id="formFile" name="datos[archivo]">
 </div> -->
-<div class="mb-3">
+
+
+
+<!-- <div class="mb-3">
 <label for="formFileSm" class="form-label">Small file input example</label>
   <input class="form-control form-control-sm" id="formFileSm" type="file">
-</div>
+</div> -->
+
+
  <br>
 <span style="font-size:60px" class="fa fa-question-circle-o"></span></td><td ><h5 id="motivo">Motivo de solicitud</h5>
   <br><br>

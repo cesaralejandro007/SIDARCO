@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0" id="title-notification">Consejo Comunal Prados de Occidente</h1>
+                    <h1 class="m-0" id="title-notification">División de administración</h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->

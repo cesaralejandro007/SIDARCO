@@ -54,7 +54,6 @@
         mot.value='';
         doc.value='0';
     } */
-
     doc.onchange=function(){
         if(doc.value!='0'){
             doc.style.borderColor='';
@@ -65,7 +64,6 @@
             valid_doc.innerHTML="Debe ingresar el documento a solicitar";
         }
     }
-
     mot.onkeyup=function(){
         if(mot.value!=''){
             mot.style.borderColor='';

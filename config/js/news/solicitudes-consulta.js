@@ -37,12 +37,12 @@ $.ajax({
       console.log(solicitante);
 
       switch (result_s[i]["tipo_constancia"]) {
-        case "Residencia":
+        case "Trabajo":
           titulo_solicitud =
             "<em class='fas fa-home'></em> Solicitud de constancia de " +
             result_s[i]["tipo_constancia"];
           break;
-        case "Buena conducta":
+        case "Egreso":
           titulo_solicitud =
             "<em class='fas fa-address-card'></em> Solicitud de constancia de " +
             result_s[i]["tipo_constancia"];
