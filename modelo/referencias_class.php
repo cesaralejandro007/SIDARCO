@@ -1,6 +1,6 @@
 <?php
 
-class Consultas_Class extends Modelo
+class Referencias_Class extends Modelo
 {
  
     public function __construct()
@@ -38,7 +38,7 @@ class Consultas_Class extends Modelo
 
     private function SQL_02()
     {
-        return 'INSERT INTO consulta ( id_familia_persona, cedula, fecha_consulta, motivo, instrucciones) VALUES ( :id_familia_persona, :cedula, :fecha_consulta, :motivo, :instrucciones)';
+        return 'INSERT INTO referencias_medicas ( id_familia_persona, cedula_persona, fecha_referencia, diagnostico, informe, examen, ubicacion, id_especialidad) VALUES (:id_familia_persona, :cedula_persona, :fecha_referencia, :diagnostico, :informe, :examen, :ubicacion, :id_especialidad)';
     }
 
     private function SQL_03()
@@ -55,7 +55,7 @@ class Consultas_Class extends Modelo
     private function SQL_05()
     {
 
-        return "SELECT * FROM inventario";
+        return "SELECT * FROM especialidades";
 
     }
 }

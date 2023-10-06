@@ -426,7 +426,7 @@
                         <ul class="nav nav-treeview">
                             <?php if ($_SESSION['Enfermos']['registrar'] == '1') { ?>
                                 <li class="nav-item" onclick="cambio_modulo('Registrar enfermos')">
-                                    <a href="<?php echo constant('URL'); ?>Consultas/Administrar/Registros/" class="nav-link">
+                                    <a href="<?php echo constant('URL'); ?>Referencias/Administrar/Registros/" class="nav-link">
                                         <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
                                         <p>Registrar referencia</p>
                                     </a>
@@ -434,7 +434,7 @@
                             <?php } ?>
                             <?php if ($_SESSION['Enfermos']['consultar'] == '1') { ?>
                                 <li class="nav-item" onclick="cambio_modulo('Consultar enfermos')">
-                                    <a href="<?php echo constant('URL'); ?>Consultas/Administrar/Consultas/" class="nav-link">
+                                    <a href="<?php echo constant('URL'); ?>Referencias/Administrar/Consultas/" class="nav-link">
                                         <i class="fa fa-list nav-icon text-info"></i>
                                         <p>Consultar referencias </p>
                                     </a>

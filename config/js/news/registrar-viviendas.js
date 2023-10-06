@@ -537,6 +537,8 @@ btn_agregar_piso.onclick = function() {
         }
     }
 }
+
+
 $(document).ready(function() {
     $("#gas").on("change", function() {
         var value = $("#gas").val();
@@ -569,6 +571,7 @@ $(document).ready(function() {
         info_vivienda['animales_domesticos'] = document.getElementById("animales_domesticos").value;
         info_vivienda['insectos_roedores'] = document.getElementById("insectos_roedores").value;
         info_vivienda['estado'] = 1;
+        
         if (validar_vivienda()) {
             $.ajax({
                 url: BASE_URL + "Viviendas/Administrar",

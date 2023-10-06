@@ -187,16 +187,39 @@ class Controlador
     }
 
 
-    public function Consultar_Familia_Persona($cedula_persona){
+    public function Consultar_Familia_Persona($id_familia_persona){
 
-        $sql="SELECT id_familia_persona, primer_nombre, primer_apellido from familia f inner join familia_personas p on p.id_familia_persona= ".$cedula_persona."";
+        $sql="SELECT id_familia_persona, primer_nombre, primer_apellido from familia f inner join familia_personas p on p.id_familia_persona= ".$id_familia_persona."";
         $respuesta_arreglo='';
-        try{ 
+        try{  
         $datos=$this->conexion->prepare($sql);
         $datos->execute();
         $datos->setFetchMode(PDO::FETCH_ASSOC);
         $respuesta_arreglo=$datos->fetchAll(PDO::FETCH_ASSOC);
+        $resul ="<option value='0'>-Seleccione Familiar-</option>";
+        foreach ($respuesta_arreglo as $p) {
+            $resul = $resul.  "<option value=". $p['id_familia'] ." > ".$p['primer_nombre']." ".$p['primer_apellido']."</option>";
+        }
+        return $resul;
+        
+    }catch (PDOException $e) {
 
+        $errorReturn = ['estatus' => false];
+        $errorReturn += ['info' => "error sql:{$e}"];
+        return $errorReturn;
+    }
+
+    }
+
+    public function Consultar_Familia_Referencia($id_familia_persona){
+
+        $sql="SELECT id_familia_persona, primer_nombre, primer_apellido from familia f inner join familia_personas p on p.id_familia_persona= ".$id_familia_persona."";
+        $respuesta_arreglo='';
+        try{  
+        $datos=$this->conexion->prepare($sql);
+        $datos->execute();
+        $datos->setFetchMode(PDO::FETCH_ASSOC);
+        $respuesta_arreglo=$datos->fetchAll(PDO::FETCH_ASSOC);
         $resul ="<option value='0'>-Seleccione Familiar-</option>";
         foreach ($respuesta_arreglo as $p) {
             $resul = $resul.  "<option value=". $p['id_familia'] ." > ".$p['primer_nombre']." ".$p['primer_apellido']."</option>";

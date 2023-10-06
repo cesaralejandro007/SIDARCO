@@ -1,6 +1,6 @@
 <?php
 
-class Consultas extends Controlador
+class Referencias extends Controlador
 {
     public function __construct()
     {
@@ -10,7 +10,7 @@ class Consultas extends Controlador
     public function Cargar_Vistas()
     {
 
-        $this->Seguridad_de_Session();$this->vista->Cargar_Vistas('consultas/consultar');
+        $this->Seguridad_de_Session();$this->vista->Cargar_Vistas('referencias/consultar');
     
     } 
     // ==============================================================================
@@ -24,7 +24,7 @@ class Consultas extends Controlador
         $this->modelo->__SET("consultar", array("tabla" => "calles", "estado" => 1, "orden" => "nombre_calle"));
         $this->datos["calle"] = $this->modelo->Administrar();
         $this->modelo->__SET("SQL", "SQL_04");$this->datos["familia_personas"] = $this->modelo->Administrar();
-        $this->modelo->__SET("SQL", "SQL_05");$this->datos["inventario"] = $this->modelo->Administrar();
+        $this->modelo->__SET("SQL", "SQL_05");$this->datos["especialidades"] = $this->modelo->Administrar();
         $this->vista->datos = $this->datos;
     }
 
@@ -36,8 +36,8 @@ class Consultas extends Controlador
         if (isset($_POST['peticion'])) {$peticion = $_POST['peticion'];} else { $peticion = $peticion[0];}
 
         switch ($peticion) {
-            case 'Registros':$this->vista->Cargar_Vistas('consultas/registrar');break;
-            case 'Consultas':$this->vista->Cargar_Vistas('consultas/consultar');break;
+            case 'Registros':$this->vista->Cargar_Vistas('referencias/registrar');break;
+            case 'Consultas':$this->vista->Cargar_Vistas('referencias/consultar');break;
 
             case 'Administrar':
                 if (isset($_POST['datos'])) {
@@ -57,7 +57,7 @@ class Consultas extends Controlador
                 echo $this->mensaje;unset($_POST, $this->mensaje);
                 break;
 
-            case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["familia_personas"]);break;
+            case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["referencias_medicas"]);break;
 
             case 'Existente':
                 foreach ($this->datos["negocios"] as $key => $value) {
@@ -69,7 +69,7 @@ class Consultas extends Controlador
             case 'Consulta_familia':
 
                 $id_familia_persona=$_POST['id_familia_persona'];
-                echo $this->vista->personas=$this->Consultar_Familia_Persona($id_familia_persona);
+                echo $this->vista->personas=$this->Consultar_Familia_Referencia($id_familia_persona);
                 return;
 
                 break;

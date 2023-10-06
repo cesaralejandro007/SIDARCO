@@ -12,7 +12,7 @@ var btn_nuevo=document.getElementById("btn_nuevo");
 
 
 
-btn_agregar.onclick=function(){
+/* tn_agregar.onclick=function(){
 
 
     if( inventario=="" ){
@@ -25,23 +25,23 @@ btn_agregar.onclick=function(){
        });
        setTimeout(function () {
         inventario.style.borderColor = 'red'
-         /* descripcion.style.borderColor = "red"; */
+         
        });
      }else{
         inventario.style.borderColor = '';
-        /* descripcion.style.borderColor = ""; */
+    
         var agregado="";
-       /*  var agregado1=""; */
+    
         var text="";
         var text1="";
         text = inventario.options[inventario.selectedIndex].text;
-        /* text1=descripcion.value; */
+      
         
         agregado = parseInt(inventario.value) ;
-       /*  agregado1 = descripcion.value; */
+   
     
         medica_persona.push(agregado);
-        /* medica_persona_descripcion.push(agregado1); */
+        
     
         console.log(medica_persona);
         var elemento=document.createElement("div");
@@ -75,12 +75,12 @@ btn_agregar.onclick=function(){
         }
         div_medica_persona.appendChild(elemento);
         inventario.value = "0";
-         /* descripcion.value = "";  */
+      
     }
 
 
 }
-
+ */
 
 
 //Registro de medicamentso en la tabla puente
@@ -132,27 +132,24 @@ return validado;
 id_familia_persona.onchange = function() {
 
     alert(id_familia_persona.value);
+
     if(id_familia_persona.value!='0'){
     var cedula = new Object();
     cedula = id_familia_persona.value;
 
     $.ajax({
       type: "POST",
-      url: BASE_URL + "Consultas/Administrar/Consulta_familia",
+      url: BASE_URL + "Referencias/Administrar/Consulta_familia",
       data: { "id_familia_persona": cedula}
     }).done(function(result) {
+      
         
       id_familia.innerHTML = result;
 
     });
 
-  }
-  
-  
-  
 }
-
-
+}
 
 //Información para enviar al controlador 
 
@@ -165,28 +162,33 @@ $(document).ready(function() {
 
         var id_familia_persona = document.getElementById("id_familia_persona"); 
 
+        var fecha_referencia=document.getElementById("fecha_referencia");
+        var examen=document.getElementById("examen");
+        var informe=document.getElementById("informe");
+        var cedula_persona=document.getElementById("cedula_persona");
+        var ubicacion=document.getElementById("ubicacion");
+        var id_especialidad=document.getElementById("id_especialidad");
+        var diagnostico=document.getElementById("diagnostico");
 
-        var fecha_consulta=document.getElementById("fecha_consulta");
-        var motivo=document.getElementById("motivo");
-        var instrucciones=document.getElementById("instrucciones");
-        var cedula=document.getElementById("cedula");
-
-        var mensaje_fecha_consulta = document.getElementById("mensaje_fecha_consulta");
-        var mensaje_motivo = document.getElementById("mensaje_motivo");
-        var mensaje_cedula = document.getElementById("mensaje_cedula");
-        var mensaje_instruc = document.getElementById("mensaje_instruc");
+        var mensaje_fecha_referencia = document.getElementById("mensaje_fecha_orden");
+        var mensaje_examen = document.getElementById("mensaje_examen");
+        var mensaje_id_familia = document.getElementById("mensaje_id_familia");
+        var mensaje_cedula= document.getElementById("mensaje_cedula");
+        var mensaje_informe=document.getElementById("mensaje_referencia");
+        var mensaje_especialidad=document.getElementById("mensaje_referido");
+        var mensaje_diagnostico=document.getElementById("mensaje_diagnostico");
         var retornar = false; 
         
-/* if(valid_element("La fecha_consulta no debe ser mayor a la fecha_consulta actual", fecha_consulta ,document.getElementById("mensaje_fecha_consulta") )){
-    if(new Date(fecha_consulta.value)>new Date()){
-        document.getElementById("mensaje_fecha_consulta").innerHTML="Fecha invalida";
-        document.getElementById("mensaje_fecha_consulta").style.display='';
-        fecha_consulta.style.boderColor="red";
+/* if(valid_element("La fecha_referencia no debe ser mayor a la fecha_referencia actual", fecha_referencia ,document.getElementById("mensaje_fecha_referencia") )){
+    if(new Date(fecha_referencia.value)>new Date()){
+        document.getElementById("mensaje_fecha_referencia").innerHTML="Fecha invalida";
+        document.getElementById("mensaje_fecha_referencia").style.display='';
+        fecha_referencia.style.boderColor="red";
     }
     else{
-        document.getElementById("mensaje_fecha_consulta").style.display="none";
-        document.getElementById("mensaje_fecha_consulta").innerHTML="Ingrese fecha_consulta";
-        fecha_consulta.style.borderColor="";
+        document.getElementById("mensaje_fecha_referencia").style.display="none";
+        document.getElementById("mensaje_fecha_referencia").innerHTML="Ingrese fecha_referencia";
+        fecha_referencia.style.borderColor="";
     }
 } */
 
@@ -200,65 +202,108 @@ $(document).ready(function() {
 
 
 
-        if (id_familia_persona.value == 0 && motivo.value == '' || motivo.value == null && fecha_consulta.value == '' || fecha_consulta.value == null && id_familia_persona.value == '' || id_familia_persona.value == null ) {
-            mensaje_fecha_consulta.innerHTML = 'Debe seleccionar una Calle';
+        if (id_familia_persona.value == 0 && examen.value == '' || examen.value == null && fecha_referencia.value == '' || fecha_referencia.value == null  ) {
+            mensaje_id_familia.innerHTML = 'Debe seleccionar una Calle';
             id_familia_persona.style.borderColor = 'red';
-            mensaje_fecha_consulta.style.color = 'red';
+            mensaje_id_familia.style.color = 'red';
             id_familia_persona.focus();
-            mensaje_motivo.innerHTML = 'el campo motivo no puede estar vacio';
-            motivo.style.borderColor = 'red';
-            mensaje_motivo.style.color = 'red';
-            motivo.focus();
-            mensaje_motivo.innerHTML = 'el campo nombre no puede estar vacio';
-            fecha_consulta.style.borderColor = 'red';
-            mensaje_motivo.style.color = 'red';
-            fecha_consulta.focus();
+            mensaje_examen.innerHTML = 'el campo examen no puede estar vacio';
+            examen.style.borderColor = 'red';
+            mensaje_examen.style.color = 'red';
+            examen.focus();
+            mensaje_examen.innerHTML = 'el campo nombre no puede estar vacio';
+            fecha_referencia.style.borderColor = 'red';
+            mensaje_examen.style.color = 'red';
+            fecha_referencia.focus();
             mensaje_cedula.innerHTML = 'el campo cedula no puede estar vacio';
             id_familia_persona.style.borderColor = 'red';
             mensaje_cedula.style.color = 'red';
             id_familia_persona.focus();
-            mensaje_instruc.innerHTML = 'el campo instrucciones no puede estar vacio';
-            instrucciones.style.borderColor = 'red';
-            mensaje_instruc.style.color = 'red';
-            instrucciones.focus();
+            mensaje_informe.innerHTML = 'el campo informe no puede estar vacio';
+            informe.style.borderColor = 'red';
+            mensaje_informe.style.color = 'red';
+            informe.focus();
         }
-        if (id_familia_persona.value == 0) {
-            mensaje_fecha_consulta.innerHTML = 'Debe seleccionar al funcionario/a';
+        if (id_familia_persona.value == '0') {
+            mensaje_id_familia.innerHTML = 'Debe seleccionar al funcionario/a';
             id_familia_persona.style.borderColor = 'red';
-            mensaje_fecha_consulta.style.color = 'red';
+            mensaje_id_familia.style.color = 'red';
             id_familia_persona.focus();
         } else {
            
             id_familia_persona.style.borderColor = '';
-            if (motivo.value == '' || motivo.value == null) {
-                mensaje_motivo.innerHTML = 'el campo motivo no puede estar vacio';
-                motivo.style.borderColor = 'red';
-                mensaje_motivo.style.color = 'red';
-                motivo.focus();
+
+
+          if (cedula_persona.value == '' || cedula_persona.value == null) {
+                mensaje_cedula.innerHTML = 'el campo céd no puede estar vacio';
+                cedula_persona.style.borderColor = 'red';
+                mensaje_cedula.style.color = 'red';
+                cedula_persona.focus();
             } else {
-                mensaje_motivo.innerHTML = '';
-                motivo.style.borderColor = '';
-                if (fecha_consulta.value == '' || fecha_consulta.value == null) {
-                    mensaje_motivo.innerHTML = 'el campo fecha_consulta no puede estar vacio';
-                    fecha_consulta.style.borderColor = 'red';
-                    mensaje_motivo.style.color = 'red';
-                    fecha_consulta.focus();
+                mensaje_cedula.innerHTML='';
+                cedula_persona.style.borderColor=""; 
+
+                if (ubicacion.value == '' || ubicacion.value == null) {
+                    mensaje_examen.innerHTML = 'el campo ubicación no puede estar vacio';
+                    ubicacion.style.borderColor = 'red';
+                    mensaje_examen.style.color = 'red';
+                    ubicacion.focus();
                 } else {
-                    mensaje_motivo.innerHTML = '';
-                    fecha_consulta.style.borderColor = '';
-                    if (id_familia_persona.value == '' || id_familia_persona.value == null) {
-                        mensaje_cedula.innerHTML = 'el campo cedula no puede estar vacio';
+             
+                    ubicacion.style.borderColor='';
+
+
+                    if (id_especialidad.value == '0' || id_especialidad.value == null) {
+                        mensaje_especialidad.innerHTML = 'el campo especialidad no puede estar vacio';
+                        id_especialidad.style.borderColor = 'red';
+                        mensaje_especialidad.style.color = 'red';
+                        id_especialidad.focus();
+                    } else {
+                       
+                        id_especialidad.style.borderColor='';
+
+                        if (diagnostico.value == '' || diagnostico.value == null) {
+                            mensaje_diagnostico.innerHTML = 'el campo diagnóstico no puede estar vacio';
+                            diagnostico.style.borderColor = 'red';
+                            mensaje_diagnostico.style.color = 'red';
+                            diagnostico.focus();
+                        } else {
+                          
+                            diagnostico.style.borderColor='';
+
+
+
+            if (examen.value == '' || examen.value == null) {
+                mensaje_examen.innerHTML = 'el campo examen no puede estar vacio';
+                examen.style.borderColor = 'red';
+                mensaje_examen.style.color = 'red';
+                examen.focus();
+            } else {
+                mensaje_examen.innerHTML = '';
+                examen.style.borderColor = '';
+                if (fecha_referencia.value == '' || fecha_referencia.value == null) {
+                    mensaje_examen.innerHTML = 'el campo fecha_referencia no puede estar vacio';
+                    fecha_referencia.style.borderColor = 'red';
+                    mensaje_examen.style.color = 'red';
+                    fecha_referencia.focus();
+                } else {
+                    mensaje_examen.innerHTML = '';
+                    fecha_referencia.style.borderColor = '';
+
+                   /*  if (id_familia_persona.value == '0' || id_familia_persona.value == null) {
+                        mensaje_id_familia.innerHTML = 'el campo cedula no puede estar vacio';
                         id_familia_persona.style.borderColor = 'red';
-                        mensaje_cedula.style.color = 'red';
+                        mensaje_id_familia.style.color = 'red';
                         id_familia_persona.focus();
                     } else {
-                        mensaje_cedula.innerHTML = '';
-                        id_familia_persona.style.borderColor = '';
-                        if (instrucciones.value == '' || instrucciones.value == null) {
-                            mensaje_instruc.innerHTML = 'el campo instrucciones no puede estar vacio';
-                            instrucciones.style.borderColor = 'red';
-                            mensaje_instruc.style.color = 'red';
-                            instrucciones.focus();
+                        id_familia_persona.innerHTML = '';
+                        id_familia_persona.style.borderColor = ''; */
+
+                        if (informe.value == '' || informe.value == null) {
+                            mensaje_informe.innerHTML = 'el campo informe no puede estar vacio';
+                            informe.style.borderColor = 'red';
+                            mensaje_informe.style.color = 'red';
+                            informe.focus();
                         } else {
                            /*  var datos_medicamento = [];
                             for(var i=0;i<medica_persona.length;i++){
@@ -282,20 +327,23 @@ $(document).ready(function() {
                              alert(result);
                              console.log(result);
                              }) */
-                            mensaje_instruc.innerHTML = '';
-                            instrucciones.style.borderColor = '';
+                            mensaje_informe.innerHTML = '';
+                            informe.style.borderColor = '';
                             var datos = {
                                 id_familia_persona: $("#id_familia_persona").val(),
-                                fecha_consulta: $("#fecha_consulta").val(),
-                                motivo: $("#motivo").val(),
-                                instrucciones: $("#instrucciones").val(),
-                                cedula:$("#cedula").val(),
-
+                                fecha_referencia: $("#fecha_referencia").val(),
+                                examen: $("#examen").val(),
+                                informe: $("#informe").val(),
+                                cedula_persona:$("#cedula_persona").val(),
+                                ubicacion:$("#ubicacion").val(),
+                                id_especialidad: $("#id_especialidad").val(),
+                                diagnostico: $("#diagnostico").val(),
+                                
                                 
                             };
                                     $.ajax({
                                         type: 'POST',
-                                        url: BASE_URL + 'Consultas/Administrar',
+                                        url: BASE_URL + 'Referencias/Administrar',
                                         data: {
                                             'datos': datos,
                                             peticion: "Administrar",
@@ -304,7 +352,6 @@ $(document).ready(function() {
                                             
                                         },
                                         success: function(respuesta) {
-                                
                                             if (respuesta == 1) {
                                                 swal({
                                                     title: "Exito!",
@@ -313,7 +360,7 @@ $(document).ready(function() {
                                                     showConfirmButton: false,
                                                 });
                                                 setTimeout(function() {
-                                                    location.href = BASE_URL + 'Consultas/Administrar/Consultas';
+                                                    location.href = BASE_URL + 'Referencias/Administrar/Consultas';
                                                 }, 2000);
                                             } else {
                                                 swal({
@@ -333,6 +380,10 @@ $(document).ready(function() {
                         }
                     }
                 }
+           /*  } */
+        }
+    }
+}
             }
         }
     });
