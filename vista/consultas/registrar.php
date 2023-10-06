@@ -45,8 +45,8 @@
                             <td class="col-md-6 p-0">
                                 <select class='form-control no-simbolos mt-2' id='cedula_persona' name="datos[cedula_persona]" style="width: 100%">
                                     <option value='0' >-Seleccione Funcionario/a-</option>
-                                    <?php foreach($this->datos["personas"] as $p) {?>
-                                        <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['cedula_persona']." ".$p["primer_apellido"]; ?></option>
+                                    <?php foreach($this->datos["familia_personas"] as $p) {?>
+                                        <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['cedula_persona']." ".$p["descripcion_familia"]; ?></option>
                                     <?php }?>
                                 </select>
                             </td>
@@ -112,7 +112,7 @@
                                 <label for="direccion">
                                     Fecha de consulta
                                 </label>
-                                <div class="input-group">
+                                <div class="form-group">
                                     <input class="form-control no-simbolos mb-10 letras_numeros" id="fecha" name="datos[fecha_consulta]"
                                          type="date" oninput="Limitar(this,30);" />
                                 </div>
@@ -123,7 +123,7 @@
                                 <label for="nombre_negocio">
                                     Motivo de consulta
                                 </label>
-                                <div class="input-group">
+                                <div class="form-group">
                                     <input class="form-control letras_numeros mb-10" id="motivo" name="datos[motivo]"
                                         placeholder="Motivo de consulta" type="text" oninput="Limitar(this,30);" />
                                          
@@ -131,19 +131,44 @@
                                 <span id="mensaje_negocio"></span>
                             </div>
                             
-                      
+                            
+                                <div class='col-md-12'>
+
+                                <label for="">Medicamentos recetados</label>
+                                <div class="input-group">
+                                <table style="width: 100%"><tr><td>
+                                    <input type="text" style="" placelholder="Seleccoinar medicamentos"  >
+                                <datalist>
+                                    
+                                        <option >hola</option>
+                                    
+                                </datalist>
+                                </td>
+
+                                </tr>
+
+                                </table>
+
+                                </div>
+                            </div>
+                       
 
                             <div class="col-md-12 mt-2">
                                 <label for="rif_negocio">
-                                   Instrucciones
+                                Instrucciones
                                 </label>
                                 <div class="input-group">
                                     <textarea class="form-control mb-10 letras_numeros" id="instrucciones" name="datos[instrucciones]"
                                         placeholder="Tratamiento a seguir"></textarea>
-                                  <!--   <input  type="text" onkeyup="Filtro(this,'-',RIF,false)" oninput="Limitar(this,12);"/> -->
+                                <!--   <input  type="text" onkeyup="Filtro(this,'-',RIF,false)" oninput="Limitar(this,12);"/> -->
                                 </div>
                                 <span id="mensaje_rif"></span>
                             </div>
+
+                            
+
+
+
                 
                         </div>
                     </div>

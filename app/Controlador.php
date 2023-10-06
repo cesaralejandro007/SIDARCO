@@ -214,9 +214,6 @@ class Controlador
 
 
 
-
-    
-
     public function Consultar_Tabla_secciones($areas)
     {
         $sql               = "SELECT secciones.id_seccion as id_seccion, secciones.nombre_seccion as nombre_seccion FROM areas,secciones WHERE areas.id_seccion = secciones.id_seccion and areas.id_area = $areas";

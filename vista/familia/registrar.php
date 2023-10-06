@@ -133,7 +133,7 @@
                                                     Integrantes
                                                 </label><span id='valid_5' style="color:red;"></span>
                                                 <div class="input-group">
-                                                <table style='width:100%'>
+                                                 <table style='width:100%'>
                                                     <tr>
                                                         <td>
                                                         <input type="text" class='form-control letras_numeros' id='cedula_integrante' placeholder="Buscar cédula"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
@@ -167,8 +167,9 @@
                                                             Conyugue 
                                                         </option>
                                                     </select>
-                                                                   </td>
-                                                        </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
+                                                        </td>
+                                                        </td>
+                                                        <td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
                                                       </tr>
                                                       <tr><td colspan='2'><br>
                                                            <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>

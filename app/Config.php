@@ -1,7 +1,7 @@
 <?php
 //-------------------------URL PRINCIPAL--------------------
 define('SISTEMA', 	'SIDARCO');
-define('URL', 'http://localhost/dashboard/www/'.SISTEMA."/");
+define('URL', 'http://'.$_SERVER['HTTP_HOST'].'/dashboard/www/'.SISTEMA."/");
 
 //--------------Base de Datos--------------------
 
