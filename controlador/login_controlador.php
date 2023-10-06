@@ -26,8 +26,8 @@ class Login extends Controlador
 
         $this->Cargar_Modelo("seguridad");$permisos = $this->modelo->get_permisos_rol($rol_inicio);
 
-        $_SESSION['Solicitudes']       = $permisos[0];
-        $_SESSION['Personas']          = $permisos[1];
+        $_SESSION['Personas']          = $permisos[0];
+        $_SESSION['Solicitudes']       = $permisos[1];
         $_SESSION['Agenda']            = $permisos[2];
         $_SESSION['Comite']            = $permisos[3];
         $_SESSION['Grupos deportivos'] = $permisos[4];
@@ -42,6 +42,9 @@ class Login extends Controlador
         $_SESSION['Discapacitados']    = $permisos[13];
         $_SESSION['Vacunados COVID']   = $permisos[14];
         $_SESSION['Seguridad']         = $permisos[15];
+        $_SESSION['Historial_clinico'] = $permisos[16];
+        $_SESSION['Presion_arterial']  = $permisos[17];
+        $_SESSION['Consultas']         = $permisos[18];
 
         unset($cedula, $nombre, $apellido, $correo, $estado, $rol_inicio, $permisos);
     }

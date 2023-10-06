@@ -76,8 +76,8 @@ class Seguridad extends Controlador
 
         $permisos = $this->modelo->get_permisos_rol($_SESSION['rol_inicio']);
 
-        $_SESSION['Solicitudes']       = $permisos[0];
-        $_SESSION['Personas']          = $permisos[1];
+        $_SESSION['Personas']          = $permisos[0];
+        $_SESSION['Solicitudes']       = $permisos[1];
         $_SESSION['Agenda']            = $permisos[2];
         $_SESSION['Comite']            = $permisos[3];
         $_SESSION['Grupos deportivos'] = $permisos[4];

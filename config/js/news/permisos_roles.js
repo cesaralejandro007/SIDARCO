@@ -141,10 +141,10 @@ function llenar_permisos(rol){
     var permiso_nombre="";
     switch(permisos[i]['id_modulo']){
       case 1:
-      permiso_nombre="Solicitudes"
+      permiso_nombre="Personas"
       break;
       case 2:
-      permiso_nombre="Personas"
+      permiso_nombre="Solicitudes"
       break;
       case 3:
       permiso_nombre="Agenda"
