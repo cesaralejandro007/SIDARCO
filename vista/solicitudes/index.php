@@ -9,7 +9,6 @@
                 <div class="col-sm-6">
                     <h1 class="m-0" id="title-notification"><em class="fa fa-file-text"></em> Solicitudes de constancia</h1>
                 </div><!-- /.col -->
-
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>

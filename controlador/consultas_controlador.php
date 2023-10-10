@@ -6,6 +6,7 @@ class Consultas extends Controlador
     {
         parent::__construct();
         //   $this->Cargar_Modelo("negocios");
+        
     }
     public function Cargar_Vistas()
     {
@@ -43,7 +44,7 @@ class Consultas extends Controlador
                 if (isset($_POST['datos'])) {
                     $this->modelo->Datos($_POST['datos']);
                 } else {
-                  /*   $this->modelo->Estado($_POST['estado']);
+                /*   $this->modelo->Estado($_POST['estado']);
                     $this->modelo->Datos([
                         $_POST['estado']["id_tabla"] => $_POST['estado']["param"],
                         "estado"                     => $_POST['estado']["estado"], */
@@ -55,6 +56,46 @@ class Consultas extends Controlador
                 if ($this->modelo->Administrar()) {$this->mensaje = 1; $this->Accion($_POST['accion']);}
 
                 echo $this->mensaje;unset($_POST, $this->mensaje);
+                break;
+
+            case 'Registrar':
+
+                for ($i = 0; $i < count($_POST['discapacidades']); $i++) {
+                    if ($_POST['discapacidades'][$i]['nuevo'] == '0') {
+                        $this->modelo->__SET("SQL", $_POST['sql']); $this->modelo->__SET("tipo", "1");
+                        $this->modelo->Datos([
+                            "cedula_persona"           => $_POST['cedula'],
+                            "id_discapacidad"          => $_POST['discapacidades'][$i]['discapacidad'],
+                            "necesidades_discapacidad" => $_POST['discapacidades'][$i]['necesidades'],
+                            "observacion_discapacidad" => $_POST['discapacidades'][$i]['observaciones'],
+                            "en_cama"                  => $_POST['discapacidades'][$i]['en_cama'],
+                        ]);
+                        if ($this->modelo->Administrar()) {$this->mensaje = 1;}
+                    } else {
+                        $this->modelo->__SET("SQL", "_02_");$this->modelo->__SET("tipo", "1");
+                        $this->modelo->__SET("registrar", array("tabla" => "discapacidad", "columna" => "nombre_discapacidad"));
+                        $this->modelo->Datos(["nombre_discapacidad" => $_POST['discapacidades'][$i]['discapacidad'], "estado" => 1]);
+
+                        if ($this->modelo->Administrar()) {
+                            $this->modelo->__SET("SQL", "_03_"); $this->modelo->__SET("tipo", "0");
+                            $this->modelo->__SET("ultimo", array("tabla" => "discapacidad", "id" => "id_discapacidad"));
+                            $id = $this->modelo->Administrar();
+
+                            foreach ($id as $id_e) {
+                                $this->modelo->__SET("SQL", $_POST['sql']);$this->modelo->__SET("tipo", "1");
+                                $this->modelo->Datos([
+                                    "cedula_persona"           => $_POST['cedula'],
+                                    "id_discapacidad"          => $id_e['MAX(id_discapacidad)'],
+                                    "necesidades_discapacidad" => $_POST['discapacidades'][$i]['necesidades'],
+                                    "observacion_discapacidad" => $_POST['discapacidades'][$i]['observaciones'],
+                                    "en_cama"                  => $_POST['discapacidades'][$i]['en_cama'],
+                                ]);
+                                if ($this->modelo->Administrar()) {$this->mensaje = 1;}
+                            }
+                        }
+                    }
+                }
+                echo $this->mensaje;unset($this->mensaje, $id, $_POST);
                 break;
 
             case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["familia_personas"]);break;
@@ -74,7 +115,7 @@ class Consultas extends Controlador
 
                 break;
 
-         /*    case 'Registrar_medic':
+        /*    case 'Registrar_medic':
 
                 $id_inventario=$_POST['inventario'];
                 echo $this->vista->personas=$this->registrar_consulta_inventario($id_inventario);

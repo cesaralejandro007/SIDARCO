@@ -4,8 +4,11 @@ class Discapacitados extends Controlador
 {
     public function __construct()
     {
+
         parent::__construct();
+
         //  $this->Cargar_Modelo("discapacitados");
+
     }
     public function Cargar_Vistas()
     {
@@ -43,7 +46,9 @@ class Discapacitados extends Controlador
 
                 echo $this->mensaje;unset($_POST, $this->mensaje);
                 break;
+                
             case 'Registrar':
+
                 for ($i = 0; $i < count($_POST['discapacidades']); $i++) {
                     if ($_POST['discapacidades'][$i]['nuevo'] == '0') {
                         $this->modelo->__SET("SQL", $_POST['sql']); $this->modelo->__SET("tipo", "1");
@@ -55,6 +60,7 @@ class Discapacitados extends Controlador
                             "en_cama"                  => $_POST['discapacidades'][$i]['en_cama'],
                         ]);
                         if ($this->modelo->Administrar()) {$this->mensaje = 1;}
+
                     } else {
                         $this->modelo->__SET("SQL", "_02_");$this->modelo->__SET("tipo", "1");
                         $this->modelo->__SET("registrar", array("tabla" => "discapacidad", "columna" => "nombre_discapacidad"));
@@ -81,6 +87,7 @@ class Discapacitados extends Controlador
                 }
                 echo $this->mensaje;unset($this->mensaje, $id, $_POST);
                 break;
+
             case 'Consulta_Ajax':
                 $retornar = [];
                 foreach ($this->datos["discapacitados"] as $d) {

@@ -17,6 +17,8 @@ var necesidades = document.getElementById("necesidades");
 var observaciones = document.getElementById("observaciones");
 
 
+
+
 discapacidad_select.onchange = function() {
     if (discapacidad_select.value == 'vacio') {
         valid_discapacidad.innerHTML = 'Ingrese la discapacidad';
@@ -27,6 +29,10 @@ discapacidad_select.onchange = function() {
         discapacidad_select.style.borderColor = '';
     }
 }
+
+
+
+
 discapacidad_input.onchange = function() {
     if (discapacidad_input.value == '') {
         valid_discapacidad.innerHTML = 'Ingrese la discapacidad';
@@ -37,6 +43,9 @@ discapacidad_input.onchange = function() {
         discapacidad_input.style.borderColor = '';
     }
 }
+
+
+
 btn_nueva_discapacidad.onclick = function() {
     if (discapacidad_input.style.display == 'none') {
         valid_discapacidad.innerHTML = '';
@@ -112,7 +121,15 @@ en_cama.onchange = function() {
         en_cama.style.borderColor = '';
     }
 }
-btn_agregar.onclick = function() {
+
+
+
+
+
+
+
+btn_agregar.onclick = function(){
+
     if ((discapacidad_input.style.display != 'none' && discapacidad_input.value == '') || (discapacidad_input.style.display == 'none' && discapacidad_select.value == 'vacio')) {
         valid_discapacidad.innerHTML = 'Ingrese la discapacidad';
         discapacidad_input.style.borderColor = 'red';
@@ -183,6 +200,9 @@ btn_agregar.onclick = function() {
         }
     }
 }
+
+
+
 btn_guardar.onclick = function() {
     if (discapacidades.length == 0) {
         swal({

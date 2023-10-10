@@ -17,17 +17,17 @@ btn_agregar.onclick=function(){
 
     if( inventario=="" ){
         swal({
-         title:"Error",
-         text:"Debe seleccionar",
-         type:"error",
-         showConfirmButton:false,
-         timer:2000
-       });
-       setTimeout(function () {
+        title:"Error",
+        text:"Debe seleccionar",
+        type:"error",
+        showConfirmButton:false,
+        timer:2000
+    });
+    setTimeout(function () {
         inventario.style.borderColor = 'red'
          /* descripcion.style.borderColor = "red"; */
-       });
-     }else{
+    });
+    }else{
         inventario.style.borderColor = '';
         /* descripcion.style.borderColor = ""; */
         var agregado="";
@@ -137,19 +137,17 @@ id_familia_persona.onchange = function() {
     cedula = id_familia_persona.value;
 
     $.ajax({
-      type: "POST",
-      url: BASE_URL + "Consultas/Administrar/Consulta_familia",
-      data: { "id_familia_persona": cedula}
+    type: "POST",
+    url: BASE_URL + "Consultas/Administrar/Consulta_familia",
+    data: { "id_familia_persona": cedula}
     }).done(function(result) {
-        
-      id_familia.innerHTML = result;
+
+    id_familia.innerHTML = result;
 
     });
 
-  }
-  
-  
-  
+}
+
 }
 
 

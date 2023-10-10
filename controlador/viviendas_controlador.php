@@ -40,6 +40,7 @@ class Viviendas extends Controlador
 
         $this->vista->datos = $this->datos;
     }
+    
     public function Administrar($peticion = null)
     {
         $this->Seguridad_de_Session();
