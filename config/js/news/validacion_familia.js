@@ -114,7 +114,7 @@ for(var i=0; i<integrantess.length; i++){
 	datos['parentezco']=parentezco_array3[i];
 	datos_familia.push(datos);
 
-	alert(datos_familia);
+	
 
    }  
   /*  datos_familia['integrantes']=integrantes;
@@ -147,8 +147,6 @@ integrantes_input.onkeyup=function(){
 	}
 }
 
-
-
 btn_agregar.onclick=function(){
 	
 	if(integrantes_input.value==""){
@@ -173,7 +171,7 @@ btn_agregar.onclick=function(){
 		})
 		.done(function (datos){
 
-             alert(datos); 
+           
 
 			if(datos!=0){
 
@@ -186,9 +184,9 @@ btn_agregar.onclick=function(){
 				 var result=JSON.parse(datos); 
                 /* integrantes.push(result[0]['id_familia']); */
 				integrantess.push(result[0]['id_familia']);
-				alert(integrantess);
+				/* alert(integrantess); */
 				parentezco_array3.push(parentezco.value);
-				alert(parentezco_array3); 
+				/* alert(parentezco_array3);  */
 			/* 	parentezco_array2.push(parentezco_array); 
 				alert(parentezco_array2); */
                 integrantes_input.value='';
@@ -278,7 +276,7 @@ cedula_persona.onkeyup=function(){
    }).done(function(result){
 	console.log(result);
 	persona_existente=result;
-	 alert(persona_existente); 
+	
   
   })
   

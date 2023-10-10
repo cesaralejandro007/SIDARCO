@@ -10,8 +10,6 @@ var div_medica_persona=document.getElementById("medi_agrega");
 var btn_nuevo=document.getElementById("btn_nuevo");
 
 
-
-
 btn_agregar.onclick=function(){
 
 

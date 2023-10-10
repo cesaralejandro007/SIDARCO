@@ -56,10 +56,10 @@
                                         <td style='display:none;' id='ver_estado'>  
                                             <!-- <div class="input-group"> -->
                                             <span style='display:none;color:red' id='valid_51'>Campo sin llenar</span>
-                          
+                        
                                         </td>
 
-                                     
+                                    
                                         
                                     </tr>
                                 </table>
@@ -113,7 +113,7 @@
             </div>  
 
             <div class="row">
-           
+        
                             <div class="col-md-4 mt-2">
                                 <label for="examen">
                                 Examen solicitado
@@ -175,7 +175,7 @@
                                         <option value='0' selected>-Seleccione una especialidad</option>
                                     <?php  foreach($this->datos["especialidades"] as $esp) {?>
                                     <option value="<?php echo $esp["id_especialidad"]?>"><?php  echo $esp["nombre_especialidad"]?> </option>
-                                   <?php }?>
+                                <?php }?>
                                 </select>
                                 </div>
                                 <span id="mensaje_referido"></span>
@@ -195,7 +195,7 @@
                             
                             
                             
-                      
+                    
                                         <br>
 <!-- 
                                         <div class="col-md-6 mt-2">
@@ -206,7 +206,7 @@
                                                 <table style='width:100%'>
                                                     <tr>
                                                         <td>-->
-                                                       <!--  <input type="text" class='form-control letras_numeros' id='inventario' placeholder="Buscar medicamento"  list='lista_persona' name="datos[id_inventario]" oninput="Limitar(this,15)"> 
+                                                    <!--  <input type="text" class='form-control letras_numeros' id='inventario' placeholder="Buscar medicamento"  list='lista_persona' name="datos[id_inventario]" oninput="Limitar(this,15)"> 
                                                             <select aria-label="Default select example" id="inventario" class='form-control no-simbolos'>
                                                             <option value='vacio'> Medicamentos </option> 
                                                                 <?php foreach ($this->datos["inventario"] as $inv) { ?>
@@ -246,7 +246,7 @@
             </form>
             <!-- /.card-footer-->
         </div>
-        <!-- /.card -->
+        <!-- /.card --> 
 
     </section>
     <!-- /.content -->

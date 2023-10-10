@@ -1,4 +1,3 @@
-
 //Declaracion de las variables con los ID de Registrar consultas
 
 var id_familia_persona=document.getElementById("id_familia_persona");
