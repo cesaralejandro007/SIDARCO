@@ -58,4 +58,9 @@ class Consultas_Class extends Modelo
         return "SELECT * FROM inventario";
 
     }
+
+    private function SQL_06()
+    {
+        return "INSERT INTO inventario_consulta (id_inventario) VALUES (:id_inventario) ";
+    }
 }

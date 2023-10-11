@@ -5,6 +5,7 @@ class Personas extends Controlador
   public function __construct()
   {
     parent::__construct();
+
    //     $this->Cargar_Modelo("personas");
   }
 
@@ -16,6 +17,7 @@ class Personas extends Controlador
 
   public function Establecer_Consultas()
   {
+
     $personas = $this->Consultar_Tabla("personas", 1, "cedula_persona");
 
     $vacunas =  $this->Consultar_Tabla("vacuna_covid", 1, "id_vacuna_covid");
@@ -317,6 +319,7 @@ public function consultar_informacion_persona_ingreso(){
 }
 
 $this->Escribir_JSON($info_completa);
+
 }
 
 public function consultar_informacion_persona_compleanos(){
@@ -733,11 +736,10 @@ public function registrar_transporte(){
  
  } */
 
- public function registrar_proyecto(){
+public function registrar_proyecto(){
   $proyectos=$this->modelo->get_proyectos();
   $datos=$_POST['datos'];
 
- 
 /*   foreach ($proyectos as $pro) { */
  /*    if($pro['id_proyecto']==$datos['id_titulos']){ */
   for ($i = 0; $i < count($datos); $i++) {
@@ -751,10 +753,14 @@ public function registrar_transporte(){
   }
 }
 
- 
- }
- echo count($datos);
- }
+}
+echo count($datos);
+
+
+}
+
+
+
 
 
  public function registrar_ubicacion(){
@@ -813,8 +819,8 @@ public function registrar_ocupacion(){
     "cedula_persona"   =>     $_POST['cedula_persona'],
     "id_ocupacion"     =>     $ocupacion_dato['ocupacion']
   ]);
- }
- else{
+}
+else{
 
   if($this->Registrar_Tablas("ocupacion","nombre_ocupacion",$ocupacion_dato['ocupacion'])){
     $id=$this->Ultimo_Ingresado("ocupacion","id_ocupacion");

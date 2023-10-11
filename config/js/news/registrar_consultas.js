@@ -256,19 +256,20 @@ $(document).ready(function() {
                             mensaje_instruc.style.color = 'red';
                             instrucciones.focus();
                         } else {
-                           /*  var datos_medicamento = [];
+                             var datos_medicamento = [];
                             for(var i=0;i<medica_persona.length;i++){
-                            var datos=new Object(); */
-                              /* datos['id_consulta']=consulta_medicamento[i]; */
-                           /*  datos['inventario']=medica_persona[i]; */
-                         /* datos['cedula_persona']=cedula.value; */
+                           var datos=new Object(); 
+                            /* datos['id_consulta']=consulta_medicamento[i]; */ 
+                             datos['inventario']=medica_persona[i]; 
+                          /* datos['cedula_persona']=cedula.value;  */
                         
-                            /* datos_medicamento.push(datos); */
-                             /* alert(JSON.stringify(datos_medicamento)); */
-                           /*   }
+                             datos_medicamento.push(datos); 
+                              alert(JSON.stringify(datos_medicamento)); 
+                             
+                              }
                              $.ajax({
                              type:"POST",
-                             url:BASE_URL+"Consultas/Administrar",
+                             url:BASE_URL+"Consultas/Registrar",
                              data:{
                                  "datos":datos_medicamento,
                                  peticion:"Administrar",
@@ -277,7 +278,8 @@ $(document).ready(function() {
                              }).done(function(result){
                              alert(result);
                              console.log(result);
-                             }) */
+                             }) 
+                            
                             mensaje_instruc.innerHTML = '';
                             instrucciones.style.borderColor = '';
                             var datos = {
@@ -331,10 +333,12 @@ $(document).ready(function() {
                 }
             }
         }
+    
+
     });
 
     
- 
+
     document.onkeypress = function(e) {
         if (e.which == 13 || e.keyCode == 13) {
             return false;

@@ -31,7 +31,7 @@
 
                     <div class="card-block">
                     <div class="col-md-6 mt-2">
-                                <label for="egresado">Procedencia por traslado</label>
+                                <label for="egresado">Seleccione</label>
                                 <span style='display:none;color:red' id='valid_50'>Campo sin llenar</span>
                                 <table style='width:100%'>
                                     <tr>
@@ -60,7 +60,7 @@
                     </select>
                                         </td>
 
-                                     
+
                                         
                                     </tr>
                                 </table>
@@ -154,7 +154,6 @@
                         <span id="mensaje_instruc"></span>
                         </div>
                                         <br>
-
                                         <div class="col-md-6 mt-2">
                                                 <label for="inventario">
                                                     Medicamentos recetados
@@ -163,12 +162,12 @@
                                                 <table style='width:100%'>
                                                     <tr>
                                                         <td>
-                                                       <!--  <input type="text" class='form-control letras_numeros' id='inventario' placeholder="Buscar medicamento"  list='lista_persona' name="datos[id_inventario]" oninput="Limitar(this,15)"> -->
+                                                        <!--  <input type="text" class='form-control letras_numeros' id='inventario' placeholder="Buscar medicamento"  list='lista_persona' name="datos[id_inventario]" oninput="Limitar(this,15)"> -->
                                                             <select aria-label="Default select example" id="inventario" class='form-control no-simbolos'>
                                                             <option value='vacio'> Medicamentos </option> 
                                                                 <?php foreach ($this->datos["inventario"] as $inv) { ?>
                                                                 <option value='<?php echo $inv['id_inventario'];?>'><?php echo $inv['medicamento']; ?></option>
-                                                            <?php    } ?>
+                                                            <?php } ?>
                                                                 </select>
                                                         
                                                         </td>
