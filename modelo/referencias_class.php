@@ -38,7 +38,7 @@ class Referencias_Class extends Modelo
 
     private function SQL_02()
     {
-        return 'INSERT INTO referencias_medicas ( id_familia_persona, cedula_persona, fecha_referencia, diagnostico, informe, examen, ubicacion, id_especialidad) VALUES (:id_familia_persona, :cedula_persona, :fecha_referencia, :diagnostico, :informe, :examen, :ubicacion, :id_especialidad)';
+        return 'INSERT INTO referencias_medicas ( cedula_persona, fecha_referencia, diagnostico, informe, examen, ubicacion, id_especialidad) VALUES (:cedula_persona, :fecha_referencia, :diagnostico, :informe, :examen, :ubicacion, :id_especialidad)';
     }
 
     private function SQL_03()
@@ -49,7 +49,7 @@ class Referencias_Class extends Modelo
     private function SQL_04()
     {
 
-        return "SELECT cedula_persona, id_familia_persona FROM familia_personas  GROUP BY cedula_persona ";
+        return "SELECT cedula_persona, primer_nombre, primer_apellido FROM personas  GROUP BY cedula_persona ";
 
     }
     private function SQL_05()

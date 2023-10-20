@@ -29,11 +29,11 @@
                 <table id="example1" class="table table-bordered  table-hover">
                     <thead>
                         <tr>
-                            <th>Calle</th>
-                            <th>Direccion</th>
-                            <th>Nombre de Negocio</th>
-                            <th>Propietario</th>
-                            <th>Rif de Negocio</th>
+                            <th>Datos del paciente</th>
+                            <th>Fecha diágnostico</th>
+                            <th>Diágnostico</th>
+                            <th>Informe</th>
+                            <th>Examen</th>
                             <th style="width: 115px;">Acciones</th>
                         </tr>
                     </thead>
@@ -45,11 +45,11 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Calle</th>
-                            <th>Direccion</th>
-                            <th>Nombre de Negocio</th>
-                            <th>Propietario</th>
-                            <th>Rif de Negocio</th>
+                            <th>Datos del paciente</th>
+                            <th>Fecha diágnostico</th>
+                            <th>Diágnostico</th>
+                            <th>Informe</th>
+                            <th>Examen</th>
                             <th style="width: 115px;">Acciones</th>
                         </tr>
                     </tfoot>

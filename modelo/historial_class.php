@@ -319,24 +319,60 @@
 
         try {
             $datos = $this->conexion->prepare('INSERT INTO historiales_clinicos (
-                id_familia_persona,
-                sangre,
+                diagnostico,
+                tratamiento,
+                evolucion,
+                fecha_historial,
+                cedula_persona,
+                examen,
+                estado,
+                tipo_sangre,
                 peso,
-                altura
+                altura,
+                talla,
+                imc,
+                fc,
+                fr,
+                ta,
+                temperatura
 
                 ) VALUES (
-                :id_familia_persona,
-                :sangre, 
+                :diagnostico,
+                :tratamiento, 
+                :evolucion,
+                :fecha_historial,
+                :cedula_persona,
+                :examen,
+                :estado,
+                :tipo_sangre,
                 :peso,
-                :altura
+                :altura,
+                :talla,
+                :imc,
+                :fc,
+                :fr,
+                :ta,
+                :temperatura
 
             )');
 
             $datos->execute([
-                'id_familia_persona'    => $data['id_familia_persona'],
-                'sangre'                => $data['sangre'],
-                'peso'                  => $data['peso'],
-                'altura'                =>$data['altura']
+                'diagnostico'                => $data['diagnostico'],
+                'tratamiento'                => $data['tratamiento'],
+                'evolucion'                  => $data['evolucion'],
+                'fecha_historial'            =>$data['fecha_historial'],
+                'cedula_persona'             =>$data['cedula_persona'],
+                'examen'                     =>$data['examen'],
+                'estado'                     =>1,
+                'tipo_sangre'                =>$data['tipo_sangre'],
+                'peso'                       =>$data['peso'],
+                'altura'                     =>$data['altura'],
+                'talla'                      =>$data['talla'],
+                'imc'                        =>$data['imc'],
+                'fc'                         =>$data['fc'],
+                'fr'                         =>$data['fr'],
+                'ta'                         =>$data['ta'],
+                'temperatura'                =>$data['temperatura']
             ]);
 
             return true;

@@ -24,8 +24,12 @@ class Historial extends Controlador
         $this->vista->personas=$persona;
         $integrante=$this->modelo->Integrantes_consultas();
         $this->vista->integrantes=$integrante;
-        $habit_psicol=$this->Consultar_Tabla_sin_estado("habit_psicol","nombre_psicol");
+        $habit_psicol=$this->Consultar_ant("habit_psicologicos");
         $this->vista->habit_psicols=$habit_psicol;
+        $ant_personal=$this->Consultar_ant("ant_personales");
+        $this->vista->ant_personals=$ant_personal;
+        $ant_familiar=$this->Consultar_ant("ant_familiares");
+        $this->vista->ant_familiares=$ant_familiar;
         $this->vista->Cargar_Vistas('historial/registrar');
     }
 
@@ -53,6 +57,7 @@ class Historial extends Controlador
 
 
     public function registrar_historial(){
+      
         $datos_historial=$_POST['datos'];
 
         echo $datos_historial;

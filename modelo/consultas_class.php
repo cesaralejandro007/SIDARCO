@@ -31,6 +31,7 @@ class Consultas_Class extends Modelo
     // ===============================================================================
 
     private function SQL_01()
+
     {
 
         return "SELECT id_negocio, nombre_negocio, direccion_negocio, cedula_propietario, rif_negocio, c.id_calle, c.nombre_calle, n.estado FROM negocios n INNER JOIN calles c WHERE n.estado = 1 AND n.id_calle = c.id_calle";
@@ -38,10 +39,11 @@ class Consultas_Class extends Modelo
 
     private function SQL_02()
     {
-        return 'INSERT INTO consulta ( id_familia_persona, cedula, fecha_consulta, motivo, instrucciones) VALUES ( :id_familia_persona, :cedula, :fecha_consulta, :motivo, :instrucciones)';
+        return 'INSERT INTO consulta ( cedula_persona, fecha_consulta, motivo, instrucciones) VALUES (:cedula_persona, :fecha_consulta, :motivo, :instrucciones)';
     }
 
     private function SQL_03()
+    
     {
         return "UPDATE negocios  SET id_calle = :id_calle, nombre_negocio = :nombre_negocio, direccion_negocio = :direccion_negocio, cedula_propietario = :cedula_propietario, rif_negocio = :rif_negocio,estado = :estado WHERE id_negocio = :id_negocio";
     }
@@ -49,10 +51,12 @@ class Consultas_Class extends Modelo
     private function SQL_04()
     {
 
-        return "SELECT cedula_persona, id_familia_persona FROM familia_personas  GROUP BY cedula_persona ";
+        return "SELECT cedula_persona, primer_nombre, primer_apellido FROM personas  GROUP BY cedula_persona ";
 
     }
+
     private function SQL_05()
+
     {
 
         return "SELECT * FROM inventario";

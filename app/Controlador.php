@@ -101,6 +101,27 @@ class Controlador
         }
     }
 
+    public function Consultar_ant($ant_personal){
+
+        $sql="SELECT *FROM ".$ant_personal."";
+        $respuesta_arreglo='';
+
+        try{
+            $datos=$this->conexion->prepare($sql);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo= $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch(PDOException $e){
+            $errorReturn=['estatus' => false];
+            $errorReturn +=['info' => "error sql:{$e}"];
+            return $errorReturn;
+            
+        }
+    }
+
+    
+
     public function Consult_Tabl_divis($id)
     {
 

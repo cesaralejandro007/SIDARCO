@@ -1,10 +1,10 @@
 
 //Declaracion de las variables con los ID de Registrar consultas
 
-var id_familia_persona=document.getElementById("id_familia_persona");
-var id_familia=document.getElementById("id_familia"); 
+/* var cedula_persona=document.getElementById("cedula_persona"); */
+/* var id_familia=document.getElementById("id_familia");  */
 var btn_agregar=document.getElementById("btn_agregar");
-var inventario=document.getElementById("inventario");
+var inventario=document.getElementById("id_inventario");
 var medica_persona=[];
 var div_medica_persona=document.getElementById("medi_agrega");
 var btn_nuevo=document.getElementById("btn_nuevo");
@@ -127,17 +127,17 @@ return validado;
 
 // Traer de la base de datos funcionario y familia
 
-id_familia_persona.onchange = function() {
+/* cedula_persona.onchange = function() {
 
-    alert(id_familia_persona.value);
-    if(id_familia_persona.value!='0'){
+    alert(cedula_persona.value);
+    if(cedula_persona.value!='0'){
     var cedula = new Object();
-    cedula = id_familia_persona.value;
+    cedula = cedula_persona.value;
 
     $.ajax({
     type: "POST",
     url: BASE_URL + "Consultas/Administrar/Consulta_familia",
-    data: { "id_familia_persona": cedula}
+    data: { "cedula_persona": cedula}
     }).done(function(result) {
 
     id_familia.innerHTML = result;
@@ -146,7 +146,7 @@ id_familia_persona.onchange = function() {
 
 }
 
-}
+} */
 
 
 
@@ -159,13 +159,14 @@ $(document).ready(function() {
 
         //Nuevos id de la vista de consulta
 
-        var id_familia_persona = document.getElementById("id_familia_persona"); 
+        var cedula_persona=document.getElementById("cedula_persona"); 
 
+        alert(cedula_persona.value);
 
         var fecha_consulta=document.getElementById("fecha_consulta");
         var motivo=document.getElementById("motivo");
         var instrucciones=document.getElementById("instrucciones");
-        var cedula=document.getElementById("cedula");
+    
 
         var mensaje_fecha_consulta = document.getElementById("mensaje_fecha_consulta");
         var mensaje_motivo = document.getElementById("mensaje_motivo");
@@ -196,11 +197,11 @@ $(document).ready(function() {
 
 
 
-        if (id_familia_persona.value == 0 && motivo.value == '' || motivo.value == null && fecha_consulta.value == '' || fecha_consulta.value == null && id_familia_persona.value == '' || id_familia_persona.value == null ) {
+        if (cedula_persona.value == 0 && motivo.value == '' || motivo.value == null && fecha_consulta.value == '' || fecha_consulta.value == null && cedula_persona.value == '' || cedula_persona.value == null ) {
             mensaje_fecha_consulta.innerHTML = 'Debe seleccionar una Calle';
-            id_familia_persona.style.borderColor = 'red';
+            cedula_persona.style.borderColor = 'red';
             mensaje_fecha_consulta.style.color = 'red';
-            id_familia_persona.focus();
+            cedula_persona.focus();
             mensaje_motivo.innerHTML = 'el campo motivo no puede estar vacio';
             motivo.style.borderColor = 'red';
             mensaje_motivo.style.color = 'red';
@@ -210,22 +211,21 @@ $(document).ready(function() {
             mensaje_motivo.style.color = 'red';
             fecha_consulta.focus();
             mensaje_cedula.innerHTML = 'el campo cedula no puede estar vacio';
-            id_familia_persona.style.borderColor = 'red';
+            cedula_persona.style.borderColor = 'red';
             mensaje_cedula.style.color = 'red';
-            id_familia_persona.focus();
+            cedula_persona.focus();
             mensaje_instruc.innerHTML = 'el campo instrucciones no puede estar vacio';
             instrucciones.style.borderColor = 'red';
             mensaje_instruc.style.color = 'red';
             instrucciones.focus();
         }
-        if (id_familia_persona.value == 0) {
+        if (cedula_persona.value == 0) {
             mensaje_fecha_consulta.innerHTML = 'Debe seleccionar al funcionario/a';
-            id_familia_persona.style.borderColor = 'red';
+            cedula_persona.style.borderColor = 'red';
             mensaje_fecha_consulta.style.color = 'red';
-            id_familia_persona.focus();
+            cedula_persona.focus();
         } else {
-           
-            id_familia_persona.style.borderColor = '';
+            cedula_persona.style.borderColor = '';
             if (motivo.value == '' || motivo.value == null) {
                 mensaje_motivo.innerHTML = 'el campo motivo no puede estar vacio';
                 motivo.style.borderColor = 'red';
@@ -242,28 +242,28 @@ $(document).ready(function() {
                 } else {
                     mensaje_motivo.innerHTML = '';
                     fecha_consulta.style.borderColor = '';
-                    if (id_familia_persona.value == '' || id_familia_persona.value == null) {
+                    if (cedula_persona.value == '' || cedula_persona.value == null) {
                         mensaje_cedula.innerHTML = 'el campo cedula no puede estar vacio';
-                        id_familia_persona.style.borderColor = 'red';
+                        cedula_persona.style.borderColor = 'red';
                         mensaje_cedula.style.color = 'red';
-                        id_familia_persona.focus();
+                        cedula_persona.focus();
                     } else {
                         mensaje_cedula.innerHTML = '';
-                        id_familia_persona.style.borderColor = '';
+                        cedula_persona.style.borderColor = '';
                         if (instrucciones.value == '' || instrucciones.value == null) {
                             mensaje_instruc.innerHTML = 'el campo instrucciones no puede estar vacio';
                             instrucciones.style.borderColor = 'red';
                             mensaje_instruc.style.color = 'red';
                             instrucciones.focus();
                         } else {
-                             var datos_medicamento = [];
+                            /*  var datos_medicamento = [];
                             for(var i=0;i<medica_persona.length;i++){
-                           var datos=new Object(); 
+                           var datos=new Object();  */
                             /* datos['id_consulta']=consulta_medicamento[i]; */ 
-                             datos['inventario']=medica_persona[i]; 
+                             /* datos['inventario']=medica_persona[i];  */
                           /* datos['cedula_persona']=cedula.value;  */
                         
-                             datos_medicamento.push(datos); 
+                           /*   datos_medicamento.push(datos); 
                               alert(JSON.stringify(datos_medicamento)); 
                              
                               }
@@ -278,16 +278,16 @@ $(document).ready(function() {
                              }).done(function(result){
                              alert(result);
                              console.log(result);
-                             }) 
+                             })  */
                             
                             mensaje_instruc.innerHTML = '';
                             instrucciones.style.borderColor = '';
                             var datos = {
-                                id_familia_persona: $("#id_familia_persona").val(),
+                                cedula_persona:$("#cedula_persona").val(), 
                                 fecha_consulta: $("#fecha_consulta").val(),
                                 motivo: $("#motivo").val(),
                                 instrucciones: $("#instrucciones").val(),
-                                cedula:$("#cedula").val(),
+                              /*   cedula:$("#cedula").val(), */
 
                                 
                             };

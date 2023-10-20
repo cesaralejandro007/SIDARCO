@@ -85,9 +85,17 @@
                                                     <h2>
                                                     Historial Clínico
                                                     </h2>
-                                                </div> 
+                                                </div>
+                                                <div class="col-md-3 mt-2">
+                                            
+                                                    <label for="fecha_historial">Fecha de historia</label>
+                                                    <div class="input-group">
+                                                    <input type="date" id="fecha_historial" class="form-control" name="datos[fecha_historial]" >
+                                                </div>
+                                                </div>
+
                                             <div class="col-md-12 mt-4">
-                                                <label for="primer_nombre">
+                                                <label for="cedula_persona">
                                                     Cédula del funcionario o funcionaria
                                                 </label>
                                                 <span id='valid_1' style="color:red;"></span>
@@ -101,69 +109,40 @@
                                                                         <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['primer_nombre']." ".$p['primer_apellido']; ?></option>
                                                             <?php  } ?>
                                                             </datalist>
-                                                    <button class='btn btn-info' type='button' id='nueva_personas'>Nueva</button>
+                                                    <!-- <button class='btn btn-info' type='button' id='nueva_personas'>Nueva</button> -->
                                                 </div>
 
-                                               <!--  </div> -->
+                                            <!--  </div> -->
 
-                               
-                                                <div class="col-md-4 mt-2">
-                                                <label for="tipo_sangre">
-                                                    Tipo de sangre
-                                                </label><span id='valid_2' style="color:red;"></span>
-                                                <div class="input-group">
-                                                    <input class="form-control mb-10 solo-letras" id="tipo_sangre"
-                                                        name="datos[tipo_sangre]" placeholder="Tipo de sangre"
-                                                        type="text" oninput="Limitar(this,25)" />
-                                                </div>
+                                
 
-                                            </div>
-
-                                            <div class="col-md-4 mt-2">
-                                                <label for="peso">
-                                                    Peso
-                                                </label>
-                                                <span id='valid_3' style="color:red;"></span>
-                                                <div class="input-group">
-                                                <input class='form-control' id='peso'  placeholder="Peso de la persona"  type="text" >
-                                                </div>
-
-                                             </div>
-
-                                             <div class="col-md-4 mt-2">
-                                                <label for="altura">
-                                                    Altura
-                                                </label>
-                                                <span id='valid_4' style="color:red;"></span>
-                                                <div class="input-group">
-                                                    <input class='form-control' id='altura'  placeholder="Altura de la persona"  type="text" >
-                                                </div>
-
-                                            </div> <!-- FOOTER -->
+                                            <!-- FOOTER -->
 
                                             
-                                         </div> 
-                                   
-                                      <div class="col-md-12 mt-2">
-                                                <label for="habit_psicol">
-                                                    Hábitos psicológicos
+                                        </div> 
+                                
+                                    <div class="col-md-12 mt-2">
+                                                <label for="ant_personal">
+                                                    Antecedentes personales
                                                 </label><span id='valid_5' style="color:red;"></span>
                                                 <div class="input-group">
                                                     <table style='width:100%'>
                                                         <tr>
                                                         <td>
-                                                        <input type="text" class='form-control letras_numeros' id='habit_psicol' placeholder="Buscar hábitos"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
-                                                            <datalist id='lista_persona'>
-                                                                <?php foreach ($this->habit_psicols as $int) { ?>
-                                                                <option value='<?php echo $int['nombre_psicol'];?>'><?php echo $int['id_habit_psicol']; ?></option>
+                                                        <input type="text" style='display:none'  placeholder="Nuevo antecedente personal" class='form-control no-simbolos solo-letras' id='ant_personales_input' name="" oninput="Limitar(this,30)">
+                                                        <!-- <input type="text" class='form-control letras_numeros' id='ant_personal' placeholder="Antecedentes personales"  list='lista_ant_personal' name="datos[id_ant_personal]" oninput="Limitar(this,15)"> -->
+                                                            <select class='form-control no-simbolos' id='discapacidad_select'>
+                                                                <option value="0">Seleccione antecedentes</option>
+                                                                <?php foreach ($this->ant_personals as $int) { ?>
+                                                                <option value='<?php echo $int['id_ant_personal'];?>'><?php echo $int['nombre_personal']; ?></option>
                                                             <?php } ?>
-                                                            </datalist>
+                                                                </select>
                                                             <td class="col-md-6 p-0">
                                                                 <!-- <label for="parentezco">
                                                                     Parentezco
                                                                     
                                                                 </label> -->
-                                                                <input type="text" placeholder="Descripción (opcional)" class="form-control letras_numeros" id="observacion" >
+                                                                <input type="text" placeholder="Descripción..." class="form-control letras_numeros" id="observacion" >
                                                             <!--    <select class="custom-select" id="parentezco"
                                                         name="datos[parentezco]" >
                                                         <option selected="" value="0">
@@ -198,8 +177,7 @@
                                                 </div>
 
                                             </div>
-                                    
-                                       </div> 
+                                    </div> 
 
                                 <br>
 
@@ -210,31 +188,33 @@
                                     <div class="row">
                                                 <div class="col-md-12 text-center">
                                                     <h2>
-                                                    Antecedentes y alérgias
+                                                    Antecedentes y hábitos
                                                     </h2>
                                                 </div> 
 
                                                 <div class="col-md-12 mt-2">
                                                     <div class="form-group">
                                                         <label for="habit_psicol">
-                                                        Antecedentes patológicos
+                                                        Antecedentes familiares
                                                         </label><span id='valid_5' style="color:red;"></span>
                                                         <div class="input-group">
                                                             <table style='width:100%'>
                                                             <tr>
                                                                 <td>
-                                                                    <input type="text" placeholder="Familiar o personal" class="form-control" id="" name="datos[tipo_ant]">
-                                                                    <input type="text" class='form-control letras_numeros' id='habit_psicol' placeholder="Buscar hábitos"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
-                                                                        <datalist id='lista_persona'>
-                                                                            <?php foreach ($this->habit_psicols as $int) { ?>
-                                                                            <option value='<?php echo $int['nombre_psicol'];?>'><?php echo $int['id_habit_psicol']; ?></option>
+                                                    
+                                                                    <input type="text" class='form-control letras_numeros' id='ant_familiar' style="display:none;" placeholder="Nuveo antecedente familiar"   oninput="Limitar(this,15)">
+                                                                    
+                                                                        <select class="form-control ">
+                                                                            <option value="0">Seleccione antecedente</option>
+                                                                            <?php foreach ($this->ant_familiares as $ant_f) { ?>
+                                                                            <option value='<?php echo $ant_f['id_ant_familiar'];?>'><?php echo $ant_f['nombre_familiar']; ?></option>
                                                                             <?php } ?>
-                                                                        </datalist>
+                                                                        </select>
                                                                         <td class="col-md-6 p-0">
                                                                         <!-- <label for="parentezco">
                                                                             Parentezco
                                                                         </label> -->
-                                                                    <input type="text" placeholder="Descripción (opcional)" class="form-control letras_numeros" id="observacion" >
+                                                                    <input type="text" placeholder="Descripción..." class="form-control letras_numeros" id="observacion" >
                                                                 </td>
                                                                     </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
                                                                         </tr>
@@ -250,84 +230,28 @@
                                                 </div>
                                             </div>
 
-
-
-                                            <div class="col-md-12 mt-2">
-                                                <label for="habit_psicol">
-                                                Alergias
-                                                </label><span id='valid_5' style="color:red;"></span>
-                                                <div class="input-group">
-                                                    <table style='width:100%'>
-                                                        <tr>
-                                                        <td>
-                                                        <input type="text" class='form-control letras_numeros' id='habit_psicol' placeholder="Buscar hábitos"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
-                                                            <datalist id='lista_persona'>
-                                                                <?php foreach ($this->habit_psicols as $int) { ?>
-                                                                <option value='<?php echo $int['nombre_psicol'];?>'><?php echo $int['id_habit_psicol']; ?></option>
-                                                            <?php } ?>
-                                                            </datalist>
-                                                            <td class="col-md-6 p-0">
-                                                                <!-- <label for="parentezco">
-                                                                    Parentezco
-                                                                    
-                                                                </label> -->
-                                                                <input type="text" placeholder="Descripción (opcional)" class="form-control letras_numeros" id="observacion" >
-                                                            <!--    <select class="custom-select" id="parentezco"
-                                                        name="datos[parentezco]" >
-                                                        <option selected="" value="0">
-                                                            -Seleccione el tipo de parentezco-
-                                                        </option>
-                                                        <option value="Padre">
-                                                            Padre
-                                                        </option>
-                                                        <option value="Madre" >
-                                                            Madre
-                                                        </option>
-                                                        <option value="Hijo">
-                                                            Hijo
-                                                        </option>
-                                                        <option value="Hija">
-                                                            Hija
-                                                        </option>
-                                                        <option value="Conyugue">
-                                                            Conyugue 
-                                                        </option>
-                                                        </select> -->
-                                                        </td>
-                                                        </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
-                                                        </tr>
-                                                        <tr><td colspan='2'><br>
-                                                        <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
-                                                            <div style='width:100%' id='integrantes_agregados'></div>
-                                                        </center>
-                                                        </div>
-                                                        </td>
-                                                    </table>
-                                                </div>
-
-                                            </div>
-
                                     <div class="col-md-12 mt-2">
                                         <div class="form-group">
                                                 <label for="habit_psicol">
-                                                    Intervenciones quirúrgicas 
+                                                    Hábitos psicológicos
                                                 </label>
                                                 <span id='valid_5' style="color:red;"></span>
                                             <div class="input-group">
                                                         <table style='width:100%'>
                                                         <tr>
                                                         <td>
-                                                        <input type="text" class='form-control letras_numeros' id='habit_psicol' placeholder="Buscar hábitos"  list='lista_persona' name="datos[cedula_integrante]" oninput="Limitar(this,15)">
-                                                            <datalist id='lista_persona'>
-                                                                <?php foreach ($this->habit_psicols as $int) { ?>
-                                                                <option value='<?php echo $int['nombre_psicol'];?>'><?php echo $int['id_habit_psicol']; ?></option>
+                                                        <input type="text"  style="display:none;" class='form-control letras_numeros' id='habit_psicol' placeholder="Nuevo hábito psicológico"   name="datos[cedula_integrante]" oninput="Limitar(this,15)">
+                                                            <select class="form-control" >
+                                                                <option value="0">Seleccione hábito</option>
+                                                                <?php foreach ($this->habit_psicols as $habit) { ?>
+                                                                <option value='<?php echo $habit['id_habit_psicologico'];?>'><?php echo $habit['nombre_habit']; ?></option>
                                                             <?php } ?>
-                                                            </datalist>
+                                                                </select>
                                                             <td class="col-md-6 p-0">
                                                                 <!-- <label for="parentezco">
                                                                     Parentezco
                                                                 </label> -->
-                                                                <input type="text" placeholder="Descripción (opcional)" class="form-control letras_numeros" id="observacion" >
+                                                                <input type="text" placeholder="Descripción..." class="form-control letras_numeros" id="observacion" >
                                                                 <!--    <select class="custom-select" id="parentezco"
                                                                 name="datos[parentezco]" >
                                                                 <option selected="" value="0">
@@ -374,23 +298,108 @@
                                             </h2>
                                     </div> 
                                     <div class="col-md-12 mt-4">
-                                        <label for="examen_f">Examen físico</label>
-                                        <span id="" style="color:red;"> <span>
+                                        <label for="examen">Examen físico</label>
+                                        <span id="mensaje_examen" style="color:red;"> <span>
                                         <div>
-                                            <input type="text" class="form-control" placeholder="Resultado del examen" id="examen_f" name="datos[examen_f]">
+                                            <input type="text" class="form-control" placeholder="Condiciones generales" id="examen" name="datos[examen]">
                                         </div>
                                     </div>
+                                    
+                                            <div class="col-md-4 mt-2">
+                                                <label for="tipo_sangre">
+                                                    Tipo de sangre
+                                                </label><span id='valid_2' style="color:red;"></span>
+                                                <div class="input-group">
+                                                    <input class="form-control mb-10 solo-letras" id="tipo_sangre"
+                                                        name="datos[tipo_sangre]" placeholder="Tipo de sangre"
+                                                        type="text" oninput="Limitar(this,25)" />
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-4 mt-2">
+                                                <label for="peso">
+                                                    Peso
+                                                </label>
+                                                <span id='valid_3' style="color:red;"></span>
+                                                <div class="input-group">
+                                                <input class='form-control' id='peso' name="datos[peso]" placeholder="Peso de la persona"  type="text" >
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-4 mt-2">
+                                                <label for="altura">
+                                                    Altura
+                                                </label>
+                                                <span id='mensaje_altura' style="color:red;"></span>
+                                                <div class="input-group">
+                                                    <input class='form-control' id='altura' name="datos[altura]" placeholder="Altura de la persona"  type="text" >
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-4 mt-2">
+                                                <label for="talla">Talla</label>
+                                                <span id="mensaje_talla"></span>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="talla" placeholder="Talla" name="datos[talla]">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 mt-2">
+                                                <label for="imc">IMC (Masa corporal)</label>
+                                                <span id="mensaje_imc"></span>
+                                                <div class="input-group">
+                                                    <input type="text" placeholder="Masa corporal" id="imc" name="datos[imc]" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 mt-2">
+                                                <label for="fc">FC (Frecuencia Cardiaca)</label>
+                                                <span id="mensaje_fc"></span>
+                                                <div class="input-group">
+                                                    <input type="text" id="fc" name="datos[fc]" placeholder=" Frecuencia cardiaca" class="form-control" >
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 mt-2">
+                                                <label for="fr">FR (Frecuencia respiratoria)</label>
+                                                <span id="mensaje_fr"></span>
+                                                <div class="input-group">
+                                                    <input type="text"  class="form-control" id="fr" name="datos[fr]" placeholder="Frecuencia respiratoria">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 mt-2">
+                                                <label for="ta">TA (Tensión arterial)</label>
+                                                <span id="mensaje_ta"></span>
+                                                <div class="input-group">
+                                                    <input type="text" id="ta" name="datos[ta]" class="form-control" placeholder="Tensión arterial">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 mt-2">
+                                                <label for="temperatura">Temperatura</label>
+                                                <span id="mensaje_t" style=""></span>
+                                                <div class="input-group">
+                                                    <input type="text" id="temperatura" placeholder="Temperatura" name="datos[temperatura]" class="form-control">
+                                                </div>
+                                            </div>
+                                                
+
+
 
                                     <div class="col-md-12 mt-4">
-                                        <label for="">IDX</label>
+                                        <label for="diagnostico">Diagnóstico</label>
                                         <span id="idx" style="color:red;"></span>
                                         <div>
-                                            <input type="text" id="idx" name="datos[idx]" placeholder="Diagnóstico medico" class="form-control" >
+                                            <input type="text" id="diagnostico" name="datos[diagnostico]" placeholder="Diagnóstico medico" class="form-control" >
                                         </div>
                                     </div>
 
                                     <div class="col-md-12 mt-4">
-                                        <label for="plan_trat">Plan de tratamiento</label>
+                                        <label for="plan_trat">Tratamiento y recomendación</label>
                                         <span id="idx" style="color:red;"></span>
                                         <div>
                                             <input type="text" id="plan_trat" name="datos[plan_trat]" placeholder="Plan de tratamiento" class="form-control" >
@@ -401,12 +410,13 @@
                                         <label for="evolucion">Evolución</label>
                                         <span id="" style="color:red;"></span>
                                         <div>
-                                            <input type="text" id="evolucion" name="datos[evolucion]" placeholder="Evolución del paciente" class="form-control" >
+                                            <input type="text" id="evolucion" name="datos[evolucion]" placeholder="Evolución del paciente (opcional)" class="form-control" >
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
+                            <br>
                                     
                         
 

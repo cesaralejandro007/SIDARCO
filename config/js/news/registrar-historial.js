@@ -1,18 +1,33 @@
-var cedula_integrante=document.getElementById("cedula_persona");
+//Campos del estudio 
+var fecha_historial=document.getElementById("fecha_historial");
+var cedula_persona=document.getElementById("cedula_persona");
+var examen= document.getElementById("examen");
 var tipo_sangre=document.getElementById("tipo_sangre");
 var peso=document.getElementById("peso");
-var examen= document.getElementById("examen");
-var idx=document.getElementById("idx");
+var altura=document.getElementById("altura");
+var talla=document.getElementById("talla");
+var imc=document.getElementById("imc");
+var fc=document.getElementById("fc");
+var fr=document.getElementById("fr");
+var ta=document.getElementById("ta");
+var temperatura=document.getElementById("temperatura");
+var diagnostico=document.getElementById("diagnostico");
 var tratamiento=document.getElementById("tratamiento");
 var evolucion=document.getElementById("evolucion");
+
+//Validación 
+
 var datos_persona=[];
 var persona_existente=false;
-cedula_integrante.focus(); 
-/* var boton_integrante=document.getElementById("guardar_integrantes"); */
+cedula_persona.focus(); 
+
+/* Validaciones de los inputs genérica */
+
 var element;
 var mensaje_error;
 
 //------------------------Botones-------------------------
+
 
 var index=0;
 var btn_siguiente=document.getElementById("siguiente");
@@ -157,19 +172,19 @@ function control_indice(){
 //----------------------Validación de la cédula------------------->
 
 
-   cedula_integrante.oninput=function(){
-    if (cedula_integrante.value.length >9) cedula_integrante.value =cedula_integrante.value.slice(0, 9);
+  cedula_persona.oninput=function(){
+    if (cedula_persona.value.length >9) cedula_persona.value =cedula_persona.value.slice(0, 9);
   
   } 
   
-   cedula_integrante.onkeyup=function(){
+   cedula_persona.onkeyup=function(){
   
-    valid_element("Debe ingresar el documento de identidad de la persona", cedula_integrante ,document.getElementById("valid_1"));
+    valid_element("Debe ingresar el documento de identidad de la persona", cedula_persona ,document.getElementById("valid_1"));
     $.ajax({
   
      type:"POST",
      url:BASE_URL+"Familias/Consultas_cedula_integrante",
-     data:{'cedula_integrante':cedula_integrante.value}
+     data:{'cedula_persona':cedula_persona.value}
   
    }).done(function(result){
     console.log(result);
@@ -200,7 +215,7 @@ function control_indice(){
        timer:2000
      });
   
-      setTimeout(function(){cedula_integrante.style.borderColor="red";cedula_integrante.focus();},2000);
+      setTimeout(function(){cedula_persona.style.borderColor="red";cedula_persona.focus();},2000);
   
     }
   
@@ -218,7 +233,7 @@ function control_indice(){
       $.ajax({
         type:"POST",
         url:BASE_URL+"Seguridad/cambio_estado",
-        data:{"cedula_integrante_persona":cedula_integrante.value,"estado":1}
+        data:{"cedula_integrante_persona":cedula_persona.value,"estado":1}
       }).done(function(result){
         if(result){
   setTimeout(function(){
@@ -272,9 +287,9 @@ function valida_info(){
 
     var validacion=false;
 
-    if(valid_element("Debe ingresar el documento de identidad", cedula_integrante, document.getElementById("valid_1")))
+    if(valid_element("Debe ingresar el documento de identidad", cedula_persona, document.getElementById("valid_1")))
     {
-       /* if(persona_existe(cedula_integrante.value)){  */
+       /* if(persona_existe(cedula_persona.value)){  */
 /*      if(valid_element("Ingrese el tipo de sangre", tipo_sangre, document.getElementById("valid_2"))){
               if(valid_element("Ingrese el peso", peso, document.getElementById("valid_3"))){
                 if(valid_element("Ingrese la altura", altura, document.getElementById("valid_4"))){ 
@@ -346,17 +361,12 @@ return validacion;
 function enviar_info(){
 
 datos_persona=new Object();
-datos_persona['cedula_integrante']=cedula_integrante.value; 
+datos_persona['cedula_persona']=cedula_persona.value; 
 datos_persona['tipo_sangre']=tipo_sangre.value;
 datos_persona['peso']=peso.value;
 datos_persona['altura']=altura.value;
-/* datos_persona['segundo_apellido']=segundo_apellido.value;
-datos_persona['fecha_nacimiento']=fecha_nacimiento.value;
-datos_persona['estado']=1;
-datos_persona['genero']=genero.value;
-datos_persona['nivel_educativo']=nivel.value;
-datos_persona['correo']=correo.value;
-datos_persona['telefono']=telefono.value; */
+
+
 
 
 //alert(datos_persona);

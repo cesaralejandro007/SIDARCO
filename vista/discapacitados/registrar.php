@@ -28,10 +28,11 @@
                 <!-- card-body -->
                 <div class="card-body">
                     <div class="row">
+
                         <div class="col-md-12">
                          <label>Persona</label> <span id='valid_persona' style='color:red'></span>
                          <table style='width:100%'><tr><td>
-                             <input type="number" maxlength="15" placeholder="Buscar cédula" class='form-control no-simbolos letras_numeros' id='persona' name="" list='lista_personas' oninput="Limitar(this,15)">
+                            <input type="number" maxlength="15" placeholder="Buscar cédula" class='form-control no-simbolos letras_numeros' id='persona' name="" list='lista_personas' oninput="Limitar(this,15)">
 
                              <datalist id='lista_personas'>
                                  <?php foreach ($this->datos["personas"] as $p) { ?>
@@ -41,7 +42,8 @@
                              <td><button type='button' id='registrar_btn' class="btn btn-info" onclick='window.open(BASE_URL+"Personas/Registros")'>Registrar</button></td>
 
                              <td><button type='button' class="btn btn-info" id='seleccionar_persona'>Seleccionar</button></td>
-                         </tr></table>
+                         </tr>
+                        </table>
 
                      </div>
                  </div>
@@ -61,7 +63,8 @@
                                    <?php foreach ($this->datos["discapacidad"] as $d) { ?>
                                      <option value='<?php echo $d['id_discapacidad'];?>'><?php echo $d['nombre_discapacidad']; ?></option>
                                  <?php   } ?>
-                             </select></td>
+                             </select>
+                            </td>
 
                              <td>
                                 <select id='en_cama' class='form-control no-simbolos'>

@@ -24,7 +24,7 @@ class Consultas extends Controlador
         $this->modelo->__SET("SQL", "_01_");
         $this->modelo->__SET("consultar", array("tabla" => "calles", "estado" => 1, "orden" => "nombre_calle"));
         $this->datos["calle"] = $this->modelo->Administrar();
-        $this->modelo->__SET("SQL", "SQL_04");$this->datos["familia_personas"] = $this->modelo->Administrar();
+        $this->modelo->__SET("SQL", "SQL_04");$this->datos["personas"] = $this->modelo->Administrar();
         $this->modelo->__SET("SQL", "SQL_05");$this->datos["inventario"] = $this->modelo->Administrar();
         $this->vista->datos = $this->datos;
     }
@@ -60,43 +60,6 @@ class Consultas extends Controlador
 
             case 'Registrar':
 
-                for ($i = 0; $i < count($_POST['discapacidades']); $i++) {
-                    if ($_POST['discapacidades'][$i]['nuevo'] == '0') {
-                        $this->modelo->__SET("SQL", $_POST['sql']); $this->modelo->__SET("tipo", "1");
-                        $this->modelo->Datos([
-                            "cedula_persona"           => $_POST['cedula'],
-                            "id_discapacidad"          => $_POST['discapacidades'][$i]['discapacidad'],
-                            "necesidades_discapacidad" => $_POST['discapacidades'][$i]['necesidades'],
-                            "observacion_discapacidad" => $_POST['discapacidades'][$i]['observaciones'],
-                            "en_cama"                  => $_POST['discapacidades'][$i]['en_cama'],
-                        ]);
-                        if ($this->modelo->Administrar()) {$this->mensaje = 1;}
-                    } else {
-                        $this->modelo->__SET("SQL", "_02_");$this->modelo->__SET("tipo", "1");
-                        $this->modelo->__SET("registrar", array("tabla" => "discapacidad", "columna" => "nombre_discapacidad"));
-                        $this->modelo->Datos(["nombre_discapacidad" => $_POST['discapacidades'][$i]['discapacidad'], "estado" => 1]);
-
-                        if ($this->modelo->Administrar()) {
-                            $this->modelo->__SET("SQL", "_03_"); $this->modelo->__SET("tipo", "0");
-                            $this->modelo->__SET("ultimo", array("tabla" => "discapacidad", "id" => "id_discapacidad"));
-                            $id = $this->modelo->Administrar();
-
-                            foreach ($id as $id_e) {
-                                $this->modelo->__SET("SQL", $_POST['sql']);$this->modelo->__SET("tipo", "1");
-                                $this->modelo->Datos([
-                                    "cedula_persona"           => $_POST['cedula'],
-                                    "id_discapacidad"          => $id_e['MAX(id_discapacidad)'],
-                                    "necesidades_discapacidad" => $_POST['discapacidades'][$i]['necesidades'],
-                                    "observacion_discapacidad" => $_POST['discapacidades'][$i]['observaciones'],
-                                    "en_cama"                  => $_POST['discapacidades'][$i]['en_cama'],
-                                ]);
-                                if ($this->modelo->Administrar()) {$this->mensaje = 1;}
-                            }
-                        }
-                    }
-                }
-                echo $this->mensaje;unset($this->mensaje, $id, $_POST);
-                break;
 
             case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["familia_personas"]);break;
 

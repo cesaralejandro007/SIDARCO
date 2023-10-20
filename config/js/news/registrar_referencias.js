@@ -128,7 +128,8 @@ return validado;
 
 // Traer de la base de datos funcionario y familia
 
-id_familia_persona.onchange = function() {
+
+/* id_familia_persona.onchange = function() {
 
     alert(id_familia_persona.value);
 
@@ -148,7 +149,7 @@ id_familia_persona.onchange = function() {
     });
 
 }
-}
+} */
 
 //Información para enviar al controlador 
 
@@ -159,7 +160,7 @@ $(document).ready(function() {
 
         //Nuevos id de la vista de consulta
 
-        var id_familia_persona = document.getElementById("id_familia_persona"); 
+      /*   var id_familia_persona = document.getElementById("id_familia_persona");  */
 
         var fecha_referencia=document.getElementById("fecha_referencia");
         var examen=document.getElementById("examen");
@@ -195,13 +196,13 @@ $(document).ready(function() {
 /* if(datos_medicamento!=0){
 
     alert(datos_medicamento);
-        
+    
     registrar_medicamento_consulta();
 }  */
 
 
 
-        if (id_familia_persona.value == 0 && examen.value == '' || examen.value == null && fecha_referencia.value == '' || fecha_referencia.value == null  ) {
+        if (examen.value == '' || examen.value == null && fecha_referencia.value == '' || fecha_referencia.value == null  ) {
             mensaje_id_familia.innerHTML = 'Debe seleccionar una Calle';
             id_familia_persona.style.borderColor = 'red';
             mensaje_id_familia.style.color = 'red';
@@ -223,18 +224,11 @@ $(document).ready(function() {
             mensaje_informe.style.color = 'red';
             informe.focus();
         }
-        if (id_familia_persona.value == '0') {
-            mensaje_id_familia.innerHTML = 'Debe seleccionar al funcionario/a';
-            id_familia_persona.style.borderColor = 'red';
-            mensaje_id_familia.style.color = 'red';
-            id_familia_persona.focus();
-        } else {
-           
-            id_familia_persona.style.borderColor = '';
+      
 
 
           if (cedula_persona.value == '' || cedula_persona.value == null) {
-                mensaje_cedula.innerHTML = 'el campo céd no puede estar vacio';
+                mensaje_cedula.innerHTML = 'el campo cédula no puede estar vacio';
                 cedula_persona.style.borderColor = 'red';
                 mensaje_cedula.style.color = 'red';
                 cedula_persona.focus();
@@ -328,7 +322,9 @@ $(document).ready(function() {
                              }) */
                             mensaje_informe.innerHTML = '';
                             informe.style.borderColor = '';
+
                             var datos = {
+                                
                                 id_familia_persona: $("#id_familia_persona").val(),
                                 fecha_referencia: $("#fecha_referencia").val(),
                                 examen: $("#examen").val(),
@@ -383,7 +379,7 @@ $(document).ready(function() {
         }
     }
 }
-            }
+            
         }
     });
 

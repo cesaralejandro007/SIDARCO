@@ -23,7 +23,7 @@ class Referencias extends Controlador
         $this->modelo->__SET("SQL", "_01_");
         $this->modelo->__SET("consultar", array("tabla" => "calles", "estado" => 1, "orden" => "nombre_calle"));
         $this->datos["calle"] = $this->modelo->Administrar();
-        $this->modelo->__SET("SQL", "SQL_04");$this->datos["familia_personas"] = $this->modelo->Administrar();
+        $this->modelo->__SET("SQL", "SQL_04");$this->datos["personas"] = $this->modelo->Administrar();
         $this->modelo->__SET("SQL", "SQL_05");$this->datos["especialidades"] = $this->modelo->Administrar();
         $this->vista->datos = $this->datos;
     }
