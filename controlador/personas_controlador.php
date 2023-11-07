@@ -163,6 +163,7 @@ public function Registros()
 
 public function Registros_habitante()
 {
+
   $this->Seguridad_de_Session();
   $this->vista->transportes=$this->modelo->get_transportes();
  // $this->vista->comunidades=$this->modelo->get_comunidades();
@@ -177,6 +178,7 @@ public function Registros_habitante()
   $this->vista->condiciones=$this->modelo->get_condiciones();
   $this->vista->proyectos=$this->modelo->get_proyectos();
   $this->vista->Cargar_Vistas('habitante/registrar_personas');
+  
 }
 
 

@@ -11,9 +11,10 @@
                 <!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
+        
     </div>
     <!-- /.content-header -->
-
+    <input type="hidden" value='<?php echo json_encode($_SESSION['Seguridad']); ?>' id='seguridad_usuario' name="">
 <!-- Main content -->
 <section class="content">
         <!-- Default box -->
@@ -26,8 +27,7 @@
                     </button>
                 </div>
             </div>
-            <form action="<?php echo constant('URL'); ?>" enctype="multipart/form-data"
-                id="formulario" method="POST" name="formulario">
+            <form action=""  enctype="multipart/form-data" id="formulario" method="POST" name="formulario">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
@@ -102,9 +102,9 @@
                                             </div>
 
                                                 <div class="input-group">
-                                                <input type="text"  class='form-control letras_numeros' id='cedula_persona' placeholder="Buscar cédula" name="datos['cedula_persona']" list='lista' oninput="Limitar(this,15)">
+                                                <input type="text"  class='form-control letras_numeros' id='cedula_persona' placeholder="Buscar cédula" name="datos[cedula_persona]" list='lista' oninput="Limitar(this,15)">
                                                             <datalist id='lista' >
-                                                            <option selected="" value=""></option>
+                                                            <option selected="" value="27193453"></option>
                                                                 <?php foreach ($this->personas as $p) { ?>
                                                                         <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['primer_nombre']." ".$p['primer_apellido']; ?></option>
                                                             <?php  } ?>
@@ -131,7 +131,7 @@
                                                         <td>
                                                         <input type="text" style='display:none'  placeholder="Nuevo antecedente personal" class='form-control no-simbolos solo-letras' id='ant_personales_input' name="" oninput="Limitar(this,30)">
                                                         <!-- <input type="text" class='form-control letras_numeros' id='ant_personal' placeholder="Antecedentes personales"  list='lista_ant_personal' name="datos[id_ant_personal]" oninput="Limitar(this,15)"> -->
-                                                            <select class='form-control no-simbolos' id='discapacidad_select'>
+                                                            <select class='form-control no-simbolos' id='id_ant_personal' name="datos[id_ant_personal]">
                                                                 <option value="0">Seleccione antecedentes</option>
                                                                 <?php foreach ($this->ant_personals as $int) { ?>
                                                                 <option value='<?php echo $int['id_ant_personal'];?>'><?php echo $int['nombre_personal']; ?></option>
@@ -142,7 +142,7 @@
                                                                     Parentezco
                                                                     
                                                                 </label> -->
-                                                                <input type="text" placeholder="Descripción..." class="form-control letras_numeros" id="observacion" >
+                                                                <input type="text" placeholder="Descripción..." class="form-control letras_numeros" id="descripcion_personales" name="datos[descripcion_personales]" >
                                                             <!--    <select class="custom-select" id="parentezco"
                                                         name="datos[parentezco]" >
                                                         <option selected="" value="0">
@@ -165,11 +165,11 @@
                                                         </option>
                                                         </select> -->
                                                         </td>
-                                                        </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
+                                                        </td><td><button class='btn btn-primary' type='button' id='btn_agregar_per'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
                                                         </tr>
                                                         <tr><td colspan='2'><br>
                                                         <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
-                                                            <div style='width:100%' id='integrantes_agregados'></div>
+                                                            <div style='width:100%' id='div_ant_personales'></div>
                                                         </center>
                                                         </div>
                                                         </td>
@@ -181,7 +181,7 @@
 
                                 <br>
 
-                            <!---------------ANTECEDENTES Y ALERGIAS-------------------------->
+                                <!---------------ANTECEDENTES Y ALERGIAS-------------------------->
 
             
                                 <div class="tab-pane" id="panel7" role="tabpanel">
@@ -191,7 +191,6 @@
                                                     Antecedentes y hábitos
                                                     </h2>
                                                 </div> 
-
                                                 <div class="col-md-12 mt-2">
                                                     <div class="form-group">
                                                         <label for="habit_psicol">
@@ -202,9 +201,9 @@
                                                             <tr>
                                                                 <td>
                                                     
-                                                                    <input type="text" class='form-control letras_numeros' id='ant_familiar' style="display:none;" placeholder="Nuveo antecedente familiar"   oninput="Limitar(this,15)">
+                                                                    <input type="text" class='form-control letras_numeros' id='ant_familia' style="display:none;" placeholder="Nuveo antecedente familiar"   oninput="Limitar(this,15)">
                                                                     
-                                                                        <select class="form-control ">
+                                                                        <select class="form-control " id="ant_familiar">
                                                                             <option value="0">Seleccione antecedente</option>
                                                                             <?php foreach ($this->ant_familiares as $ant_f) { ?>
                                                                             <option value='<?php echo $ant_f['id_ant_familiar'];?>'><?php echo $ant_f['nombre_familiar']; ?></option>
@@ -214,13 +213,13 @@
                                                                         <!-- <label for="parentezco">
                                                                             Parentezco
                                                                         </label> -->
-                                                                    <input type="text" placeholder="Descripción..." class="form-control letras_numeros" id="observacion" >
+                                                                    <input type="text" placeholder="Descripción..." class="form-control letras_numeros" id="descripcion_fam" >
                                                                 </td>
-                                                                    </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
+                                                                    </td><td><button class='btn btn-primary' type='button' id='btn_agregar_fam'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
                                                                         </tr>
                                                                     <tr><td colspan='2'><br>
                                                                 <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
-                                                                <div style='width:100%' id='integrantes_agregados'></div>
+                                                                <div style='width:100%' id='div_ant_familiar'></div>
                                                                 </center>
                                                                 </div>
                                                             </td>
@@ -240,8 +239,8 @@
                                                         <table style='width:100%'>
                                                         <tr>
                                                         <td>
-                                                        <input type="text"  style="display:none;" class='form-control letras_numeros' id='habit_psicol' placeholder="Nuevo hábito psicológico"   name="datos[cedula_integrante]" oninput="Limitar(this,15)">
-                                                            <select class="form-control" >
+                                                        <input type="text"  style="display:none;" class='form-control letras_numeros' id='habit_psico' placeholder="Nuevo hábito psicológico"   name="datos[cedula_integrante]" oninput="Limitar(this,15)">
+                                                            <select class="form-control" id="habit_psicol" >
                                                                 <option value="0">Seleccione hábito</option>
                                                                 <?php foreach ($this->habit_psicols as $habit) { ?>
                                                                 <option value='<?php echo $habit['id_habit_psicologico'];?>'><?php echo $habit['nombre_habit']; ?></option>
@@ -251,7 +250,7 @@
                                                                 <!-- <label for="parentezco">
                                                                     Parentezco
                                                                 </label> -->
-                                                                <input type="text" placeholder="Descripción..." class="form-control letras_numeros" id="observacion" >
+                                                                <input type="text" placeholder="Descripción..." class="form-control letras_numeros" id="descripcion_psi" >
                                                                 <!--    <select class="custom-select" id="parentezco"
                                                                 name="datos[parentezco]" >
                                                                 <option selected="" value="0">
@@ -274,12 +273,12 @@
                                                                 </option>
                                                                 </select> -->
                                                             </td>
-                                                    </td><td><button class='btn btn-primary' type='button' id='btn_agregar'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
+                                                    </td><td><button class='btn btn-primary' type='button' id='btn_agregar_psi'>Agregar</button>&nbsp;&nbsp;<button class='btn btn-info' type='button' id='btn_nuevo'>Nuevo</button></td>
                                                     </tr>
                                                     <tr>
                                                     <td colspan='2'><br>
                                                         <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
-                                                            <div style='width:100%' id='integrantes_agregados'></div> </center>
+                                                            <div style='width:100%' id='div_habit_psicologico'></div> </center>
                                                         </div>
                                                     </td>
                                                 </table>
@@ -398,11 +397,12 @@
                                         </div>
                                     </div>
 
+                                    
                                     <div class="col-md-12 mt-4">
                                         <label for="plan_trat">Tratamiento y recomendación</label>
                                         <span id="idx" style="color:red;"></span>
                                         <div>
-                                            <input type="text" id="plan_trat" name="datos[plan_trat]" placeholder="Plan de tratamiento" class="form-control" >
+                                            <input type="text" id="tratamiento" name="datos[tratamiento]" placeholder="Plan de tratamiento" class="form-control" >
                                         </div>
                                     </div>
 
@@ -419,16 +419,10 @@
                             <br>
                                     
                         
-
-
-
-
-
-
                         
                 <!-- </form> -->
 
-<div class="card-footer">
+<div class="card-foote   r">
             
             <!--Footer -->
         
@@ -446,8 +440,9 @@
         </div>
 
         <div class="text-center m-t-20" id="botones-finales" style='display:none'>
+    
         <div class="col-xs-12">
-            <input type="submit" class="btn btn-primary" style="background:#15406D" name="" id="guardar_integrantes" value="Guardar">
+            <input type="submit" class="btn btn-primary" style="background:#15406D" name="" id="enviar" value="Guardar">
         </div>
     </div>
 

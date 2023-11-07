@@ -744,7 +744,8 @@ btn_agregar_ubicacion.onclick=function(){
 /* function valid_datos_cargo(){
   var validar=false;
   if(div_cargos_existentes.style.display=="" || div_cargos_existentes.style.display=="block"){
-    if(cargos.value=='vacio'){
+    if(cargos.value=='vacio
+    '){
      swal({
       title:"Error",
       text:"Debe seleccionar un Cargo funcional",
@@ -2203,7 +2204,7 @@ function registrar_titulos_persona(){
     url:BASE_URL+"Personas/registrar_proyecto",
     data:{"datos":datos_proyectos}
   }).done(function(result){
-   
+
     console.log(result);
   })
 }

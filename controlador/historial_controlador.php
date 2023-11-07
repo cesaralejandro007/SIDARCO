@@ -14,12 +14,10 @@ class Historial extends Controlador
         $this->vista->Cargar_Vistas('historial/consultar'); 
     }   
 
-
     public function Registros()
     {
+
         $this->Seguridad_de_Session();
-        $viviendas=$this->modelo->Consultar_viviendas();
-        $this->vista->viviendas=$viviendas;
         $persona=$this->modelo->Consultar_personas();
         $this->vista->personas=$persona;
         $integrante=$this->modelo->Integrantes_consultas();
@@ -31,28 +29,18 @@ class Historial extends Controlador
         $ant_familiar=$this->Consultar_ant("ant_familiares");
         $this->vista->ant_familiares=$ant_familiar;
         $this->vista->Cargar_Vistas('historial/registrar');
+
     }
 
 
     public function Consultas()
     {
         $this->Seguridad_de_Session();
-        #$this->Establecer_Consultas();
-         $viviendas=$this->modelo->Consultar_viviendas();
-        $this->vista->viviendas=$viviendas;
         $persona=$this->modelo->Consultar_personas();
         $persona_familia=$this->modelo->Consultar_familia();
         $this->vista->personas=$persona_familia;
         $this->vista->Cargar_Vistas('historial/consultar');
     }
-
-    /* public function Consultas()
-    {
-        $this->Seguridad_de_Session();
-        $persona=$this->modelo->Consultar_personas();
-        $this->vista->personas=$persona;
-        $this->vista->Cargar_Vistas('familia/consultarIntegrante');
-    } */
 
 
 
@@ -63,18 +51,7 @@ class Historial extends Controlador
         echo $datos_historial;
         
         $this->modelo->Registrar_historial($datos_historial); 
-        
-     /*     if($resultado){
-           $id=$this->Ultimo_Ingresado("familia","id_familia");
-           foreach ($id as  $i) {
-            foreach ($datos_familia['integrantes'] as $inte) {
-             $this->modelo->Registrar_persona_familia([
-                "cedula_persona"         =>  $inte,
-                "id_familia"            =>   $i['MAX(id_familia)']
-            ]);
-         }
-     }
-  } */ 
+     
 
 }  
  
@@ -93,11 +70,11 @@ public function registrar_integrante_fun(){
     foreach ($integrante as $pro) {
         if ($pro['id_familia'] == $datos[$i]['id_familia']) {
       $this->modelo->Registrar_persona_familia([
-       "id_familia"     =>     $pro['id_familia'],
+       "id_familia"             =>  $pro['id_familia'],
        "cedula_persona"         =>  $datos[$i]['cedula_persona'],
-       "nombre_familia"     =>     $datos[$i]['nombre_familia'],
-       "descripcion_familia"  =>   $datos[$i]['descripcion_familia'],
-       "parentezco"           =>    $datos[$i]['parentezco']
+       "nombre_familia"         =>  $datos[$i]['nombre_familia'],
+       "descripcion_familia"    =>  $datos[$i]['descripcion_familia'],
+       "parentezco"             =>  $datos[$i]['parentezco']
      ]);
   }
 }
@@ -105,7 +82,97 @@ public function registrar_integrante_fun(){
  echo count($datos);
  }
 
- public function agregar_integrante_fun(){
+
+//--------------------------Regsitro de tabla puente ANT_PER_PERSONAS-----------------
+
+public function registrar_ant_personal(){
+//consultamos la tabla de antecedentes para poder hacer la validacion al registar el historial clinico
+  $ant_personales=$this->modelo->ant_personales_consulta();
+
+$datos_ant_personal=$_POST['datos'];
+
+echo $datos_ant_personal;
+//Debemos realizar un for ya que se pdra registrar multiples datos, debemos recorrerlo ademas de comparar los id 
+//de ant_personal con lo que le seleccionamos en el select(esta seria una validacion extra en el la clase del CONTROLADOR de Historial)
+for($i=0; $i<count($datos_ant_personal); $i++){
+  foreach($ant_personales as $personal ){
+     //debemos realizar una validacion que nos indique si el antecedente personal que se ha aceptado 
+    //esta en la tabla de ant_personales.
+    if($personal['id_ant_personal'] == $datos_ant_personal[$i]['id_ant_personal']){
+
+       $this->modelo->Registro_ant_personal([
+        "id_ant_personal"           =>  $personal['id_ant_personal'],
+        "cedula_persona"            =>  $datos_ant_personal[$i]['cedula_persona'],
+        /* "descripcion_personales"    =>  $datos_ant_personal[$i]['descripcion_personales'] */
+      ]); 
+
+
+}
+
+  } 
+
+}
+echo count($datos_ant_personal);
+
+}
+
+
+
+
+//-------------------------Registrar tabla puente de ANT_FAM_PERSONAS------------------------
+
+
+public function registrar_ant_fam_personas(){
+
+//lo primero que dedemos hacer es consultar la informacion que se encuentra en 
+//la tabla de ANT_FAMILIARES  
+
+$datos=$this->modelo->consultar_ant_familiares();
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*     if($resultado){
+          $id=$this->Ultimo_Ingresado("familia","id_familia");
+          foreach ($id as  $i) {
+            foreach ($datos_familia['integrantes'] as $inte) {
+            $this->modelo->Registrar_persona_familia([
+                "cedula_persona"         =>  $inte,
+                "id_familia"            =>   $i['MAX(id_familia)']
+            ]);
+      }
+    }
+  } */ 
+
+
+
+public function agregar_integrante_fun(){
   $verificarBD = $this->modelo->existe($_POST['cedula_integrante']);
   $verificarsiexiste = $this->modelo->existeintegrante($_POST['cedula_integrante']);
   if($verificarsiexiste){
@@ -255,6 +322,7 @@ public function modificar_integrante(){
 
 public function Consultas_cedula_funcionario()
 {
+
  $persona=$this->Consultar_Columna("familia_personas","cedula_persona",$_POST['cedula_persona']);
  if(count($persona)==0){
 
@@ -264,17 +332,23 @@ public function Consultas_cedula_funcionario()
   echo 1;
  
  }
+
 }
 
 public function consultar_familia_datos(){
-     
-     $familias=$this->modelo->get_familias();
-     foreach ($familias as $f) {
-        if ($f['id_familia'] == $_POST['id_familia']) { 
-            $integrantes=$this->modelo->get_integrantes($_POST['cedula_responsable']);
+    
+    $familias=$this->modelo->get_familias();
+
+    foreach ($familias as $f) {
+
+        if ($f['id_familia'] == $_POST['id_familia']) {
+      
+      $integrantes=$this->modelo->get_integrantes($_POST['cedula_responsable']);
+
         }
-     }
-     $this->Escribir_JSON($integrantes);
+    }
+    $this->Escribir_JSON($integrantes);
+
 }
 
 public function consultar_familia_integrante(){

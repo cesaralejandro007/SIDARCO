@@ -114,7 +114,7 @@ for(var i=0; i<integrantess.length; i++){
 	datos['parentezco']=parentezco_array3[i];
 	datos_familia.push(datos);
 
-	
+	//Envio de datos a la tabla puente
 
    }  
   /*  datos_familia['integrantes']=integrantes;
