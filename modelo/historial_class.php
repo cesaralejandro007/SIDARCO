@@ -9,24 +9,6 @@
     }
 
 
-    public function Consultar_viviendas()
-    {
-
-        $tabla            = "SELECT * FROM vivienda WHERE estado=1";
-        $respuesta_arreglo = '';
-        try {
-            $datos = $this->conexion->prepare($tabla);
-            $datos->execute();
-            $datos->setFetchMode(PDO::FETCH_ASSOC);
-            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
-            return $respuesta_arreglo;
-        } catch (PDOException $e) {
-
-            return $this->Capturar_Error($e);
-        }
-    }
-
-
 
 
     public function Consultar_personas()
@@ -382,6 +364,59 @@
         }
     }
 
+ 
+    public function consulta_ant_personal(){
+        
+        $respuestaArreglo="";
+
+        $tabla="SELECT ant_personales *FROM";
+
+        try{
+
+            $datos=$this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFechMode(PDO::FETCH_ASSOC);
+            $respuestaArreglo=$datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuestaArreglo;
+
+        }catch(PDOException $e){
+
+            return $this->Capturar_Error($e);
+
+        }
+    } 
+
+
+    /* public function registrar_ant_personal($data){
+
+        try{
+
+        $tabla=$this->conexion->prepare("INSERT INTO ant_per_personas(
+
+            id_ant_personal,
+            cedula_persona,
+            descripcion_personales
+
+            ) VALUES (
+            
+            :id_ant_personal,
+            :cedula_persona,
+            :descripcion_personales
+
+            )");
+
+            $tabla->execute([
+                "id_ant_personal"           =>  $data["id_ant_personal"],
+                "cedula_persona"            =>  $data["cedula_persona"],
+                "descripcion_personales"    =>  $data["descripcion_personales"]
+            ])
+
+         }catch(PDOException $e){
+
+            return $this->Capturar_Error($e);
+
+         }
+    } */
 
 
 

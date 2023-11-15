@@ -18,8 +18,6 @@ class Historial extends Controlador
     public function Registros()
     {
         $this->Seguridad_de_Session();
-        $viviendas=$this->modelo->Consultar_viviendas();
-        $this->vista->viviendas=$viviendas;
         $persona=$this->modelo->Consultar_personas();
         $this->vista->personas=$persona;
         $integrante=$this->modelo->Integrantes_consultas();
@@ -38,10 +36,8 @@ class Historial extends Controlador
     {
         $this->Seguridad_de_Session();
         #$this->Establecer_Consultas();
-         $viviendas=$this->modelo->Consultar_viviendas();
-        $this->vista->viviendas=$viviendas;
         $persona=$this->modelo->Consultar_personas();
-        $persona_familia=$this->modelo->Consultar_familia();
+        $persona_familia=$this->modelo->Consultar_familia(); 
         $this->vista->personas=$persona_familia;
         $this->vista->Cargar_Vistas('historial/consultar');
     }
@@ -77,7 +73,19 @@ class Historial extends Controlador
   } */ 
 
 }  
+
+//----------------------Registro de la tabla puente ANT_PER_PERSONAS----------------
+
+//CREAMOS EL MÉTODO
  
+/* public function registrar_ant_personal(){
+
+  //Debemos consultar la tabla para validar que ese ID existen(es una validacion)
+
+  $consulta_ant=$this->modelo->consulta_ant_personal();
+
+
+}  */
 
 //---------------------Registrar en tabla puente---------------
 
