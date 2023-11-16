@@ -365,33 +365,32 @@
     }
 
  
-    public function consulta_ant_personal(){
+     public function consulta_ant_personal(){
         
-        $respuestaArreglo="";
+    
 
-        $tabla="SELECT ant_personales *FROM";
-
+        $tabla="SELECT * FROM ant_personales";
+        $respuesta_arreglo='';
         try{
-
             $datos=$this->conexion->prepare($tabla);
             $datos->execute();
-            $datos->setFechMode(PDO::FETCH_ASSOC);
-            $respuestaArreglo=$datos->fetchAll(PDO::FETCH_ASSOC);
-            return $respuestaArreglo;
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
 
         }catch(PDOException $e){
 
             return $this->Capturar_Error($e);
 
         }
-    } 
+    }  
 
 
-    /* public function registrar_ant_personal($data){
+       public function registrar_ant_personal($data){
 
         try{
 
-        $tabla=$this->conexion->prepare("INSERT INTO ant_per_personas(
+        $tabla=$this->conexion->prepare('INSERT INTO ant_per_personas(
 
             id_ant_personal,
             cedula_persona,
@@ -403,22 +402,25 @@
             :cedula_persona,
             :descripcion_personales
 
-            )");
+            )');
 
             $tabla->execute([
-                "id_ant_personal"           =>  $data["id_ant_personal"],
-                "cedula_persona"            =>  $data["cedula_persona"],
-                "descripcion_personales"    =>  $data["descripcion_personales"]
-            ])
+                'id_ant_personal'           =>  $data['id_ant_personal'],
+                'cedula_persona'            =>  $data['cedula_persona'],
+                'descripcion_personales'    =>  $data['descripcion_personales']
+            ]);
+
+            return true;
 
          }catch(PDOException $e){
 
             return $this->Capturar_Error($e);
 
          }
-    } */
+    }   
 
-
+ 
+ 
 
     public function Actualizar_Familia($data)
     {
@@ -434,6 +436,7 @@
                 'descripcion_familia'      => $data['descripcion_familia']
             ]);
             return true;
+
         } catch (PDOException $e) {
             return $this->Capturar_Error($e);
         }

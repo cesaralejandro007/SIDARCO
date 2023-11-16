@@ -104,10 +104,12 @@ btn_agregar_per.onclick=function(){
 
       //agregar uno o mas varoles al final de array y devolver nuevamente el array con los nuevos valores
       personales_array.push(agregar);
+
+      alert(personales_array);
       
       descripcion_per_array.push(text1); 
 
-      alert(JSON.stringify(descripcion_per_array))
+      alert(JSON.stringify(descripcion_per_array))  
 
       console.log(personales_array);
       var elemento=document.createElement("div");
@@ -144,7 +146,7 @@ btn_agregar_per.onclick=function(){
       div_ant_personales.appendChild(elemento);
      
     }
-    alert(div_ant_personales);
+    
     ant_personales.value="0";
     descripcion_per.value=" ";
 }
@@ -642,6 +644,8 @@ $(document).ready(function() {
   $("#enviar").on("click", function() {
       var form = $("#formulario"); 
 
+
+
     alert("hola como stas ");
 var datos=[];
 var datos_persona=new Object();
@@ -669,7 +673,7 @@ datos_persona['evolucion']=evolucion.value;
     data:{"datos":datos_persona}
 
 })  
-})
+
 
 
 //---------------Envio de datos de antecedentes familiares--------------------
@@ -677,28 +681,30 @@ datos_persona['evolucion']=evolucion.value;
  
   var datos_antecedentes=[];
 
-for(var i; i<personales_array.length ;i++){
+for(var i=0; i<personales_array.length; i++){
   //creamos un objeto para poder asignarle a sus propiedades los
   //valores
 
-  var datos_ant=new Object();
+  var datos=new Object();
+  datos["id_ant_personal"]=personales_array[i];
+  datos["cedula_persona"]=cedula_persona.value;
+  datos["descripcion_personales"]=descripcion_per_array[i]; 
 
-  datos_ant["id_ant_personal"]=personales_array[i].value;
-  datos_ant["cedula_persona"]=cedula_persona.value;
-  datos_ant["descripcion_personales"]=descripcion_per_array[i];
+  alert(JSON.stringify(datos));
 
-  datos_antecedentes.push(datos_ant);
+  datos_antecedentes.push(datos);
 
 }
 
   $.ajax({
 
     type:"POST",
-    url:BASE_URL+"Historial/registrar_ant_personal",
+    url:BASE_URL+"Historial/registro_ant_personal",
    data:{"datos":datos_antecedentes} 
 
 }).done(function(result){
   alert(result);
+
 
   }) 
 
@@ -714,5 +720,5 @@ for(var i; i<personales_array.length ;i++){
  setTimeout(function(){
   location.href=BASE_URL+"Historial/Consultas";
 },2000)  */ 
-
+})
 })

@@ -77,15 +77,26 @@ class Historial extends Controlador
 //----------------------Registro de la tabla puente ANT_PER_PERSONAS----------------
 
 //CREAMOS EL MÉTODO
- 
-/* public function registrar_ant_personal(){
-
-  //Debemos consultar la tabla para validar que ese ID existen(es una validacion)
-
-  $consulta_ant=$this->modelo->consulta_ant_personal();
-
-
-}  */
+public function registro_ant_personal(){
+  // Debemos consultar la tabla para validar que ese ID existan (es una validación)
+  $consulta_ant = $this->modelo->consulta_ant_personal();
+  $datos = $_POST['datos'];
+  
+  // Como es una tabla puente, debemos realizar la validación y el recorrido cuantas veces se envíen los datos por el AJAX
+  // Leemos el for del lado izquierdo, $i menor que count($datos), $i++
+  for($i = 0; $i < count($datos); $i++){
+      foreach($consulta_ant as $consulta){
+          // Le colocamos [$i] porque debemos recorrer todos los id_ant_personal que pasen por el for, es un array bidimensional
+          if($consulta['id_ant_personal'] == $datos[$i]['id_ant_personal']){
+              $this->modelo->registrar_ant_personal([
+                  "id_ant_personal"         => $consulta['id_ant_personal'],
+                  "cedula_persona"          => $datos[$i]['cedula_persona'],
+                  "descripcion_personales"  => $datos[$i]['descripcion_personales']
+              ]);
+          }
+      }
+  }
+}
 
 //---------------------Registrar en tabla puente---------------
 
@@ -101,11 +112,11 @@ public function registrar_integrante_fun(){
     foreach ($integrante as $pro) {
         if ($pro['id_familia'] == $datos[$i]['id_familia']) {
       $this->modelo->Registrar_persona_familia([
-       "id_familia"     =>     $pro['id_familia'],
-       "cedula_persona"         =>  $datos[$i]['cedula_persona'],
-       "nombre_familia"     =>     $datos[$i]['nombre_familia'],
-       "descripcion_familia"  =>   $datos[$i]['descripcion_familia'],
-       "parentezco"           =>    $datos[$i]['parentezco']
+       "id_familia"           =>$pro['id_familia'],
+       "cedula_persona"       =>$datos[$i]['cedula_persona'],
+       "nombre_familia"       =>$datos[$i]['nombre_familia'],
+       "descripcion_familia"  =>$datos[$i]['descripcion_familia'],
+       "parentezco"           =>$datos[$i]['parentezco']
      ]);
   }
 }
