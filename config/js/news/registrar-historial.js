@@ -58,6 +58,7 @@ var descripcion_fam=document.getElementById("descripcion_fam");
 var descripcion_fam_array=[];
 var habit_psicologico=document.getElementById("habit_psicol");
 var descripcion_psi=document.getElementById("descripcion_psi");
+var descripcion_habit_array=[];
 
 var personales_array=[];
 var familiar_array=[];
@@ -238,12 +239,13 @@ btn_agregar_fam.onclick=function(){
         console.log(familiar_array)
       }
       div_ant_familiar.appendChild(elemento);
-     /*  ant_familiar.value="0";
-      descripcion_fam.value=" "; */
+    
+    }
+
+      ant_familiar.value="0";
+      descripcion_fam.value=""; 
 
   }
-
-}
 
 //------------Antecedentes psicológicos-----------
 
@@ -278,6 +280,8 @@ btn_agregar_psi.onclick=function(){
 
       //push una funcion agregar un nuevo dato al final del array 
       psicologico_array.push(agregar_habit);
+
+      descripcion_habit_array.push(text5);
 
       console.log(psicologico_array);
 
@@ -702,11 +706,63 @@ for(var i=0; i<personales_array.length; i++){
     url:BASE_URL+"Historial/registro_ant_personal",
    data:{"datos":datos_antecedentes} 
 
+})
+
+//creamos un array donde guardaremos lo que recorra el push
+
+var datos_familias=[];
+
+//realizamos un for que va a recorrer todo el array del PUSH, esto porque seleccionamos varios
+//antecedente y se deben guardar
+
+  for(var i=0; i < familiar_array; i++){
+
+  //creamos un objeto que asigne en sus proedades e valos de los
+  //input
+  var datos=new Object();
+
+  datos['id_ant_familiar']=familiar_array[i];
+  datos['cedula_persona']=cedula_persona.value;
+  datos['descripcion_familiar']=descripcion_fam_array[i];
+
+  datos_familias.push(datos);
+}
+
+$.ajax({
+  type:"POST",
+  url:BASE_URL+"Historial/registro_ant_familiar",
+  data:{"datos":datos_familias}
+
 }).done(function(result){
-  alert(result);
+        alert(result);
+}) 
 
 
-  }) 
+ var datos_hab_psicologico=[]; 
+
+  for(var i=0; i < psicologico_array; i++){
+
+    $datos= new Object();
+    $datos['id_habit_persona']=psicologico_array[i];
+    $datos['cedula_persona']=cedula_persona.value;
+    $datos['descrpcion_habit']=descripcion_habit_array[i];
+
+    datos_hab_psicologico.push($datos);
+
+  }
+
+$.ajax({
+  type:"POST",
+  url:BASE_URL+"Historial/registro_habit_psicologico",
+  data:{"datos":datos_hab_psicologico}
+
+}).done(function(result){
+
+      alert(result);
+
+})
+
+
 
 /* swal({
   title:"exito",
@@ -716,9 +772,14 @@ for(var i=0; i<personales_array.length; i++){
   timer:2000
 }); 
 
+.done(function(result){
+  alert(result);
+
+
+  }) 
 
  setTimeout(function(){
   location.href=BASE_URL+"Historial/Consultas";
 },2000)  */ 
-})
+}) 
 })

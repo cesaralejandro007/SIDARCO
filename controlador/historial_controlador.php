@@ -98,6 +98,43 @@ public function registro_ant_personal(){
   }
 }
 
+//---------------------Registrar tabla puente ANT_FAM_PERSONALES----------------
+
+ public function registro_ant_familiar(){
+
+  //Debemos consultar la tbla de ant_familiares para poder realizar la valiadcion
+  //de la llave foranea-primary
+  //this es un puntero de PhP el this se utiloza para cceder a las propiedades y metods
+  //de ese objeto de la clase que se instancio
+  $consulta_ant_familiar=$this->modelo->consultar_ant_fam();
+
+  $datos_fam=$_POST['datos'];
+
+  for($i=0; $i< count($datos_fam); $i++){
+    foreach($consulta_ant_familiar as $consulta_fam){
+       if($consulta_fam['id_ant_familiar']==$datos_fam[$i]['id_ant_familiar']){
+         $this->modelo->Registrar_ant_fam_personas([
+          'id_ant_familiar'       => $consulta_fam['id_ant_familiar'],
+          'cedula_persona'        => $datos_fam[$i]['cedula_persona'],
+          'descripcion_familiar'  => $datos_fam[$i]['descripcion_familiar']
+
+         ]);
+
+      } 
+    }
+  }
+} 
+
+
+//---------------------Registrar tabla puente HABIT_PSICO_PSICOLOGICOS
+
+
+public function registro_habit_psicologico(){
+
+  
+}
+
+
 //---------------------Registrar en tabla puente---------------
 
 

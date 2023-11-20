@@ -385,12 +385,31 @@
         }
     }  
 
+      public function consultar_ant_fam(){
+
+        $tabla="SELECT * FROM ant_familiares";
+        $respuesta_arreglo="";
+
+        try{
+            $datos=$this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+
+        }catch(PDOException $e){
+
+            return $this->Capturar_Error($e);
+
+        }
+    }  
+
 
        public function registrar_ant_personal($data){
 
         try{
 
-        $tabla=$this->conexion->prepare('INSERT INTO ant_per_personas(
+        $tabla=$this->conexion->prepare('INSERT INTO ant_per_personas (
 
             id_ant_personal,
             cedula_persona,
@@ -419,8 +438,40 @@
          }
     }   
 
- 
- 
+
+    public function Registrar_ant_fam_personas($data){
+
+        try{
+
+            $query=$this->conexion->prepare("INSERT INTO ant_fam_personas (
+                
+                id_ant_familiar,
+                cedula_persona,
+                descripcion_familiar
+
+            ) VALUES (
+                :id_ant_familiar,
+                :cedula_persona,
+                :descripcion_familiar
+            )");
+
+            $query->execute([
+                'id_ant_familiar'       =>  $data['id_ant_familiar'],
+                'cedula_persona'        =>  $data['cedula_persona'],
+                'descripcion_familiar'  =>  $data['descripcion_familiar']
+
+            ]);
+
+            return true;
+
+
+        }catch(PDOException $e){
+
+            return $this->Captar_Error($e);
+
+        }
+    }
+
 
     public function Actualizar_Familia($data)
     {

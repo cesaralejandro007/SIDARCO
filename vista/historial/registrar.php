@@ -240,7 +240,7 @@
                                                         <tr>
                                                         <td>
                                                         <input type="text"  style="display:none;" class='form-control letras_numeros' id='habit_psico' placeholder="Nuevo hábito psicológico"   name="datos[cedula_integrante]" oninput="Limitar(this,15)">
-                                                            <select class="form-control" id="habit_psicol" >
+                                                            <select class="form-control" id="habit_psicol" name=[id_habit_psicologico] >
                                                                 <option value="0">Seleccione hábito</option>
                                                                 <?php foreach ($this->habit_psicols as $habit) { ?>
                                                                 <option value='<?php echo $habit['id_habit_psicologico'];?>'><?php echo $habit['nombre_habit']; ?></option>
@@ -250,7 +250,7 @@
                                                                 <!-- <label for="parentezco">
                                                                     Parentezco
                                                                 </label> -->
-                                                                <input type="text" placeholder="Descripción..." class="form-control letras_numeros" id="descripcion_psi" >
+                                                                <input type="text" placeholder="Descripción..." class="form-control letras_numeros" id="descripcion_habit" name=[descripcion_habit] >
                                                                 <!--    <select class="custom-select" id="parentezco"
                                                                 name="datos[parentezco]" >
                                                                 <option selected="" value="0">
