@@ -1,12 +1,15 @@
-<?php
+ <?php
 
-class Historial_Class extends Modelo
+ class Historial_Class extends Modelo
  {
 
     public function __construct()
     {
         parent::__construct();
     }
+
+
+
 
     public function Consultar_personas()
     {
@@ -25,8 +28,6 @@ class Historial_Class extends Modelo
         }
     }
 
-
-
     
     public function Consultar_familia()
     {
@@ -44,9 +45,6 @@ class Historial_Class extends Modelo
             return $this->Capturar_Error($e);
         }
     }
-
-
-
 
     public function Consultar_integrante($cedula)
     {
@@ -92,100 +90,14 @@ class Historial_Class extends Modelo
         try {
             $datos = $this->conexion->prepare($tabla);
             $datos->execute();
-            //LOS DATOS SE DEVOLVERAN COMO U  ARREGLO ASOCIATIVO
             $datos->setFetchMode(PDO::FETCH_ASSOC);
             $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
             return $respuesta_arreglo;
-
         } catch (PDOException $e) {
 
             return $this->Capturar_Error($e);
         }
     }
-
-
-
-
-
-    public function ant_personales_consulta(){
-
-        $tabla= "SELECT *FROM ant_personales";
-
-        //INICIALIZAMOS LA VARIABLE DONDE SE VA A GUARDAR EL RESULTADO
-        $respuesta_arreglo="";
-
-        try{
-
-            $datos=$this->conexion->prepare($tabla);
-            $datos->execute();
-            $datos->setFetchMode(PDO::FETCH_ASSOC);
-            $respuesta_arreglo=$datos->fetchAll(PDO::FETCH_ASSOC);
-            return $respuesta_arreglo;
-
-
-        }catch(PDOException $e){
-
-            return $this->Capturar_Error($e);
-
-        }
-
-    }
-
-     public function Registro_ant_personal($data){
-
-       try{  $datos=$this->conexion->prepare("INSERT INTO ant_per_personas(
-            id_ant_personal,
-            cedula_persona,
-            descripcion_personales
-
-            )
-            
-             VALUES (
-            :id_ant_personal,
-            :cedula_persona,
-            :descripcion_personales
-    
-            )");
-
-            $datos->execute([
-
-                'id_ant_personal'           =>$data['id_ant_personal'],
-                'cedula_persona'            =>$data['cedula_persona'],
-                'descripcion_personales'    =>$data['descripcion_personales']
-
-            ]);
-            return true;
-
-       }catch(PDOException $e){
-
-        return   $this->Capturar_Error($e);
-
-
-       }
-
-    } 
-
-
-    public function consultar_ant_familiares(){
-
-        $tabla="SELECT *FROM ant_familiares";
-
-        $respuesta_arreglo="";
-
-        //El try y catch es como el el if y else solo que aqui en catch 
-    
-        try{
-            //realizamos la conexion al base de datos y preparamos la sentencia
-
-            $datos=$this->conexion->prepare($tabla);
-        
-        
-        
-        }catch{
-
-        }
-    }
-
 
     public function Integrantes_familia($cedula)
     {
@@ -352,13 +264,42 @@ class Historial_Class extends Modelo
         }
     }
 
-  
+    public function existemadre($cedula_responsable)
+    {
+        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Madre'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function existeconyugue($cedula_responsable)
+    {
+        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Conyugue'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
 
     public function Registrar_historial($data)
     {
 
         try {
-
             $datos = $this->conexion->prepare('INSERT INTO historiales_clinicos (
                 diagnostico,
                 tratamiento,
@@ -398,9 +339,9 @@ class Historial_Class extends Modelo
             )');
 
             $datos->execute([
-                'diagnostico'                =>$data['diagnostico'],
-                'tratamiento'                =>$data['tratamiento'],
-                'evolucion'                  =>$data['evolucion'],
+                'diagnostico'                => $data['diagnostico'],
+                'tratamiento'                => $data['tratamiento'],
+                'evolucion'                  => $data['evolucion'],
                 'fecha_historial'            =>$data['fecha_historial'],
                 'cedula_persona'             =>$data['cedula_persona'],
                 'examen'                     =>$data['examen'],
@@ -600,6 +541,54 @@ class Historial_Class extends Modelo
         }
     }
 
+       /*  public function Registrar_Integrante($data){
+
+            try{
+
+           
+            $datos=$this->conexion->prepare("INSERT INTO familia ()
+            id_familia,
+            id_vivienda,
+            cedula,
+            primer_nombre,
+            segundo_nombre,
+            primer_apellido,
+            segundo_apellido
+            
+             VALUES(
+
+            :id_familia,
+            :id_vivienda,
+            :cedula,
+            :primer_nombre,
+            :segundo_nombre,
+            :primer_apellido,
+            :segundo_apellido
+
+             )");
+
+            $datos->execute([
+                
+            'cedula'        => $data['cedula'],
+            'primer_nombre' => $data['primer_nombre'],
+            ''
+
+
+
+
+
+            ])
+
+
+
+            }catch(PdoException $e){
+
+            }
+
+
+
+        } */
+
 
 
 
@@ -623,11 +612,11 @@ class Historial_Class extends Modelo
             )');
 
             $datos->execute([
-                'id_familia'            =>$data['id_familia'],
-                'cedula_persona'        =>$data['cedula_persona'],
-                'nombre_familia'        =>$data['nombre_familia'],
-                'descripcion_familia'   =>$data['descripcion_familia'],
-                'parentezco'            =>$data['parentezco']
+                'id_familia'      => $data['id_familia'],
+                'cedula_persona'   => $data['cedula_persona'],
+                'nombre_familia'    =>$data['nombre_familia'],
+                'descripcion_familia' =>$data['descripcion_familia'],
+                'parentezco'          =>$data['parentezco']
             ]);
 
             return true;
