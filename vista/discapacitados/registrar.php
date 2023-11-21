@@ -34,10 +34,10 @@
                          <table style='width:100%'><tr><td>
                             <input type="number" maxlength="15" placeholder="Buscar cédula" class='form-control no-simbolos letras_numeros' id='persona' name="" list='lista_personas' oninput="Limitar(this,15)">
 
-                             <datalist id='lista_personas'>
+                            <datalist id='lista_personas'>
                                  <?php foreach ($this->datos["personas"] as $p) { ?>
-                                     <option value='<?php echo $p['cedula_persona'];?>'><?php echo $p['primer_nombre']." ".$p['segundo_nombre']; ?></option>
-                                 <?php   } ?>
+                                    <option value='<?php echo $p['cedula_persona'];?>'><?php echo $p['primer_nombre']." ".$p['segundo_nombre']; ?></option>
+                                 <?php  } ?>
                              </datalist></td>
                              <td><button type='button' id='registrar_btn' class="btn btn-info" onclick='window.open(BASE_URL+"Personas/Registros")'>Registrar</button></td>
 

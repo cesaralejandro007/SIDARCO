@@ -49,12 +49,14 @@ function envioFormulario() {
             success: function(respuesta) {
                 Respuesta_Controlador(respuesta, form);
             },
-            error: function(respuesta) {
-                alert("Error al enviar Controlador");
-            },
+             error: function(respuesta) {
+                alert("Error al enviar Controlado");
+            }, 
         });
     }
 }
+
+
 
 function Validar_Datos() {
     var cedula = document.getElementById("cedula");
@@ -85,6 +87,8 @@ function Validar_Datos() {
     }
     return retornar;
 }
+
+
 
 function Respuesta_Controlador(respuesta, form) {
     if (respuesta == 0) {
@@ -119,6 +123,8 @@ function Respuesta_Controlador(respuesta, form) {
         }
     }
 }
+
+
 
 function Limpiar_Mensajes() {
     $("#cedula").on({

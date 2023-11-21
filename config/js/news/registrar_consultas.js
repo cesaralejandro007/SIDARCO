@@ -10,8 +10,10 @@ var div_medica_persona=document.getElementById("medi_agrega");
 var btn_nuevo=document.getElementById("btn_nuevo");
 
 
-btn_agregar.onclick=function(){
 
+
+
+btn_agregar.onclick=function(){
 
     if( inventario=="" ){
         swal({
@@ -26,18 +28,28 @@ btn_agregar.onclick=function(){
          /* descripcion.style.borderColor = "red"; */
     });
     }else{
-        inventario.style.borderColor = '';
+     /*    inventario.style.borderColor = ''; */
         /* descripcion.style.borderColor = ""; */
         var agregado="";
        /*  var agregado1=""; */
         var text="";
         var text1="";
+
+
+      /*   var text = ant_personales.options[ant_personales.selectedIndex].text; */
+
+
+
+
+        // seleccionar el valor que esta en el select
         text = inventario.options[inventario.selectedIndex].text;
         /* text1=descripcion.value; */
         
+        //el parseint es para analizar una cadena y determinar si teien nuemros enteros
         agregado = parseInt(inventario.value) ;
        /*  agregado1 = descripcion.value; */
     
+       //la function PUSH() añade uno o mas elementos al final de un array y devuelve la nueva cadena
         medica_persona.push(agregado);
         /* medica_persona_descripcion.push(agregado1); */
     
@@ -72,6 +84,7 @@ btn_agregar.onclick=function(){
         console.log(medica_persona);
         }
         div_medica_persona.appendChild(elemento);
+        alert(div_medica_persona);
         inventario.value = "0";
          /* descripcion.value = "";  */
     }

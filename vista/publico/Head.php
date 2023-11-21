@@ -49,8 +49,17 @@
     </style>
     <?php include (call."Style-tabs.php"); ?>
     <script>
-        const BASE_URL = 'http://localhost/dashboard/www/SIDARCO/';
-        typeof BASE_URL;
+        const protocol = window.location.protocol;
+        const host = window.location.host;
+
+// Definir la parte específica de la ruta
+        const subPath = 'dashboard/www/SIDARCO/';
+
+// Combinar todas las partes para obtener la URL base
+        const BASE_URL = protocol + '//' + host + '/' + subPath;
+
+       /*  const BASE_URL = 'http://localhost/dashboard/www/SIDARCO/';
+        typeof BASE_URL; */
 
     </script>
 

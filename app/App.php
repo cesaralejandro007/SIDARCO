@@ -162,7 +162,7 @@ final class Iniciar_Sistema
     }
     private function Validar_URL()
     {
-        $url = preg_match_all("/^[a-zA-Z0-9\/_]{1,700}$/", $_GET['url']);
+        $url = preg_match_all("/^[a-zA-Z0-9.\/_]{1,700}$/", $_GET['url']);
         if (!$url == 1) {
             $this->error[] = '[Error Url] => "La URL: [ ' . URL . $_GET['url'] . ' ] </br> No es una direccion valida."';
             return false;

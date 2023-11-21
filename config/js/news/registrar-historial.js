@@ -33,6 +33,8 @@ var index=0;
 var btn_siguiente=document.getElementById("siguiente");
 var btn_anterior=document.getElementById("anterior");
 var btn_guardar=document.getElementById("guardar");
+
+
 var btn_finales=document.getElementById("botones-finales");
 
 
@@ -284,10 +286,6 @@ btn_agregar_psi.onclick=function(){
       descripcion_habit_array.push(text5);
 
       console.log(psicologico_array);
-     
-
-     
-     
 
       var elemento=document.createElement("div");
       var table=document.createElement("table");
@@ -390,7 +388,7 @@ control_indice();
 
 function control_indice(){
 
-  alert(index);
+/*   alert(index); */
 
     switch(index){
 
@@ -639,11 +637,18 @@ var enviar=document.getElementById("enviar");
 
 //----------------Función para enviar la información---------------
 
+btn_guardar.onclick=function(){
+
+var hola="maria";
+  alert(hola);
+
+   enviar_info(); 
 
  /* btn_guardar.onclick=function(){
   enviar_info();
 }  */
 
+}
 
 //---------------Funcion para enviar la información al controlador------------
 
@@ -710,7 +715,18 @@ for(var i=0; i<personales_array.length; i++){
     url:BASE_URL+"Historial/registro_ant_personal",
    data:{"datos":datos_antecedentes} 
 
-})
+  })
+
+/*   }
+  )}) */
+
+  /* swal({
+    title:"Éxito",
+    text:"El historial clínico ha sido registrado exitosamente",
+    type:"success",
+    timer:5000,
+    showConfirmButton:false
+  });*/
 
 //creamos un array donde guardaremos lo que recorra el push
 

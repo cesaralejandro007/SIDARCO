@@ -147,6 +147,8 @@ class Usuario extends Controlador
 
     }
 
+    
+
     public function eliminacion_logica()
     {
         $this->Establecer_Consultas();
