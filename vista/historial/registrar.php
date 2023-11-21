@@ -104,7 +104,7 @@
                                                 <div class="input-group">
                                                 <input type="text"  class='form-control letras_numeros' id='cedula_persona' placeholder="Buscar cédula" name="datos[cedula_persona]" list='lista' oninput="Limitar(this,15)">
                                                             <datalist id='lista' >
-                                                            <option selected="" value="27193453"></option>
+                                                            <option selected="" value="0"></option>
                                                                 <?php foreach ($this->personas as $p) { ?>
                                                                         <option value='<?php echo $p['cedula_persona']; ?>'><?php echo $p['primer_nombre']." ".$p['primer_apellido']; ?></option>
                                                             <?php  } ?>
@@ -240,7 +240,7 @@
                                                         <tr>
                                                         <td>
                                                         <input type="text"  style="display:none;" class='form-control letras_numeros' id='habit_psico' placeholder="Nuevo hábito psicológico"   name="datos[cedula_integrante]" oninput="Limitar(this,15)">
-                                                            <select class="form-control" id="habit_psicol" name=[id_habit_psicologico] >
+                                                            <select class="form-control" id="id_habit_psicologico" name=[id_habit_psicologico] >
                                                                 <option value="0">Seleccione hábito</option>
                                                                 <?php foreach ($this->habit_psicols as $habit) { ?>
                                                                 <option value='<?php echo $habit['id_habit_psicologico'];?>'><?php echo $habit['nombre_habit']; ?></option>

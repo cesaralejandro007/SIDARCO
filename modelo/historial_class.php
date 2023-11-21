@@ -405,6 +405,26 @@
     }  
 
 
+     public function consultar_habit_psico(){
+
+        $table="SELECT * FROM habit_psicologicos";
+        $respuesta_arreglo="";
+
+        try{
+            $datos=$this->conexion->prepare($table);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+
+        }catch(PDOException $e){
+
+            return $this->Capturar_Error();
+        }
+
+    }  
+
+
        public function registrar_ant_personal($data){
 
         try{
@@ -444,7 +464,7 @@
         try{
 
             $query=$this->conexion->prepare("INSERT INTO ant_fam_personas (
-                
+
                 id_ant_familiar,
                 cedula_persona,
                 descripcion_familiar
@@ -470,6 +490,34 @@
             return $this->Captar_Error($e);
 
         }
+    }
+
+
+    public function registrar_habit_personas($data){
+
+      try{   $query=$this->conexion->prepare(" INSERT INTO habit_psico_personas (
+
+            descripcion_habit,
+            cedula_persona,
+            id_habit_psicologico
+        ) VALUES (
+            :descripcion_habit,
+            :cedula_persona,
+            :id_habit_psicologico
+
+        )");
+
+        $query->execute([
+            'descripcion_habit'     =>$data['descripcion_habit'],
+            'cedula_persona'        =>$data['cedula_persona'],
+            'id_habit_psicologico'  =>$data['id_habit_psicologico']
+        ]);
+        return true;
+        
+      }catch(PDOException $e){
+
+        return $this->Capturar_Error($e);
+      }
     }
 
 

@@ -56,8 +56,8 @@ var descripcion_per_array=[];
 var ant_familiar=document.getElementById("id_ant_familiar");
 var descripcion_fam=document.getElementById("descripcion_fam");
 var descripcion_fam_array=[];
-var habit_psicologico=document.getElementById("habit_psicol");
-var descripcion_psi=document.getElementById("descripcion_psi");
+var habit_psicologico=document.getElementById("id_habit_psicologico");
+var descripcion_psi=document.getElementById("descripcion_habit");
 var descripcion_habit_array=[];
 
 var personales_array=[];
@@ -276,7 +276,7 @@ btn_agregar_psi.onclick=function(){
 
       //Busca si existe un entero en el select para que despues lo podamos mostrar en el push del array
 
-      agregar_habit=parseInt(habit_psicologico);
+      agregar_habit=parseInt(habit_psicologico.value);
 
       //push una funcion agregar un nuevo dato al final del array 
       psicologico_array.push(agregar_habit);
@@ -284,6 +284,10 @@ btn_agregar_psi.onclick=function(){
       descripcion_habit_array.push(text5);
 
       console.log(psicologico_array);
+     
+
+     
+     
 
       var elemento=document.createElement("div");
       var table=document.createElement("table");
@@ -715,7 +719,7 @@ var datos_familias=[];
 //realizamos un for que va a recorrer todo el array del PUSH, esto porque seleccionamos varios
 //antecedente y se deben guardar
 
-  for(var i=0; i < familiar_array; i++){
+  for(var i=0; i < familiar_array.length; i++){
 
   //creamos un objeto que asigne en sus proedades e valos de los
   //input
@@ -726,6 +730,7 @@ var datos_familias=[];
   datos['descripcion_familiar']=descripcion_fam_array[i];
 
   datos_familias.push(datos);
+  alert(JSON.stringify(datos));
 }
 
 $.ajax({
@@ -737,17 +742,19 @@ $.ajax({
         alert(result);
 }) 
 
+//---------------Hábitos psicologicos---------
 
  var datos_hab_psicologico=[]; 
 
-  for(var i=0; i < psicologico_array; i++){
+  for(var i=0; i < psicologico_array.length; i++){
 
-    $datos= new Object();
-    $datos['id_habit_persona']=psicologico_array[i];
-    $datos['cedula_persona']=cedula_persona.value;
-    $datos['descrpcion_habit']=descripcion_habit_array[i];
+    var datos=new Object();
+        datos['id_habit_psicologico']=psicologico_array[i];
+        datos['cedula_persona']=cedula_persona.value;
+        datos['descripcion_habit']=descripcion_habit_array[i];
 
-    datos_hab_psicologico.push($datos);
+    datos_hab_psicologico.push(datos);
+    alert(JSON.stringify(datos));
 
   }
 
@@ -762,24 +769,17 @@ $.ajax({
 
 })
 
-
-
-/* swal({
-  title:"exito",
+  swal({
+  title:"Éxito",
   type:"success",
-  text:"registro exitoso",
+  text:"Registro exitoso",
   showConfirmButton:false,
   timer:2000
 }); 
-
-.done(function(result){
-  alert(result);
-
-
-  }) 
-
  setTimeout(function(){
   location.href=BASE_URL+"Historial/Consultas";
-},2000)  */ 
+},2000)
+
+
 }) 
 })

@@ -1,5 +1,4 @@
 <?php
-
 class Historial extends Controlador
 {
     public function __construct() 
@@ -129,10 +128,24 @@ public function registro_ant_personal(){
 //---------------------Registrar tabla puente HABIT_PSICO_PSICOLOGICOS
 
 
-public function registro_habit_psicologico(){
+ public function registro_habit_psicologico(){
 
-  
-}
+  $consulta_habit_psico=$this->modelo->consultar_habit_psico();
+
+  $datos=$_POST['datos'];
+
+   for($i=0;$i<count($datos); $i++){
+    foreach($consulta_habit_psico as $consulta_habit){
+       if($consulta_habit['id_habit_psicologico']==$datos[$i]['id_habit_psicologico']){
+          $this->modelo->registrar_habit_personas([
+          'descripcion_habit'     =>$datos[$i]['descripcion_habit'],
+          'cedula_persona'        =>$datos[$i]['cedula_persona'],
+          'id_habit_psicologico'  =>$consulta_habit['id_habit_psicologico']
+          ]);
+      } 
+    }
+  } 
+} 
 
 
 //---------------------Registrar en tabla puente---------------
