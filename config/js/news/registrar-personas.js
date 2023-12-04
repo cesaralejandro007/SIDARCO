@@ -1367,7 +1367,7 @@ setTimeout(function(){
     });
   }
 })
- }
+}
 
 // var retornar=false;
 
@@ -1419,13 +1419,7 @@ setTimeout(function(){
 //   break;
 // }
 
-
-
 }
-
-
-
-
 
 //--------------------------------validar tipo de trasnporte--------------------------------------//
 

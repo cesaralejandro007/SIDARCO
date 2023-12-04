@@ -120,7 +120,7 @@
     public function get_familias()
     {
 
-        $tabla            = "SELECT F.*,fp.*, p.primer_nombre as primer_nombre_p, p.primer_apellido as primer_apellido_p FROM familia F, personas p, familia_personas fp WHERE F.estado=1 AND F.id_familia=fp.id_familia AND fp.cedula_persona = p.cedula_persona GROUP BY fp.cedula_persona";
+        $tabla            = "SELECT p.*, ap.*, app.*, app.descripcion_personales as descripcion_p_app,  FROM ant_personales ap, personas p, ant_per_personas app WHERE p.estado=1 AND ap.id_ant_personal=app.id_ant_personal AND app.cedula_persona = p.cedula_persona GROUP BY app.cedula_persona";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);

@@ -59,17 +59,8 @@ class Historial extends Controlador
         
         $this->modelo->Registrar_historial($datos_historial); 
         
-     /*     if($resultado){
-           $id=$this->Ultimo_Ingresado("familia","id_familia");
-           foreach ($id as  $i) {
-            foreach ($datos_familia['integrantes'] as $inte) {
-             $this->modelo->Registrar_persona_familia([
-                "cedula_persona"         =>  $inte,
-                "id_familia"            =>   $i['MAX(id_familia)']
-            ]);
-         }
-     }
-  } */ 
+    
+        
 
 }  
 
@@ -235,10 +226,10 @@ echo $resultado;
 
 
 public function consultar_info_familia(){
-     $familias=$this->modelo->get_familias();
-     $retornar=[];
+    $familias=$this->modelo->get_familias();
+    $retornar=[];
 
-     foreach ($familias as $f) {
+    foreach ($familias as $f) {
         
         $integrantes=$this->modelo->get_integrantes($f['cedula_persona']);
         $integrantes_familia  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td></tr></thead><tbody>";

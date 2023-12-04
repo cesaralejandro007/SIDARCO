@@ -356,6 +356,7 @@ function funcion_siguiente(){
   switch(index){
     
   case 0:
+
       if(valida_info()){
         
         index++;
@@ -423,7 +424,7 @@ function control_indice(){
         div_antecedente.style.display='block';
 
         tab_diagnostico.className='';
-        div_diagnostico.style.display='nne';   
+        div_diagnostico.style.display='none';   
         
         tab_persona.className='';
         div_persona.style.display='none'; 
@@ -459,22 +460,24 @@ function control_indice(){
 
 
   cedula_persona.oninput=function(){
+
     if (cedula_persona.value.length >9) cedula_persona.value =cedula_persona.value.slice(0, 9);
   
   } 
   
    cedula_persona.onkeyup=function(){
   
-    valid_element("Debe ingresar el documento de identidad de la persona", cedula_persona ,document.getElementById("valid_1"));
+    valid_element("Debe ingresar el documento de identidad de la persona", cedula_persona ,document.getElementById("valid_2"));
     $.ajax({
   
      type:"POST",
-     url:BASE_URL+"Familias/Consultas_cedula_integrante",
+     url:BASE_URL+"Historial/Consultas_cedulaV2",
      data:{'cedula_persona':cedula_persona.value}
   
    }).done(function(result){
     console.log(result);
-  /*  alert(result);  */ 
+    alert(JSON.stringify(result));
+  
      persona_existente=result; 
    
   
@@ -484,27 +487,30 @@ function control_indice(){
 
 //----------Validación de persona existentes---------------
 
- function persona_existe(){
 
-     if(persona_existente==0){
+function persona_existe(){
+
+    if(persona_existente==1){
+
       return true;
+      
     }
   
-  
-    if(persona_existente==1){
+    if(persona_existente==0){
   
       swal({
        type:"error",
        title:"Error",
-       text:"Ésta persona ya se encuentra registrada en el sistema",
+       text:"Ésta persona no se encuentra registrada en el sistema",
        showConfirmButton:false,
        timer:2000
      });
+
+     // eL setTimeout tambien se puede utilizar para asignar en que parte se mostrara el resultado 
   
       setTimeout(function(){cedula_persona.style.borderColor="red";cedula_persona.focus();},2000);
   
     }
-  
   
     if(persona_existente==2){
      swal({
@@ -537,10 +543,12 @@ function control_indice(){
       });
     }
   })
-   } 
-  
-  }
- 
+}  
+
+}
+
+
+
 //-----------------------------------Validación genérica----------------------------------------//
 
  function valid_element(mensaje_error,element,span_element){
@@ -559,7 +567,7 @@ function control_indice(){
   
     else{
 
-      /* element.style.borderColor="";  */
+      element.style.borderColor="";  
       span_element.style.display='none';
     }
   
@@ -573,51 +581,41 @@ function valida_info(){
 
     var validacion=false;
 
-    if(valid_element("Debe ingresar el documento de identidad", cedula_persona, document.getElementById("valid_1")))
+    if(valid_element("Debe ingresar el documento de identidad", cedula_persona, document.getElementById("valid_2")))
     {
-       /* if(persona_existe(cedula_persona.value)){  */
-/*      if(valid_element("Ingrese el tipo de sangre", tipo_sangre, document.getElementById("valid_2"))){
-              if(valid_element("Ingrese el peso", peso, document.getElementById("valid_3"))){
-                if(valid_element("Ingrese la altura", altura, document.getElementById("valid_4"))){ 
-                  if(new Date(fecha_nacimiento.value)>new Date){
-                  document.getElementById("valid_6").innerHTML="La fecha no debe ser mayor a la actual";
-                  document.getElementById("valid_6").style.display=''; 
-                  fecha_nacimiento.style.borderColor="red";
-
+        if(persona_existe(cedula_persona.value)){  
+              if(new Date(fecha_historial.value)>new Date){
+                  document.getElementById("valid_1").innerHTML="La fecha no debe ser mayor a la actual";
+                  document.getElementById("valid_1").style.display='';
+                  fecha_historial.style.borderColor="red";
                 }else{
-                  document.getElementById("valid_6").style.display='';
-                  document.getElementById("valid_6").innerHTML="Ingrese la fecha de nacimiento";
-                  fecha_nacimiento.style.borderColor="";
-                  if(valid_element("Ingrese el género", genero, document.getElementById("valid_7"))){
-                    if(valid_element("Ingrese el nivel educativo", nivel, document.getElementById("valid_8"))){
+                document.getElementById("valid_1").style.display='';
+                document.getElementById("valid_1").innerHTML="Ingresar fecha del historial";
+                fecha_historial.style.borderColor="";
+                if(valid_element("Ingrese  ", div_ant_personales, document.getElementById("valid_4"))){
+                   /* if(valid_element("Ingrese el nivel educativo", nivel, document.getElementById("valid_8"))){
                       if(valid_element("Ingrese la talla de camisa", camisa, document.getElementById("valid_9") )){ 
                         if(valid_element("Ingrese talla de pantalon", pantalon, document.getElementById("valid_10"))){
                           if(valid_element("Ingrese el número de calzado", calzado, document.getElementById("valid_11"))){
-
-
-                        
+                            
                         }
                       }
                     }
-                  }
-                } 
-             
+                  } */
+                  validacion=true;
+                }
+                
               }
             }
-          } */
-      /*   }
-      
-    } */
-       /*   }  */
-       validacion=true;
+          } 
+       
   
-
+        
 return validacion;
+    } 
+    
 
-}
-}
 
-var enviar=document.getElementById("enviar");
 
 //---------------- Validación de datos de contacto---------------------
 

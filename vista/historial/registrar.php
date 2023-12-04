@@ -89,16 +89,20 @@
                                                 <div class="col-md-3 mt-2">
                                             
                                                     <label for="fecha_historial">Fecha de historia</label>
+                                                   
                                                     <div class="input-group">
+                                                    
                                                     <input type="date" id="fecha_historial" class="form-control" name="datos[fecha_historial]" >
+                                                
                                                 </div>
+                                                <span id='valid_1' style="color:red;"></span>
                                                 </div>
 
                                             <div class="col-md-12 mt-4">
                                                 <label for="cedula_persona">
                                                     Cédula del funcionario o funcionaria
                                                 </label>
-                                                <span id='valid_1' style="color:red;"></span>
+                                             
                                             </div>
 
                                                 <div class="input-group">
@@ -118,7 +122,7 @@
 
                                             <!-- FOOTER -->
 
-                                            
+                                            <span id='valid_2' style="color:red;"></span>
                                         </div> 
                                 
                                     <div class="col-md-12 mt-2">
@@ -137,6 +141,7 @@
                                                                 <option value='<?php echo $int['id_ant_personal'];?>'><?php echo $int['nombre_personal']; ?></option>
                                                             <?php } ?>
                                                                 </select>
+                                                                <span id="valid_3" style="color: red;"></span>
                                                             <td class="col-md-6 p-0">
                                                                 <!-- <label for="parentezco">
                                                                     Parentezco
@@ -170,6 +175,7 @@
                                                         <tr><td colspan='2'><br>
                                                         <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
                                                             <div style='width:100%' id='div_ant_personales'></div>
+                                                            <span id="valid_04" style="color:red;"></span>
                                                         </center>
                                                         </div>
                                                         </td>
