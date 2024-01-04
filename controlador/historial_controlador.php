@@ -40,6 +40,7 @@ class Historial extends Controlador
         $this->vista->personas=$persona_familia;
         $this->vista->Cargar_Vistas('historial/consultar');
     }
+    
 
     /* public function Consultas()
     {
@@ -58,8 +59,6 @@ class Historial extends Controlador
         echo $datos_historial;
         
         $this->modelo->Registrar_historial($datos_historial); 
-        
-    
         
 
 }  
@@ -255,15 +254,14 @@ public function consultar_info_familia(){
 public function Consultas_cedulaV2()
 {
 
- $persona=$this->consultar_familias($_POST['cedula_persona']);
+  $persona=$this->Consultar_Columna("personas","cedula_persona",$_POST['cedula']);
 
-
- if(count($persona)==0){
-  echo 0;
- }
- else{
-  echo 1;
-  
+  if(count($persona)==0){
+    echo 0;
+  }
+  else{
+     echo 1;
+   
   }
 }
 

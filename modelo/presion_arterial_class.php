@@ -12,19 +12,26 @@ class presion_arterial_Class extends Modelo
     {
         $this->sentencia = $this->{$this->SQL}();
         try {
+
             switch ($this->tipo) {
                 case '0':
+
                     return $this->Resultado_Consulta();
+
                     break;
                 case '1':
+
                     return $this->Ejecutar_Tarea();
                     break;
                 default:
                     die('[Error 400] => "La Peticion es Incorrecta, solo se permite peticion de tipo 0/1."');
                     break;
+
             }
         } catch (PDOException $e) {
+
             return $this->Capturar_Error($e);
+
         }
     }
 
@@ -37,7 +44,7 @@ class presion_arterial_Class extends Modelo
 
     private function SQL_02()
     {
-        return "SELECT DISTINCT DP.cedula_persona, P.* FROM discapacidad_persona DP, personas P WHERE DP.cedula_persona=P.cedula_persona AND P.estado=1";
+        return "INSERT INTO presiones_arteriales (cedula_persona, fecha_presion, t_a, f_c, nota, estado) VALUES (:cedula_persona, :fecha_presion, :t_a, :f_c, :nota, :estado)";
     }
 
     private function SQL_03()
@@ -45,7 +52,7 @@ class presion_arterial_Class extends Modelo
         return "SELECT p.cedula_persona,p.primer_nombre,p.primer_apellido FROM personas p WHERE p.estado = 1 ORDER BY p.cedula_persona ASC";
     }
 
-    private function SQL_04()
+  /*   private function SQL_04()
     {
         return "SELECT D.*,DP.* FROM discapacidad D, discapacidad_persona DP WHERE DP.id_discapacidad=D.id_discapacidad AND D.estado=1";
     }
@@ -53,11 +60,11 @@ class presion_arterial_Class extends Modelo
     private function SQL_05()
     {
         return "SELECT D.*,DP.* FROM discapacidad D, discapacidad_persona DP WHERE  DP.id_discapacidad=D.id_discapacidad AND D.estado=1 AND DP.cedula_persona= " . $this->cedula;
-    }
+    } */
 
-    private function SQL_06()
+    /* private function SQL_06()
     {
-        return "INSERT INTO presiones_arteriales (cedula_persona, fecha_presion, t_a, f_c, nota, estado) VALUES (:cedula_persona, :fecha_presion, :t_a, :f_c, :nota, :estado)";
-    }
+        return "INSERT INTO presiones_arteriales (cedula_persona, fecha_presion, t_a, f_c, nota) VALUES (:cedula_persona, :fecha_presion, :t_a, :f_c, :nota)";
+    } */
 
 }

@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Generar Estadisticas</h1>
+                    <h1 class="m-0">Generar estadísticas</h1>
                 </div>
                 <!-- /.col -->
                 
@@ -41,31 +41,31 @@
                                             <option value='0'>-Seleccionar-</option>
 
                                             <option value="est_embarazadas">
-                                                Consultar Embarazadas
+                                                Consultar embarazadas
                                             </option>
 
                                             <option value="est_edades">
-                                                Consultar Poblacion de Edades
+                                                Consultar poblacion de edades
                                             </option>
 
-                                            <option value="est_votantes">
-                                                Consultar Poblacion Votante
+                             <!--                <option value="est_votantes">
+                                                Consultar poblacion votante
                                             </option>
-
+ -->
                                             <option value="est_discapacitados">
-                                                Consultar Personas con Discapacidad
+                                                Consultar personas con discapacidad
                                             </option>
 
-                                            <option value="est_bonificados">
+                                            <!-- <option value="est_bonificados">
                                                 Consultar Personas Bonificadas
-                                            </option>
+                                            </option> -->
 
-                                            <option value="est_vacunados">
+                                           <!--  <option value="est_vacunados">
                                                 Consultar Poblacion Vacunada
-                                            </option>
+                                            </option> -->
 
                                             <option value="est_educacion">
-                                                Consultar Niveles Educativos
+                                                Consultar niveles educativos
                                             </option>
 
                                             <option value="todos">
@@ -192,9 +192,9 @@
                         <!-- /.card -->
                     </section> <br><br><br>
 
-
+<!-- 
                     <section class="content" id='est_votantes' style='display:none'>
-                        <!-- Default box -->
+                    
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Estadistica de población votante</h3>
@@ -203,7 +203,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <!-- card-body -->
+                        
                             <div class="card-body">
                                 <div class="card-block">
                                     <div class="form-group row justify-content-center">
@@ -236,10 +236,10 @@
                                 </div>
 
 
-                                <!-- /.card-footer-->
+                    
                             </div>
-                            <!-- /.card -->
-                        </section> <br><br>
+                        
+                        </section> --> <br><br>
 
 
                         <section class="content" id='est_educacion' style='display:none'>
@@ -343,7 +343,7 @@
                                     <!-- Default box -->
                                     <div class="card">
                                         <div class="card-header">
-                                            <h3 class="card-title">Personas con discapacidad</h3>
+                                            <h3 class="card-title">Personas con alguna discapacidad</h3>
                                             <div class="card-tools">
                                                 <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
                                                 </button>

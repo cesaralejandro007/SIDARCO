@@ -1337,7 +1337,7 @@ function persona_existe(){
 
 
   if(persona_existente==2){
-   swal({
+  swal({
     type:"warning",
     title:"Atención",
     text:"Este usuario se encuentra inactivo, ¿desea activarlo nuevamente?",
@@ -2079,7 +2079,9 @@ function enviar_informacion(){
 
 
    /*   if(proyectos_persona.length!=0){
+
       registrar_titulos_persona();
+
     }
  */
     
@@ -2102,7 +2104,9 @@ function enviar_informacion(){
     }
 
     if(proyectos_persona.length!=0){
+
       registrar_titulos_persona();
+      
     }
 
 
@@ -2117,7 +2121,9 @@ if(ubicaciones_persona.length!=0){
 }
 
 if(proyectos_persona.length!=0){
+
   registrar_titulos_persona();
+
 }
     swal({
      title:"Éxito",

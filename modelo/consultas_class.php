@@ -38,6 +38,7 @@ class Consultas_Class extends Modelo
     }
 
     private function SQL_02()
+
     {
         return 'INSERT INTO consulta ( cedula_persona, fecha_consulta, motivo, instrucciones) VALUES (:cedula_persona, :fecha_consulta, :motivo, :instrucciones)';
     }
@@ -49,6 +50,7 @@ class Consultas_Class extends Modelo
     }
 
     private function SQL_04()
+
     {
 
         return "SELECT cedula_persona, primer_nombre, primer_apellido FROM personas  GROUP BY cedula_persona ";
@@ -64,7 +66,10 @@ class Consultas_Class extends Modelo
     }
 
     private function SQL_06()
+    
     {
-        return "INSERT INTO inventario_consulta (id_inventario) VALUES (:id_inventario) ";
+        return "INSERT INTO inventario_consulta (id_consulta, id_inventario) VALUES (:id_consulta, :id_inventario) ";
     }
+
+
 }

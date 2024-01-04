@@ -103,15 +103,16 @@ public function Eliminar_Vacunados()
   return false;
 } 
 
-public function Vacuna()
+/* public function Vacuna()
 {
  $this->Establecer_Consultas(); 
  $this->Seguridad_de_Session();
- $this->vista->Cargar_Vistas('vacuna/registrar');
-}
+ $this->vista->Cargar_Vistas('vacuna/consultar');
+} */
 
 public function Vacunados()
 {
+  $this->Establecer_Consultas(); 
   $this->Seguridad_de_Session();
   $this->vista->Cargar_Vistas('vacuna/consultar');
 }
@@ -269,6 +270,7 @@ public function Consultahistorialfuncionario()
   $this->vista->secciones=$this->Consultar_Tabla_divisiones("secciones"); 
   $this->Seguridad_de_Session();
   $this->vista->Cargar_Vistas('personas/historialfuncionario');
+  
 }
 
 

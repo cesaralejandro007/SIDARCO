@@ -60,10 +60,29 @@ class Consultas extends Controlador
 
             case 'Registrar':
 
+                if (isset($_POST['datos'])) {
+                    $this->modelo->Datos($_POST['datos']);
+                } else {
+                /*   $this->modelo->Estado($_POST['estado']);
+                    $this->modelo->Datos([
+                        $_POST['estado']["id_tabla"] => $_POST['estado']["param"],
+                        "estado"                     => $_POST['estado']["estado"], */
+                   /*  ]); */
+                }
+
+                $this->modelo->__SET("SQL", $_POST['sql']);$this->modelo->__SET("tipo", "1");
+
+                if ($this->modelo->Administrar()) {$this->mensaje = 1; $this->Accion($_POST['accion']);}
+
+                echo $this->mensaje;unset($_POST, $this->mensaje);
+                
+                return;
+
 
             case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["familia_personas"]);break;
 
             case 'Existente':
+
                 foreach ($this->datos["negocios"] as $key => $value) {
                     if ($value["rif_negocio"] == $_POST['rif_negocio']) {$existente = 1;} else {$existente = 0;}
                 }

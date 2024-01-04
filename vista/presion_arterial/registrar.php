@@ -1,5 +1,9 @@
 <?php include (call."Inicio.php"); ?>
 <!-- Contenido de la pagina -->
+
+
+
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -47,7 +51,7 @@
                  </div>
                  <br>
 
-                 <div id='second' style='display:none'>
+                 <div id='second' style='display:'>
                      <div class='row'>
 
                          <div class="col-md-12">
@@ -75,15 +79,19 @@
                              </td> -->
                              <td>
                              <span id='valid_fecha_hora' style='color:red'></span>
-                               <input type="datetime-local" class='form-control ' id='fecha_hora' placeholder="Tension arterial" name="datos[fecha_hora]">
+                               <input type="date" class='form-control ' id='fecha_presion' placeholder="Tension arterial" name="datos[fecha_hora]">
                              </td>
                              <td>
                              <span id='valid_tension' style='color:red'></span>
-                               <input type="text" class='form-control ' id='tension' placeholder="Tension arterial" name="datos[tension]">
+                               <input type="text" class='form-control ' id='t_a' placeholder="Tension arterial" name="datos[tension]">
                              </td>
                             <td>
                             <span id='valid_frecuencia' style='color:red'></span>
-                               <input type="text" class='form-control ' id='frecuencia' placeholder="Frecuencia cardiaca" name="datos[frecuencia]">
+                               <input type="text" class='form-control ' id='f_c' placeholder="Frecuencia cardiaca" name="datos[frecuencia]">
+                             </td>
+                             <td>
+                            <span id='valid_nota' style='color:red'></span>
+                               <input type="text" class='form-control ' id='nota' placeholder="Nota(opcional)" name="datos[nota]">
                              </td>
                              <td>
                             <!--     <button id='agregar' class="btn btn-info" type="button">Agregar</button>&nbsp;&nbsp;<button type='button' class="btn btn-primary" id='btn_nueva_discapacidad' >Nueva discapacidad</button> -->
@@ -173,7 +181,7 @@
 
              <!-- /.card-body -->
 
-             <center><input type="button" class="btn" style="background:#15406D; color:white" name="" id="enviar" value="Guardar"></center>
+             <center><input type="button" class="btn" style="background:#15406D; color:white" id="enviar" value="Guardar"></center>
          </form>
          <!-- /.card-footer-->
      </div>

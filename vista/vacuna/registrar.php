@@ -26,6 +26,7 @@
                     </button>
                 </div>
             </div>
+
             <form action="<?php echo constant('URL'); ?>Personas/Asignar_Vacunas" enctype="multipart/form-data" id="formulario" method="POST" name="formulario">
                 <!-- card-body -->
                 <div class="card-body">
@@ -43,7 +44,7 @@
                                             <option value="<?php echo $persona["cedula_persona"]; ?>">
                                                 <?php echo $persona["primer_nombre"] . " " . $persona["primer_apellido"]; ?>
                                             </option>
-                                        <?php  }   ?>
+                                        <?php  } ?>
                                     </datalist>
 
                                 </div>
@@ -113,6 +114,7 @@
                     </div>
                 </div>
             </form>
+            
             <!-- /.card-footer-->
         </div>
         <!-- /.card -->

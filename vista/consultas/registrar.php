@@ -115,7 +115,7 @@
                                                         <td>
                                                         <!--  <input type="text" class='form-control letras_numeros' id='inventario' placeholder="Buscar medicamento"  list='lista_persona' name="datos[id_inventario]" oninput="Limitar(this,15)"> -->
                                                             <select aria-label="Default select example" id="id_inventario" name="datos[id_inventario]" class='form-control no-simbolos'>
-                                                            <option value='vacio'> Medicamentos </option> 
+                                                            <option value='vacio'>-Selecciones el medicamento</option> 
                                                                 <?php foreach ($this->datos["inventario"] as $inv) { ?>
                                                                 <option value='<?php echo $inv['id_inventario'];?>'><?php echo $inv['medicamento']; ?></option>
                                                             <?php } ?>

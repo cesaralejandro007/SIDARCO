@@ -35,18 +35,14 @@ btn_agregar.onclick=function(){
         var text="";
         var text1="";
 
-
       /*   var text = ant_personales.options[ant_personales.selectedIndex].text; */
-
-
-
 
         // seleccionar el valor que esta en el select
         text = inventario.options[inventario.selectedIndex].text;
         /* text1=descripcion.value; */
         
         //el parseint es para analizar una cadena y determinar si teien nuemros enteros
-        agregado = parseInt(inventario.value) ;
+        agregado = parseInt(inventario.value);
        /*  agregado1 = descripcion.value; */
     
        //la function PUSH() añade uno o mas elementos al final de un array y devuelve la nueva cadena
@@ -171,15 +167,12 @@ $(document).ready(function() {
         var form = $("#formulario"); 
 
         //Nuevos id de la vista de consulta
-
         var cedula_persona=document.getElementById("cedula_persona"); 
-
         alert(cedula_persona.value);
-
         var fecha_consulta=document.getElementById("fecha_consulta");
         var motivo=document.getElementById("motivo");
         var instrucciones=document.getElementById("instrucciones");
-    
+
 
         var mensaje_fecha_consulta = document.getElementById("mensaje_fecha_consulta");
         var mensaje_motivo = document.getElementById("mensaje_motivo");
@@ -269,41 +262,19 @@ $(document).ready(function() {
                             mensaje_instruc.style.color = 'red';
                             instrucciones.focus();
                         } else {
-                            /*  var datos_medicamento = [];
-                            for(var i=0;i<medica_persona.length;i++){
-                           var datos=new Object();  */
-                            /* datos['id_consulta']=consulta_medicamento[i]; */ 
-                             /* datos['inventario']=medica_persona[i];  */
-                          /* datos['cedula_persona']=cedula.value;  */
-                        
-                           /*   datos_medicamento.push(datos); 
-                              alert(JSON.stringify(datos_medicamento)); 
-                             
-                              }
-                             $.ajax({
-                             type:"POST",
-                             url:BASE_URL+"Consultas/Registrar",
-                             data:{
-                                 "datos":datos_medicamento,
-                                 peticion:"Administrar",
-                                 sql: "SQL_06",
-                         }
-                             }).done(function(result){
-                             alert(result);
-                             console.log(result);
-                             })  */
+
                             
                             mensaje_instruc.innerHTML = '';
                             instrucciones.style.borderColor = '';
+
                             var datos = {
                                 cedula_persona:$("#cedula_persona").val(), 
                                 fecha_consulta: $("#fecha_consulta").val(),
                                 motivo: $("#motivo").val(),
                                 instrucciones: $("#instrucciones").val(),
-                              /*   cedula:$("#cedula").val(), */
-
+                              /*cedula:$("#cedula").val(), */
                                 
-                            };
+                                };
                                     $.ajax({
                                         type: 'POST',
                                         url: BASE_URL + 'Consultas/Administrar',
@@ -314,6 +285,7 @@ $(document).ready(function() {
                                             accion: "Se ha registrado una nueva consulta ",
                                             
                                         },
+
                                         success: function(respuesta) {
                                 
                                             if (respuesta == 1) {
@@ -324,7 +296,9 @@ $(document).ready(function() {
                                                     showConfirmButton: false,
                                                 });
                                                 setTimeout(function() {
+
                                                     location.href = BASE_URL + 'Consultas/Administrar/Consultas';
+
                                                 }, 2000);
                                             } else {
                                                 swal({
@@ -341,6 +315,47 @@ $(document).ready(function() {
                                             alert("Error al enviar Controlador")
                                         }
                                     });
+
+                                    var datos = [];
+                                    for(var i=0;i<medica_persona.length;i++){
+                                        
+                                   var datos2=new Object();  
+
+                                    /* datos2['id_consulta']=2; */
+                                    datos2['inventario']=medica_persona[i];  
+                                    /* datos['cedula_persona']=cedula.value;  */ 
+                                
+                                    datos.push(datos2); 
+
+                                    alert(JSON.stringify(datos)); 
+                                     
+                                    }
+                                    $.ajax({
+                                    type:"POST",
+                                    url:BASE_URL+"Consultas/Administrar",
+                                    data:{
+                                        "datos":datos,
+                                        peticion:"Registrar",
+                                        sql: "SQL_06",
+                                }
+                                    }).done(function(result){
+                                    alert(JSON.stringify(result));
+                                    console.log(result);
+                                    })  
+
+                                  /*   var array_inventario=[];
+
+                                    for(var i=0; i < medica_persona.length; i++ ){
+
+                                        datos_inventario["id_inventario"]=medica_persona[i];
+
+                                        array_inventario.push(datos_inventario);
+
+                                        alert(JSON.stringify(array_inventario))
+
+
+                                    } */
+
                         }
                     }
                 }

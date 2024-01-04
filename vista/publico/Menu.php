@@ -130,6 +130,65 @@
                     </li>
                 <?php } ?>
 
+
+                <?php if ($_SESSION['Nucleo familiar']['consultar'] != '0' || $_SESSION['Nucleo familiar']['registrar'] != '0') { ?>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link">
+                            <i class="nav-icon mdi mdi-account-multiple-plus"></i>
+                            <p>
+                                Gestionar Permisos
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <?php if ($_SESSION['Nucleo familiar']['registrar'] == '1') { ?>
+                                <li class="nav-item" onclick="cambio_modulo('Registrar familia')">
+                                    <a href="<?php echo constant('URL'); ?>Permisos/Consultas/" class="nav-link">
+                                        <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
+                                        <p>Registrar y consultar permisos</p>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                        <!--    <?php if ($_SESSION['Nucleo familiar']['consultar'] == '1') { ?>
+                                <li class="nav-item" onclick="cambio_modulo('Consultar familias')">
+                                    <a href="<?php echo constant('URL'); ?>Familias/Consultas/" class="nav-link">
+                                        <i class="fa fa-list nav-icon text-info"></i>
+                                        <p>Consultar Familias</p>
+                                    </a>
+                                </li>
+                            <?php } ?> -->
+                        </ul>
+                    </li>
+                <?php } ?>
+
+                <?php if ($_SESSION['Nucleo familiar']['consultar'] != '0' || $_SESSION['Nucleo familiar']['registrar'] != '0') { ?>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link">
+                            <i class="nav-icon mdi mdi-account-multiple-plus"></i>
+                            <p>
+                                Gestionar Reposos
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <?php if ($_SESSION['Nucleo familiar']['registrar'] == '1') { ?>
+                                <li class="nav-item" onclick="cambio_modulo('Registrar familia')">
+                                    <a href="<?php echo constant('URL'); ?>Familias/Registros/" class="nav-link">
+                                        <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
+                                        <p>Registrar y consultar reposos</p>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                           <!--  <?php if ($_SESSION['Nucleo familiar']['consultar'] == '1') { ?>
+                                <li class="nav-item" onclick="cambio_modulo('Consultar familias')">
+                                    <a href="<?php echo constant('URL'); ?>Familias/Consultas/" class="nav-link">
+                                        <i class="fa fa-list nav-icon text-info"></i>
+                                        <p>Consultar Familias</p>
+                                    </a>
+                                </li>
+                            <?php } ?> -->
+                        </ul>
+                    </li>
+                <?php } ?>
+
                 <!-- ===============================================================================================  -->
              <!--    <?php if ($_SESSION['Comite']['consultar'] != '0' || $_SESSION['Comite']['registrar'] != '0' || $_SESSION['Centros votacion']['consultar'] != '0' || $_SESSION['Centros votacion']['registrar'] != '0') { ?>
                      <li class="nav-header">Administrativo</li> -->
@@ -232,6 +291,37 @@
     <!-- <li class="nav-header">Salud</li> -->
     <li class="nav-header">Salud</li>
 
+    <?php if ($_SESSION['Discapacitados']['consultar'] != '0' || $_SESSION['Discapacitados']['registrar'] != '0') { ?>
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" class="nav-link">
+                                <i class="nav-icon fa fa-wheelchair"></i>
+                                <p>
+                                Gestionar PCD 
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <?php if ($_SESSION['Discapacitados']['registrar'] == '1') { ?>
+                                    <li class="nav-item" onclick="cambio_modulo('Registrar discapacitados')">
+                                        <a href="<?php echo constant('URL'); ?>Discapacitados/Administrar/Registros/" class="nav-link">
+                                            <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
+                                            <p>Registrar PCD</p>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($_SESSION['Discapacitados']['consultar'] == '1') { ?>
+                                    <li class="nav-item" onclick="cambio_modulo('Consultar discapacitados')">
+                                        <a href="<?php echo constant('URL'); ?>Discapacitados/Administrar/Consultas/" class="nav-link">
+                                            <i class="fa fa-list nav-icon text-info"></i>
+                                            <p>Consultar PCD</p>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+
+                    <?php } ?>
+                <?php } ?> 
+
     <?php if ($_SESSION['Vacunados COVID']['consultar'] != '0' || $_SESSION['Vacunados COVID']['registrar'] != '0') { ?>
         <li class="nav-item">
             <a href="javascript:void(0)" class="nav-link">
@@ -243,23 +333,52 @@
             <ul class="nav nav-treeview">
                 <?php if ($_SESSION['Vacunados COVID']['registrar'] == '1') { ?>
                     <li class="nav-item" onclick="cambio_modulo('Registrar vacunados covid')">
-                        <a href="<?php echo constant('URL'); ?>Personas/Vacuna/" class="nav-link">
+                        <a href="<?php echo constant('URL'); ?>Personas/Vacunados/" class="nav-link">
                             <i class="fa fa-plus-circle nav-icon " style="color:#EEA000"></i>
-                            <p>Registrar Vacunas</p>
+                            <p>Registrar y consultar Vacunas</p>
                         </a>
                     </li>
                 <?php } ?>
-                <?php if ($_SESSION['Vacunados COVID']['consultar'] == '1') { ?>
+               <!--  <?php if ($_SESSION['Vacunados COVID']['consultar'] == '1') { ?>
                     <li class="nav-item" onclick="cambio_modulo('Consultar vacunados covid')">
                         <a href="<?php echo constant('URL'); ?>Personas/Vacunados/" class="nav-link">
                             <i class="fa fa-list nav-icon text-info"></i>
                             <p>Consultar Vacunas</p>
                         </a>
                     </li>
-                <?php } ?>
+                <?php } ?> -->
             </ul>
         </li>
     <?php } ?>
+
+    <?php if ($_SESSION['Discapacitados']['consultar'] != '0' || $_SESSION['Discapacitados']['registrar'] != '0') { ?>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link">
+                            <i class="nav-icon fas fa-heartbeat"></i>
+                            <p>
+                                Gestionar Presión Arterial
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <?php if ($_SESSION['Discapacitados']['registrar'] == '1') { ?>
+                                <li class="nav-item" onclick="cambio_modulo('Registrar presion arterial')">
+                                    <a href="<?php echo constant('URL'); ?>presion_arterial/Administrar/Registros/" class="nav-link">
+                                        <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
+                                        <p>Registrar y consultar PA</p>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <?php if ($_SESSION['Discapacitados']['consultar'] == '1') { ?>
+                                <li class="nav-item" onclick="cambio_modulo('Consultar presion_arterial')">
+                                    <a href="<?php echo constant('URL'); ?>presion_arterial/Administrar/Consultas/" class="nav-link">
+                                        <i class="fa fa-list nav-icon text-info"></i>
+                                        <p>Consultar presión arterial</p>
+                                    </a>
+                                </li>
+                            <?php } ?>  
+                        </ul>
+                    </li>
+                <?php } ?>
                 
                 <?php if ($_SESSION['Nucleo familiar']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0') { ?>
                         <li class="nav-item">
@@ -323,67 +442,8 @@
                     <?php } ?> -->
 
 
-                     <?php if ($_SESSION['Discapacitados']['consultar'] != '0' || $_SESSION['Discapacitados']['registrar'] != '0') { ?>
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" class="nav-link">
-                                <i class="nav-icon fa fa-wheelchair"></i>
-                                <p>
-                                Gestionar PCD 
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <?php if ($_SESSION['Discapacitados']['registrar'] == '1') { ?>
-                                    <li class="nav-item" onclick="cambio_modulo('Registrar discapacitados')">
-                                        <a href="<?php echo constant('URL'); ?>Discapacitados/Administrar/Registros/" class="nav-link">
-                                            <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
-                                            <p>Registrar PCD</p>
-                                        </a>
-                                    </li>
-                                <?php } ?>
-                                <?php if ($_SESSION['Discapacitados']['consultar'] == '1') { ?>
-                                    <li class="nav-item" onclick="cambio_modulo('Consultar discapacitados')">
-                                        <a href="<?php echo constant('URL'); ?>Discapacitados/Administrar/Consultas/" class="nav-link">
-                                            <i class="fa fa-list nav-icon text-info"></i>
-                                            <p>Consultar PCD</p>
-                                        </a>
-                                    </li>
-                                <?php } ?>
-                            </ul>
-                        </li>
+            
 
-                    <?php } ?>
-                <?php } ?> 
-
-
-
-                <?php if ($_SESSION['Discapacitados']['consultar'] != '0' || $_SESSION['Discapacitados']['registrar'] != '0') { ?>
-                    <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link">
-                            <i class="nav-icon fas fa-heartbeat"></i>
-                            <p>
-                                Gestionar Presión Arterial
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <?php if ($_SESSION['Discapacitados']['registrar'] == '1') { ?>
-                                <li class="nav-item" onclick="cambio_modulo('Registrar presion arterial')">
-                                    <a href="<?php echo constant('URL'); ?>presion_arterial/Administrar/Registros/" class="nav-link">
-                                        <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
-                                        <p>Registrar presión arterial</p>
-                                    </a>
-                                </li>
-                            <?php } ?>
-                            <?php if ($_SESSION['Discapacitados']['consultar'] == '1') { ?>
-                                <li class="nav-item" onclick="cambio_modulo('Consultar presion_arterial')">
-                                    <a href="<?php echo constant('URL'); ?>presion_arterial/Administrar/Consultas/" class="nav-link">
-                                        <i class="fa fa-list nav-icon text-info"></i>
-                                        <p>Consultar presión arterial</p>
-                                    </a>
-                                </li>
-                            <?php } ?>
-                        </ul>
-                    </li>
-                <?php } ?>
 
                 <?php if ($_SESSION['Enfermos']['consultar'] != '0' || $_SESSION['Enfermos']['registrar'] != '0') { ?>
                     <li class="nav-item">
@@ -712,7 +772,7 @@
                                     </p>
                                 </a>
                             </li>
-                            <!--
+                            
         <li class="nav-item">
             <a href="<?php echo constant('URL'); ?>Reportes/Historial_Familiar/" class="nav-link">
                 <i class="mdi mdi-account-multiple nav-icon"></i>
@@ -721,7 +781,6 @@
                 </p>
             </a>
         </li>
- -->
                             <li class="nav-item">
                                 <a href="javascript:void(0)" class="nav-link" onclick="$('#solicitar_constancia').modal('show');" data-toggle="dropdown">
                                     <i class="fa fa-file-text nav-icon"></i>
@@ -739,7 +798,7 @@
                 </p>
             </a>
         </li>
- --><!-- 
+ --> 
                             <li class="nav-item">
                                 <a href="<?php echo constant('URL'); ?>Reportes/Estadisticas" class="nav-link">
                                     <i class="fa fa-signal nav-icon"></i>
@@ -747,7 +806,7 @@
                                         Generar Estadísticas
                                     </p>
                                 </a>
-                            </li> -->
+                            </li>
 
                         </ul>
                     </li>

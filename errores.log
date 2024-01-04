@@ -1,0 +1,48 @@
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:07:48 pm
+    [Mensaje] => Array
+        (
+            [0] => [Error Archivo] => "El Archivo: [ controlador/config_controlador.php ] No Existe."
+            [1] => [Error Controlador] => "El Controlador: [ Config ] No se encuentra definido."
+            [2] => [Error Modelo] => "El Modelo: [ Config_Class ] No se encuentra definido."
+        )
+
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:07:48 pm
+    [Mensaje] => Array
+        (
+            [0] => [Error Archivo] => "El Archivo: [ controlador/config_controlador.php ] No Existe."
+            [1] => [Error Controlador] => "El Controlador: [ Config ] No se encuentra definido."
+            [2] => [Error Modelo] => "El Modelo: [ Config_Class ] No se encuentra definido."
+        )
+
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:07:58 pm
+    [Mensaje] => Array
+        (
+            [0] => [Error Archivo] => "El Archivo: [ controlador/config_controlador.php ] No Existe."
+            [1] => [Error Controlador] => "El Controlador: [ Config ] No se encuentra definido."
+            [2] => [Error Modelo] => "El Modelo: [ Config_Class ] No se encuentra definido."
+        )
+
+)
+stdClass Object
+(
+    [Fecha] => 
+    [Hora] => 02:07:58 pm
+    [Mensaje] => Array
+        (
+            [0] => [Error Archivo] => "El Archivo: [ controlador/config_controlador.php ] No Existe."
+            [1] => [Error Controlador] => "El Controlador: [ Config ] No se encuentra definido."
+            [2] => [Error Modelo] => "El Modelo: [ Config_Class ] No se encuentra definido."
+        )
+
+)

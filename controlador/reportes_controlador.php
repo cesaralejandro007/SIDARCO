@@ -16,8 +16,8 @@
             $vacunados = $this->Consultar_Tabla("vacuna_covid", 1, "cedula_persona");
             $discapacitados = $this->Consultar_Tabla_sin_estado("discapacidad_persona", 1, "cedula_persona");
             $personas_bonos = $this->Consultar_Tabla_sin_estado("persona_bonos", 1, "cedula_persona");
-            $milicianos = $this->modelo->Milicianos();
-            $jefes_familia = $this->modelo->Jefes_Calle();
+           /*  $milicianos = $this->modelo->Milicianos(); */
+            /* $jefes_familia = $this->modelo->Jefes_Calle(); */
             $inmuebles = $this->modelo->Inmuebles();
             $negocios = $this->modelo->Negocios();
             $nivel_educativo = $this->modelo->Nivel_Educativo();
@@ -26,16 +26,16 @@
             $discapacitados = $this->modelo->Discapacitados();
             $discapacidades = $this->modelo->Discapacidades();
             $comites_personas = $this->modelo->Comites_Personas();
-            $personas_familia = $this->modelo->Personas_Familia();
+            /* $personas_familia = $this->modelo->Personas_Familia(); */
             $persona_centro_votacion = $this->modelo->Persona_Centro_Votacion();
             $enfermos = $this->modelo->Enfermos();
             $enfermedades = $this->modelo->Enfermedades();
             $grupos_deportivos = $this->modelo->Grupos_Deportivos();
             $grupos_deportivos_personas = $this->modelo->Grupo_Deportivo_Persona();
-            $embarazadas = $this->modelo->Embarazadas();
+            /* $embarazadas = $this->modelo->Embarazadas(); */
 
 
-            $poblacion_edades = $this->modelo->Poblacion_Edades();
+            /* $poblacion_edades = $this->modelo->Poblacion_Edades(); */
 
             $this->vista->personas = $personas;
             $this->personas = $personas;
@@ -353,6 +353,7 @@
             foreach ($this->discapacitados as $d) {
 
                 if ($d['en_cama'] == 1) {
+
                     if (count($cantidad_discapacitados_en_cama) == 0) {
                         $cantidad_discapacitados_en_cama[] = $d;
                     } else {
@@ -380,7 +381,6 @@
                         }
                     }
 
-
                     if ($existe == false) {
 
                         if (count($cantidad_discapacitados) == 0) {
@@ -402,7 +402,6 @@
             }
 
 
-
             foreach ($this->discapacitados as $d) {
                 if (count($cant_total) == 0) {
                     $cant_total[] = $d;
@@ -419,9 +418,6 @@
                     }
                 }
             }
-
-
-
 
             $cant_en_cama = count($cantidad_discapacitados_en_cama);
             $cant_disc = count($cantidad_discapacitados);
@@ -625,8 +621,8 @@
                 }
             }
 
-            $familia_vivienda = $this->modelo->Familia_Vivienda($id);
-            $this->vista->familia_vivienda = $familia_vivienda;
+            /* $familia_vivienda = $this->modelo->Familia_Vivienda($id);
+            $this->vista->familia_vivienda = $familia_vivienda; */
 
             $techo = $this->modelo->Techo($id);
             $this->vista->techo = $techo;

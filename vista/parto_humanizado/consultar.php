@@ -44,7 +44,7 @@
                             <th>Cedula</th>
                             <th>Nommbre y Apellido </th>
                             <th>Tiempo de Gestacion</th>
-                            <th>Fecha Aprosimada de Parto</th>
+                            <th>Fecha proxima de parto</th>
                             <th style="width: 115px;">Acciones</th>
                         </tr>
                     </tfoot>

@@ -1,6 +1,79 @@
 <?php include call . "Inicio.php";?>
 <?php include call . "data-table.php";?>
 
+
+
+<div class="modal fade" id="agregar">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Registrar presión arterial</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" enctype="multipart/form-data" id="formulario" method="POST" name="formulario">
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Persona</label> <span id='valid_persona' style='color:red'></span>
+                                <table style='width:100%'><tr><td>
+                                    <input type="number" maxlength="15" placeholder="Buscar cédula" class='form-control ' id='cedula_propietario' name="datos[cedula_propietario]" list='lista_personas' oninput="Limitar(this,15)">
+                                    <datalist id='lista_personas'>
+                                        <?php foreach ($this->datos["personas"] as $p) { ?>
+                                            <option value='<?php echo $p['cedula_persona'];?>'><?php echo $p['primer_nombre']." ".$p['segundo_nombre']; ?></option>
+                                        <?php } ?>
+                                    </datalist></td>
+                                    <td><button type='button' class="btn btn-info" id='seleccionar_persona'>Seleccionar</button></td> 
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div id='second' style='display:'>
+                                <div class='row'>
+                                    <div class="col-md-12">
+                                        <label>Historial de presión arterial de <span id='nombre_persona'></span></label>
+                                        <table style='width:100%'><tr>
+                                            <td>
+                                                
+                                                <input type="date" class='form-control ' id='fecha_presion' placeholder="Fecha y hora" name="datos[fecha_hora]">
+                                                <span id='valid_fecha_hora' style='color:red'></span>
+                                            </td>
+                                            <td>
+                                            <span id='valid_tension' style='color:red'></span>
+                                            <input type="text" class='form-control ' id='t_a' placeholder="Tensión arterial" name="datos[tension]">
+                                            </td>
+                                            <td>
+                                            <span id='valid_frecuencia' style='color:red'></span>
+                                            <input type="text" class='form-control ' id='f_c' placeholder="Frecuencia cardiaca" name="datos[frecuencia]">
+                                            </td>
+                                            <td>
+                                                <span id="valid_nota" style="color:red;"></span>
+                                                <input type="text" class="form-control" id="nota" name="datos[nota]" placeholder="Nota (opcional)">
+                                            </td>
+                                        </tr></table>
+                                    </div>
+                                </div>
+                                <br>
+                                <!-- /.card-body -->
+                                <center><input type="button" onclick="desabilitar()" class="btn" style="background:#15406D; color:white" name="" id="enviar" value="Guardar"></center>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!--Footer -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog --> 
+</div>
+<!-- /.modal -->
+
+
 <!-- Contenido de la pagina -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -26,6 +99,8 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+            
+                <button class='btn btn-info' type='button' onclick="desabilitar2()" id='btn_presion_arterial'>Registrar presión arterial</button>
                 <table id="example1" class="table table-bordered  table-hover">
                     <thead>
                         <tr>
@@ -85,22 +160,22 @@ $(function() {
             $('#nombre').val(nombre);
         });
         $(document).on('click', '#agregar', function() {
-            if ((discapacidad_input.style.display != 'none' && discapacidad_input.value == '') || (discapacidad_input.style.display == 'none' && discapacidad_select.value == 'vacio')) {
+            if (( discapacidad_input.value == '') || ( discapacidad_select.value == 'vacio')) {
                 valid_discapacidad.innerHTML = 'Ingrese la discapacidad';
-                discapacidad_input.style.borderColor = 'red';
-                discapacidad_input.focus();
-            } else {
+                /* discapacidad_input.style.borderColor = 'red'; */
+              /*   discapacidad_input.focus(); */
+            } else {    
                 valid_discapacidad.innerHTML = '';
-                discapacidad_input.style.borderColor = '';
+                /* discapacidad_input.style.borderColor = ''; */
                 var disc = new Object();
                 var textoDiscapacidad = "";
                 var textoNecesidades = necesidades.value;
                 var textoObservaciones = observaciones.value;
                 var textoEnCama = en_cama.options[en_cama.selectedIndex].text;
                 var en_cama_valor = en_cama.value;
-                discapacidad_input.style.display != 'none' ? disc['discapacidad'] = discapacidad_input.value : disc['discapacidad'] = discapacidad_select.value;
+   /*              discapacidad_input.style.display != 'none' ? disc['discapacidad'] = discapacidad_input.value : disc['discapacidad'] = discapacidad_select.value;
                 discapacidad_input.style.display != 'none' ? textoDiscapacidad = discapacidad_input.value : textoDiscapacidad = discapacidad_select.options[discapacidad_select.selectedIndex].text;
-                discapacidad_input.style.display != 'none' ? disc['nuevo'] = '1' : disc['nuevo'] = '0';
+                discapacidad_input.style.display != 'none' ? disc['nuevo'] = '1' : disc['nuevo'] = '0'; */
                 disc['en_cama'] = en_cama_valor;
                 textoNecesidades == '' ? disc['necesidades'] = "No posee" : disc['necesidades'] = textoNecesidades;
                 textoObservaciones == '' ? disc['observaciones'] = "No posee" : disc['observaciones'] = textoNecesidades;
@@ -138,7 +213,7 @@ $(function() {
                 var hr = document.createElement("hr");
                 discapacidades.push(disc);
                 div.appendChild(hr);
-                div_discapacidades.appendChild(div);
+               /*  div_discapacidades.appendChild(div); */
                 button.onclick = function() {
                     div_discapacidades.removeChild(div);
                     discapacidades.splice(discapacidades.indexOf(disc), 1);
@@ -225,11 +300,12 @@ $(function() {
 <!-- /.content -->
 <!-- /.content -->
 </div>
-<?php include modal . "editar-presion-arterial.php";?>
+<?php include modal ."editar-presion-arterial.php";?>
 <!-- /.content-wrapper -->
-<script src="<?php echo constant('URL') ?>config/js/news/crud-discapacitados.js"></script>
-<?php include call . "Fin.php";?>
-<?php include call . "style-agenda.php";?>
+<?php include modal."agregar-presion-arterial.php" ?>
+<script src="<?php echo constant('URL') ?>config/js/news/registrar_presion_arterial.js"></script>
+<?php include call ."Fin.php";?>
+<?php include call ."style-agenda.php";?>
 
 
 

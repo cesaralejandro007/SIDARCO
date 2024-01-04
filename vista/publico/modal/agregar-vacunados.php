@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Registrar Familiares</h4>
+                <h4 class="modal-title">Registrar Vacunados</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -393,6 +393,7 @@
 </div>  
 
 
+
 <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <input type="submit" class="btn btn-primary" name="" id="guardar_integrante" value="Guardar">
@@ -403,4 +404,4 @@
     <!-- /.modal-dialog --> 
 </div>
 <!-- /.modal -->
-<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/registrar-integrantes.js"></script>
+<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/consultar-vacunados.js"></script> 

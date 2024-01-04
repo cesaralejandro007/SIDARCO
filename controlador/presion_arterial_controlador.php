@@ -19,7 +19,7 @@ class presion_arterial extends Controlador
         $this->modelo->__SET("tipo", "0");
         $this->modelo->__SET("SQL", "SQL_03");$this->datos["personas"] = $this->modelo->Administrar();
         $this->modelo->__SET("SQL", "SQL_01");$this->datos["presion_arterial"] = $this->modelo->Administrar();
-        $this->modelo->__SET("SQL", "SQL_04");$this->datos["discapacidades"] = $this->modelo->Administrar();
+       /*  $this->modelo->__SET("SQL", "SQL_04");$this->datos["discapacidades"] = $this->modelo->Administrar(); */
        /*  $this->modelo->__SET("SQL", "SQL_02");$this->datos["discapacitados"] = $this->modelo->Administrar(); */
         $this->vista->datos = $this->datos;
     }
@@ -58,10 +58,10 @@ class presion_arterial extends Controlador
                 break;
 
             case 'Datos':
-                $this->modelo->__SET("SQL", "SQL_05"); $this->modelo->__SET("tipo", "0");
-                $this->modelo->__SET("cedula", $_POST['cedula']);
+                /* $this->modelo->__SET("SQL", "SQL_05"); $this->modelo->__SET("tipo", "0"); */
+                /* $this->modelo->__SET("cedula", $_POST['cedula']);
                 $discapacidades = $this->modelo->Administrar();
-                $this->Escribir_JSON($discapacidades);unset($_POST, $discapacidades);
+                $this->Escribir_JSON($discapacidades);unset($_POST, $discapacidades); */
                 break;
 
             case 'Eliminar_Discapacidad':
@@ -99,6 +99,7 @@ class presion_arterial extends Controlador
                 echo json_encode($retornar);
                 unset($discapacidades, $retornar, $enfer, $_POST);
                 break;
+                
             case 'Personas':
                 $this->modelo->__SET("tipo", "0"); $this->modelo->__SET("SQL", "_05_");
                 $this->modelo->__SET("consultar", array(

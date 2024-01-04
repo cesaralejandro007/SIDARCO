@@ -34,7 +34,7 @@
                             <div class="vtabs">
                                 <ul class="nav nav-tabs tabs-vertical" role="tablist">
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a class="nav-link active" data-toggle="tab" id="tab_1" href="#panel5" role="tab">
+                                        <a class="nav-link active" data-toggle="tab" id="tab_1" role="tab">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-home"></i>
                                             </span>
@@ -54,7 +54,7 @@
                                         </a>
                                     </li> -->
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a class="nav-link" data-toggle="tab" id="tab_2" href="#panel7" role="tab">
+                                        <a class="nav-link" data-toggle="tab" id="tab_2"  role="tab">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-email"></i>
                                             </span>
@@ -65,7 +65,7 @@
                                     </li>
 
                                     <li class="nav-item" style="margin-top: 50%; margin-bottom: 50%;">
-                                        <a class="nav-link" data-toggle="tab" id="tab_3" href="#panel3" role="tab">
+                                        <a class="nav-link" data-toggle="tab" id="tab_3"  role="tab">
                                             <span class="hidden-sm-up">
                                                 <i class="ti-email"></i>
                                             </span>
@@ -128,7 +128,7 @@
                                     <div class="col-md-12 mt-2">
                                                 <label for="ant_personal">
                                                     Antecedentes personales
-                                                </label><span id='valid_5' style="color:red;"></span>
+                                                </label><span id='' style="color:red;"></span>
                                                 <div class="input-group">
                                                     <table style='width:100%'>
                                                         <tr>
@@ -141,7 +141,7 @@
                                                                 <option value='<?php echo $int['id_ant_personal'];?>'><?php echo $int['nombre_personal']; ?></option>
                                                             <?php } ?>
                                                                 </select>
-                                                                <span id="valid_3" style="color: red;"></span>
+                                                                <span id="" style="color: red;"></span>
                                                             <td class="col-md-6 p-0">
                                                                 <!-- <label for="parentezco">
                                                                     Parentezco
@@ -175,17 +175,16 @@
                                                         <tr><td colspan='2'><br>
                                                         <div style='background:#D4E6F4;overflow-y: scroll;width: 115%; height:200px;'><center>
                                                             <div style='width:100%' id='div_ant_personales'></div>
-                                                            <span id="valid_04" style="color:red;"></span>
+                                                            <span id="" style="color:red;"></span>
                                                         </center>
                                                         </div>
                                                         </td>
                                                     </table>
                                                 </div>
-
                                             </div>
-                                    </div> 
+                                        </div> 
 
-                                <br>
+                                    <br>
 
                                 <!---------------ANTECEDENTES Y ALERGIAS-------------------------->
 
@@ -302,31 +301,47 @@
                                                 Diagnóstico del paciente
                                             </h2>
                                     </div> 
-                                    <div class="col-md-12 mt-4">
-                                        <label for="examen">Examen físico</label>
-                                        <span id="mensaje_examen" style="color:red;"> <span>
-                                        <div>
-                                            <input type="text" class="form-control" placeholder="Condiciones generales" id="examen" name="datos[examen]">
-                                        </div>
-                                    </div>
+                                    
+                                    <div class="col-md-12 mt-2">
+                                                <label for="examen">
+                                                    Examen Físico
+                                                </label><span id='valid_23' style="color:red;"></span>
+                                                <div class="input-group">
+                                                    <input class="form-control mb-10 letras_numeros" id="examen"
+                                                        name="datos[examen]" placeholder="Examen"
+                                                        type="text" oninput="Limitar(this,25)" />
+                                                </div>
+                                            </div>
+
                                     
                                             <div class="col-md-4 mt-2">
                                                 <label for="tipo_sangre">
                                                     Tipo de sangre
-                                                </label><span id='valid_2' style="color:red;"></span>
+                                                </label><span id='valid_4' style="color:red;"></span>
                                                 <div class="input-group">
-                                                    <input class="form-control mb-10 solo-letras" id="tipo_sangre"
+                                                    <select class="form-control mb-10 solo-letras" id="tipo_sangre"
                                                         name="datos[tipo_sangre]" placeholder="Tipo de sangre"
-                                                        type="text" oninput="Limitar(this,25)" />
+                                                        type="text" oninput="Limitar(this,25)" >
+                                                        <option value="0">-Seleccione el tipo de sangre-</option>
+                                                        <option value="AB+">AB+</option>
+                                                        <option value="AB-">AB-</option>
+                                                        <option value="A+">A+</option>
+                                                        <option value="A-">A-</option>
+                                                        <option value="B+">B+</option>
+                                                        <option value="B-">B-</option>
+                                                        <option value="O+">O+</option>
+                                                        <option value="O-">O-</option>
+                                                        <option value="1">Desconocido</option>
+                                                    
+                                                    </select>
                                                 </div>
-
                                             </div>
 
                                             <div class="col-md-4 mt-2">
                                                 <label for="peso">
                                                     Peso
                                                 </label>
-                                                <span id='valid_3' style="color:red;"></span>
+                                                <span id='valid_5' style="color:red;"></span>
                                                 <div class="input-group">
                                                 <input class='form-control' id='peso' name="datos[peso]" placeholder="Peso de la persona"  type="text" >
                                                 </div>
@@ -337,7 +352,7 @@
                                                 <label for="altura">
                                                     Altura
                                                 </label>
-                                                <span id='mensaje_altura' style="color:red;"></span>
+                                                <span id='valid_6' style="color:red;"></span>
                                                 <div class="input-group">
                                                     <input class='form-control' id='altura' name="datos[altura]" placeholder="Altura de la persona"  type="text" >
                                                 </div>
@@ -346,7 +361,7 @@
 
                                             <div class="col-md-4 mt-2">
                                                 <label for="talla">Talla</label>
-                                                <span id="mensaje_talla"></span>
+                                                <span id="valid_7" style="color:red;"></span>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" id="talla" placeholder="Talla" name="datos[talla]">
                                                 </div>
@@ -354,7 +369,7 @@
 
                                             <div class="col-md-4 mt-2">
                                                 <label for="imc">IMC (Masa corporal)</label>
-                                                <span id="mensaje_imc"></span>
+                                                <span id="valid_8" style="color:red;"></span>
                                                 <div class="input-group">
                                                     <input type="text" placeholder="Masa corporal" id="imc" name="datos[imc]" class="form-control">
                                                 </div>
@@ -362,7 +377,7 @@
 
                                             <div class="col-md-4 mt-2">
                                                 <label for="fc">FC (Frecuencia Cardiaca)</label>
-                                                <span id="mensaje_fc"></span>
+                                                <span id="valid_9" style="color:red;"></span>
                                                 <div class="input-group">
                                                     <input type="text" id="fc" name="datos[fc]" placeholder=" Frecuencia cardiaca" class="form-control" >
                                                 </div>
@@ -370,7 +385,7 @@
 
                                             <div class="col-md-4 mt-2">
                                                 <label for="fr">FR (Frecuencia respiratoria)</label>
-                                                <span id="mensaje_fr"></span>
+                                                <span id="valid_10" style="color:red;"></span>
                                                 <div class="input-group">
                                                     <input type="text"  class="form-control" id="fr" name="datos[fr]" placeholder="Frecuencia respiratoria">
                                                 </div>
@@ -378,7 +393,7 @@
 
                                             <div class="col-md-4 mt-2">
                                                 <label for="ta">TA (Tensión arterial)</label>
-                                                <span id="mensaje_ta"></span>
+                                                <span id="valid_11" style="color:red;"></span>
                                                 <div class="input-group">
                                                     <input type="text" id="ta" name="datos[ta]" class="form-control" placeholder="Tensión arterial">
                                                 </div>
@@ -386,7 +401,7 @@
 
                                             <div class="col-md-4 mt-2">
                                                 <label for="temperatura">Temperatura</label>
-                                                <span id="mensaje_t" style=""></span>
+                                                <span id="valid_12" style="color:red;"></span>
                                                 <div class="input-group">
                                                     <input type="text" id="temperatura" placeholder="Temperatura" name="datos[temperatura]" class="form-control">
                                                 </div>
@@ -397,7 +412,7 @@
 
                                     <div class="col-md-12 mt-4">
                                         <label for="diagnostico">Diagnóstico</label>
-                                        <span id="idx" style="color:red;"></span>
+                                        <span id="valid_13" style="color:red;"></span>
                                         <div>
                                             <input type="text" id="diagnostico" name="datos[diagnostico]" placeholder="Diagnóstico medico" class="form-control" >
                                         </div>
@@ -406,7 +421,7 @@
                                     
                                     <div class="col-md-12 mt-4">
                                         <label for="plan_trat">Tratamiento y recomendación</label>
-                                        <span id="idx" style="color:red;"></span>
+                                        <span id="valid_14" style="color:red;"></span>
                                         <div>
                                             <input type="text" id="tratamiento" name="datos[tratamiento]" placeholder="Plan de tratamiento" class="form-control" >
                                         </div>
@@ -414,7 +429,7 @@
 
                                     <div class="col-md-12 mt-4">
                                         <label for="evolucion">Evolución</label>
-                                        <span id="" style="color:red;"></span>
+                                        <span id="valid_15" style="color:red;"></span>
                                         <div>
                                             <input type="text" id="evolucion" name="datos[evolucion]" placeholder="Evolución del paciente (opcional)" class="form-control" >
                                         </div>

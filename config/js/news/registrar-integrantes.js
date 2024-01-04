@@ -26,7 +26,7 @@ var btn_siguiente=document.getElementById("siguiente");
 var btn_anterior=document.getElementById("anterior");
 var btn_guardar=document.getElementById("guardar");
 var btn_finales=document.getElementById("botones-finales");
-var btn_integrantes=document.getElementById("btn_nuevo");
+ var btn_integrantes=document.getElementById("btn_nuevo"); 
 
 
 var tab_persona=document.getElementById("tab_1");
@@ -34,11 +34,11 @@ var div_persona=document.getElementById("panel5");
 var tab_contacto=document.getElementById("tab_2");
 var div_contacto=document.getElementById("panel7");
 //---------------------Llamada del modal-------------------------------
-btn_integrantes.onclick=function(){
+ btn_integrantes.onclick=function(){
 
   $('#agregar').modal().show();
   
-  }
+  } 
 
 //-------------Boton siguiente---------------------
 

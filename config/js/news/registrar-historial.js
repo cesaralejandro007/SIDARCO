@@ -367,13 +367,14 @@ function funcion_siguiente(){
    case 1:
        {
 
+
         index++;
 
       } 
     break;
 
     case 2:
-    { 
+      { 
 
         enviar_info(); 
       }
@@ -581,38 +582,89 @@ function valida_info(){
 
     var validacion=false;
 
-    if(valid_element("Debe ingresar el documento de identidad", cedula_persona, document.getElementById("valid_2")))
-    {
-        if(persona_existe(cedula_persona.value)){  
+          if(valid_element("Debe ingresar el documento de identidad", cedula_persona, document.getElementById("valid_2")))
+            {
+            if(persona_existe(cedula_persona.value)){  
               if(new Date(fecha_historial.value)>new Date){
                   document.getElementById("valid_1").innerHTML="La fecha no debe ser mayor a la actual";
                   document.getElementById("valid_1").style.display='';
                   fecha_historial.style.borderColor="red";
-                }else{
-                document.getElementById("valid_1").style.display='';
-                document.getElementById("valid_1").innerHTML="Ingresar fecha del historial";
-                fecha_historial.style.borderColor="";
-                if(valid_element("Ingrese  ", div_ant_personales, document.getElementById("valid_4"))){
-                   /* if(valid_element("Ingrese el nivel educativo", nivel, document.getElementById("valid_8"))){
-                      if(valid_element("Ingrese la talla de camisa", camisa, document.getElementById("valid_9") )){ 
-                        if(valid_element("Ingrese talla de pantalon", pantalon, document.getElementById("valid_10"))){
-                          if(valid_element("Ingrese el número de calzado", calzado, document.getElementById("valid_11"))){
-                            
+                  }else{
+                  document.getElementById("valid_1").style.display='';
+                  document.getElementById("valid_1").innerHTML="Ingresar fecha del historial";
+                  fecha_historial.style.borderColor="";
+         /*      if(valid_element("Ingresar exámen realizado", examen, document.getElementById("valid_3"))){
+                  if(valid_element("Ingrese el tipo de sangre", tipo_sangre, document.getElementById("valid_4"))){
+                    if(valid_element("Ingrese el peso ", peso, document.getElementById("valid_5") )){ 
+                      if(valid_element("Ingrese la altura", altura, document.getElementById("valid_6"))){
+                        if(valid_element("Ingresela talla", talla, document.getElementById("valid_7"))){
+                          if(valid_element("ingrese IMC", imc, document.getElementById("valid_8"))){
+                            if(valid_element("Ingrese la FC",fc, document.getElementById("valid_9"))){
+                              if(valid_element("Ingrese la FR", fr, document.getElementById("valid_10"))){
+                                if(valid_element("Ingrese la tensión arterial", ta, document.getElementById("valie_11"))){
+                                  if(valid_element("Ingrese la temperatura", temperatura, document.getElementById("valid_12"))){
+                                    if(valid_element("Ingrese el diagnóstico",diagnostico, document.getElementById("valid_13"))){
+                                      if(valid_element("Indique el tratamiento", tratamiento, document.getElementById("valid_14"))){
+                                        if(valid_element("Indique si hay evolución", evolucion, document.getElementById("valid_15"))){
+
+                                          
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
                         }
                       }
                     }
-                  } */
-                  validacion=true;
+                  } 
                 }
-                
-              }
+              } */
+              validacion=true;
             }
           } 
-       
-  
-        
-return validacion;
     } 
+    return validacion;
+  }
+
+  
+
+  function valid_diagnostico(){
+
+    var validacion=false;
+
+                if(valid_element(" Ingresar exámen realizado", examen, document.getElementById("valid_23"))){
+                  if(valid_element(" Ingrese el tipo de sangre", tipo_sangre, document.getElementById("valid_4"))){
+                    if(valid_element(" Ingrese el peso ", peso, document.getElementById("valid_5"))){
+                      if(valid_element(" Ingrese la altura", altura, document.getElementById("valid_6"))){
+                        if(valid_element(" Ingrese la talla", talla, document.getElementById("valid_7"))){
+                          if(valid_element(" Ingrese IMC", imc, document.getElementById("valid_8"))){
+                            if(valid_element(" Ingrese la FC",fc, document.getElementById("valid_9"))){
+                              if(valid_element(" Ingrese la FR", fr, document.getElementById("valid_10"))){
+                                if(valid_element(" Ingrese la tensión arterial", ta, document.getElementById("valid_11"))){
+                                  if(valid_element(" Ingrese la temperatura", temperatura, document.getElementById("valid_12"))){
+                                    if(valid_element(" Ingrese el diagnóstico",diagnostico, document.getElementById("valid_13"))){
+                                      if(valid_element(" Indique el tratamiento", tratamiento, document.getElementById("valid_14"))){
+                                        if(valid_element(" Indique si hay evolución", evolucion, document.getElementById("valid_15"))){
+
+                                          return validacion=true;
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  } 
+                }
+              }  
+
+    return validacion;
+  }
     
 
 
@@ -645,14 +697,14 @@ return validacion;
 
 //---------------Funcion para enviar la información al controlador------------
 
+
 $(document).ready(function() { 
 
   $("#enviar").on("click", function() {
       var form = $("#formulario"); 
 
+if(valid_diagnostico()){  
 
-
-    alert("hola como stas ");
 var datos=[];
 var datos_persona=new Object();
 datos_persona['cedula_persona']=cedula_persona.value;
@@ -778,6 +830,7 @@ $.ajax({
   location.href=BASE_URL+"Historial/Consultas";
 },2000)
 
+}
 
 }) 
 })
