@@ -1,14 +1,86 @@
 <?php include (call."Inicio.php"); ?>
 <?php include (call."data-table.php"); ?>
 <style> 
-
 </style>
-
-
-
 <!-- DCJIMENEZT -->
 
 
+<div class="modal fade" id="agregar">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Registrar permiso</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form action="<?php echo constant('URL'); ?>Personas/Asignar_Vacunas" enctype="multipart/form-data" id="formulario" method="POST" name="formulario">
+                 <!-- card-body  -->
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-12 mt-2">
+                                <label for="cedula_persona">
+                                    Cédula de Persona
+                                </label>
+                                <div class="input-group">
+                                    <input list="cedula_p" id="cedula_persona" name="cedula_persona" class="form-control no-simbolos letras_numeros" placeholder="Cedula de Persona" oninput="Limitar(this,15)"/>
+                                    <datalist id="cedula_p">
+                                        <?php foreach ($this->personas as $persona) {   ?>
+                                            <option value="<?php echo $persona["cedula_persona"]; ?>">
+                                                <?php echo $persona["primer_nombre"] . " " . $persona["primer_apellido"]; ?>
+                                            </option>
+                                        <?php  }   ?>
+                                    </datalist>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6 mt-2">
+                                <label for="fecha_incio">Fecha de inicio</label>
+                                <div>
+                                    <input type="date" class="form-control" id="fecha_inicio" name="datos[fecha_inicio]" placeholder="Indique la fecha de inicio">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mt-2">
+                                <label for="fecha_cierre">Fecha de cierre</label>
+                                <div>
+                                    <input type="date" class="form-control" id="fecha_cierre" name="datos[fecha_cierre]" placeholder="Indique la fecha de cierre">
+                                </div>
+                            </div>
+
+                            <span id="texto"></span>
+
+
+                        </div>
+                    </div>
+                </div>
+            <!--      /.card-body  -->
+                <div class="card-footer">
+                    <div class="text-center m-t-20">
+                        <div class="col-xs-12">
+                            <input type="button" class="btn" style="background:#15406D; color:white" name="" id="enviar" value="Guardar">
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            </div>
+         <!--  Footer -->
+
+ <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <input type="submit" class="btn btn-primary" name="" id="guardar_integrante" value="Guardar">
+            </div>  --> 
+        </div>
+       <!--  /.modal-content  -->
+    </div>
+   <!--  /.modal-dialog  -->
+ </div> 
 
 
 <!-- Contenido de la pagina -->
@@ -35,6 +107,8 @@
             <!-- /.card-header -->
             <div class="card-body">
             <div class="col-lg-12">
+
+            <button id="enviar_permiso" ></button>
                     <!-- <div class="card">
                         <div class="card-header" style="background:#AEB6BF;">
                             <h3 class="card-title font-weight-bold">CRITERIOS DE BUSQUEDA</h3>
@@ -297,7 +371,7 @@
 <?php include (call."style-agenda.php"); ?>
 
 <script type="text/javascript" src="<?php echo constant('URL')?>config/plugins/datatables/media/js/sum.js"></script>
-<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/consultar-familias.js"></script>
+<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/consultar-permiso.js"></script>
 
 <script type="text/javascript">
 
