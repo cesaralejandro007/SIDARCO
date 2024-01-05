@@ -1,3 +1,18 @@
+var btn_registrar=document.getElementById("btn_registrar");
+
+btn_registrar.onclick=function(){
+
+  $('#agregar').modal().show();
+
+}
+
+var fecha_actual=new Date();
+
+var anno=fecha_actual.getFullYear();
+var mes=fecha_actual.getMonth()+1;
+var dia=fecha_actual.getDay();
+
+var fecha_pro=dia+'/'+mes+'/'+anno;
 
 function eliminar(id){
 	swal({
@@ -15,22 +30,22 @@ function eliminar(id){
 				url:BASE_URL+"Familias/eliminar_de_familias",
 				data:{'id':id}
 			}).done(function(result){
-                     setTimeout(function(){
-                    	swal({
+                    setTimeout(function(){
+                    swal({
                     		type:"success",
                     		title:"Éxito",
                     		text:"Se ha eliminado exitosamente esta familia",
                     		timer:2000,
                     		showConfirmButton:false
-                    	});
+});
 
-                    	setTimeout(function(){location.reload();},1000);
+                    setTimeout(function(){location.reload();},1000);
                   },500);
 			});
 		}
 	})
 }
-
+/* 
 document.getElementById("reporte_merienda").onclick = function(){
  
 tabla = '<div class="d-flex justify-content-center"><div class="border border-dark col-3 py-3" id="informacion_de_familia"></div></div><table id="example2" class="table table-striped table-hover m-1" style="font-size: 14px;">'+
@@ -177,6 +192,6 @@ $('<h5>Total funcionario con hijos: '+ table.data().count() +'</h5>').prependTo(
         confirmButtonColor: '#15406D',
         customClass: 'swal-width'
       });
-}
+} */
     
 

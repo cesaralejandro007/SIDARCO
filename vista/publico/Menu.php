@@ -8,8 +8,6 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column nav-flat nav-compact nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
@@ -142,7 +140,7 @@
                         <ul class="nav nav-treeview">
                             <?php if ($_SESSION['Nucleo familiar']['registrar'] == '1') { ?>
                                 <li class="nav-item" onclick="cambio_modulo('Registrar familia')">
-                                    <a href="<?php echo constant('URL'); ?>Permisos/Consultas/" class="nav-link">
+                                    <a href="<?php echo constant('URL'); ?>Permisos/Registros/" class="nav-link">
                                         <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
                                         <p>Registrar y consultar permisos</p>
                                     </a>

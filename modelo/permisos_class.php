@@ -14,6 +14,7 @@
 
         $tabla            = "SELECT * FROM vivienda WHERE estado=1";
         $respuesta_arreglo = '';
+        
         try {
             $datos = $this->conexion->prepare($tabla);
             $datos->execute();
@@ -25,9 +26,6 @@
             return $this->Capturar_Error($e);
         }
     }
-
-
-
 
     public function Consultar_personas()
     {

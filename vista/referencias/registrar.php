@@ -160,7 +160,6 @@
                                 <span id="mensaje_fecha_orden"></span>
                             </div>
                         
-                        
                             <div class="col-md-4 mt-2">
                                 <label for="id_especialidad">
                                     Referido a

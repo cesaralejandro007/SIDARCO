@@ -24,7 +24,9 @@ class Permisos extends Controlador
         $this->vista->personas=$persona;
         $integrante=$this->modelo->Integrantes_consultas();
         $this->vista->integrantes=$integrante;
-        $this->vista->Cargar_Vistas('familia/registrar');
+        $tipo_permiso=$this->Consultar_ant('tipo_permisos');
+        $this->vista->tipo_permisos=$tipo_permiso;
+        $this->vista->Cargar_Vistas('permisos/consultar');
     }
 
 

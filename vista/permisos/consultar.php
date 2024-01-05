@@ -15,8 +15,8 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form action="<?php echo constant('URL'); ?>Personas/Asignar_Vacunas" enctype="multipart/form-data" id="formulario" method="POST" name="formulario">
-                 <!-- card-body  -->
+            <form action="" enctype="multipart/form-data" id="formulario" method="POST" name="formulario">
+                <!-- card-body  -->
                 <div class="card-body">
                     <div class="card-block">
                         <div class="form-group row justify-content-center">
@@ -40,15 +40,35 @@
 
                             <div class="col-md-6 mt-2">
                                 <label for="fecha_incio">Fecha de inicio</label>
-                                <div>
+                                <div class="input-group">
                                     <input type="date" class="form-control" id="fecha_inicio" name="datos[fecha_inicio]" placeholder="Indique la fecha de inicio">
                                 </div>
                             </div>
 
                             <div class="col-md-6 mt-2">
                                 <label for="fecha_cierre">Fecha de cierre</label>
-                                <div>
+                                <div class="input-group">
                                     <input type="date" class="form-control" id="fecha_cierre" name="datos[fecha_cierre]" placeholder="Indique la fecha de cierre">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mt-2" >
+                                <label for="motivo">Motivo</label>
+                                <div class="input-group">
+                                    <input type="text" id="motivo" name="datos[motivo]" class="form-control" placeholder="Escriba el motivo del permiso">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mt-2">
+                                <label for="tipo_permiso">Tipo de permiso</label>
+                                <div class="input-group">
+                                    <select name="datos[tipo_permiso]" id="tipo_permiso" class='form-control form-select-lg mb-3' >
+                                       
+                                            <option value="0" selected>-Seleccione-</option>
+                                            <?php foreach($permisos as $per) {?>
+                                    <option value="<?php $per['tipo_permiso'] ?>"><?php echo $per['nombre_permiso'] ?></option>
+                                    <?php }?>
+                                    </select>
                                 </div>
                             </div>
 
@@ -102,14 +122,16 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Registro y Consulta exportacion de datos de permisos</h3>
+                <h3 class="card-title">Registro y consulta exportacion de datos de permisos</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
             <div class="col-lg-12">
 
-            <button id="enviar_permiso" ></button>
-                    <!-- <div class="card">
+            <button id="btn_registrar" class="btn btn-info" type="button" >Registrar permiso</button>
+            <br>
+            
+                    <!--  <div class="card">
                         <div class="card-header" style="background:#AEB6BF;">
                             <h3 class="card-title font-weight-bold">CRITERIOS DE BUSQUEDA</h3>
                             <div class="card-tools">
@@ -117,9 +139,9 @@
                             </div>
                         </div>
                         <div class="card-body d-flex justify-content-center">
-                           <button class="btn btn-outline-primary"  id="reporte_merienda">Reporte de la caja de merienda</button>
+                        <button class="btn btn-outline-primary"  id="reporte_merienda">Reporte de la caja de merienda</button>
                         </div>
-                    </div> -->
+                    </div>  -->
 
             </div>
                 <table id="example1" class="table table-bordered table-striped">
@@ -390,7 +412,7 @@
         $("#actualizar").modal({ backdrop: "static", keyboard: false });
      $.ajax({
          type:"POST",
-         url:BASE_URL+"Familias/consultar_familia_datos",
+         url:BASE_URL+"permisos/consultar_familia_datos",
          data:{'id_familia_persona':id_familia_persona,'id_familia':id_familia,'cedula_responsable':responsable_cedula}
      }).done(function(datos){
         var data = JSON.parse(datos);
