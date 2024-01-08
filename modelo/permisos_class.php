@@ -408,58 +408,34 @@
         }
     }
 
-    public function Registrar_Fami($data)
+    public function Registrar_permiso($data)
     {
 
         try {
-            $datos = $this->conexion->prepare('INSERT INTO familia (
-                cedula_integrante,
-                primer_nombre, 
-                segundo_nombre, 
-                primer_apellido,
-                segundo_apellido,
-                estado,
-                fecha_nacimiento,
-                genero,
-                nivel_educativo,
-                correo,
-                telefono,
-                camisa,
-                pantalon,
-                calzado
+            $datos = $this->conexion->prepare('INSERT INTO permisos (
+                motivo,
+                fecha_pro, 
+                fecha_inicio, 
+                fecha_cierre,
+                tipo_permiso,
+                cedula_persona
 
                 ) VALUES (
-                :cedula_integrante,
-                :primer_nombre, 
-                :segundo_nombre, 
-                :primer_apellido,
-                :segundo_apellido,
-                :estado,
-                :fecha_nacimiento,
-                :genero,
-                :nivel_educativo,
-                :correo,
-                :telefono,
-                :camisa,
-                :pantalon,
-                :calzado
+                :motivo,
+                :fecha_pro, 
+                :fecha_inicio, 
+                :fecha_cierre,
+                :tipo_permiso,
+                :cedula_persona
             )');
 
             $datos->execute([
-                'cedula_integrante'    => $data['cedula_integrante'],
-                'primer_nombre'        => $data['primer_nombre'],
-                'segundo_nombre'       => $data['segundo_nombre'],
-                'primer_apellido'      =>$data['primer_apellido'],
-                'segundo_apellido'     =>$data['segundo_apellido'],
-                'estado'               => $data['estado'],
-                'fecha_nacimiento'     =>$data['fecha_nacimiento'],
-                'genero'               =>$data['genero'],
-                'nivel_educativo'      =>$data['nivel_educativo'],
-                'correo'               =>$data['correo'],
-                'telefono'             =>$data['telefono'],
-                'camisa'               =>$data['camisa'],
-                'pantalon'             =>$data['pantalon'],
-                'calzado'              =>$data['calzado']
+                'motivo'           => $data['motivo'],
+                'fecha_pro'        => $data['fecha_pro'],
+                'fecha_inicio'     => $data['frecha_inicio'],
+                'fecha_cierre'     => $data['fecha_cierre'],
+                'tipo_permiso'     => $data['tipo_permiso'],
+                'cedula_persona'   => $data['cedula_permiso']
             ]);
 
             return true;

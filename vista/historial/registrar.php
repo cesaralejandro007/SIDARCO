@@ -245,7 +245,7 @@
                                                         <tr>
                                                         <td>
                                                         <input type="text"  style="display:none;" class='form-control letras_numeros' id='habit_psico' placeholder="Nuevo hábito psicológico"   name="datos[cedula_integrante]" oninput="Limitar(this,15)">
-                                                            <select class="form-control" id="id_habit_psicologico" name=[id_habit_psicologico] >
+                                                            <select class="form-control" id="id_habit_psicologico" name=datos[id_habit_psicologico] >
                                                                 <option value="0">Seleccione hábito</option>
                                                                 <?php foreach ($this->habit_psicols as $habit) { ?>
                                                                 <option value='<?php echo $habit['id_habit_psicologico'];?>'><?php echo $habit['nombre_habit']; ?></option>

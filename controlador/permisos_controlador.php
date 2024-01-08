@@ -52,12 +52,12 @@ class Permisos extends Controlador
 
 
 
-    public function registrar_familia(){
-        $datos_familia=$_POST['datos'];
+    public function registrar_permiso(){
+        $datos_permiso=$_POST['datos'];
 
-        echo $datos_familia;
+        echo $datos_permiso;
         
-        $this->modelo->Registrar_Fami($datos_familia); 
+        $this->modelo->Registrar_permiso($datos_permiso); 
         
      /*     if($resultado){
            $id=$this->Ultimo_Ingresado("familia","id_familia");

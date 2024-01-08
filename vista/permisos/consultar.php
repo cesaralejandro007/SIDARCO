@@ -6,7 +6,7 @@
 
 
 <div class="modal fade" id="agregar">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Registrar permiso</h4>
@@ -25,15 +25,14 @@
                                     Cédula de Persona
                                 </label>
                                 <div class="input-group">
-                                    <input list="cedula_p" id="cedula_persona" name="cedula_persona" class="form-control no-simbolos letras_numeros" placeholder="Cedula de Persona" oninput="Limitar(this,15)"/>
+                                    <input list="cedula_p" id="cedula_persona" name="datos[cedula_persona]" class="form-control no-simbolos letras_numeros" placeholder="Cedula de Persona" oninput="Limitar(this,15)"/>
                                     <datalist id="cedula_p">
                                         <?php foreach ($this->personas as $persona) {   ?>
                                             <option value="<?php echo $persona["cedula_persona"]; ?>">
                                                 <?php echo $persona["primer_nombre"] . " " . $persona["primer_apellido"]; ?>
                                             </option>
-                                        <?php  }   ?>
+                                        <?php  }  ?>
                                     </datalist>
-
                                 </div>
 
                             </div>
@@ -62,15 +61,16 @@
                             <div class="col-md-6 mt-2">
                                 <label for="tipo_permiso">Tipo de permiso</label>
                                 <div class="input-group">
-                                    <select name="datos[tipo_permiso]" id="tipo_permiso" class='form-control form-select-lg mb-3' >
-                                       
-                                            <option value="0" selected>-Seleccione-</option>
-                                            <?php foreach($permisos as $per) {?>
-                                    <option value="<?php $per['tipo_permiso'] ?>"><?php echo $per['nombre_permiso'] ?></option>
+                                    <select name="datos[tipo_permiso]" id="tipo_permiso" class='form-control' >
+                                        <option value="0" >-Seleccione-</option>
+                                    <?php foreach($this->tipo_permisos as $per) {?>
+                                    <option value="<?php echo $per["tipo_permiso"]; ?>"><?php echo $per["nombre_permiso"]; ?></option>
                                     <?php }?>
                                     </select>
                                 </div>
                             </div>
+
+                        
 
                             <span id="texto"></span>
 
@@ -224,7 +224,7 @@
                                     alert("error")
                                 })
 
-                                $(document).on('click', '#enviar', function() {
+                                $(document).on('click', '#enviar_actualizacion', function() {
 
                                     swal({
                                             title: "Atención",

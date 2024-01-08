@@ -1,4 +1,15 @@
 var btn_registrar=document.getElementById("btn_registrar");
+var cedula_persona=document.getElementById("cedula_persona");
+var fecha_inicio=document.getElementById("fecha_inicio");
+var fecha_cierre=document.getElementById("fecha_cierre");
+var motivo=document.getElementById("motivo");
+var tipo_permiso=document.getElementById("tipo_permiso");
+
+var fecha_actual=new Date();
+var anno=fecha_actual.getFullYear();
+var mes=fecha_actual.getMonth()+1;
+var dia=fecha_actual.getDay();
+var fecha_pro=dia+'/'+mes+'/'+anno;
 
 btn_registrar.onclick=function(){
 
@@ -6,13 +17,56 @@ btn_registrar.onclick=function(){
 
 }
 
-var fecha_actual=new Date();
+$(document).ready(function(){
 
-var anno=fecha_actual.getFullYear();
-var mes=fecha_actual.getMonth()+1;
-var dia=fecha_actual.getDay();
+$("#enviar").on("click", function(){
 
-var fecha_pro=dia+'/'+mes+'/'+anno;
+
+  var datos= {
+
+    cedula_persona: $("#cedula_persona").val(),
+    fecha_pro,
+    fecha_inicio: $("#fecha_inicio").val(),
+    fecha_cierre: $("#fecha_cierre").val(),
+    motivo: $("#motivo").val(),
+    tipo_permiso:$("#tipo_permiso").val(),
+
+  };
+
+        $.ajax({
+          type:'POST',
+          url:BASE_URL+'',
+          data:{
+            'datos':datos,
+          }
+        }).done(function(result){
+          alert(result);
+        })
+if(result ==1){ 
+        swal({
+          tittle:"",
+          type:"",
+          text:"",
+          showConfirmButton:false,
+          timer:2000
+        });
+        setTimeout(function(){location.href=BASE_URL+"permisos/registrar_permiso"},2000);
+
+      }else{
+        
+
+      }
+
+
+
+})
+
+
+
+
+
+})
+
 
 function eliminar(id){
 	swal({
