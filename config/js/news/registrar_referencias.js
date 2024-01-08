@@ -158,8 +158,7 @@ $(document).ready(function() {
     $("#enviar").on("click", function() {
         var form = $("#formulario"); 
 
-        //Nuevos id de la vista de consulta
-
+       //Nuevos id de la vista de consulta
       /*   var id_familia_persona = document.getElementById("id_familia_persona");  */
 
         var fecha_referencia=document.getElementById("fecha_referencia");

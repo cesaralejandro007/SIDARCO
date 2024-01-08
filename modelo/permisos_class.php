@@ -432,10 +432,10 @@
             $datos->execute([
                 'motivo'           => $data['motivo'],
                 'fecha_pro'        => $data['fecha_pro'],
-                'fecha_inicio'     => $data['frecha_inicio'],
+                'fecha_inicio'     => $data['fecha_inicio'],
                 'fecha_cierre'     => $data['fecha_cierre'],
                 'tipo_permiso'     => $data['tipo_permiso'],
-                'cedula_persona'   => $data['cedula_permiso']
+                'cedula_persona'   => $data['cedula_persona']
             ]);
 
             return true;

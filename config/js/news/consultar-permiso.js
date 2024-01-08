@@ -1,4 +1,4 @@
-var btn_registrar=document.getElementById("btn_registrar");
+/* var btn_registrar=document.getElementById("btn_registrar"); */
 var cedula_persona=document.getElementById("cedula_persona");
 var fecha_inicio=document.getElementById("fecha_inicio");
 var fecha_cierre=document.getElementById("fecha_cierre");
@@ -17,46 +17,44 @@ btn_registrar.onclick=function(){
 
 }
 
+
+
 $(document).ready(function(){
 
 $("#enviar").on("click", function(){
 
 
   var datos= {
-
-    cedula_persona: $("#cedula_persona").val(),
+    
+    motivo: $("#motivo").val(),
     fecha_pro,
     fecha_inicio: $("#fecha_inicio").val(),
     fecha_cierre: $("#fecha_cierre").val(),
-    motivo: $("#motivo").val(),
     tipo_permiso:$("#tipo_permiso").val(),
-
+    cedula_persona: $("#cedula_persona").val(),
+  
   };
 
         $.ajax({
           type:'POST',
-          url:BASE_URL+'',
+          url:BASE_URL+'permisos/registrar_permiso',
           data:{
             'datos':datos,
           }
         }).done(function(result){
           alert(result);
         })
-if(result ==1){ 
+
         swal({
-          tittle:"",
-          type:"",
-          text:"",
+          title:"Registro exitoso",
+          type:"success",
+          text:"Se ha registrado de forma exitosa el permiso",
           showConfirmButton:false,
           timer:2000
-        });
+        }); 
         setTimeout(function(){location.href=BASE_URL+"permisos/registrar_permiso"},2000);
 
-      }else{
-        
-
-      }
-
+    
 
 
 })
