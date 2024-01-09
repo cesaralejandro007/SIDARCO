@@ -150,6 +150,24 @@
         }
     }
 
+    public function get_permisos(){
+
+        $tabla= "SELECT p.*, pr.*, c.*, ub.*, tp.*, p.primer_nombre AS primer_nombre_p, p.primer_apellido AS primer_apellido_p, tp.nombre_permiso as nombre_permiso_tp FROM permisos pr, personas p, cargo_nominal c, ubicaciones ub, tipo_permisos tp WHERE pr.cedula_persona=p.cedula_persona and tp.tipo_permiso=pr.tipo_permiso GROUP BY pr.fecha_inicio";
+        $respuesta_arreglo='';
+
+        try{
+            $datos= $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->SetFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo= $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        }catch(PDOException $e){
+            return $this->Capturar_Error($e);
+
+        }
+
+    }
+
 
 
     public function get_integrantes($cedula_persona)
@@ -292,121 +310,6 @@
             return $this->Capturar_Error($e);
         }
     }
-    
-    public function existeintegrante($cedula_integrante)
-    {
-        $tabla            = "SELECT * FROM familia WHERE estado=1 AND cedula_integrante = $cedula_integrante";
-        $respuesta_arreglo = '';
-        try {
-            $datos = $this->conexion->prepare($tabla);
-            $datos->execute();
-            $respuesta = $datos->rowCount();
-            if($respuesta > 0){
-                return false;
-            }
-            else{
-                return true;
-            }
-        } catch (PDOException $e) {
-
-            return $this->Capturar_Error($e);
-        }
-    }
-
-    public function existepadre($cedula_responsable)
-    {
-        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Padre'";
-        $respuesta_arreglo = '';
-        try {
-            $datos = $this->conexion->prepare($tabla);
-            $datos->execute();
-            $datos->setFetchMode(PDO::FETCH_ASSOC);
-            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
-            return $respuesta_arreglo;
-        } catch (PDOException $e) {
-
-            return $this->Capturar_Error($e);
-        }
-    }
-    public function existepadre_edit($cedula_responsable, $id)
-    {
-        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Padre' AND familia.id_familia != $id";
-        $respuesta_arreglo = '';
-        try {
-            $datos = $this->conexion->prepare($tabla);
-            $datos->execute();
-            $datos->setFetchMode(PDO::FETCH_ASSOC);
-            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
-            return $respuesta_arreglo;
-        } catch (PDOException $e) {
-
-            return $this->Capturar_Error($e);
-        }
-    }
-
-    public function existemadre($cedula_responsable)
-    {
-        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Madre'";
-        $respuesta_arreglo = '';
-        try {
-            $datos = $this->conexion->prepare($tabla);
-            $datos->execute();
-            $datos->setFetchMode(PDO::FETCH_ASSOC);
-            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
-            return $respuesta_arreglo;
-        } catch (PDOException $e) {
-
-            return $this->Capturar_Error($e);
-        }
-    }
-
-    public function existemadre_edit($cedula_responsable,$id)
-    {
-        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Madre' AND familia.id_familia != $id";
-        $respuesta_arreglo = '';
-        try {
-            $datos = $this->conexion->prepare($tabla);
-            $datos->execute();
-            $datos->setFetchMode(PDO::FETCH_ASSOC);
-            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
-            return $respuesta_arreglo;
-        } catch (PDOException $e) {
-
-            return $this->Capturar_Error($e);
-        }
-    }
-
-    public function existeconyugue($cedula_responsable)
-    {
-        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Conyuge'";
-        $respuesta_arreglo = '';
-        try {
-            $datos = $this->conexion->prepare($tabla);
-            $datos->execute();
-            $datos->setFetchMode(PDO::FETCH_ASSOC);
-            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
-            return $respuesta_arreglo;
-        } catch (PDOException $e) {
-
-            return $this->Capturar_Error($e);
-        }
-    }
-
-    public function existeconyugue_edit($cedula_responsable,$id)
-    {
-        $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia  AND familia_personas.cedula_persona = $cedula_responsable AND familia_personas.parentezco = 'Conyuge' AND familia.id_familia != $id";
-        $respuesta_arreglo = '';
-        try {
-            $datos = $this->conexion->prepare($tabla);
-            $datos->execute();
-            $datos->setFetchMode(PDO::FETCH_ASSOC);
-            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
-            return $respuesta_arreglo;
-        } catch (PDOException $e) {
-
-            return $this->Capturar_Error($e);
-        }
-    }
 
     public function Registrar_permiso($data)
     {
@@ -446,13 +349,10 @@
     }
 
 
-
-
-
-
     public function Actualizar_Familia($data)
+
     {
-       try {
+    try {
             $query = $this->conexion->prepare("UPDATE familia_personas SET
                 nombre_familia     =   :nombre_familia,
                 descripcion_familia  =   :descripcion_familia
@@ -469,61 +369,11 @@
         }
     }
 
-       /*  public function Registrar_Integrante($data){
 
-            try{
-
-           
-            $datos=$this->conexion->prepare("INSERT INTO familia ()
-            id_familia,
-            id_vivienda,
-            cedula,
-            primer_nombre,
-            segundo_nombre,
-            primer_apellido,
-            segundo_apellido
-            
-             VALUES(
-
-            :id_familia,
-            :id_vivienda,
-            :cedula,
-            :primer_nombre,
-            :segundo_nombre,
-            :primer_apellido,
-            :segundo_apellido
-
-             )");
-
-            $datos->execute([
-                
-            'cedula'        => $data['cedula'],
-            'primer_nombre' => $data['primer_nombre'],
-            ''
-
-
-
-
-
-            ])
-
-
-
-            }catch(PdoException $e){
-
-            }
-
-
-
-        } */
-
-
-
-
-    public function Registrar_persona_familia($data)
-    {
+    public function Registrar_persona_familia($data){
 
         try {
+            
             $datos = $this->conexion->prepare('INSERT INTO familia_personas (
                 id_familia,
                 cedula_persona,
@@ -540,9 +390,9 @@
             )');
 
             $datos->execute([
-                'id_familia'      => $data['id_familia'],
-                'cedula_persona'   => $data['cedula_persona'],
-                'nombre_familia'    =>$data['nombre_familia'],
+                'id_familia'          => $data['id_familia'],
+                'cedula_persona'      => $data['cedula_persona'],
+                'nombre_familia'      =>$data['nombre_familia'],
                 'descripcion_familia' =>$data['descripcion_familia'],
                 'parentezco'          =>$data['parentezco']
             ]);

@@ -52,10 +52,7 @@ $("#enviar").on("click", function(){
           showConfirmButton:false,
           timer:2000
         }); 
-        setTimeout(function(){location.href=BASE_URL+"permisos/registrar_permiso"},2000);
-
-    
-
+        setTimeout(function(){location.href=BASE_URL+"permisos/Registros"},2000);
 
 })
 

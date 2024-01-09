@@ -110,7 +110,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Consulta de permisos </h1>
+                    <h1 class="m-0">Registro y consulta de permisos </h1>
                 </div><!-- /.col -->
                 <!-- /.col --> 
             </div><!-- /.row -->
@@ -122,7 +122,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Registro y consulta exportacion de datos de permisos</h3>
+                <h3 class="card-title">Registro y consulta de datos</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -153,12 +153,14 @@
                             <?php if($_SESSION['Nucleo familiar']['eliminar']){ ?>
                                 <th style="width: 20px;">Eliminar</th>
                             <?php } ?>
-                            <th>Familia</th>
-                            <th>Descripción</th>
-                            <th>Responsable de Familia</th>
+                            <th>Nombre y apellido</th>
                             <th>Ubicación</th>
                             <th>Cargo</th>
-                            <th>Integrantes</th>
+                            <th>Inicio</th>
+                            <th>Cierre</th>
+                            <th>Recepción</th>
+                            <th>Motivo</th>
+                            <th>Tipo de permiso</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -167,7 +169,7 @@
                             $(function() {
                                 $.ajax({
                                     type: 'POST',
-                                    url: BASE_URL + 'Familias/consultar_info_familia'
+                                    url: BASE_URL + 'permisos/consultar_info_permiso'
                                 }).done(function(datos) {
                                     var data = JSON.parse(datos);
 
@@ -189,12 +191,6 @@
                                             },
                                         <?php } ?>
                                         {
-                                            "data": "familia"
-                                        },
-                                        {
-                                            "data": "descripcion"
-                                        },
-                                        {
                                             "data": "responsable"
                                         },
                                         {
@@ -204,7 +200,19 @@
                                             "data": "cargo"
                                         },
                                         {
-                                            "data":"integrantes"
+                                            "data": "fecha_inicio"
+                                        },
+                                        {
+                                            "data": "fecha_cierre"
+                                        },
+                                        {
+                                            "data": "fecha_pro"
+                                        },
+                                        {
+                                            "data":"motivo"
+                                        },
+                                        {
+                                            "data":"nombre_permiso_tp"
                                         }
                                         ],
                                         responsive: true,
@@ -229,8 +237,8 @@
                                     swal({
                                             title: "Atención",
                                             text:
-                                            "Estás por actualizar el nucleo familiar de la familia " +
-                                            document.getElementById("nombre_familia").value +
+                                            "Estás por actualizar el permiso del funcionario" +
+                                            document.getElementById("cedula_persona").value +
                                             ", ¿Desea continuar?",
                                             type: "warning",
                                             showCancelButton: true,
@@ -369,12 +377,14 @@
                             <?php if($_SESSION['Nucleo familiar']['eliminar']){ ?>
                                 <th>Eliminar</th>
                             <?php } ?>
-                            <th>Familia</th>
-                            <th>Descripció<noscript></noscript></th>
-                            <th>Responsable de Familia</th>
-                            <th>Ubicación</th>
+                            <th>Nombre y apellido</th>
+                            <th>Ubicación<noscript></noscript></th>
                             <th>Cargo</th>
-                            <th>Integrantes</th>
+                            <th>Inicio</th>
+                            <th>Cierre</th>
+                            <th>Recepción</th>
+                            <th>Motivo</th>
+                            <th>Tipo de permiso</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -387,7 +397,7 @@
     <!-- /.content -->
     <!-- /.content -->
 </div>
-<?php include modal."editar-familia.php"; ?> 
+<?php include modal."editar-permiso.php"; ?> 
 <!-- /.content-wrapper -->
 <?php include (call."Fin.php"); ?>
 <?php include (call."style-agenda.php"); ?>

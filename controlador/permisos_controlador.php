@@ -53,12 +53,12 @@ class Permisos extends Controlador
 
 
     public function registrar_permiso(){
+      
         $datos_permiso=$_POST['datos'];
 
         echo $datos_permiso;
         
         $this->modelo->Registrar_permiso($datos_permiso); 
-        
      /*     if($resultado){
            $id=$this->Ultimo_Ingresado("familia","id_familia");
            foreach ($id as  $i) {
@@ -100,41 +100,6 @@ public function registrar_integrante_fun(){
  echo count($datos);
  }
 
- public function agregar_integrante_fun(){
-  $verificarBD = $this->modelo->existe($_POST['cedula_integrante']);
-  $verificarsiexiste = $this->modelo->existeintegrante($_POST['cedula_integrante']);
-  if($verificarsiexiste){
-    $this->Escribir_JSON(0);
-  }else if($verificarBD){
-    $this->Escribir_JSON(1);
-  }else if(!empty($_POST['parentezco'])){
-    $verificarexistepadre = $this->modelo->existepadre($_POST['cedula_responsable']);
-    $verificarexistemadre = $this->modelo->existemadre($_POST['cedula_responsable']);
-    $verificarexisteconyugue = $this->modelo->existeconyugue($_POST['cedula_responsable']);
-    if($_POST['parentezco'] == "Padre" && count($verificarexistepadre)==1){
-      $this->Escribir_JSON(2);
-    }else{
-      if($_POST['parentezco'] == "Madre" && count($verificarexistemadre)==1){
-        $this->Escribir_JSON(3);
-      }else{
-        if($_POST['parentezco'] == "Conyugue" && count($verificarexisteconyugue)==1){
-          $this->Escribir_JSON(4);
-        }else{
-          $integrante=$this->modelo->Integrantes_familia($_POST['cedula_integrante']);
-          $this->modelo->Registrar_persona_familia([
-           "id_familia"     =>     $integrante[0]['id_familia'],
-           "cedula_persona"         =>  $_POST['cedula_responsable'],
-           "nombre_familia"     =>     $_POST['nombre_familia'],
-           "descripcion_familia"  =>   $_POST['descripcion_familia'],
-           "parentezco"           =>    $_POST['parentezco']
-         ]);
-         $integrante_nuevos = $this->modelo->get_integrantes($_POST['cedula_responsable']);
-         $this->Escribir_JSON($integrante_nuevos);
-        }
-      }
-    }
-  }
-}
 
 //----------------------Registrar Integrantes------------------
 
@@ -160,7 +125,7 @@ echo $resultado;
 } 
 
 
-public function consultar_info_familia(){
+/* public function consultar_info_familia(){
      $familias=$this->modelo->get_familias();
      $retornar=[];
      foreach ($familias as $f) {
@@ -173,18 +138,49 @@ public function consultar_info_familia(){
         $integrantes_familia .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td></tr></tfoot></table>";
         $integrantes_familia = "<div style='overflow-y:scroll;width:100%;height:100px;'>" . $integrantes_familia . "</div>";
          $retornar[]=[
-                "familia"           => $f['nombre_familia'],
+                "familia"              => $f['nombre_familia'],
                 "descripcion"          => $f['descripcion_familia'],
-                "responsable"         => $f['cedula_persona']." ".$f['primer_nombre_p']." ".$f['primer_apellido_p'],
-                "ubicacion"  =>  $f['nombre_ubi'],
-                "cargo"  =>  $f['nombre_cargo'],
+                "responsable"          => $f['cedula_persona']." ".$f['primer_nombre_p']." ".$f['primer_apellido_p'],
+                "ubicacion"            =>  $f['nombre_ubi'],
+                "cargo"                =>  $f['nombre_cargo'],
                 "integrantes"          => $integrantes_familia,
-                "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia_persona'].",".$f['id_familia'].",".$f['cedula_persona'].")'><em class='fa fa-edit'></em></button>",
-                "eliminar"          =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$f['cedula_persona']."`)' type='button'><em class='fa fa-trash'></em></button>"
+                "editar"               => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia_persona'].",".$f['id_familia'].",".$f['cedula_persona'].")'><em class='fa fa-edit'></em></button>",
+                "eliminar"             =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$f['cedula_persona']."`)' type='button'><em class='fa fa-trash'></em></button>"
           ];
      }
      $this->Escribir_JSON($retornar);
+} */
+
+public function consultar_info_permiso(){
+  $permisos=$this->modelo->get_permisos();
+  $retornar=[];
+  foreach ($permisos as $pr) {
+     
+  
+      $retornar[]=[
+             "responsable"          => $pr['cedula_persona']." ".$f['primer_nombre_p']." ".$f['primer_apellido_p'],
+             "ubicacion"            => $pr['nombre_ubi'],
+             "cargo"                => $pr['nombre_cargo'],
+             "familia"              => $pr['nombre_familia'],
+             "fecha_inicio"         => $pr['fecha_inicio'],
+             "fecha_cierre"         => $pr['fecha_cierre'],
+             "fecha_pro"            => $pr['fecha_pro'],
+             "motivo"               => $pr['motivo'],
+             "nombre_permiso_tp"    => $pr['nombre_permiso_tp'],
+             "integrantes"          => $integrantes_familia,
+             "editar"               => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia_persona'].",".$f['id_familia'].",".$f['cedula_persona'].")'><em class='fa fa-edit'></em></button>",
+             "eliminar"             =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$pr['cedula_persona']."`)' type='button'><em class='fa fa-trash'></em></button>"
+       ];
+  }
+  $this->Escribir_JSON($retornar);
 }
+
+
+
+
+
+
+
 
 
 public function consultar_info_familia_caja(){
@@ -347,19 +343,7 @@ public function modificar_integrante(){
 
   if($verificarBD){
     $this->Escribir_JSON(1);
-  }else if(!empty($_POST['parentezco_integrante'])){
-    $verificarexistepadre = $this->modelo->existepadre_edit($_POST['cedula_persona'],$_POST["id_familia"]);
-    $verificarexistemadre = $this->modelo->existemadre_edit($_POST['cedula_persona'],$_POST["id_familia"]);
-    $verificarexisteconyugue = $this->modelo->existeconyugue_edit($_POST['cedula_persona'],$_POST["id_familia"]);
-    if($_POST['parentezco_integrante'] == "Padre" && count($verificarexistepadre)==1){
-      echo json_encode(2);
-    }else{
-      if($_POST['parentezco_integrante'] == "Madre" && count($verificarexistemadre)==1){
-        echo json_encode(3);
-      }else{
-        if($_POST['parentezco_integrante'] == "Conyuge" && count($verificarexisteconyugue)==1){
-          echo json_encode(4);
-        }else{
+  }else{ 
           $editado=$this->modelo->Actualizar_Familia_integrante($_POST["id"],$_POST["parentezco_integrante"]);
           $editado2=$this->modelo->Actualizar_tabla_familia($_POST["id_familia"],$_POST["cedula_integrante"],$_POST["nombre_integrante"],$_POST["segundo_nombre_integrante"],$_POST["apellido_integrante"],$_POST["segundo_apellido_integrante"],$_POST["genero"],$_POST["fecha_nacimiento"],$_POST["nivel_educativo"],$_POST["Correo"],$_POST["Telefono"],$_POST["Camisa"],$_POST["Pantalon"],$_POST["Calzado"]);
           $retornar = $this->modelo->get_integrantes($_POST['cedula_persona']);
@@ -368,9 +352,7 @@ public function modificar_integrante(){
           }  
         }
       }
-    }
-  }
-}
+  
 
 
 public function Consultas_cedula_funcionario()
