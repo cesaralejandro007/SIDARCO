@@ -1,5 +1,5 @@
 <div class="modal fade" id="actualizar">
-    <div class="modal-dialog modal-lg" ">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Editar datos del permiso</h4>
@@ -13,17 +13,17 @@
 
 
             <div class="col-md-12 mt-2">
-                <label for="segundo_apellido">
+                <label for="cedula_persona">
                 Cédula de la persona
                 </label><span id='valid_1' style="color:red;"></span>
                 <div class="input-group">
-                    <input class="form-control mb-10" id="responsable_familia" disabled oninput="Limitar(this,20);" placeholder="Responsable de familia"
+                    <input class="form-control mb-10" id="cedula_persona" disabled oninput="Limitar(this,20);"
                     type="text" />
                 </div>
             </div>
             
             <div class="col-md-6 mt-2">
-                <label for="segundo_nombre">
+                <label for="fecha_inicio">
                     Fecha de inicio
                 </label><span id='valid_2' style="color:red;"></span>
                 <div class="input-group">
@@ -34,19 +34,18 @@
             </div> 
 
             <div class="col-md-6 mt-2">
-                <label for="primer_apellido">
-                  Fecha de cierre
+                <label for="fecha_cierre">
+                Fecha de cierre
                 </label><span id='valid_3' style="color:red;"></span>
                 <div class="input-group">
                     <input type="date" class="form-control mb-10" id="fecha_cierre" type="text" >
                 </div>
-
             </div>
             
             <div class="col-md-6 mt-2">
-                <label for="segundo_nombre">
+                <label for="motivo">
                     Motivo
-                </label><span id='valid_2' style="color:red;"></span>
+                </label><span id='valid_4' style="color:red;"></span>
                 <div class="input-group">
                     <input class="form-control" id="motivo" oninput="Limitar(this,20);"
                     name="datos[motivo]" type="text" >
@@ -55,9 +54,9 @@
             </div>
             
             <div class="col-md-6 mt-2">
-                <label for="segundo_nombre">
+                <label for="tipo_permiso">
                     Tipo de permiso
-                </label><span id='valid_2' style="color:red;"></span>
+                </label><span id='valid_5' style="color:red;"></span>
                 <div class="input-group">
                     <select class="form-control" id="tipo_permiso" name="datos[tipo_permiso]" type="text">
                         <option value="0">-Seleccione</option>
@@ -66,15 +65,9 @@
                 </div>
 
             </div>
-
-
-            <div class="col-md-12 mt-2">
-            
-            <div class="input-group">
-            
-        </div>
-
-            
+        <div class="col-md-12 mt-2">
+    <div class="input-group">       
+</div>
 
 </div>
 
@@ -82,7 +75,7 @@
 </form>
 </div>
 <div class="modal-footer ">
-    <input type="submit" class="btn" style="background:#15406D;color:white"  name="" id="enviar" value="Guardar">
+    <input type="submit" class="btn" style="background:#15406D;color:white"  name="" id="enviar_actualizacion" value="Guardar">
 </div>
 </div>
 <!-- /.modal-content -->

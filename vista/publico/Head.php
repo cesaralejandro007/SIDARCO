@@ -38,6 +38,7 @@
         }
     </style>
 
+
     <!-- jquery -->
     <script src="<?php echo constant('URL')?>config/plugins/jquery/jquery-3.6.3.min.js"></script>
     <script src="<?php echo constant('URL')?>config/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
@@ -47,6 +48,9 @@
     @import url(<?php echo constant('URL')?>config/scss/icons/weather-icons/css/weather-icons.min.css);
     @import url(<?php echo constant('URL')?>config/scss/icons/material-design-iconic-font/css/materialdesignicons.min.css);
     </style>
+       <!--  Select2 -->
+   <script src="<?php echo constant('URL') ?>config/plugins/select2/dist/js/select2.js"></script>
+   <link rel="stylesheet" href="<?php echo constant('URL')?>config/plugins/select2/dist/css/select2.css">
     <?php include (call."Style-tabs.php"); ?>
     <script>
         const protocol = window.location.protocol;

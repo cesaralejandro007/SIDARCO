@@ -1,7 +1,7 @@
 <?php include (call."Inicio.php"); ?>
 <?php include (call."data-table.php"); ?>
-<style> 
 
+<style> 
 </style>
 <!-- Contenido de la pagina -->
 <div class="content-wrapper">
@@ -304,6 +304,7 @@
     var Camisa = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.\s]{1,30}$/;
     var Pantalon = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.\s]{1,30}$/;
     var Calzado = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.\s]{1,30}$/;
+    
     function editar(id_familia_persona,id_familia,responsable_cedula){
         $("#actualizar").modal({ backdrop: "static", keyboard: false });
      $.ajax({

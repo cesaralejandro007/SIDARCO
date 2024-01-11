@@ -12,7 +12,7 @@
                     id="formulario" method="POST" name="formulario">
                     <div class="form-group row justify-content-center"> 
 
-                       <div class="col-md-6 mt-2">
+                    <div class="col-md-6 mt-2">
                         <label for="cedula">
                             Cedula de Persona
                         </label>

@@ -714,6 +714,25 @@ class Controlador
         }
     }
 
+    public function eliminar_permiso($param)
+    {
+
+        try {
+            $query = $this->conexion->prepare("DELETE FROM permisos WHERE id_permiso = :id_permiso");
+            $query->execute([
+                'id_permiso' => $param
+            ]);
+
+            return true;
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+
+
     public function Accion($accion)
     {
 

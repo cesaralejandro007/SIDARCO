@@ -1,4 +1,6 @@
-/* var btn_registrar=document.getElementById("btn_registrar"); */
+
+  /* Datos para registrar permiso */
+
 var cedula_persona=document.getElementById("cedula_persona");
 var fecha_inicio=document.getElementById("fecha_inicio");
 var fecha_cierre=document.getElementById("fecha_cierre");
@@ -8,16 +10,19 @@ var tipo_permiso=document.getElementById("tipo_permiso");
 var fecha_actual=new Date();
 var anno=fecha_actual.getFullYear();
 var mes=fecha_actual.getMonth()+1;
-var dia=fecha_actual.getDay();
-var fecha_pro=dia+'/'+mes+'/'+anno;
+var dia=fecha_actual.getDate();
+var fecha_pro=anno+'-'+mes+'-'+dia;
+
+$(document).ready(function(){
+  $('#tipo_permiso').select2();
+});
 
 btn_registrar.onclick=function(){
-
   $('#agregar').modal().show();
-
 }
 
 
+  /*  Envio de datos de permiso */
 
 $(document).ready(function(){
 
@@ -27,13 +32,14 @@ $("#enviar").on("click", function(){
   var datos= {
     
     motivo: $("#motivo").val(),
-    fecha_pro,
+    fecha_pro:fecha_pro,
     fecha_inicio: $("#fecha_inicio").val(),
     fecha_cierre: $("#fecha_cierre").val(),
-    tipo_permiso:$("#tipo_permiso").val(),
+    tipo_permiso: $("#tipo_permiso").val(),
     cedula_persona: $("#cedula_persona").val(),
   
   };
+  alert(JSON.stringify(datos));
 
         $.ajax({
           type:'POST',
@@ -55,11 +61,6 @@ $("#enviar").on("click", function(){
         setTimeout(function(){location.href=BASE_URL+"permisos/Registros"},2000);
 
 })
-
-
-
-
-
 })
 
 
@@ -67,7 +68,7 @@ function eliminar(id){
 	swal({
 		type:"warning",
 		title:"Atención",
-		text:"Estás por eliminar esta familia, ¿deseas continuar?",
+		text:"Estás por eliminar éste permiso, ¿deseas continuar?",
 		showCancelButton:true,
 		cancelButtonText:"No",
 		confirmButtonColor: '#9D2323',
@@ -76,16 +77,16 @@ function eliminar(id){
 		if(isConfirm){
 			$.ajax({
 				type:"POST",
-				url:BASE_URL+"Familias/eliminar_de_familias",
+				url:BASE_URL+"permisos/eliminar_de_permisos",
 				data:{'id':id}
 			}).done(function(result){
                     setTimeout(function(){
                     swal({
-                    		type:"success",
-                    		title:"Éxito",
-                    		text:"Se ha eliminado exitosamente esta familia",
-                    		timer:2000,
-                    		showConfirmButton:false
+                    type:"success",
+                    title:"Éxito",
+                    text:"Se ha eliminado exitosamente el permiso",
+                    timer:2000,
+                    showConfirmButton:false
 });
 
                     setTimeout(function(){location.reload();},1000);
@@ -94,6 +95,9 @@ function eliminar(id){
 		}
 	})
 }
+
+
+
 /* 
 document.getElementById("reporte_merienda").onclick = function(){
  

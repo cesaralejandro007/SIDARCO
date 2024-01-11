@@ -1,7 +1,5 @@
-
-
- var btn_vacunados = document.getElementById("btn_nuevo");
- var agregar=document.getElementById("agregar");
+var btn_vacunados = document.getElementById("btn_nuevo");
+var agregar=document.getElementById("agregar");
 
  btn_vacunados.onclick=function(){
 
