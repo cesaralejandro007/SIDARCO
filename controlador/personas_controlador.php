@@ -2,6 +2,7 @@
 
 class Personas extends Controlador 
 {
+
   public function __construct()
   {
     parent::__construct();
@@ -477,11 +478,11 @@ public function consultar_informacion_persona(){
     "cargo"                       =>$p['nombre_cargo'],
     "procedencias_estado"          =>$p['nombre_estado_procedencia'],
     "estado_funcionario"          =>$p['nombre_estado'],
-    "ver"             =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`)'><span class='fa fa-eye'></span></button>",
+    "ver"                   =>"<button class='btn' style='background:#15406D;color:white' type='button' title='Ver información de la persona' onclick='ver_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`)'><span class='fa fa-eye'></span></button>",
 
-    "editar"             =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
+    "editar"                =>"<button class='btn' style='background:#EEA000;color:white' type='button' title='Editar información de la persona' onclick='editar_datos(`".$persona."`,`".$ocupacion."`,`".$condicion_lab."`,`".$transporte."`,`".$bonos."`,`".$misiones."`,`".$divisiones."`,`".$titulos."`,`".$org_politica."`)'><span class='fa fa-edit'></span></button>",
 
-    "eliminar"             => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Egresar persona' onclick='egresar_datos(`".$p['cedula_persona']."`)'><i class='fas fa-user-slash' style='color:white'></i></button>",
+    "eliminar"              => "<button class='btn' style='background:#9D2323;color:white' type='button' title='Egresar persona' onclick='egresar_datos(`".$p['cedula_persona']."`)'><i class='fas fa-user-slash' style='color:white'></i></button>",
   ];
 
 

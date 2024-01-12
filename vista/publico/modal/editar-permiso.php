@@ -17,7 +17,7 @@
                 Cédula de la persona
                 </label><span id='valid_1' style="color:red;"></span>
                 <div class="input-group">
-                    <input class="form-control mb-10" id="cedula_persona" disabled oninput="Limitar(this,20);"
+                    <input class="form-control mb-10" id="cedula_persona_editar"  oninput="Limitar(this,20);"
                     type="text" />
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     Fecha de inicio
                 </label><span id='valid_2' style="color:red;"></span>
                 <div class="input-group">
-                    <input class="form-control" id="fecha_inicio" oninput="Limitar(this,20);"
+                    <input class="form-control" id="fecha_inicio_editar" oninput="Limitar(this,20);"
                     name="datos[fecha_inicio]" type="date" />
                 </div>
 
@@ -38,7 +38,7 @@
                 Fecha de cierre
                 </label><span id='valid_3' style="color:red;"></span>
                 <div class="input-group">
-                    <input type="date" class="form-control mb-10" id="fecha_cierre" type="text" >
+                    <input type="date" class="form-control mb-10" id="fecha_cierre_editar" name="datos[fecha_cierre]" type="text" >
                 </div>
             </div>
             
@@ -47,7 +47,7 @@
                     Motivo
                 </label><span id='valid_4' style="color:red;"></span>
                 <div class="input-group">
-                    <input class="form-control" id="motivo" oninput="Limitar(this,20);"
+                    <input class="form-control" id="motivo_editar" oninput="Limitar(this,20);"
                     name="datos[motivo]" type="text" >
                 </div>
 
@@ -58,12 +58,13 @@
                     Tipo de permiso
                 </label><span id='valid_5' style="color:red;"></span>
                 <div class="input-group">
-                    <select class="form-control" id="tipo_permiso" name="datos[tipo_permiso]" type="text">
-                        <option value="0">-Seleccione</option>
-                        <option value=""></option>
+                    <select class="form-control" id="tipo_permiso_editar" name="datos[tipo_permiso]" type="text" style="width: 360px; height: 37px ;">
+                         <option value="0">-Seleccione-</option>
+                        <?php foreach($this->tipo_permisos as $pr) {?>
+                        <option value="<?php echo $pr["tipo_permiso"]; ?>"><?php echo $pr["nombre_permiso"];?></option>
+                        <?php }?> 
                     </select>
                 </div>
-
             </div>
         <div class="col-md-12 mt-2">
     <div class="input-group">       
@@ -75,11 +76,15 @@
 </form>
 </div>
 <div class="modal-footer ">
-    <input type="submit" class="btn" style="background:#15406D;color:white"  name="" id="enviar_actualizacion" value="Guardar">
+    <input type="submit" class="btn" style="background:#15406D;color:white; display: block; margin: 0 auto;"  name="" id="enviar_actualizacion" value="Guardar">
 </div>
 </div>
 <!-- /.modal-content -->
 </div>
 <!-- /.modal-dialog -->
+<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/consultar-permiso.js"></script>
 </div>
 <!-- /.modal -->
+
+
+

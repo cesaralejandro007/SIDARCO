@@ -1419,6 +1419,7 @@ public function get_organizaciones()
          $tabla            = "SELECT O.nombre_ocupacion, O.id_ocupacion FROM ocupacion O, ocupacion_persona OP WHERE OP.cedula_persona = $cedula AND O.id_ocupacion = OP.id_ocupacion AND  O.estado=1";
          $respuestaArreglo = '';
          try {
+            
              $datos = $this->conexion->prepare($tabla);
              $datos->execute();
              $datos->setFetchMode(PDO::FETCH_ASSOC);

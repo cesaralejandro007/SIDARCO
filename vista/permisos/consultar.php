@@ -245,7 +245,7 @@ $(document).ready(function() {
                                             title: "Atención",
                                             text:
                                             "Estás por actualizar el permiso del funcionario" +
-                                            document.getElementById("cedula_persona").value +
+                                            document.getElementById("cedula_persona_editar").value +
                                             ", ¿Desea continuar?",
                                             type: "warning",
                                             showCancelButton: true,
@@ -257,15 +257,18 @@ $(document).ready(function() {
                                         },
                                         function (isConfirm) {
                                             if (isConfirm) {
-                                                        var fecha_inicio=document.getElementById("fecha_inicio");
-                                                        var fecha_cierre=document.getElementById("fecha_cierre");
-                                                        var motivo=document.getElementById("motivo");
-                                                        var tipo_permiso=document.getElementById("tipo_permiso");
+                                                        var cedula_persona=docuemnt.getElementById("cedula_persona_editar");
+                                                        var fecha_inicio=document.getElementById("fecha_inicio_editar");
+                                                        var fecha_cierre=document.getElementById("fecha_cierre_editar");
+                                                        var motivo=document.getElementById("motivo_editar");
+                                                        var tipo_permiso=document.getElementById("tipo_permiso_editar");
                                                         var datos_permiso=new Object();
+                                                        datos_permiso['cedula_persona_editar'].cedula_persona.value;
                                                         datos_permiso['fecha_inicio']=fecha_inicio.value;
                                                         datos_permiso['fecha_cierre']=fecha_cierre.value;
                                                         datos_permiso['motivo']=motivo.value;
                                                         datos_permiso['tipo_permiso']=tipo_permiso.value;
+                                                        alert(JSON.stringify(datos_permiso));
                                                         $.ajax({
                                                         type:"POST",
                                                         url:BASE_URL+"permisos/actualizar_permiso",

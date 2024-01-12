@@ -23,6 +23,7 @@ class Permisos extends Controlador
         $tipo_permiso=$this->Consultar_ant('tipo_permisos');
         $this->vista->tipo_permisos=$tipo_permiso;
         $this->vista->Cargar_Vistas('permisos/consultar');
+        $this->vista->Cargar_Vistas('publico/modal/editar-permiso');
     }
 
 
@@ -66,6 +67,8 @@ class Permisos extends Controlador
   } */ 
 
 }  
+
+//------------------------Mostrar datos en registrar----------
  
 
 //---------------------Registrar en tabla puente---------------
@@ -129,7 +132,7 @@ public function consultar_info_permiso(){
   foreach ($permisos as $pr) {
   
       $retornar[]=[
-             "responsable"          => $pr['cedula_persona']." ".$f['primer_nombre_p']." ".$f['primer_apellido_p'],
+             "responsable"          => $pr['cedula_persona']." ".$pr['primer_nombre_p']." ".$pr['primer_apellido_p'],
              "ubicacion"            => $pr['nombre_ubi'],
              "cargo"                => $pr['nombre_cargo'],
              "familia"              => $pr['nombre_familia'],

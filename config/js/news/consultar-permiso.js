@@ -17,6 +17,10 @@ $(document).ready(function(){
   $('#tipo_permiso').select2();
 });
 
+$(document).ready(function(){
+  $('#tipo_permiso_editar').select2();
+});
+
 btn_registrar.onclick=function(){
   $('#agregar').modal().show();
 }
@@ -28,7 +32,7 @@ $(document).ready(function(){
 
 $("#enviar").on("click", function(){
 
-
+    /* Cuando utilizas la libreria de jquery debes enviar los datos de la siguiente manera: */
   var datos= {
     
     motivo: $("#motivo").val(),
@@ -63,6 +67,32 @@ $("#enviar").on("click", function(){
 })
 })
 
+var cedula_persona_e=document.getElementById("cedula_persona_editar");
+  cedula_persona_e.innerHTML="Holis";
+
+function editar(id, cedula_persona){
+
+  alert(id);
+  alert(cedula_persona)
+
+  
+
+  $.ajax({
+    type:'POST',
+    url: BASE_URL+'permisos/consultar_id',
+    data:{
+      'datos':id,
+    }
+  }).done(function(result){
+
+    alert(result);
+
+  })
+
+
+  console.log("Prueba");
+}
+
 
 function eliminar(id){
 	swal({
@@ -88,7 +118,6 @@ function eliminar(id){
                     timer:2000,
                     showConfirmButton:false
 });
-
                     setTimeout(function(){location.reload();},1000);
                   },500);
 			});
