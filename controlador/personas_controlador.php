@@ -431,6 +431,7 @@ $this->Escribir_JSON($info_completa);
 }
 
 public function consultar_informacion_persona(){
+  
   $info_completa=[];
   $personas=$this->modelo->Consultar();
   

@@ -67,15 +67,15 @@ $("#enviar").on("click", function(){
 })
 })
 
-var cedula_persona_e=document.getElementById("cedula_persona_editar");
-  cedula_persona_e.innerHTML="Holis";
+
 
 function editar(id, cedula_persona){
 
   alert(id);
   alert(cedula_persona)
 
-  
+  var cedula_persona_e=document.getElementById("cedula_persona_editar");
+  cedula_persona_e.innerHTML="Holis";
 
   $.ajax({
     type:'POST',
