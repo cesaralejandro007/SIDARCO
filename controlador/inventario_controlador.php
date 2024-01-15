@@ -9,13 +9,13 @@ class Inventario extends Controlador
     }
     public function Cargar_Vistas()
     {
-        $this->Seguridad_de_Session();$this->vista->Cargar_Vistas('inmueble/consultar');
+        $this->Seguridad_de_Session();$this->vista->Cargar_Vistas('inventario_medicina/consultar');
     }
     // ==============================================================================
     public function Establecer_Consultas()
     {
         $this->modelo->__SET("tipo", "0");
-        $this->modelo->__SET("SQL", "SQL_01");$this->datos["inmueble"] = $this->modelo->Administrar();
+        $this->modelo->__SET("SQL", "SQL_01");$this->datos["inventario"] = $this->modelo->Administrar();
         $this->modelo->__SET("SQL", "_01_");
         $this->modelo->__SET("consultar", array("tabla" => "calles", "estado" => 1, "orden" => "nombre_calle"));
         $this->datos["calle"] = $this->modelo->Administrar();
@@ -48,9 +48,9 @@ class Inventario extends Controlador
 
             case 'Administrar':
                 $cont = 0;
-                foreach ($this->datos["tipo_inmueble"] as $datos_t) {
-                    if ($datos_t["nombre_tipo"] == $_POST['datos']['id_tipo_inmueble']) {
-                        $_POST['datos']["id_tipo_inmueble"] = $datos_t["id_tipo_inmueble"];
+                /* foreach ($this->datos["tipo_inmueble"] as $datos_t) { */
+                    /* if ($datos_t["nombre_tipo"] == $_POST['datos']['id_tipo_inmueble']) {
+                        $_POST['datos']["id_tipo_inmueble"] = $datos_t["id_tipo_inmueble"]; */
 
                         $this->modelo->__SET("SQL", $_POST['sql']);$this->modelo->__SET("tipo", "1");
                         $this->modelo->Datos($_POST['datos']);
@@ -58,8 +58,8 @@ class Inventario extends Controlador
                         if ($this->modelo->Administrar()) { $this->mensaje = 1; $this->Accion($_POST['accion']);} 
 
                         echo $this->mensaje;$cont++;
-                    }
-                }
+                    /* } */
+                /* } */
 
                 if ($cont == 0) { 
                     $this->modelo->__SET("SQL", "_02_");$this->modelo->__SET("tipo", "1");
@@ -84,7 +84,7 @@ class Inventario extends Controlador
                 unset($cont,$id,$_POST,$this->mensaje);
                 break;
 
-            case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["inmueble"]);break;
+            case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["inventario"]);break;
 
             case 'Consultas_Calle':
                 foreach ($this->datos["calle"] as $key => $value) {

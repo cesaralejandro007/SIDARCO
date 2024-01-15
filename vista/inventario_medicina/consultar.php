@@ -29,26 +29,30 @@
                 <table id="example1" class="table table-bordered  table-hover">
                     <thead>
                         <tr>
-                            <th>Calle</th>
+                        <th style="width: 115px;">Acciones</th>
                             <th>Nombre de medicamento</th>
                             <th>Unidades</th>
                             <th>Grupo</th>
-                            <th style="width: 115px;">Acciones</th>
+                            <th>Caducidad</th>
+                            <th>Lote</th>
+                            <th>Pertenece</th>
                         </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
                     <tbody>
-                        <script src="<?php echo constant('URL')?>config/js/ajax/Ajax_Consultas_Inmuebles.js"></script>
+                        <script src="<?php echo constant('URL')?>config/js/ajax/Ajax_Consultas_Inventario.js"></script>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Calle</th>
+                        <th style="width: 115px;">Acciones</th>
                             <th>Nombre de medicamento</th>
                             <th>Unidades</th>
                             <th>Grupo</th>
-                            <th style="width: 115px;">Acciones</th>
+                            <th>Caducidad</th>
+                            <th>Lote</th>
+                            <th>Pertenece</th>
                         </tr>
                     </tfoot>
                 </table>

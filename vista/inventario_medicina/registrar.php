@@ -19,7 +19,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Formulario de Registro</h3>
+                <h3 class="card-title">Formulario de registro</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -33,42 +33,38 @@
                         <div class="form-group row justify-content-center">
 
                             <div class="col-md-6 mt-2">
-                                <label for="id_calle">
+                                <label for="medicamento">
                                     Medicamento
                                 </label>
                                 <div class="input-group">
-                                    <select class="custom-select" id="id_calle" name="datos[id_calle]">
+                                    <select class="custom-select" id="medicamento" name="datos[medicamento]">
                                         <option value="0">
-                                           Seleccione ...
+                                           -Seleccione-
                                         </option>
-                                    <?php foreach($this->datos["calle"] as $calles){   ?>
-                                        <option value="<?php echo $calles["id_calle"];?>">
-                                            <?php echo $calles["nombre_calle"];?>
-                                        </option>
-                                    <?php  }   ?>
+                                        <option value="ibuprofeno">Holis</option>
                                     </select>
                                 </div>
                                 <span id="mensaje_1"></span>
                             </div>
 
                             <div class="col-md-6 mt-2">
-                                <label for="nombre_inmueble">
+                                <label for="unidades">
                                     Unidades
                                 </label>
                                 <div class="input-group">
                                 
-                                    <input class="form-control no-simbolos mb-10" id="nombre_inmueble" name="datos[nombre_inmueble]"
-                                        placeholder="Unidades disponibles" type="text" oninput="Limitar(this,25)"/>
+                                    <input class="form-control no-simbolos mb-10" id="unidades" name="datos[unidades]"
+                                        placeholder="Unidades disponibles" type="number" oninput="Limitar(this,25)"/>
                                 </div>
                                 <span id="mensaje_2"></span>
                             </div>
 
                             <div class="col-md-6 mt-2">
-                                <label for="direccion">
+                                <label for="grupo">
                                     Grupo 
                                 </label>
                                 <div class="input-group">
-                                    <input class="form-control no-simbolos mb-10" id="Grupo del medicamento" name="datos[grupo]"
+                                    <input class="form-control no-simbolos mb-10" id="grupo" name="datos[grupo]"
                                         placeholder="Grupo al que pertenece el medicamento" type="text" />
                                 </div>
                                 <span id="mensaje_3"></span>
@@ -81,25 +77,27 @@
                                 <div class="input-group">
                                     <input class="form-control" type="date" placeholder="Fecha de caducidad" id="caducidad" name="datos[caducidad]">
                                 </div>
-                                <span id=""></span>
+                                <span id="mensaje_4"></span>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="lote">
+                                    Lote
+                                </label>
+                                <div class="input-group">
+                                    <input  id="lote" name="datos[lote]" class="form-control no-simbolos solo-letras " placeholder="Lote del inventario" oninput="Limitar(this,20)"/>
+                                </div>
+                                <span id="mensaje_5"></span>
                             </div>
 
-                            <div class="col-md-6 mt-2">
+                            <!-- <div class="col-md-6 mt-2">
                                 <label for="tipo_inmueble">
                                     Lote
                                 </label>
                                 <div class="input-group">
-                                    <input list="tipo_I" id="tipo_inmueble" name="datos[id_tipo_inmueble]" class="form-control no-simbolos solo-letras " placeholder="Tipo de Inmueble" oninput="Limitar(this,20)"/>
-                                    <datalist id="tipo_I">
-                                        <?php foreach($this->datos["tipo_inmueble"] as $t_inmueble){   ?>
-                                        <option value="<?php echo $t_inmueble["nombre_tipo"];?>">
-                                        </option>
-                                    <?php  }   ?>
-                                    </datalist>
-                                    
+                                    <input  id="lote" name="datos[lote]" class="form-control no-simbolos solo-letras " placeholder="Lote del inventario" oninput="Limitar(this,20)"/>
                                 </div>
-                                <span id="mensaje_4"></span>
-                            </div>
+                                <span id="mensaje_5"></span>
+                            </div> -->
 
                         </div>
                     </div>
@@ -127,4 +125,4 @@
 <?php include (call."Fin.php"); ?>
 <?php include (call."Style-seguridad.php"); ?>
 
-<script src="<?php echo constant('URL')?>config/js/news/registrar-inmuebles.js"></script> 
+<script src="<?php echo constant('URL')?>config/js/news/registrar-inventario.js"></script> 
