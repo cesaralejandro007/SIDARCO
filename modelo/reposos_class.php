@@ -1,6 +1,6 @@
  <?php
 
- class Permisos_Class extends Modelo
+ class Reposos_Class extends Modelo
  {
 
     public function __construct()
@@ -97,9 +97,9 @@
         }
     }
 
-    public function get_permisos(){
+    public function get_reposos(){
 
-        $tabla= "SELECT p.*, pr.*, c.*, ub.*, tp.*, p.primer_nombre AS primer_nombre_p, p.primer_apellido AS primer_apellido_p, tp.nombre_permiso as nombre_permiso_tp FROM permisos pr, personas p, cargo_nominal c, ubicaciones ub, tipo_permisos tp WHERE pr.cedula_persona=p.cedula_persona and tp.tipo_permiso=pr.tipo_permiso and p.id_ubicacion = ub.id_ubicacion and p.id_cargo = c.id_cargo";
+        $tabla= "SELECT p.*, r.*, c.*, ub.*, p.primer_nombre AS primer_nombre_p, p.primer_apellido AS primer_apellido_p FROM reposos r, personas p, cargo_nominal c, ubicaciones ub WHERE r.id_cedula=p.cedula_persona and c.id_cargo = p.id_cargo and ub.id_ubicacion = p.id_ubicacion";
         $respuesta_arreglo='';
 
         try{
@@ -258,34 +258,33 @@
         }
     }
 
-    public function Registrar_permiso($data)
+    public function Registrar_reposos($data)
     {
 
         try {
-            $datos = $this->conexion->prepare('INSERT INTO permisos (
+            $datos = $this->conexion->prepare('INSERT INTO reposos (
                 motivo,
-                fecha_pro, 
                 fecha_inicio, 
                 fecha_cierre,
-                tipo_permiso,
-                cedula_persona
-
+                diagnostico,
+                medico_tratante,
+                id_cedula
                 ) VALUES (
                 :motivo,
-                :fecha_pro, 
                 :fecha_inicio, 
                 :fecha_cierre,
-                :tipo_permiso,
-                :cedula_persona
+                :diagnostico,
+                :medico, 
+                :id_cedula
             )');
 
             $datos->execute([
                 'motivo'           => $data['motivo'],
-                'fecha_pro'        => $data['fecha_pro'],
                 'fecha_inicio'     => $data['fecha_inicio'],
                 'fecha_cierre'     => $data['fecha_cierre'],
-                'tipo_permiso'     => $data['tipo_permiso'],
-                'cedula_persona'   => $data['cedula_persona']
+                'diagnostico'     => $data['Diagnostico'],
+                'medico'        => $data['medico'],
+                'id_cedula'   => $data['cedula_persona']
             ]);
 
             return true;

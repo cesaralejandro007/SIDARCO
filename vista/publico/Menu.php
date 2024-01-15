@@ -168,8 +168,8 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <?php if ($_SESSION['Nucleo familiar']['registrar'] == '1') { ?>
-                                <li class="nav-item" onclick="cambio_modulo('Registrar familia')">
-                                    <a href="<?php echo constant('URL'); ?>Familias/Registros/" class="nav-link">
+                                <li class="nav-item" onclick="cambio_modulo('Registrar Reposos')">
+                                    <a href="<?php echo constant('URL'); ?>Reposos/Registros/" class="nav-link">
                                         <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
                                         <p>Registrar y consultar reposos</p>
                                     </a>
