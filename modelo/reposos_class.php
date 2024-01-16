@@ -99,7 +99,7 @@
 
     public function get_reposos(){
 
-        $tabla= "SELECT p.*, r.*, c.*, ub.*, p.primer_nombre AS primer_nombre_p, p.primer_apellido AS primer_apellido_p FROM reposos r, personas p, cargo_nominal c, ubicaciones ub WHERE r.id_cedula=p.cedula_persona and c.id_cargo = p.id_cargo and ub.id_ubicacion = p.id_ubicacion";
+        $tabla= "SELECT p.*, r.*, c.*, ub.*, p.primer_nombre AS primer_nombre_p, p.primer_apellido AS primer_apellido_p, r.id_reposo as id_reposo, date_format(r.fecha_inicio, '%d/%m/%Y') as fecha_inicio_f, date_format(r.fecha_cierre, '%d/%m/%Y') as fecha_cierre_f, DATEDIFF(r.fecha_cierre, r.fecha_inicio) as dias_de_reposo, FLOOR(DATEDIFF(r.fecha_cierre, r.fecha_inicio) / 7) as semanas_de_reposo FROM reposos r, personas p, cargo_nominal c, ubicaciones ub WHERE r.id_cedula=p.cedula_persona AND c.id_cargo = p.id_cargo AND ub.id_ubicacion = p.id_ubicacion;";
         $respuesta_arreglo='';
 
         try{
@@ -295,29 +295,49 @@
     }
 
 
-    public function Actualizar_permisos($data)
-
+    public function eliminar_reposos($id)
     {
-    try {
-            $query = $this->conexion->prepare("UPDATE permisos SET
-                motivo       = :motivo,
-                fecha_inicio = :fecha_inicio,
-                fecha_cierre = :fecha_cierre,
-                tipo_permiso = :tipo_permiso,
-                WHERE id_permiso = :id_permiso"
-            );
-            $query->execute([
-                'motivo'            => $data['motivo'],
-                'fecha_inicio'      => $data['fecha_inicio'],
-                'fecha_cierre'      => $data['fecha_cierre'],
-                'tipo_permiso'      => $data['tipo_permiso']
-            ]);
+        try {
+
+            $query = $this->conexion->prepare('DELETE FROM reposos WHERE id_reposo = :id');
+            $query->execute(['id' => $id]);
+
             return true;
+
         } catch (PDOException $e) {
+
             return $this->Capturar_Error($e);
         }
     }
 
+    public function actualizar_reposos($id,$cedula,$fecha_i,$fecha_c,$motivo,$diagnostico,$medico)
+    {
+        try {
+            $query = $this->conexion->prepare("UPDATE reposos SET
+                motivo           =:motivo,
+                fecha_inicio           =:fecha_inicio,
+                fecha_cierre           =:fecha_cierre,
+                diagnostico           =:diagnostico,
+                medico_tratante           =:medico_tratante,
+                id_cedula            =:cedula
+                WHERE id_reposo =:id"
+            );
+
+            $query->execute([
+                'motivo'              =>$motivo, 
+                'fecha_inicio'             =>$fecha_i, 
+                'fecha_cierre'      =>$fecha_c,
+                'diagnostico'              =>$diagnostico, 
+                'medico_tratante'             =>$medico, 
+                'cedula'      =>$cedula,
+                'id'              =>$id, 
+            ]);
+            return true;
+
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
 
     public function Registrar_persona_familia($data){
 

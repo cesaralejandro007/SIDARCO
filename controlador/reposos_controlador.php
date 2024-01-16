@@ -63,6 +63,9 @@ class Reposos extends Controlador
 
 }  
 
+
+
+
 //------------------------Mostrar datos en registrar----------
  
 
@@ -130,18 +133,23 @@ public function consultar_info_reposos(){
         "responsable"          => $r['cedula_persona']." ".$r['primer_nombre_p']." ".$r['primer_apellido_p'],
         "ubicacion"            => $r['nombre_ubi'],
         "cargo"                => $r['nombre_cargo'],
-        "fecha_inicio"         => $r['fecha_inicio'],
-        "fecha_cierre"         => $r['fecha_cierre'],
+        "fecha_inicio"         => $r['fecha_inicio_f'],
+        "fecha_cierre"         => $r['fecha_cierre_f'],
         "motivo"               => $r['motivo'],
         "diagnostico"          => $r['diagnostico'],
         "medico_tratante"      => $r['medico_tratante'],
-        "editar"               => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$pr['id_reposo'].",".$pr['cedula_persona'].")'><em class='fa fa-edit'></em></button>",
-        "eliminar"             => "<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$pr['id_reposo']."`)' type='button'><em class='fa fa-trash'></em></button>"
+        "dias_de_reposo"      => $r['dias_de_reposo'],
+        "semanas_de_reposo"      => $r['semanas_de_reposo'],
+        "editar"               => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizarreposos' onclick='editarreposos(".$r['id_reposo'].",".$r['id_cedula'].",`".$r['fecha_inicio']."`,`".$r['fecha_cierre']."`,`".$r['motivo']."`,`".$r['diagnostico']."`,`".$r['medico_tratante']."`)'><em class='fa fa-edit'></em></button>",
+        "eliminar"             => "<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(".$r['id_reposo'].")' type='button'><em class='fa fa-trash'></em></button>"
       ];
   }
   $this->Escribir_JSON($retornar);
 }
 
+public function editar_reposos(){
+ echo $reposos=$this->modelo->actualizar_reposos($_POST['id'],$_POST['cedula_persona'],$_POST['fecha_inicio'],$_POST['fecha_cierre'],$_POST['motivo'],$_POST['Diagnostico'],$_POST['medico']);
+}
 
 
 
@@ -238,8 +246,8 @@ public function consultar_familia_integrante(){
   $this->Escribir_JSON($integrante_familias);
 } */
 
-public function eliminar_de_permisos(){
-  echo $this->eliminar_permiso($_POST['id']);
+public function eliminar_de_reposos(){
+  echo $this->modelo->eliminar_reposos($_POST['id']);
 }
 /* 
 public function eliminar_familia(){

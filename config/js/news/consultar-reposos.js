@@ -5,11 +5,6 @@
   var fecha_inicio=document.getElementById("fecha_inicio");
   var fecha_cierre=document.getElementById("fecha_cierre");
   var motivo=document.getElementById("motivo");
-
-  
- 
-  
-  
 	/*  Envio de datos de permiso */
   
   $(document).ready(function(){
@@ -35,44 +30,56 @@
 			  'datos':datos,
 			}
 		  }).done(function(result){
-			alert(JSON.stringify(result));
+			  swal({
+				title:"Registro exitoso",
+				type:"success",
+				text:"Se ha registrado de forma exitosa el reposo",
+				showConfirmButton:false,
+				timer:2000
+			  }); 
+			  setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000);
 		  })
   
-		  swal({
-			title:"Registro exitoso",
-			type:"success",
-			text:"Se ha registrado de forma exitosa el reposo",
-			showConfirmButton:false,
-			timer:2000
-		  }); 
-		  setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000);
   
   })
   })
   
+
+  function editarreposos(id, cedula_persona,fecha_i,fecha_c,motivo,diagnostico,medico_tratante){
+	$("#motivo_edit").val(motivo);
+	$("#fecha_inicio_edit").val(fecha_i);
+	$("#fecha_cierre_edit").val(fecha_c);
+	$("#diagnostico_edit").val(diagnostico);
+	$("#medico_edit").val(medico_tratante);
+	$("#cedula_persona_edit").val(cedula_persona);
   
-  
-  function editar(id, cedula_persona){
-  
-	alert(id);
-	alert(cedula_persona)
-  
-	var cedula_persona_e=document.getElementById("cedula_persona_editar");
-	cedula_persona_e.innerHTML="Holis";
-  
-	$.ajax({
-	  type:'POST',
-	  url: BASE_URL+'reposo/consultar_id',
-	  data:{
-		'datos':id,
-	  }
-	}).done(function(result){
-  
-	  alert(result);
-  
-	})
-  
-  
+	document.getElementById("enviar_actualizacion").onclick =function(){
+		$.ajax({
+			type:'POST',
+			url: BASE_URL+'reposos/editar_reposos',
+			data:{
+			id:id,
+			motivo: $("#motivo_edit").val(),
+			fecha_inicio: $("#fecha_inicio_edit").val(),
+			fecha_cierre: $("#fecha_cierre_edit").val(),
+			Diagnostico: $("#diagnostico_edit").val(),
+			medico: $("#medico_edit").val(),
+			cedula_persona: $("#cedula_persona_edit").val(),
+			}
+		  }).done(function(result){
+			if(result==1){
+				swal({
+				title:"Éxito",
+			   text:"Se han guardado las modificaciones.",
+			   type:"success",
+			  showConfirmButton:false,
+			  timer:3000
+			 });
+
+				setTimeout(function(){location.reload();},2000);
+			  }
+		  })
+	}
 	console.log("Prueba");
   }
   
@@ -90,7 +97,7 @@
 		  if(isConfirm){
 			  $.ajax({
 				  type:"POST",
-				  url:BASE_URL+"reposo/eliminar_de_permisos",
+				  url:BASE_URL+"reposos/eliminar_de_reposos",
 				  data:{'id':id}
 			  }).done(function(result){
 					  setTimeout(function(){
