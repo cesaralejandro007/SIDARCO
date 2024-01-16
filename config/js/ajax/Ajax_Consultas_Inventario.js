@@ -23,8 +23,6 @@ $(function() {
                 data: "caducidad",
             },{
                 data: "lote",
-            },{
-                data: "pertenece",
             },  ],
             responsive: true,
             autoWidth: false,
@@ -36,7 +34,7 @@ $(function() {
         }).buttons().container().appendTo("#example1_wrapper .col-md-6:eq(0)");
         $("#example1").on("click", ".mensaje-eliminar", function() {
             fila = $(this).closest("tr");
-            id = fila.find("td:eq(6)").text();
+            id = fila.find("td:eq(5)").text();
             var estado = {
                 tabla: "inventario",
                 id_tabla: "id_inventario",
@@ -49,8 +47,8 @@ $(function() {
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#9D2323",
-                confirmButtonText: "¡Si, Eliminar!",
-                cancelButtonText: "¡No, Cancelar!",
+                confirmButtonText: "¡Si, eliminar!",
+                cancelButtonText: "¡No, cancelar!",
                 closeOnConfirm: false,
                 closeOnCancel: false,
             }, function(isConfirm) {
@@ -100,29 +98,34 @@ $(function() {
         });
         $(document).on("click", ".ver-popup", function() {
             fila = $(this).closest("tr");
-            calle = fila.find("td:eq(0)").text();
-            inmueble = fila.find("td:eq(1)").text();
-            direccion = fila.find("td:eq(2)").text();
-            tipo_inmueble = fila.find("td:eq(3)").text();
-            $("#calle").val(calle);
-            $("#nombre_inmueble").val(inmueble);
-            $("#direccion").val(direccion);
-            $("#tipo_inmueble").val(tipo_inmueble);
+            medicamento = fila.find("td:eq(0)").text();
+            unidades    = fila.find("td:eq(1)").text();
+            grupo       = fila.find("td:eq(2)").text();
+            caducidad   = fila.find("td:eq(3)").text();
+            lote        = fila.find("td:eq(4)").text();
+            $("#calle").val(medicamento);
+            $("#nombre_inmueble").val(unidades);
+            $("#direccion").val(grupo);
+            $("#tipo_inmueble").val(caducidad);
+            $("#lote").val(lote);
         });
         $(document).on("click", ".btnEditar", function() {
-            fila = $(this).closest("tr");
-            id = fila.find("td:eq(4)").text();
-            calle = fila.find("td:eq(0)").text();
-            inmueble = fila.find("td:eq(1)").text();
-            direccion = fila.find("td:eq(2)").text();
-            tipo_inmueble = fila.find("td:eq(3)").text();
-            $("#calle2").val(calle);
-            $("#nombre_inmueble2").val(inmueble);
-            $("#direccion2").val(direccion);
-            $("#tipo_inmueble2").val(tipo_inmueble);
-            $.ajax({
+            fila        = $(this).closest("tr");
+            id          = fila.find("td:eq(5)").text();
+            medicamento = fila.find("td:eq(0)").text();
+            unidades    = fila.find("td:eq(1)").text();
+            grupo       = fila.find("td:eq(2)").text();
+            caducidad   = fila.find("td:eq(3)").text();
+            lote        = fila.find("td:eq(4)").text();
+            $("#medicamento_2").val(medicamento);
+            $("#unidades_2").val(unidades);
+            $("#id_grupo_2").val(grupo);
+            $("#caducidad_2").val(caducidad);
+            $("#lote_2").val(lote);
+           /*  $.ajax({
+
                 type: "POST",
-                url: BASE_URL + "Inmuebles/Administrar",
+                url: BASE_URL + "inventario/Administrar",
                 data: {
                     peticion: "Consultas_Calle",
                     calle: calle,
@@ -131,12 +134,12 @@ $(function() {
                 document.getElementById("id_calle2").value = datos;
             }).fail(function() {
                 alert("error")
-            })
+            }) */
             $(document).on("click", "#enviar", function() {
 
                 var datos = {
                     id_calle: $("#id_calle2").val(),
-                    nombre_inmueble: $("#nombre_inmueble2").val(),
+                    medicamento: $("#medicamento_2").val(),
                     direccion_inmueble: $("#direccion2").val(),
                     id_tipo_inmueble: $("#tipo_inmueble2").val(),
                     estado: 1,
@@ -145,12 +148,12 @@ $(function() {
                 
                 $.ajax({
                     type: "POST",
-                    url: BASE_URL + "Inmuebles/Administrar",
+                    url: BASE_URL + "inventario/Administrar",
                     data: {
                         datos: datos,
                         peticion: "Administrar",
                         sql: "SQL_03",
-                        accion: "Se ha Actualizado el  Inmueble: " + datos.nombre_inmueble,
+                        accion: "Se ha Actualizado el inventario: " + datos.medicamento,
                     },
                 }).done(function(datos) {
                     if (datos == 1) {

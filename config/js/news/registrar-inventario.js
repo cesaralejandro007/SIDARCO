@@ -3,7 +3,7 @@
             var form = $("#formulario");
             var medicamento = document.getElementById("medicamento");
             var unidades = document.getElementById("unidades");
-            var grupo = document.getElementById("grupo");
+            var grupo = document.getElementById("id_grupo");
             var caducidad = document.getElementById("caducidad");
             var lote      = document.getElementById("lote");
             var mensaje_1 = document.getElementById("mensaje_1");
@@ -14,9 +14,10 @@
             var datos = {
                 medicamento: $("#medicamento").val(),
                 unidades: $("#unidades").val(),
-                grupo: $("#grupo").val(),
+                id_grupo: $("#id_grupo").val(),
                 caducidad: $("#caducidad").val(), 
                 lote:$("#lote").val(),
+                pertenece:1,
                 estado: 1
             };
             var retornar = false;

@@ -35,7 +35,6 @@
                             <th>Grupo</th>
                             <th>Caducidad</th>
                             <th>Lote</th>
-                            <th>Pertenece</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,7 +51,6 @@
                             <th>Grupo</th>
                             <th>Caducidad</th>
                             <th>Lote</th>
-                            <th>Pertenece</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -65,7 +63,7 @@
     <!-- /.content -->
     <!-- /.content -->
 </div>
-<?php include modal."ver-inmueble.php"; ?>
-<?php include modal."editar-inmueble.php"; ?>
+<?php include modal."ver-inventario.php"; ?>
+<?php include modal."editar-inventario.php"; ?>
 <!-- /.content-wrapper -->
 <?php include (call."Fin.php"); ?>

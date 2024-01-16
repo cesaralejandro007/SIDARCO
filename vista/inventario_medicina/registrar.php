@@ -64,7 +64,7 @@
                                     Grupo 
                                 </label>
                                 <div class="input-group">
-                                    <input class="form-control no-simbolos mb-10" id="grupo" name="datos[grupo]"
+                                    <input class="form-control no-simbolos mb-10" id="id_grupo" name="datos[id_grupo]"
                                         placeholder="Grupo al que pertenece el medicamento" type="text" />
                                 </div>
                                 <span id="mensaje_3"></span>
@@ -91,13 +91,13 @@
 
                             <!-- <div class="col-md-6 mt-2">
                                 <label for="tipo_inmueble">
-                                    Lote
+                                    Pertenece
                                 </label>
                                 <div class="input-group">
                                     <input  id="lote" name="datos[lote]" class="form-control no-simbolos solo-letras " placeholder="Lote del inventario" oninput="Limitar(this,20)"/>
                                 </div>
                                 <span id="mensaje_5"></span>
-                            </div> -->
+                            </div>  -->
 
                         </div>
                     </div>
