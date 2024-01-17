@@ -164,8 +164,8 @@ $(document).ready(function() {
                             <th>Cargo</th>
                             <th>Inicio</th>
                             <th>Cierre</th>
-                            <th>Dias de reposo</th>
-                            <th>Semanas de reposo</th>
+                            <th>Dias</th>
+                            <th>Semanas</th>
                             <th>Motivo</th>
                             <th>Diagnostico</th>
                             <th>Medico Tratante</th>
@@ -450,8 +450,8 @@ $(document).ready(function() {
                             <th>Cargo</th>
                             <th>Inicio</th>
                             <th>Cierre</th>
-                            <th>Dias de reposo</th>
-                            <th>Semanas de reposo</th>
+                            <th>Dias</th>
+                            <th>Semanas</th>
                             <th>Motivo</th>
                             <th>Diagnostico</th>
                             <th>Medico Tratante</th>

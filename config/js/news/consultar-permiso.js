@@ -69,28 +69,40 @@ $("#enviar").on("click", function(){
 
 
 
-function editar(id, cedula_persona){
+function editar(id,cedula_persona,fecha_i,fecha_c,motivo,tipo){
+	$("#cedula_persona_editar").val(cedula_persona);
+	$("#motivo_editar").val(motivo);
+	$("#fecha_inicio_editar").val(fecha_i);
+	$("#fecha_cierre_editar").val(fecha_c);
+	$("#tipo_permiso_editar").val(tipo);
 
-  alert(id);
-  alert(cedula_persona)
+  document.getElementById("enviar_actualizacion").onclick =function(){
+    $.ajax({
+      type:'POST',
+      url: BASE_URL+'permisos/editar_permisos',
+      data:{
+        id:id,
+        cedula_persona: $("#cedula_persona_editar").val(),
+        motivo: $("#motivo_editar").val(),
+        fecha_inicio: $("#fecha_inicio_editar").val(),
+        fecha_cierre: $("#fecha_cierre_editar").val(),
+        tipo: $("#tipo_permiso_editar").val(),
+      }
+    }).done(function(result){
+      alert(result);
+			if(result==1){
+				swal({
+				title:"Éxito",
+			   text:"Se han guardado las modificaciones.",
+			   type:"success",
+			  showConfirmButton:false,
+			  timer:3000
+			 });
 
-  var cedula_persona_e=document.getElementById("cedula_persona_editar");
-  cedula_persona_e.innerHTML="Holis";
-
-  $.ajax({
-    type:'POST',
-    url: BASE_URL+'permisos/consultar_id',
-    data:{
-      'datos':id,
-    }
-  }).done(function(result){
-
-    alert(result);
-
-  })
-
-
-  console.log("Prueba");
+				setTimeout(function(){location.reload();},2000);
+      }
+    })
+  }
 }
 
 
