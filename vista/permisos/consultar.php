@@ -132,7 +132,7 @@ $(document).ready(function() {
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-            <button id="btn_registrar" class="btn btn-info" type="button" >Registrar permiso</button>
+            <button id="btn_registrar" class="btn btn-primary" type="button" >Registrar permiso</button>
             <div class="col-lg-12">
 
             <br>
