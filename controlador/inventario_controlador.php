@@ -7,10 +7,12 @@ class Inventario extends Controlador
         parent::__construct();
         //  $this->Cargar_Modelo("inmuebles");
     }
+
     public function Cargar_Vistas()
     {
         $this->Seguridad_de_Session();$this->vista->Cargar_Vistas('inventario_medicina/consultar');
     }
+    
     // ==============================================================================
     public function Establecer_Consultas()
     {
