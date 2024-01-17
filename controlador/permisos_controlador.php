@@ -99,6 +99,9 @@ echo $resultado;
 
 } 
 
+public function editar_permisos(){
+  echo $permisos=$this->modelo->actualizar_permisos($_POST['id'],$_POST['cedula_persona'],$_POST['fecha_inicio'],$_POST['fecha_cierre'],$_POST['motivo'],$_POST['tipo']);
+}
 
 /* public function consultar_info_familia(){
      $familias=$this->modelo->get_familias();
@@ -136,12 +139,14 @@ public function consultar_info_permiso(){
              "ubicacion"            => $pr['nombre_ubi'],
              "cargo"                => $pr['nombre_cargo'],
              "familia"              => $pr['nombre_familia'],
-             "fecha_inicio"         => $pr['fecha_inicio'],
-             "fecha_cierre"         => $pr['fecha_cierre'],
-             "fecha_pro"            => $pr['fecha_pro'],
+             "fecha_inicio"         => $pr['fecha_inicio_form'],
+             "fecha_cierre"         => $pr['fecha_cierre_form'],
+             "dias_de_permisos"     => $pr['dias_de_permisos'],
+             "semanas_de_permisos"  => $pr['semanas_de_permisos'],
+             "fecha_pro"            => $pr['fecha_pro_form'],
              "motivo"               => $pr['motivo'],
              "nombre_permiso_tp"    => $pr['nombre_permiso_tp'],
-             "editar"               => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$pr['id_permiso'].",".$pr['cedula_persona'].")'><em class='fa fa-edit'></em></button>",
+             "editar"               => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$pr['id_permiso'].",".$pr['cedula_persona'].",`".$pr['fecha_inicio']."`,`".$pr['fecha_cierre']."`,`".$pr['motivo']."`,".$pr['tipo_permiso'].")'><em class='fa fa-edit'></em></button>",
              "eliminar"             => "<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$pr['id_permiso']."`)' type='button'><em class='fa fa-trash'></em></button>"
        ];
   }
@@ -284,11 +289,7 @@ public function eliminar_familia(){
   echo json_encode($retornar);
 } 
 
-  public function actualizar_permiso(){
-    $datos_permiso=$_POST['datos'];
-    $resultado= $this->modelo->Actualizar_permisos($datos_permiso);
-    echo $data['responsable_familia'];
-  }
+
 }
 
 ?> 

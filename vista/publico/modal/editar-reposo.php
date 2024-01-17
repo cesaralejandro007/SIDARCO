@@ -83,7 +83,6 @@
 <!-- /.modal-content -->
 </div>
 <!-- /.modal-dialog -->
-<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/consultar-permiso.js"></script>
 </div>
 <!-- /.modal -->
 

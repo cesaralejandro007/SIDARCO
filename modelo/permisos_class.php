@@ -99,7 +99,7 @@
 
     public function get_permisos(){
 
-        $tabla= "SELECT p.*, pr.*, c.*, ub.*, tp.*, p.primer_nombre AS primer_nombre_p, p.primer_apellido AS primer_apellido_p, tp.nombre_permiso as nombre_permiso_tp FROM permisos pr, personas p, cargo_nominal c, ubicaciones ub, tipo_permisos tp WHERE pr.cedula_persona=p.cedula_persona and tp.tipo_permiso=pr.tipo_permiso and p.id_ubicacion = ub.id_ubicacion and p.id_cargo = c.id_cargo";
+        $tabla= "SELECT p.*, pr.*, c.*, ub.*, tp.*, p.primer_nombre AS primer_nombre_p, p.primer_apellido AS primer_apellido_p, tp.nombre_permiso as nombre_permiso_tp, date_format(pr.fecha_inicio, '%d/%m/%Y') as fecha_inicio_form, date_format(pr.fecha_cierre, '%d/%m/%Y') as fecha_cierre_form, date_format(pr.fecha_pro, '%d/%m/%Y') as fecha_pro_form, DATEDIFF(pr.fecha_cierre, pr.fecha_inicio) as dias_de_permisos, FLOOR(DATEDIFF(pr.fecha_cierre, pr.fecha_inicio) / 7) as semanas_de_permisos FROM permisos pr, personas p, cargo_nominal c, ubicaciones ub, tipo_permisos tp WHERE pr.cedula_persona=p.cedula_persona and tp.tipo_permiso=pr.tipo_permiso and p.id_ubicacion = ub.id_ubicacion and p.id_cargo = c.id_cargo";
         $respuesta_arreglo='';
 
         try{
@@ -167,6 +167,33 @@
         } catch (PDOException $e) {
 
             return $this->Capturar_Error($e);
+        }
+    }
+
+    public function actualizar_permisos($id,$cedula,$fecha_i,$fecha_c,$motivo,$tipo)
+    {
+        try {
+            $query = $this->conexion->prepare("UPDATE permisos SET
+                motivo            =:motivo,
+                fecha_inicio       =:fecha_inicio,
+                fecha_cierre       =:fecha_cierre,
+                tipo_permiso       =:tipo_permiso,
+                cedula_persona     =:cedula_persona 
+                WHERE id_permiso  =:id"
+            );
+
+            $query->execute([
+                'motivo'              =>$motivo, 
+                'fecha_inicio'             =>$fecha_i, 
+                'fecha_cierre'      =>$fecha_c,
+                'tipo_permiso'              =>$tipo, 
+                'cedula_persona'      =>$cedula,
+                'id'              =>$id, 
+            ]);
+            return 1;
+
+        } catch (PDOException $e) {
+            return $id;
         }
     }
 
@@ -290,30 +317,6 @@
 
             return true;
 
-        } catch (PDOException $e) {
-            return $this->Capturar_Error($e);
-        }
-    }
-
-
-    public function Actualizar_permisos($data)
-
-    {
-    try {
-            $query = $this->conexion->prepare("UPDATE permisos SET
-                motivo       = :motivo,
-                fecha_inicio = :fecha_inicio,
-                fecha_cierre = :fecha_cierre,
-                tipo_permiso = :tipo_permiso,
-                WHERE id_permiso = :id_permiso"
-            );
-            $query->execute([
-                'motivo'            => $data['motivo'],
-                'fecha_inicio'      => $data['fecha_inicio'],
-                'fecha_cierre'      => $data['fecha_cierre'],
-                'tipo_permiso'      => $data['tipo_permiso']
-            ]);
-            return true;
         } catch (PDOException $e) {
             return $this->Capturar_Error($e);
         }

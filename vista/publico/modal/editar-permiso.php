@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Editar datos del permiso</h4>
-                <button type="button" onclick="location.reload()" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </div> 
             <div class="modal-body">
@@ -13,12 +13,15 @@
 
 
             <div class="col-md-12 mt-2">
-                <label for="cedula_persona">
-                Cédula de la persona
-                </label><span id='valid_1' style="color:red;"></span>
                 <div class="input-group">
-                    <input class="form-control mb-10" id="cedula_persona_editar"  oninput="Limitar(this,20);"
-                    type="text" />
+                    <input list="cedula_p" id="cedula_persona_editar" class="form-control no-simbolos letras_numeros" placeholder="Cedula de Persona" oninput="Limitar(this,15)"/>
+                    <datalist id="cedula_p">
+                        <?php foreach ($this->personas as $persona) {   ?>
+                            <option value="<?php echo $persona["cedula_persona"]; ?>">
+                                <?php echo $persona["primer_nombre"] . " " . $persona["primer_apellido"]; ?>
+                            </option>
+                        <?php  }  ?>
+                    </datalist>
                 </div>
             </div>
             
@@ -54,7 +57,7 @@
             </div>
             
             <div class="col-md-6 mt-2">
-                <label for="tipo_permiso">
+                <label for="tipo_permiso_editar">
                     Tipo de permiso
                 </label><span id='valid_5' style="color:red;"></span>
                 <div class="input-group">
@@ -82,7 +85,6 @@
 <!-- /.modal-content -->
 </div>
 <!-- /.modal-dialog -->
-<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/consultar-permiso.js"></script>
 </div>
 <!-- /.modal -->
 
