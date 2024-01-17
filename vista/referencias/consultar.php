@@ -29,28 +29,33 @@
                 <table id="example1" class="table table-bordered  table-hover">
                     <thead>
                         <tr>
-                            <th>Calle</th>
-                            <th>Direccion</th>
-                            <th>Nombre de Negocio</th>
-                            <th>Propietario</th>
-                            <th>Rif de Negocio</th>
                             <th style="width: 115px;">Acciones</th>
+                            <th>Cedula</th>
+                            <th>Fecha de referencia</th>
+                            <th>Diagnóstico</th>
+                            <th>Informe</th>
+                            <th>Examen</th>
+                            <th>Ubicación</th>
+                            <th>Especialidad</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
                     <tbody>
-                        <script src="<?php echo constant('URL')?>config/js/ajax/Ajax_Consultas_Medicas.js"></script>
+                        <script src="<?php echo constant('URL')?>config/js/ajax/Ajax_Consultas_Referencias.js"></script>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Calle</th>
-                            <th>Direccion</th>
-                            <th>Nombre de Negocio</th>
-                            <th>Propietario</th>
-                            <th>Rif de Negocio</th>
                             <th style="width: 115px;">Acciones</th>
+                            <th>Cédula</th>
+                            <th>Fecha de referencia</th>
+                            <th>Diagnóstico</th>
+                            <th>Informe</th>
+                            <th>Examen</th>
+                            <th>Ubicación</th>
+                            <th>Especialidad</th>
                         </tr>
                     </tfoot>
                 </table>

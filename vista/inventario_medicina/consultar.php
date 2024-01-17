@@ -29,26 +29,28 @@
                 <table id="example1" class="table table-bordered  table-hover">
                     <thead>
                         <tr>
-                            <th>Calle</th>
+                        <th style="width: 115px;">Acciones</th>
                             <th>Nombre de medicamento</th>
                             <th>Unidades</th>
                             <th>Grupo</th>
-                            <th style="width: 115px;">Acciones</th>
+                            <th>Caducidad</th>
+                            <th>Lote</th>
                         </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
                     <tbody>
-                        <script src="<?php echo constant('URL')?>config/js/ajax/Ajax_Consultas_Inmuebles.js"></script>
+                        <script src="<?php echo constant('URL')?>config/js/ajax/Ajax_Consultas_Inventario.js"></script>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Calle</th>
+                        <th style="width: 115px;">Acciones</th>
                             <th>Nombre de medicamento</th>
                             <th>Unidades</th>
                             <th>Grupo</th>
-                            <th style="width: 115px;">Acciones</th>
+                            <th>Caducidad</th>
+                            <th>Lote</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -61,7 +63,7 @@
     <!-- /.content -->
     <!-- /.content -->
 </div>
-<?php include modal."ver-inmueble.php"; ?>
-<?php include modal."editar-inmueble.php"; ?>
+<?php include modal."ver-inventario.php"; ?>
+<?php include modal."editar-inventario.php"; ?>
 <!-- /.content-wrapper -->
 <?php include (call."Fin.php"); ?>

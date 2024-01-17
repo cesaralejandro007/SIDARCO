@@ -32,17 +32,17 @@ class Inventario_Class extends Modelo
 
     private function SQL_01()
     {
-        return "SELECT id_inmueble, nombre_inmueble, direccion_inmueble, c.id_calle, c.nombre_calle, t.id_tipo_inmueble, t.nombre_tipo, i.estado FROM inmuebles i INNER JOIN calles c, tipo_inmueble t WHERE i.estado = 1 AND i.id_calle = c.id_calle AND i.id_tipo_inmueble = t.id_tipo_inmueble";
+        return "SELECT *from inventario";
     }
 
     private function SQL_02()
     {
-        return "INSERT INTO inmuebles (id_calle, nombre_inmueble, direccion_inmueble , id_tipo_inmueble, estado) VALUES (:id_calle, :nombre_inmueble, :direccion_inmueble, :id_tipo_inmueble, :estado)";
+        return "INSERT INTO inventario (medicamento, unidades, id_grupo , caducidad, lote, pertenece, estado ) VALUES (:medicamento, :unidades, :id_grupo, :caducidad, :lote, :pertenece, :estado)";
     }
 
     private function SQL_03()
     {
-        return "UPDATE inmuebles  SET id_calle = :id_calle, nombre_inmueble = :nombre_inmueble, direccion_inmueble = :direccion_inmueble, id_tipo_inmueble = :id_tipo_inmueble, estado = :estado WHERE id_inmueble = :id_inmueble";
+        return "UPDATE inventario  SET medicamento = :medicamento, unidades = :unidades, id_grupo = :id_grupo, caducidad = :caducidad, lote = :lote, pertenece = :pertenece, estado = :estado WHERE id_inventario = :id_inventario";
     }
 
 

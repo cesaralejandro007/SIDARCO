@@ -2,7 +2,6 @@
 
 class Referencias_Class extends Modelo
 {
- 
     public function __construct()
     {
         parent::__construct();
@@ -33,7 +32,8 @@ class Referencias_Class extends Modelo
     private function SQL_01()
     {
 
-        return "SELECT id_negocio, nombre_negocio, direccion_negocio, cedula_propietario, rif_negocio, c.id_calle, c.nombre_calle, n.estado FROM negocios n INNER JOIN calles c WHERE n.estado = 1 AND n.id_calle = c.id_calle";
+        return "SELECT id_referencia, cedula_persona, fecha_referencia, diagnostico, informe, examen, ubicacion, e.id_especialidad, e.nombre_especialidad from referencias_medicas r INNER JOIN especialidades e where e.id_especialidad = r.id_especialidad";
+        /* return "SELECT id_negocio, nombre_negocio, direccion_negocio, cedula_propietario, rif_negocio, c.id_calle, c.nombre_calle, n.estado FROM negocios n INNER JOIN calles c WHERE n.estado = 1 AND n.id_calle = c.id_calle"; */
     }
 
     private function SQL_02()

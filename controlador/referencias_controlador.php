@@ -15,11 +15,10 @@ class Referencias extends Controlador
     } 
     // ==============================================================================
     
-
     public function Establecer_Consultas()
     {
         $this->modelo->__SET("tipo", "0");
-        $this->modelo->__SET("SQL", "SQL_01");$this->datos["negocios"] = $this->modelo->Administrar();
+        $this->modelo->__SET("SQL", "SQL_01");$this->datos["referencias_medicas"] = $this->modelo->Administrar();
         $this->modelo->__SET("SQL", "_01_");
         $this->modelo->__SET("consultar", array("tabla" => "calles", "estado" => 1, "orden" => "nombre_calle"));
         $this->datos["calle"] = $this->modelo->Administrar();
@@ -28,14 +27,12 @@ class Referencias extends Controlador
         $this->vista->datos = $this->datos;
     }
 
-    
-
     public function Administrar($peticion = null)
     {
         $this->Seguridad_de_Session();$this->Establecer_Consultas();
         if (isset($_POST['peticion'])) {$peticion = $_POST['peticion'];} else { $peticion = $peticion[0];}
 
-        switch ($peticion) {
+        switch ($peticion){
             case 'Registros':$this->vista->Cargar_Vistas('referencias/registrar');break;
             case 'Consultas':$this->vista->Cargar_Vistas('referencias/consultar');break;
 
@@ -43,7 +40,7 @@ class Referencias extends Controlador
                 if (isset($_POST['datos'])) {
                     $this->modelo->Datos($_POST['datos']);
                 } else {
-                  /*   $this->modelo->Estado($_POST['estado']);
+                /*   $this->modelo->Estado($_POST['estado']);
                     $this->modelo->Datos([
                         $_POST['estado']["id_tabla"] => $_POST['estado']["param"],
                         "estado"                     => $_POST['estado']["estado"], */
@@ -73,16 +70,6 @@ class Referencias extends Controlador
                 return;
 
                 break;
-
-         /*    case 'Registrar_medic':
-
-                $id_inventario=$_POST['inventario'];
-                echo $this->vista->personas=$this->registrar_consulta_inventario($id_inventario);
-                
-                
-                return;
-    
-                break; */
 
             case 'Consultas_Calle':
                 foreach ($this->datos["calle"] as $key => $value) {
