@@ -33,8 +33,10 @@
                             <th>Nombre de medicamento</th>
                             <th>Unidades</th>
                             <th>Grupo</th>
+                            <th>Fecha de entrada</th>
                             <th>Caducidad</th>
                             <th>Lote</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -49,6 +51,7 @@
                             <th>Nombre de medicamento</th>
                             <th>Unidades</th>
                             <th>Grupo</th>
+                            <th>Fecha de entrada</th>
                             <th>Caducidad</th>
                             <th>Lote</th>
                         </tr>

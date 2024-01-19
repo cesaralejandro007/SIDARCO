@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Contacto de Desarrolladores</h1>
+                    <h1 class="m-0">Contacto de desarrolladores</h1>
                 </div><!-- /.col -->
                 <!-- /.col -->
             </div><!-- /.row -->
@@ -70,13 +70,13 @@
                     <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                         <div class="card bg-light d-flex flex-fill">
                             <div class="card-header text-muted border-bottom-0">
-                                Programador
+                              Web developer
                             </div>
                             <div class="card-body pt-0">
                                 <div class="row">
                                     <div class="col-7">
                                         <h2 class="lead"><b>Cesar Vides</b></h2>
-                                        <p class="text-muted text-sm"><b>Acerca: </b> Diseñador Web / Desarrollador /
+                                        <p class="text-muted text-sm"><b>Acerca: </b> Diseñador Web / Desarrollador y analista de base de dtaos /
                                             Programador. </p>
                                         <ul class="ml-4 mb-0 fa-ul text-muted">
                                             <li class="small"><span class="fa-li"><i
@@ -111,13 +111,13 @@
                     <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                         <div class="card bg-light d-flex flex-fill">
                             <div class="card-header text-muted border-bottom-0">
-                                Diseñadora Web
+                                Web developer
                             </div>
                             <div class="card-body pt-0">
                                 <div class="row">
                                     <div class="col-7">
                                         <h2 class="lead"><b>María Zapata</b></h2>
-                                        <p class="text-muted text-sm"><b>Acerca: </b> Diseñadora Web / Desarrolladora. </p>
+                                        <p class="text-muted text-sm"><b>Acerca: </b> Diseñadora Web / Desarrolladora y analista de base de datos / Programadora. </p>
                                         <ul class="ml-4 mb-0 fa-ul text-muted">
                                             <li class="small"><span class="fa-li"><i
                                                         class="fas fa-lg fa-building"></i></span> Dirección: Brisas del Obelisco</li>

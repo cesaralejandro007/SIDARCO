@@ -101,8 +101,7 @@ class Modelo
     {
 
     return  'INSERT INTO ' . $this->registrar['tabla'] . ' (' . $this->registrar['columna'] . ', estado) VALUES (:' . $this->registrar['columna'] . ', :estado)';
-   
-}
+   }
 
     public function _03_()
     {

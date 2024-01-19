@@ -19,16 +19,13 @@
                                         Medicamento
                                     </label>
                                     <div class="input-group">
-                                        <select class="custom-select" id="medicamento_2" name="datos[medicamento]">
+                                        <input type="text" id="medicamento_2" name="datos[medicameto]" class="form-control">
+                                        <!-- <select class="custom-select" id="medicamento_2" name="datos[medicamento]">
                                         <option>
-                                           Seleccione ...
+                                        Seleccione ...
                                         </option>
-                                    <?php foreach($this->datos["calle"] as $calles){   ?>
-                                        <option value="<?php echo $calles["id_calle"];?>">
-                                            <?php echo $calles["nombre_calle"];?>
-                                        </option>
-                                    <?php  }   ?>
-                                    </select>
+                                        <option value="0"></option>
+                                    </select> -->
                                     </div>
                                 </div>
 
@@ -38,8 +35,8 @@
                                     </label>
                                     <div class="input-group">
                                         <input class="form-control no-simbolos mb-10" id="unidades_2"
-                                            name="datos[unidades]" placeholder="Nombre de Inmueble"
-                                            type="text" oninput="Limitar(this,25)"/>
+                                            name="datos[unidades]" placeholder="Númerode unidades"
+                                            type="number" oninput="Limitar(this,25)"/>
                                     </div>
                                 </div>
 
@@ -49,7 +46,7 @@
                                     </label>
                                     <div class="input-group">
                                         <input class="form-control no-simbolos mb-10" id="id_grupo_2"
-                                            name="datos[id_grupo]" placeholder="Direccion" type="text" />
+                                            name="datos[id_grupo]" placeholder="Grupo" type="text" />
                                     </div>
                                 </div>
 
@@ -58,7 +55,7 @@
                                         Caducidad
                                     </label>
                                     <div class="input-group">
-                                        <input type="date" id="caducidad_2" name="datos[caducidad]" class="form-control no-simbolos solo-letras" placeholder="Tipo de Inmueble" oninput="Limitar(this,20)" />
+                                        <input type="date" id="caducidad_2" name="datos[caducidad]" class="form-control" placeholder="Caducidad" oninput="Limitar(this,20)" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 mt-2">

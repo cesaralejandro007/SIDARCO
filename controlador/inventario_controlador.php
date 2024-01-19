@@ -63,7 +63,7 @@ class Inventario extends Controlador
                     /* } */
                 /* } */
 
-                if ($cont == 0) { 
+               /*  if ($cont == 0) { 
                     $this->modelo->__SET("SQL", "_02_");$this->modelo->__SET("tipo", "1");
                     $this->modelo->__SET("registrar", array("tabla"   => "tipo_inmueble","columna" => "nombre_tipo"));
                     $this->modelo->Datos(["nombre_tipo" => $_POST['datos']["id_tipo_inmueble"], "estado" => 1]);
@@ -83,7 +83,7 @@ class Inventario extends Controlador
                         }
                     }
                 }
-                unset($cont,$id,$_POST,$this->mensaje);
+                unset($cont,$id,$_POST,$this->mensaje); */
                 break;
 
             case 'Consulta_Ajax':$this->Escribir_JSON($this->datos["inventario"]);break;

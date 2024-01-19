@@ -32,7 +32,7 @@ class Inventario_Class extends Modelo
 
     private function SQL_01()
     {
-        return "SELECT *from inventario";
+        return "SELECT id_inventario, medicamento, unidades, id_grupo,  caducidad, lote, date_format(fecha_entrada, '%d/%m/%Y') as fecha_entrada_inv from inventario WHERE estado=1";
     }
 
     private function SQL_02()
@@ -42,7 +42,7 @@ class Inventario_Class extends Modelo
 
     private function SQL_03()
     {
-        return "UPDATE inventario  SET medicamento = :medicamento, unidades = :unidades, id_grupo = :id_grupo, caducidad = :caducidad, lote = :lote, pertenece = :pertenece, estado = :estado WHERE id_inventario = :id_inventario";
+        return "UPDATE inventario  SET medicamento = :medicamento, unidades = :unidades, id_grupo = :id_grupo, caducidad = :caducidad, lote = :lote, fecha_entrada = :fecha_entrada, pertenece = :pertenece, estado = :estado WHERE id_inventario = :id_inventario";
     }
 
 

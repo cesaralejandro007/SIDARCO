@@ -20,10 +20,13 @@ $(function() {
             }, {
                 data: "id_grupo",
             }, {
-                data: "caducidad",
+                data: "fecha_entrada_inv",
             },{
-                data: "lote",
-            },  ],
+                data: "caducidad",
+            }, {
+                data:"lote",
+            },
+            ],
             responsive: true,
             autoWidth: false,
             ordering: true,
@@ -34,7 +37,7 @@ $(function() {
         }).buttons().container().appendTo("#example1_wrapper .col-md-6:eq(0)");
         $("#example1").on("click", ".mensaje-eliminar", function() {
             fila = $(this).closest("tr");
-            id = fila.find("td:eq(5)").text();
+            id = fila.find("td:eq(0)").text();
             var estado = {
                 tabla: "inventario",
                 id_tabla: "id_inventario",
@@ -96,33 +99,33 @@ $(function() {
                 }
             });
         });
-        $(document).on("click", ".ver-popup", function() {
+      /*   $(document).on("click", ".ver-popup", function() {
             fila = $(this).closest("tr");
-            medicamento = fila.find("td:eq(0)").text();
-            unidades    = fila.find("td:eq(1)").text();
-            grupo       = fila.find("td:eq(2)").text();
-            caducidad   = fila.find("td:eq(3)").text();
-            lote        = fila.find("td:eq(4)").text();
+            medicamento = fila.find("td:eq(1)").text();
+            unidades    = fila.find("td:eq(2)").text();
+            grupo       = fila.find("td:eq(3)").text();
+            caducidad   = fila.find("td:eq(4)").text();
+            lote        = fila.find("td:eq(5)").text();
             $("#calle").val(medicamento);
             $("#nombre_inmueble").val(unidades);
             $("#direccion").val(grupo);
             $("#tipo_inmueble").val(caducidad);
             $("#lote").val(lote);
-        });
+        }); */
         $(document).on("click", ".btnEditar", function() {
             fila        = $(this).closest("tr");
-            id          = fila.find("td:eq(5)").text();
-            medicamento = fila.find("td:eq(0)").text();
-            unidades    = fila.find("td:eq(1)").text();
-            grupo       = fila.find("td:eq(2)").text();
-            caducidad   = fila.find("td:eq(3)").text();
-            lote        = fila.find("td:eq(4)").text();
+            id          = fila.find("td:eq(0)").text();
+            medicamento = fila.find("td:eq(1)").text();
+            unidades    = fila.find("td:eq(2)").text();
+            grupo       = fila.find("td:eq(3)").text();
+            caducidad   = fila.find("td:eq(5)").text();
+            lote        = fila.find("td:eq(6)").text();
             $("#medicamento_2").val(medicamento);
             $("#unidades_2").val(unidades);
             $("#id_grupo_2").val(grupo);
             $("#caducidad_2").val(caducidad);
             $("#lote_2").val(lote);
-           /*  $.ajax({
+            /*  $.ajax({
 
                 type: "POST",
                 url: BASE_URL + "inventario/Administrar",
@@ -138,12 +141,14 @@ $(function() {
             $(document).on("click", "#enviar", function() {
 
                 var datos = {
-                    id_calle: $("#id_calle2").val(),
+                   /*  id_calle: $("#id_calle2").val(), */
                     medicamento: $("#medicamento_2").val(),
-                    direccion_inmueble: $("#direccion2").val(),
-                    id_tipo_inmueble: $("#tipo_inmueble2").val(),
+                    unidades:    $("#direccion2").val(),
+                    id_grupo:    $("#tipo_inmueble2").val(),
+                    caducidad:   $("#caducidad_2"),
+                    lote:        $("#lote_2"),
                     estado: 1,
-                    id_inmueble: id,
+                   /*  id_inventario: id, */
                 };
                 
                 $.ajax({
@@ -153,7 +158,7 @@ $(function() {
                         datos: datos,
                         peticion: "Administrar",
                         sql: "SQL_03",
-                        accion: "Se ha Actualizado el inventario: " + datos.medicamento,
+                        accion: "Se ha actualizado el inventario: " + datos.medicamento,
                     },
                 }).done(function(datos) {
                     if (datos == 1) {
