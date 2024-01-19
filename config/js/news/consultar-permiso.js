@@ -43,26 +43,22 @@ $("#enviar").on("click", function(){
     cedula_persona: $("#cedula_persona").val(),
   
   };
-  alert(JSON.stringify(datos));
-
         $.ajax({
           type:'POST',
           url:BASE_URL+'permisos/registrar_permiso',
           data:{
             'datos':datos,
           }
-        }).done(function(result){
-          alert(result);
+        }).done(function(result){ 
+          swal({
+            title:"Registro exitoso",
+            type:"success",
+            text:"Se ha registrado de forma exitosa el permiso",
+            showConfirmButton:false,
+            timer:2000
+          }); 
+          setTimeout(function(){location.href=BASE_URL+"permisos/Registros"},2000);
         })
-
-        swal({
-          title:"Registro exitoso",
-          type:"success",
-          text:"Se ha registrado de forma exitosa el permiso",
-          showConfirmButton:false,
-          timer:2000
-        }); 
-        setTimeout(function(){location.href=BASE_URL+"permisos/Registros"},2000);
 
 })
 })
@@ -89,7 +85,6 @@ function editar(id,cedula_persona,fecha_i,fecha_c,motivo,tipo){
         tipo: $("#tipo_permiso_editar").val(),
       }
     }).done(function(result){
-      alert(result);
 			if(result==1){
 				swal({
 				title:"Éxito",

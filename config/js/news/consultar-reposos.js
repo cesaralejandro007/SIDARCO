@@ -9,11 +9,15 @@
   
   $(document).ready(function(){
   
+	btn_registrar.onclick=function(){
+		$('#agregar').modal().show();
+	  }
+	  
+
   $("#enviarReposo").on("click", function(){
   
 	  /* Cuando utilizas la libreria de jquery debes enviar los datos de la siguiente manera: */
 	var datos= {
-	  
 	  motivo: $("#motivo_r").val(),
 	  fecha_inicio: $("#fecha_inicio_r").val(),
 	  fecha_cierre: $("#fecha_cierre_r").val(),
