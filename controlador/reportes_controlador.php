@@ -506,6 +506,7 @@
                     break;
             }
         }
+
         public function Censos()
         {
             $this->Seguridad_de_Session();
@@ -746,6 +747,13 @@
             $this->Seguridad_de_Session();
             $this->Establecer_Consultas();
             $this->vista->Cargar_Vistas('reportes/historial_familiar');
+        }
+
+        public function reporte_permiso()
+        {
+            $this->Seguridad_de_Session();
+            $this->Establecer_Consultas();
+            $this->vista->Cargar_Vistas('reportes/PDF/reporte_permiso');
         }
 
         public function info_censo_poblacional()

@@ -31,8 +31,6 @@
                     <div class="card-body">
                         <div class="card-block">
                             <div class="form-group row justify-content-center">
-
-
                                 <div class="col-md-6 mt-2">
                                     <label for="familia">
                                         Familia 
@@ -50,7 +48,6 @@
                                         </datalist>
                                     </div>
                                 </div>
-
                                 <div class="col-md-6 mt-2">
                                     <label for="familia">
                                         Censo 
@@ -58,23 +55,18 @@
                                     <div class="input-group">
                                         <select class="custom-select" id="censos" name="censos">
                                         <option> ... </option>
-
                                         <option value="Reportes/Censo_Poblacional">
                                             Censo Poblacional
                                         </option>
-
                                         <option value="Reportes/Reporte_Ninos">
                                             Reporte de Niños
+                                        </option>
+                                        <option value="Reportes/reporte_permiso">
+                                            Reporte de permiso
                                         </option>
                                     </select>
                                     </div>
                                 </div>
-
-
-                                
-
-                                        
-            
                             </div>
                         </div>
                     </div>

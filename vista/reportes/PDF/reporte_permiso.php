@@ -8,40 +8,52 @@
     .datos td {
         border: 1px solid black !important;
     }
-    
 </style>
 
-<title>Censo de niños</title>
+<title>Reporte de permiso</title>
 <script>
+
         window.blur();
         window.print();
 
-    </script>
+</script>
 
 <!-- Contenido de la pagina -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <script>
         /* window.blur();
-             window.print();
+            window.print();
              window.close(); */
     </script>
     <section class="content">
-        <!-- Default box -->
+        <!-- Default box -->    
         <div class="card">
             <!-- card-body -->
             <div class="card-body">
+
                 <table style="width: 100%;">
                     <tr>
                         <td style="width: 10%;"></td>
-                        <td style="width: 80%;">
-                            <center>
-
-                                <img style="width: 100%;" src="<?php echo constant('URL') ?>config/img/web/cintillo.png" alt="">
-                            </center>
-                            <br><br>
+                        <td style="width: 50%;" colspan="1">
+                                <img style="width: 15%;" src="<?php echo constant('URL') ?>config/img/web/logo_seniat.png" alt="">
+                        </td >
+                        <td>
+                            <h6>Solicitud y autorización de permiso o licencia</h6>
+                        </td>   
+                        <td style="width: 1%;">
+                        <h6>1. Fecha de preparación</h6>
+                    </td>
+                
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="3">
+                            
                         </td>
-                        <td style="width: 10%;"></td>
+                        <!-- <h5>TRAER LO QUE ESTA EN LA BASE DE DATOS AQUI</h5> -->
+                        
+                        <td>
                     </tr>
 
                     <tr>
@@ -50,24 +62,70 @@
                             <div style='width:100%;text-align:justify'>
                                 <table class="datos">
                                     <tr>
-                                        <td colspan="4" style="background: #ffff00;">
-                                            <br>
-                                            <center>
-                                                <h3>
-                                                    CENSOS COMUNIDAD PRADOS DE OCCIDENTE DE NIÑOS Y <br> NIÑAS CON
-                                                    EDADES COMPRENDIDAS DE 0 A 12 AÑOS
-                                                </h3>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4">
-                                            <br>
-                                        </td>
-                                    </tr>
-                                    <tr style="background: #ffff00;">
-                                        <td colspan="2">
+                                        <td colspan="3" style="background: #ffff00;">
 
+                                            <h6>
+                                                2. Apellidos y nombres
+                                            </h6>
+                                            
+                                        </td>
+                                        <td>
+
+                                            <h6>
+                                            Nº Cédula
+                                            </h6>
+
+                                        </td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td colspan="3">
+                                        <h6>
+                                            4.Cargo
+                                        </h6>
+                                        </td>
+                                        <td >
+                                            <h6>
+                                            5.Sueldo mensual
+                                            </h6>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="2">
+                                            <h6 >
+                                                6.Gerencia Regional(o Unidad de nivel similar)
+                                            </h6>
+                                        </td>
+                                        <td colspan="2">
+                                            <h6>
+                                                7.División(o Unidad de nivel similar)
+                                            </h6>
+                                        </td>
+                                    </tr>
+
+                                    <!-- <tr>
+                                        <td>
+                                            <h6>
+                                                9.Duración de permiso
+                                            </h6>
+                                        </td>
+                                        <td>
+                                            <h6>
+                                                9. 
+                                            </h6>
+                                        </td>
+                                    </tr> -->
+                                    
+
+                                    <tr style="background: #ffff00;">
+                                        <td colspan="">
+                                            9. Duración del permiso
+
+                                        </td>
+                                        <td>
+                                            h
                                         </td>
                                         <td>
                                             RESPONSABLES DEL CLAP
@@ -76,6 +134,7 @@
                                             CONTACTO
                                         </td>
                                     </tr>
+
                                     <tr>
                                         <td style="background: #ffff00;">
                                             MUNICIPIO
@@ -83,9 +142,11 @@
                                         <td>
                                             IRIBARREN
                                         </td>
+                                    
                                         <td>
                                             DORALIS SIERRALTA
                                         </td>
+
                                         <td>04145581084 </td>
 
 
@@ -99,14 +160,11 @@
 
                                     </tr>
                                     <tr>
-                                        <td style="background: #ffff00;">COMUNIDAD</td>
-                                        <td>PRADO SECTOR 3</td>
-                                        <td></td>
-                                        <td></td>
+                                    
 
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4">
+                                    <!-- </tr>
+                                    <tr> -->
+                                        <td style="width: 100px" colspan="4">
                                             <br>
                                         </td>
                                     </tr>
@@ -156,7 +214,7 @@
 
                                         <tr>
                                             <td>Total:</td>
-                                            <td><?php echo $this->menos_dos_anios['masculino']+$this->dos_a_cinco_anios['masculino']+$this->seis_a_diez_anios['masculino']+$this->once_doce_anios['masculino'] ?></td>
+                                            <td> <?php echo $this->menos_dos_anios['masculino']+$this->dos_a_cinco_anios['masculino']+$this->seis_a_diez_anios['masculino']+$this->once_doce_anios['masculino'] ?></td>
                                             <td>
                                             <?php echo $this->menos_dos_anios['femenino']+$this->dos_a_cinco_anios['femenino']+$this->seis_a_diez_anios['femenino']+$this->once_doce_anios['femenino'] ?>
                                             </td>
@@ -207,7 +265,9 @@
                                         <?php foreach ($this->menores as $value) : ?>
                                             <tr>
                                                 <td><?php echo $cont = $cont + 1; ?></td>
-                                                <td><?php echo $value["primer_nombre"] . " " . $value["primer_apellido"] ?></td>
+                                                <td>
+                                                    <h6>Primer nombre</h6>
+                                                    <?php echo $value["primer_nombre"] . " " . $value["primer_apellido"] ?></td>
                                                 <td><?php echo $value["edad"] ?></td>
                                                 <td><?php echo $value["genero"] ?></td>
                                                 <td><?php echo $value["calle"] ?></td>
