@@ -13,6 +13,34 @@ var mes=fecha_actual.getMonth()+1;
 var dia=fecha_actual.getDate();
 var fecha_pro=anno+'-'+mes+'-'+dia;
 
+//Validación para cedula de persona
+
+cedula_persona.onkeyup=function(){
+
+  $.ajax({
+    type:'POST',
+    URL: BASE_URL+"Permisos/consultar_cedula",
+    data:cedula_persona.value,
+  }).done(function(result){
+    console.log(result);
+    persona_exist=result;
+  })
+
+}
+
+function cedula_existe(){
+
+  if(persona_exist==1){
+    true
+  }else{
+    alert("eta cedula no existe")
+  }
+
+}
+
+//Validación genérica para inputs
+
+
 $(document).ready(function(){
   $('#tipo_permiso').select2();
 });
@@ -26,42 +54,83 @@ btn_registrar.onclick=function(){
 }
 
 
-  /*  Envio de datos de permiso */
 
 $(document).ready(function(){
 
-$("#enviar").on("click", function(){
+  /*  Envio de datos de permiso */
 
-    /* Cuando utilizas la libreria de jquery debes enviar los datos de la siguiente manera: */
-  var datos= {
-    
-    motivo: $("#motivo").val(),
-    fecha_pro:fecha_pro,
-    fecha_inicio: $("#fecha_inicio").val(),
-    fecha_cierre: $("#fecha_cierre").val(),
-    tipo_permiso: $("#tipo_permiso").val(),
-    cedula_persona: $("#cedula_persona").val(),
-  
-  };
-        $.ajax({
-          type:'POST',
-          url:BASE_URL+'permisos/registrar_permiso',
-          data:{
-            'datos':datos,
+  $("#enviar").on("click", function(){
+
+    var cedula_persona = document.getElementById("cedula_persona");
+    var fecha_inicio = document.getElementById("fecha_inicio");
+    var fecha_cierre = document.getElementById("fecha_cierre");
+    var motivo = document.getElementById("motivo");
+    var tipo_permiso = document.getElementById("tipo_permiso");
+
+    function valid_element(mensaje_error, element, span_element){
+      var validado = true;
+      
+      if(element.value == "" || element.value == "vacio"){
+        element.focus();
+        element.style.borderColor = "red";
+        validado = false;
+        span_element.style.display = '';
+        span_element.innerHTML = mensaje_error;
+      }
+      else{
+        element.style.borderColor = "";
+        span_element.style.display = "none";
+      }
+      
+      return validado; 
+    }
+
+    if(valid_element("Debe seleccionar la cédula", cedula_persona, document.getElementById("valid_cedula"))) {
+      if(valid_element("Seleccione fecha de inicio", fecha_inicio, document.getElementById("valid_fi"))) {
+        if(valid_element("Seleccione la fecha de cierre", fecha_cierre, document.getElementById("valid_fc"))) {
+          if(new Date(fecha_inicio.value) > new Date(fecha_cierre.value)) {
+            document.getElementById("valid_fc").innerHTML = "No puede ser menor a la fecha de inicio";
+            document.getElementById("valid_fc").style.display = '';
+            fecha_cierre.style.borderColor = "red";
+          } else {
+            document.getElementById("valid_fc").style.display = 'none';
+            fecha_cierre.style.borderColor = "";
+            if(valid_element("Seleccione el motivo", motivo, document.getElementById("valid_motivo"))) {
+              if(valid_element("Seleccione el tipo de permiso", tipo_permiso, document.getElementById("valid_permiso"))) {
+                var datos = {
+                  motivo: $("#motivo").val(),
+                  fecha_pro: fecha_pro, // Esta variable no parece estar definida
+                  fecha_inicio: $("#fecha_inicio").val(),
+                  fecha_cierre: $("#fecha_cierre").val(),
+                  tipo_permiso: $("#tipo_permiso").val(),
+                  cedula_persona: $("#cedula_persona").val(),
+                };
+                $.ajax({
+                  type: 'POST',
+                  url: BASE_URL + 'permisos/registrar_permiso',
+                  data: {
+                    'datos': datos,
+                  }
+                }).done(function(result){
+                  swal({
+                    title: "Registro exitoso",
+                    type: "success",
+                    text: "Se ha registrado de forma exitosa el permiso",
+                    showConfirmButton: false,
+                    timer: 2000
+                  }); 
+                  setTimeout(function(){
+                    location.href = BASE_URL + "permisos/Registros";
+                  }, 2000);
+                });
+              }
+            }
           }
-        }).done(function(result){ 
-          swal({
-            title:"Registro exitoso",
-            type:"success",
-            text:"Se ha registrado de forma exitosa el permiso",
-            showConfirmButton:false,
-            timer:2000
-          }); 
-          setTimeout(function(){location.href=BASE_URL+"permisos/Registros"},2000);
-        })
-
-})
-})
+        }
+      }
+    }
+  });
+});
 
 
 
@@ -98,6 +167,7 @@ function editar(id,cedula_persona,fecha_i,fecha_c,motivo,tipo){
       }
     })
   }
+  
 }
 
 

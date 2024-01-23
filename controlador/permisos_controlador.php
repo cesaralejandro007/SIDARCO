@@ -132,6 +132,7 @@ public function editar_permisos(){
 public function consultar_info_permiso(){
   $permisos=$this->modelo->get_permisos();
   $retornar=[];
+
   foreach ($permisos as $pr) {
   
       $retornar[]=[
@@ -219,9 +220,9 @@ public function modificar_integrante(){
   
 
 
-public function Consultas_cedula_funcionario()
+public function consultar_cedula()
 {
- $persona=$this->Consultar_Columna("familia_personas","cedula_persona",$_POST['cedula_persona']);
+ $persona=$this->Consultar_Columna("permisos","cedula_persona",$_POST['cedula_persona']);
  if(count($persona)==0){
 
    echo 0;
@@ -230,7 +231,12 @@ public function Consultas_cedula_funcionario()
   echo 1;
  
  }
+
 }
+
+
+
+
 
 public function consultar_familia_datos(){
      

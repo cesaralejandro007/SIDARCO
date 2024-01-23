@@ -22,11 +22,12 @@
                         <div class="form-group row justify-content-center">
                             <div class="col-md-12 mt-2">
                                 <label for="cedula_persona">
-                                    Cédula de Persona
+                                    Cédula de persona
                                 </label>
                                 <div class="input-group">
                                     <input list="cedula_p" id="cedula_persona" class="form-control no-simbolos letras_numeros" placeholder="Cedula de Persona" oninput="Limitar(this,15)"/>
                                     <datalist id="cedula_p">
+                                        <option value="0"></option>
                                         <?php foreach ($this->personas as $persona) {   ?>
                                             <option value="<?php echo $persona["cedula_persona"]; ?>">
                                                 <?php echo $persona["primer_nombre"] . " " . $persona["primer_apellido"]; ?>
@@ -34,14 +35,16 @@
                                         <?php  }  ?>
                                     </datalist>
                                 </div>
-
+                                <span style="color:red;" id="valid_cedula"></span>
                             </div>
 
                             <div class="col-md-6 mt-2">
                                 <label for="fecha_incio">Fecha de inicio</label>
                                 <div class="input-group">
                                     <input type="date" class="form-control" id="fecha_inicio"  placeholder="Indique la fecha de inicio">
+                                    
                                 </div>
+                                <span style="color:red" id="valid_fi"></span>
                             </div>
 
                             <div class="col-md-6 mt-2">
@@ -49,6 +52,7 @@
                                 <div class="input-group">
                                     <input type="date" class="form-control" id="fecha_cierre" placeholder="Indique la fecha de cierre">
                                 </div>
+                                <span style="color:red" id="valid_fc"></span>
                             </div>
 
                             <div class="col-md-6 mt-2" >
@@ -56,18 +60,21 @@
                                 <div class="input-group">
                                     <input type="text" id="motivo" class="form-control" placeholder="Escriba el motivo del permiso">
                                 </div>
+                                <span style="color:red" id="valid_motivo"></span>
+
                             </div>
 
                             <div class="col-md-6 mt-2">
                                 <label for="tipo_permiso">Tipo de permiso</label>
                                 <div class="input-group">
                                     <select  id="tipo_permiso" class="form-control" style="width: 360px height: 30px" >
-                                        <option value="0" >-Seleccione-</option>
+                                        <option value="vacio" >-Seleccione-</option>
                                     <?php foreach($this->tipo_permisos as $per) {?>
                                     <option value="<?php echo $per["tipo_permiso"]; ?>"><?php echo $per["nombre_permiso"]; ?></option>
                                     <?php }?>
                                     </select>
                                 </div>
+                                <span style="color:red" id="valid_permiso"></span>
                             </div>
     
 

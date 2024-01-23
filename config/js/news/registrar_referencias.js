@@ -177,27 +177,6 @@ $(document).ready(function() {
         var mensaje_especialidad=document.getElementById("mensaje_referido");
         var mensaje_diagnostico=document.getElementById("mensaje_diagnostico");
         var retornar = false; 
-        
-/* if(valid_element("La fecha_referencia no debe ser mayor a la fecha_referencia actual", fecha_referencia ,document.getElementById("mensaje_fecha_referencia") )){
-    if(new Date(fecha_referencia.value)>new Date()){
-        document.getElementById("mensaje_fecha_referencia").innerHTML="Fecha invalida";
-        document.getElementById("mensaje_fecha_referencia").style.display='';
-        fecha_referencia.style.boderColor="red";
-    }
-    else{
-        document.getElementById("mensaje_fecha_referencia").style.display="none";
-        document.getElementById("mensaje_fecha_referencia").innerHTML="Ingrese fecha_referencia";
-        fecha_referencia.style.borderColor="";
-    }
-} */
-
-
-/* if(datos_medicamento!=0){
-
-    alert(datos_medicamento);
-    
-    registrar_medicamento_consulta();
-}  */
 
 
 

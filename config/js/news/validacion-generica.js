@@ -89,7 +89,7 @@ function Filtro(d,sep,pat,nums){
 }
 }
 
-function validarkeypress(er,e){
+ function validarkeypress(er,e){
     
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key);
@@ -112,4 +112,5 @@ mensaje){
     else{
         $(etiquetamensaje).text(mensaje);
     }
-}
+} 
+
