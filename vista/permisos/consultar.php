@@ -27,7 +27,7 @@
                                 <div class="input-group">
                                     <input list="cedula_p" id="cedula_persona" class="form-control no-simbolos letras_numeros" placeholder="Cedula de Persona" oninput="Limitar(this,15)"/>
                                     <datalist id="cedula_p">
-                                        <option value="0"></option>
+                                        
                                         <?php foreach ($this->personas as $persona) {   ?>
                                             <option value="<?php echo $persona["cedula_persona"]; ?>">
                                                 <?php echo $persona["primer_nombre"] . " " . $persona["primer_apellido"]; ?>

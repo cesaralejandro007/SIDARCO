@@ -264,12 +264,12 @@ public function Consultas_cedula_integrante()
     
        /* $this->Escribir_JSON($persona);  */
       
-   
-   }
+  
+  }
     else{
       if(count($persona)==0) 
       {
-       
+      
         echo 0; 
       
       /*   echo 2; */

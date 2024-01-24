@@ -17,6 +17,7 @@ var fecha_pro=anno+'-'+mes+'-'+dia;
 
 cedula_persona.onkeyup=function(){
 
+
   $.ajax({
     type:'POST',
     URL: BASE_URL+"Permisos/consultar_cedula",
@@ -24,6 +25,7 @@ cedula_persona.onkeyup=function(){
   }).done(function(result){
     console.log(result);
     persona_exist=result;
+   /*  alert(persona_exist); */
   })
 
 }
@@ -32,9 +34,19 @@ function cedula_existe(){
 
   if(persona_exist==1){
     true
-  }else{
-    alert("eta cedula no existe")
-  }
+  }else{ 
+
+      swal({
+      title:"¡Error!",
+      type:"error",
+      text:"La cédula no existe",
+      showConfirmButton: false,
+      timer:2000
+    });
+    setTimeout(function(){
+       location.href=BASE_URL+"permisos/Registros" 
+    },2000)
+  } 
 
 }
 
@@ -84,10 +96,11 @@ $(document).ready(function(){
       
       return validado; 
     }
-
-    if(valid_element("Debe seleccionar la cédula", cedula_persona, document.getElementById("valid_cedula"))) {
-      if(valid_element("Seleccione fecha de inicio", fecha_inicio, document.getElementById("valid_fi"))) {
-        if(valid_element("Seleccione la fecha de cierre", fecha_cierre, document.getElementById("valid_fc"))) {
+    
+    if(valid_element("Debe seleccionar la cédula", cedula_persona, document.getElementById("valid_cedula"))){ 
+      if(cedula_existe()){ 
+      if(valid_element("Seleccione fecha de inicio", fecha_inicio, document.getElementById("valid_fi"))){
+        if(valid_element("Seleccione la fecha de cierre", fecha_cierre, document.getElementById("valid_fc"))){
           if(new Date(fecha_inicio.value) > new Date(fecha_cierre.value)) {
             document.getElementById("valid_fc").innerHTML = "No puede ser menor a la fecha de inicio";
             document.getElementById("valid_fc").style.display = '';
@@ -97,13 +110,16 @@ $(document).ready(function(){
             fecha_cierre.style.borderColor = "";
             if(valid_element("Seleccione el motivo", motivo, document.getElementById("valid_motivo"))) {
               if(valid_element("Seleccione el tipo de permiso", tipo_permiso, document.getElementById("valid_permiso"))) {
+
                 var datos = {
+
                   motivo: $("#motivo").val(),
-                  fecha_pro: fecha_pro, // Esta variable no parece estar definida
+                  fecha_pro: fecha_pro, 
                   fecha_inicio: $("#fecha_inicio").val(),
                   fecha_cierre: $("#fecha_cierre").val(),
                   tipo_permiso: $("#tipo_permiso").val(),
                   cedula_persona: $("#cedula_persona").val(),
+
                 };
                 $.ajax({
                   type: 'POST',
@@ -128,7 +144,8 @@ $(document).ready(function(){
           }
         }
       }
-    }
+    } 
+  }
   });
 });
 
