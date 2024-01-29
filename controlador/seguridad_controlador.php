@@ -95,6 +95,8 @@ class Seguridad extends Controlador
         $_SESSION['Historial_clinico'] = $permisos[16];
         $_SESSION['Presion_arterial']  = $permisos[17];
         $_SESSION['Consultas']         = $permisos[18];
+        $_SESSION['Permisos']          = $permisos[19];
+
 
 
         echo json_encode($permisos); //json_encode($permisos);

@@ -2,7 +2,6 @@
 <?php include call . "data-table.php";?>
 
 
-
 <div class="modal fade" id="agregar">
     <div class="modal-dialog modal-ls">
         <div class="modal-content">
@@ -128,16 +127,17 @@ $(function() {
         var div_discapacidades = document.getElementById("presiones_agregadas"); */
         $("#example1").DataTable({
             "data": data,
-            "columns": [<?php if ($_SESSION['Discapacitados']['modificar']) {?> {
+            "columns": [
+                <?php if ($_SESSION['Discapacitados']['modificar']) {?> {
                     "data": "editar"
                 }, <?php }?>
                 <?php if ($_SESSION['Discapacitados']['eliminar']) {?> {
                     "data": "eliminar"
                 }
                 <?php }?>, {
-                    "data": "cedula_persona"
+                    "data": "cedula"
                 }, {
-                    "data": "fecha_presion"
+                    "data": "fecha"
                 }, {
                     "data": "t_a"
                 }, {
@@ -161,7 +161,7 @@ $(function() {
             $('#cedula').val(cedula);
             $('#nombre').val(nombre);
         });
-        
+
         $(document).on('click', '#enviar', function() {
             $.ajax({
                 type: "POST",
@@ -204,7 +204,7 @@ $(function() {
 </tbody>
 <tfoot>
     <tr>
-    <?php if ($_SESSION['Discapacitados']['modificar']) {?>
+   <!--  <?php if ($_SESSION['Discapacitados']['modificar']) {?> -->
         <th style="width: 20px;">Editar</th>
     <?php }?>
     <?php if ($_SESSION['Discapacitados']['eliminar']) {?>

@@ -19,13 +19,18 @@ cedula_persona.onkeyup=function(){
 
 
   $.ajax({
+
     type:'POST',
     URL: BASE_URL+"Permisos/consultar_cedula",
     data:cedula_persona.value,
   }).done(function(result){
     console.log(result);
+
     persona_exist=result;
+
+
    /*  alert(persona_exist); */
+
   })
 
 }

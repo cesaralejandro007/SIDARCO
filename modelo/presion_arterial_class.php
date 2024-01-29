@@ -39,7 +39,7 @@ class presion_arterial_Class extends Modelo
 
     private function SQL_01()
     {
-        return "SELECT * FROM presiones_arteriales WHERE estado=1";
+        return "SELECT concat(DATE_FORMAT(fecha_presion, '%d/%m/%Y'),' ', TIME_FORMAT(fecha_presion, '%H:%i:%s') ) AS fecha_hora, cedula_persona, fecha_presion, t_a, f_c, nota FROM presiones_arteriales WHERE estado=1";
     }
 
     private function SQL_02()
@@ -52,10 +52,11 @@ class presion_arterial_Class extends Modelo
         return "SELECT p.cedula_persona,p.primer_nombre,p.primer_apellido FROM personas p WHERE p.estado = 1 ORDER BY p.cedula_persona ASC";
     }
 
-  /*   private function SQL_04()
+    private function SQL_04()
     {
         return "SELECT D.*,DP.* FROM discapacidad D, discapacidad_persona DP WHERE DP.id_discapacidad=D.id_discapacidad AND D.estado=1";
     }
+     /*
 
     private function SQL_05()
     {

@@ -12,19 +12,20 @@ var span_persona = document.getElementById("nombre_persona");
 var div_info = document.getElementById("second");
 var btn_presion_arterial = document.getElementById("btn_presion_arterial");
 
-/*  function desabilitar() {
-  var enviarboton = document.getElementById("enviar");
-  enviarboton.disabled = true;
-}  */
 
 function desabilitar2(){
     var mostrarmodal=document.getElementById("btn_presion_arterial");
     mostrarmodal.disabled= true;
 }
 
- btn_presion_arterial.onclick = function() {
+btn_presion_arterial.onclick = function() {
   $("#agregar").modal().show();
 } 
+
+/*  function desabilitar() {
+  var enviarboton = document.getElementById("enviar");
+  enviarboton.disabled = true;
+}  */
 
 /* btn_seleccionar.onclick = function() {
   if (persona.value == '' || persona.value == null) {
@@ -58,21 +59,29 @@ function desabilitar2(){
   }
 } */
 
+eliminar.onclick(function(){
+
+  $.ajax({
+    
+  })
+})
+
 $(document).ready(function() {
   $("#enviar").on("click", function() {
-   /*  if (fecha_hora.value == '') {
-      valid_fecha.innerHTML = 'Debe seleccionar una fecha y hora';
-      fecha_hora.style.borderColor = 'red';
-      valid_fecha.style.color = 'red';
-      fecha_hora.focus();
-    } else {
-      valid_persona.innerHTML = '';
-      persona.style.borderColor = ''; */
+
+    persona.onclick(function(){
+      $.ajax({
+        type: 'POST',
+        url: BASE_URL+"presion_arterial/",
+        data: persona,
+      }).done(function(result){
+        result;
+      })
+    });
 
       var datos = {
         cedula_persona: $("#cedula_propietario").val(),
-/*         fecha_presion: $("#fecha_presion").val(),
- */        t_a: $("#t_a").val(),
+        t_a: $("#t_a").val(),
         f_c: $("#f_c").val(),
         nota: $("#nota").val(),
         estado: 1

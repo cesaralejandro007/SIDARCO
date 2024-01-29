@@ -20,7 +20,7 @@ class Discapacitados_Class extends Modelo
                     return $this->Ejecutar_Tarea();
                     break;
                 default:
-                    die('[Error 400] => "La Peticion es Incorrecta, solo se permite peticion de tipo 0/1."');
+                    die('[Error 400] => "La Peticion es incorrecta, solo se permite peticion de tipo 0/1."');
                     break;
             }
         } catch (PDOException $e) {
