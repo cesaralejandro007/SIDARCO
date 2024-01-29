@@ -4,7 +4,7 @@
 
 
 <div class="modal fade" id="agregar">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-ls">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Registrar presión arterial</h4>
@@ -26,8 +26,8 @@
                                             <option value='<?php echo $p['cedula_persona'];?>'><?php echo $p['primer_nombre']." ".$p['segundo_nombre']; ?></option>
                                         <?php } ?>
                                     </datalist></td>
-                                    <td><button type='button' class="btn btn-info" id='seleccionar_persona'>Seleccionar</button></td> 
-                                    </tr>
+<!--                                     <td><button type='button' class="btn btn-info" id='seleccionar_persona'>Seleccionar</button></td> 
+ -->                                    </tr>
                                 </table>
                             </div>
 
@@ -36,11 +36,6 @@
                                     <div class="col-md-12">
                                         <label>Historial de presión arterial de <span id='nombre_persona'></span></label>
                                         <table style='width:100%'><tr>
-                                            <td>
-                                                
-                                                <input type="date" class='form-control ' id='fecha_presion' placeholder="Fecha y hora" name="datos[fecha_hora]">
-                                                <span id='valid_fecha_hora' style='color:red'></span>
-                                            </td>
                                             <td>
                                             <span id='valid_tension' style='color:red'></span>
                                             <input type="text" class='form-control ' id='t_a' placeholder="Tensión arterial" name="datos[tension]">
@@ -104,15 +99,18 @@
                 <table id="example1" class="table table-bordered  table-hover">
                     <thead>
                         <tr>
-                            <th>Cedula</th>
-                            <th>Nombre</th>
-                            <th>Fecha y hora</th>
-                            <?php if ($_SESSION['Discapacitados']['modificar']) {?>
+                        <?php if ($_SESSION['Discapacitados']['modificar']) {?>
                                 <th style="width: 20px;">Editar</th>
                             <?php }?>
                             <?php if ($_SESSION['Discapacitados']['eliminar']) {?>
                                 <th style="width: 20px;">Eliminar</th>
                             <?php }?>
+                            <th>Cédula</th>
+                            <th>Fecha de presión</th>
+                            <th>Tensión arterial</th>
+                            <th>Frecuencia cardiaca</th>
+                            <th>Nota</th>
+                        
                         </tr>
                     </thead>
                     <tbody>
@@ -126,23 +124,27 @@ $(function() {
         },
     }).done(function(datos) {
         var data = JSON.parse(datos);
-        var discapacidades = [];
-        var div_discapacidades = document.getElementById("presiones_agregadas");
+        /* var discapacidades = [];
+        var div_discapacidades = document.getElementById("presiones_agregadas"); */
         $("#example1").DataTable({
             "data": data,
-            "columns": [{
-                    "data": "cedula"
-                }, {
-                    "data": "nombre"
-                }, {
-                    "data": "fecha_presion"
-                }, <?php if ($_SESSION['Discapacitados']['modificar']) {?> {
+            "columns": [<?php if ($_SESSION['Discapacitados']['modificar']) {?> {
                     "data": "editar"
                 }, <?php }?>
                 <?php if ($_SESSION['Discapacitados']['eliminar']) {?> {
                     "data": "eliminar"
                 }
-                <?php }?>
+                <?php }?>, {
+                    "data": "cedula_persona"
+                }, {
+                    "data": "fecha_presion"
+                }, {
+                    "data": "t_a"
+                }, {
+                    "data": "f_c"
+                },{
+                    "data": "nota"
+                }
             ],
             "responsive": true,
             "autoWidth": false,
@@ -159,67 +161,7 @@ $(function() {
             $('#cedula').val(cedula);
             $('#nombre').val(nombre);
         });
-        $(document).on('click', '#agregar', function() {
-            if (( discapacidad_input.value == '') || ( discapacidad_select.value == 'vacio')) {
-                valid_discapacidad.innerHTML = 'Ingrese la discapacidad';
-                /* discapacidad_input.style.borderColor = 'red'; */
-              /*   discapacidad_input.focus(); */
-            } else {    
-                valid_discapacidad.innerHTML = '';
-                /* discapacidad_input.style.borderColor = ''; */
-                var disc = new Object();
-                var textoDiscapacidad = "";
-                var textoNecesidades = necesidades.value;
-                var textoObservaciones = observaciones.value;
-                var textoEnCama = en_cama.options[en_cama.selectedIndex].text;
-                var en_cama_valor = en_cama.value;
-   /*              discapacidad_input.style.display != 'none' ? disc['discapacidad'] = discapacidad_input.value : disc['discapacidad'] = discapacidad_select.value;
-                discapacidad_input.style.display != 'none' ? textoDiscapacidad = discapacidad_input.value : textoDiscapacidad = discapacidad_select.options[discapacidad_select.selectedIndex].text;
-                discapacidad_input.style.display != 'none' ? disc['nuevo'] = '1' : disc['nuevo'] = '0'; */
-                disc['en_cama'] = en_cama_valor;
-                textoNecesidades == '' ? disc['necesidades'] = "No posee" : disc['necesidades'] = textoNecesidades;
-                textoObservaciones == '' ? disc['observaciones'] = "No posee" : disc['observaciones'] = textoNecesidades;
-                var div = document.createElement("div");
-                var table = document.createElement("table");
-                table.style.width = '100%';
-                var tr = document.createElement("tr");
-                var td1 = document.createElement("td");
-                var td2 = document.createElement("td");
-                var td3 = document.createElement("td");
-                var td4 = document.createElement("td");
-                var td5 = document.createElement("td");
-                td5.style.textAlign = 'right';
-                td1.innerHTML = textoDiscapacidad;
-                td2.innerHTML = textoEnCama;
-                td3.innerHTML = textoNecesidades;
-                td4.innerHTML = textoObservaciones;
-                necesidades.value = '';
-                observaciones.value = '';
-                discapacidad_select.value = 'vacio';
-                discapacidad_input.value = '';
-                en_cama.value = 'vacio';
-                var button = document.createElement("input");
-                button.type = 'button';
-                button.value = 'X';
-                button.className = 'btn btn-danger';
-                td5.appendChild(button);
-                tr.appendChild(td1);
-                tr.appendChild(td2);
-                tr.appendChild(td3);
-                tr.appendChild(td4);
-                tr.appendChild(td5);
-                table.appendChild(tr);
-                div.appendChild(table);
-                var hr = document.createElement("hr");
-                discapacidades.push(disc);
-                div.appendChild(hr);
-               /*  div_discapacidades.appendChild(div); */
-                button.onclick = function() {
-                    div_discapacidades.removeChild(div);
-                    discapacidades.splice(discapacidades.indexOf(disc), 1);
-                }
-            }
-        });
+        
         $(document).on('click', '#enviar', function() {
             $.ajax({
                 type: "POST",
@@ -254,23 +196,6 @@ $(function() {
                 }
             });
         });
-        $(document).on('click', '#btn_nueva_discapacidad', function() {
-            if (discapacidad_input.style.display == 'none') {
-                valid_discapacidad.innerHTML = '';
-                discapacidad_input.style.display = '';
-                discapacidad_select.style.display = 'none';
-                discapacidad_select.value = 'vacio';
-                discapacidad_input.focus();
-                btn_nueva_discapacidad.innerHTML = 'Atrás';
-            } else {
-                valid_discapacidad.innerHTML = '';
-                discapacidad_input.style.display = 'none';
-                discapacidad_select.style.display = '';
-                discapacidad_input.value = '';
-                discapacidad_select.focus();
-                btn_nueva_discapacidad.innerHTML = 'Nueva discapacidad';
-            }
-        });
     }).fail(function() {
         alert("error")
     })
@@ -279,15 +204,18 @@ $(function() {
 </tbody>
 <tfoot>
     <tr>
-       <th>Cedula</th>
-       <th>Nombre</th>
-       <th>Fecha y hora</th>
-       <?php if ($_SESSION['Discapacitados']['modificar']) {?>
+    <?php if ($_SESSION['Discapacitados']['modificar']) {?>
         <th style="width: 20px;">Editar</th>
     <?php }?>
     <?php if ($_SESSION['Discapacitados']['eliminar']) {?>
         <th style="width: 20px;">Eliminar</th>
     <?php }?>
+       <th>Cédula</th>
+       <th>Fecha de presión</th>
+       <th>Tensión arterial</th>
+       <th>Frecuencia cardiaca</th>
+       <th>Nota</th>
+     
 </tr>
 </tfoot>
 </table>

@@ -360,20 +360,20 @@
                         <ul class="nav nav-treeview">
                             <?php if ($_SESSION['Discapacitados']['registrar'] == '1') { ?>
                                 <li class="nav-item" onclick="cambio_modulo('Registrar presion arterial')">
-                                    <a href="<?php echo constant('URL'); ?>presion_arterial/Administrar/Registros/" class="nav-link">
+                                    <a href="<?php echo constant('URL'); ?>presion_arterial/Administrar/Consultas/" class="nav-link">
                                         <i class="fa fa-plus-circle nav-icon" style="color:#EEA000"></i>
                                         <p>Registrar y consultar PA</p>
                                     </a>
                                 </li>
                             <?php } ?>
-                            <?php if ($_SESSION['Discapacitados']['consultar'] == '1') { ?>
+                            <!-- <?php if ($_SESSION['Discapacitados']['consultar'] == '1') { ?>
                                 <li class="nav-item" onclick="cambio_modulo('Consultar presion_arterial')">
                                     <a href="<?php echo constant('URL'); ?>presion_arterial/Administrar/Consultas/" class="nav-link">
                                         <i class="fa fa-list nav-icon text-info"></i>
                                         <p>Consultar presión arterial</p>
                                     </a>
                                 </li>
-                            <?php } ?>  
+                            <?php } ?>   -->
                         </ul>
                     </li>
                 <?php } ?>

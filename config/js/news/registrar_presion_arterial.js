@@ -71,8 +71,8 @@ $(document).ready(function() {
 
       var datos = {
         cedula_persona: $("#cedula_propietario").val(),
-        fecha_presion: $("#fecha_presion").val(),
-        t_a: $("#t_a").val(),
+/*         fecha_presion: $("#fecha_presion").val(),
+ */        t_a: $("#t_a").val(),
         f_c: $("#f_c").val(),
         nota: $("#nota").val(),
         estado: 1

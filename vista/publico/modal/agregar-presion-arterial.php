@@ -128,4 +128,3 @@
     <!-- /.modal-dialog --> 
 </div>
 <!-- /.modal -->
-<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/registrar_presion_arterial.js"></script> 

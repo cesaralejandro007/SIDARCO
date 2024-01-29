@@ -18,7 +18,7 @@ class presion_arterial extends Controlador
         //Método mágico __set ASIGNAMOS EL VALOR 
         $this->modelo->__SET("tipo", "0");
         $this->modelo->__SET("SQL", "SQL_03");$this->datos["personas"] = $this->modelo->Administrar();
-        $this->modelo->__SET("SQL", "SQL_01");$this->datos["presion_arterial"] = $this->modelo->Administrar();
+        $this->modelo->__SET("SQL", "SQL_01");$this->datos["presiones_arteriales"] = $this->modelo->Administrar();
        /*  $this->modelo->__SET("SQL", "SQL_04");$this->datos["discapacidades"] = $this->modelo->Administrar(); */
        /*  $this->modelo->__SET("SQL", "SQL_02");$this->datos["discapacitados"] = $this->modelo->Administrar(); */
         $this->vista->datos = $this->datos;

@@ -44,7 +44,7 @@ class presion_arterial_Class extends Modelo
 
     private function SQL_02()
     {
-        return "INSERT INTO presiones_arteriales (cedula_persona, fecha_presion, t_a, f_c, nota, estado) VALUES (:cedula_persona, :fecha_presion, :t_a, :f_c, :nota, :estado)";
+        return "INSERT INTO presiones_arteriales (cedula_persona, t_a, f_c, nota, estado) VALUES (:cedula_persona, :t_a, :f_c, :nota, :estado)";
     }
 
     private function SQL_03()
