@@ -39,7 +39,7 @@ class presion_arterial_Class extends Modelo
 
     private function SQL_01()
     {
-        return "SELECT concat(DATE_FORMAT(fecha_presion, '%d/%m/%Y'),' ', TIME_FORMAT(fecha_presion, '%H:%i:%s') ) AS fecha_hora, cedula_persona, fecha_presion, t_a, f_c, nota FROM presiones_arteriales WHERE estado=1";
+        return "SELECT concat(DATE_FORMAT(fecha_presion, '%d/%m/%Y'),' ', TIME_FORMAT(fecha_presion, '%H:%i:%s') ) AS fecha_hora, p.cedula_persona, fecha_presion, t_a, f_c, nota, p.primer_nombre, p.primer_apellido,  FLOOR(DATEDIFF(CURDATE(), p.fecha_nacimiento) /365) AS edad, p.genero FROM presiones_arteriales pa, personas p WHERE pa.estado=1 and pa.cedula_persona=p.cedula_persona";
     }
 
     private function SQL_02()

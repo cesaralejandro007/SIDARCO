@@ -104,7 +104,9 @@
                             <?php if ($_SESSION['Discapacitados']['eliminar']) {?>
                                 <th style="width: 20px;">Eliminar</th>
                             <?php }?>
-                            <th>Cédula</th>
+                            <th>Cédula - Nombre y apellido</th>
+                            <th>Edad</th>
+                            <th>Género</th>
                             <th>Fecha de presión</th>
                             <th>Tensión arterial</th>
                             <th>Frecuencia cardiaca</th>
@@ -123,6 +125,15 @@ $(function() {
         },
     }).done(function(datos) {
         var data = JSON.parse(datos);
+        console.log(data);
+    var table = $("#example1").DataTable({
+        dom: "B<'row'<'col-sm-6'><'col-sm-6'f>>" +
+      "<'row'<'col-sm-12'tr>>" +
+      "<'row'<'col-sm-5'li><'col-sm-7'p>>",
+      orderCellsTop: true,
+      fixedHeader: true,    
+        "data": data,
+    })
         /* var discapacidades = [];
         var div_discapacidades = document.getElementById("presiones_agregadas"); */
         $("#example1").DataTable({
@@ -135,8 +146,12 @@ $(function() {
                     "data": "eliminar"
                 }
                 <?php }?>, {
-                    "data": "cedula"
+                    "data": "cedula_nombre"
                 }, {
+                    "data":"edad"
+                },{
+                    "data":"genero"
+                },{
                     "data": "fecha"
                 }, {
                     "data": "t_a"
@@ -210,7 +225,9 @@ $(function() {
     <?php if ($_SESSION['Discapacitados']['eliminar']) {?>
         <th style="width: 20px;">Eliminar</th>
     <?php }?>
-       <th>Cédula</th>
+       <th>Cédula - Nombre y apellido</th>
+       <th>Edad</th>
+       <th>Género</th>
        <th>Fecha de presión</th>
        <th>Tensión arterial</th>
        <th>Frecuencia cardiaca</th>

@@ -59,12 +59,21 @@ btn_presion_arterial.onclick = function() {
   }
 } */
 
-eliminar.onclick(function(){
+function eliminar(id){
 
   $.ajax({
+  type: "POST",
+  url: BASE_URL+"presion_arterial/",
+  data:{
+    datos: id,
+    peticion:"Administrar/",
+    sql:"",
+    accion:" ",
+
+  }
     
   })
-})
+}
 
 $(document).ready(function() {
   $("#enviar").on("click", function() {

@@ -67,7 +67,9 @@ class presion_arterial extends Controlador
                    /*  $discapacidades_p = "<div style='overflow-y:scroll;width:100%;height:100px;background:#D4E6F4;'>" . $discapacidades_p . "</div></table>"; */
 
                     $retornar[] = [
-                        "cedula"         => $p['cedula_persona'],
+                        "cedula_nombre"  => $p['cedula_persona']." ".$p['primer_nombre']." ".$p['primer_apellido'],
+                        "edad"           => $p['edad'],
+                        "genero"         => $p['genero'],
                         "fecha"          => $p['fecha_hora'],
                         "t_a"            => $p['t_a'],
                         "f_c"            => $p['f_c'],
