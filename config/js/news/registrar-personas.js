@@ -1320,7 +1320,6 @@ function persona_existe(){
     return true;
   }
 
-
   if(persona_existente==1){
 
     swal({

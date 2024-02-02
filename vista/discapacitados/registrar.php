@@ -32,16 +32,16 @@
                         <div class="col-md-12">
                          <label>Persona</label> <span id='valid_persona' style='color:red'></span>
                          <table style='width:100%'><tr><td>
-                            <input type="number" maxlength="15" placeholder="Buscar cédula" class='form-control no-simbolos letras_numeros' id='persona' name="" list='lista_personas' oninput="Limitar(this,15)">
+                            <input type="text" maxlength="15" placeholder="Buscar cédula" class='form-control no-simbolos letras_numeros' id='persona' name="" list='lista_personas' oninput="Limitar(this,15)">
 
                             <datalist id='lista_personas'>
                                  <?php foreach ($this->datos["personas"] as $p) { ?>
                                     <option value='<?php echo $p['cedula_persona'];?>'><?php echo $p['primer_nombre']." ".$p['segundo_nombre']; ?></option>
                                  <?php  } ?>
                              </datalist></td>
-                             <td><button type='button' id='registrar_btn' class="btn btn-info" onclick='window.open(BASE_URL+"Personas/Registros")'>Registrar</button></td>
+                             <td><button type='button' id="seleccionar_persona" class="btn btn-info">Validar cédula</button></td>
 
-                             <td><button type='button' class="btn btn-info" id='seleccionar_persona'>Seleccionar</button></td>
+                           <!--   <td><button type='button' class="btn btn-info" id='registrar_btn'>Seleccionar</button></td> -->
                          </tr>
                         </table>
 

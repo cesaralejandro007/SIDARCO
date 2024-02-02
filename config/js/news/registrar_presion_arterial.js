@@ -68,7 +68,7 @@ function eliminar(id){
     datos: id,
     peticion:"Administrar/",
     sql:"",
-    accion:" ",
+    accion:"",
 
   }
     
@@ -95,7 +95,6 @@ $(document).ready(function() {
         nota: $("#nota").val(),
         estado: 1
       };
-
       alert(JSON.stringify(datos));
 
       $.ajax({

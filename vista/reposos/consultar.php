@@ -33,35 +33,40 @@
                                             </option>
                                         <?php  }  ?>
                                     </datalist>
+                                    <span styel="color:red;" id="valid_cedula"></span>
                                 </div>
                             </div>
 
                             <div class="col-md-6 mt-2">
-                                <label for="fecha_incio">Fecha de inicio</label>
+                                <label for="fecha_inicio_r">Fecha de inicio</label>
                                 <div class="input-group">
                                     <input type="date" class="form-control" id="fecha_inicio_r" placeholder="Indique la fecha de inicio">
                                 </div>
+                                <span style="color:red;" id="valid_fi"></span>
                             </div>
 
                             <div class="col-md-6 mt-2">
-                                <label for="fecha_cierre">Fecha de cierre</label>
+                                <label for="fecha_cierre_r">Fecha de cierre</label>
                                 <div class="input-group">
                                     <input type="date" class="form-control" id="fecha_cierre_r" placeholder="Indique la fecha de cierre">
                                 </div>
+                                <span styel="color:red;" id="valid_fc"></span>
                             </div>
 
                             <div class="col-md-6 mt-2" >
-                                <label for="motivo">Motivo</label>
+                                <label for="motivo_r">Motivo</label>
                                 <div class="input-group">
                                     <input type="text" id="motivo_r" class="form-control" placeholder="Escriba el motivo del reposo">
                                 </div>
+                                <span style="color:red;" id="valid_motivo"></span>
                             </div>
 
                             <div class="col-md-6 mt-2" >
-                                <label for="medico">Medico Tratante</label>
+                                <label for="medico_r">Medico Tratante</label>
                                 <div class="input-group">
                                     <input type="text" id="medico_r" class="form-control" placeholder="Escriba el motivo del reposo">
                                 </div>
+                                <span styel="color:#710909;" id="valid_mt"></span>
                             </div>
                             
                             <div class="col-md-12 mt-2">
@@ -69,6 +74,7 @@
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Escriba el diagnostico del reposo" id="Diagnostico_r" style="height: 100px"></textarea>
                             </div>
+                            <span style="color: #710909" id="valid_diag"></span>
                             </div>
 
                             <span id="texto"></span>
@@ -114,7 +120,7 @@ $(document).ready(function() {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Registro y consulta de Reposos </h1>
+                    <h1 class="m-0">Registro y consulta de reposos </h1>
                 </div><!-- /.col -->
                 <!-- /.col --> 
             </div><!-- /.row -->

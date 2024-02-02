@@ -1,20 +1,97 @@
 
   /* Datos para registrar permiso */
 
-  var cedula_persona=document.getElementById("cedula_persona");
+  var cedula=document.getElementById("cedula_persona");
   var fecha_inicio=document.getElementById("fecha_inicio");
   var fecha_cierre=document.getElementById("fecha_cierre");
   var motivo=document.getElementById("motivo");
+  var persona_existente=false;
 	/*  Envio de datos de permiso */
+
+	cedula.onkeyup=function(){
+		$.ajax({
+		type:"POST",
+		url:BASE_URL+"reposos/Consultas_cedulaV2",
+		data:{'cedula':cedula.value}
+	  
+	   }).done(function(result){
+		/* console.log(result); */
+		persona_existente=result;
+	  
+	  })
+	  
+	  } 
+	  
+	   function cedula_existe(){
+	  
+		if(persona_existente==1){
+		  return true;
+		}else{
+	  
+			swal({
+			title:"¡Error!",
+			type:"error",
+			text:"La cédula no existe",
+			showConfirmButton: false,
+			timer:2000
+		});
+		setTimeout(function(){
+			location.href=BASE_URL+"reposos/Registros" 
+		},2000)
+		} 
+	  
+	  }
+
   
   $(document).ready(function(){
   
 	btn_registrar.onclick=function(){
 		$('#agregar').modal().show();
 	  }
-	  
 
   $("#enviarReposo").on("click", function(){
+
+	;
+	
+	var fecha_inicio=document.getElementById("fecha_inicio_r");
+	var fecha_cierre=document.getElementById("fecha_cierre_r");
+	var motivo=document.getElementById("motivo_r");
+	var medico_r=document.getElementById("medico_r");
+	var diagnostico_r=document.getElementById("Diagnostico_r");
+
+
+	function valid_element(mensaje_error, element, span_element){
+		var validado = true;
+		
+		if(element.value == "" || element.value == "vacio"){
+		  element.focus();
+		  element.style.borderColor = "red";
+		  validado = false;
+		  span_element.style.display = '';
+		  span_element.innerHTML = mensaje_error;
+		}
+		else{
+		  element.style.borderColor = "";
+		  span_element.style.display = "none";
+		}
+		
+		return validado; 
+	  }
+
+	   if(valid_element("Debe seleccionar la cédula", cedula=document.getElementById("cedula_persona") , document.getElementById("valid_cedula"))){  
+		if(cedula_existe()){ 
+		if(valid_element("Seleccione fecha de inicio", fecha_inicio, document.getElementById("valid_fi"))){
+		  if(valid_element("Seleccione la fecha de cierre", fecha_cierre, document.getElementById("valid_fc"))){
+			if(new Date(fecha_inicio.value) > new Date(fecha_cierre.value)) {
+			  document.getElementById("valid_fc").innerHTML = "No puede ser menor a la fecha de inicio";
+			  document.getElementById("valid_fc").style.display = '';
+			  fecha_cierre.style.borderColor = "red";
+			} else {
+			  document.getElementById("valid_fc").style.display = 'none';
+			  fecha_cierre.style.borderColor = "";
+			  if(valid_element("Seleccione el motivo", motivo, document.getElementById("valid_motivo"))) {
+				if(valid_element("Escriba el nombre de médico/a", medico_r, document.getElementById("valid_mt"))) {
+					if(valid_element("Escriba el diágnostico", diagnostico_r, document.getElementById("Diagnostico_r"))){ 
   
 	  /* Cuando utilizas la libreria de jquery debes enviar los datos de la siguiente manera: */
 	var datos= {
@@ -23,7 +100,7 @@
 	  fecha_cierre: $("#fecha_cierre_r").val(),
 	  Diagnostico: $("#Diagnostico_r").val(),
 	  medico: $("#medico_r").val(),
-	  cedula_persona: $("#cedula_persona").val(),
+	  cedula: $("#cedula_persona").val(),
 	
 	};
   
@@ -43,19 +120,25 @@
 			  }); 
 			  setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000);
 		  })
-  
-  
-  })
-  })
-  
+									}
+								}
+							}
+						}
+					}	
+				}
+			} 
+		} 
+	});
+});
 
-  function editarreposos(id, cedula_persona,fecha_i,fecha_c,motivo,diagnostico,medico_tratante){
+
+  function editarreposos(id, cedula,fecha_i,fecha_c,motivo,diagnostico,medico_tratante){
 	$("#motivo_edit").val(motivo);
 	$("#fecha_inicio_edit").val(fecha_i);
 	$("#fecha_cierre_edit").val(fecha_c);
 	$("#diagnostico_edit").val(diagnostico);
 	$("#medico_edit").val(medico_tratante);
-	$("#cedula_persona_edit").val(cedula_persona);
+	$("#cedula_persona_edit").val(cedula);
   
 	document.getElementById("enviar_actualizacion").onclick =function(){
 		$.ajax({
@@ -68,7 +151,7 @@
 			fecha_cierre: $("#fecha_cierre_edit").val(),
 			Diagnostico: $("#diagnostico_edit").val(),
 			medico: $("#medico_edit").val(),
-			cedula_persona: $("#cedula_persona_edit").val(),
+			cedula: $("#cedula_persona_edit").val(),
 			}
 		  }).done(function(result){
 			if(result==1){

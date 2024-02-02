@@ -1,11 +1,12 @@
 
   /* Datos para registrar permiso */
 
-var cedula_persona=document.getElementById("cedula_persona");
+var cedula=document.getElementById("cedula_persona");
 var fecha_inicio=document.getElementById("fecha_inicio");
 var fecha_cierre=document.getElementById("fecha_cierre");
 var motivo=document.getElementById("motivo");
 var tipo_permiso=document.getElementById("tipo_permiso");
+var persona_exist=false;
 
 var fecha_actual=new Date();
 var anno=fecha_actual.getFullYear();
@@ -15,31 +16,28 @@ var fecha_pro=anno+'-'+mes+'-'+dia;
 
 //Validación para cedula de persona
 
-cedula_persona.onkeyup=function(){
+cedula.onkeyup=function(){
 
 
   $.ajax({
 
-    type:'POST',
-    URL: BASE_URL+"Permisos/consultar_cedula",
-    data:cedula_persona.value,
-  }).done(function(result){
-    console.log(result);
+   type:"POST",
+   url:BASE_URL+"permisos/Consultas_cedulaV2",
+   data:{'cedula':cedula.value}
 
-    persona_exist=result;
+ }).done(function(result){
+  console.log(result);
+  persona_existente=result;
 
+})
 
-   /*  alert(persona_exist); */
+} 
 
-  })
+ function cedula_existe(){
 
-}
-
-function cedula_existe(){
-
-  if(persona_exist==1){
-    true
-  }else{ 
+  if(persona_existente==1){
+    return true;
+  }else{
 
       swal({
       title:"¡Error!",
@@ -53,7 +51,10 @@ function cedula_existe(){
     },2000)
   } 
 
-}
+} 
+
+
+
 
 //Validación genérica para inputs
 

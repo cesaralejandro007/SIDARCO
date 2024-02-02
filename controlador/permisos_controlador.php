@@ -217,22 +217,44 @@ public function modificar_integrante(){
           }  
         }
       }
+
+      /* public function consultar_cedula()
+      {
+
+      $persona=$this->Consultar_Columna("permisos","cedula_persona",$_POST['cedula']);
+
+      if(count($persona)==0){
+        echo 0;
+      }
+      else{
+       if($persona[0]['estado'] == 0){
+         echo 2;
+       }
+       else{
+         echo json_encode($persona);
+       }
+      }
   
+    } */
 
-
-public function consultar_cedula()
-{
- $persona=$this->Consultar_Columna("permisos","cedula_persona",$_POST['cedula_persona']);
- if(count($persona)==0){
-
-   echo 0;
-
- }else{
-  echo 1;
- 
- }
-
-}
+    public function Consultas_cedulaV2()
+    {
+    
+     $persona=$this->Consultar_Columna("personas","cedula_persona",$_POST['cedula']);
+    
+     if(count($persona)==0){
+       echo 0;
+     }
+     else{
+      if($persona[0]['estado'] == 0){
+        echo 2;
+      }
+      else{
+        echo 1;
+      }
+     }
+    
+    }
 
 
 

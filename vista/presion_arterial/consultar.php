@@ -111,7 +111,6 @@
                             <th>Tensión arterial</th>
                             <th>Frecuencia cardiaca</th>
                             <th>Nota</th>
-                        
                         </tr>
                     </thead>
                     <tbody>
@@ -126,16 +125,11 @@ $(function() {
     }).done(function(datos) {
         var data = JSON.parse(datos);
         console.log(data);
-    var table = $("#example1").DataTable({
-        dom: "B<'row'<'col-sm-6'><'col-sm-6'f>>" +
-      "<'row'<'col-sm-12'tr>>" +
-      "<'row'<'col-sm-5'li><'col-sm-7'p>>",
-      orderCellsTop: true,
-      fixedHeader: true,    
-        "data": data,
-    })
-        /* var discapacidades = [];
-        var div_discapacidades = document.getElementById("presiones_agregadas"); */
+
+   /*  var table = $("#example1").DataTable({
+    }) */
+         var discapacidades = [];
+        var div_discapacidades = document.getElementById("presiones_agregadas"); 
         $("#example1").DataTable({
             "data": data,
             "columns": [

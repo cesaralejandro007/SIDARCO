@@ -370,6 +370,7 @@ class Controlador
 
 
     public function Consultar_Columna($tabla, $columna, $param)
+    
     {
 
         $tabla = "SELECT * FROM " . $tabla . " WHERE " . $columna . "=" . $param . "";
