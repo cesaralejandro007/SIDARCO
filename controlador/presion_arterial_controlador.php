@@ -84,10 +84,6 @@ class presion_arterial extends Controlador
                 break;
 
 
-
-
-
-
                 $this->Escribir_JSON($this->datos["presiones_arteriales"]);
                 break;
                 $this->Escribir_JSON($retornar);
@@ -135,6 +131,21 @@ class presion_arterial extends Controlador
                 }
                 echo json_encode($retornar);
                 unset($discapacidades, $retornar, $enfer, $_POST);
+                break;
+
+            case 'Existente':
+                    $this->modelo->__SET("tipo", "0");$this->modelo->__SET("SQL", "_05_");
+                    $this->modelo->__SET("consultar", array(
+                        "tabla"   => "personas",
+                        "columna" => "cedula_persona",
+                        "data"    => $_POST['cedula_persona'],
+                    ));
+                    $consulta  = $this->modelo->Administrar();$respuesta = "";
+                    if (count($consulta) == 0 ) {
+                        $respuesta = "Esta persona no se encuentra registrada";
+                    } 
+                    return $consulta;
+                    echo ($respuesta);unset($respuesta, $consulta);
                 break;
                 
             case 'Personas':

@@ -14,13 +14,15 @@
 
                             <div class="col-md-12 mt-2">
                                 <label for="cedula_persona">
-                                    Cedula de Persona
+                                    Cédula de Persona
                                 </label>
                                 <div class="input-group">
                                     <input id="cedula_persona_editar" name="cedula_persona"
                                         class="form-control " placeholder="Cedula de Persona" />
                                 </div>
                             </div>
+
+                        
 
 
                             <div class="col-md-12 mt-2">
@@ -29,10 +31,21 @@
                                 </label>
                                 <table class="table table-bordered" id="tabla">
                                     <tr>
-                                        <td class="col-6">
+                                        <td class="col-4">
+
+                                        
+                                        <div class="input-group">
+                                            <input type="text" name=""  placeholder="Nombre de la vacuna" id="" class="form-control">
+                                            </div>
+                                       
+                                        </td>
+                                        <td class="col-4">
 
                                             <div class="input-group">
                                                 <select class="custom-select" id="dosis_vacuna" name="dosis[]">
+                                                    <option value="Dosis unica">
+                                                        Dosis única
+                                                    </option>
                                                     <option value="Primera Dosis">
                                                         Primera Dosis
                                                     </option>
@@ -45,13 +58,13 @@
                                                 </select>
                                             </div>
                                         </td>
-                                        <td class="col-6">
+                                        <td class="col-4">
 
                                             <div class="input-group">
                                                 <input class="form-control" id="fecha_dosis" name="fecha[]" type="date">
                                             </div>
                                         </td>
-                                        <td class="">
+                                        <td class="col-4">
                                             <div class="input-group ">
                                                 <button type="button" name="agregar" id="agregar_dosis"
                                                     class="btn btn-success">Agregar</button>

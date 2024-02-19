@@ -169,7 +169,7 @@ public function consultar_info_familia(){
                 $integrantes_familia .="<tr><td>". $en['cedula_integrante'] ."</td><td>" . $en['primer_nombre']." " .$en['primer_apellido'] ."</td><td>" . $en['parentezco']. "</td><td>" . $en['camisa']. "</td><td>" . $en['pantalon']. "</td><td>" . $en['calzado']. "</td></tr>";
         }
         $integrantes_familia .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>Camisa</td><td>Pantalon</td><td>Calzado</td></tr></tfoot></table>";
-        $integrantes_familia = "<div style='overflow-y:scroll;width:100%;height:100px;'>" . $integrantes_familia . "</div>";
+        $integrantes_familia  ="<div style='overflow-y:scroll;width:100%;height:100px;'>" . $integrantes_familia . "</div>";
          $retornar[]=[
                 "familia"           => $f['nombre_familia'],
                 "descripcion"          => $f['descripcion_familia'],

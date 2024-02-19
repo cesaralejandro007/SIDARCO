@@ -21,11 +21,11 @@ class Personas extends Controlador
 
     $personas = $this->Consultar_Tabla("personas", 1, "cedula_persona");
 
-    $vacunas =  $this->Consultar_Tabla("vacuna_covid", 1, "id_vacuna_covid");
+    $vacunas =  $this->modelo->Consultar_vacunados();
     $perso_vacuna = $this->modelo->Consultar_Vacuna(); 
 
     $this->vista->personas = $personas; 
-    $this->personas = $personas; 
+    $this->personas = $personas;
 
     $this->vista->vacunas = $vacunas; 
     $this->vacunas = $vacunas; 
@@ -61,6 +61,8 @@ class Personas extends Controlador
 
     return false;
   }
+
+
   public function Consultas_Vacunas_Ajax()
   {
     $this->Establecer_Consultas();
@@ -70,16 +72,17 @@ class Personas extends Controlador
       $dosis="";
       $fecha="";
       $vacuna="";
-      foreach ($this->vacunas as $key => $vacunado) {
-       if ($persona["cedula_persona"] == $vacunado["cedula_persona"]) {
-        $vacuna .= $vacunado["nombre_vacuna"]."</br>";
-        $dosis .= $vacunado["dosis"]."</br>";
 
-        $fecha .= $vacunado["fecha_vacuna"]."</br>";
+      foreach ($this->vacunas as $key => $vacunado) {
+      if ($persona["cedula_persona"] == $vacunado["cedula_persona"]) {
+        $vacuna.= $vacunado["nombre_vacuna"]."</br>";
+        $dosis.= $vacunado["dosis"]."</br>";
+        $fecha.= $vacunado["fecha_vacuna"]."</br>";
       }
     }
 
     $datos[] = [
+      /* "id_vacuna_covid" => $vacuna["id_vacuna_covid"], */
       "cedula_persona" => $persona["cedula_persona"],
       "nombre_apellido" => $persona["primer_nombre"]." ".$persona["primer_apellido"],
       "nombre_vacuna"   => $vacuna,
@@ -1090,8 +1093,6 @@ public function ingresar_persona(){
     echo 1;
   }
 
-
-
 }
 
 
@@ -1193,9 +1194,12 @@ $cedula=$_POST['cedula'];
 $vacunas=$this->Consultar_Columna("vacuna_covid","cedula_persona",$cedula);
 $devolver="";
 foreach($vacunas as $v){
-$devolver.="<table style='width:100%'><tr><td>".$v['dosis']."</td><td>(".$v['fecha_vacuna'].")</td>
+$devolver.="<table style='width:100%'><tr><td>".$v['nombre_vacuna']."</td><td>".$v['dosis']."</td><td>(".$v['fecha_vacuna'].")</td>
 <td><button type='button' class='btn btn-danger' onclick='eliminar_dosis(".$v['id_vacuna_covid'].",".$cedula.")'>X</button>
-</td></tr></table><hr>";
+</td>
+<td><button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia_persona'].",".$f['id_familia'].",".$f['cedula_persona'].")'><em class='fa fa-edit'></em></button></td>
+
+</tr></table><hr>";
 }
 
 echo $devolver;

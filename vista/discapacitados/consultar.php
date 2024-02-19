@@ -29,15 +29,16 @@
                 <table id="example1" class="table table-bordered  table-hover">
                     <thead>
                         <tr>
-                            <th>Cedula</th>
-                            <th>Nombre</th>
-                            <th>Discapacidades</th>
-                            <?php if ($_SESSION['Discapacitados']['modificar']) {?>
+                        <?php if ($_SESSION['Discapacitados']['modificar']) {?>
                                 <th style="width: 20px;">Editar</th>
                             <?php }?>
                             <?php if ($_SESSION['Discapacitados']['eliminar']) {?>
                                 <th style="width: 20px;">Eliminar</th>
                             <?php }?>
+                            <th>Cedula</th>
+                            <th>Nombre</th>
+                            <th>Discapacidades</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -55,19 +56,23 @@ $(function() {
         var div_discapacidades = document.getElementById("discapacidades_agregadas");
         $("#example1").DataTable({
             "data": data,
-            "columns": [{
-                    "data": "cedula"
-                }, {
-                    "data": "nombre"
-                }, {
-                    "data": "discapacidades"
-                }, <?php if ($_SESSION['Discapacitados']['modificar']) {?> {
+            "columns": [
+                <?php if ($_SESSION['Discapacitados']['modificar']) {?> {
                     "data": "editar"
                 }, <?php }?>
                 <?php if ($_SESSION['Discapacitados']['eliminar']) {?> {
                     "data": "eliminar"
                 }
                 <?php }?>
+                
+                ,{
+                    "data": "cedula"
+                }, {
+                    "data": "nombre"
+                }, {
+                    "data": "discapacidades"
+                }, 
+               
             ],
             "responsive": true,
             "autoWidth": false,
@@ -204,15 +209,16 @@ $(function() {
 </tbody>
 <tfoot>
     <tr>
-       <th>Cedula</th>
-       <th>Nombre</th>
-       <th>Discapacidades</th>
-       <?php if ($_SESSION['Discapacitados']['modificar']) {?>
+    <?php if ($_SESSION['Discapacitados']['modificar']) {?>
         <th style="width: 20px;">Editar</th>
     <?php }?>
     <?php if ($_SESSION['Discapacitados']['eliminar']) {?>
         <th style="width: 20px;">Eliminar</th>
     <?php }?>
+       <th>Cedula</th>
+       <th>Nombre</th>
+       <th>Discapacidades</th>
+     
 </tr>
 </tfoot>
 </table>

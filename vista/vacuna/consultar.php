@@ -1,8 +1,8 @@
 <?php include (call."Inicio.php"); ?>
 <?php include (call."data-table.php"); ?>
 
- <div class="modal fade" id="agregar">
-    <div class="modal-dialog modal-xl">
+<div class="modal fade" id="agregar">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Registrar Vacunados</h4>
@@ -12,13 +12,13 @@
             </div>
             <div class="modal-body">
             <form action="<?php echo constant('URL'); ?>Personas/Asignar_Vacunas" enctype="multipart/form-data" id="formulario" method="POST" name="formulario">
-                 <!-- card-body  -->
+                <!-- card-body  -->
                 <div class="card-body">
                     <div class="card-block">
                         <div class="form-group row justify-content-center">
                             <div class="col-md-12 mt-2">
                                 <label for="cedula_persona">
-                                    Cédula de Persona
+                                    Cédula
                                 </label>
                                 <div class="input-group">
                                     <input list="cedula_p" id="cedula_persona" name="cedula_persona" class="form-control no-simbolos letras_numeros" placeholder="Cedula de Persona" oninput="Limitar(this,15)"/>
@@ -33,12 +33,12 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12 mt-2">
+                           <!--  <div class="col-md-12 mt-2">
                                 <label for="nombre_vacuna">Nombre</label>
                                 <div>
                                     <input type="text" class="form-control" id="nombre_vacuna" name="nombre_vacuna" placeholder="Indique el nombre de la vacuna">
                                 </div>
-                            </div>
+                            </div> -->
 
 
                             <div class="col-md-12 mt-2">
@@ -48,13 +48,20 @@
                                 <table class="table table-bordered" id="tabla">
                                     <tr>
                                         <td class="col-6">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="" name="" placeholder="Nombre de vacuna">
+                                            </div>
+                                        </td>
+                                
+
+                                        <td class="col-6">
 
                                             <div class="input-group">
                                                 <select class="custom-select" id="dosis" name="dosis[]">
                                                     <option value="Dosis Unica">
                                                         Dosis única
                                                     </option>
-                                                    <option value="Primera Dosis">
+                                                    <option value="Primera Dosis"> 
                                                         Primera Dosis
                                                     </option>
                                                     <option value="Segunda Dosis">
@@ -74,10 +81,12 @@
                                         </td>
                                         <td class="">
                                             <div class="input-group ">
-                                                <button type="button" name="agregar" id="agregar" class="btn btn-primary">Agregar</button>
+                                                <button type="button" name="agregar" id="agregar_v" class="btn btn-primary">Agregar</button>
                                             </div>
 
                                         </td>
+
+                    
                                     </tr>
                                 </table>
                             </div>
@@ -101,18 +110,21 @@
             <script>
     $(document).ready(function() {
         var i = 0;
-        $('#agregar').click(function() {
+
+        $('#agregar_v').click(function() {
             var html0 =
                 '<tr id="row' + i + '" >' +
-                '<td class="col-6">' +
-                '<div class="input-group"><select class="custom-select" id="dosis" name="dosis[]"><option selected value="Dosis Unica">Primera Dosis</option><option value="Dosis Unica">Dosis Única</option><option value="Dosis Unica">Tercera Dosis</option></select></div>' +
-                '</td>' +
-              
+                '<td class="col-6">' + 
+                '<div class="input-group"><input type="text" class="" id=""><select class="custom-select" id="dosis" name="dosis[]"><option selected value="Dosis Unica">Primera Dosis</option><option value="Dosis Unica">Dosis Única</option><option value="Dosis Unica">Tercera Dosis</option></select></div>' +
+                '</td>' +   
                 '</tr>';
             var html1 =
                 '<tr id="row' + i + '" >' +
                 '<td class="col-6">' +
-                '<div class="input-group"><select class="custom-select" id="dosis" name="dosis[]"><option selected value="Primera Dosis">Primera Dosis</option><option value="Segunda Dosis">Segunda Dosis</option><option value="Tercera Dosis">Tercera Dosis</option></select></div>' +
+                '<div class="input-group"><input type="text" class="form-control" placeholder="Nombre de vacuna"></div>' +
+                '</td>' +
+                '<td class="col-6">' +
+                '<div class="input-group"><select class="custom-select" id="dosis" name="dosis[]"><option selected value="Dosis Unica">Dosis Única</option><option selected value="Primera Dosis">Primera Dosis</option><option value="Segunda Dosis">Segunda Dosis</option><option value="Tercera Dosis">Tercera Dosis</option></select></div>' +
                 '</td>' +
                 '<td class="col-6">' +
                 '<div class="input-group"><input class="form-control no-simbolos" id="fecha" name="fecha[]" type="date"></div>' +
@@ -124,6 +136,8 @@
                 '</tr>';
             var html2 =
                 '<tr id="row' + i + '" >' +
+                '<td class="col-6">'+
+                '<div class="input-group"><input type="text" placeholder="Nombre de vacuna" class="" id="" name=""></div>'
                 '<td class="col-6">' +
                 '<div class="input-group"><select class="custom-select" id="dosis" name="dosis[]"><option value="Primera Dosis">Primera Dosis</option><option selected value="Segunda Dosis">Segunda Dosis</option><option value="Tercera Dosis">Tercera Dosis</option></select></div>' +
                 '</td>' +
@@ -149,27 +163,19 @@
                 '</td>' +
                 '</tr>';
 
-
-          /*   if (i <= 0) {
-                document.getElementById("texto").innerHTML="Debe agregar más";
-            } else {
-            if (i <= 1) {
-                $('#tabla').append(html2);
-            } else {
-                if (i <= 2) {
-                    $('#tabla').append(html3);
+            
+                if (i <= 1) {
+                    $('#tabla').append(html1);
                 } else {
-                    if (i <= 3) {
+                    if (i <= 2) {
                         document.getElementById("texto").innerHTML = "No puede agregar más";
                     } else {
 
                     }
                 }
-                }
-            }
-
+                
             i == 3 ? i = 3 : i++;
-            console.log(i); */
+            console.log(i); 
 
         });
 
@@ -228,7 +234,7 @@
                             swal({
                                 type: "success",
                                 title: "Éxito",
-                                text: "Se han registrado los vacunados exitosamente",
+                                text: "Se ha registrado la vacuna exitosamente",
                                 timer: 2000,
                                 showConfirmButton: false
                             });
@@ -242,7 +248,7 @@
                             swal({
                                 type: "error",
                                 title: "Error",
-                                text: "Esta persona ya se encuentra registrada como vacunado",
+                                text: "Esta persona ya se encuentra registrada como vacunada",
                                 timer: 2000,
                                 showConfirmButton: false
                             });
@@ -309,7 +315,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Consulta y exportacion de datos</h3>
+                <h3 class="card-title">Consulta y exportación de datos</h3>
 
             </div>
             
@@ -319,12 +325,12 @@
                 <table id="example1" class="table table-bordered  table-hover">
                     <thead>
                         <tr>
-                            <th>Cedula</th>
-                            <th>Nombre y Apellido</th>
+                        <th style="width: 115px;">Acciones</th>
+                            <th>Cédula</th>
+                            <th>Nombre y apellido</th>
                             <th>Nombre de la vacuna</th>
                             <th>Dosis</th>
                             <th>Fecha</th>
-                            <th style="width: 115px;">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -334,10 +340,26 @@
                                 type: 'POST',
                                 url: BASE_URL + 'Personas/Consultas_Vacunas_Ajax'
                             }).done(function(datos) {
+                                alert(datos);
                                 var data = JSON.parse(datos);
                                 var tabla = $("#example1").DataTable({
-                                    "data": data,
-                                    "columns": [{
+                                    "data": data,   
+                                    "columns": [
+                                        {
+                                            "data": function(data) {
+                                                return '<td class="text-center">' +
+                                                    '<a href="javascript:void(0)" style="margin-right: 5px; background:#EEA000;" class="btn btnEditar" onclick="editar(this)"  title="Actualizar"  type="button" >' +
+                                                    '<i class="fa fa-edit" style="color: white;"></i>' +
+                                                    '</a>' +
+                                                    '<a href="javascript:void(0)" style="margin-right: 5px; background:#9D2323;" class="btn  mensaje-eliminar" title="Eliminar">' +
+                                                    '<i class="fa fa-trash" style="color: white;"></i>' +
+                                                    '</a>' +
+                                                    '<p style="display: none;">' + data
+                                                    .cedula_persona + '</p>' +
+                                                    '</td>';
+                                            }
+                                        },
+                                        {
                                             "data": "cedula_persona"
                                         },
                                         {
@@ -351,21 +373,6 @@
                                         },
                                         {
                                             "data": "fecha_vacuna"
-                                        },
-                                        {
-                                            "data": function(data) {
-                                                return '<td class="text-center">' +
-                                                    '<a href="javascript:void(0)" style="margin-right: 5px; background:#EEA000;" class="btn btnEditar" onclick="editar(this)"  title="Actualizar"  type="button" >' +
-                                                    '<i class="fa fa-edit" style="color: white;"></i>' +
-                                                    '</a>' +
-
-                                                    '<a href="javascript:void(0)" style="margin-right: 5px; background:#9D2323;" class="btn  mensaje-eliminar" title="Eliminar">' +
-                                                    '<i class="fa fa-trash" style="color: white;"></i>' +
-                                                    '</a>' +
-                                                    '<p style="display: none;">' + data
-                                                    .id_vacuna_covid + '</p>' +
-                                                    '</td>';
-                                            }
                                         },
 
                                     ],
@@ -437,12 +444,12 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Cedula</th>
-                            <th>Nombre y Apellido</th>
+                            <th>Acciones</th>
+                            <th>Cédula</th>
+                            <th>Nombre y apellido</th>
                             <th>Nombre de la vacuna</th>
                             <th>Dosis</th>
                             <th>Fecha</th>
-                            <th>Acciones</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -455,7 +462,7 @@
     <!-- /.content -->
     <!-- /.content -->
 </div>
-<?php include modal."ver-vacuna.php"; ?>
+<!-- <?php include modal."ver-vacuna.php"; ?> -->
 <?php include modal."editar-vacuna.php"; ?>
 <!-- /.content-wrapper -->
 <?php include modal."agregar-vacunados.php"  ?>

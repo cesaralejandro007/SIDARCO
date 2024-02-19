@@ -35,7 +35,7 @@
                         <div class="col-md-12">
                          <label>Persona</label> <span id='valid_persona' style='color:red'></span>
                          <table style='width:100%'><tr><td>
-                             <input type="number" maxlength="15" placeholder="Buscar cédula" class='form-control ' id='cedula_propietario' name="" list='lista_personas' oninput="Limitar(this,15)">
+                             <input type="number" maxlength="15" placeholder="Buscar cédula" class='form-control ' id='cedula_persona' name="datos[cedula_persona]" list='lista_personas' oninput="Limitar(this,15)">
 
                              <datalist id='lista_personas'>
                                  <?php foreach ($this->datos["personas"] as $p) { ?>

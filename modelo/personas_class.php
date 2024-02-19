@@ -11,7 +11,7 @@ class Personas_Class extends Modelo
     public function Consultar_Vacuna()
     {
  
-        $tabla            = "SELECT DISTINCT v.cedula_persona, p.primer_nombre, p.primer_apellido FROM vacuna_covid v, personas p WHERE v.cedula_persona = p.cedula_persona AND p.estado =1 AND v.estado = 1";
+        $tabla            = "SELECT DISTINCT v.cedula_persona, p.primer_nombre, p.primer_apellido, DATE_FORMAT(fecha_vacuna, '%d/%m/%Y') as fecha_v FROM vacuna_covid v, personas p WHERE v.cedula_persona = p.cedula_persona AND p.estado =1 AND v.estado = 1";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -23,6 +23,23 @@ class Personas_Class extends Modelo
 
             return $this->Capturar_Error($e);
         }
+    }
+
+    public function Consultar_vacunados(){
+
+        $tabla            = "SELECT id_vacuna_covid, cedula_persona, nombre_vacuna, dosis, DATE_FORMAT(fecha_vacuna, '%d/%m/%Y') as fecha_vacuna FROM vacuna_covid group by id_vacuna_covid ";
+        $respuestaArreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuestaArreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuestaArreglo;
+        } catch (PDOException $e) {
+
+        return $this->Capturar_Error($e);
+        }
+
     }
 
     public function Registrar_Vacuna($data)

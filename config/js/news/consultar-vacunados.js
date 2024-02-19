@@ -1,5 +1,6 @@
 var btn_vacunados = document.getElementById("btn_nuevo");
 var agregar=document.getElementById("agregar");
+var btn_cerra
 
  btn_vacunados.onclick=function(){
 
@@ -9,15 +10,18 @@ var agregar=document.getElementById("agregar");
 
 
 
+
+
 function editar(tag){
-   var tr=tag.closest("tr");
+    var tr=tag.closest("tr");
   tr=tr.querySelectorAll("td");
-  var cedula_persona=tr[0].innerHTML;
+  var cedula_persona=tr[1].innerHTML;
   document.getElementById("cedula_persona_editar").value=cedula_persona;
   document.getElementById("cedula_persona_editar").readOnly="readOnly";
  cargar_info_vacunas(cedula_persona,1);
 }
 
+//vacunas info es el DIV
 
 function cargar_info_vacunas(cedula_persona,show){
     document.getElementById("vacunas_info").innerHTML="";

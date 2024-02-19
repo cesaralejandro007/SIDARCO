@@ -6,7 +6,7 @@ var valid_tension = document.getElementById("valid_tension");
 var valid_fecha = document.getElementById("valid_fecha_hora");
 var valid_frecuencia = document.getElementById("valid_frecuencia");
 var btn_seleccionar = document.getElementById("seleccionar_persona");
-var persona = document.getElementById("cedula_propietario");
+var persona = document.getElementById("cedula_persona");
 var valid_persona = document.getElementById("valid_persona");
 var span_persona = document.getElementById("nombre_persona");
 var div_info = document.getElementById("second");
@@ -22,43 +22,6 @@ btn_presion_arterial.onclick = function() {
   $("#agregar").modal().show();
 } 
 
-/*  function desabilitar() {
-  var enviarboton = document.getElementById("enviar");
-  enviarboton.disabled = true;
-}  */
-
-/* btn_seleccionar.onclick = function() {
-  if (persona.value == '' || persona.value == null) {
-    valid_persona.innerHTML = "Debe ingresar una persona";
-    persona.focus();
-    persona.style.borderColor = 'red';
-  } else {
-    valid_persona.innerHTML = "";
-    persona.focus();
-    persona.style.borderColor = '';
-    $.ajax({
-      type: "POST",
-      url: BASE_URL + "presion_arterial/Administrar",
-      data: {
-        peticion: "Personas",
-        cedula: persona.value
-      },
-    }).done(function(result) {
-      if (result == 0) {
-        valid_persona.innerHTML = "Esta persona no se encuentra registrada";
-      } else {
-        valid_persona.innerHTML = "";
-        var datos = JSON.parse(result);
-        span_persona.innerHTML = datos[0].primer_nombre + " " + datos[0].primer_apellido;
-        persona.disabled = true;
-        btn_seleccionar.style.display = 'none';
-        div_info.style.display = '';
-        registrar_btn.style.display = 'none';
-      }
-    });
-  }
-} */
-
 function eliminar(id){
 
   $.ajax({
@@ -69,31 +32,55 @@ function eliminar(id){
     peticion:"Administrar/",
     sql:"",
     accion:"",
-
   }
     
   })
 }
 
-$(document).ready(function() {
-  $("#enviar").on("click", function() {
+ var boton_enviar=document.getElementById("enviar");
+/* 
+boton_enviar.onclick= function(){
+}; */ 
 
-    persona.onclick(function(){
-      $.ajax({
-        type: 'POST',
-        url: BASE_URL+"presion_arterial/",
-        data: persona,
-      }).done(function(result){
-        result;
-      })
+var boton_enviar=document.getElementById("enviar");
+
+    boton_enviar.onclick = function(){
+
+    var persona = document.getElementById("cedula_persona");
+    $.ajax({
+      type: 'POST',
+      url: BASE_URL+"presion_arterial/Administrar",
+      data:{
+        'cedula_persona': persona.value,
+        peticion:"Existente",
+
+      }
+    }).done(function(result){
+      alert(JSON.stringify(result));
+      if(result != 1){
+        alert(result);
+        persona.focus();
+        persona.style.borderColor= 'red';
+        swal({
+          type: "error",
+          title:"Error",
+          text: "Esta persona no esta registrada",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      };
     });
+  };
+
+$(document).ready(function() {
+  $("#enviar").on("click", function(){
 
       var datos = {
-        cedula_persona: $("#cedula_propietario").val(),
+        cedula_persona: $("#cedula_persona").val(),
         t_a: $("#t_a").val(),
         f_c: $("#f_c").val(),
         nota: $("#nota").val(),
-        estado: 1
+        estado: 1,
       };
       alert(JSON.stringify(datos));
 
@@ -110,7 +97,7 @@ $(document).ready(function() {
           if (respuesta == 1) {
             swal({
               title: "Exito!",
-              text: "Se ha registrado de forma exitosa",
+              text: "Se ha registrado",
               type: "success",
               showConfirmButton: false
             });
@@ -128,10 +115,7 @@ $(document).ready(function() {
             });
           }
         },
-        error: function(respuesta) {
-          alert("Error al enviar Controlador");
-        }
       });
-  /*   } */
+   /*   }  */
   });
 });

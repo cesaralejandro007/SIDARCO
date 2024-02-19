@@ -3,6 +3,7 @@ var t_gestacion = document.getElementById("tiempo_gestacion");
 var f_parto = document.getElementById("fecha_aprox_parto");
 var boton = document.getElementById("boton");
 var formulario = document.getElementById("formulario");
+
 boton.onclick = function() {
     if (cedula.value == "") {
         cedula.style.borderColor = "red";
