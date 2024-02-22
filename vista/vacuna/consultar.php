@@ -49,13 +49,10 @@
                                     <tr>
                                         <td class="col-6">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="" name="" placeholder="Nombre de vacuna">
+                                                <input type="text" class="form-control" id="nombre_vacuna" name="nombre_vacuna[]" placeholder="Nombre de vacuna">
                                             </div>
                                         </td>
-                                
-
                                         <td class="col-6">
-
                                             <div class="input-group">
                                                 <select class="custom-select" id="dosis" name="dosis[]">
                                                     <option value="Dosis Unica">
@@ -74,7 +71,6 @@
                                             </div>
                                         </td>
                                         <td class="col-6">
-
                                             <div class="input-group">
                                                 <input class="form-control no-simbolos" id="fecha" name="fecha[]" type="date">
                                             </div>
@@ -121,7 +117,7 @@
             var html1 =
                 '<tr id="row' + i + '" >' +
                 '<td class="col-6">' +
-                '<div class="input-group"><input type="text" class="form-control" placeholder="Nombre de vacuna"></div>' +
+                '<div class="input-group"><input type="text" class="form-control" placeholder="Nombre de vacuna" name="nombre_vacuna[]"></div>' +
                 '</td>' +
                 '<td class="col-6">' +
                 '<div class="input-group"><select class="custom-select" id="dosis" name="dosis[]"><option selected value="Dosis Unica">Dosis Única</option><option selected value="Primera Dosis">Primera Dosis</option><option value="Segunda Dosis">Segunda Dosis</option><option value="Tercera Dosis">Tercera Dosis</option></select></div>' +
@@ -137,7 +133,7 @@
             var html2 =
                 '<tr id="row' + i + '" >' +
                 '<td class="col-6">'+
-                '<div class="input-group"><input type="text" placeholder="Nombre de vacuna" class="" id="" name=""></div>'
+                '<div class="input-group"><input type="text" placeholder="Nombre de vacuna" class="" id="" name="nombre_vacuna[]"></div>'
                 '<td class="col-6">' +
                 '<div class="input-group"><select class="custom-select" id="dosis" name="dosis[]"><option value="Primera Dosis">Primera Dosis</option><option selected value="Segunda Dosis">Segunda Dosis</option><option value="Tercera Dosis">Tercera Dosis</option></select></div>' +
                 '</td>' +
@@ -193,6 +189,7 @@
 
 
                 var todos_inputs = $('#tabla :input');
+                var nombre =[];
                 var dosis = [];
                 var fecha = [];
                 var validado = true;
@@ -207,14 +204,14 @@
                     if (todos_inputs[i].type == 'date') {
                         if (todos_inputs[i].value == "") {
                             validado = false;
-                        } else {
+                        }  else {
                             fecha.push(todos_inputs[i].value);
                         }
                     }
                 } 
 /* 
 /*                if (validado == false || validado == true) { */
-                  /*  swal({
+                /*  swal({
                         type: "error",
                         title: "Error",
                         text: "Debe agregar las fechas de vacunación",

@@ -38,12 +38,13 @@ class Personas extends Controlador
   {
     $dosis = ($_POST['dosis'] !== "") ? $_POST['dosis'] : null;
     $fecha = ($_POST['fecha'] !== "") ? $_POST['fecha'] : null;
+    $nombre_vacuna =($_POST['nombre_vacuna'] !== "") ? $_POST['nombre_vacuna']: null;
 
     for ($i = 0; $i < count($fecha); $i++) {
       if ($this->modelo->Registrar_Vacuna(
         [
           'cedula_persona' => $_POST['cedula_persona'],
-           'nombre_vacuna'  => $_POST['nombre_vacuna'], 
+          'nombre_vacuna'  => $nombre_vacuna[$i], 
           'dosis' => $dosis[$i],
           'fecha_vacuna' => $fecha[$i],
           'estado' => 1,
@@ -1190,6 +1191,7 @@ public function modificar_persona(){
 
 
 public function get_info_vacunado(){
+
 $cedula=$_POST['cedula'];
 $vacunas=$this->Consultar_Columna("vacuna_covid","cedula_persona",$cedula);
 $devolver="";
@@ -1197,11 +1199,9 @@ foreach($vacunas as $v){
 $devolver.="<table style='width:100%'><tr><td>".$v['nombre_vacuna']."</td><td>".$v['dosis']."</td><td>(".$v['fecha_vacuna'].")</td>
 <td><button type='button' class='btn btn-danger' onclick='eliminar_dosis(".$v['id_vacuna_covid'].",".$cedula.")'>X</button>
 </td>
-<td><button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia_persona'].",".$f['id_familia'].",".$f['cedula_persona'].")'><em class='fa fa-edit'></em></button></td>
-
+<td><button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editarr(".$v['id_vacuna_covid'].",".$v['cedula_persona'].")'><em class='fa fa-edit'></em></button></td>
 </tr></table><hr>";
 }
-
 echo $devolver;
 }
 
