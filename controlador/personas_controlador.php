@@ -1207,34 +1207,35 @@ echo $devolver;
 
 
 public function add_vacuna(){
-  $cedula=$_POST['persona'];
+$cedula=$_POST['persona'];
 $vacunas=$this->Consultar_Columna("vacuna_covid","cedula_persona",$cedula);
 $retornar=1;
 
-if(count($vacunas)>=3){
+ if(count($vacunas)>=3){
   $retornar=0;
 }
-else{
-foreach($vacunas as $v){
+else{ 
+/* foreach($vacunas as $v){
   if($v['dosis']==$_POST['vacuna']){
     $retornar=0;
   }
-}
+} */
 
-if($retornar==1){
+if($retornar==1){ 
   $this->modelo->Registrar_Vacuna([
     "cedula_persona" =>$cedula,
-    "nombre_vacuna"   =>$_POST['nombre_vacuna'], 
+    "nombre_vacuna"=>$_POST['nombre_vacuna'], 
     "dosis"=>$_POST['vacuna'],
     "fecha_vacuna"=>$_POST['fecha'],
     "estado"=>1
   ]);
-}
-}
+} 
+ } 
 
 echo $retornar;
 
 }
+
 
 public function borrar_dosis(){
   echo $this->Eliminar_Tablas("vacuna_covid","id_vacuna_covid",$_POST['id']);

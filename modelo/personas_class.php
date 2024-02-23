@@ -25,7 +25,7 @@ class Personas_Class extends Modelo
         }
     }
 
-    public function Consultar_vacunados(){
+    public function Consultar_vacunados(){  
 
         $tabla            = "SELECT id_vacuna_covid, cedula_persona, nombre_vacuna, dosis, DATE_FORMAT(fecha_vacuna, '%d/%m/%Y') as fecha_vacuna FROM vacuna_covid group by id_vacuna_covid ";
         $respuestaArreglo = '';

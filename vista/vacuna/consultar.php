@@ -33,13 +33,12 @@
                                 </div>
                             </div>
 
-                           <!--  <div class="col-md-12 mt-2">
+                            <!--  <div class="col-md-12 mt-2">
                                 <label for="nombre_vacuna">Nombre</label>
                                 <div>
                                     <input type="text" class="form-control" id="nombre_vacuna" name="nombre_vacuna" placeholder="Indique el nombre de la vacuna">
                                 </div>
                             </div> -->
-
 
                             <div class="col-md-12 mt-2">
                                 <label for="">
@@ -49,7 +48,7 @@
                                     <tr>
                                         <td class="col-6">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="nombre_vacuna" name="nombre_vacuna[]" placeholder="Nombre de vacuna">
+                                                <input type="text" class="form-control" id="nombre_vacunas" name="nombre_vacunas[]" placeholder="Nombre de vacuna">
                                             </div>
                                         </td>
                                         <td class="col-6">

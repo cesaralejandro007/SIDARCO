@@ -31,13 +31,14 @@
                                 </label>
                                 <table class="table table-bordered" id="tabla">
                                     <tr>
-                                        <td class="col-4">
+                                    <td class="col-4"> 
 
+                                    <div class="input-group">
+
+                                        <input type="text" name="nombre_vacuna[]"  placeholder="Nombre de la vacuna" id="nombre_vacuna" class="form-control">
+                                            
+                                    </div> 
                                         
-                                        <div class="input-group">
-                                            <input type="text" name=""  placeholder="Nombre de la vacuna" id="" class="form-control">
-                                            </div>
-                                       
                                         </td>
                                         <td class="col-4">
 
@@ -64,6 +65,7 @@
                                                 <input class="form-control" id="fecha_dosis" name="fecha[]" type="date">
                                             </div>
                                         </td>
+     
                                         <td class="col-4">
                                             <div class="input-group ">
                                                 <button type="button" name="agregar" id="agregar_dosis"

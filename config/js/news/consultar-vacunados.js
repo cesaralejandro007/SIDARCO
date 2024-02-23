@@ -2,12 +2,18 @@ var btn_vacunados = document.getElementById("btn_nuevo");
 var agregar=document.getElementById("agregar");
 var btn_cerra
 
+
+
  btn_vacunados.onclick=function(){
 
     $('#agregar').modal().show();
     
     } 
 
+    function editarr(id, cedula_persona){
+
+        
+    }
 
 
 
@@ -41,7 +47,7 @@ function eliminar_dosis(id,cedula){
 swal({
     type:"warning",
     title:"¿Estás seguro?",
-    text:"Está por eliminar la dosis de vacuna asociada con esta persona, ¿desea continuar?",
+    text:"Está por eliminar la dosis de vacuna asociada con esta persona, ¿ desea continuar?",
     showCancelButton:true,
     confirmButtonText:"Si",
     CancelButtonText:"No"
@@ -65,7 +71,9 @@ swal({
 
 document.getElementById("agregar_dosis").onclick=function(){
 
-    if(document.getElementById("fecha_dosis").value=="" || document.getElementById("fecha_dosis").value==null){
+/* var fecha=document.getElementById("fecha_dosis") */
+
+    if( document.getElementById("fecha_dosis").value=="" || document.getElementById("fecha_dosis").value==null){
         swal({
             type:"error",
             title:"Error",
@@ -99,6 +107,7 @@ document.getElementById("agregar_dosis").onclick=function(){
                 type:"POST",
                 url:BASE_URL+"Personas/add_vacuna",
                 data:{
+                    "nombre_vacuna":document.getElementById("nombre_vacuna").value,
                     "fecha":document.getElementById("fecha_dosis").value,
                     "persona":document.getElementById("cedula_persona_editar").value,
                     "vacuna":document.getElementById("dosis_vacuna").value
@@ -112,14 +121,14 @@ document.getElementById("agregar_dosis").onclick=function(){
                     swal({
                         type:"error",
                         title:"Error",
-                        text:"Algo ha ido mal, asegúrese de que esta dosis no haya sido registrada o que el numero de dosis aplicadas no sea mayor que tres",
+                        text:"Algo ha ido mal, asegúrese de que esta dosis no haya sido registrada o que el número de dosis aplicadas no sea mayor que tres",
                         showConfirmButton:false,
                         timer:3000
                     });
                 }
-
+                document.getElementById("nombre_vacuna").value="";
                 document.getElementById("fecha_dosis").value="";
-                document.getElementById("dosis_vacuna").value="Primera Dosis";
+                document.getElementById("dosis_vacuna").value="";
             })
         }
     }

@@ -3,7 +3,7 @@ function eliminar(id){
 	swal({
 		type:"warning",
 		title:"Atención",
-		text:"Estás por eliminar esta familia, ¿deseas continuar?",
+		text:"Estás por eliminar esta familia, ¿ deseas continuar?",
 		showCancelButton:true,
 		cancelButtonText:"No",
 		confirmButtonColor: '#9D2323',
