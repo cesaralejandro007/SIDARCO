@@ -63,22 +63,8 @@
                 </div>
             </div>  
 
-                        <div class="row">
-                            <div class="col-md-6 mt-2">
-                                <label for="fecha_consulta">
-                                    Fecha de consulta
-                                </label>
-                                <div class="input-group">
-                                
-                                <input class="form-control " id="fecha_consulta" name="datos[fecha_consulta]" type="date" oninput="Limitar(this,30);" />
-                                <!-- <button type="button" class="btn btn-default" id='fecha_actual'>Fecha actual</button> -->
-                                </div>
-                                <span id="mensaje_fecha_consulta"></span>
-                            </div>
-                        
-            
-
-                            <div class="col-md-6 mt-2">
+                         <div class="row">
+                         <div class="col-md-6 mt-2">
                                 <label for="motivo">
                                     Motivo de consulta
                                 </label>
@@ -88,12 +74,7 @@
                                 </div>
                                 <span id="mensaje_motivo"></span>
                             </div>
-                            </div>
-                            
-                            
-                            
-                        <div class="row">
-                            <div class="col-md-6 mt-2">
+                         <div class="col-md-6 mt-2">
                                 <label for="instrucciones">
                                 Instrucciones
                                 </label>
@@ -103,7 +84,17 @@
                                 <!--   <input  type="text" onkeyup="Filtro(this,'-',RIF,false)" oninput="Limitar(this,12);"/> -->
                             </div>
                         <span id="mensaje_instruc"></span>
-                        </div>
+                        </div> 
+                        
+            
+
+                           
+                            </div>
+                            
+                            
+                            
+                        <div class="row">
+                            
                                         <br>
                                         <div class="col-md-6 mt-2">
                                                 <label for="inventario">

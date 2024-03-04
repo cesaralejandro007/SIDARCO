@@ -16,8 +16,9 @@
             $vacunados = $this->Consultar_Tabla("vacuna_covid", 1, "cedula_persona");
             $discapacitados = $this->Consultar_Tabla_sin_estado("discapacidad_persona", 1, "cedula_persona");
             $personas_bonos = $this->Consultar_Tabla_sin_estado("persona_bonos", 1, "cedula_persona");
-           /*  $milicianos = $this->modelo->Milicianos(); */
+            /*  $milicianos = $this->modelo->Milicianos(); */
             /* $jefes_familia = $this->modelo->Jefes_Calle(); */
+            $totalpermiso=$this->modelo->TotalPermiso();
             $inmuebles = $this->modelo->Inmuebles();
             $negocios = $this->modelo->Negocios();
             $nivel_educativo = $this->modelo->Nivel_Educativo();
@@ -37,8 +38,14 @@
 
             /* $poblacion_edades = $this->modelo->Poblacion_Edades(); */
 
+            //Otros metodos de la clase puedan acceder a esta varaible sin tener que pasarla como parametro
+            //otener que llamarla nuevamente del modelo
             $this->vista->personas = $personas;
             $this->personas = $personas;
+
+            $this->vista->totalpermiso=$totalpermiso;
+            $this->totalpermiso= $totalpermiso;
+
 
             $this->vista->parto_humanizado = $parto_humanizado;
             $this->parto_humanizado = $parto_humanizado;
@@ -170,6 +177,36 @@
             $embarazadas = count($this->parto_humanizado);
             $personas = count($this->personas);
 
+            //------------------Cálculo y promedio de permisos----------------------------------\\
+
+            $porcentaje_pm=0;
+            $porcentaje_pe=0;
+
+            $TotalPermiso=count($this->totalpermiso);
+            $func_activos=count($this->personas)-$TotalPermiso; 
+            $porcentaje_pm= count($this->totalpermiso) / count($this->personas) * 100;
+            $porcentaje_pe= $func_activos / count($this->personas) * 100;
+
+            // No me estaba dando el promedio porque le estaba colocando COUNT()
+            //este es solo para cuando es array y queremos saber su valor, este era
+            //un entero por lo que no necesita un count() porque no me traera nada.
+
+
+            $datos_permisototal = array(
+                array("label" => "Total de permisos activos (" .$TotalPermiso. ")", "symbol" => "Funcionarios de permiso", "y" =>$porcentaje_pm),
+                array("label"=> "Total de funcionarios/as activos(".$func_activos.")", "symbol"=> "Funcionarios activos", "y" =>$porcentaje_pe)
+            );
+
+            $this->vista->datos_permiso = $datos_permisototal;
+
+             //------------------Calculo de permiso por division----------------------------------//
+
+            //------------------Calculo de permiso por tipo----------------------------------//
+            
+           
+            
+            
+            
             //------------------Calculo de edades----------------------------------//
 
             $menores_edad = 0;

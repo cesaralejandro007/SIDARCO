@@ -82,6 +82,9 @@ class Controlador
 
     //===========================CRUD GENERAL===================================
 
+
+
+
     public function Consultar_Tabla($tabla, $estado, $orden)
     {
 

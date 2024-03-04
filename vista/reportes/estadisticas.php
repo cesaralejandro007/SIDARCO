@@ -39,6 +39,8 @@
                                     <div class="input-group">
                                         <select class="custom-select" id="listados" name="listados">
                                             <option value='0'>-Seleccionar-</option>
+                                            
+                                            <option value="est_permisos">Consultar permisos</option>
 
                                             <option value="est_embarazadas">
                                                 Consultar embarazadas
@@ -142,6 +144,54 @@
                     </div>
                     <!-- /.card -->
                 </section> <br><br>
+
+
+                <section class="content" id='est_embarazadas' style='display:none'>
+                    <!-- Default box -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Estadística de permisos</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- card-body -->
+                        <div class="card-body">
+                            <div class="card-block">
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-12 mt-2">
+                                        <center>
+                                            <div id="permisos" style="height: 370px; width: 100%;"></div></center>
+                                            <script type="text/javascript">
+                                                $(document).ready(function() {
+                                                    var chart = new CanvasJS.Chart("permisos", {
+                                                        theme: "light2",
+                                                        animationEnabled: true,
+                                                        title: {
+                                                            text: "Permisos de funcionarios(as)"
+                                                        },
+                                                        data: [{
+                                                            type: "doughnut",
+                                                            indexLabel: "{symbol} - {y}",
+                                                            yValueFormatString: "#,##0.0\"%\"",
+                                                            showInLegend: true,
+                                                            legendText: "{label} : {y}",
+                                                            dataPoints: <?php echo json_encode($this->datos_permiso, JSON_NUMERIC_CHECK); ?>
+                                                        }]
+                                                    });
+                                                    chart.render();
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- /.card-footer-->
+                        </div>
+                        <!-- /.card -->
+                    </section> <br><br><br>
 
 
                 <section class="content" id='est_embarazadas' style='display:none'>

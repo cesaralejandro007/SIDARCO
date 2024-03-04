@@ -1,5 +1,5 @@
 //Campos del estudio 
-var fecha_historial=document.getElementById("fecha_historial");
+/* var fecha_historial=document.getElementById("fecha_historial"); */
 var cedula_persona=document.getElementById("cedula_persona");
 var examen= document.getElementById("examen");
 var tipo_sangre=document.getElementById("tipo_sangre");
@@ -708,7 +708,7 @@ if(valid_diagnostico()){
 var datos=[];
 var datos_persona=new Object();
 datos_persona['cedula_persona']=cedula_persona.value;
-datos_persona['fecha_historial']=fecha_historial.value;
+/* datos_persona['fecha_historial']=fecha_historial.value; */
 datos_persona['examen']=examen.value;
 datos_persona['tipo_sangre']=tipo_sangre.value;
 datos_persona['peso']=peso.value;

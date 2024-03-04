@@ -6,7 +6,29 @@ class Reportes_Class extends Modelo
     public function __construct() 
     {
         parent::__construct();
-    }    
+    }
+
+
+   public function TotalPermiso(){
+
+    $tabla="SELECT p.cedula_persona, pm.cedula_persona 
+    FROM personas p, permisos pm 
+    WHERE p.cedula_persona = pm.cedula_persona 
+    AND fecha_cierre < CURDATE();";
+    $respuesta_arreglo="";
+    try{
+        //preparar la conexion
+        $datos=$this->conexion->prepare($tabla);
+        $datos->execute();
+        $datos->setFetchMode(PDO::FETCH_ASSOC);
+        $respuesta_arreglo=$datos->fetchAll(PDO::FETCH_ASSOC);
+        return $respuesta_arreglo;
+    }catch(PDOException $e){
+        return $this->Capturar_Error($e);
+    }
+   }
+
+
 
     /*  public function Familia_Vivienda($id_familia) 
      {
@@ -93,6 +115,8 @@ class Reportes_Class extends Modelo
              return $this->Capturar_Error($e);
          }
      } */
+
+    
 
      public function Persona_Centro_Votacion()
     { 

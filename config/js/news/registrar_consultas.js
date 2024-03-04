@@ -169,12 +169,12 @@ $(document).ready(function() {
         //Nuevos id de la vista de consulta
         var cedula_persona=document.getElementById("cedula_persona"); 
         alert(cedula_persona.value);
-        var fecha_consulta=document.getElementById("fecha_consulta");
+        /* var fecha_consulta=document.getElementById("fecha_consulta"); */
         var motivo=document.getElementById("motivo");
         var instrucciones=document.getElementById("instrucciones");
 
 
-        var mensaje_fecha_consulta = document.getElementById("mensaje_fecha_consulta");
+        /* var mensaje_fecha_consulta = document.getElementById("mensaje_fecha_consulta"); */
         var mensaje_motivo = document.getElementById("mensaje_motivo");
         var mensaje_cedula = document.getElementById("mensaje_cedula");
         var mensaje_instruc = document.getElementById("mensaje_instruc");
@@ -203,10 +203,10 @@ $(document).ready(function() {
 
 
 
-        if (cedula_persona.value == 0 && motivo.value == '' || motivo.value == null && fecha_consulta.value == '' || fecha_consulta.value == null && cedula_persona.value == '' || cedula_persona.value == null ) {
-            mensaje_fecha_consulta.innerHTML = 'Debe seleccionar una Calle';
+        if (cedula_persona.value == 0 && motivo.value == '' || motivo.value == null && cedula_persona.value == '' || cedula_persona.value == null ) {
+            /* mensaje_fecha_consulta.innerHTML = 'Debe seleccionar una Calle'; */
             cedula_persona.style.borderColor = 'red';
-            mensaje_fecha_consulta.style.color = 'red';
+            /* mensaje_fecha_consulta.style.color = 'red'; */
             cedula_persona.focus();
             mensaje_motivo.innerHTML = 'el campo motivo no puede estar vacio';
             motivo.style.borderColor = 'red';
@@ -226,9 +226,9 @@ $(document).ready(function() {
             instrucciones.focus();
         }
         if (cedula_persona.value == 0) {
-            mensaje_fecha_consulta.innerHTML = 'Debe seleccionar al funcionario/a';
+            /* mensaje_fecha_consulta.innerHTML = 'Debe seleccionar al funcionario/a'; */
             cedula_persona.style.borderColor = 'red';
-            mensaje_fecha_consulta.style.color = 'red';
+            /* mensaje_fecha_consulta.style.color = 'red'; */
             cedula_persona.focus();
         } else {
             cedula_persona.style.borderColor = '';
@@ -319,7 +319,7 @@ $(document).ready(function() {
                                     var datos = [];
                                     for(var i=0;i<medica_persona.length;i++){
                                         
-                                   var datos2=new Object();  
+                                        var datos2=new Object();  
 
                                     /* datos2['id_consulta']=2; */
                                     datos2['inventario']=medica_persona[i];  
@@ -328,7 +328,7 @@ $(document).ready(function() {
                                     datos.push(datos2); 
 
                                     alert(JSON.stringify(datos)); 
-                                     
+                                    
                                     }
                                     $.ajax({
                                     type:"POST",
