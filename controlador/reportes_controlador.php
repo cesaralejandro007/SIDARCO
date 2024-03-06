@@ -16,8 +16,10 @@
             $vacunados = $this->Consultar_Tabla("vacuna_covid", 1, "cedula_persona");
             $discapacitados = $this->Consultar_Tabla_sin_estado("discapacidad_persona", 1, "cedula_persona");
             $personas_bonos = $this->Consultar_Tabla_sin_estado("persona_bonos", 1, "cedula_persona");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","1");
             /*  $milicianos = $this->modelo->Milicianos(); */
             /* $jefes_familia = $this->modelo->Jefes_Calle(); */
+            $personas_RCO=$this->Consultar_tabla_condicion("personas","id_nomina", "4");
             $totalpermiso=$this->modelo->TotalPermiso();
             $inmuebles = $this->modelo->Inmuebles();
             $negocios = $this->modelo->Negocios();
@@ -46,6 +48,11 @@
             $this->vista->totalpermiso=$totalpermiso;
             $this->totalpermiso= $totalpermiso;
 
+            $this->vista->tipo_permiso1=$tipo_permiso1;
+            $this->tipo_permiso1=$tipo_permiso1;
+
+            $this->vista->personas_RCO=$personas_RCO;
+            $this->personas_RCO=$personas_RCO;
 
             $this->vista->parto_humanizado = $parto_humanizado;
             $this->parto_humanizado = $parto_humanizado;
@@ -181,30 +188,45 @@
 
             $porcentaje_pm=0;
             $porcentaje_pe=0;
+            
 
             $TotalPermiso=count($this->totalpermiso);
             $func_activos=count($this->personas)-$TotalPermiso; 
             $porcentaje_pm= count($this->totalpermiso) / count($this->personas) * 100;
             $porcentaje_pe= $func_activos / count($this->personas) * 100;
+           /*  $porcentaje_pe */
 
             // No me estaba dando el promedio porque le estaba colocando COUNT()
             //este es solo para cuando es array y queremos saber su valor, este era
             //un entero por lo que no necesita un count() porque no me traera nada.
 
-
             $datos_permisototal = array(
                 array("label" => "Total de permisos activos (" .$TotalPermiso. ")", "symbol" => "Funcionarios de permiso", "y" =>$porcentaje_pm),
-                array("label"=> "Total de funcionarios/as activos(".$func_activos.")", "symbol"=> "Funcionarios activos", "y" =>$porcentaje_pe)
+                array("label"=> "Total de funcionarios/as activos(".$func_activos.")", "symbol"=> "Funcionarios activos", "y" =>$porcentaje_pe),
+               /*  array("label"=>"", "symbol"=>, "y"=>) */
+            );
+            
+            $this->vista->datos_permiso = $datos_permisototal;
+            
+            //------------------Calculo de permiso por division----------------------------------//
+
+            //------------------Calculo de permiso por tipo1----------------------------------//
+            
+            $porcentaje_tipo=0;
+            $porcentaje_2=0;
+            $porcentaje_1=0;
+
+            $porcentaje_1=count($this->tipo_permiso1) / count($this->personas) * 100;
+            $porcentaje_2= 2 / count($this->personas) * 100;
+            $total_porcentaje=$porcentaje_1+$porcentaje_2;
+
+
+            $datos_tipo_permiso= array(
+                array("label" => "Total de permisos  (" .$TotalPermiso. ") ", "symbol" => "Funcionarios de permiso", "y" =>$total_porcentaje),
+                array("label"=>"Enfermedad o accidente","symbol"=>"Enfermedad o accidente","y"=>$porcentaje_1)
             );
 
-            $this->vista->datos_permiso = $datos_permisototal;
-
-             //------------------Calculo de permiso por division----------------------------------//
-
-            //------------------Calculo de permiso por tipo----------------------------------//
-            
-           
-            
+            $this->vista->datos_tipo_permiso1=$datos_tipo_permiso;
             
             
             //------------------Calculo de edades----------------------------------//

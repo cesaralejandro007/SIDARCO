@@ -82,6 +82,27 @@ class Controlador
 
     //===========================CRUD GENERAL===================================
 
+    public function Consultar_tabla_condicion($tabla, $condicion, $id){
+
+        $sql="SELECT * FROM $tabla WHERE $condicion=$id";
+        $respuesta_arreglo="";
+
+        try{
+            $datos=$this->conexion->prepare($sql);
+            $datos->execute();
+            //losd atos devolveran como un arregloasociativo
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            //METODO obtener todos los resultados de la consulta en una bd utilizando PDOy almacenarlos en un array
+            $respuesta_arreglo=$datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        }catch(PDOException $e){
+
+            $errorReturn=['estatus' => false];
+            $errorReturn+=['info' => "error sql:{$e}"];
+            return $errorReturn;
+
+        }
+    }
 
 
 
@@ -97,7 +118,6 @@ class Controlador
             $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
             return $respuesta_arreglo;
         } catch (PDOException $e) {
-
             $errorReturn = ['estatus' => false];
             $errorReturn += ['info' => "error sql:{$e}"];
             return $errorReturn;
@@ -319,6 +339,7 @@ class Controlador
             return $errorReturn;
         }
     }
+    
     public function consultar_cargo($tabla)
     {
 

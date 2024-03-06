@@ -19,9 +19,9 @@ lista.onchange=function(){
      }
      else{
 
-        for(var i=0;i<secciones.length;i++){
-            secciones[i].style.display='block';
-        }
+       for(var i=0;i<secciones.length;i++){
+            secciones[i].style.display='block'; 
+         } 
     }
 }
 

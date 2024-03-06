@@ -42,9 +42,9 @@
                                             
                                             <option value="est_permisos">Consultar permisos</option>
 
-                                            <option value="est_embarazadas">
-                                                Consultar embarazadas
-                                            </option>
+                                            <option value="est_permisos1">Consultar tipo de permisos</option>
+
+                                            <option value="est_embarazadas">Consultar embarazadas</option>
 
                                             <option value="est_edades">
                                                 Consultar poblacion de edades
@@ -143,10 +143,79 @@
                         <!-- /.card-footer-->
                     </div>
                     <!-- /.card -->
+                    </section> <br><br>
+
+
+               
+
+                <section class="content" id='est_permisos' style='display:none'>
+                <!-- Default box -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Estadística de permisos</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <div class="card-block">
+                            <div class="form-group row justify-content-center">
+                                <div class="col-md-12 mt-2">
+                                    <center>
+                                    <div id="permisos" style="height: 370px; width: 100%;"></div></center>
+                                        <script type="text/javascript">
+                                            $(document).ready(function() {
+
+                                                var chart = new CanvasJS.Chart("permisos", {
+                                                    theme: "light2",
+                                                    animationEnabled: true,
+                                                    title: {
+                                                        text: "Permisos de funcionarios(as)"
+                                                    },
+                                                    data: [{
+                                                        type: "doughnut",
+                                                        indexLabel: "{symbol} - {y}",
+                                                        yValueFormatString: "#,##0.0\"%\"",
+                                                        showInLegend: true,
+                                                        legendText: "{label} : {y}",
+                                                        dataPoints: <?php echo json_encode($this->datos_permiso, JSON_NUMERIC_CHECK); ?>
+                                                    }]
+                                                });
+                                                chart.render();
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!--  <div class="card-block">
+                            <div class="form-group row justify-content-center"> -->
+                            <!--     <div class="col-md-12 mt-2">
+                                    <center>
+                                    <div id="permisos" style="height: 370px; width: 100%;"></div></center>
+                                        <script type="text/javascript">
+                                            
+                                        </script>
+                                    </div>
+                                </div> -->
+                        
+
+                        <!-- /.card-footer-->
+                    </div>
+                    <!-- /.card -->
+                </section> <br><br><br>
+
+
+
                 </section> <br><br>
 
 
-                <section class="content" id='est_embarazadas' style='display:none'>
+               
+
+                    <section class="content" id='est_permisos1' style='display:none'>
                     <!-- Default box -->
                     <div class="card">
                         <div class="card-header">
@@ -162,10 +231,11 @@
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-12 mt-2">
                                         <center>
-                                            <div id="permisos" style="height: 370px; width: 100%;"></div></center>
+                                        <div id="permisos1" style="height: 370px; width: 100%;"></div></center>
                                             <script type="text/javascript">
                                                 $(document).ready(function() {
-                                                    var chart = new CanvasJS.Chart("permisos", {
+
+                                                    var chart = new CanvasJS.Chart("permisos1", {
                                                         theme: "light2",
                                                         animationEnabled: true,
                                                         title: {
@@ -177,7 +247,7 @@
                                                             yValueFormatString: "#,##0.0\"%\"",
                                                             showInLegend: true,
                                                             legendText: "{label} : {y}",
-                                                            dataPoints: <?php echo json_encode($this->datos_permiso, JSON_NUMERIC_CHECK); ?>
+                                                            dataPoints: <?php echo json_encode($this->datos_tipo_permiso1, JSON_NUMERIC_CHECK); ?>
                                                         }]
                                                     });
                                                     chart.render();
@@ -187,6 +257,18 @@
                                     </div>
                                 </div>
                             </div>
+
+                           <!--  <div class="card-block">
+                                <div class="form-group row justify-content-center"> -->
+                                <!--     <div class="col-md-12 mt-2">
+                                        <center>
+                                        <div id="permisos" style="height: 370px; width: 100%;"></div></center>
+                                            <script type="text/javascript">
+                                                
+                                            </script>
+                                        </div>
+                                    </div> -->
+                            
 
                             <!-- /.card-footer-->
                         </div>

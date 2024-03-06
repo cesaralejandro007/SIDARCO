@@ -13,8 +13,7 @@ class Reportes_Class extends Modelo
 
     $tabla="SELECT p.cedula_persona, pm.cedula_persona 
     FROM personas p, permisos pm 
-    WHERE p.cedula_persona = pm.cedula_persona 
-    AND fecha_cierre < CURDATE();";
+    WHERE p.cedula_persona = pm.cedula_persona;";
     $respuesta_arreglo="";
     try{
         //preparar la conexion
