@@ -17,6 +17,21 @@
             $discapacitados = $this->Consultar_Tabla_sin_estado("discapacidad_persona", 1, "cedula_persona");
             $personas_bonos = $this->Consultar_Tabla_sin_estado("persona_bonos", 1, "cedula_persona");
             $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","1");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","2");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","3");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","4");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","5");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","6");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","7");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","8");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","9");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","10");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","11");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","12");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","13");
+            $tipo_permiso14=$this->Consultar_tabla_condicion("permisos","tipo_permiso","14");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","15");
+            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","18");
             /*  $milicianos = $this->modelo->Milicianos(); */
             /* $jefes_familia = $this->modelo->Jefes_Calle(); */
             $personas_RCO=$this->Consultar_tabla_condicion("personas","id_nomina", "4");
@@ -50,6 +65,11 @@
 
             $this->vista->tipo_permiso1=$tipo_permiso1;
             $this->tipo_permiso1=$tipo_permiso1;
+
+
+
+            $this->vista->tipo_permiso14=$tipo_permiso14;
+            $this->tipo_permiso14=$tipo_permiso14;
 
             $this->vista->personas_RCO=$personas_RCO;
             $this->personas_RCO=$personas_RCO;
@@ -213,17 +233,67 @@
             //------------------Calculo de permiso por tipo1----------------------------------//
             
             $porcentaje_tipo=0;
-            $porcentaje_2=0;
             $porcentaje_1=0;
+            $porcentaje_2=0;
+            $porcentaje_3=0;
+            $porcentaje_4=0;
+            $porcentaje_5=0;
+            $porcentaje_6=0;
+            $porcentaje_7=0;
+            $porcentaje_8=0;
+            $porcentaje_9=0;
+            $porcentaje_10=0;
+            $porcentaje_11=0;
+            $porcentaje_12=0;
+            $porcentaje_13=0;
+            $porcentaje_14=0;
+            $porcentaje_15=0;
+            $porcentaje_16=0;
+            $porcentaje_17=0;
+            $porcentaje_18=0;
 
             $porcentaje_1=count($this->tipo_permiso1) / count($this->personas) * 100;
-            $porcentaje_2= 2 / count($this->personas) * 100;
-            $total_porcentaje=$porcentaje_1+$porcentaje_2;
+            $porcentaje_2=count($this->tipo_permiso2)  / count($this->personas) * 100;
+            $porcentaje_3=count($this->tipo_permiso3)  / count($this->personas) * 100;
+            $porcentaje_4=count($this->tipo_permiso4)  / count($this->personas) * 100;
+            $porcentaje_5=count($this->tipo_permiso5)  / count($this->personas) * 100;
+            $porcentaje_6=count($this->tipo_permiso6)  / count($this->personas) * 100;
+            $porcentaje_7=count($this->tipo_permiso7)  / count($this->personas) * 100;
+            $porcentaje_8=count($this->tipo_permiso8)  / count($this->personas) * 100;
+            $porcentaje_9=count($this->tipo_permiso9)  / count($this->personas) * 100;
+            $porcentaje_10=count($this->tipo_permiso10)  / count($this->personas) * 100;
+            $porcentaje_11=count($this->tipo_permiso11)  / count($this->personas) * 100;
+            $porcentaje_12=count($this->tipo_permiso12)  / count($this->personas) * 100;
+            $porcentaje_13=count($this->tipo_permiso13)  / count($this->personas) * 100;
+            $porcentaje_14=count($this->tipo_permiso14) / count($this->personas)  * 100;
+            $porcentaje_15=count($this->tipo_permiso15)  / count($this->personas) * 100;
+            $porcentaje_16=count($this->tipo_permiso16)  / count($this->personas) * 100;
+            $porcentaje_17=count($this->tipo_permiso17)  / count($this->personas) * 100;
+            $porcentaje_18=count($this->tipo_permiso18) / count($this->personas) * 100;
+            
+            $total_porcentaje=$porcentaje_1+$porcentaje_2+$porcentaje_3+$porcentaje_4+$porcentaje_5+$porcentaje_6+$porcentaje_7+$porcentaje_8+$porcentaje_9+$porcentaje_10+$porcentaje_11+$porcentaje_12+$porcentaje_13+$porcentaje_14+$porcentaje_15+$porcentaje_17+$porcentaje_18;
 
 
             $datos_tipo_permiso= array(
                 array("label" => "Total de permisos  (" .$TotalPermiso. ") ", "symbol" => "Funcionarios de permiso", "y" =>$total_porcentaje),
-                array("label"=>"Enfermedad o accidente","symbol"=>"Enfermedad o accidente","y"=>$porcentaje_1)
+                array("label"=>"Enfermedad o accidente","symbol"=>"Enfermedad o accidente","y"=>$porcentaje_1),
+                array("label"=>,"symbol"=>,"y"=>),
+                array("label"=>,"symbol"=>,"y"=>),
+                array("label"=>, "symbol"=>,"y"=>),
+                array("label"=>,"symbol"=>,"y"=>,),
+                array("label"=>,"symbol"=>,"y"=>,),
+                array("label"=>,"symbol"=>,"y"=>,),
+                array("label"=>,"symbol"=>,"y"=>,),
+                array("label"=>,"symbol"=>,"y"=>,),
+                array("label"=>,"symbol"=>,"y"=>,),
+                array("label"=>,"symbol"=>,"y"=>,),
+                array("label"=>,"symbol"=>,"y"=>,),
+                array("label"=>"Diligencias personales", "symbol"=>"Diligencia personal", "y"=>$porcentaje_14),
+                array("label"=>,"symbol"=>,"y"=>,),
+                array("label"=>,"symbol"=>,"y"=>,),
+                array("label"=>,"symbol"=>,"y"=>,),
+                array("label"=>,"symbol"=>,"y"=>,),
+                
             );
 
             $this->vista->datos_tipo_permiso1=$datos_tipo_permiso;

@@ -585,14 +585,14 @@ function valida_info(){
           if(valid_element("Debe ingresar el documento de identidad", cedula_persona, document.getElementById("valid_2")))
             {
             if(persona_existe(cedula_persona.value)){  
-              if(new Date(fecha_historial.value)>new Date){
+              /* if(new Date(fecha_historial.value)>new Date){
                   document.getElementById("valid_1").innerHTML="La fecha no debe ser mayor a la actual";
                   document.getElementById("valid_1").style.display='';
                   fecha_historial.style.borderColor="red";
                   }else{
                   document.getElementById("valid_1").style.display='';
                   document.getElementById("valid_1").innerHTML="Ingresar fecha del historial";
-                  fecha_historial.style.borderColor="";
+                  fecha_historial.style.borderColor=""; */
          /*      if(valid_element("Ingresar exámen realizado", examen, document.getElementById("valid_3"))){
                   if(valid_element("Ingrese el tipo de sangre", tipo_sangre, document.getElementById("valid_4"))){
                     if(valid_element("Ingrese el peso ", peso, document.getElementById("valid_5") )){ 
@@ -621,8 +621,9 @@ function valida_info(){
                   } 
                 }
               } */
-              validacion=true;
-            }
+              
+            /* } */
+            validacion=true;
           } 
     } 
     return validacion;
