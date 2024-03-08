@@ -224,26 +224,55 @@ echo $resultado;
 } 
 
 
-public function consultar_info_familia(){
-    $familias=$this->modelo->get_familias();
+public function consultar_historial_clinico(){
+    $historial=$this->modelo->get_historial();
     $retornar=[];
 
-    foreach ($familias as $f) {
+    foreach ($historial as $h) {
         
-        $integrantes=$this->modelo->get_integrantes($f['cedula_persona']);
-        $integrantes_familia  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td></tr></thead><tbody>";
-        foreach ($this->modelo->get_integrantes($f['cedula_persona']) as $en) {
-                $integrantes_familia .="<tr><td>". $en['cedula_integrante'] ."</td><td>" . $en['primer_nombre']." " .$en['primer_apellido'] ."</td><td>" . $en['parentezco']. "</td></tr>";
+        $tabla_antecedentesp  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción:</td><td>Nombre personal:</td></tr></thead><tbody>";
+        foreach ($this->modelo->get_antecedentesp($h['cedula_persona']) as $en) {
+                $tabla_antecedentesp .="<tr><td>". $en['cedula_persona'] ."</td><td>" . $en['descripcion_personales']. "</td><td>" . $en['nombre_personal']. "</td></tr>";
         }
-        $integrantes_familia .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td></tr></tfoot></table>";
-        $integrantes_familia = "<div style='overflow-y:scroll;width:100%;height:100px;'>" . $integrantes_familia . "</div>";
+        $tabla_antecedentesp .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción:</td><td>Nombre personal:</td></tr></tfoot></table>";
+        $tabla_antecedentesp = "<div style='overflow-y:scroll;width:100%;height:150px;'>" . $tabla_antecedentesp . "</div>";
+
+
+        $tabla_antecedentesf  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción familiar:</td><td>Nombre familiar:</td></tr></thead><tbody>";
+        foreach ($this->modelo->get_antecedentesf($h['cedula_persona']) as $en) {
+                $tabla_antecedentesf .="<tr><td>". $en['cedula_persona'] ."</td><td>" . $en['descripcion_familiar']. "</td><td>" . $en['nombre_familiar']. "</td></tr>";
+        }
+        $tabla_antecedentesf .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción familiar:</td><td>Nombre familiar:</td></tr></tfoot></table>";
+        $tabla_antecedentesf = "<div style='overflow-y:scroll;width:100%;height:150px;'>" . $tabla_antecedentesf . "</div>";
+
+        $tabla_habitosps  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción de habito:</td><td>Nombre de habito:</td></tr></thead><tbody>";
+        foreach ($this->modelo->get_habitosps($h['cedula_persona']) as $en) {
+                $tabla_habitosps .="<tr><td>". $en['cedula_persona'] ."</td><td>" . $en['descripcion_habit']. "</td><td>" . $en['nombre_habit']. "</td></tr>";
+        }
+        $tabla_habitosps .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción de habito:</td><td>Nombre de habito:</td></tr></tfoot></table>";
+        $tabla_habitosps = "<div style='overflow-y:scroll;width:100%;height:150px;'>" . $tabla_habitosps . "</div>";
+
          $retornar[]=[
-                "familia"           => $f['nombre_familia'],
-                "descripcion"          => $f['descripcion_familia'],
-                "responsable"         => $f['cedula_persona']." ".$f['primer_nombre_p']." ".$f['primer_apellido_p'],
-                "integrantes"          => $integrantes_familia,
-                "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia_persona'].",".$f['id_familia'].",".$f['cedula_persona'].")'><em class='fa fa-edit'></em></button>",
-                "eliminar"          =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$f['cedula_persona']."`)' type='button'><em class='fa fa-trash'></em></button>"
+                "cedula"           => $h['cedula_persona'],
+                "diagnostico"           => $h['diagnostico'],
+                "tratamiento"          => $h['tratamiento'],
+                "evolucion"         => $h['evolucion'],
+                "fecha"         => $h['fecha_historial'],
+                "examen"         => $h['examen'],
+                "tipo_sangre"         => $h['tipo_sangre'],
+                "peso"         => $h['peso'],
+                "altura"         => $h['altura'],
+                "talla"         => $h['talla'],
+                "imc"         => $h['imc'],
+                "fc"         => $h['fc'],
+                "fr"         => $h['fr'],
+                "ta"         => $h['ta'],
+                "temperatura"         => $h['temperatura'],
+                "antecedentes_personales"          => $tabla_antecedentesp,
+                "antecedentes_familiares"          => $tabla_antecedentesf,
+                "habitos_psicologicos"          => $tabla_habitosps,
+                "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$h['id_historial_clinico'].",`".$h['cedula_persona']."`)'><em class='fa fa-edit'></em></button>",
+                "eliminar"          =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(".$h['id_historial_clinico'].",`".$h['cedula_persona']."`)' type='button'><em class='fa fa-trash'></em></button>"
           ];
      }
 

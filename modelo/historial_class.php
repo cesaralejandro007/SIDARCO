@@ -117,10 +117,10 @@
     }
 
 
-    public function get_familias()
+    public function get_historial()
     {
 
-        $tabla            = "SELECT p.*, ap.*, app.*, app.descripcion_personales as descripcion_p_app,  FROM ant_personales ap, personas p, ant_per_personas app WHERE p.estado=1 AND ap.id_ant_personal=app.id_ant_personal AND app.cedula_persona = p.cedula_persona GROUP BY app.cedula_persona";
+        $tabla            = "SELECT * FROM historiales_clinicos";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -134,10 +134,44 @@
         }
     }
 
-    public function get_integrantes($cedula_persona)
+    public function get_antecedentesp($cedula_persona)
     {
 
-        $tabla            = "SELECT P.*,FP.*,f.*, f.cedula_integrante as cedula_persona_f, f.primer_nombre as primer_nombre_f, f.primer_apellido as primer_apellido_f FROM familia_personas FP, personas P, familia f WHERE P.cedula_persona='$cedula_persona' AND f.id_familia = FP.id_familia AND FP.cedula_persona = P.cedula_persona";
+        $tabla            = "SELECT * FROM ant_per_personas,ant_personales WHERE ant_per_personas.id_ant_personal = ant_personales.id_ant_personal AND ant_per_personas.cedula_persona = '$cedula_persona'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function get_antecedentesf($cedula_persona)
+    {
+
+        $tabla            = "SELECT * FROM ant_fam_personas,ant_familiares WHERE ant_fam_personas.id_ant_familiar = ant_familiares.id_ant_familiar AND ant_fam_personas.cedula_persona = '$cedula_persona'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+    
+    public function get_habitosps($cedula_persona)
+    {
+
+        $tabla            = "SELECT * FROM habit_psico_personas,habit_psicologicos WHERE habit_psico_personas.id_habit_psicologico = habit_psicologicos.id_habit_psicologico AND habit_psico_personas.cedula_persona = '$cedula_persona'";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
