@@ -17,22 +17,24 @@
             $discapacitados = $this->Consultar_Tabla_sin_estado("discapacidad_persona", 1, "cedula_persona");
             $personas_bonos = $this->Consultar_Tabla_sin_estado("persona_bonos", 1, "cedula_persona");
             $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","1");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","2");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","3");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","4");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","5");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","6");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","7");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","8");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","9");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","10");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","11");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","12");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","13");
+            $tipo_permiso2=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","2");
+            $tipo_permiso3=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","3");
+            $tipo_permiso4=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","4");
+            $tipo_permiso5=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","5");
+          /*   $tipo_permiso6=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","6");
+            $tipo_permiso7=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","7");
+            $tipo_permiso8=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","8");
+            $tipo_permiso9=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","9");
+            $tipo_permiso10=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","10");
+            $tipo_permiso11=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","11");
+            $tipo_permiso12=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","12");
+            $tipo_permiso13=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","13");
             $tipo_permiso14=$this->Consultar_tabla_condicion("permisos","tipo_permiso","14");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","15");
-            $tipo_permiso1=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","18");
-            /*  $milicianos = $this->modelo->Milicianos(); */
+            $tipo_permiso15=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","15");
+            $tipo_permiso16=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","16");
+            $tipo_permiso17=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","17");
+            $tipo_permiso18=$this->Consultar_tabla_condicion("permisos", "tipo_permiso","18"); */
+            /* $milicianos = $this->modelo->Milicianos(); */
             /* $jefes_familia = $this->modelo->Jefes_Calle(); */
             $personas_RCO=$this->Consultar_tabla_condicion("personas","id_nomina", "4");
             $totalpermiso=$this->modelo->TotalPermiso();
@@ -66,10 +68,56 @@
             $this->vista->tipo_permiso1=$tipo_permiso1;
             $this->tipo_permiso1=$tipo_permiso1;
 
+            $this->vista->tipo_permiso2=$tipo_permiso2;
+            $this->tipo_permiso2=$tipo_permiso2;
 
+            $this->vista->tipo_permiso3=$tipo_permiso3;
+            $this->tipo_permiso3=$tipo_permiso3;
+
+            $this->vista->tipo_permiso4=$tipo_permiso4;
+            $this->tipo_permiso4=$tipo_permiso4;
+
+            $this->vista->tipo_permiso5=$tipo_permiso5;
+            $this->tipo_permiso5=$tipo_permiso5;
+/* 
+            $this->vista->tipo_permiso6=$tipo_permiso6;
+            $this->tipo_permiso6=$tipo_permiso6;
+
+            $this->vista->tipo_permiso7=$tipo_permiso7;
+            $this->tipo_permiso7=$tipo_permiso7;
+
+            $this->vista->tipo_permiso8=$tipo_permiso8;
+            $this->tipo_permiso8=$tipo_permiso8;
+
+            $this->vista->tipo_permiso9=$tipo_permiso9;
+            $this->tipo_permiso9=$tipo_permiso9;
+
+            $this->vista->tipo_permiso10=$tipo_permiso10;
+            $this->tipo_permiso10=$tipo_permiso10;
+
+            $this->vista->tipo_permiso11=$tipo_permiso11;
+            $this->tipo_permiso11=$tipo_permiso11;
+
+            $this->vista->tipo_permiso12=$tipo_permiso12;
+            $this->tipo_permiso12=$tipo_permiso12;
+
+            $this->vista->tipo_permiso13=$tipo_permiso13;
+            $this->tipo_permiso13=$tipo_permiso13;
 
             $this->vista->tipo_permiso14=$tipo_permiso14;
             $this->tipo_permiso14=$tipo_permiso14;
+
+            $this->vista->tipo_permiso15=$tipo_permiso15;
+            $this->tipo_permiso15=$tipo_permiso15;
+
+            $this->vista->tipo_permiso16=$tipo_permiso16;
+            $this->tipo_permiso16=$tipo_permiso16;
+
+            $this->vista->tipo_permiso17=$tipo_permiso17;
+            $this->tipo_permiso17=$tipo_permiso17;
+
+            $this->vista->tipo_permiso18=$tipo_permiso18;
+            $this->tipo_permiso18=$tipo_permiso18; */
 
             $this->vista->personas_RCO=$personas_RCO;
             $this->personas_RCO=$personas_RCO;
@@ -232,7 +280,7 @@
 
             //------------------Calculo de permiso por tipo1----------------------------------//
             
-            $porcentaje_tipo=0;
+            $total_porcentaje=0;
             $porcentaje_1=0;
             $porcentaje_2=0;
             $porcentaje_3=0;
@@ -257,7 +305,7 @@
             $porcentaje_3=count($this->tipo_permiso3)  / count($this->personas) * 100;
             $porcentaje_4=count($this->tipo_permiso4)  / count($this->personas) * 100;
             $porcentaje_5=count($this->tipo_permiso5)  / count($this->personas) * 100;
-            $porcentaje_6=count($this->tipo_permiso6)  / count($this->personas) * 100;
+   /*       $porcentaje_6=count($this->tipo_permiso6)  / count($this->personas) * 100;
             $porcentaje_7=count($this->tipo_permiso7)  / count($this->personas) * 100;
             $porcentaje_8=count($this->tipo_permiso8)  / count($this->personas) * 100;
             $porcentaje_9=count($this->tipo_permiso9)  / count($this->personas) * 100;
@@ -269,31 +317,34 @@
             $porcentaje_15=count($this->tipo_permiso15)  / count($this->personas) * 100;
             $porcentaje_16=count($this->tipo_permiso16)  / count($this->personas) * 100;
             $porcentaje_17=count($this->tipo_permiso17)  / count($this->personas) * 100;
-            $porcentaje_18=count($this->tipo_permiso18) / count($this->personas) * 100;
+            $porcentaje_18=count($this->tipo_permiso18) / count($this->personas) * 100; */
             
-            $total_porcentaje=$porcentaje_1+$porcentaje_2+$porcentaje_3+$porcentaje_4+$porcentaje_5+$porcentaje_6+$porcentaje_7+$porcentaje_8+$porcentaje_9+$porcentaje_10+$porcentaje_11+$porcentaje_12+$porcentaje_13+$porcentaje_14+$porcentaje_15+$porcentaje_17+$porcentaje_18;
+           /*  $total_porcentaje=$porcentaje_1+$porcentaje_2+$porcentaje_3+$porcentaje_4+$porcentaje_5; */
+          /*   $porcentaje_6+$porcentaje_7+$porcentaje_8+$porcentaje_9+$porcentaje_10+$porcentaje_11+$porcentaje_12+$porcentaje_13+$porcentaje_14+$porcentaje_15+$porcentaje_17+$porcentaje_18; */
 
 
             $datos_tipo_permiso= array(
-                array("label" => "Total de permisos  (" .$TotalPermiso. ") ", "symbol" => "Funcionarios de permiso", "y" =>$total_porcentaje),
-                array("label"=>"Enfermedad o accidente","symbol"=>"Enfermedad o accidente","y"=>$porcentaje_1),
-                array("label"=>,"symbol"=>,"y"=>),
-                array("label"=>,"symbol"=>,"y"=>),
-                array("label"=>, "symbol"=>,"y"=>),
-                array("label"=>,"symbol"=>,"y"=>,),
-                array("label"=>,"symbol"=>,"y"=>,),
-                array("label"=>,"symbol"=>,"y"=>,),
-                array("label"=>,"symbol"=>,"y"=>,),
-                array("label"=>,"symbol"=>,"y"=>,),
-                array("label"=>,"symbol"=>,"y"=>,),
-                array("label"=>,"symbol"=>,"y"=>,),
-                array("label"=>,"symbol"=>,"y"=>,),
+
+                array("label" => "Total de permisos  (" .$TotalPermiso. ") ", "symbol" => "Funcionarios de permiso", "y" =>$porcentaje_pm),
+          /*    array("label"=>"Enfermedad o accidente","symbol"=>"Enfermedad o accidente","y"=>$porcentaje_1), */
+                array("label"=>"Enfermedad o accidente de familiar","symbol"=>"Enfermedad o accidente de familiar","y"=>$porcentaje_2),
+                array("label"=>"Fallecimiento de familiar","symbol"=>"Fallecimiento de familiar","y"=>$porcentaje_3),
+         /*     array("label"=>"Matrimonio de funcionario/a", "symbol"=>"Matrimonio de funcionario/a","y"=>$porcentaje_4), */
+/*              array("label"=>"Periodo pre y post-natal","symbol"=>"Periodo pre y post-natal","y"=>$porcentaje_5),
+ */          /* array("label"=>"Periodo de lactancia ","symbol"=>"Periodo de lactancia","y"=>$porcentaje_6), */
+/*              array("label"=>"Nacimiento de hija/o","symbol"=>"Nacimiento de hija/o","y"=>$porcentaje_7),
+ */             array("label"=>"Comparescencia obligatoria","symbol"=>"Comparescencia obligatoria","y"=>$porcentaje_8),
+                array("label"=>"Participacion en eventos deportivos","symbol"=>"Participacion en eventos deportivos","y"=>$porcentaje_9),
+                array("label"=>"Prestación servicio militar","symbol"=>"Prestar servicio militar","y"=>$porcentaje_10),
+                array("label"=>"Estudio del funcioanrio","symbol"=>"Estudio del funcioanrio","y"=>$porcentaje_11),
+                array("label"=>"Siniestro que afecta bienes del funcionario","symbol"=>"Siniestro que afecta bienes","y"=>$porcentaje_12),
+                array("label"=>"Asistencia a conferencias, congresos...","symbol"=>"Asistir a conferencias","y"=>$porcentaje_13),
                 array("label"=>"Diligencias personales", "symbol"=>"Diligencia personal", "y"=>$porcentaje_14),
-                array("label"=>,"symbol"=>,"y"=>,),
-                array("label"=>,"symbol"=>,"y"=>,),
-                array("label"=>,"symbol"=>,"y"=>,),
-                array("label"=>,"symbol"=>,"y"=>,),
-                
+                array("label"=>"Asistencia a exámenes o evaluaciones","symbol"=>"Asistencia a exámenes o evaluaciones","y"=>$porcentaje_15),
+                array("label"=>"Desempeño de cargos académicos","symbol"=>"Desempeño de cargos académicos","y"=>$porcentaje_16),
+/*              array("label"=>"Beca","symbol"=>"Beca","y"=>$porcentaje_17),
+ */             array("label"=>"Participación en eventos nacionales e internacionales","symbol"=>"Participación en eventos nacionales e internacionales","y"=>$porcentaje_18)
+
             );
 
             $this->vista->datos_tipo_permiso1=$datos_tipo_permiso;

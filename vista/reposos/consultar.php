@@ -25,7 +25,7 @@
                                     Cédula de Persona
                                 </label>
                                 <div class="input-group">
-                                    <input list="cedula_p" id="cedula_persona" name="datos[cedula_persona]" class="form-control no-simbolos letras_numeros" placeholder="Cedula de Persona" oninput="Limitar(this,15)"/>
+                                    <input list="cedula_p" id="id_cedula" name="datos[id_cedula]" class="form-control no-simbolos letras_numeros" placeholder="Cedula de Persona" oninput="Limitar(this,15)"/>
                                     <datalist id="cedula_p">
                                         <?php foreach ($this->personas as $persona) {   ?>
                                             <option value="<?php echo $persona["cedula_persona"]; ?>">
@@ -33,8 +33,9 @@
                                             </option>
                                         <?php  }  ?>
                                     </datalist>
-                                    <span styel="color:red;" id="valid_cedula"></span>
+                                    
                                 </div>
+                                <span style="color:red;" id="valid_cedula"></span>
                             </div>
 
                             <div class="col-md-6 mt-2">
@@ -53,6 +54,31 @@
                                 <span styel="color:red;" id="valid_fc"></span>
                             </div>
 
+                            <div class="col-md-6 mt-2">
+                            <label for="especialidad">Especialidad</label>
+                                <div class="input-group">
+                                    <input list="especialidad_list" type="text" class="form-control" name="datos[especialidad]" id="especialidad">
+                                    <datalist id="especialidad_list">
+                                        <?php foreach($this->especialidad as $espe) {  ?>
+                                        <option value="<?php echo $espe["id_especialidad"];  ?>"><?php echo $espe["nombre_especialidad"];  ?></option>
+                                        <?php }?>
+                                        </datalist>
+                                </div>
+                                <span style="color: red;" id="valid_especialidad"></span>
+                            </div>
+
+                            <div class="col-md-6 mt-2">
+                                <label for="patologia"></label>
+                                <div class="">
+                                    <input type="text" list="patologia_list" id="patalogia" name="datos[id_patologia]">
+                                    <datalist id="patologia_list">
+                                        <?php foreach() ?>
+                                        <option value="<?php ?>"><?php echo  ?></option>
+                                    </datalist>
+                                </div>
+                                <span style="" id=""></span>
+                            </div>
+
                             <div class="col-md-6 mt-2" >
                                 <label for="motivo_r">Motivo</label>
                                 <div class="input-group">
@@ -64,15 +90,15 @@
                             <div class="col-md-6 mt-2" >
                                 <label for="medico_r">Medico Tratante</label>
                                 <div class="input-group">
-                                    <input type="text" id="medico_r" class="form-control" placeholder="Escriba el motivo del reposo">
+                                    <input type="text" id="medico_r" name="datos[medico_r]" class="form-control" placeholder="Escriba el motivo del reposo">
                                 </div>
                                 <span styel="color:#710909;" id="valid_mt"></span>
                             </div>
                             
                             <div class="col-md-12 mt-2">
                                 <label for="Diagnostico_r">Diagnostico</label>
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Escriba el diagnostico del reposo" id="Diagnostico_r" style="height: 100px"></textarea>
+                            <div class="input-group">
+                                <textarea class="form-control" placeholder="Escriba el diagnóstico del reposo" id="Diagnostico_r" style="height: 100px"></textarea>
                             </div>
                             <span style="color: #710909" id="valid_diag"></span>
                             </div>
@@ -172,6 +198,7 @@ $(document).ready(function() {
                             <th>Cierre</th>
                             <th>Dias</th>
                             <th>Semanas</th>
+                            <th>Recepción</th>
                             <th>Motivo</th>
                             <th>Diagnostico</th>
                             <th>Medico Tratante</th>
@@ -227,6 +254,9 @@ $(document).ready(function() {
                                             "data":"semanas_de_reposo"
                                         },
                                         {
+                                            "data":"recepcion"
+                                        },
+                                        {
                                             "data":"motivo"
                                         },
                                         {
@@ -256,7 +286,7 @@ $(document).ready(function() {
                                         titleAttr: 'Exportar a Excel',
                                         className: 'btn text-success border border-success',
                                         exportOptions: {
-                                            columns: [2,3,4,5,6,7,8,9,10,11]
+                                            columns: [2,3,4,5,6,7,8,9,10,11,12]
                                         }
                                         },
                                         {
@@ -287,7 +317,7 @@ $(document).ready(function() {
                                         // Splice the image in after the header, but before the table
                                         },
                                         exportOptions: {
-                                            columns: [2,3,4,5,6,7,8,9,10,11]
+                                            columns: [2,3,4,5,6,7,8,9,10,11,12]
                                         }
                                     },
                                     ]  
@@ -458,6 +488,7 @@ $(document).ready(function() {
                             <th>Cierre</th>
                             <th>Dias</th>
                             <th>Semanas</th>
+                            <th>Recepción</th>
                             <th>Motivo</th>
                             <th>Diagnostico</th>
                             <th>Medico Tratante</th>

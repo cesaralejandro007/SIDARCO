@@ -231,11 +231,13 @@
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-12 mt-2">
                                         <center>
-                                        <div id="permisos1" style="height: 370px; width: 100%;"></div></center>
+                                        <div id="permisos1" style="height: 500px; width: 100%;"></div></center>
                                             <script type="text/javascript">
                                                 $(document).ready(function() {
 
                                                     var chart = new CanvasJS.Chart("permisos1", {
+                                                        /* height="80%",
+                                                        width="80%", */
                                                         theme: "light2",
                                                         animationEnabled: true,
                                                         title: {
