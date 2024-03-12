@@ -68,23 +68,29 @@
                             </div>
 
                             <div class="col-md-6 mt-2">
-                                <label for="patologia"></label>
-                                <div class="">
-                                    <input type="text" list="patologia_list" id="patalogia" name="datos[id_patologia]">
-                                    <datalist id="patologia_list">
-                                        <?php foreach() ?>
-                                        <option value="<?php ?>"><?php echo  ?></option>
-                                    </datalist>
+                            <label for="especialidad">Patología</label>
+                                <div class="input-group">
+                                    <input list="especialidad_list" type="text" class="form-control" name="datos[especialidad]" id="especialidad">
+                                    <datalist id="especialidad_list">
+                                        <?php foreach($this->especialidad as $espe) {  ?>
+                                        <option value="<?php echo $espe["id_especialidad"];  ?>"><?php echo $espe["nombre_especialidad"];  ?></option>
+                                        <?php }?>
+                                        </datalist>
                                 </div>
-                                <span style="" id=""></span>
+                                <span style="color: red;" id="valid_especialidad"></span>
                             </div>
 
-                            <div class="col-md-6 mt-2" >
-                                <label for="motivo_r">Motivo</label>
+                            <div class="col-md-6 mt-2">
+                            <label for="especialidad">Institución</label>
                                 <div class="input-group">
-                                    <input type="text" id="motivo_r" class="form-control" placeholder="Escriba el motivo del reposo">
+                                    <input list="especialidad_list" type="text" class="form-control" name="datos[especialidad]" id="especialidad">
+                                    <datalist id="especialidad_list">
+                                        <?php foreach($this->especialidad as $espe) {  ?>
+                                        <option value="<?php echo $espe["id_especialidad"];  ?>"><?php echo $espe["nombre_especialidad"];  ?></option>
+                                        <?php }?>
+                                        </datalist>
                                 </div>
-                                <span style="color:red;" id="valid_motivo"></span>
+                                <span style="color: red;" id="valid_especialidad"></span>
                             </div>
 
                             <div class="col-md-6 mt-2" >
@@ -94,6 +100,15 @@
                                 </div>
                                 <span styel="color:#710909;" id="valid_mt"></span>
                             </div>
+
+
+                             <!-- <div class="col-md-6 mt-2" >
+                                <label for="motivo_r">Motivo</label>
+                                <div class="input-group">
+                                    <input type="text" id="motivo_r" class="form-control" placeholder="Escriba el motivo del reposo">
+                                </div>
+                                <span style="color:red;" id="valid_motivo"></span>
+                            </div> -->
                             
                             <div class="col-md-12 mt-2">
                                 <label for="Diagnostico_r">Diagnostico</label>
@@ -105,6 +120,7 @@
 
                             <span id="texto"></span>
                         </div>
+                        
                     </div>
                 </div>
             <!--      /.card-body  -->
