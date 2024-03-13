@@ -36,8 +36,15 @@ class Historial extends Controlador
         $this->Seguridad_de_Session();
         #$this->Establecer_Consultas();
         $persona=$this->modelo->Consultar_personas();
+        $this->vista->personas=$persona;
         $persona_familia=$this->modelo->Consultar_familia(); 
         $this->vista->personas=$persona_familia;
+        $habit_psicol=$this->Consultar_ant("habit_psicologicos");
+        $this->vista->habit_psicols=$habit_psicol;
+        $ant_personal=$this->Consultar_ant("ant_personales");
+        $this->vista->ant_personals=$ant_personal;
+        $ant_familiar=$this->Consultar_ant("ant_familiares");
+        $this->vista->ant_familiares=$ant_familiar;
         $this->vista->Cargar_Vistas('historial/consultar');
     }
     
@@ -164,42 +171,51 @@ public function registrar_integrante_fun(){
  echo count($datos);
  }
 
- public function agregar_integrante_fun(){
-  $verificarBD = $this->modelo->existe($_POST['cedula_integrante']);
-  $verificarsiexiste = $this->modelo->existeintegrante($_POST['cedula_integrante']);
-  if($verificarsiexiste){
-    $this->Escribir_JSON(0);
-  }else if($verificarBD){
+ public function agregar_antec_personal(){
+  $verificarBD = $this->modelo->existe_ante_personal($_POST['id_ant_personal'],$_POST['cedula_persona']);
+  if($verificarBD){
     $this->Escribir_JSON(1);
-  }else if(!empty($_POST['parentezco'])){
-    $verificarexistepadre = $this->modelo->existepadre($_POST['cedula_responsable']);
-    $verificarexistemadre = $this->modelo->existemadre($_POST['cedula_responsable']);
-    $verificarexisteconyugue = $this->modelo->existeconyugue($_POST['cedula_responsable']);
-    if($_POST['parentezco'] == "Padre" && count($verificarexistepadre)==1){
-      $this->Escribir_JSON(2);
-    }else{
-      if($_POST['parentezco'] == "Madre" && count($verificarexistemadre)==1){
-        $this->Escribir_JSON(3);
-      }else{
-        if($_POST['parentezco'] == "Conyugue" && count($verificarexisteconyugue)==1){
-          $this->Escribir_JSON(4);
-        }else{
-          $integrante=$this->modelo->Integrantes_familia($_POST['cedula_integrante']);
-          $this->modelo->Registrar_persona_familia([
-           "id_familia"     =>     $integrante[0]['id_familia'],
-           "cedula_persona"         =>  $_POST['cedula_responsable'],
-           "nombre_familia"     =>     $_POST['nombre_familia'],
-           "descripcion_familia"  =>   $_POST['descripcion_familia'],
-           "parentezco"           =>    $_POST['parentezco']
+  }else{
+          $this->modelo->registrar_ant_personal([
+           "id_ant_personal"     =>     $_POST['id_ant_personal'],
+           "cedula_persona"         =>  $_POST['cedula_persona'],
+           "descripcion_personales"     =>     $_POST['desc_antec_perso']
          ]);
-         $integrante_nuevos = $this->modelo->get_integrantes($_POST['cedula_responsable']);
-         $this->Escribir_JSON($integrante_nuevos);
-        }
-      }
-    }
+         $nuevo_registro = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+         $this->Escribir_JSON($nuevo_registro);
   }
 }
 
+public function agregar_antec_familiar(){
+  $verificarBD = $this->modelo->existe_ante_familiar($_POST['id_ant_familiar'],$_POST['cedula_persona']);
+  if($verificarBD){
+    $this->Escribir_JSON(1);
+  }else{
+          $this->modelo->Registrar_ant_fam_personas([
+           "id_ant_familiar"     =>     $_POST['id_ant_familiar'],
+           "cedula_persona"         =>  $_POST['cedula_persona'],
+           "descripcion_familiar"     =>     $_POST['desc_antec_famy']
+         ]);
+         $nuevo_registro = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+         $this->Escribir_JSON($nuevo_registro);
+  }
+}
+
+
+public function agregar_habit_psicologico(){
+  $verificarBD = $this->modelo->existe_habito_psic($_POST['id_habit_psicologico'],$_POST['cedula_persona']);
+  if($verificarBD){
+    $this->Escribir_JSON(1);
+  }else{
+          $this->modelo->registrar_habit_personas([
+           "descripcion_habit"     =>     $_POST['desc_habitos_psicol'],
+           "cedula_persona"         =>  $_POST['cedula_persona'],
+           "id_habit_psicologico"     =>     $_POST['id_habit_psicologico']
+         ]);
+         $nuevo_registro = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+         $this->Escribir_JSON($nuevo_registro);
+  }
+}
 //----------------------Registrar Integrantes------------------
 
 public function registrar_integrante(){
@@ -330,12 +346,11 @@ public function Consultar_integrante_personas()
 
 }
 
-public function modificar_integrante(){
-  $editado=$this->modelo->Actualizar_Familia_integrante($_POST["id"],$_POST["parentezco_integrante"]);
-  $editado2=$this->modelo->Actualizar_tabla_familia( $_POST["id_familia"],$_POST["cedula_integrante"],$_POST["nombre_integrante"],$_POST["apellido_integrante"]);
-  $retornar = $this->modelo->get_integrantes($_POST['cedula_persona']);
-  if($editado==1 && $editado2 ==1){
-    echo json_encode($retornar);
+public function modificar_antecedente_personal(){
+  $editado=$this->modelo->Actualizar_antecedente_perso($_POST["id_antecedente_personales"],$_POST["id_antec_pers"],$_POST["descripcion_ante_perso"]);
+  $registro_editado = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+  if($editado==1){
+    echo json_encode($registro_editado);
   }  
 }
 
@@ -351,6 +366,22 @@ public function Consultas_cedula_funcionario()
   echo 1;
  
  }
+}
+
+public function consultar_datos_clinicos(){
+     
+
+  $historiales=$this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula']);
+
+  $this->Escribir_JSON($historiales);
+}
+
+public function consultar_per_ant_perso(){
+     
+
+  $historiales=$this->modelo->get_antecedente_personal($_POST['id_antec_personal'],$_POST['cedula']);
+
+  $this->Escribir_JSON($historiales);
 }
 
 public function consultar_familia_datos(){
@@ -370,8 +401,8 @@ public function consultar_familia_integrante(){
   $this->Escribir_JSON($integrante_familias);
 }
 
-public function eliminar_de_familias(){
-  echo $this->eliminar_familia_F($_POST['id']);
+public function eliminar_historial_clinico(){
+  echo $this->modelo->eliminar_historial($_POST['id'],$_POST['cedula']);
 }
 
 public function eliminar_familia(){
