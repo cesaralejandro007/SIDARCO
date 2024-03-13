@@ -68,35 +68,35 @@
                             </div>
 
                             <div class="col-md-6 mt-2">
-                            <label for="especialidad">Patología</label>
+                            <label for="patologia">Patología</label>
                                 <div class="input-group">
-                                    <input list="especialidad_list" type="text" class="form-control" name="datos[especialidad]" id="especialidad">
-                                    <datalist id="especialidad_list">
-                                        <?php foreach($this->especialidad as $espe) {  ?>
-                                        <option value="<?php echo $espe["id_especialidad"];  ?>"><?php echo $espe["nombre_especialidad"];  ?></option>
+                                    <input list="patologia_list" type="text" class="form-control" name="datos[patologia]" id="patologia">
+                                    <datalist id="patologia_list">
+                                        <?php foreach($this->patologias as $patol) {  ?>
+                                        <option value="<?php echo $patol["id_patologia"];  ?>"><?php echo $patol["nombre_patologia"];  ?></option>
                                         <?php }?>
                                         </datalist>
                                 </div>
-                                <span style="color: red;" id="valid_especialidad"></span>
+                                <span style="color: red;" id="valid_patologia"></span>
                             </div>
 
                             <div class="col-md-6 mt-2">
-                            <label for="especialidad">Institución</label>
+                            <label for="institucion">Institución</label>
                                 <div class="input-group">
-                                    <input list="especialidad_list" type="text" class="form-control" name="datos[especialidad]" id="especialidad">
-                                    <datalist id="especialidad_list">
-                                        <?php foreach($this->especialidad as $espe) {  ?>
-                                        <option value="<?php echo $espe["id_especialidad"];  ?>"><?php echo $espe["nombre_especialidad"];  ?></option>
+                                    <input list="institucion_list" type="text" class="form-control" name="datos[institucion]" id="institucion">
+                                    <datalist id="institucion_list">
+                                        <?php foreach($this->institucion as $inst) {  ?>
+                                        <option value="<?php echo $inst["id_institucion"];  ?>"><?php echo $inst["nombre_institucion"];  ?></option>
                                         <?php }?>
                                         </datalist>
                                 </div>
-                                <span style="color: red;" id="valid_especialidad"></span>
+                                <span style="color: red;" id="valid_institucion"></span>
                             </div>
 
                             <div class="col-md-6 mt-2" >
                                 <label for="medico_r">Medico Tratante</label>
                                 <div class="input-group">
-                                    <input type="text" id="medico_r" name="datos[medico_r]" class="form-control" placeholder="Escriba el motivo del reposo">
+                                    <input type="text" id="medico_r" name="datos[medico_r]" class="form-control" placeholder="Nombre del médico tratante">
                                 </div>
                                 <span styel="color:#710909;" id="valid_mt"></span>
                             </div>
@@ -111,9 +111,9 @@
                             </div> -->
                             
                             <div class="col-md-12 mt-2">
-                                <label for="Diagnostico_r">Diagnostico</label>
+                                <label for="Diagnostico_r">Observaciones</label> <!--Debe tener una observacion, esta es opcional-->
                             <div class="input-group">
-                                <textarea class="form-control" placeholder="Escriba el diagnóstico del reposo" id="Diagnostico_r" style="height: 100px"></textarea>
+                                <textarea class="form-control" placeholder="Escriba la obervación del reposo" id="Diagnostico_r" style="height: 100px"></textarea>
                             </div>
                             <span style="color: #710909" id="valid_diag"></span>
                             </div>

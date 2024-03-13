@@ -22,6 +22,10 @@ class Reposos extends Controlador
         $this->vista->personas=$persona;
         $especialidad=$this->Consultar_Tabla_sin_estado("especialidades","id_especialidad");
         $this->vista->especialidad=$especialidad;
+        $patologias=$this->Consultar_Tabla_sin_estado("patologias","id_patologia");
+        $this->vista->patologias=$patologias;
+        $institucion=$this->Consultar_Tabla_sin_estado("instituciones", "id_institucion");
+        $this->vista->institucion=$institucion;
         $this->vista->Cargar_Vistas('reposos/consultar');
     }
 
