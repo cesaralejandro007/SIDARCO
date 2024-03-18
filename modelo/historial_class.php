@@ -151,6 +151,23 @@
         }
     }
 
+    public function get_antecedente_familiar($id,$cedula)
+    {
+
+        $tabla = "SELECT * FROM ant_fam_personas,ant_familiares WHERE ant_fam_personas.id_ant_familiar = ant_familiares.id_ant_familiar AND cedula_persona = '$cedula' AND ant_fam_personas.id_ant_familiar = '$id'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
     public function get_historial_clinico($id, $cedula)
     {
         $respuesta_arreglo = array();
@@ -280,6 +297,83 @@
         }
     }
 
+    public function eliminar_antecedentes_perso($id_ante,$cedula)
+    {
+        try {
+            $query = $this->conexion->prepare('DELETE FROM ant_per_personas WHERE id_ant_personal = :id AND cedula_persona = :cedula');
+            $query->execute(['id' => $id_ante, 'cedula'=> $cedula]);            
+            return 1;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function eliminar_antecedentes_familiar($id_ante,$cedula)
+    {
+        try {
+            $query = $this->conexion->prepare('DELETE FROM ant_fam_personas WHERE id_ant_familiar = :id AND cedula_persona = :cedula');
+            $query->execute(['id' => $id_ante, 'cedula'=> $cedula]);            
+            return 1;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function eliminar_habitos_psicol($id_habit,$cedula)
+    {
+        try {
+            $query = $this->conexion->prepare('DELETE FROM habit_psico_personas WHERE id_habit_psicologico = :id AND cedula_persona = :cedula');
+            $query->execute(['id' => $id_habit, 'cedula'=> $cedula]);            
+            return 1;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+    
+    public function validar_antecedente($id,$cedula_integrante,$id_ante)
+    {
+        $tabla            = "SELECT * FROM ant_per_personas WHERE id_ant_personal = '$id_ante' AND cedula_persona = '$cedula_integrante' AND id_per_personas <> '$id' ";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $respuesta = $datos->rowCount();
+            if($respuesta > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+
+    public function validar_antecedente_fami($id,$cedula_integrante,$id_ante)
+    {
+        $tabla            = "SELECT * FROM ant_fam_personas WHERE id_ant_familiar = '$id_ante' AND cedula_persona = '$cedula_integrante' AND id_fam_personas <> '$id' ";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $respuesta = $datos->rowCount();
+            if($respuesta > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
     public function Actualizar_antecedente_perso($id,$id_antecedente,$descripcion)
     {
 
@@ -293,6 +387,28 @@
                 'id_ant_personal'            =>$id_antecedente, 
                 'descripcion_personales'            =>$descripcion, 
                 'id_per_personas'            =>$id
+            ]);
+
+            return 1;
+
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Actualizar_antecedente_fami($id,$id_antecedente,$descripcion)
+    {
+
+        try {
+            $query = $this->conexion->prepare("UPDATE ant_fam_personas SET
+                id_ant_familiar           =:id_ant_familiar,
+                descripcion_familiar           =:descripcion_familiar
+                WHERE id_fam_personas =:id_fam_personas"
+            );
+            $query->execute([
+                'id_ant_familiar'            =>$id_antecedente, 
+                'descripcion_familiar'            =>$descripcion, 
+                'id_fam_personas'            =>$id
             ]);
 
             return 1;

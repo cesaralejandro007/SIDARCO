@@ -16,6 +16,7 @@
 
             <div class="col-md-12 mt-2">
             <center><div class="col-6" id='valid_ante_pers' style="color:red;"></div></center>
+            <div>
             <div class="input-group">
                <table class ="table">
                 <tr style="background:#15406D;color:white">
@@ -49,8 +50,9 @@
                 </td>
             </tr>
             </table>
-
+            <div class="col-md-12 mt-2">
             <center><div class="col-6" id='valid_ante_famy' style="color:red;"></div></center>
+            </div>
             <div class="input-group">
                <table class ="table">
                 <tr style="background:#15406D;color:white">
@@ -84,8 +86,9 @@
                 </td>
             </tr>
             </table>
-
+            <div class="col-md-12 mt-2">
             <center><div class="col-6" id='valid_habit_psicolog' style="color:red;"></div></center>
+            </div>
             <div class="input-group">
                <table class ="table">
                 <tr style="background:#15406D;color:white">

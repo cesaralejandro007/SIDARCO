@@ -339,7 +339,7 @@
                                                                 "</td><td>" +
                                                                 antFamiliares[i]["descripcion_familiar"] +
                                                                 "</td>" +
-                                                                "<td><span onclick='editar_integrante(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_familia(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                                                "<td><span onclick='editar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
                                                         }
                                                         document.getElementById('antec_famy_agg').innerHTML = texto + "</table>";
                                                     }
@@ -385,7 +385,7 @@
                                                                 "</td><td>" +
                                                                 habitPsicologicos[i]["descripcion_habit"] +
                                                                 "</td>" +
-                                                                "<td><span onclick='editar_integrante(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_familia(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                                                "<td><span onclick='editar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
                                                         }
                                                         document.getElementById('habit_psicolog_agg').innerHTML = texto + "</table>";
                                                     }
@@ -497,7 +497,7 @@
                 "</td><td>" +
                 antFamiliares[i]["descripcion_familiar"] +
                 "</td>" +
-                "<td><span onclick='editar_integrante(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_familia(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                "<td><span onclick='editar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
         }
         antecedentes_familiar_agg.innerHTML = texto + "</table>";
     }
@@ -514,7 +514,7 @@
                 "</td><td>" +
                 habitPsicologicos[i]["descripcion_habit"] +
                 "</td>" +
-                "<td><span onclick='editar_integrante(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_familia(" + habitPsicologicos[i]['id_ant_familiar'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                "<td><span onclick='editar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
         }
         habitos_psicologicos_agg.innerHTML = texto + "</table>";
     }
@@ -582,7 +582,7 @@
                 if(document.getElementById('id_antec_pers').value != ""
                  && document.getElementById('descripcion_ante_perso').value != ""
 ){
-                    a = valida_registrar();
+                    a = valida_registrar_perso();
                     if (a != "") {
                         return false;
                     }else {
@@ -597,28 +597,12 @@
                                 "descripcion_ante_perso": document.getElementById("descripcion_ante_perso").value, 
                             }
                         }).done(function (result) {
-                           
                             if(result==1){
-                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Cedula ya registrada.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
-                                setTimeout(function () {
-                                    $("#cerraralert2").click();
-                                }, 6000);
-                            }else if(result==2){
-                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Padre ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                document.getElementById("validar_editar_antecedente").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El antecedente se encuantra registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
                                 setTimeout(function () {
                                     $("#cerraralert2").click();
                                 }, 6000);
                                 return false;
-                            }else if(result==3){
-                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Madre ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
-                                setTimeout(function () {
-                                    $("#cerraralert2").click();
-                                }, 6000);
-                            }else if(result==4){
-                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Conyuge ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
-                                setTimeout(function () {
-                                    $("#cerraralert2").click();
-                                }, 6000);
                             }else{
                                 swal({
                                     title: "Éxtito",
@@ -644,8 +628,259 @@
                                         }
                                         document.getElementById('antec_pers_agg').innerHTML = texto + "</table>";
                                     }
-                            }
+                                    Swal.close('mi-sweet-alert');  
+                                }
                         });
+                        return false;     
+                    }
+                }else{
+                    document.getElementById("validar_editar_integrant").innerHTML = '<div class="alert alert-dismissible fade show pl-5" style="background:#9D2323; color:white" role="alert">Complete los campos solicitados.<i class="far fa-backspace p-0 m-0 d-none" id="cerraralert" data-dismiss="alert" aria-label="Close"></i></div>';
+                    setTimeout(function () {
+                        $("#cerraralert").click();
+                    }, 3000);
+                    return false;
+                }
+            }
+        })
+
+        document.getElementById("id_antec_pers").value = data[0].id_ant_personal;
+
+        document.getElementById("descripcion_ante_perso").onkeypress = function (e) {
+            er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
+            validarkeypress(er, e);
+        };
+        document.getElementById("descripcion_ante_perso").onkeyup = function () {
+        r = validarkeyup(
+            keyup_descripcion,
+            this,
+            document.getElementById("v1"),
+            "Solo letras de 2 a 200 caracteres, siendo la primera en mayúscula."
+        );
+        };
+
+    });
+    }
+
+    function editar_antec_familiar(id,cedula) {
+        $.ajax({
+            type:"POST",
+            url:BASE_URL+"historial/consultar_per_ant_fam",
+            data:{'id_antec_familiar':id,'cedula':cedula}
+        }).done(function(datos){
+            var data = JSON.parse(datos);
+            console.log(datos);
+        Swal.fire({
+            title: 'Información del antecedente familiares:',
+            html:
+            '<span id="validar_editar_antecedente_fami"></span>'+
+            '<span id="v1" style="font-size:14px"></span>'+
+
+            '<div class="d-flex align-items-start">'+
+
+                '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text">Antecedente</span>'+
+                '<select class="form-control" id="id_antec_fami" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="0">Seleccione antecedente familiar</option><option value="1">Madre</option><option value="2">Padre</option><option value="3">Hermanos</option><option value="4">Otros familiares</option></select>'+
+                '<span id="v6" style="font-size:14px"></span>'+
+                '</div>'+
+            '</div>'+
+
+            '<div class="d-flex align-items-start">'+
+
+                '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Descripción</span>'+
+                '<input type="text" id="descripcion_ante_fami" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].descripcion_familiar +'"">'+
+                '<span id="v1" style="font-size:14px"></span>'+
+                '</div>'+
+            '</div>',
+            confirmButtonColor: '#15406D',
+            confirmButtonText: "Actualizar",
+            width: '400px',
+            padding: '1em',
+            customClass: {
+                modal: 'no-scroll',
+            },
+            focusConfirm: true,
+            preConfirm: () => {
+                if(document.getElementById('id_antec_fami').value != ""
+                 && document.getElementById('descripcion_ante_fami').value != ""
+){
+                    a = valida_registrar_famy();
+                    if (a != "") {
+                        return false;
+                    }else {
+                        $.ajax({
+                        type: "POST",
+                        url: BASE_URL + "historial/modificar_antecedente_familiar",
+                        data: {
+                                'id_historial':document.getElementById('id_historiales_clinicos').value,
+                                "cedula_persona" : data[0].cedula_persona,
+                                "id_antecedente_familiares" : data[0].id_fam_personas,
+                                "id_antec_fami": document.getElementById('id_antec_fami').value,
+                                "descripcion_ante_fami": document.getElementById("descripcion_ante_fami").value, 
+                            }
+                        }).done(function (result) {
+                            if(result==1){
+                                document.getElementById("validar_editar_antecedente_fami").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El antecedente se encuantra registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                setTimeout(function () {
+                                    $("#cerraralert2").click();
+                                }, 6000);
+                                return false;
+                            }else{
+                                swal({
+                                    title: "Éxtito",
+                                    text: "La persona ha sido modificada satisfactoriamente",
+                                    type: "success",
+                                    timer: 2000,
+                                    showConfirmButton: false,
+                                });
+                                var antecedentes_familiar_agg = document.getElementById('antec_famy_agg');
+                                var data = JSON.parse(result);
+                                alert(result)
+                                var antFamiliares = data.ant_familiares;
+                                antecedentes_familiar_agg.innerHTML = "";
+                                if (antFamiliares.length === 0) {
+                                    antecedentes_familiar_agg.innerHTML = "No aplica";
+                                } else {
+                                    var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Parentezco</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+                                    for (var i = 0; i < antFamiliares.length; i++) {
+                                        texto += "<tr><td>" +
+                                            antFamiliares[i]["nombre_familiar"] +
+                                            "</td><td>" +
+                                            antFamiliares[i]["descripcion_familiar"] +
+                                            "</td>" +
+                                            "<td><span onclick='editar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                    }
+                                    antecedentes_familiar_agg.innerHTML = texto + "</table>";
+                                } 
+                                    Swal.close('mi-sweet-alert');  
+                                }
+                        });
+                        return false;     
+                    }
+                }else{
+                    document.getElementById("validar_editar_antecedente_fami").innerHTML = '<div class="alert alert-dismissible fade show pl-5" style="background:#9D2323; color:white" role="alert">Complete los campos solicitados.<i class="far fa-backspace p-0 m-0 d-none" id="cerraralert" data-dismiss="alert" aria-label="Close"></i></div>';
+                    setTimeout(function () {
+                        $("#cerraralert").click();
+                    }, 3000);
+                    return false;
+                }
+            }
+        })
+
+        document.getElementById("id_antec_fami").value = data[0].id_ant_familiar;
+
+        document.getElementById("descripcion_ante_fami").onkeypress = function (e) {
+            er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
+            validarkeypress(er, e);
+        };
+        document.getElementById("descripcion_ante_fami").onkeyup = function () {
+        r = validarkeyup(
+            keyup_descripcion,
+            this,
+            document.getElementById("v1"),
+            "Solo letras de 2 a 200 caracteres, siendo la primera en mayúscula."
+        );
+        };
+
+    });
+    }
+
+    function editar_habit_psicol(id,cedula) {
+        $.ajax({
+            type:"POST",
+            url:BASE_URL+"historial/consultar_per_ant_perso",
+            data:{'id_antec_personal':id,'cedula':cedula}
+        }).done(function(datos){
+            var data = JSON.parse(datos);
+            console.log(datos);
+        Swal.fire({
+            title: 'Información del antecedente personal:',
+            html:
+            '<span id="validar_editar_antecedente"></span>'+
+            '<span id="v1" style="font-size:14px"></span>'+
+
+            '<div class="d-flex align-items-start">'+
+
+                '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text">Antecedente</span>'+
+                '<select class="form-control" id="id_antec_pers" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="0">Seleccione antecedentes personal</option><option value="1">Infectocontagiosos</option><option value="2">Cardiovasculares</option><option value="3">Alérgicos</option><option value="4">Quirúrgicos</option><option value="5">Traumáticos</option><option value="6">Gineco-Obstetra</option><option value="7">otros antecedentes</option></select>'+
+                '<span id="v6" style="font-size:14px"></span>'+
+                '</div>'+
+
+            '</div>'+
+
+            '<div class="d-flex align-items-start">'+
+
+                '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Descripción</span>'+
+                '<input type="text" id="descripcion_ante_perso" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].descripcion_personales +'"">'+
+                '<span id="v1" style="font-size:14px"></span>'+
+                '</div>'+
+
+
+            '</div>',
+            confirmButtonColor: '#15406D',
+            confirmButtonText: "Actualizar",
+            width: '400px',
+            padding: '1em',
+            customClass: {
+                modal: 'no-scroll',
+            },
+            focusConfirm: true,
+            preConfirm: () => {
+                if(document.getElementById('id_antec_pers').value != ""
+                 && document.getElementById('descripcion_ante_perso').value != ""
+){
+                    a = valida_registrar_habit();
+                    if (a != "") {
+                        return false;
+                    }else {
+                        $.ajax({
+                        type: "POST",
+                        url: BASE_URL + "historial/modificar_antecedente_personal",
+                        data: {
+                                'id_historial':document.getElementById('id_historiales_clinicos').value,
+                                "cedula_persona" : data[0].cedula_persona,
+                                "id_antecedente_personales" : data[0].id_per_personas,
+                                "id_antec_pers": document.getElementById('id_antec_pers').value,
+                                "descripcion_ante_perso": document.getElementById("descripcion_ante_perso").value, 
+                            }
+                        }).done(function (result) {
+                            if(result==1){
+                                document.getElementById("validar_editar_antecedente").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El antecedente se encuantra registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                setTimeout(function () {
+                                    $("#cerraralert2").click();
+                                }, 6000);
+                                return false;
+                            }else{
+                                swal({
+                                    title: "Éxtito",
+                                    text: "La persona ha sido modificada satisfactoriamente",
+                                    type: "success",
+                                    timer: 2000,
+                                    showConfirmButton: false,
+                                });
+                                    var data = JSON.parse(result);
+                                    var antPersonales = data.ant_personales;
+                                    document.getElementById('antec_pers_agg').innerHTML = ""; 
+                                    if (antPersonales.length === 0) {
+                                        document.getElementById('antec_pers_agg').innerHTML = "No aplica";
+                                    } else {
+                                        var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+                                        for (var i = 0; i < antPersonales.length; i++) {
+                                            texto += "<tr><td>" +
+                                                antPersonales[i]["nombre_personal"] +
+                                                "</td><td>" +
+                                                antPersonales[i]["descripcion_personales"] +
+                                                "</td>" +
+                                                "<td><span onclick='editar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                        }
+                                        document.getElementById('antec_pers_agg').innerHTML = texto + "</table>";
+                                    }
+                                    Swal.close('mi-sweet-alert');  
+                                }
+                        });
+                        return false;     
                     }
                 }else{
                     document.getElementById("validar_editar_integrant").innerHTML = '<div class="alert alert-dismissible fade show pl-5" style="background:#9D2323; color:white" role="alert">Complete los campos solicitados.<i class="far fa-backspace p-0 m-0 d-none" id="cerraralert" data-dismiss="alert" aria-label="Close"></i></div>';
@@ -684,12 +919,30 @@
         }
     }
 
-    function valida_registrar() {
+    function valida_registrar_perso() {
       var error = false;
 
       descripcion = validarkeyup(
         keyup_descripcion,
         document.getElementById("descripcion_ante_perso"),
+        document.getElementById("v1"),
+        "El campo debe contener de 2 a 200 caracteres"
+      );
+
+      if (
+        descripcion == 0
+      ) {
+        error = true;
+      }
+      return error;
+    }
+
+    function valida_registrar_famy() {
+      var error = false;
+
+      descripcion = validarkeyup(
+        keyup_descripcion,
+        document.getElementById("descripcion_ante_fami"),
         document.getElementById("v1"),
         "El campo debe contener de 2 a 200 caracteres"
       );
@@ -734,7 +987,6 @@ function eliminar(id,cedula){
 				url:BASE_URL+"historial/eliminar_historial_clinico",
 				data:{'id':id,'cedula': cedula}
 			}).done(function(result){
-                alert(result);
                      setTimeout(function(){
                     	swal({
                     		type:"success",
@@ -751,11 +1003,11 @@ function eliminar(id,cedula){
 	})
 }
 
-function borrar_familia(id,cedula_param){
+function borrar_antec_personal(id,cedula){
     swal({
       type:"warning",
       title:"¿Está seguro?",
-      text:"Está por eliminar este integrantes , ¿desea continuar?",
+      text:"Está por eliminar este antecedente , ¿desea continuar?",
       showCancelButton:true,
       confirmButtonText:"Si, continuar",
       cancelButtonText:"No"
@@ -763,40 +1015,102 @@ function borrar_familia(id,cedula_param){
       if(isConfirm){
         $.ajax({
           type:"POST",
-          url:BASE_URL+"Familias/eliminar_integrantes",
-          data:{"id_familia_persona":id,"cedula_persona":cedula_param}
+          url:BASE_URL+"historial/eliminar_antecedente_personal",
+          data:{'id_historial':document.getElementById('id_historiales_clinicos').value,"id_antec":id,"cedula_persona":cedula}
       }).done(function(result){
-        var integrantes = JSON.parse(result);
-        if(integrantes!=0){
-            integrantes_agregados.innerHTML="";
-            for (var i = 0; i < integrantes.length; i++) {
-            var texto = "";
-            integrantes.innerHTML = "";
-            console.log(integrantes);
-            texto +=
-                "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
-            for (var i = 0; i < integrantes.length; i++) {
-                texto +=
-                "<tr><td>" +
-                integrantes[i]["cedula_integrante"] +
-                "</td><td>" +
-                integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
-                "</td><td>" +
-                integrantes[i]["parentezco"] +
-                "</td>";
-                texto +=
-                "<td><span  onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+        var data = JSON.parse(result);
+        var antPersonales = data.ant_personales;
+        document.getElementById('antec_pers_agg').innerHTML = ""; 
+        if (antPersonales.length === 0) {
+            document.getElementById('antec_pers_agg').innerHTML = "No aplica";
+        } else {
+            var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+            for (var i = 0; i < antPersonales.length; i++) {
+                texto += "<tr><td>" +
+                    antPersonales[i]["nombre_personal"] +
+                    "</td><td>" +
+                    antPersonales[i]["descripcion_personales"] +
+                    "</td>" +
+                    "<td><span onclick='editar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
             }
-            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+            document.getElementById('antec_pers_agg').innerHTML = texto + "</table>";
+        }          
+      })
+  }
+});
+}
+
+function borrar_antec_familiar(id,cedula){
+    swal({
+      type:"warning",
+      title:"¿Está seguro?",
+      text:"Está por eliminar este antecedente , ¿desea continuar?",
+      showCancelButton:true,
+      confirmButtonText:"Si, continuar",
+      cancelButtonText:"No"
+  },function(isConfirm){
+      if(isConfirm){
+        $.ajax({
+          type:"POST",
+          url:BASE_URL+"historial/eliminar_antecedente_familiar",
+          data:{'id_historial':document.getElementById('id_historiales_clinicos').value,"id_antec":id,"cedula_persona":cedula}
+      }).done(function(result){
+        var antecedentes_familiar_agg = document.getElementById('antec_famy_agg');
+        var data = JSON.parse(result);
+        var antFamiliares = data.ant_familiares;
+        antecedentes_familiar_agg.innerHTML = "";
+        if (antFamiliares.length === 0) {
+            antecedentes_familiar_agg.innerHTML = "No aplica";
+        } else {
+            var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Parentezco</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+            for (var i = 0; i < antFamiliares.length; i++) {
+                texto += "<tr><td>" +
+                    antFamiliares[i]["nombre_familiar"] +
+                    "</td><td>" +
+                    antFamiliares[i]["descripcion_familiar"] +
+                    "</td>" +
+                    "<td><span onclick='editar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
             }
-        }
-        else{
-        valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">De tener por lo menos un integrante registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
-        setTimeout(function () {
-            $("#cerraralert1").click();
-        }, 6000);
-        }
-          
+            antecedentes_familiar_agg.innerHTML = texto + "</table>";
+        }       
+      })
+  }
+});
+}
+
+function borrar_habit_psicol(id,cedula){
+    swal({
+      type:"warning",
+      title:"¿Está seguro?",
+      text:"Está por eliminar este habito psicologico , ¿desea continuar?",
+      showCancelButton:true,
+      confirmButtonText:"Si, continuar",
+      cancelButtonText:"No"
+  },function(isConfirm){
+      if(isConfirm){
+        $.ajax({
+          type:"POST",
+          url:BASE_URL+"historial/eliminar_habitos_psicologicos",
+          data:{'id_historial':document.getElementById('id_historiales_clinicos').value,"id_habit":id,"cedula_persona":cedula}
+      }).done(function(result){
+            var habitos_psicologicos_agg = document.getElementById('habit_psicolog_agg');
+            var data = JSON.parse(result);
+            var habitPsicologicos = data.habit_psicologicos;
+            habitos_psicologicos_agg.innerHTML = "";
+            if (habitPsicologicos.length === 0) {
+                habitos_psicologicos_agg.innerHTML = "No aplica";
+            } else {
+                var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+                for (var i = 0; i < habitPsicologicos.length; i++) {
+                    texto += "<tr><td>" +
+                        habitPsicologicos[i]["nombre_habit"] +
+                        "</td><td>" +
+                        habitPsicologicos[i]["descripcion_habit"] +
+                        "</td>" +
+                        "<td><span onclick='editar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                }
+                habitos_psicologicos_agg.innerHTML = texto + "</table>";
+            }
       })
   }
 });
