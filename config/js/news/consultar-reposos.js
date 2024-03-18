@@ -6,7 +6,10 @@
   var fecha_cierre=document.getElementById("fecha_cierre");
   var motivo=document.getElementById("motivo");
   var persona_existente=false;
+  var id_especialidad=document.getElementById("id_patologia");
 	/*  Envio de datos de permiso */
+
+
 
 	cedula.onkeyup=function(){
 		$.ajax({
@@ -50,12 +53,21 @@
 }
 
   $("#enviarReposo").on("click", function(){
+
+
+
+	var especialidadSeleccionada = $('#id_especialidad').val();
+	var idEspecialidad = $('option[value="' + especialidadSeleccionada + '"]').data('id');
+	var patologia_selec=$('#id_patologia').val();
+	var id_patologia=$('option[value=" '+ patologia_selec +' "]').data('id');
+	var institucion_select=$('#id_institucion').val();
+	var id_institucion=$('option[value="'+institucion_select+'"]').data('id');
 	
-	var fecha_inicio=document.getElementById("fecha_inicio_r");
-	var fecha_cierre=document.getElementById("fecha_cierre_r");
-	var motivo=document.getElementById("motivo_r");
-	var medico_r=document.getElementById("medico_r");
-	var diagnostico_r=document.getElementById("Diagnostico_r");
+	var fecha_inicio=document.getElementById("fecha_inicio");
+	var fecha_cierre=document.getElementById("fecha_cierre");
+	var motivo=document.getElementById("motivo");
+	var medico_r=document.getElementById("medico_tratante");
+	var diagnostico_r=document.getElementById("diagnostico");
 
 
 	function valid_element(mensaje_error, element, span_element){
@@ -70,7 +82,7 @@
 		}
 		else{
 		  element.style.borderColor = "";
-		  span_element.style.display = "none";
+		  /* span_element.style.display = "none"; */
 		}
 		
 		return validado; 
@@ -100,13 +112,15 @@
                 id_cedula */
 
 	var datos= {
-	  motivo: $("#motivo_r").val(),
-	  fecha_inicio: $("#fecha_inicio_r").val(),
-	  fecha_cierre: $("#fecha_cierre_r").val(),
-	  Diagnostico: $("#Diagnostico_r").val(),
-	  medico_tratante: $("#medico_r").val(),
+	  motivo: $("#motivo").val(),
+	  fecha_inicio: $("#fecha_inicio").val(),
+	  fecha_cierre: $("#fecha_cierre").val(),
+	  diagnostico: id_patologia,
+	  medico_tratante: $("#medico_tratante").val(),
 	  id_cedula: $("#id_cedula").val(),
-	
+	  id_especialidad:idEspecialidad,
+	  id_patologia:$('#id_patologia').val(),
+	  id_institucion:id_institucion,
 	};
   
 		  $.ajax({
@@ -116,7 +130,7 @@
 			  'datos':datos,
 			}
 		  }).done(function(result){
-			if(result==1){		
+		/* 	if(result==1){	 */	
 				swal({
 					title:"Registro exitoso",
 					type:"success",
@@ -126,7 +140,7 @@
 				  });
 				  setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000);
 
-			} else{
+			/* } */ /* else{
 				swal({
 					title:"Error",
 					text:"Ha ocurrido un error.<br>"+result,
@@ -136,7 +150,7 @@
 					customClass:"bigSwalV2"
 				});
 				/* setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000); */
-			  }
+			 /*  }  */
 		  });
 									}
 								}

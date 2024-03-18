@@ -21,7 +21,7 @@
                     <div class="card-block">
                         <div class="form-group row justify-content-center">
                             <div class="col-md-12 mt-2">
-                                <label for="cedula_persona">
+                                <label for="id_cedula">
                                     Cédula de Persona
                                 </label>
                                 <div class="input-group">
@@ -39,28 +39,28 @@
                             </div>
 
                             <div class="col-md-6 mt-2">
-                                <label for="fecha_inicio_r">Fecha de inicio</label>
+                                <label for="fecha_inicio">Fecha de inicio</label>
                                 <div class="input-group">
-                                    <input type="date" class="form-control" id="fecha_inicio_r" placeholder="Indique la fecha de inicio">
+                                    <input type="date" class="form-control" id="fecha_inicio" name="datos[fecha_inicio]" placeholder="Indique la fecha de inicio">
                                 </div>
                                 <span style="color:red;" id="valid_fi"></span>
                             </div>
 
                             <div class="col-md-6 mt-2">
-                                <label for="fecha_cierre_r">Fecha de cierre</label>
+                                <label for="fecha_cierre">Fecha de cierre</label>
                                 <div class="input-group">
-                                    <input type="date" class="form-control" id="fecha_cierre_r" placeholder="Indique la fecha de cierre">
+                                    <input type="date" class="form-control" id="fecha_cierre" name="datos[fecha_cierre]" placeholder="Indique la fecha de cierre">
                                 </div>
                                 <span styel="color:red;" id="valid_fc"></span>
                             </div>
 
                             <div class="col-md-6 mt-2">
-                            <label for="especialidad">Especialidad</label>
+                            <label for="id_especialidad">Especialidad</label>
                                 <div class="input-group">
-                                    <input list="especialidad_list" type="text" class="form-control" name="datos[especialidad]" id="especialidad">
+                                    <input list="especialidad_list" type="text" class="form-control" name="datos[id_especialidad]" id="id_especialidad">
                                     <datalist id="especialidad_list">
                                         <?php foreach($this->especialidad as $espe) {  ?>
-                                        <option value="<?php echo $espe["id_especialidad"];  ?>"><?php echo $espe["nombre_especialidad"];  ?></option>
+                                        <option value="<?php echo $espe["nombre_especialidad"];  ?>" data-id="<?php echo $espe["id_especialidad"]; ?>"><?php echo $espe["nombre_especialidad"];  ?></option>
                                         <?php }?>
                                         </datalist>
                                 </div>
@@ -68,12 +68,12 @@
                             </div>
 
                             <div class="col-md-6 mt-2">
-                            <label for="patologia">Patología</label>
+                            <label for="id_patologia">Patología o Diagnóstico </label>
                                 <div class="input-group">
-                                    <input list="patologia_list" type="text" class="form-control" name="datos[patologia]" id="patologia">
+                                    <input list="patologia_list" type="text" class="form-control" name="datos[id_patologia]" id="id_patologia">
                                     <datalist id="patologia_list">
                                         <?php foreach($this->patologias as $patol) {  ?>
-                                        <option value="<?php echo $patol["id_patologia"];  ?>"><?php echo $patol["nombre_patologia"];  ?></option>
+                                        <option value="<?php echo $patol["nombre_patologia"];  ?>" data-id="<?php echo $patol["id_patologia"] ?>" ><?php echo $patol["nombre_patologia"];  ?></option>
                                         <?php }?>
                                         </datalist>
                                 </div>
@@ -81,12 +81,12 @@
                             </div>
 
                             <div class="col-md-6 mt-2">
-                            <label for="institucion">Institución</label>
+                            <label for="id_institucion">Institución</label>
                                 <div class="input-group">
-                                    <input list="institucion_list" type="text" class="form-control" name="datos[institucion]" id="institucion">
+                                    <input list="institucion_list" type="text" class="form-control" name="datos[id_institucion]" id="id_institucion">
                                     <datalist id="institucion_list">
                                         <?php foreach($this->institucion as $inst) {  ?>
-                                        <option value="<?php echo $inst["id_institucion"];  ?>"><?php echo $inst["nombre_institucion"];  ?></option>
+                                        <option value="<?php echo $inst["nombre_institucion"];  ?>" data-id="<?php echo $inst["id_institucion"] ?>"  ><?php echo $inst["nombre_institucion"];  ?></option>
                                         <?php }?>
                                         </datalist>
                                 </div>
@@ -94,26 +94,26 @@
                             </div>
 
                             <div class="col-md-6 mt-2" >
-                                <label for="medico_r">Medico Tratante</label>
+                                <label for="medico_tratante">Medico Tratante</label>
                                 <div class="input-group">
-                                    <input type="text" id="medico_r" name="datos[medico_r]" class="form-control" placeholder="Nombre del médico tratante">
+                                    <input type="text" id="medico_tratante" name="datos[medico_tratante]" class="form-control" placeholder="Nombre del médico tratante">
                                 </div>
                                 <span styel="color:#710909;" id="valid_mt"></span>
                             </div>
 
 
-                             <!-- <div class="col-md-6 mt-2" >
-                                <label for="motivo_r">Motivo</label>
+                             <div class="col-md-12 mt-2" >
+                                <label for="motivo">Motivo</label>
                                 <div class="input-group">
-                                    <input type="text" id="motivo_r" class="form-control" placeholder="Escriba el motivo del reposo">
+                                    <input type="text" id="motivo" name="datos[motivo]" class="form-control" placeholder="Escriba el motivo del reposo">
                                 </div>
                                 <span style="color:red;" id="valid_motivo"></span>
-                            </div> -->
+                            </div> 
                             
                             <div class="col-md-12 mt-2">
-                                <label for="Diagnostico_r">Observaciones</label> <!--Debe tener una observacion, esta es opcional-->
+                                <label for="diagnostico">Observaciones</label> <!--Debe tener una observacion, esta es opcional-->
                             <div class="input-group">
-                                <textarea class="form-control" placeholder="Escriba la obervación del reposo" id="Diagnostico_r" style="height: 100px"></textarea>
+                                <textarea class="form-control" placeholder="Escriba la obervación del reposo" id="diagnostico" name="datos[diagnostico]" style="height: 100px"></textarea>
                             </div>
                             <span style="color: #710909" id="valid_diag"></span>
                             </div>
@@ -214,7 +214,7 @@ $(document).ready(function() {
                             <th>Cierre</th>
                             <th>Dias</th>
                             <th>Semanas</th>
-                            <th>Recepción</th>
+                            <!-- <th>Recepción</th> -->
                             <th>Motivo</th>
                             <th>Diagnostico</th>
                             <th>Medico Tratante</th>
@@ -269,9 +269,7 @@ $(document).ready(function() {
                                         {
                                             "data":"semanas_de_reposo"
                                         },
-                                        {
-                                            "data":"recepcion"
-                                        },
+                            
                                         {
                                             "data":"motivo"
                                         },
@@ -504,7 +502,7 @@ $(document).ready(function() {
                             <th>Cierre</th>
                             <th>Dias</th>
                             <th>Semanas</th>
-                            <th>Recepción</th>
+                            <!-- <th>Recepción</th> -->
                             <th>Motivo</th>
                             <th>Diagnostico</th>
                             <th>Medico Tratante</th>

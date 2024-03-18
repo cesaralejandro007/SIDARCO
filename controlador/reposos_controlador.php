@@ -141,7 +141,7 @@ public function consultar_info_reposos(){
         "cargo"                => $r['nombre_cargo'],
         "fecha_inicio"         => $r['fecha_inicio_f'],
         "fecha_cierre"         => $r['fecha_cierre_f'],
-        "recepcion"           => $r['recepcion'],
+       /*  "recepcion"           => $r['recepcion'], */
         "motivo"               => $r['motivo'],
         "diagnostico"          => $r['diagnostico'],
         "medico_tratante"      => $r['medico_tratante'],

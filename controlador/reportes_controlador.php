@@ -38,6 +38,7 @@
             /* $jefes_familia = $this->modelo->Jefes_Calle(); */
             $personas_RCO=$this->Consultar_tabla_condicion("personas","id_nomina", "4");
             $totalpermiso=$this->modelo->TotalPermiso();
+            $totalreposo=$this->modelo->Total_reposos();
             $inmuebles = $this->modelo->Inmuebles();
             $negocios = $this->modelo->Negocios();
             $nivel_educativo = $this->modelo->Nivel_Educativo();
@@ -118,6 +119,9 @@
 
             $this->vista->tipo_permiso18=$tipo_permiso18;
             $this->tipo_permiso18=$tipo_permiso18; */
+
+            $this->vista->totalreposo=$totalreposo;
+            $this->totalreposo=$totalreposo;
 
             $this->vista->personas_RCO=$personas_RCO;
             $this->personas_RCO=$personas_RCO;
@@ -275,6 +279,34 @@
             );
             
             $this->vista->datos_permiso = $datos_permisototal;
+
+            //------------------Cálculo y promedio de reposos----------------------------------\\
+
+            $porcentaje_rm=0;
+            $porcentaje_re=0;
+            
+
+            $TotalReposo=count($this->totalreposo);
+            $func_activos=count($this->personas)-$TotalReposo;
+            $porcentaje_rm= count($this->totalreposo) / count($this->personas) * 100;
+            $porcentaje_re= $func_activos / count($this->personas) * 100;
+           /*  $porcentaje_pe */
+
+            // No me estaba dando el promedio porque le estaba colocando COUNT()
+            //este es solo para cuando es array y queremos saber su valor, este era
+            //un entero por lo que no necesita un count() porque no me traera nada.
+
+            $datos_reposototal = array(
+                array("label" => "Total de reposos activos (" .$TotalReposo. ")", "symbol" => "Funcionarios de reposo", "y" =>$porcentaje_rm),
+                array("label"=> "Total de funcionarios/as activos(".$func_activos.")", "symbol"=> "Funcionarios activos", "y" =>$porcentaje_re),
+               /*  array("label"=>"", "symbol"=>, "y"=>) */
+            );
+            
+            $this->vista->datos_reposo = $datos_reposototal;
+
+            //------------------Calculo de reposos por especialidad----------------------------------//
+
+            
             
             //------------------Calculo de permiso por division----------------------------------//
 

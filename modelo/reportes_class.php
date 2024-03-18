@@ -27,6 +27,43 @@ class Reportes_Class extends Modelo
     }
    }
 
+   public function Total_reposos(){
+
+    $sql="SELECT * FROM reposos where fecha_cierre > curdate() group by id_cedula";
+    $respuesta_arreglo='';
+
+    try{
+        $datos=$this->conexion->prepare($sql);
+        $datos->execute();
+        $datos->setFetchMode(PDO::FETCH_ASSOC);
+        $respuesta_arreglo=$datos->FetchAll(PDO::FETCH_ASSOC);
+        return $respuesta_arreglo;
+    }catch(PDOException $e){
+
+    return $this->Capturar_error($e);
+
+    }
+
+}
+
+public function Reposo_especialidad(){
+
+    $sql="SELECT id_especialidad, COUNT(*) AS cantidad FROM reposos GROUP BY id_especialidad ORDER BY cantidad DESC limit 5";
+    $respuesta_arreglo='';
+
+    try{
+        $datos=$this->conexion->prepare($sql);
+        $datos->execute();
+        $datos->setFetchMode(PDO::FETCH_ASSOC);
+        $respuesta_arreglo=$datos->FetchAll(PDO::FETCH_ASSOC);
+        return $respuesta_arreglo;
+    }catch(PDOException $e){
+
+    return $this->Capturar_error($e);
+
+    }
+
+}
 
 
     /*  public function Familia_Vivienda($id_familia) 

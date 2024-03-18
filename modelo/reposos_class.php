@@ -99,7 +99,7 @@
 
     public function get_reposos(){
 
-        $tabla= "SELECT p.*, r.*, c.*, ub.*, p.primer_nombre AS primer_nombre_p, p.primer_apellido AS primer_apellido_p, r.id_reposo as id_reposo, date_format(r.fecha_inicio, '%d/%m/%Y') as fecha_inicio_f, date_format(r.fecha_cierre, '%d/%m/%Y') as fecha_cierre_f, date_format(r.recepcion, '%d/%m/%Y') as recepcion, DATEDIFF(r.fecha_cierre, r.fecha_inicio) as dias_de_reposo, FLOOR(DATEDIFF(r.fecha_cierre, r.fecha_inicio) / 7) as semanas_de_reposo FROM reposos r, personas p, cargo_nominal c, ubicaciones ub WHERE r.id_cedula=p.cedula_persona AND c.id_cargo = p.id_cargo AND ub.id_ubicacion = p.id_ubicacion;";
+        $tabla= "SELECT p.*, r.*, c.*, ub.*, p.primer_nombre AS primer_nombre_p, p.primer_apellido AS primer_apellido_p, r.id_reposo as id_reposo, date_format(r.fecha_inicio, '%d/%m/%Y') as fecha_inicio_f, date_format(r.fecha_cierre, '%d/%m/%Y') as fecha_cierre_f, DATEDIFF(r.fecha_cierre, r.fecha_inicio) as dias_de_reposo, FLOOR(DATEDIFF(r.fecha_cierre, r.fecha_inicio) / 7) as semanas_de_reposo FROM reposos r, personas p, cargo_nominal c, ubicaciones ub WHERE r.id_cedula=p.cedula_persona AND c.id_cargo = p.id_cargo AND ub.id_ubicacion = p.id_ubicacion;";
         $respuesta_arreglo='';
 
         try{
@@ -269,7 +269,9 @@
                 diagnostico,
                 medico_tratante,
                 id_cedula,
-                id_especialidad
+                id_especialidad,
+                id_patologia,
+                id_institucion
                 ) VALUES (
                 :motivo,
                 :fecha_inicio, 
@@ -277,17 +279,21 @@
                 :diagnostico,
                 :medico_tratante, 
                 :id_cedula,
-                :id_especialidad
+                :id_especialidad,
+                :id_patologia,
+                :id_institucion
             )');
 
             $datos->execute([
-                'motivo'           => $data['motivo'],
-                'fecha_inicio'     => $data['fecha_inicio'],
-                'fecha_cierre'     => $data['fecha_cierre'],
-                'diagnostico'     => $data['Diagnostico'],
-                'medico'        => $data['medico_tratante'],
-                'id_cedula'   => $data['id_cedula'],
-                'id_especialidad'   =>$data['id_especialidad']
+                'motivo'            => $data['motivo'],
+                'fecha_inicio'      => $data['fecha_inicio'],
+                'fecha_cierre'      => $data['fecha_cierre'],
+                'diagnostico'       => $data['diagnostico'],
+                'medico_tratante'   => $data['medico_tratante'],
+                'id_cedula'         => $data['id_cedula'],
+                'id_especialidad'   => $data['id_especialidad'],
+                'id_patologia'      => $data['id_patologia'],
+                'id_institucion'    => $data['id_institucion'],
             ]);
 
             return true;
@@ -296,6 +302,7 @@
             return $this->Capturar_Error($e);
         }
     }
+
 
 
     public function eliminar_reposos($id)
