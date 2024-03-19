@@ -36,8 +36,15 @@ class Historial extends Controlador
         $this->Seguridad_de_Session();
         #$this->Establecer_Consultas();
         $persona=$this->modelo->Consultar_personas();
+        $this->vista->personas=$persona;
         $persona_familia=$this->modelo->Consultar_familia(); 
         $this->vista->personas=$persona_familia;
+        $habit_psicol=$this->Consultar_ant("habit_psicologicos");
+        $this->vista->habit_psicols=$habit_psicol;
+        $ant_personal=$this->Consultar_ant("ant_personales");
+        $this->vista->ant_personals=$ant_personal;
+        $ant_familiar=$this->Consultar_ant("ant_familiares");
+        $this->vista->ant_familiares=$ant_familiar;
         $this->vista->Cargar_Vistas('historial/consultar');
     }
     
@@ -164,42 +171,51 @@ public function registrar_integrante_fun(){
  echo count($datos);
  }
 
- public function agregar_integrante_fun(){
-  $verificarBD = $this->modelo->existe($_POST['cedula_integrante']);
-  $verificarsiexiste = $this->modelo->existeintegrante($_POST['cedula_integrante']);
-  if($verificarsiexiste){
-    $this->Escribir_JSON(0);
-  }else if($verificarBD){
+ public function agregar_antec_personal(){
+  $verificarBD = $this->modelo->existe_ante_personal($_POST['id_ant_personal'],$_POST['cedula_persona']);
+  if($verificarBD){
     $this->Escribir_JSON(1);
-  }else if(!empty($_POST['parentezco'])){
-    $verificarexistepadre = $this->modelo->existepadre($_POST['cedula_responsable']);
-    $verificarexistemadre = $this->modelo->existemadre($_POST['cedula_responsable']);
-    $verificarexisteconyugue = $this->modelo->existeconyugue($_POST['cedula_responsable']);
-    if($_POST['parentezco'] == "Padre" && count($verificarexistepadre)==1){
-      $this->Escribir_JSON(2);
-    }else{
-      if($_POST['parentezco'] == "Madre" && count($verificarexistemadre)==1){
-        $this->Escribir_JSON(3);
-      }else{
-        if($_POST['parentezco'] == "Conyugue" && count($verificarexisteconyugue)==1){
-          $this->Escribir_JSON(4);
-        }else{
-          $integrante=$this->modelo->Integrantes_familia($_POST['cedula_integrante']);
-          $this->modelo->Registrar_persona_familia([
-           "id_familia"     =>     $integrante[0]['id_familia'],
-           "cedula_persona"         =>  $_POST['cedula_responsable'],
-           "nombre_familia"     =>     $_POST['nombre_familia'],
-           "descripcion_familia"  =>   $_POST['descripcion_familia'],
-           "parentezco"           =>    $_POST['parentezco']
+  }else{
+          $this->modelo->registrar_ant_personal([
+           "id_ant_personal"     =>     $_POST['id_ant_personal'],
+           "cedula_persona"         =>  $_POST['cedula_persona'],
+           "descripcion_personales"     =>     $_POST['desc_antec_perso']
          ]);
-         $integrante_nuevos = $this->modelo->get_integrantes($_POST['cedula_responsable']);
-         $this->Escribir_JSON($integrante_nuevos);
-        }
-      }
-    }
+         $nuevo_registro = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+         $this->Escribir_JSON($nuevo_registro);
   }
 }
 
+public function agregar_antec_familiar(){
+  $verificarBD = $this->modelo->existe_ante_familiar($_POST['id_ant_familiar'],$_POST['cedula_persona']);
+  if($verificarBD){
+    $this->Escribir_JSON(1);
+  }else{
+          $this->modelo->Registrar_ant_fam_personas([
+           "id_ant_familiar"     =>     $_POST['id_ant_familiar'],
+           "cedula_persona"         =>  $_POST['cedula_persona'],
+           "descripcion_familiar"     =>     $_POST['desc_antec_famy']
+         ]);
+         $nuevo_registro = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+         $this->Escribir_JSON($nuevo_registro);
+  }
+}
+
+
+public function agregar_habit_psicologico(){
+  $verificarBD = $this->modelo->existe_habito_psic($_POST['id_habit_psicologico'],$_POST['cedula_persona']);
+  if($verificarBD){
+    $this->Escribir_JSON(1);
+  }else{
+          $this->modelo->registrar_habit_personas([
+           "descripcion_habit"     =>     $_POST['desc_habitos_psicol'],
+           "cedula_persona"         =>  $_POST['cedula_persona'],
+           "id_habit_psicologico"     =>     $_POST['id_habit_psicologico']
+         ]);
+         $nuevo_registro = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+         $this->Escribir_JSON($nuevo_registro);
+  }
+}
 //----------------------Registrar Integrantes------------------
 
 public function registrar_integrante(){
@@ -224,26 +240,55 @@ echo $resultado;
 } 
 
 
-public function consultar_info_familia(){
-    $familias=$this->modelo->get_familias();
+public function consultar_historial_clinico(){
+    $historial=$this->modelo->get_historial();
     $retornar=[];
 
-    foreach ($familias as $f) {
+    foreach ($historial as $h) {
         
-        $integrantes=$this->modelo->get_integrantes($f['cedula_persona']);
-        $integrantes_familia  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td></tr></thead><tbody>";
-        foreach ($this->modelo->get_integrantes($f['cedula_persona']) as $en) {
-                $integrantes_familia .="<tr><td>". $en['cedula_integrante'] ."</td><td>" . $en['primer_nombre']." " .$en['primer_apellido'] ."</td><td>" . $en['parentezco']. "</td></tr>";
+        $tabla_antecedentesp  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción:</td><td>Nombre personal:</td></tr></thead><tbody>";
+        foreach ($this->modelo->get_antecedentesp($h['cedula_persona']) as $en) {
+                $tabla_antecedentesp .="<tr><td>". $en['cedula_persona'] ."</td><td>" . $en['descripcion_personales']. "</td><td>" . $en['nombre_personal']. "</td></tr>";
         }
-        $integrantes_familia .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td></tr></tfoot></table>";
-        $integrantes_familia = "<div style='overflow-y:scroll;width:100%;height:100px;'>" . $integrantes_familia . "</div>";
+        $tabla_antecedentesp .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción:</td><td>Nombre personal:</td></tr></tfoot></table>";
+        $tabla_antecedentesp = "<div style='overflow-y:scroll;width:100%;height:150px;'>" . $tabla_antecedentesp . "</div>";
+
+
+        $tabla_antecedentesf  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción familiar:</td><td>Nombre familiar:</td></tr></thead><tbody>";
+        foreach ($this->modelo->get_antecedentesf($h['cedula_persona']) as $en) {
+                $tabla_antecedentesf .="<tr><td>". $en['cedula_persona'] ."</td><td>" . $en['descripcion_familiar']. "</td><td>" . $en['nombre_familiar']. "</td></tr>";
+        }
+        $tabla_antecedentesf .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción familiar:</td><td>Nombre familiar:</td></tr></tfoot></table>";
+        $tabla_antecedentesf = "<div style='overflow-y:scroll;width:100%;height:150px;'>" . $tabla_antecedentesf . "</div>";
+
+        $tabla_habitosps  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción de habito:</td><td>Nombre de habito:</td></tr></thead><tbody>";
+        foreach ($this->modelo->get_habitosps($h['cedula_persona']) as $en) {
+                $tabla_habitosps .="<tr><td>". $en['cedula_persona'] ."</td><td>" . $en['descripcion_habit']. "</td><td>" . $en['nombre_habit']. "</td></tr>";
+        }
+        $tabla_habitosps .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción de habito:</td><td>Nombre de habito:</td></tr></tfoot></table>";
+        $tabla_habitosps = "<div style='overflow-y:scroll;width:100%;height:150px;'>" . $tabla_habitosps . "</div>";
+
          $retornar[]=[
-                "familia"           => $f['nombre_familia'],
-                "descripcion"          => $f['descripcion_familia'],
-                "responsable"         => $f['cedula_persona']." ".$f['primer_nombre_p']." ".$f['primer_apellido_p'],
-                "integrantes"          => $integrantes_familia,
-                "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$f['id_familia_persona'].",".$f['id_familia'].",".$f['cedula_persona'].")'><em class='fa fa-edit'></em></button>",
-                "eliminar"          =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(`".$f['cedula_persona']."`)' type='button'><em class='fa fa-trash'></em></button>"
+                "cedula"           => $h['cedula_persona'],
+                "diagnostico"           => $h['diagnostico'],
+                "tratamiento"          => $h['tratamiento'],
+                "evolucion"         => $h['evolucion'],
+                "fecha"         => $h['fecha_historial'],
+                "examen"         => $h['examen'],
+                "tipo_sangre"         => $h['tipo_sangre'],
+                "peso"         => $h['peso'],
+                "altura"         => $h['altura'],
+                "talla"         => $h['talla'],
+                "imc"         => $h['imc'],
+                "fc"         => $h['fc'],
+                "fr"         => $h['fr'],
+                "ta"         => $h['ta'],
+                "temperatura"         => $h['temperatura'],
+                "antecedentes_personales"          => $tabla_antecedentesp,
+                "antecedentes_familiares"          => $tabla_antecedentesf,
+                "habitos_psicologicos"          => $tabla_habitosps,
+                "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$h['id_historial_clinico'].",`".$h['cedula_persona']."`)'><em class='fa fa-edit'></em></button>",
+                "eliminar"          =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(".$h['id_historial_clinico'].",`".$h['cedula_persona']."`)' type='button'><em class='fa fa-trash'></em></button>"
           ];
      }
 
@@ -301,15 +346,70 @@ public function Consultar_integrante_personas()
 
 }
 
-public function modificar_integrante(){
-  $editado=$this->modelo->Actualizar_Familia_integrante($_POST["id"],$_POST["parentezco_integrante"]);
-  $editado2=$this->modelo->Actualizar_tabla_familia( $_POST["id_familia"],$_POST["cedula_integrante"],$_POST["nombre_integrante"],$_POST["apellido_integrante"]);
-  $retornar = $this->modelo->get_integrantes($_POST['cedula_persona']);
-  if($editado==1 && $editado2 ==1){
-    echo json_encode($retornar);
-  }  
+public function modificar_antecedente_personal(){
+  if($this->modelo->validar_antecedente($_POST["id_antecedente_personales"],$_POST['cedula_persona'],$_POST["id_antec_pers"]) == false){
+      $editado=$this->modelo->Actualizar_antecedente_perso($_POST["id_antecedente_personales"],$_POST["id_antec_pers"],$_POST["descripcion_ante_perso"]);
+      $registro_editado = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+      if($editado==1){
+      echo json_encode($registro_editado);
+    }  
+  }else{
+    echo 1;
+  }
 }
 
+public function modificar_antecedente_familiar(){
+  if($this->modelo->validar_antecedente_fami($_POST["id_antecedente_familiares"],$_POST['cedula_persona'],$_POST["id_antec_fami"]) == false){
+      $editado=$this->modelo->Actualizar_antecedente_fami($_POST["id_antecedente_familiares"],$_POST["id_antec_fami"],$_POST["descripcion_ante_fami"]);
+      $registro_editado = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+      if($editado==1){
+      echo json_encode($registro_editado);
+    }  
+  }else{
+    echo 1;
+  }
+}
+
+public function modificar_habito_psicologico(){
+  if($this->modelo->validar_habito_psicol($_POST["id_per_habito_psicologico"],$_POST['cedula_persona'],$_POST["id_habit_psicologico"]) == false){
+      $editado=$this->modelo->Actualizar_habito_psicologico($_POST["id_per_habito_psicologico"],$_POST["id_habit_psicologico"],$_POST["descripcion_habito"]);
+      $registro_editado = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+      if($editado==1){
+      echo json_encode($registro_editado);
+    }  
+  }else{
+    echo 1;
+  }
+}
+
+
+public function eliminar_antecedente_personal(){
+  $retornar=0;
+    $eliminado=$this->modelo->eliminar_antecedentes_perso($_POST['id_antec'],$_POST['cedula_persona']);
+    $registro_editado = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+    if($eliminado==1){
+      echo json_encode($registro_editado);
+    }
+}
+
+
+public function eliminar_antecedente_familiar(){
+  $retornar=0;
+    $eliminado=$this->modelo->eliminar_antecedentes_familiar($_POST['id_antec'],$_POST['cedula_persona']);
+    $registro_editado = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+    if($eliminado==1){
+      echo json_encode($registro_editado);
+    }
+}
+
+public function eliminar_habitos_psicologicos(){
+  $retornar=0;
+    $eliminado=$this->modelo->eliminar_habitos_psicol($_POST['id_habit'],$_POST['cedula_persona']);
+    $registro_editado = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+    if($eliminado==1){
+      echo json_encode($registro_editado);
+    }
+}
 
 public function Consultas_cedula_funcionario()
 {
@@ -322,6 +422,38 @@ public function Consultas_cedula_funcionario()
   echo 1;
  
  }
+}
+
+public function consultar_datos_clinicos(){
+     
+
+  $historiales=$this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula']);
+
+  $this->Escribir_JSON($historiales);
+}
+
+public function consultar_per_ant_perso(){
+     
+
+  $historiales=$this->modelo->get_antecedente_personal($_POST['id_antec_personal'],$_POST['cedula']);
+
+  $this->Escribir_JSON($historiales);
+}
+
+public function consultar_per_ant_fam(){
+     
+
+  $historiales=$this->modelo->get_antecedente_familiar($_POST['id_antec_familiar'],$_POST['cedula']);
+
+  $this->Escribir_JSON($historiales);
+}
+
+public function consultar_per_habit_psicol(){
+     
+
+  $historiales=$this->modelo->get_habito_psicologico($_POST['id_habit_psicol'],$_POST['cedula']);
+
+  $this->Escribir_JSON($historiales);
 }
 
 public function consultar_familia_datos(){
@@ -341,8 +473,8 @@ public function consultar_familia_integrante(){
   $this->Escribir_JSON($integrante_familias);
 }
 
-public function eliminar_de_familias(){
-  echo $this->eliminar_familia_F($_POST['id']);
+public function eliminar_historial_clinico(){
+  echo $this->modelo->eliminar_historial($_POST['id'],$_POST['cedula']);
 }
 
 public function eliminar_familia(){
@@ -370,21 +502,12 @@ public function eliminar_familia(){
     echo $this->Activar("familia","id_familia",$_POST['id_familia']);
   }
 
-  public function eliminar_integrantes(){
-  $retornar=0;
-  $integrantes=$this->Consultar_Columna("familia_personas","cedula_persona",$_POST['cedula_persona']);
 
-  if(count($integrantes)!=1){
-    $this->Eliminar_Tablas("familia_personas","id_familia_persona",$_POST['id_familia_persona']);
-    $retornar = $this->modelo->get_integrantes($_POST['cedula_persona']);
-  }
-  echo json_encode($retornar);
-}
 
-  public function actualizar_familia(){
-    $datos_familia=$_POST['datos'];
-    $resultado= $this->modelo->Actualizar_Familia($datos_familia);
-    echo $data['responsable_familia'];
+  public function actualizar_historial(){
+    $datos_historial=$_POST['datos'];
+    $resultado= $this->modelo->Actualizar_Historial($datos_historial);
+    echo 1;
   }
 }
 ?> 

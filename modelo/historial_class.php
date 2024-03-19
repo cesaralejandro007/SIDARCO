@@ -117,10 +117,10 @@
     }
 
 
-    public function get_familias()
+    public function get_historial()
     {
 
-        $tabla            = "SELECT p.*, ap.*, app.*, app.descripcion_personales as descripcion_p_app,  FROM ant_personales ap, personas p, ant_per_personas app WHERE p.estado=1 AND ap.id_ant_personal=app.id_ant_personal AND app.cedula_persona = p.cedula_persona GROUP BY app.cedula_persona";
+        $tabla            = "SELECT * FROM historiales_clinicos";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -134,10 +134,130 @@
         }
     }
 
-    public function get_integrantes($cedula_persona)
+    public function get_antecedente_personal($id,$cedula)
     {
 
-        $tabla            = "SELECT P.*,FP.*,f.*, f.cedula_integrante as cedula_persona_f, f.primer_nombre as primer_nombre_f, f.primer_apellido as primer_apellido_f FROM familia_personas FP, personas P, familia f WHERE P.cedula_persona='$cedula_persona' AND f.id_familia = FP.id_familia AND FP.cedula_persona = P.cedula_persona";
+        $tabla = "SELECT * FROM ant_per_personas, ant_personales WHERE ant_per_personas.id_ant_personal = ant_personales.id_ant_personal AND ant_per_personas.cedula_persona = '$cedula' AND ant_per_personas.id_ant_personal = '$id'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function get_antecedente_familiar($id,$cedula)
+    {
+
+        $tabla = "SELECT * FROM ant_fam_personas,ant_familiares WHERE ant_fam_personas.id_ant_familiar = ant_familiares.id_ant_familiar AND cedula_persona = '$cedula' AND ant_fam_personas.id_ant_familiar = '$id'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function get_habito_psicologico($id,$cedula)
+    {
+
+        $tabla = "SELECT * FROM habit_psico_personas,habit_psicologicos WHERE habit_psico_personas.id_habit_psicologico = habit_psicologicos.id_habit_psicologico AND habit_psico_personas.cedula_persona = '$cedula' AND habit_psico_personas.id_habit_psicologico = '$id'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function get_historial_clinico($id, $cedula)
+    {
+        $respuesta_arreglo = array();
+        
+        try {
+            // Consulta 1
+            $query1 = "SELECT * FROM ant_per_personas, ant_personales WHERE ant_per_personas.id_ant_personal = ant_personales.id_ant_personal AND ant_per_personas.cedula_persona = ?";
+            $stmt1 = $this->conexion->prepare($query1);
+            $stmt1->execute([$cedula]);
+            $respuesta_arreglo['ant_personales'] = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+            
+            // Consulta 2
+            $query2 = "SELECT * FROM ant_fam_personas, ant_familiares WHERE ant_fam_personas.id_ant_familiar = ant_familiares.id_ant_familiar AND ant_fam_personas.cedula_persona = ?";
+            $stmt2 = $this->conexion->prepare($query2);
+            $stmt2->execute([$cedula]);
+            $respuesta_arreglo['ant_familiares'] = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+            
+            // Consulta 3
+            $query3 = "SELECT * FROM habit_psico_personas, habit_psicologicos WHERE habit_psico_personas.id_habit_psicologico = habit_psicologicos.id_habit_psicologico AND habit_psico_personas.cedula_persona = ?";
+            $stmt3 = $this->conexion->prepare($query3);
+            $stmt3->execute([$cedula]);
+            $respuesta_arreglo['habit_psicologicos'] = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+            
+            // Consulta 4
+            $query4 = "SELECT * FROM historiales_clinicos WHERE id_historial_clinico = ? AND cedula_persona = ?";
+            $stmt4 = $this->conexion->prepare($query4);
+            $stmt4->execute([$id, $cedula]);
+            $respuesta_arreglo['historiales_clinicos'] = $stmt4->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function get_antecedentesp($cedula_persona)
+    {
+
+        $tabla            = "SELECT * FROM ant_per_personas,ant_personales WHERE ant_per_personas.id_ant_personal = ant_personales.id_ant_personal AND ant_per_personas.cedula_persona = '$cedula_persona'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function get_antecedentesf($cedula_persona)
+    {
+
+        $tabla            = "SELECT * FROM ant_fam_personas,ant_familiares WHERE ant_fam_personas.id_ant_familiar = ant_familiares.id_ant_familiar AND ant_fam_personas.cedula_persona = '$cedula_persona'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+    
+    public function get_habitosps($cedula_persona)
+    {
+
+        $tabla            = "SELECT * FROM habit_psico_personas,habit_psicologicos WHERE habit_psico_personas.id_habit_psicologico = habit_psicologicos.id_habit_psicologico AND habit_psico_personas.cedula_persona = '$cedula_persona'";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -168,17 +288,186 @@
         }
     }
 
-    public function Actualizar_Familia_integrante($id,$parentezco)
+    
+    public function eliminar_historial($id,$param)
+    {
+        try {
+
+            $query = $this->conexion->prepare('DELETE FROM historiales_clinicos WHERE id_historial_clinico = :id');
+            $query->execute(['id' => $id]);
+
+            $query = $this->conexion->prepare('DELETE FROM ant_fam_personas WHERE cedula_persona = :cedula');
+            $query->execute(['cedula' => $param]);
+
+            $query = $this->conexion->prepare('DELETE FROM ant_per_personas WHERE cedula_persona = :cedula');
+            $query->execute(['cedula' => $param]);
+
+            $query = $this->conexion->prepare('DELETE FROM habit_psico_personas WHERE cedula_persona = :cedula');
+            $query->execute(['cedula' => $param]);
+            
+
+            return true;
+
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function eliminar_antecedentes_perso($id_ante,$cedula)
+    {
+        try {
+            $query = $this->conexion->prepare('DELETE FROM ant_per_personas WHERE id_ant_personal = :id AND cedula_persona = :cedula');
+            $query->execute(['id' => $id_ante, 'cedula'=> $cedula]);            
+            return 1;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function eliminar_antecedentes_familiar($id_ante,$cedula)
+    {
+        try {
+            $query = $this->conexion->prepare('DELETE FROM ant_fam_personas WHERE id_ant_familiar = :id AND cedula_persona = :cedula');
+            $query->execute(['id' => $id_ante, 'cedula'=> $cedula]);            
+            return 1;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function eliminar_habitos_psicol($id_habit,$cedula)
+    {
+        try {
+            $query = $this->conexion->prepare('DELETE FROM habit_psico_personas WHERE id_habit_psicologico = :id AND cedula_persona = :cedula');
+            $query->execute(['id' => $id_habit, 'cedula'=> $cedula]);            
+            return 1;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+    
+    public function validar_antecedente($id,$cedula_integrante,$id_ante)
+    {
+        $tabla            = "SELECT * FROM ant_per_personas WHERE id_ant_personal = '$id_ante' AND cedula_persona = '$cedula_integrante' AND id_per_personas <> '$id' ";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $respuesta = $datos->rowCount();
+            if($respuesta > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+
+    public function validar_antecedente_fami($id,$cedula_integrante,$id_ante)
+    {
+        $tabla            = "SELECT * FROM ant_fam_personas WHERE id_ant_familiar = '$id_ante' AND cedula_persona = '$cedula_integrante' AND id_fam_personas <> '$id' ";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $respuesta = $datos->rowCount();
+            if($respuesta > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function validar_habito_psicol($id,$cedula_integrante,$id_habito)
+    {
+        $tabla            = "SELECT * FROM habit_psico_personas WHERE id_habit_psicologico = '$id_habito' AND cedula_persona = '$cedula_integrante' AND id_habit_persona <> '$id' ";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $respuesta = $datos->rowCount();
+            if($respuesta > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Actualizar_antecedente_perso($id,$id_antecedente,$descripcion)
     {
 
         try {
-            $query = $this->conexion->prepare("UPDATE familia_personas  SET
-                parentezco           =:parentezco
-                WHERE id_familia_persona =:id_familia_persona"
+            $query = $this->conexion->prepare("UPDATE ant_per_personas SET
+                id_ant_personal           =:id_ant_personal,
+                descripcion_personales           =:descripcion_personales
+                WHERE id_per_personas =:id_per_personas"
             );
             $query->execute([
-                'parentezco'            =>$parentezco, 
-                'id_familia_persona'            =>$id
+                'id_ant_personal'            =>$id_antecedente, 
+                'descripcion_personales'            =>$descripcion, 
+                'id_per_personas'            =>$id
+            ]);
+
+            return 1;
+
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Actualizar_antecedente_fami($id,$id_antecedente,$descripcion)
+    {
+
+        try {
+            $query = $this->conexion->prepare("UPDATE ant_fam_personas SET
+                id_ant_familiar           =:id_ant_familiar,
+                descripcion_familiar           =:descripcion_familiar
+                WHERE id_fam_personas =:id_fam_personas"
+            );
+            $query->execute([
+                'id_ant_familiar'            =>$id_antecedente, 
+                'descripcion_familiar'            =>$descripcion, 
+                'id_fam_personas'            =>$id
+            ]);
+
+            return 1;
+
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Actualizar_habito_psicologico($id,$id_habito,$descripcion)
+    {
+
+        try {
+            $query = $this->conexion->prepare("UPDATE habit_psico_personas SET
+                id_habit_psicologico           =:id_habit_psicologico,
+                descripcion_habit           =:descripcion_habit
+                WHERE id_habit_persona =:id_habit_persona"
+            );
+            $query->execute([
+                'id_habit_psicologico'            =>$id_habito, 
+                'descripcion_habit'            =>$descripcion, 
+                'id_habit_persona'            =>$id
             ]);
 
             return 1;
@@ -211,6 +500,66 @@
     public function existe($cedula_integrante)
     {
         $tabla            = "SELECT * FROM familia_personas, familia WHERE estado=1 AND familia_personas.id_familia = familia.id_familia AND familia.cedula_integrante = $cedula_integrante";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $respuesta = $datos->rowCount();
+            if($respuesta > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function existe_ante_personal($id,$cedula)
+    {
+        $tabla            = "SELECT * FROM ant_per_personas WHERE id_ant_personal = '$id' AND cedula_persona = '$cedula'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $respuesta = $datos->rowCount();
+            if($respuesta > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function existe_ante_familiar($id,$cedula)
+    {
+        $tabla            = "SELECT * FROM ant_fam_personas WHERE id_ant_familiar = '$id' AND cedula_persona = '$cedula'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $respuesta = $datos->rowCount();
+            if($respuesta > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function existe_habito_psic($id,$cedula)
+    {
+        $tabla            = "SELECT * FROM habit_psico_personas WHERE id_habit_psicologico = '$id' AND cedula_persona = '$cedula'";
         $respuesta_arreglo = '';
         try {
             $datos = $this->conexion->prepare($tabla);
@@ -522,18 +871,40 @@
     }
 
 
-    public function Actualizar_Familia($data)
+    public function Actualizar_Historial($data)
     {
        try {
-            $query = $this->conexion->prepare("UPDATE familia_personas SET
-                nombre_familia     =   :nombre_familia,
-                descripcion_familia  =   :descripcion_familia
+            $query = $this->conexion->prepare("UPDATE historiales_clinicos SET
+                diagnostico     =   :diagnostico,
+                tratamiento  =   :tratamiento,
+                evolucion  =   :evolucion,
+                examen  =   :examen,
+                tipo_sangre  =   :tipo_sangre,
+                peso  =   :peso,
+                altura  =   :altura,
+                talla  =   :talla,
+                imc  =   :imc,
+                fc  =   :fc,
+                fr  =   :fr,
+                ta  =   :ta,
+                temperatura  =   :temperatura                
                 WHERE cedula_persona =:cedula_persona"
             );
             $query->execute([
-                'cedula_persona'  => $data['responsable_familia'],
-                'nombre_familia'        => $data['nombre_familia'],
-                'descripcion_familia'      => $data['descripcion_familia']
+                'cedula_persona'  => $data['cedula'],
+                'diagnostico'        => $data['diagnostico'],
+                'tratamiento'      => $data['tratamiento'],
+                'evolucion'      => $data['evolucion'],
+                'examen'      => $data['examen'],
+                'tipo_sangre'      => $data['tipo_sangre'],
+                'peso'      => $data['peso'],
+                'altura'      => $data['altura'],
+                'talla'      => $data['talla'],
+                'imc'      => $data['imc'],
+                'fc'      => $data['fc'],
+                'fr'      => $data['fr'],
+                'ta'      => $data['ta'],
+                'temperatura'      => $data['temperatura']
             ]);
             return true;
 

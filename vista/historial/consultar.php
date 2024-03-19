@@ -1,8 +1,6 @@
 <?php include (call."Inicio.php"); ?>
 <?php include (call."data-table.php"); ?>
-<style> 
-
-</style>
+<?php include (call."main.php"); ?>
 <!-- Contenido de la pagina -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -21,9 +19,6 @@
     <section class="content">
         <!-- Default box -->
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Consulta y exportacion de datos</h3>
-            </div>
             <!-- /.card-header -->
             <div class="card-body">
             <div class="col-lg-12">
@@ -40,7 +35,7 @@
                     </div>
 
             </div>
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-striped table-hover table-responsive border">
                     <thead>
                         <tr>
                             <?php if($_SESSION['Nucleo familiar']['modificar']){ ?>
@@ -49,12 +44,24 @@
                             <?php if($_SESSION['Nucleo familiar']['eliminar']){ ?>
                                 <th style="width: 20px;">Eliminar</th>
                             <?php } ?>
-                            <th>Cédula</th>
-                            <th>Nombre de apellido</th>
-                            <th>Examen</th>
-                            <th>Diágnostico</th>
+                            <th>Cedula</th>
+                            <th>Diagnóstico</th>
                             <th>Tratamiento</th>
-                            <th>Integrantes</th>
+                            <th>Evolución</th>
+                            <th>Fecha</th>
+                            <th>Examen</th>
+                            <th>Tipo de sangre</th>
+                            <th>Antecedentes personales</th>
+                            <th>Antecedentes familiares</th>
+                            <th>Hábitos psicológicos</th>
+                            <th>Peso</th>
+                            <th>Altura</th>
+                            <th>Talla</th>
+                            <th>IMC</th>
+                            <th>FC</th>
+                            <th>FR</th>
+                            <th>TA</th>
+                            <th>Temperatura</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,15 +70,16 @@
                             $(function() {
                                 $.ajax({
                                     type: 'POST',
-                                    url: BASE_URL + 'historial/consultar_info_familia'
+                                    url: BASE_URL + 'historial/consultar_historial_clinico'
                                 }).done(function(datos) {
                                     var data = JSON.parse(datos);
 
                                     var table = $("#example1").DataTable({
-                                        dom: "<'row'<'col-sm-6'l><'col-sm-6'f>>" +
-                                            "<'row'<'col-sm-12'tr>>" +
-                                            "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-                                        orderCellsTop: true,  
+                                        dom: "B<'row'<'col-sm-6'><'col-sm-6'f>>" +
+                                    "<'row'<'col-sm-12'tr>>" +
+                                    "<'row'<'col-sm-5'li><'col-sm-7'p>>",
+                                    orderCellsTop: true,
+                                    fixedHeader: true,    
                                         "data": data,
                                         "columns": [
                                         <?php if($_SESSION['Nucleo familiar']['modificar']){ ?>
@@ -85,22 +93,58 @@
                                             },
                                         <?php } ?>
                                         {
-                                            "data": "familia"
+                                            "data": "cedula"
                                         },
                                         {
-                                            "data": "descripcion"
+                                            "data": "diagnostico"
                                         },
                                         {
-                                            "data": "responsable"
+                                            "data": "tratamiento"
                                         },
                                         {
-                                            "data": "ubicacion"
+                                            "data": "evolucion"
                                         },
                                         {
-                                            "data": "cargo"
+                                            "data": "fecha"
                                         },
                                         {
-                                            "data":"integrantes"
+                                            "data": "examen"
+                                        },
+                                        {
+                                            "data":"tipo_sangre"
+                                        },
+                                        {
+                                            "data":"antecedentes_personales"
+                                        },
+                                        {
+                                            "data":"antecedentes_familiares"
+                                        },
+                                        {
+                                            "data":"habitos_psicologicos"
+                                        },
+                                        {
+                                            "data":"peso"
+                                        },
+                                        {
+                                            "data":"altura"
+                                        },
+                                        {
+                                            "data":"talla"
+                                        },
+                                        {
+                                            "data":"imc"
+                                        },
+                                        {
+                                            "data":"fc"
+                                        },
+                                        {
+                                            "data":"fr"
+                                        },
+                                        {
+                                            "data":"ta"
+                                        },
+                                        {
+                                            "data":"temperatura"
                                         }
                                         ],
                                         responsive: true,
@@ -109,9 +153,58 @@
                                         info: true,
                                         processing: true,
                                         pageLength: 10,
-                                        lengthMenu: [5, 10, 20, 30, 40, 50, 100], 
-                                    });
-                                    table.buttons().container()
+                                        lengthMenu: [5, 10, 20, 30, 40, 50, 100],
+                                        buttons:[ 
+                                    {
+                                    extend:    'excelHtml5',
+                                    filename: function() {
+                                        return "EXCEL-Personas"      
+                                    },          
+                                    title: function() {
+                                        var searchString = table.search();        
+                                        return searchString.length? "Search: " + searchString : "Reporte de Personas"
+                                    },
+                                    text:      '<i class="fas fa-file-excel"></i> ',
+                                    titleAttr: 'Exportar a Excel',
+                                    className: 'btn text-success border border-success',
+                                    exportOptions: {
+                                        columns: [2,3,4,5,6,7,9,10,11,12,13,14,15,16]
+                                    }
+                                    },
+                                    {
+                                    extend:    'pdfHtml5',
+                                    filename: function() {
+                                        return "PDF-Personas"      
+                                    },          
+                                    title: function() {
+                                        var searchString = table.search();        
+                                        return searchString.length? "Search: " + searchString : ""
+                                    },
+                                    text:      '<i class="fas fa-file-pdf"></i> ',
+                                    titleAttr: 'Exportar a PDF',
+                                    className: 'btn text-danger border border-danger',
+                                    customize: function ( doc ) {
+                                    doc.pageMargins = [20, 60, 20,20 ];
+                                    var cols = [];
+                                    cols[0] = {        
+                                    margin: [ 10, 0, 0, 2 ],
+                                    alignment: 'start',
+                                    image: 'data:image/png;base64,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',
+                                    width: 150,
+                                    height: 50};
+                                    cols[1] = {text: "Reporte de Personas", alignment: 'start', margin:[95, 20, 20, 20 ] };
+                                    var objFooter = {};
+                                    objFooter['columns'] = cols;
+                                    doc['header']=objFooter;
+                                    // Splice the image in after the header, but before the table
+                                    },
+                                    exportOptions: {
+                                        columns: [2,3,4,5,6,7,9,10,11,12,13,14,15,16]
+                                    }
+                                },
+                                ]  
+                                } );
+                                table.buttons().container()
                                     .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
 
                                     table.buttons().container()
@@ -125,9 +218,7 @@
                                     swal({
                                             title: "Atención",
                                             text:
-                                            "Estás por actualizar el nucleo familiar de la familia " +
-                                            document.getElementById("nombre_familia").value +
-                                            ", ¿Desea continuar?",
+                                            "Estás por actualizar los datos del historial clinico ¿Desea continuar?",
                                             type: "warning",
                                             showCancelButton: true,
                                             cancelButtonColor: '#d33',
@@ -138,18 +229,42 @@
                                         },
                                         function (isConfirm) {
                                             if (isConfirm) {
-                                                var nombre_familia=document.getElementById("nombre_familia");
-                                                        var descripcion_familia=document.getElementById('descripcion_familia');
-                                                        var responsable=document.getElementById("responsable_familia");
-                                                        var datos_familia=new Object();
-                                                        datos_familia['nombre_familia']=nombre_familia.value;
-                                                        datos_familia['descripcion_familia']=descripcion_familia.value;
-                                                        datos_familia['responsable_familia']=responsable.value;
+                                                        var cedula=document.getElementById("cedula_persona");
+                                                        var examen=document.getElementById("examen");
+                                                        var tipo_sangre=document.getElementById('tipo_sangre');
+                                                        var peso=document.getElementById("peso");
+                                                        var altura=document.getElementById("altura");
+                                                        var talla=document.getElementById("talla");
+                                                        var imc=document.getElementById("imc");
+                                                        var fc=document.getElementById("fc");
+                                                        var fr=document.getElementById("fr");
+                                                        var fr=document.getElementById("ta");
+                                                        var temperatura=document.getElementById("temperatura");
+                                                        var diagnostico=document.getElementById("diagnostico");
+                                                        var tratamiento=document.getElementById("tratamiento");
+                                                        var evolucion=document.getElementById("evolucion");
+
+                                                        var datos_historial=new Object();
+                                                        datos_historial['cedula']=cedula.value;
+                                                        datos_historial['examen']=examen.value;
+                                                        datos_historial['tipo_sangre']=tipo_sangre.value;
+                                                        datos_historial['peso']=peso.value;
+                                                        datos_historial['altura']=altura.value;
+                                                        datos_historial['talla']=talla.value;
+                                                        datos_historial['imc']=imc.value;
+                                                        datos_historial['fc']=fc.value;
+                                                        datos_historial['fr']=fr.value;
+                                                        datos_historial['ta']=ta.value;
+                                                        datos_historial['temperatura']=temperatura.value;
+                                                        datos_historial['diagnostico']=diagnostico.value;
+                                                        datos_historial['tratamiento']=tratamiento.value;
+                                                        datos_historial['evolucion']=evolucion.value;
                                                         $.ajax({
                                                         type:"POST",
-                                                        url:BASE_URL+"Familias/actualizar_familia",
-                                                        data:{"datos":datos_familia}
+                                                        url:BASE_URL+"historial/actualizar_historial",
+                                                        data:{"datos":datos_historial}
                                                     }).done(function(result){
+                                                        alert(result);
                                                     console.log(result);
                                                     swal({
                                                         title:"Éxito",
@@ -163,82 +278,147 @@
                                             }
                                         });
                              });
-
-                                $(document).on('click', '#btn_agregar', function() {
+//personal
+                                $(document).on('click', '#btn_agregar_ante_p', function() {
                                     
-                                    if(integrantes_input.value=="" || document.getElementById('parentezco').value ==""){
-                                        integrantes_input.focus();
-                                        valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Debe ingresar la cédula y el parentezco.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                    if(document.getElementById('id_ant_personal').value=="0" || document.getElementById('desc_antecedentes_personales').value ==""){
+                                        descri_imput1.focus();
+                                        valid_ante_person.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Debe ingresar el antecedente personal y la descripción.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
                                         setTimeout(function () {
                                             $("#cerraralert1").click();
                                         }, 6000);
                                     }
                                     else{
-                                        valid_integrantes.innerHTML="";
-                                        if(valid_integrantes_agregados()){
-                                            valid_integrantes.innerHTML="";
+                                        descri_imput1.innerHTML="";
                                             $.ajax({
                                             type: 'POST',
-                                            url: BASE_URL + 'Familias/agregar_integrante_fun',
-                                            data:{'cedula_integrante':integrantes_input.value,'cedula_responsable':document.getElementById('responsable_familia').value
-                                                ,'nombre_familia':document.getElementById('nombre_familia').value,'descripcion_familia':document.getElementById('descripcion_familia').value
-                                                ,'parentezco':document.getElementById('parentezco').value}
+                                            url: BASE_URL + 'historial/agregar_antec_personal',
+                                            data:{'id_historial':document.getElementById('id_historiales_clinicos').value,'cedula_persona':document.getElementById('cedula_persona').value,'id_ant_personal':document.getElementById('id_ant_personal').value,'desc_antec_perso':document.getElementById('desc_antecedentes_personales').value}
                                             })
                                             .done(function (datos) {
-                                                var integrantes = JSON.parse(datos);
-                                                if(integrantes==0){
-                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Persona no está registrada.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
-                                                    setTimeout(function () {
-                                                        $("#cerraralert1").click();
-                                                    }, 6000);
-                                                }else if(integrantes==1){
-                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Cedula ya registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
-                                                    setTimeout(function () {
-                                                        $("#cerraralert1").click();
-                                                    }, 6000);
-                                                }else if(integrantes==2){
-                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Padre ya registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
-                                                    setTimeout(function () {
-                                                        $("#cerraralert1").click();
-                                                    }, 6000);
-                                                }else if(integrantes==3){
-                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Madre ya registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
-                                                    setTimeout(function () {
-                                                        $("#cerraralert1").click();
-                                                    }, 6000);
-                                                }else if(integrantes==4){
-                                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Conyuge ya encuetra.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                var data = JSON.parse(datos);
+                                                var antPersonales = data.ant_personales;
+                                                if(data==1){
+                                                    document.getElementById('valid_ante_pers').innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El registro ya existe.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
                                                     setTimeout(function () {
                                                         $("#cerraralert1").click();
                                                     }, 6000);
                                                 }else{
-                                                    integrantes_agregados.innerHTML="";
-                                                    for (var i = 0; i < integrantes.length; i++) {
-                                                    var texto = "";
-                                                    integrantes.innerHTML = "";
-                                                    console.log(integrantes);
-                                                    texto +=
-                                                        "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
-                                                    for (var i = 0; i < integrantes.length; i++) {
-                                                        texto +=
-                                                        "<tr><td>" +
-                                                        integrantes[i]["cedula_integrante"] +
-                                                        "</td><td>" +
-                                                        integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
-                                                        "</td><td>" +
-                                                        integrantes[i]["parentezco"] +
-                                                        "</td>";
-                                                        texto +=
-                                                        "<td><span onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                                    document.getElementById('antec_pers_agg').innerHTML = "";
+                                                    if (antPersonales.length === 0) {
+                                                        document.getElementById('antec_pers_agg').innerHTML = "No aplica";
+                                                    } else {
+                                                        var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+                                                        for (var i = 0; i < antPersonales.length; i++) {
+                                                            texto += "<tr><td>" +
+                                                                antPersonales[i]["nombre_personal"] +
+                                                                "</td><td>" +
+                                                                antPersonales[i]["descripcion_personales"] +
+                                                                "</td>" +
+                                                                "<td><span onclick='editar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                                        }
+                                                        document.getElementById('antec_pers_agg').innerHTML = texto + "</table>";
                                                     }
-                                                    integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+                                                }
+                                        });
+                                    }
+                               });
+
+//familiar
+                               $(document).on('click', '#agregar_ante_familiar', function() {
+                                    
+                                    if(document.getElementById('id_ant_familiar').value=="0" || document.getElementById('desc_antecedentes_familiar').value ==""){
+                                        descri_imput1.focus();
+                                        document.getElementById('valid_ante_famy').innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Debe ingresar el antecedente familiar y la descripción.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                        setTimeout(function () {
+                                            $("#cerraralert1").click();
+                                        }, 6000);
+                                    }
+                                    else{
+                                        descri_imput1.innerHTML="";
+                                            $.ajax({
+                                            type: 'POST',
+                                            url: BASE_URL + 'historial/agregar_antec_familiar',
+                                            data:{'id_historial':document.getElementById('id_historiales_clinicos').value,'cedula_persona':document.getElementById('cedula_persona').value,'id_ant_familiar':document.getElementById('id_ant_familiar').value,'desc_antec_famy':document.getElementById('desc_antecedentes_familiar').value}
+                                            })
+                                            .done(function (datos) {
+                                                var data = JSON.parse(datos);
+                                                var antFamiliares = data.ant_familiares;
+                                                if(data==1){
+                                                    document.getElementById('valid_ante_famy').innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El registro ya existe.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                    setTimeout(function () {
+                                                        $("#cerraralert1").click();
+                                                    }, 6000);
+                                                }else{
+                                                    document.getElementById('antec_famy_agg').innerHTML = "";
+                                                    if (antFamiliares.length === 0) {
+                                                        document.getElementById('antec_famy_agg').innerHTML = "No aplica";
+                                                    } else {
+                                                        var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+                                                        for (var i = 0; i < antFamiliares.length; i++) {
+                                                            texto += "<tr><td>" +
+                                                                antFamiliares[i]["nombre_familiar"] +
+                                                                "</td><td>" +
+                                                                antFamiliares[i]["descripcion_familiar"] +
+                                                                "</td>" +
+                                                                "<td><span onclick='editar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                                        }
+                                                        document.getElementById('antec_famy_agg').innerHTML = texto + "</table>";
                                                     }
                                                 }
                                             });
-                                        }
                                     }
                                });
+
+//habitos
+                               $(document).on('click', '#agregar_habit_psicolog', function() {
+                                    
+                                    if(document.getElementById('id_habit_psicologico').value=="0" || document.getElementById('desc_habitos_psicol').value ==""){
+                                        descri_imput1.focus();
+                                        document.getElementById('valid_habit_psicolog').innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Debe ingresar el habito psicológico y la descripción.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                        setTimeout(function () {
+                                            $("#cerraralert1").click();
+                                        }, 6000);
+                                    }
+                                    else{
+                                        descri_imput1.innerHTML="";
+                                            $.ajax({
+                                            type: 'POST',
+                                            url: BASE_URL + 'historial/agregar_habit_psicologico',
+                                            data:{'id_historial':document.getElementById('id_historiales_clinicos').value,'cedula_persona':document.getElementById('cedula_persona').value,'id_habit_psicologico':document.getElementById('id_habit_psicologico').value,'desc_habitos_psicol':document.getElementById('desc_habitos_psicol').value}
+                                            })
+                                            .done(function (datos) {
+                                                var data = JSON.parse(datos);
+                                                var habitPsicologicos = data.habit_psicologicos;
+                                                if(data==1){
+                                                    document.getElementById('valid_habit_psicolog').innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El registro ya existe.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
+                                                    setTimeout(function () {
+                                                        $("#cerraralert1").click();
+                                                    }, 6000);
+                                                }else{
+                                                    document.getElementById('habit_psicolog_agg').innerHTML = "";
+                                                    if (habitPsicologicos.length === 0) {
+                                                        document.getElementById('habit_psicolog_agg').innerHTML = "No aplica";
+                                                    } else {
+                                                        var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+                                                        for (var i = 0; i < habitPsicologicos.length; i++) {
+                                                            texto += "<tr><td>" +
+                                                                habitPsicologicos[i]["nombre_habit"] +
+                                                                "</td><td>" +
+                                                                habitPsicologicos[i]["descripcion_habit"] +
+                                                                "</td>" +
+                                                                "<td><span onclick='editar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                                        }
+                                                        document.getElementById('habit_psicolog_agg').innerHTML = texto + "</table>";
+                                                    }
+                                                }
+                                            });
+                                    }
+                               });
+
                             });
+
+                            
                         </script>
                     </tbody>
                     <tfoot>
@@ -249,12 +429,24 @@
                             <?php if($_SESSION['Nucleo familiar']['eliminar']){ ?>
                                 <th>Eliminar</th>
                             <?php } ?>
-                            <th>Familia</th>
-                            <th>Descripció<noscript></noscript></th>
-                            <th>Responsable de Familia</th>
-                            <th>Ubicación</th>
-                            <th>Cargo</th>
-                            <th>Integrantes</th>
+                            <th>Cedula</th>
+                            <th>Diagnóstico</th>
+                            <th>Tratamiento</th>
+                            <th>Evolución</th>
+                            <th>Fecha</th>
+                            <th>Examen</th>
+                            <th>Tipo de sangre</th>
+                            <th>Antecedentes personales</th>
+                            <th>Antecedentes familiares</th>
+                            <th>Hábitos psicológicos</th>
+                            <th>Peso</th>
+                            <th>Altura</th>
+                            <th>Talla</th>
+                            <th>IMC</th>
+                            <th>FC</th>
+                            <th>FR</th>
+                            <th>TA</th>
+                            <th>Temperatura</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -267,226 +459,172 @@
     <!-- /.content -->
     <!-- /.content -->
 </div>
-<?php include modal."editar-familia.php"; ?> 
+<?php include modal."editar-historial.php"; ?> 
 <!-- /.content-wrapper -->
 <?php include (call."Fin.php"); ?>
 <?php include (call."style-agenda.php"); ?>
 
 <script type="text/javascript" src="<?php echo constant('URL')?>config/plugins/datatables/media/js/sum.js"></script>
-<script type="text/javascript" src="<?php echo constant('URL')?>config/js/news/consultar-familias.js"></script>
+
 
 <script type="text/javascript">
 
-    var keyup_cedula = /^[0-9]{7,8}$/;
-    var keyup_nombre = /^[A-ZÁÉÍÓÚ][a-zñáéíóú\s]{2,30}$/;
-    var keyup_apellido = /^[A-ZÁÉÍÓÚ][a-zñáéíóú\s]{2,30}$/;
-    var keyup_genero = /^[A-ZÁÉÍÓÚ][a-zñáéíóú]{7,8}$/;
-    var generica = /^[A-ZÁÉÍÓÚa-zñáéíóú]{2,15}$/;
-    var keyup_telefono = /^[0-9]{11}$/;
-    var keyup_correo =/^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC]{3,25}[@]{1}[A-Za-z0-9]{3,8}[.]{1}[A-Za-z]{2,4}$/;
-    var keyup_direccion = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.#%$^&*:\s]{2,100}$/;
+    var keyup_descripcion = /^[A-ZÁÉÍÓÚa-zñáéíóú0-9,.#%$^&*:\s]{2,100}$/;
 
-    function editar(id_familia_persona,id_familia,responsable_cedula){
+    function editar(id_historial_clinico,cedula){
         $("#actualizar").modal({ backdrop: "static", keyboard: false });
+        document.getElementById('cedula_persona').value = cedula;
+        document.getElementById('id_historiales_clinicos').value = id_historial_clinico;
      $.ajax({
          type:"POST",
-         url:BASE_URL+"historial/consultar_familia_datos",
-         data:{'id_familia_persona':id_familia_persona,'id_familia':id_familia,'cedula_responsable':responsable_cedula}
-     }).done(function(datos){
-        var data = JSON.parse(datos);
-        var familia = document.getElementById('integrantes_agregados');
-        if (data.length == 0) {
-            familia.innerHTML = "No aplica";
-        }else {
-            integrantes_agregados.innerHTML="";
-            for (var i = 0; i < data.length; i++) {
-                document.getElementById("nombre_familia").value =data[i]['nombre_familia'];
-                document.getElementById("descripcion_familia").value =data[i]['descripcion_familia'];
-                document.getElementById("responsable_familia").value =data[i]['cedula_persona'];
-            var texto = "";
-            data.innerHTML = "";
-            console.log(data);
-            texto +=
-                "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
-            for (var i = 0; i < data.length; i++) {
-                texto +=
-                "<tr><td>" +
-                data[i]["cedula_integrante"] +
-                "</td><td>" +
-                data[i]["primer_nombre"]+" "+data[i]["primer_apellido"] +
-                "</td><td>" +
-                data[i]["parentezco"] +
-                "</td>";
-                texto +=
-                "<td><span onclick='editar_integrante(" + data[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+data[i]['id_familia_persona']+","+data[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
-            }
-            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
-            }
-        }
+         url:BASE_URL+"historial/consultar_datos_clinicos",
+         data:{'id_historial':id_historial_clinico,'cedula':cedula}
+     }).done(function(datos) {
+    var data = JSON.parse(datos);
+    var antPersonales = data.ant_personales;
+    var antFamiliares = data.ant_familiares;
+    var habitPsicologicos = data.habit_psicologicos;
+    var historialesClinicos = data.historiales_clinicos;
 
-    });
+    var antecedentes_pers_agg = document.getElementById('antec_pers_agg');
+    var antecedentes_familiar_agg = document.getElementById('antec_famy_agg');
+    var habitos_psicologicos_agg = document.getElementById('habit_psicolog_agg');
+
+    // Antecedentes personales
+    antecedentes_pers_agg.innerHTML = "";
+    if (antPersonales.length === 0) {
+        antecedentes_pers_agg.innerHTML = "No aplica";
+    } else {
+        var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+        for (var i = 0; i < antPersonales.length; i++) {
+            texto += "<tr><td>" +
+                antPersonales[i]["nombre_personal"] +
+                "</td><td>" +
+                antPersonales[i]["descripcion_personales"] +
+                "</td>" +
+                "<td><span onclick='editar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+        }
+        antecedentes_pers_agg.innerHTML = texto + "</table>";
+    }
+
+    // Antecedentes familiares
+    antecedentes_familiar_agg.innerHTML = "";
+    if (antFamiliares.length === 0) {
+        antecedentes_familiar_agg.innerHTML = "No aplica";
+    } else {
+        var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Parentezco</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+        for (var i = 0; i < antFamiliares.length; i++) {
+            texto += "<tr><td>" +
+                antFamiliares[i]["nombre_familiar"] +
+                "</td><td>" +
+                antFamiliares[i]["descripcion_familiar"] +
+                "</td>" +
+                "<td><span onclick='editar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+        }
+        antecedentes_familiar_agg.innerHTML = texto + "</table>";
+    }
+
+    // Hábitos psicológicos
+    habitos_psicologicos_agg.innerHTML = "";
+    if (habitPsicologicos.length === 0) {
+        habitos_psicologicos_agg.innerHTML = "No aplica";
+    } else {
+        var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+        for (var i = 0; i < habitPsicologicos.length; i++) {
+            texto += "<tr><td>" +
+                habitPsicologicos[i]["nombre_habit"] +
+                "</td><td>" +
+                habitPsicologicos[i]["descripcion_habit"] +
+                "</td>" +
+                "<td><span onclick='editar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+        }
+        habitos_psicologicos_agg.innerHTML = texto + "</table>";
+    }
+
+    // Datos del historial clínico
+    document.getElementById('examen').value = historialesClinicos[0]['examen'];
+    document.getElementById('tipo_sangre').value = historialesClinicos[0]['tipo_sangre'];
+    document.getElementById('peso').value = historialesClinicos[0]['peso'];
+    document.getElementById('altura').value = historialesClinicos[0]['altura'];
+    document.getElementById('talla').value = historialesClinicos[0]['talla'];
+    document.getElementById('imc').value = historialesClinicos[0]['imc'];
+    document.getElementById('fc').value = historialesClinicos[0]['fc'];
+    document.getElementById('fr').value = historialesClinicos[0]['fr'];
+    document.getElementById('ta').value = historialesClinicos[0]['ta'];
+    document.getElementById('temperatura').value = historialesClinicos[0]['temperatura'];
+    document.getElementById('diagnostico').value = historialesClinicos[0]['diagnostico'];
+    document.getElementById('tratamiento').value = historialesClinicos[0]['tratamiento'];
+    document.getElementById('evolucion').value = historialesClinicos[0]['evolucion'];
+});
  }
-    function editar_integrante(id) {
+    function editar_antec_personal(id,cedula) {
         $.ajax({
             type:"POST",
-            url:BASE_URL+"historial/consultar_familia_integrante",
-            data:{'id_familia_integrante':id}
+            url:BASE_URL+"historial/consultar_per_ant_perso",
+            data:{'id_antec_personal':id,'cedula':cedula}
         }).done(function(datos){
             var data = JSON.parse(datos);
             console.log(datos);
         Swal.fire({
-            title: 'Información personal del integrante de la familia:',
+            title: 'Información del antecedente personal:',
             html:
-            '<span id="validar_editar_integrant"></span>'+
+            '<span id="validar_editar_antecedente"></span>'+
             '<span id="v1" style="font-size:14px"></span>'+
-            '<div class="d-flex align-items-start">'+
-
-
-            '<div class="input-group mb-3 col-12">'+
-            '<span class="input-group-text" id="inputGroup-sizing-default">Cedula</span>'+
-            '<input type="text" id="cedula_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Cedula" value="'+ data[0].cedula_integrante +'""></div>'+
-            '</div>'+
-
 
             '<div class="d-flex align-items-start">'+
 
-            '<div class="input-group mb-3 col-6">'+
-            '<span class="input-group-text" id="inputGroup-sizing-default">Primer Nombre</span>'+
-            '<input type="text" id="nombre_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Nombre" value="'+ data[0].primer_nombre +'"">'+
-            '<span id="v2" style="font-size:14px"></span>'+
-                '</div>'+
-                '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Segundo Nombre</span>'+
-                '<input type="text" id="segundo_nombre_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].segundo_nombre +'"">'+
-                '<span id="v3" style="font-size:14px"></span>'+
-                '</div>'+
-            '</div>'+
-
-
-            '<div class="d-flex align-items-start">'+
-
-            '<div class="input-group mb-3 col-6">'+
-            '<span class="input-group-text" id="inputGroup-sizing-default">Primer Apellido</span>'+
-            '<input type="text" id="apellido_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].primer_apellido +'"">'+
-            '<span id="v4" style="font-size:14px"></span>'+
-                '</div>'+
-                '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Segundo Apellido</span>'+
-                '<input type="text" id="segundo_apellido_integrante" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].segundo_apellido +'"">'+
-                '<span id="v5" style="font-size:14px"></span>'+
-                '</div>'+
-
-
-            '</div>'+
-            '<div class="d-flex align-items-start">'+
-
-            '<div class="input-group mb-3 col-6">'+
-            '<span class="input-group-text" id="inputGroup-sizing-default">Parentezco</span>'+
-            '<select class="form-control" id="parentezco_integrante"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="Padre">Padre</option><option value="Madre">Madre</option><option value="Hijo">Hijo</option><option value="Hija">Hija</option><option value="Conyuge">Conyuge</option></select>'+
-            '<span id="v6" style="font-size:14px"></span>'+
-                '</div>'+
-                '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text">Genero</span>'+
-                '<select class="form-control" id="ID_genero" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="M">Masculino</option><option value="F">Femenino</option></select>'+
+                '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text">Antecedente</span>'+
+                '<select class="form-control" id="id_antec_pers" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="0">Seleccione antecedentes personal</option><option value="1">Infectocontagiosos</option><option value="2">Cardiovasculares</option><option value="3">Alérgicos</option><option value="4">Quirúrgicos</option><option value="5">Traumáticos</option><option value="6">Gineco-Obstetra</option><option value="7">otros antecedentes</option></select>'+
                 '<span id="v6" style="font-size:14px"></span>'+
                 '</div>'+
 
 
             '</div>'+
+
             '<div class="d-flex align-items-start">'+
 
-            '<div class="input-group mb-3 col-6">'+
-            '<span class="input-group-text" id="inputGroup-sizing-default">fecha de nacimiento</span>'+
-            '<input type="date" id="fecha_nacimiento" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default value="'+ data[0].fecha_nacimiento +'"">'+
-            '<span id="v7" style="font-size:14px"></span>'+
-                '</div>'+
-                '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Nivel educativo</span>'+
-                '<input type="text" id="nivel_educativo" value="'+ data[0].nivel_educativo +'" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
-                '<span id="v9" style="font-size:14px"></span>'+
-                '</div>'+
-
-
-            '</div>'+
-            '<div class="d-flex align-items-start">'+
-
-            '<div class="input-group mb-3 col-6">'+
-            '<span class="input-group-text" id="inputGroup-sizing-default">Correo</span>'+
-            '<input type="text" id="Correo" value="'+ data[0].correo +'" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
-            '<span id="v10" style="font-size:14px"></span>'+
-                '</div>'+
-                '<div class="input-group mb-3 col-6">'+
-                '<span class="input-group-text" id="inputGroup-sizing-default">Telefono</span>'+
-                '<input type="text" id="Telefono" value="'+ data[0].telefono +'" class="form-control" maxlength="11" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">'+
-                '<span id="v11" style="font-size:14px"></span>'+
+                '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Descripción</span>'+
+                '<input type="text" id="descripcion_ante_perso" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].descripcion_personales +'"">'+
+                '<span id="v1" style="font-size:14px"></span>'+
                 '</div>'+
 
 
             '</div>',
             confirmButtonColor: '#15406D',
             confirmButtonText: "Actualizar",
-            width: '800px',
+            width: '400px',
             padding: '1em',
             customClass: {
                 modal: 'no-scroll',
             },
             focusConfirm: true,
             preConfirm: () => {
-                if(document.getElementById('cedula_integrante').value != ""
-                 && document.getElementById('nombre_integrante').value != "" 
-                 && document.getElementById('segundo_nombre_integrante').value != "" 
-                 && document.getElementById('apellido_integrante').value != "" 
-                 && document.getElementById('segundo_apellido_integrante').value != ""
-                 && document.getElementById('parentezco_integrante').value != ""
-                 && document.getElementById('ID_genero').value != ""
-                 && document.getElementById('fecha_nacimiento').value != ""
-                 && document.getElementById('nivel_educativo').value != ""
-                 && document.getElementById('Correo').value != ""
-                 && document.getElementById('Telefono').value != ""){
-                    a = valida_registrar();
+                if(document.getElementById('id_antec_pers').value != ""
+                 && document.getElementById('descripcion_ante_perso').value != ""
+){
+                    a = valida_registrar_perso();
                     if (a != "") {
                         return false;
                     }else {
                         $.ajax({
                         type: "POST",
-                        url: BASE_URL + "Familias/modificar_integrante",
-                        data: { "id": id, 
+                        url: BASE_URL + "historial/modificar_antecedente_personal",
+                        data: {
+                                'id_historial':document.getElementById('id_historiales_clinicos').value,
                                 "cedula_persona" : data[0].cedula_persona,
-                                "id_familia" : data[0].id_familia,
-                                "cedula_integrante": document.getElementById('cedula_integrante').value,
-                                "nombre_integrante": document.getElementById("nombre_integrante").value, 
-                                "segundo_nombre_integrante": document.getElementById("segundo_nombre_integrante").value, 
-                                "apellido_integrante": document.getElementById("apellido_integrante").value,
-                                "segundo_apellido_integrante": document.getElementById("segundo_apellido_integrante").value, 
-                                "parentezco_integrante": document.getElementById("parentezco_integrante").value,
-                                "genero": document.getElementById("ID_genero").value,
-                                "fecha_nacimiento": document.getElementById("fecha_nacimiento").value,
-                                "nivel_educativo": document.getElementById("nivel_educativo").value,
-                                "Correo": document.getElementById("Correo").value,
-                                "Telefono": document.getElementById("Telefono").value
+                                "id_antecedente_personales" : data[0].id_per_personas,
+                                "id_antec_pers": document.getElementById('id_antec_pers').value,
+                                "descripcion_ante_perso": document.getElementById("descripcion_ante_perso").value, 
                             }
                         }).done(function (result) {
                             if(result==1){
-                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Cedula ya registrada.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
-                                setTimeout(function () {
-                                    $("#cerraralert2").click();
-                                }, 6000);
-                            }else if(result==2){
-                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Padre ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                document.getElementById("validar_editar_antecedente").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El registro ya existe.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
                                 setTimeout(function () {
                                     $("#cerraralert2").click();
                                 }, 6000);
                                 return false;
-                            }else if(result==3){
-                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Madre ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
-                                setTimeout(function () {
-                                    $("#cerraralert2").click();
-                                }, 6000);
-                            }else if(result==4){
-                                document.getElementById("validar_editar_integrant").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">Conyuge ya registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
-                                setTimeout(function () {
-                                    $("#cerraralert2").click();
-                                }, 6000);
                             }else{
                                 swal({
                                     title: "Éxtito",
@@ -495,40 +633,27 @@
                                     timer: 2000,
                                     showConfirmButton: false,
                                 });
-                                var integrantes = JSON.parse(result);
-                                if(integrantes!=0){
-                                    integrantes_agregados.innerHTML="";
-                                    for (var i = 0; i < integrantes.length; i++) {
-                                            var texto = "";
-                                            integrantes.innerHTML = "";
-                                            console.log(integrantes);
-                                            texto +=
-                                            "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
-                                            for (var i = 0; i < integrantes.length; i++) {
-                                                texto +=
-                                                "<tr><td>" +
-                                                integrantes[i]["cedula_integrante"] +
+                                    var data = JSON.parse(result);
+                                    var antPersonales = data.ant_personales;
+                                    document.getElementById('antec_pers_agg').innerHTML = ""; 
+                                    if (antPersonales.length === 0) {
+                                        document.getElementById('antec_pers_agg').innerHTML = "No aplica";
+                                    } else {
+                                        var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+                                        for (var i = 0; i < antPersonales.length; i++) {
+                                            texto += "<tr><td>" +
+                                                antPersonales[i]["nombre_personal"] +
                                                 "</td><td>" +
-                                                integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
-                                                "</td><td>" +
-                                                integrantes[i]["parentezco"] +
-                                                "</td>";
-                                                texto +=
-                                                "<td><span  onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
-                                            }
-                                            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+                                                antPersonales[i]["descripcion_personales"] +
+                                                "</td>" +
+                                                "<td><span onclick='editar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
                                         }
-                                        Swal.close('mi-sweet-alert');   
+                                        document.getElementById('antec_pers_agg').innerHTML = texto + "</table>";
+                                    }
+                                    Swal.close('mi-sweet-alert');  
                                 }
-                                else{
-                                    valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">De tener por lo menos un integrante registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
-                                    setTimeout(function () {
-                                        $("#cerraralert1").click();
-                                    }, 6000);
-                                }
-                            }
                         });
-                        return false;
+                        return false;     
                     }
                 }else{
                     document.getElementById("validar_editar_integrant").innerHTML = '<div class="alert alert-dismissible fade show pl-5" style="background:#9D2323; color:white" role="alert">Complete los campos solicitados.<i class="far fa-backspace p-0 m-0 d-none" id="cerraralert" data-dismiss="alert" aria-label="Close"></i></div>';
@@ -539,115 +664,273 @@
                 }
             }
         })
-            document.getElementById("parentezco_integrante").value = data[0].parentezco;
-            document.getElementById("ID_genero").value = data[0].genero;
-            document.getElementById("fecha_nacimiento").value = data[0].fecha_nacimiento;
 
+        document.getElementById("id_antec_pers").value = data[0].id_ant_personal;
 
-    document.getElementById("cedula_integrante").onkeypress = function (e) {
-        er = /^[0-9]*$/;
-        validarkeypress(er, e);
-    };
-    document.getElementById("cedula_integrante").onkeyup = function () {
-    r = validarkeyup(
-        keyup_cedula,
-        this,
-        document.getElementById("v1"),
-        "El formato debe ser 99999999"
-    );
-    };
-    document.getElementById("nombre_integrante").onkeypress = function (e) {
-         er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
-        validarkeypress(er, e);
-    };
-    document.getElementById("nombre_integrante").onkeyup = function () {
-    r = validarkeyup(
-        keyup_nombre,
-        this,
-        document.getElementById("v2"),
-        "Solo letras de 3 a 30 caracteres, siendo la primera en mayúscula."
-    );
-    };
-    document.getElementById("segundo_nombre_integrante").onkeypress = function (e) {
-         er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
-        validarkeypress(er, e);
-    };
-    document.getElementById("segundo_nombre_integrante").onkeyup = function () {
+        document.getElementById("descripcion_ante_perso").onkeypress = function (e) {
+            er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
+            validarkeypress(er, e);
+        };
+        document.getElementById("descripcion_ante_perso").onkeyup = function () {
         r = validarkeyup(
-            keyup_nombre,
+            keyup_descripcion,
             this,
-            document.getElementById("v3"),
-            "Solo letras de 3 a 30 caracteres, siendo la primera en mayúscula."
+            document.getElementById("v1"),
+            "Solo letras de 2 a 200 caracteres, siendo la primera en mayúscula."
         );
-    };
-    document.getElementById("apellido_integrante").onkeypress = function (e) {
-         er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
-        validarkeypress(er, e);
-    };
-    document.getElementById("apellido_integrante").onkeyup = function () {
-        r = validarkeyup(
-        keyup_apellido,
-        this,
-        document.getElementById("v4"),
-        "Solo letras de 3 a 30 caracteres, siendo la primera en mayúscula."
-        );
-    };
-    document.getElementById("segundo_apellido_integrante").onkeypress = function (e) {
-         er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
-        validarkeypress(er, e);
-    };
-    document.getElementById("segundo_apellido_integrante").onkeyup = function () {
-        r = validarkeyup(
-        keyup_apellido,
-        this,
-        document.getElementById("v5"),
-        "Solo letras de 3 a 30 caracteres, siendo la primera en mayúscula."
-        );
-    };
+        };
 
-
-    document.getElementById("nivel_educativo").onkeypress = function (e) {
-         er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
-        validarkeypress(er, e);
-    };
-    document.getElementById("nivel_educativo").onkeyup = function () {
-        r = validarkeyup(
-        generica,
-        this,
-        document.getElementById("v9"),
-        "El campo debe contener de 3 a 25 caracteres"
-        );
-    };
-    document.getElementById("Correo").onkeypress = function (e) {
-        er = /^[A-Za-z0-9_\u00d1\u00f1\u00E0-\u00FC@.-]*$/;
-        validarkeypress(er, e);
-    };
-    document.getElementById("Correo").onkeyup = function () {
-        r = validarkeyup(
-        keyup_correo,
-        this,
-        document.getElementById("v10"),
-        "El formato debe ser ejemplo@gmail.com"
-        );
-    };
-    document.getElementById("Telefono").onkeypress = function (e) {
-        er = /^[0-9]*$/;
-        validarkeypress(er, e);
-    };
-    document.getElementById("Telefono").onkeyup = function () {
-        r = validarkeyup(
-        keyup_telefono,
-        this,
-        document.getElementById("v11"),
-        "Solo numeros de 11 digitos"
-        );
-    };
-
-        });
+    });
     }
 
+    function editar_antec_familiar(id,cedula) {
+        $.ajax({
+            type:"POST",
+            url:BASE_URL+"historial/consultar_per_ant_fam",
+            data:{'id_antec_familiar':id,'cedula':cedula}
+        }).done(function(datos){
+            var data = JSON.parse(datos);
+            console.log(datos);
+        Swal.fire({
+            title: 'Información del antecedente familiares:',
+            html:
+            '<span id="validar_editar_antecedente_fami"></span>'+
+            '<span id="v1" style="font-size:14px"></span>'+
 
-  
+            '<div class="d-flex align-items-start">'+
+
+                '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text">Antecedente</span>'+
+                '<select class="form-control" id="id_antec_fami" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="0">Seleccione antecedente familiar</option><option value="1">Madre</option><option value="2">Padre</option><option value="3">Hermanos</option><option value="4">Otros familiares</option></select>'+
+                '<span id="v6" style="font-size:14px"></span>'+
+                '</div>'+
+            '</div>'+
+
+            '<div class="d-flex align-items-start">'+
+
+                '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Descripción</span>'+
+                '<input type="text" id="descripcion_ante_fami" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].descripcion_familiar +'"">'+
+                '<span id="v1" style="font-size:14px"></span>'+
+                '</div>'+
+            '</div>',
+            confirmButtonColor: '#15406D',
+            confirmButtonText: "Actualizar",
+            width: '400px',
+            padding: '1em',
+            customClass: {
+                modal: 'no-scroll',
+            },
+            focusConfirm: true,
+            preConfirm: () => {
+                if(document.getElementById('id_antec_fami').value != ""
+                 && document.getElementById('descripcion_ante_fami').value != ""
+){
+                    a = valida_registrar_famy();
+                    if (a != "") {
+                        return false;
+                    }else {
+                        $.ajax({
+                        type: "POST",
+                        url: BASE_URL + "historial/modificar_antecedente_familiar",
+                        data: {
+                                'id_historial':document.getElementById('id_historiales_clinicos').value,
+                                "cedula_persona" : data[0].cedula_persona,
+                                "id_antecedente_familiares" : data[0].id_fam_personas,
+                                "id_antec_fami": document.getElementById('id_antec_fami').value,
+                                "descripcion_ante_fami": document.getElementById("descripcion_ante_fami").value, 
+                            }
+                        }).done(function (result) {
+                            if(result==1){
+                                document.getElementById("validar_editar_antecedente_fami").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El registro ya existe.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                setTimeout(function () {
+                                    $("#cerraralert2").click();
+                                }, 6000);
+                                return false;
+                            }else{
+                                swal({
+                                    title: "Éxtito",
+                                    text: "La persona ha sido modificada satisfactoriamente",
+                                    type: "success",
+                                    timer: 2000,
+                                    showConfirmButton: false,
+                                });
+                                var antecedentes_familiar_agg = document.getElementById('antec_famy_agg');
+                                var data = JSON.parse(result);
+                                var antFamiliares = data.ant_familiares;
+                                antecedentes_familiar_agg.innerHTML = "";
+                                if (antFamiliares.length === 0) {
+                                    antecedentes_familiar_agg.innerHTML = "No aplica";
+                                } else {
+                                    var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Parentezco</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+                                    for (var i = 0; i < antFamiliares.length; i++) {
+                                        texto += "<tr><td>" +
+                                            antFamiliares[i]["nombre_familiar"] +
+                                            "</td><td>" +
+                                            antFamiliares[i]["descripcion_familiar"] +
+                                            "</td>" +
+                                            "<td><span onclick='editar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                    }
+                                    antecedentes_familiar_agg.innerHTML = texto + "</table>";
+                                } 
+                                    Swal.close('mi-sweet-alert');  
+                                }
+                        });
+                        return false;     
+                    }
+                }else{
+                    document.getElementById("validar_editar_antecedente_fami").innerHTML = '<div class="alert alert-dismissible fade show pl-5" style="background:#9D2323; color:white" role="alert">Complete los campos solicitados.<i class="far fa-backspace p-0 m-0 d-none" id="cerraralert" data-dismiss="alert" aria-label="Close"></i></div>';
+                    setTimeout(function () {
+                        $("#cerraralert").click();
+                    }, 3000);
+                    return false;
+                }
+            }
+        })
+
+        document.getElementById("id_antec_fami").value = data[0].id_ant_familiar;
+
+        document.getElementById("descripcion_ante_fami").onkeypress = function (e) {
+            er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
+            validarkeypress(er, e);
+        };
+        document.getElementById("descripcion_ante_fami").onkeyup = function () {
+        r = validarkeyup(
+            keyup_descripcion,
+            this,
+            document.getElementById("v1"),
+            "Solo letras de 2 a 200 caracteres, siendo la primera en mayúscula."
+        );
+        };
+
+    });
+    }
+
+    function editar_habit_psicol(id,cedula) {
+        $.ajax({
+            type:"POST",
+            url:BASE_URL+"historial/consultar_per_habit_psicol",
+            data:{'id_habit_psicol':id,'cedula':cedula}
+        }).done(function(datos){
+            var data = JSON.parse(datos);
+            console.log(datos);
+        Swal.fire({
+            title: 'Información del hábito psicológico:',
+            html:
+            '<span id="validar_editar_habito"></span>'+
+            '<span id="v1" style="font-size:14px"></span>'+
+
+            '<div class="d-flex align-items-start">'+
+
+                '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text">Hábito psicológico</span>'+
+                '<select class="form-control" id="id_habito_psicologico" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="0">Seleccione hábito psicológico</option><option value="1">Alcohol</option><option value="2">Cafeicos</option><option value="3">Tabaquismo</option><option value="4">Drogas</option><option value="5">Sueño</option><option value="6">Actividad deportiva</option></select>'+
+                '<span id="v6" style="font-size:14px"></span>'+
+                '</div>'+
+
+            '</div>'+
+
+            '<div class="d-flex align-items-start">'+
+
+                '<div class="input-group mb-3 col-12">'+
+                '<span class="input-group-text" id="inputGroup-sizing-default">Descripción</span>'+
+                '<input type="text" id="descripcion_habito" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].descripcion_habit +'"">'+
+                '<span id="v1" style="font-size:14px"></span>'+
+                '</div>'+
+
+
+            '</div>',
+            confirmButtonColor: '#15406D',
+            confirmButtonText: "Actualizar",
+            width: '400px',
+            padding: '1em',
+            customClass: {
+                modal: 'no-scroll',
+            },
+            focusConfirm: true,
+            preConfirm: () => {
+                if(document.getElementById('id_habito_psicologico').value != ""
+                 && document.getElementById('descripcion_habito').value != ""
+){
+                    a = valida_registrar_habit();
+                    if (a != "") {
+                        return false;
+                    }else {
+                        $.ajax({
+                        type: "POST",
+                        url: BASE_URL + "historial/modificar_habito_psicologico",
+                        data: {
+                                'id_historial':document.getElementById('id_historiales_clinicos').value,
+                                "cedula_persona" : data[0].cedula_persona,
+                                "id_per_habito_psicologico" : data[0].id_habit_persona,
+                                "id_habit_psicologico": document.getElementById('id_habito_psicologico').value,
+                                "descripcion_habito": document.getElementById("descripcion_habito").value, 
+                            }
+                        }).done(function (result) {
+                            if(result==1){
+                                document.getElementById("validar_editar_habito").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El registro ya existe.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                setTimeout(function () {
+                                    $("#cerraralert2").click();
+                                }, 6000);
+                                return false;
+                            }else{
+                                swal({
+                                    title: "Éxtito",
+                                    text: "La persona ha sido modificada satisfactoriamente",
+                                    type: "success",
+                                    timer: 2000,
+                                    showConfirmButton: false,
+                                });
+                                    var data = JSON.parse(result);
+                                    var habitPsicologicos = data.habit_psicologicos;
+                                    document.getElementById('habit_psicolog_agg').innerHTML = ""; 
+                                    if (habitPsicologicos.length === 0) {
+                                        document.getElementById('habit_psicolog_agg').innerHTML = "No aplica";
+                                    } else {
+                                        var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+                                        for (var i = 0; i < habitPsicologicos.length; i++) {
+                                            texto += "<tr><td>" +
+                                                habitPsicologicos[i]["nombre_habit"] +
+                                                "</td><td>" +
+                                                habitPsicologicos[i]["descripcion_habit"] +
+                                                "</td>" +
+                                                "<td><span onclick='editar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                        }
+                                        document.getElementById('habit_psicolog_agg').innerHTML = texto + "</table>";
+                                    }
+                                    Swal.close('mi-sweet-alert');  
+                                }
+                        });
+                        return false;     
+                    }
+                }else{
+                    document.getElementById("validar_editar_integrant").innerHTML = '<div class="alert alert-dismissible fade show pl-5" style="background:#9D2323; color:white" role="alert">Complete los campos solicitados.<i class="far fa-backspace p-0 m-0 d-none" id="cerraralert" data-dismiss="alert" aria-label="Close"></i></div>';
+                    setTimeout(function () {
+                        $("#cerraralert").click();
+                    }, 3000);
+                    return false;
+                }
+            }
+        })
+
+        document.getElementById("id_habito_psicologico").value = data[0].id_habit_psicologico;
+
+        document.getElementById("descripcion_habito").onkeypress = function (e) {
+            er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
+            validarkeypress(er, e);
+        };
+        document.getElementById("descripcion_habito").onkeyup = function () {
+        r = validarkeyup(
+            keyup_descripcion,
+            this,
+            document.getElementById("v1"),
+            "Solo letras de 2 a 200 caracteres, siendo la primera en mayúscula."
+        );
+        };
+
+    });
+    }
+
     function validarkeypress(er, e) {
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key);
@@ -657,78 +940,60 @@
         }
     }
 
-
-    function valida_registrar() {
+    function valida_registrar_perso() {
       var error = false;
-      cedula_integrante = validarkeyup(
-        keyup_cedula,
-        document.getElementById("cedula_integrante"),
+
+      descripcion = validarkeyup(
+        keyup_descripcion,
+        document.getElementById("descripcion_ante_perso"),
         document.getElementById("v1"),
-        "El campo debe contener de 5 a 8 caracteres"
-      );
-      nombre_integrante = validarkeyup(
-        keyup_nombre,
-        document.getElementById("nombre_integrante"),
-        document.getElementById("v2"),
-        "El campo debe contener de 5 a 8 caracteres"
-      );
-      segundo_nombre_integrante = validarkeyup(
-        keyup_nombre,
-        document.getElementById("segundo_nombre_integrante"),
-        document.getElementById("v3"),
-        "El campo debe contener de 3 a 25 caracteres"
-      );
-      apellido_integrante = validarkeyup(
-        keyup_apellido,
-        document.getElementById("apellido_integrante"),
-        document.getElementById("v4"),
-        "El campo debe contener de 3 a 25 caracteres"
-      );
-      segundo_apellido_integrante = validarkeyup(
-        keyup_apellido,
-        document.getElementById("segundo_apellido_integrante"),
-        document.getElementById("v5"),
-        "El campo debe contener de 3 a 25 caracteres"
-      );
-
-      nivel_educativo = validarkeyup(
-        generica,
-        document.getElementById("nivel_educativo"),
-        document.getElementById("v9"),
-        "El campo debe contener de 3 a 25 caracteres"
-      );
-
-      Correo = validarkeyup(
-        keyup_correo,
-        document.getElementById("Correo"),
-        document.getElementById("v10"),
-        "El campo debe contener de 3 a 25 caracteres"
-      );
-
-      Telefono = validarkeyup(
-        keyup_telefono,
-        document.getElementById("Telefono"),
-        document.getElementById("v11"),
-        "El campo debe contener de 3 a 25 caracteres"
+        "El campo debe contener de 2 a 200 caracteres"
       );
 
       if (
-        cedula_integrante == 0 ||
-        nombre_integrante == 0 ||
-        segundo_nombre_integrante == 0 ||
-        apellido_integrante == 0 ||
-        segundo_apellido_integrante == 0 ||
-        nivel_educativo == 0 || 
-        Correo == 0 || 
-        Telefono == 0 
+        descripcion == 0
       ) {
-        //variable==0, indica que hubo error en la validacion de la etiqueta
         error = true;
       }
       return error;
     }
 
-    
+    function valida_registrar_famy() {
+      var error = false;
+
+      descripcion = validarkeyup(
+        keyup_descripcion,
+        document.getElementById("descripcion_ante_fami"),
+        document.getElementById("v1"),
+        "El campo debe contener de 2 a 200 caracteres"
+      );
+
+      if (
+        descripcion == 0
+      ) {
+        error = true;
+      }
+      return error;
+    }
+
+    function valida_registrar_habit() {
+      var error = false;
+
+      descripcion = validarkeyup(
+        keyup_descripcion,
+        document.getElementById("descripcion_habito"),
+        document.getElementById("v1"),
+        "El campo debe contener de 2 a 200 caracteres"
+      );
+
+      if (
+        descripcion == 0
+      ) {
+        error = true;
+      }
+      return error;
+    }
+
 function validarkeyup(er, etiqueta, etiquetamensaje, mensaje) {
   a = er.test(etiqueta.value);
   if (!a) {
@@ -744,11 +1009,44 @@ function validarkeyup(er, etiqueta, etiquetamensaje, mensaje) {
   }
 }
 
-function borrar_familia(id,cedula_param){
+
+function eliminar(id,cedula){
+	swal({
+		type:"warning",
+		title:"Atención",
+		text:"Estás por eliminar esta familia, ¿ deseas continuar?",
+		showCancelButton:true,
+		cancelButtonText:"No",
+		confirmButtonColor: '#9D2323',
+		confirmButtonText:"Si"
+	},function(isConfirm){
+		if(isConfirm){
+			$.ajax({
+				type:"POST",
+				url:BASE_URL+"historial/eliminar_historial_clinico",
+				data:{'id':id,'cedula': cedula}
+			}).done(function(result){
+                     setTimeout(function(){
+                    	swal({
+                    		type:"success",
+                    		title:"Éxito",
+                    		text:"Se ha eliminado exitosamente esta familia",
+                    		timer:2000,
+                    		showConfirmButton:false
+                    	});
+
+                    	setTimeout(function(){location.reload();},1000);
+                  },500);
+			});
+		}
+	})
+}
+
+function borrar_antec_personal(id,cedula){
     swal({
       type:"warning",
       title:"¿Está seguro?",
-      text:"Está por eliminar este integrantes , ¿desea continuar?",
+      text:"Está por eliminar este antecedente , ¿desea continuar?",
       showCancelButton:true,
       confirmButtonText:"Si, continuar",
       cancelButtonText:"No"
@@ -756,40 +1054,102 @@ function borrar_familia(id,cedula_param){
       if(isConfirm){
         $.ajax({
           type:"POST",
-          url:BASE_URL+"Familias/eliminar_integrantes",
-          data:{"id_familia_persona":id,"cedula_persona":cedula_param}
+          url:BASE_URL+"historial/eliminar_antecedente_personal",
+          data:{'id_historial':document.getElementById('id_historiales_clinicos').value,"id_antec":id,"cedula_persona":cedula}
       }).done(function(result){
-        var integrantes = JSON.parse(result);
-        if(integrantes!=0){
-            integrantes_agregados.innerHTML="";
-            for (var i = 0; i < integrantes.length; i++) {
-            var texto = "";
-            integrantes.innerHTML = "";
-            console.log(integrantes);
-            texto +=
-                "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr>";
-            for (var i = 0; i < integrantes.length; i++) {
-                texto +=
-                "<tr><td>" +
-                integrantes[i]["cedula_integrante"] +
-                "</td><td>" +
-                integrantes[i]["primer_nombre"]+" "+integrantes[i]["primer_apellido"] +
-                "</td><td>" +
-                integrantes[i]["parentezco"] +
-                "</td>";
-                texto +=
-                "<td><span  onclick='editar_integrante(" + integrantes[i]['id_familia_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante' style='font-size:22px'></span></td><td><span onclick='borrar_familia("+integrantes[i]['id_familia_persona']+","+integrantes[i]['cedula_persona']+")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+        var data = JSON.parse(result);
+        var antPersonales = data.ant_personales;
+        document.getElementById('antec_pers_agg').innerHTML = ""; 
+        if (antPersonales.length === 0) {
+            document.getElementById('antec_pers_agg').innerHTML = "No aplica";
+        } else {
+            var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+            for (var i = 0; i < antPersonales.length; i++) {
+                texto += "<tr><td>" +
+                    antPersonales[i]["nombre_personal"] +
+                    "</td><td>" +
+                    antPersonales[i]["descripcion_personales"] +
+                    "</td>" +
+                    "<td><span onclick='editar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
             }
-            integrantes_agregados.innerHTML += texto + "<tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Cedula</td><td>Nombre y Apellido</td><td>Parentezco</td><td>editar</td><td>Eliminar</td></tr></table>";
+            document.getElementById('antec_pers_agg').innerHTML = texto + "</table>";
+        }          
+      })
+  }
+});
+}
+
+function borrar_antec_familiar(id,cedula){
+    swal({
+      type:"warning",
+      title:"¿Está seguro?",
+      text:"Está por eliminar este antecedente , ¿desea continuar?",
+      showCancelButton:true,
+      confirmButtonText:"Si, continuar",
+      cancelButtonText:"No"
+  },function(isConfirm){
+      if(isConfirm){
+        $.ajax({
+          type:"POST",
+          url:BASE_URL+"historial/eliminar_antecedente_familiar",
+          data:{'id_historial':document.getElementById('id_historiales_clinicos').value,"id_antec":id,"cedula_persona":cedula}
+      }).done(function(result){
+        var antecedentes_familiar_agg = document.getElementById('antec_famy_agg');
+        var data = JSON.parse(result);
+        var antFamiliares = data.ant_familiares;
+        antecedentes_familiar_agg.innerHTML = "";
+        if (antFamiliares.length === 0) {
+            antecedentes_familiar_agg.innerHTML = "No aplica";
+        } else {
+            var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Parentezco</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+            for (var i = 0; i < antFamiliares.length; i++) {
+                texto += "<tr><td>" +
+                    antFamiliares[i]["nombre_familiar"] +
+                    "</td><td>" +
+                    antFamiliares[i]["descripcion_familiar"] +
+                    "</td>" +
+                    "<td><span onclick='editar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_familiar(" + antFamiliares[i]['id_ant_familiar'] + "," + antFamiliares[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
             }
-        }
-        else{
-        valid_integrantes.innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">De tener por lo menos un integrante registrado.<i class="far fa-times" id="cerraralert1" data-dismiss="alert" aria-label="Close"></i></div>';
-        setTimeout(function () {
-            $("#cerraralert1").click();
-        }, 6000);
-        }
-          
+            antecedentes_familiar_agg.innerHTML = texto + "</table>";
+        }       
+      })
+  }
+});
+}
+
+function borrar_habit_psicol(id,cedula){
+    swal({
+      type:"warning",
+      title:"¿Está seguro?",
+      text:"Está por eliminar este habito psicologico , ¿desea continuar?",
+      showCancelButton:true,
+      confirmButtonText:"Si, continuar",
+      cancelButtonText:"No"
+  },function(isConfirm){
+      if(isConfirm){
+        $.ajax({
+          type:"POST",
+          url:BASE_URL+"historial/eliminar_habitos_psicologicos",
+          data:{'id_historial':document.getElementById('id_historiales_clinicos').value,"id_habit":id,"cedula_persona":cedula}
+      }).done(function(result){
+            var habitos_psicologicos_agg = document.getElementById('habit_psicolog_agg');
+            var data = JSON.parse(result);
+            var habitPsicologicos = data.habit_psicologicos;
+            habitos_psicologicos_agg.innerHTML = "";
+            if (habitPsicologicos.length === 0) {
+                habitos_psicologicos_agg.innerHTML = "No aplica";
+            } else {
+                var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
+                for (var i = 0; i < habitPsicologicos.length; i++) {
+                    texto += "<tr><td>" +
+                        habitPsicologicos[i]["nombre_habit"] +
+                        "</td><td>" +
+                        habitPsicologicos[i]["descripcion_habit"] +
+                        "</td>" +
+                        "<td><span onclick='editar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                }
+                habitos_psicologicos_agg.innerHTML = texto + "</table>";
+            }
       })
   }
 });
@@ -806,23 +1166,13 @@ function actualizar_integrantes(result,cedula_param){
 }
 
 }
-var integrantes_input=document.getElementById("integrante_input");
+var descri_imput1=document.getElementById("desc_antecedentes_personales");
+var integrantes_input2=document.getElementById("desc_antecedentes_familiar");
+var integrantes_input3=document.getElementById("desc_habitos_psicol");
 var integrantes=[];
-var valid_integrantes=document.getElementById("valid_5");
+var valid_ante_person=document.getElementById("valid_ante_pers");
+var valid_ante_familiar=document.getElementById("valid_ante_famy");
+var valid_habit_psicolog=document.getElementById("valid_habit_psicolog");
 var div_integrantes=document.getElementById("integrantes_agregados");
 
-function valid_integrantes_agregados(){
-    var validar=true;
-    for(var i=0;i<integrantes.length;i++){
-        if(integrantes[i]==integrantes_input.value){
-            validar=false;
-        }
-    }
-
-    if(!validar){
-        valid_integrantes.innerHTML='Ya esta persona fue agregada';
-    }
-
-    return validar;
-}
 </script>
