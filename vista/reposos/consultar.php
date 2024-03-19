@@ -80,6 +80,14 @@
                                 <span style="color: red;" id="valid_patologia"></span>
                             </div>
 
+                            <div class="col-md-12 mt-2" >
+                                <label for="motivo">Diagnóstico</label>
+                                <div class="input-group">
+                                    <input type="text" id="motivo" name="datos[motivo]" class="form-control" placeholder="Escriba el diagnóstico del reposo">
+                                </div>
+                                <span style="color:red;" id="valid_motivo"></span>
+                            </div>
+
                             <div class="col-md-6 mt-2">
                             <label for="id_institucion">Institución</label>
                                 <div class="input-group">
@@ -102,13 +110,7 @@
                             </div>
 
 
-                             <div class="col-md-12 mt-2" >
-                                <label for="motivo">Motivo</label>
-                                <div class="input-group">
-                                    <input type="text" id="motivo" name="datos[motivo]" class="form-control" placeholder="Escriba el motivo del reposo">
-                                </div>
-                                <span style="color:red;" id="valid_motivo"></span>
-                            </div> 
+                              
                             
                             <div class="col-md-12 mt-2">
                                 <label for="diagnostico">Observaciones</label> <!--Debe tener una observacion, esta es opcional-->

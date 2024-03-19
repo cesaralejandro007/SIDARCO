@@ -6,8 +6,8 @@
   var fecha_cierre=document.getElementById("fecha_cierre");
   var motivo=document.getElementById("motivo");
   var persona_existente=false;
-  var id_especialidad=document.getElementById("id_patologia");
-	/*  Envio de datos de permiso */
+/*   var id_especialidad=document.getElementById("id_patologia");
+ */	/*  Envio de datos de permiso */
 
 
 
@@ -59,7 +59,7 @@
 	var especialidadSeleccionada = $('#id_especialidad').val();
 	var idEspecialidad = $('option[value="' + especialidadSeleccionada + '"]').data('id');
 	var patologia_selec=$('#id_patologia').val();
-	var id_patologia=$('option[value=" '+ patologia_selec +' "]').data('id');
+	var id_patologia=$('option[value="'+patologia_selec+'"]').data('id');
 	var institucion_select=$('#id_institucion').val();
 	var id_institucion=$('option[value="'+institucion_select+'"]').data('id');
 	
@@ -115,12 +115,12 @@
 	  motivo: $("#motivo").val(),
 	  fecha_inicio: $("#fecha_inicio").val(),
 	  fecha_cierre: $("#fecha_cierre").val(),
-	  diagnostico: id_patologia,
+	  diagnostico: $('#diagnostico').val(),
 	  medico_tratante: $("#medico_tratante").val(),
 	  id_cedula: $("#id_cedula").val(),
-	  id_especialidad:idEspecialidad,
-	  id_patologia:$('#id_patologia').val(),
-	  id_institucion:id_institucion,
+	  id_especialidad: idEspecialidad,
+	  id_patologia: id_patologia,
+	  id_institucion: id_institucion,
 	};
   
 		  $.ajax({
@@ -130,17 +130,17 @@
 			  'datos':datos,
 			}
 		  }).done(function(result){
-		/* 	if(result==1){	 */	
+		 /* 	if(result==1){	 */ 
 				swal({
 					title:"Registro exitoso",
 					type:"success",
 					text:"Se ha registrado de forma exitosa el reposo",
 					showConfirmButton:false,
 					timer:2000
-				  });
-				  setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000);
+				});
+				setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000);
 
-			/* } */ /* else{
+			/* } */ /*  else{
 				swal({
 					title:"Error",
 					text:"Ha ocurrido un error.<br>"+result,
@@ -149,9 +149,9 @@
 					showConfirmButton:true,
 					customClass:"bigSwalV2"
 				});
-				/* setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000); */
-			 /*  }  */
-		  });
+				setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000); 
+			}  */
+		});
 									}
 								}
 							}
