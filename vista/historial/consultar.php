@@ -218,9 +218,7 @@
                                     swal({
                                             title: "Atención",
                                             text:
-                                            "Estás por actualizar el nucleo familiar de la familia " +
-                                            document.getElementById("nombre_familia").value +
-                                            ", ¿Desea continuar?",
+                                            "Estás por actualizar los datos del historial clinico ¿Desea continuar?",
                                             type: "warning",
                                             showCancelButton: true,
                                             cancelButtonColor: '#d33',
@@ -231,18 +229,42 @@
                                         },
                                         function (isConfirm) {
                                             if (isConfirm) {
-                                                var nombre_familia=document.getElementById("nombre_familia");
-                                                        var descripcion_familia=document.getElementById('descripcion_familia');
-                                                        var responsable=document.getElementById("responsable_familia");
-                                                        var datos_familia=new Object();
-                                                        datos_familia['nombre_familia']=nombre_familia.value;
-                                                        datos_familia['descripcion_familia']=descripcion_familia.value;
-                                                        datos_familia['responsable_familia']=responsable.value;
+                                                        var cedula=document.getElementById("cedula_persona");
+                                                        var examen=document.getElementById("examen");
+                                                        var tipo_sangre=document.getElementById('tipo_sangre');
+                                                        var peso=document.getElementById("peso");
+                                                        var altura=document.getElementById("altura");
+                                                        var talla=document.getElementById("talla");
+                                                        var imc=document.getElementById("imc");
+                                                        var fc=document.getElementById("fc");
+                                                        var fr=document.getElementById("fr");
+                                                        var fr=document.getElementById("ta");
+                                                        var temperatura=document.getElementById("temperatura");
+                                                        var diagnostico=document.getElementById("diagnostico");
+                                                        var tratamiento=document.getElementById("tratamiento");
+                                                        var evolucion=document.getElementById("evolucion");
+
+                                                        var datos_historial=new Object();
+                                                        datos_historial['cedula']=cedula.value;
+                                                        datos_historial['examen']=examen.value;
+                                                        datos_historial['tipo_sangre']=tipo_sangre.value;
+                                                        datos_historial['peso']=peso.value;
+                                                        datos_historial['altura']=altura.value;
+                                                        datos_historial['talla']=talla.value;
+                                                        datos_historial['imc']=imc.value;
+                                                        datos_historial['fc']=fc.value;
+                                                        datos_historial['fr']=fr.value;
+                                                        datos_historial['ta']=ta.value;
+                                                        datos_historial['temperatura']=temperatura.value;
+                                                        datos_historial['diagnostico']=diagnostico.value;
+                                                        datos_historial['tratamiento']=tratamiento.value;
+                                                        datos_historial['evolucion']=evolucion.value;
                                                         $.ajax({
                                                         type:"POST",
-                                                        url:BASE_URL+"Familias/actualizar_familia",
-                                                        data:{"datos":datos_familia}
+                                                        url:BASE_URL+"historial/actualizar_historial",
+                                                        data:{"datos":datos_historial}
                                                     }).done(function(result){
+                                                        alert(result);
                                                     console.log(result);
                                                     swal({
                                                         title:"Éxito",
@@ -598,7 +620,7 @@
                             }
                         }).done(function (result) {
                             if(result==1){
-                                document.getElementById("validar_editar_antecedente").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El antecedente se encuantra registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                document.getElementById("validar_editar_antecedente").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El registro ya existe.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
                                 setTimeout(function () {
                                     $("#cerraralert2").click();
                                 }, 6000);
@@ -720,7 +742,7 @@
                             }
                         }).done(function (result) {
                             if(result==1){
-                                document.getElementById("validar_editar_antecedente_fami").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El antecedente se encuantra registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                document.getElementById("validar_editar_antecedente_fami").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El registro ya existe.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
                                 setTimeout(function () {
                                     $("#cerraralert2").click();
                                 }, 6000);
@@ -735,7 +757,6 @@
                                 });
                                 var antecedentes_familiar_agg = document.getElementById('antec_famy_agg');
                                 var data = JSON.parse(result);
-                                alert(result)
                                 var antFamiliares = data.ant_familiares;
                                 antecedentes_familiar_agg.innerHTML = "";
                                 if (antFamiliares.length === 0) {
@@ -788,22 +809,22 @@
     function editar_habit_psicol(id,cedula) {
         $.ajax({
             type:"POST",
-            url:BASE_URL+"historial/consultar_per_ant_perso",
-            data:{'id_antec_personal':id,'cedula':cedula}
+            url:BASE_URL+"historial/consultar_per_habit_psicol",
+            data:{'id_habit_psicol':id,'cedula':cedula}
         }).done(function(datos){
             var data = JSON.parse(datos);
             console.log(datos);
         Swal.fire({
-            title: 'Información del antecedente personal:',
+            title: 'Información del hábito psicológico:',
             html:
-            '<span id="validar_editar_antecedente"></span>'+
+            '<span id="validar_editar_habito"></span>'+
             '<span id="v1" style="font-size:14px"></span>'+
 
             '<div class="d-flex align-items-start">'+
 
                 '<div class="input-group mb-3 col-12">'+
-                '<span class="input-group-text">Antecedente</span>'+
-                '<select class="form-control" id="id_antec_pers" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="0">Seleccione antecedentes personal</option><option value="1">Infectocontagiosos</option><option value="2">Cardiovasculares</option><option value="3">Alérgicos</option><option value="4">Quirúrgicos</option><option value="5">Traumáticos</option><option value="6">Gineco-Obstetra</option><option value="7">otros antecedentes</option></select>'+
+                '<span class="input-group-text">Hábito psicológico</span>'+
+                '<select class="form-control" id="id_habito_psicologico" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><option value="0">Seleccione hábito psicológico</option><option value="1">Alcohol</option><option value="2">Cafeicos</option><option value="3">Tabaquismo</option><option value="4">Drogas</option><option value="5">Sueño</option><option value="6">Actividad deportiva</option></select>'+
                 '<span id="v6" style="font-size:14px"></span>'+
                 '</div>'+
 
@@ -813,7 +834,7 @@
 
                 '<div class="input-group mb-3 col-12">'+
                 '<span class="input-group-text" id="inputGroup-sizing-default">Descripción</span>'+
-                '<input type="text" id="descripcion_ante_perso" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].descripcion_personales +'"">'+
+                '<input type="text" id="descripcion_habito" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default placeholder="Apellido" value="'+ data[0].descripcion_habit +'"">'+
                 '<span id="v1" style="font-size:14px"></span>'+
                 '</div>'+
 
@@ -828,8 +849,8 @@
             },
             focusConfirm: true,
             preConfirm: () => {
-                if(document.getElementById('id_antec_pers').value != ""
-                 && document.getElementById('descripcion_ante_perso').value != ""
+                if(document.getElementById('id_habito_psicologico').value != ""
+                 && document.getElementById('descripcion_habito').value != ""
 ){
                     a = valida_registrar_habit();
                     if (a != "") {
@@ -837,17 +858,17 @@
                     }else {
                         $.ajax({
                         type: "POST",
-                        url: BASE_URL + "historial/modificar_antecedente_personal",
+                        url: BASE_URL + "historial/modificar_habito_psicologico",
                         data: {
                                 'id_historial':document.getElementById('id_historiales_clinicos').value,
                                 "cedula_persona" : data[0].cedula_persona,
-                                "id_antecedente_personales" : data[0].id_per_personas,
-                                "id_antec_pers": document.getElementById('id_antec_pers').value,
-                                "descripcion_ante_perso": document.getElementById("descripcion_ante_perso").value, 
+                                "id_per_habito_psicologico" : data[0].id_habit_persona,
+                                "id_habit_psicologico": document.getElementById('id_habito_psicologico').value,
+                                "descripcion_habito": document.getElementById("descripcion_habito").value, 
                             }
                         }).done(function (result) {
                             if(result==1){
-                                document.getElementById("validar_editar_antecedente").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El antecedente se encuantra registrado.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
+                                document.getElementById("validar_editar_habito").innerHTML='<div class="alert alert-dismissible fade show p-2" style="background:#9D2323; color:white" role="alert">El registro ya existe.<i class="far fa-times" id="cerraralert2" data-dismiss="alert" aria-label="Close"></i></div>';
                                 setTimeout(function () {
                                     $("#cerraralert2").click();
                                 }, 6000);
@@ -861,21 +882,21 @@
                                     showConfirmButton: false,
                                 });
                                     var data = JSON.parse(result);
-                                    var antPersonales = data.ant_personales;
-                                    document.getElementById('antec_pers_agg').innerHTML = ""; 
-                                    if (antPersonales.length === 0) {
-                                        document.getElementById('antec_pers_agg').innerHTML = "No aplica";
+                                    var habitPsicologicos = data.habit_psicologicos;
+                                    document.getElementById('habit_psicolog_agg').innerHTML = ""; 
+                                    if (habitPsicologicos.length === 0) {
+                                        document.getElementById('habit_psicolog_agg').innerHTML = "No aplica";
                                     } else {
                                         var texto = "<table class='table table-striped' style='width:100'><tr class='text-dark' style='background:#AEB6BF;font-weight:bold'><td>Nombre</td><td>Descripción</td><td>editar</td><td>Eliminar</td></tr>";
-                                        for (var i = 0; i < antPersonales.length; i++) {
+                                        for (var i = 0; i < habitPsicologicos.length; i++) {
                                             texto += "<tr><td>" +
-                                                antPersonales[i]["nombre_personal"] +
+                                                habitPsicologicos[i]["nombre_habit"] +
                                                 "</td><td>" +
-                                                antPersonales[i]["descripcion_personales"] +
+                                                habitPsicologicos[i]["descripcion_habit"] +
                                                 "</td>" +
-                                                "<td><span onclick='editar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_antec_personal(" + antPersonales[i]['id_ant_personal'] + "," + antPersonales[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
+                                                "<td><span onclick='editar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='fa fa-edit' style='font-size:22px;color:#DC9703;font-weight:bold' title='Editar Integrante'></span></td><td><span onclick='borrar_habit_psicol(" + habitPsicologicos[i]['id_habit_psicologico'] + "," + habitPsicologicos[i]['cedula_persona'] + ")' class='iconDelete fa fa-times-circle' title='Eliminar integrante' style='font-size:22px'></span></td></tr>";
                                         }
-                                        document.getElementById('antec_pers_agg').innerHTML = texto + "</table>";
+                                        document.getElementById('habit_psicolog_agg').innerHTML = texto + "</table>";
                                     }
                                     Swal.close('mi-sweet-alert');  
                                 }
@@ -892,13 +913,13 @@
             }
         })
 
-        document.getElementById("id_antec_pers").value = data[0].id_ant_personal;
+        document.getElementById("id_habito_psicologico").value = data[0].id_habit_psicologico;
 
-        document.getElementById("descripcion_ante_perso").onkeypress = function (e) {
+        document.getElementById("descripcion_habito").onkeypress = function (e) {
             er = /^[A-Za-z\b\u00f1\u00d1\u00E0-\u00FC]*$/;
             validarkeypress(er, e);
         };
-        document.getElementById("descripcion_ante_perso").onkeyup = function () {
+        document.getElementById("descripcion_habito").onkeyup = function () {
         r = validarkeyup(
             keyup_descripcion,
             this,
@@ -943,6 +964,24 @@
       descripcion = validarkeyup(
         keyup_descripcion,
         document.getElementById("descripcion_ante_fami"),
+        document.getElementById("v1"),
+        "El campo debe contener de 2 a 200 caracteres"
+      );
+
+      if (
+        descripcion == 0
+      ) {
+        error = true;
+      }
+      return error;
+    }
+
+    function valida_registrar_habit() {
+      var error = false;
+
+      descripcion = validarkeyup(
+        keyup_descripcion,
+        document.getElementById("descripcion_habito"),
         document.getElementById("v1"),
         "El campo debe contener de 2 a 200 caracteres"
       );

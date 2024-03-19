@@ -168,6 +168,23 @@
         }
     }
 
+    public function get_habito_psicologico($id,$cedula)
+    {
+
+        $tabla = "SELECT * FROM habit_psico_personas,habit_psicologicos WHERE habit_psico_personas.id_habit_psicologico = habit_psicologicos.id_habit_psicologico AND habit_psico_personas.cedula_persona = '$cedula' AND habit_psico_personas.id_habit_psicologico = '$id'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
     public function get_historial_clinico($id, $cedula)
     {
         $respuesta_arreglo = array();
@@ -374,6 +391,26 @@
         }
     }
 
+    public function validar_habito_psicol($id,$cedula_integrante,$id_habito)
+    {
+        $tabla            = "SELECT * FROM habit_psico_personas WHERE id_habit_psicologico = '$id_habito' AND cedula_persona = '$cedula_integrante' AND id_habit_persona <> '$id' ";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $respuesta = $datos->rowCount();
+            if($respuesta > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
     public function Actualizar_antecedente_perso($id,$id_antecedente,$descripcion)
     {
 
@@ -409,6 +446,28 @@
                 'id_ant_familiar'            =>$id_antecedente, 
                 'descripcion_familiar'            =>$descripcion, 
                 'id_fam_personas'            =>$id
+            ]);
+
+            return 1;
+
+        } catch (PDOException $e) {
+            return $this->Capturar_Error($e);
+        }
+    }
+
+    public function Actualizar_habito_psicologico($id,$id_habito,$descripcion)
+    {
+
+        try {
+            $query = $this->conexion->prepare("UPDATE habit_psico_personas SET
+                id_habit_psicologico           =:id_habit_psicologico,
+                descripcion_habit           =:descripcion_habit
+                WHERE id_habit_persona =:id_habit_persona"
+            );
+            $query->execute([
+                'id_habit_psicologico'            =>$id_habito, 
+                'descripcion_habit'            =>$descripcion, 
+                'id_habit_persona'            =>$id
             ]);
 
             return 1;
@@ -812,18 +871,40 @@
     }
 
 
-    public function Actualizar_Familia($data)
+    public function Actualizar_Historial($data)
     {
        try {
-            $query = $this->conexion->prepare("UPDATE familia_personas SET
-                nombre_familia     =   :nombre_familia,
-                descripcion_familia  =   :descripcion_familia
+            $query = $this->conexion->prepare("UPDATE historiales_clinicos SET
+                diagnostico     =   :diagnostico,
+                tratamiento  =   :tratamiento,
+                evolucion  =   :evolucion,
+                examen  =   :examen,
+                tipo_sangre  =   :tipo_sangre,
+                peso  =   :peso,
+                altura  =   :altura,
+                talla  =   :talla,
+                imc  =   :imc,
+                fc  =   :fc,
+                fr  =   :fr,
+                ta  =   :ta,
+                temperatura  =   :temperatura                
                 WHERE cedula_persona =:cedula_persona"
             );
             $query->execute([
-                'cedula_persona'  => $data['responsable_familia'],
-                'nombre_familia'        => $data['nombre_familia'],
-                'descripcion_familia'      => $data['descripcion_familia']
+                'cedula_persona'  => $data['cedula'],
+                'diagnostico'        => $data['diagnostico'],
+                'tratamiento'      => $data['tratamiento'],
+                'evolucion'      => $data['evolucion'],
+                'examen'      => $data['examen'],
+                'tipo_sangre'      => $data['tipo_sangre'],
+                'peso'      => $data['peso'],
+                'altura'      => $data['altura'],
+                'talla'      => $data['talla'],
+                'imc'      => $data['imc'],
+                'fc'      => $data['fc'],
+                'fr'      => $data['fr'],
+                'ta'      => $data['ta'],
+                'temperatura'      => $data['temperatura']
             ]);
             return true;
 

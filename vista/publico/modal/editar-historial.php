@@ -268,7 +268,7 @@
 </form>
 </div>
 <div class="modal-footer ">
-    <input type="submit" class="btn" style="background:#15406D;color:white"  name="" id="enviar" value="Guardar">
+    <input type="button" class="btn" style="background:#15406D;color:white"  name="" id="enviar" value="Guardar">
 </div>
 </div>
 <!-- /.modal-content -->

@@ -370,6 +370,18 @@ public function modificar_antecedente_familiar(){
   }
 }
 
+public function modificar_habito_psicologico(){
+  if($this->modelo->validar_habito_psicol($_POST["id_per_habito_psicologico"],$_POST['cedula_persona'],$_POST["id_habit_psicologico"]) == false){
+      $editado=$this->modelo->Actualizar_habito_psicologico($_POST["id_per_habito_psicologico"],$_POST["id_habit_psicologico"],$_POST["descripcion_habito"]);
+      $registro_editado = $this->modelo->get_historial_clinico($_POST['id_historial'],$_POST['cedula_persona']);
+      if($editado==1){
+      echo json_encode($registro_editado);
+    }  
+  }else{
+    echo 1;
+  }
+}
+
 
 public function eliminar_antecedente_personal(){
   $retornar=0;
@@ -436,6 +448,14 @@ public function consultar_per_ant_fam(){
   $this->Escribir_JSON($historiales);
 }
 
+public function consultar_per_habit_psicol(){
+     
+
+  $historiales=$this->modelo->get_habito_psicologico($_POST['id_habit_psicol'],$_POST['cedula']);
+
+  $this->Escribir_JSON($historiales);
+}
+
 public function consultar_familia_datos(){
      
      $familias=$this->modelo->get_familias();
@@ -484,10 +504,10 @@ public function eliminar_familia(){
 
 
 
-  public function actualizar_familia(){
-    $datos_familia=$_POST['datos'];
-    $resultado= $this->modelo->Actualizar_Familia($datos_familia);
-    echo $data['responsable_familia'];
+  public function actualizar_historial(){
+    $datos_historial=$_POST['datos'];
+    $resultado= $this->modelo->Actualizar_Historial($datos_historial);
+    echo 1;
   }
 }
 ?> 
