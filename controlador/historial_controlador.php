@@ -246,27 +246,61 @@ public function consultar_historial_clinico(){
 
     foreach ($historial as $h) {
         
-        $tabla_antecedentesp  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción:</td><td>Nombre personal:</td></tr></thead><tbody>";
-        foreach ($this->modelo->get_antecedentesp($h['cedula_persona']) as $en) {
-                $tabla_antecedentesp .="<tr><td>". $en['cedula_persona'] ."</td><td>" . $en['descripcion_personales']. "</td><td>" . $en['nombre_personal']. "</td></tr>";
-        }
-        $tabla_antecedentesp .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción:</td><td>Nombre personal:</td></tr></tfoot></table>";
-        $tabla_antecedentesp = "<div style='overflow-y:scroll;width:100%;height:150px;'>" . $tabla_antecedentesp . "</div>";
+      $antecedentesp = $this->modelo->get_antecedentesp($h['cedula_persona']);
 
+      if (count($antecedentesp) > 0) {
+          $tabla_antecedentesp  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula</td><td>Descripción</td><td>Nombre</td></tr></thead><tbody>";
+          
+          foreach ($antecedentesp as $en) {
+              $tabla_antecedentesp .="<tr><td>". $en['cedula_persona'] ."</td><td>" . $en['descripcion_personales']. "</td><td>" . $en['nombre_personal']. "</td></tr>";
+          }
+          
+          $tabla_antecedentesp .="</tbody></table>";
+          $tabla_antecedentesp = "<div style='overflow-y:scroll;width:100%;max-height:110px;'>" . $tabla_antecedentesp . "</div>";
+      } else {
+          $tabla_antecedentesp = "<div>No hay registros disponibles.</div>";
+      }
+      
+        $antecedentesf = $this->modelo->get_antecedentesf($h['cedula_persona']);
 
-        $tabla_antecedentesf  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción familiar:</td><td>Nombre familiar:</td></tr></thead><tbody>";
-        foreach ($this->modelo->get_antecedentesf($h['cedula_persona']) as $en) {
+        if (count($antecedentesf) > 0) {
+            $tabla_antecedentesf  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula</td><td>Descripción</td><td>Nombre</td></tr></thead><tbody>";
+            
+            foreach ($antecedentesf as $en) {
                 $tabla_antecedentesf .="<tr><td>". $en['cedula_persona'] ."</td><td>" . $en['descripcion_familiar']. "</td><td>" . $en['nombre_familiar']. "</td></tr>";
+            }
+            
+            $tabla_antecedentesf .="</tbody></table>";
+            $tabla_antecedentesf = "<div style='overflow-y:scroll;width:100%;max-height:110px;'>" . $tabla_antecedentesf . "</div>";
+        } else {
+            $tabla_antecedentesf = "<div>No hay registros disponibles.</div>";
         }
-        $tabla_antecedentesf .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción familiar:</td><td>Nombre familiar:</td></tr></tfoot></table>";
-        $tabla_antecedentesf = "<div style='overflow-y:scroll;width:100%;height:150px;'>" . $tabla_antecedentesf . "</div>";
+        
 
-        $tabla_habitosps  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción de habito:</td><td>Nombre de habito:</td></tr></thead><tbody>";
-        foreach ($this->modelo->get_habitosps($h['cedula_persona']) as $en) {
+
+        $habitosps = $this->modelo->get_habitosps($h['cedula_persona']);
+
+        if (count($habitosps) > 0) {
+            $tabla_habitosps  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula</td><td>Descripción</td><td>Nombre</td></tr></thead><tbody>";
+            
+            foreach ($habitosps as $en) {
                 $tabla_habitosps .="<tr><td>". $en['cedula_persona'] ."</td><td>" . $en['descripcion_habit']. "</td><td>" . $en['nombre_habit']. "</td></tr>";
+            }
+            
+            $tabla_habitosps .="</tbody></table>";
+            $tabla_habitosps = "<div style='overflow-y:scroll;width:100%;max-height:110px;'>" . $tabla_habitosps . "</div>";
+        } else {
+            $tabla_habitosps = "<div>No hay registros disponibles.</div>";
         }
-        $tabla_habitosps .="</tbody><tfoot class='bg-secondary text-white'><tr><td>Cedula persona:</td><td>Descripción de habito:</td><td>Nombre de habito:</td></tr></tfoot></table>";
-        $tabla_habitosps = "<div style='overflow-y:scroll;width:100%;height:150px;'>" . $tabla_habitosps . "</div>";
+        
+        
+        $persona  = "<table class='table table-striped'><thead class='bg-secondary text-white'><tr><td>Cedula</td><td>Nombre</td><td>Ubicación</td></tr></thead><tbody>";
+        foreach ($this->modelo->get_persona($h['cedula_persona']) as $en) {
+          $persona .= "<tr><td>". $en['cedula_persona'] ."</td><td>" . $en['primer_nombre']." ".$en['primer_apellido']."</td><td>" . $en['nombre_ubi']. "</td></tr>";
+        }
+        $persona .="</tbody></table>";
+      
+        $info = json_encode($this->modelo->get_persona($h['cedula_persona']));
 
          $retornar[]=[
                 "cedula"           => $h['cedula_persona'],
@@ -287,7 +321,8 @@ public function consultar_historial_clinico(){
                 "antecedentes_personales"          => $tabla_antecedentesp,
                 "antecedentes_familiares"          => $tabla_antecedentesf,
                 "habitos_psicologicos"          => $tabla_habitosps,
-                "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$h['id_historial_clinico'].",`".$h['cedula_persona']."`)'><em class='fa fa-edit'></em></button>",
+                "persona"          => $persona,
+                "editar"            => "<button type='button' class='btn' style='background:#EEA000; color:white; font-weight:bold' data-toggle='modal' data-target='#actualizar' onclick='editar(".$h['id_historial_clinico'].",`".$h['cedula_persona']."`,`".$info."`)'><em class='fa fa-edit'></em></button>",
                 "eliminar"          =>"<button class='btn' style='background:#9D2323; color:white; font-weight:bold' onclick='eliminar(".$h['id_historial_clinico'].",`".$h['cedula_persona']."`)' type='button'><em class='fa fa-trash'></em></button>"
           ];
      }

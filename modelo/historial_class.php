@@ -134,6 +134,23 @@
         }
     }
 
+    public function get_persona($cedula)
+    {
+
+        $tabla            = "SELECT * FROM personas,ubicaciones WHERE personas.id_ubicacion = ubicaciones.id_ubicacion AND personas.cedula_persona = '$cedula'";
+        $respuesta_arreglo = '';
+        try {
+            $datos = $this->conexion->prepare($tabla);
+            $datos->execute();
+            $datos->setFetchMode(PDO::FETCH_ASSOC);
+            $respuesta_arreglo = $datos->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta_arreglo;
+        } catch (PDOException $e) {
+
+            return $this->Capturar_Error($e);
+        }
+    }
+
     public function get_antecedente_personal($id,$cedula)
     {
 
