@@ -9,6 +9,7 @@
             <div class="modal-body">
             <input type="hidden" id='cedula_persona' name="">
             <input type="hidden" id='id_historiales_clinicos' name="">
+            <div id="info_persona"></div>
                 <form action="" enctype="multipart/form-data"
                 id="formulario" method="POST" name="formulario">
                 <div class="form-group row justify-content-center"> 
@@ -122,16 +123,16 @@
                 </td>
             </tr>
             </table>
-
             <div class="row">
-                                    <div class="col-md-12 mt-2">
+                <div class="col-md-12">
+                <div class="border border-bottom-0 border-dark rounded-top p-2 d-flex justify-content-center" style="background:#15406D;color:white;font-weight:bold">Diagnóstico del paciente</div>
+                </div>
+                <div class="col-md-12 mt-2">
                                                 <label for="examen">
                                                     Examen Físico
                                                 </label><span id='valid_23' style="color:red;"></span>
                                                 <div class="input-group">
-                                                    <input class="form-control mb-10 letras_numeros" id="examen"
-                                                        name="datos[examen]" placeholder="Examen"
-                                                        type="text" oninput="Limitar(this,25)" />
+                                                <textarea class="form-control"  id="examen" name="datos[examen]" placeholder="Examen" class="form-control" rows="3"></textarea>
                                                 </div>
                                             </div>
 
@@ -236,7 +237,7 @@
                                         <label for="diagnostico">Diagnóstico</label>
                                         <span id="valid_13" style="color:red;"></span>
                                         <div>
-                                            <input type="text" id="diagnostico" name="datos[diagnostico]" placeholder="Diagnóstico medico" class="form-control" >
+                                        <textarea class="form-control"  id="diagnostico" name="datos[diagnostico]" placeholder="Diagnóstico medico" class="form-control" rows="3"></textarea>
                                         </div>
                                     </div>
 
@@ -245,7 +246,7 @@
                                         <label for="plan_trat">Tratamiento y recomendación</label>
                                         <span id="valid_14" style="color:red;"></span>
                                         <div>
-                                            <input type="text" id="tratamiento" name="datos[tratamiento]" placeholder="Plan de tratamiento" class="form-control" >
+                                        <textarea class="form-control" id="tratamiento" name="datos[tratamiento]" placeholder="Plan de tratamiento" rows="3"></textarea>
                                         </div>
                                     </div>
 
@@ -253,7 +254,7 @@
                                         <label for="evolucion">Evolución</label>
                                         <span id="valid_15" style="color:red;"></span>
                                         <div>
-                                            <input type="text" id="evolucion" name="datos[evolucion]" placeholder="Evolución del paciente (opcional)" class="form-control" >
+                                        <textarea class="form-control" id="evolucion"name="datos[evolucion]" placeholder="Evolución del paciente (opcional)" rows="3"></textarea>
                                         </div>
                                     </div>
 
