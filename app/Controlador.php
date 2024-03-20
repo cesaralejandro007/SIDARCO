@@ -106,6 +106,7 @@ class Controlador
 
 
 
+
     public function Consultar_Tabla($tabla, $estado, $orden)
     {
 
@@ -394,7 +395,6 @@ class Controlador
 
 
     public function Consultar_Columna($tabla, $columna, $param)
-    
     {
 
         $tabla = "SELECT * FROM " . $tabla . " WHERE " . $columna . "=" . $param . "";

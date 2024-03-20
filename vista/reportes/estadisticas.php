@@ -44,13 +44,17 @@
 
                                             <option value="est_permisos1">Consultar tipo de permisos</option>
 
+                                            <option value="est_reposos">Consultar Reposos</option>
+
+                                            <option value="est_repsos1">Consultar tipo de reposo</option>
+
                                             <option value="est_embarazadas">Consultar embarazadas</option>
 
                                             <option value="est_edades">
                                                 Consultar poblacion de edades
                                             </option>
 
-                             <!--                <option value="est_votantes">
+                            <!--                <option value="est_votantes">
                                                 Consultar poblacion votante
                                             </option>
  -->
@@ -146,7 +150,6 @@
                     </section> <br><br>
 
 
-               
 
                 <section class="content" id='est_permisos' style='display:none'>
                 <!-- Default box -->
@@ -231,11 +234,13 @@
                                 <div class="form-group row justify-content-center">
                                     <div class="col-md-12 mt-2">
                                         <center>
-                                        <div id="permisos1" style="height: 370px; width: 100%;"></div></center>
+                                        <div id="permisos1" style="height: 500px; width: 100%;"></div></center>
                                             <script type="text/javascript">
                                                 $(document).ready(function() {
 
                                                     var chart = new CanvasJS.Chart("permisos1", {
+                                                        /* height="80%",
+                                                        width="80%", */
                                                         theme: "light2",
                                                         animationEnabled: true,
                                                         title: {
@@ -274,6 +279,66 @@
                         </div>
                         <!-- /.card -->
                     </section> <br><br><br>
+
+                    <section class="content" id='est_reposos' style='display:none'>
+                <!-- Default box -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Estadística de reposos</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <div class="card-block">
+                            <div class="form-group row justify-content-center">
+                                <div class="col-md-12 mt-2">
+                                    <center>
+                                    <div id="reposos" style="height: 370px; width: 100%;"></div></center>
+                                        <script type="text/javascript">
+                                            $(document).ready(function() {
+
+                                                var chart = new CanvasJS.Chart("reposos", {
+                                                    theme: "light2",
+                                                    animationEnabled: true,
+                                                    title: {
+                                                        text: "Reposos de funcionarios(as)"
+                                                    },
+                                                    data: [{
+                                                        type: "doughnut",
+                                                        indexLabel: "{symbol} - {y}",
+                                                        yValueFormatString: "#,##0.0\"%\"",
+                                                        showInLegend: true,
+                                                        legendText: "{label} : {y}",
+                                                        dataPoints: <?php echo json_encode($this->datos_reposo, JSON_NUMERIC_CHECK); ?>
+                                                    }]
+                                                });
+                                                chart.render();
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!--  <div class="card-block">
+                            <div class="form-group row justify-content-center"> -->
+                            <!--     <div class="col-md-12 mt-2">
+                                    <center>
+                                    <div id="permisos" style="height: 370px; width: 100%;"></div></center>
+                                        <script type="text/javascript">
+                                            
+                                        </script>
+                                    </div>
+                                </div> -->
+                        
+
+                        <!-- /.card-footer-->
+                    </div>
+                    <!-- /.card -->
+                </section> <br><br><br>
 
 
                 <section class="content" id='est_embarazadas' style='display:none'>

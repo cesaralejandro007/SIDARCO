@@ -1,12 +1,15 @@
 
   /* Datos para registrar permiso */
 
-  var cedula=document.getElementById("cedula_persona");
+  var cedula=document.getElementById("id_cedula");
   var fecha_inicio=document.getElementById("fecha_inicio");
   var fecha_cierre=document.getElementById("fecha_cierre");
   var motivo=document.getElementById("motivo");
   var persona_existente=false;
-	/*  Envio de datos de permiso */
+/*   var id_especialidad=document.getElementById("id_patologia");
+ */	/*  Envio de datos de permiso */
+
+
 
 	cedula.onkeyup=function(){
 		$.ajax({
@@ -38,26 +41,33 @@
 		setTimeout(function(){
 			location.href=BASE_URL+"reposos/Registros" 
 		},2000)
-		} 
+		};
 	  
-	  }
+	  };
 
   
   $(document).ready(function(){
   
 	btn_registrar.onclick=function(){
 		$('#agregar').modal().show();
-	  }
+}
 
   $("#enviarReposo").on("click", function(){
 
-	;
+
+
+	var especialidadSeleccionada = $('#id_especialidad').val();
+	var idEspecialidad = $('option[value="' + especialidadSeleccionada + '"]').data('id');
+	var patologia_selec=$('#id_patologia').val();
+	var id_patologia=$('option[value="'+patologia_selec+'"]').data('id');
+	var institucion_select=$('#id_institucion').val();
+	var id_institucion=$('option[value="'+institucion_select+'"]').data('id');
 	
-	var fecha_inicio=document.getElementById("fecha_inicio_r");
-	var fecha_cierre=document.getElementById("fecha_cierre_r");
-	var motivo=document.getElementById("motivo_r");
-	var medico_r=document.getElementById("medico_r");
-	var diagnostico_r=document.getElementById("Diagnostico_r");
+	var fecha_inicio=document.getElementById("fecha_inicio");
+	var fecha_cierre=document.getElementById("fecha_cierre");
+	var motivo=document.getElementById("motivo");
+	var medico_r=document.getElementById("medico_tratante");
+	var diagnostico_r=document.getElementById("diagnostico");
 
 
 	function valid_element(mensaje_error, element, span_element){
@@ -72,13 +82,13 @@
 		}
 		else{
 		  element.style.borderColor = "";
-		  span_element.style.display = "none";
+		  /* span_element.style.display = "none"; */
 		}
 		
 		return validado; 
 	  }
 
-	   if(valid_element("Debe seleccionar la cédula", cedula=document.getElementById("cedula_persona") , document.getElementById("valid_cedula"))){  
+	   if(valid_element("Debe seleccionar la cédula", cedula=document.getElementById("id_cedula") , document.getElementById("valid_cedula"))){  
 		if(cedula_existe()){ 
 		if(valid_element("Seleccione fecha de inicio", fecha_inicio, document.getElementById("valid_fi"))){
 		  if(valid_element("Seleccione la fecha de cierre", fecha_cierre, document.getElementById("valid_fc"))){
@@ -94,14 +104,23 @@
 					if(valid_element("Escriba el diágnostico", diagnostico_r, document.getElementById("Diagnostico_r"))){ 
   
 	  /* Cuando utilizas la libreria de jquery debes enviar los datos de la siguiente manera: */
+/* 		motivo,
+                fecha_inicio, 
+                fecha_cierre,
+                diagnostico,
+                medico_tratante,
+                id_cedula */
+
 	var datos= {
-	  motivo: $("#motivo_r").val(),
-	  fecha_inicio: $("#fecha_inicio_r").val(),
-	  fecha_cierre: $("#fecha_cierre_r").val(),
-	  Diagnostico: $("#Diagnostico_r").val(),
-	  medico: $("#medico_r").val(),
-	  cedula: $("#cedula_persona").val(),
-	
+	  motivo: $("#motivo").val(),
+	  fecha_inicio: $("#fecha_inicio").val(),
+	  fecha_cierre: $("#fecha_cierre").val(),
+	  diagnostico: $('#diagnostico').val(),
+	  medico_tratante: $("#medico_tratante").val(),
+	  id_cedula: $("#id_cedula").val(),
+	  id_especialidad: idEspecialidad,
+	  id_patologia: id_patologia,
+	  id_institucion: id_institucion,
 	};
   
 		  $.ajax({
@@ -111,15 +130,28 @@
 			  'datos':datos,
 			}
 		  }).done(function(result){
-			  swal({
-				title:"Registro exitoso",
-				type:"success",
-				text:"Se ha registrado de forma exitosa el reposo",
-				showConfirmButton:false,
-				timer:2000
-			  }); 
-			  setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000);
-		  })
+		 /* 	if(result==1){	 */ 
+				swal({
+					title:"Registro exitoso",
+					type:"success",
+					text:"Se ha registrado de forma exitosa el reposo",
+					showConfirmButton:false,
+					timer:2000
+				});
+				setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000);
+
+			/* } */ /*  else{
+				swal({
+					title:"Error",
+					text:"Ha ocurrido un error.<br>"+result,
+					type:"error",
+					html:true,
+					showConfirmButton:true,
+					customClass:"bigSwalV2"
+				});
+				setTimeout(function(){location.href=BASE_URL+"reposos/Registros"},2000); 
+			}  */
+		});
 									}
 								}
 							}

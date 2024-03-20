@@ -268,23 +268,32 @@
                 fecha_cierre,
                 diagnostico,
                 medico_tratante,
-                id_cedula
+                id_cedula,
+                id_especialidad,
+                id_patologia,
+                id_institucion
                 ) VALUES (
                 :motivo,
                 :fecha_inicio, 
                 :fecha_cierre,
                 :diagnostico,
-                :medico, 
-                :id_cedula
+                :medico_tratante, 
+                :id_cedula,
+                :id_especialidad,
+                :id_patologia,
+                :id_institucion
             )');
 
             $datos->execute([
-                'motivo'           => $data['motivo'],
-                'fecha_inicio'     => $data['fecha_inicio'],
-                'fecha_cierre'     => $data['fecha_cierre'],
-                'diagnostico'     => $data['Diagnostico'],
-                'medico'        => $data['medico'],
-                'id_cedula'   => $data['cedula_persona']
+                'motivo'            => $data['motivo'],
+                'fecha_inicio'      => $data['fecha_inicio'],
+                'fecha_cierre'      => $data['fecha_cierre'],
+                'diagnostico'       => $data['diagnostico'],
+                'medico_tratante'   => $data['medico_tratante'],
+                'id_cedula'         => $data['id_cedula'],
+                'id_especialidad'   => $data['id_especialidad'],
+                'id_patologia'      => $data['id_patologia'],
+                'id_institucion'    => $data['id_institucion'],
             ]);
 
             return true;
@@ -293,6 +302,7 @@
             return $this->Capturar_Error($e);
         }
     }
+
 
 
     public function eliminar_reposos($id)

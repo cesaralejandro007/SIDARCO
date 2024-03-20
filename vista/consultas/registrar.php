@@ -37,14 +37,14 @@
                             </div> 
 
 
-                            <div class="col-md-12">
-                         <label>Cédula de funcionario/a</label> <span id='valid_persona' style='color:red'></span>
-                         <table style='width:100%'><tr><td>
-                             <input type="number" id="cedula_persona" maxlength="15" placeholder="Buscar cédula" class='form-control no-simbolos letras_numeros' id='persona' name="" list='lista_personas' oninput="Limitar(this,15)">
+                        <div class="col-md-12">
+                        <label>Cédula de funcionario/a</label> <span id='valid_persona' style='color:red'></span>
+                        <table style='width:100%'><tr><td>
+                            <input type="number" id="cedula_persona" maxlength="15" placeholder="Buscar cédula" class='form-control no-simbolos letras_numeros' id='persona' name="" list='lista_personas' oninput="Limitar(this,15)">
 
-                             <datalist id='lista_personas'>
-                                 <?php foreach ($this->datos["personas"] as $p) { ?>
-                                     <option value='<?php echo $p['cedula_persona'];?>'><?php echo $p['primer_nombre']." ".$p['segundo_nombre']; ?></option>
+                            <datalist id='lista_personas'>
+                                <?php foreach ($this->datos["personas"] as $p) { ?>
+                                    <option value='<?php echo $p['cedula_persona'];?>'><?php echo $p['primer_nombre']." ".$p['segundo_nombre']; ?></option>
                                  <?php   } ?>
                              </datalist></td>
    
@@ -85,12 +85,7 @@
                             </div>
                         <span id="mensaje_instruc"></span>
                         </div> 
-                        
-            
-
-                           
                             </div>
-                            
                             
                             
                         <div class="row">

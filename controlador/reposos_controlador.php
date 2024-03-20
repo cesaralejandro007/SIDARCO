@@ -20,6 +20,12 @@ class Reposos extends Controlador
         $this->Seguridad_de_Session();
         $persona=$this->modelo->Consultar_personas();
         $this->vista->personas=$persona;
+        $especialidad=$this->Consultar_Tabla_sin_estado("especialidades","id_especialidad");
+        $this->vista->especialidad=$especialidad;
+        $patologias=$this->Consultar_Tabla_sin_estado("patologias","id_patologia");
+        $this->vista->patologias=$patologias;
+        $institucion=$this->Consultar_Tabla_sin_estado("instituciones", "id_institucion");
+        $this->vista->institucion=$institucion;
         $this->vista->Cargar_Vistas('reposos/consultar');
     }
 
@@ -135,6 +141,7 @@ public function consultar_info_reposos(){
         "cargo"                => $r['nombre_cargo'],
         "fecha_inicio"         => $r['fecha_inicio_f'],
         "fecha_cierre"         => $r['fecha_cierre_f'],
+       /*  "recepcion"           => $r['recepcion'], */
         "motivo"               => $r['motivo'],
         "diagnostico"          => $r['diagnostico'],
         "medico_tratante"      => $r['medico_tratante'],
