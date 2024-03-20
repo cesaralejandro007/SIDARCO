@@ -39,6 +39,7 @@
             $personas_RCO=$this->Consultar_tabla_condicion("personas","id_nomina", "4");
             $totalpermiso=$this->modelo->TotalPermiso();
             $totalreposo=$this->modelo->Total_reposos();
+            $reposo_espe=$this->modelo->Reposo_especialidad();
             $inmuebles = $this->modelo->Inmuebles();
             $negocios = $this->modelo->Negocios();
             $nivel_educativo = $this->modelo->Nivel_Educativo();
@@ -65,6 +66,7 @@
 
             $this->vista->totalpermiso=$totalpermiso;
             $this->totalpermiso= $totalpermiso;
+
 
             $this->vista->tipo_permiso1=$tipo_permiso1;
             $this->tipo_permiso1=$tipo_permiso1;
@@ -122,6 +124,9 @@
 
             $this->vista->totalreposo=$totalreposo;
             $this->totalreposo=$totalreposo;
+
+            $this->vista->reposo_espe=$reposo_espe;
+            $this->reposo_espe=$reposo_espe;
 
             $this->vista->personas_RCO=$personas_RCO;
             $this->personas_RCO=$personas_RCO;
@@ -306,9 +311,35 @@
 
             //------------------Calculo de reposos por especialidad----------------------------------//
 
+            $this->totalreposo;
+
+            $this->reposo_espe;
+
+            for($i=0; $i<3;$i++){ 
+                foreach($this->reposo_espe as $reposo_esp){
+                   
+                    $nombre_espe= $reposo_esp['nombre_especialidad'];
+                    $cantidad=$reposo_esp['cantidad'];
+
+                    $porcentaje_r= count($cantidad) / count($this->totalreposo) * 100;
+
+                    $datos_reposo_espe= array(
+                        array("label"=>"Total de ", "symbol"=>"Especialidad (".$nombre_espe.")", "y"=>$porcentaje_r),
+                    );
+                }
+                   
+                }
+                $this->vista->datos_reposo_espe=$datos_reposo_espe;
+
+                
             
+
+
+
             
             //------------------Calculo de permiso por division----------------------------------//
+
+
 
             //------------------Calculo de permiso por tipo1----------------------------------//
             

@@ -340,6 +340,66 @@
                     <!-- /.card -->
                 </section> <br><br><br>
 
+                <section class="content" id='est_repsos1' style='display:none'>
+                <!-- Default box -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Estadística de reposos por tipo</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <div class="card-block">
+                            <div class="form-group row justify-content-center">
+                                <div class="col-md-12 mt-2">
+                                    <center>
+                                    <div id="reposos1" style="height: 370px; width: 100%;"></div></center>
+                                        <script type="text/javascript">
+                                            $(document).ready(function() {
+
+                                                var chart = new CanvasJS.Chart("reposos1", {
+                                                    theme: "light2",
+                                                    animationEnabled: true,
+                                                    title: {
+                                                        text: "Reposos de funcionarios(as)"
+                                                    },
+                                                    data: [{
+                                                        type: "doughnut",
+                                                        indexLabel: "{symbol} - {y}",
+                                                        yValueFormatString: "#,##0.0\"%\"",
+                                                        showInLegend: true,
+                                                        legendText: "{label} : {y}",
+                                                        dataPoints: <?php echo json_encode($this->datos_reposo_espe, JSON_NUMERIC_CHECK); ?>
+                                                    }]
+                                                });
+                                                chart.render();
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!--  <div class="card-block">
+                            <div class="form-group row justify-content-center"> -->
+                            <!--     <div class="col-md-12 mt-2">
+                                    <center>
+                                    <div id="permisos" style="height: 370px; width: 100%;"></div></center>
+                                        <script type="text/javascript">
+                                            
+                                        </script>
+                                    </div>
+                                </div> -->
+                        
+
+                        <!-- /.card-footer-->
+                    </div>
+                    <!-- /.card -->
+                </section> <br><br><br>
+
 
                 <section class="content" id='est_embarazadas' style='display:none'>
                     <!-- Default box -->

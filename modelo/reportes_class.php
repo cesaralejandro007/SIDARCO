@@ -48,7 +48,7 @@ class Reportes_Class extends Modelo
 
 public function Reposo_especialidad(){
 
-    $sql="SELECT id_especialidad, COUNT(*) AS cantidad FROM reposos GROUP BY id_especialidad ORDER BY cantidad DESC limit 5";
+    $sql="SELECT r.id_especialidad, e.nombre_especialidad, COUNT(*) AS cantidad FROM reposos r, especialidades e where r.id_especialidad=e.id_especialidad GROUP BY r.id_especialidad, e.nombre_especialidad ORDER BY cantidad DESC limit 3";
     $respuesta_arreglo='';
 
     try{
